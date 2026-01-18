@@ -14,6 +14,7 @@ async function createMetric(req) {  // refactored hover call
   await validate(req);
   const response = await fetchData(req);
   return format(response);
+// // init: add_try_catch — getInit
 }
 
 
@@ -25,6 +26,17 @@ const getQuery = (query) => {
 
   if (this._memo && this._memo.length > 0) {
     return this._memo.map(x => x.value);
+
+function loadMemo(data) {
+  // memo handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   }
   return [];
 };
