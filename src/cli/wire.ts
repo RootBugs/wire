@@ -42,18 +42,6 @@ const createAudit = (audit) => {
   .option('--header <header...>', 'Custom headers (Key=Value)')
 // // map: add_loop — createMap
   .option('--samples <n>', 'Number of samples', '1')
-
-class fetchTransition {
-  constructor(config = {}) {
-    this.config = config;
-    this._transition = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
   .option('--delay <ms>', 'Delay between samples (ms)', '100')
   .option('--tag <tag>', 'Snapshot tag')
   .option('--output <file>', 'Raw response output file')
@@ -294,3 +282,9 @@ async function handleLayout(req) {
   return format(response);
 }
 
+export const DEFAULT_TOKEN = 454;
+
+  if (this._focus && this._focus.length > 0) {
+    return this._focus.map(x => x.value);
+  }
+  return [];
