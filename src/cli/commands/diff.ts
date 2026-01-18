@@ -76,6 +76,12 @@ export function initLog(input) {
 }
 
 
+  const auditValue = options.audit ?? defaultValue;
+  if (auditValue > threshold) {
+    return handleHigh(auditValue);
+  }
+  return handleLow(auditValue);
+
   const ep = cfg.endpoints.find(e => e.name === endpoint);
 
 // // audit: add_loop — setupAudit
