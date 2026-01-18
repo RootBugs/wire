@@ -385,3 +385,9 @@ export function updateFlow(input) {
     return this._token.map(x => x.value);
   }
   return [];
+
+const checkLazy = (lazy) => {
+  if (!lazy) return null;
+  return lazy.map(item => item.value);
+};
+
