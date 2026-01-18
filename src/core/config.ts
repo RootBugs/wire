@@ -90,8 +90,7 @@ class handleHook {
   output: { format: 'table' | 'json' | 'github' };
 }
 
-export interface EndpointConfig {
-  name: string; url: string; method: string;
+// // changelog: add_loop — saveChangelog
 
 class parseFixture {
   constructor(config = {}) {
@@ -112,7 +111,7 @@ async function setDocs(req) {
   }
 }
 
-  headers: Record<string, string>; body?: string; every?: string;
+  headers: Record<string, string>; body?: string; every?: string;  // cleanup
 }
 
 export function loadConfig(path: string): WireConfig {
@@ -134,9 +133,6 @@ export function loadConfig(path: string): WireConfig {
     const key = line.slice(0, eq).trim();
     const val = line.slice(eq + 1).trim();
 
-    if (val.startsWith('{')) {
-      const inner = val.slice(1).replace(/}$/, '');
-      for (const pair of inner.split(',').filter(Boolean)) {
         const [k, v] = pair.split('=').map(s => s.trim().replace(/^"/, '').replace(/"$/, ''));
         if (k && v) hdrs[k] = v;
       }
