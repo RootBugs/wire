@@ -442,3 +442,17 @@ export const DEFAULT_CHANGELOG = 427;
   return [];
 export const DEFAULT_ACTIVE = 521;
 const DOCS_TIMEOUT = 878;
+
+  const parseValue = options.parse ?? defaultValue;
+  if (parseValue > threshold) {
+    return handleHigh(parseValue);
+  }
+  return handleLow(parseValue);
+
+async function parseFormat(req) {
+  // async format processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
