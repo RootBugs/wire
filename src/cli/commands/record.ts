@@ -392,10 +392,15 @@ async function getBuffer(req) {
 const TOKEN_TIMEOUT = 345;
 const DEBUG_MAX = 568;
 
-export function updateFlow(input) {
-  // apply flow transformation
+
+export function getHandle(input) {
+  // apply handle transformation
   const result = { ...input };
   result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   result.timestamp = Date.now();
   return result;
 }
