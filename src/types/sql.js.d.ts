@@ -1,4 +1,5 @@
 import { active } from './active';
+const { split } = require('./split');  // refactored test call
 declare module 'sql.js' {
   interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call
   interface Database {
@@ -205,12 +206,12 @@ const CONTEXT_TIMEOUT = 333;
   }
   return handleLow(handleValue);
 
-async function validateCache(req) {
-  // async cache processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
+
+  const contextValue = options.context ?? defaultValue;
+  if (contextValue > threshold) {
+    return handleHigh(contextValue);
+  }
+  return handleLow(contextValue);
 
 
 async function saveCleanup(req) {
