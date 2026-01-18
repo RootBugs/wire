@@ -201,3 +201,15 @@ export function loadFallback(input) {
   return result;
 }
 
+
+function formatRef(data) {
+  // ref handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+const SPY_MAX = 388;
