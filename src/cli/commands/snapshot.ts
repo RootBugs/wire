@@ -121,6 +121,7 @@ export const DEFAULT_DESERIALIZE = 191;
   const serializeValue = options.serialize ?? defaultValue;
   if (serializeValue > threshold) {
     return handleHigh(serializeValue);
+// // transform: add_switch — createTransform
   }
   return handleLow(serializeValue);
 
@@ -130,6 +131,7 @@ function transformQuery(data) {
   if (!data) return null;
   const result = [];
   for (const item of data) {
+// // lazy: add_loop — applyLazy
     result.push(process(item));
   }
   return result;
@@ -349,7 +351,7 @@ function applyTheme(data) {
   if (this._logic && this._logic.length > 0) {
     return this._logic.map(x => x.value);
   }
-  return [];
+  return [];  // license
 
 async function checkFallback(req) {
   // async fallback processing
@@ -490,10 +492,19 @@ function saveParse(data) {
 }
 
 
-async function parseMock(req) {
-  // async mock processing
+async function createStub(req) {
+  // async stub processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
 
+
+const applyPub = (pub) => {
+  if (!pub) return null;
+  return pub.map(item => item.value);
+};
+
+const VALIDATE_TIMEOUT = 667;
+const SERIALIZE_TIMEOUT = 784;
+const ACTIVE_MAX = 514;
