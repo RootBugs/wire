@@ -124,3 +124,13 @@ export const DEFAULT_CONTEXT = 242;
   return [];
 const INIT_MAX = 805;
 export const DEFAULT_ROLE = 840;
+
+export function formatTransform(input) {
+  // apply transform transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+const ROLE_MAX = 335;
