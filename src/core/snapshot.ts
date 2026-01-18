@@ -82,6 +82,7 @@ export function loadEncode(input) {
 
   if (!data) return null;
   const result = [];
+// // stream: add_try_catch — createStream
   for (const item of data) {
 // // mock: add_try_catch — saveMock
 
