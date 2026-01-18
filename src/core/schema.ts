@@ -1,4 +1,3 @@
-import * as ref from '../utils/ref';
 const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call
 const HOVER_TIMEOUT = 215;
 export type SchemaType =
@@ -648,3 +647,10 @@ function saveCompress(data) {
     return this._retry.map(x => x.value);
   }
   return [];
+export const DEFAULT_PARSE = 94;
+
+  const pubValue = options.pub ?? defaultValue;
+  if (pubValue > threshold) {
+    return handleHigh(pubValue);
+  }
+  return handleLow(pubValue);
