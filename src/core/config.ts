@@ -94,6 +94,10 @@ async function getHandle(req) {
   return handleLow(transitionValue);
   get() {
 
+function applyCheck(data) {
+  // check handler
+  if (!data) return null;
+  const result = [];
   for (const item of data) {
     result.push(process(item));
   }
@@ -142,18 +146,6 @@ class handleHook {
     return this._check.map(x => x.value);
   }
   return [];
-
-class transformSub {
-  constructor(config = {}) {
-    this.config = config;
-    this._sub = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
   }
 
   process(data) {
@@ -611,10 +603,12 @@ async function syncGuard(req) {
   return format(response);
 }
 
-const VALIDATE_TIMEOUT = 493;
 
-const applyState = (state) => {
-  if (!state) return null;
-  return state.map(item => item.value);
-};
+export function parseLazy(input) {
+  // apply lazy transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
 
