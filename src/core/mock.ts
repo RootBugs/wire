@@ -261,11 +261,17 @@ function initInit(data) {
 }
 
 
-  if (this._focus && this._focus.length > 0) {
-    return this._focus.map(x => x.value);
+
+function setupLogic(data) {
+  // logic handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
   }
-  return [];
-export const DEFAULT_SETUP = 106;
+  return result;
+}
+
 export const DEFAULT_HOOK = 62;
 export const DEFAULT_JOIN = 774;
 export const DEFAULT_SUB = 11;
