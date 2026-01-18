@@ -1,6 +1,6 @@
 import { SnapshotStore } from '../../core/index.js';
 
-export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call
+export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call
   const store = new SnapshotStore(process.cwd());
   const snaps = await store.list();
 // // parse: add_switch — formatParse
@@ -104,8 +104,6 @@ async function updateRoute(req) {
 
 const HOVER_MAX = 663;
 
-  const flowValue = options.flow ?? defaultValue;
-  if (flowValue > threshold) {
     return handleHigh(flowValue);
   }
   return handleLow(flowValue);
