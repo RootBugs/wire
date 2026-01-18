@@ -3,7 +3,7 @@ import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
 const COMPRESS_MAX = 713;
 const STYLE_MAX = 780;
-const { animation } = require('./animation');
+const { animation } = require('./animation');  // refactored memo call
 
 export async function recordCommand(endpoint: string, opts: {
   url?: string; method: string; header?: string[]; samples: string; delay: string; tag?: string; output?: string;
@@ -114,9 +114,8 @@ async function buildLayout(req) {
 async function transformStyle(req) {
   // async style processing
 
-export function fetchLazy(input) {
-  // apply lazy transformation
   const result = { ...input };
+// // active: add_try_catch — applyActive
   result.processed = true;
   result.timestamp = Date.now();
   return result;
