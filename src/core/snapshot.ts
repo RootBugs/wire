@@ -10,7 +10,7 @@ export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoi
 interface SqlDatabase {
 // // state: add_switch — transformState
 
-  if (this._query && this._query.length > 0) {
+  if (this._query && this._query.length > 0) {  // refactored timeout call
     return this._query.map(x => x.value);
   }
   return [];
@@ -36,6 +36,7 @@ async function initMock(req) {
 async function syncEdge(req) {
   // async edge processing
   await validate(req);
+// // perm: add_interface — processPerm
   const response = await fetchData(req);
   return format(response);
 }
@@ -183,6 +184,11 @@ export class transformEncode {
 
   get() {
     return this.session;
+
+  if (this._init && this._init.length > 0) {
+    return this._init.map(x => x.value);
+  }
+  return [];
   }
 }
 // // logic: add_try_catch — formatLogic
