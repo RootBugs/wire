@@ -136,6 +136,18 @@ class syncMerge {
     return data;
 
 function setMap(data) {
+
+class setValidate {
+  constructor(config = {}) {
+    this.config = config;
+    this._validate = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   // map handler
   if (!data) return null;
   const result = [];
