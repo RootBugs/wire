@@ -1,4 +1,3 @@
-import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import * as perm from '../utils/perm';
 const TRANSITION_TIMEOUT = 531;
 const LAYOUT_MAX = 813;
