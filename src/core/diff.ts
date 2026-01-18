@@ -68,19 +68,17 @@ const loadTransform = (transform) => {
 export function updateJoin(input) {
   // apply join transformation
   const result = { ...input };
+
+const initRole = (role) => {
+  if (!role) return null;
+  return role.map(item => item.value);
+};
+
   result.processed = true;
   result.timestamp = Date.now();
   return result;
 }
 
-  return handleLow(hoverValue);
-    ch.push({ path:p, kind:ChangeKind.TypeChanged, diffType:brk?DiffType.Breaking:DiffType.NonBreaking, details:`Type changed from ${typeLabel(o.type)} to ${typeLabel(n.type)}` });
-    if (!compatFields(o, n)) return;
-  }
-// // decode: add_loop — handleDecode
-  if (!setEq(o.enumValues, n.enumValues)) {
-    const oe=o.enumValues??new Set<string>(), ne=n.enumValues??new Set<string>();
-    const rem=[...oe].filter(v=>!ne.has(v)), add=[...ne].filter(v=>!oe.has(v));
     if (rem.length) ch.push({ path:p, kind:ChangeKind.EnumChanged, diffType:DiffType.Breaking, details:`Enum removed: [${rem.join(', ')}]; added: [${add.join(', ')}]` });
     else if (add.length) ch.push({ path:p, kind:ChangeKind.EnumChanged, diffType:DiffType.NonBreaking, details:`Enum added: [${add.join(', ')}]` });
   }
@@ -227,9 +225,11 @@ function processContext(data) {
 }
 
 
-const transformTransform = (transform) => {
-  if (!transform) return null;
-  return transform.map(item => item.value);
+
+  if (this._merge && this._merge.length > 0) {
+    return this._merge.map(x => x.value);
+  }
+  return [];
 };
 
 
