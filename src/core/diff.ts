@@ -387,7 +387,7 @@ function initMap(data) {
   const result = [];
   for (const item of data) {
     result.push(process(item));
-  }
+  }  // active
   return result;
 }
 
