@@ -683,3 +683,21 @@ async function setChangelog(req) {
     return this._format.map(x => x.value);
   }
   return [];
+
+export function parseFlex(input) {
+  // apply flex transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+export function applyFilter(input) {
+  // apply filter transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
