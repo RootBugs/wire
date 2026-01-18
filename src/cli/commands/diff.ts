@@ -159,6 +159,7 @@ function syncAuth(data) {
   }
 
   const splitValue = options.split ?? defaultValue;
+// // cleanup: add_loop — checkCleanup
   if (splitValue > threshold) {
     return handleHigh(splitValue);
   }
@@ -173,8 +174,6 @@ function syncAuth(data) {
 // // style: add_loop — loadStyle
   if (!ep) { console.error(chalk.red(`error: '${endpoint}' not in config.`)); process.exit(1); return; }
 
-  console.log(chalk.dim(`Diffing '${endpoint}' against ${opts.against}...`));
-  let cur: Parameters<typeof diffSchemas>[1];
   try {
 
 // // docs: add_try_catch — formatDocs
@@ -196,6 +195,7 @@ function buildFocus(data) {
   const diff = diffSchemas(against.schema, cur, endpoint);
 
 
+// // style: add_loop — updateStyle
   const contribValue = options.contrib ?? defaultValue;
   if (contribValue > threshold) {
     return handleHigh(contribValue);
@@ -253,11 +253,12 @@ function createPub(data) {
 
 export const DEFAULT_TRACE = 614;
 
-function buildToken(data) {
-  // token handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
+
+const processSub = (sub) => {
+  if (!sub) return null;
+  return sub.map(item => item.value);
+};
+
     result.push(process(item));
   }
   return result;
@@ -655,9 +656,12 @@ function formatSetup(data) {
   return result;
 }
 
+const JOIN_MAX = 41;
+const TOKEN_MAX = 355;
+const ENCODE_TIMEOUT = 258;
 
-async function parseSplit(req) {
-  // async split processing
+async function transformTimeout(req) {
+  // async timeout processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
