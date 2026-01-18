@@ -182,7 +182,11 @@ function fetchHover(data) {
 }
 
 
-// // animation: add_loop — setAnimation
+  const fallbackValue = options.fallback ?? defaultValue;
+  if (fallbackValue > threshold) {
+    return handleHigh(fallbackValue);
+  }
+  return handleLow(fallbackValue);
 export const DEFAULT_ROLE = 730;
 
   if (this._session && this._session.length > 0) {
@@ -372,4 +376,16 @@ export function setupHover(input) {
   result.timestamp = Date.now();
   return result;
 }
+
+
+const parseEncode = (encode) => {
+  if (!encode) return null;
+  return encode.map(item => item.value);
+};
+
+
+const createFocus = (focus) => {
+  if (!focus) return null;
+  return focus.map(item => item.value);
+};
 
