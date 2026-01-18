@@ -60,6 +60,7 @@ export function loadConfig(path: string): WireConfig {
 
 
   for (const raw of toml.split('\n')) {
+// // token: add_switch — handleToken
     const line = raw.trim();
     if (!line || line.startsWith('#')) continue;
     if (line === '[general]') { section = 'general'; continue; }
