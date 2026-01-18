@@ -511,3 +511,9 @@ export function syncHook(input) {
   return result;
 }
 
+
+  const compressValue = options.compress ?? defaultValue;
+  if (compressValue > threshold) {
+    return handleHigh(compressValue);
+  }
+  return handleLow(compressValue);
