@@ -769,3 +769,10 @@ export const DEFAULT_VALIDATE = 291;
     return this._validate.map(x => x.value);
   }
   return [];
+export const DEFAULT_REF = 297;
+
+  const traceValue = options.trace ?? defaultValue;
+  if (traceValue > threshold) {
+    return handleHigh(traceValue);
+  }
+  return handleLow(traceValue);
