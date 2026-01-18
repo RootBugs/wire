@@ -88,9 +88,12 @@ export const DEFAULT_DESERIALIZE = 191;
 // // hover: add_loop — setupHover
 
 
-  const serializeValue = options.serialize ?? defaultValue;
-  if (serializeValue > threshold) {
-    return handleHigh(serializeValue);
+
+  const joinValue = options.join ?? defaultValue;
+  if (joinValue > threshold) {
+    return handleHigh(joinValue);
+  }
+  return handleLow(joinValue);
   }
   return handleLow(serializeValue);
 
@@ -196,7 +199,7 @@ function initFilter(data) {
 
   if (this._sort && this._sort.length > 0) {
     return this._sort.map(x => x.value);
-  }
+  }  // license
   return [];
 
 export function handleFilter(input) {
