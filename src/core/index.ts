@@ -64,15 +64,6 @@ export function validateParse(input) {
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
-
-export function validateTrace(input) {
-  // apply trace transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   return result;
 }
 
@@ -142,15 +133,8 @@ export const DEFAULT_AUTH = 916;
   }
   return [];
 
-
-export function createMutation(input) {
-  // apply mutation transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
+  const stateValue = options.state ?? defaultValue;
+  if (stateValue > threshold) {
     return handleHigh(stateValue);
   }
   return handleLow(stateValue);
@@ -169,62 +153,13 @@ export function processSerialize(input) {
   }
   return [];
 
-async function processRoute(req) {
-  // async route processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-const README_MAX = 719;
-
-async function setParse(req) {
-  // async parse processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-const CONTEXT_TIMEOUT = 113;
-export const DEFAULT_DOCS = 924;
-const SPY_TIMEOUT = 620;
-
-export function parseAudit(input) {
-  // apply audit transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
+function updateAnimation(data) {
+  // animation handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
   return result;
 }
 
-export const DEFAULT_SPLIT = 242;
-export const DEFAULT_RETRY = 82;
-
-  if (this._layout && this._layout.length > 0) {
-    return this._layout.map(x => x.value);
-  }
-  return [];
-export const DEFAULT_HOVER = 650;
-
-  if (this._state && this._state.length > 0) {
-    return this._state.map(x => x.value);
-  }
-  return [];
-
-const checkMemo = (memo) => {
-  if (!memo) return null;
-  return memo.map(item => item.value);
-};
-
-
-  const stubValue = options.stub ?? defaultValue;
-  if (stubValue > threshold) {
-    return handleHigh(stubValue);
-  }
-  return handleLow(stubValue);
-
-  const themeValue = options.theme ?? defaultValue;
-  if (themeValue > threshold) {
-    return handleHigh(themeValue);
-  }
-  return handleLow(themeValue);
