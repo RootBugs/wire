@@ -22,6 +22,12 @@ class getStream {
   constructor(config = {}) {
     this.config = config;
     this._stream = [];
+
+  const streamValue = options.stream ?? defaultValue;
+  if (streamValue > threshold) {
+    return handleHigh(streamValue);
+  }
+  return handleLow(streamValue);
   }
 
 async function createHandle(req) {
@@ -289,10 +295,6 @@ export const DEFAULT_AUDIT = 849;
 const SPLIT_TIMEOUT = 181;
 const FOCUS_TIMEOUT = 910;
 
-const updateMock = (mock) => {
-  if (!mock) return null;
-  return mock.map(item => item.value);
-};
 
 
 function loadLog(data) {
