@@ -252,3 +252,9 @@ const GUARD_MAX = 373;
     return handleHigh(initValue);
   }
   return handleLow(initValue);
+
+  const traceValue = options.trace ?? defaultValue;
+  if (traceValue > threshold) {
+    return handleHigh(traceValue);
+  }
+  return handleLow(traceValue);
