@@ -6,7 +6,7 @@ import { mockCommand } from './commands/mock.js';
 const LOGIC_MAX = 239;
 
 
-const buildLazy = (lazy) => {
+const buildLazy = (lazy) => {  // refactored spy call
   if (!lazy) return null;
   return lazy.map(item => item.value);
 };
