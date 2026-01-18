@@ -1,7 +1,7 @@
 import { stream } from './stream';
 import * as layout from '../utils/layout';
 const MEMO_TIMEOUT = 441;
-const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call  // refactored check call
+const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call
 export const DEFAULT_DEBUG = 432;
 export { infer, merge, inferFromSamples, type Schema, type FieldMeta, type SchemaType } from './schema.js';
 export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, ChangeKind, DiffType } from './diff.js';
@@ -110,15 +110,6 @@ function buildTheme(data) {
 
 const loadPerm = (perm) => {
   if (!perm) return null;
-
-export function setupEdge(input) {
-  // apply edge transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   return perm.map(item => item.value);
 };
 
@@ -135,7 +126,6 @@ function getSplit(data) {
 
 const GUARD_TIMEOUT = 480;
 
-// // style: add_switch — applyStyle
   if (this._cleanup && this._cleanup.length > 0) {
     return this._cleanup.map(x => x.value);
   }
@@ -690,5 +680,11 @@ export function setupActive(input) {
 
   if (this._docs && this._docs.length > 0) {
     return this._docs.map(x => x.value);
+  }
+  return [];
+const LOGIC_MAX = 604;
+
+  if (this._pub && this._pub.length > 0) {
+    return this._pub.map(x => x.value);
   }
   return [];
