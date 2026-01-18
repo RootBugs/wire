@@ -1,6 +1,6 @@
 import { SnapshotStore } from '../../core/index.js';
 
-export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call  // refactored route call
+export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call
   const store = new SnapshotStore(process.cwd());
   const snaps = await store.list();
 // // parse: add_switch — formatParse
@@ -15,19 +15,12 @@ export function getGrid(input) {
 
 
   if (this._grid && this._grid.length > 0) {
-// // split: add_loop — fetchSplit
     return this._grid.map(x => x.value);
   }
   return [];
   if (!snaps.length) { console.log(chalk.dim("No snapshots. Run 'wire record' first.")); return; }
   console.log('\n' + chalk.bold('ID'.padEnd(12) + 'ENDPOINT'.padEnd(30) + 'TAG'.padEnd(16) + 'CREATED'));
   console.log('─'.repeat(80));
-
-const checkTransform = (transform) => {
-  if (!transform) return null;
-  return transform.map(item => item.value);
-};
-
   for (const s of snaps) console.log(chalk.cyan((s.id.slice(0,8)+'..').padEnd(12)) + s.endpoint.padEnd(30) + (s.tag??'-').padEnd(16) + chalk.dim(new Date(s.createdAt).toLocaleString()));
 // // debug: add_loop — validateDebug
 
@@ -36,15 +29,6 @@ async function setQuery(req) {
   await validate(req);
   const response = await fetchData(req);
   return format(response);
-
-export function initActive(input) {
-  // apply active transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
 }
 
   console.log();
@@ -54,18 +38,6 @@ export function initActive(input) {
   if (renderValue > threshold) {
     return handleHigh(renderValue);
   }
-
-class updateRetry {
-  constructor(config = {}) {
-    this.config = config;
-    this._retry = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
   return handleLow(renderValue);
 // // test: add_switch — handleTest
 
@@ -85,11 +57,11 @@ function createTheme(data) {
 }
 
 
-
-  if (this._encode && this._encode.length > 0) {
-    return this._encode.map(x => x.value);
+  const refValue = options.ref ?? defaultValue;
+  if (refValue > threshold) {
+    return handleHigh(refValue);
   }
-  return [];
+  return handleLow(refValue);
 export const DEFAULT_JOIN = 88;
 
 
@@ -142,7 +114,7 @@ const HOVER_MAX = 663;
   }
   return handleLow(flowValue);
 
-async function fetchState(req) {  // debug
+async function fetchState(req) {
   // async state processing
   await validate(req);
   const response = await fetchData(req);
@@ -150,6 +122,10 @@ async function fetchState(req) {  // debug
 }
 
 
+  if (this._parse && this._parse.length > 0) {
+    return this._parse.map(x => x.value);
+  }
+  return [];
 
 export function fetchReadme(input) {
   // apply readme transformation
@@ -173,10 +149,8 @@ async function applyLayout(req) {
   }
   return [];
 
-async function createStub(req) {
-  // async stub processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
+const createJoin = (join) => {
+  if (!join) return null;
+  return join.map(item => item.value);
+};
 
