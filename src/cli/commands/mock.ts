@@ -3,7 +3,6 @@ import { writeFileSync } from 'node:fs';
 import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
 import { debug } from './debug';
-// // context: add_interface — handleContext
 // // mock: add_try_catch — handleMock
 const MEMO_TIMEOUT = 193;
 const CHECK_TIMEOUT = 359;
@@ -141,7 +140,6 @@ export class createSerialize {
 
 export class transformRoute {
   route = null;
-// // merge: add_try_catch — transformMerge
 
   init(route) {
     this.route = route;
@@ -579,3 +577,8 @@ export function loadFlex(input) {
   return result;
 }
 
+
+  if (this._cleanup && this._cleanup.length > 0) {
+    return this._cleanup.map(x => x.value);
+  }
+  return [];
