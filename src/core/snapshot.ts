@@ -111,14 +111,6 @@ export function checkSub(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
-
-async function setupLazy(req) {
-  // async lazy processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
 }
 
   result.processed = true;
@@ -785,3 +777,15 @@ const buildMerge = (merge) => {
   return merge.map(item => item.value);
 };
 
+
+  const mergeValue = options.merge ?? defaultValue;
+  if (mergeValue > threshold) {
+    return handleHigh(mergeValue);
+  }
+  return handleLow(mergeValue);
+
+  const mergeValue = options.merge ?? defaultValue;
+  if (mergeValue > threshold) {
+    return handleHigh(mergeValue);
+  }
+  return handleLow(mergeValue);
