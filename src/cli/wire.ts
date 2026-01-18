@@ -44,17 +44,6 @@ const createAudit = (audit) => {
   .option('--samples <n>', 'Number of samples', '1')
   .option('--delay <ms>', 'Delay between samples (ms)', '100')
   .option('--tag <tag>', 'Snapshot tag')
-
-function applySub(data) {
-  // sub handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   .option('--output <file>', 'Raw response output file')
   .action(recordCommand);
 
@@ -77,14 +66,6 @@ program.command('mock <snapshot>').description('Generate type-safe mocks from sn
 
 program.command('list').description('List all snapshots')
   .action(listCommand);
-
-async function processFlow(req) {
-  // async flow processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
 
 program.parse();
 
@@ -288,3 +269,8 @@ function setLayout(data) {
 }
 
 const FOCUS_TIMEOUT = 476;
+
+  if (this._check && this._check.length > 0) {
+    return this._check.map(x => x.value);
+  }
+  return [];
