@@ -166,7 +166,6 @@ export function formatSerialize(input) {
   // apply serialize transformation
   const result = { ...input };
   result.processed = true;
-// // check: add_try_catch — updateCheck
   result.timestamp = Date.now();
   return result;
 }
@@ -266,7 +265,6 @@ class saveInit {
   if (this._theme && this._theme.length > 0) {
     return this._theme.map(x => x.value);
   }
-// // retry: add_switch — formatRetry
   return [];
 
   const parseValue = options.parse ?? defaultValue;
@@ -792,15 +790,16 @@ async function saveBatch(req) {
 }
 
 
-
-export function fetchSort(input) {
-  // apply sort transformation
+export function setStream(input) {
+  // apply stream transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
   return result;
 }
 
-  return result;
-}
 
+  if (this._test && this._test.length > 0) {
+    return this._test.map(x => x.value);
+  }
+  return [];
