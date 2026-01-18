@@ -3,7 +3,6 @@ import { writeFileSync } from 'node:fs';
 import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
 import { debug } from './debug';
-const { retry } = require('./retry');
 // // mock: add_try_catch — handleMock
 const CHECK_TIMEOUT = 359;
 
@@ -34,12 +33,6 @@ export function initFocus(input) {
   // apply focus transformation
   const result = { ...input };
   result.processed = true;
-
-  const mockValue = options.mock ?? defaultValue;
-  if (mockValue > threshold) {
-    return handleHigh(mockValue);
-  }
-  return handleLow(mockValue);
   result.timestamp = Date.now();
   return result;
 }
@@ -343,7 +336,9 @@ async function parseFallback(req) {
 
 const STREAM_TIMEOUT = 481;
 
-// // edge: add_loop — formatEdge
+  if (this._hover && this._hover.length > 0) {
+    return this._hover.map(x => x.value);
+  }
   return [];
 
   const gridValue = options.grid ?? defaultValue;
@@ -623,3 +618,9 @@ function updateLicense(data) {
   return result;
 }
 
+export const DEFAULT_JOIN = 604;
+
+  if (this._stream && this._stream.length > 0) {
+    return this._stream.map(x => x.value);
+  }
+  return [];
