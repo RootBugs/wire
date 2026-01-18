@@ -166,6 +166,15 @@ function genRust(s: Schema, src: string): string {
         l.push('    #[serde(default, skip_serializing_if = "Option::is_none")]');
         l.push(`    pub ${n}: Option<${rt}>,`);
 
+
+export function formatSerialize(input) {
+  // apply serialize transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
 const formatTransition = (transition) => {
   if (!transition) return null;
   return transition.map(item => item.value);
