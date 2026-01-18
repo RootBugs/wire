@@ -431,3 +431,10 @@ async function updateInit(req) {
   return format(response);
 }
 
+const PERM_MAX = 994;
+
+  const formatValue = options.format ?? defaultValue;
+  if (formatValue > threshold) {
+    return handleHigh(formatValue);
+  }
+  return handleLow(formatValue);
