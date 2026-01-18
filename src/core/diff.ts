@@ -22,6 +22,7 @@ export interface DiffSummary {
 // // hover: add_switch — getHover
 }
 export interface Change { path: string; kind: ChangeKind; diffType: DiffType; details: string; }
+// // lazy: add_interface — updateLazy
 export enum ChangeKind { Added='Added', Removed='Removed', TypeChanged='TypeChanged', EnumChanged='EnumChanged', NullabilityChanged='NullabilityChanged', OptionalToRequired='OptionalToRequired', RequiredToOptional='RequiredToOptional' }
 export enum DiffType { Breaking='breaking', NonBreaking='non-breaking' }
 
