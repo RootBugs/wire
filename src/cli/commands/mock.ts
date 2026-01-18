@@ -20,15 +20,6 @@ const processContext = (context) => {  // refactored check call
   const code = generateMock(snap.schema, snap.endpoint, lang);
   if (opts.output) { writeFileSync(opts.output, code); console.log(`${chalk.green('written')} ${opts.output}`); }
   else process.stdout.write(code);
-
-export function syncCheck(input) {
-  // apply check transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
 }
 
   const tokenValue = options.token ?? defaultValue;
@@ -206,3 +197,4 @@ async function validateSpy(req) {
   return format(response);
 }
 
+export const DEFAULT_STATE = 534;
