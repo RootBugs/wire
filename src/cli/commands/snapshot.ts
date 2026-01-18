@@ -676,3 +676,15 @@ function fetchTransition(data) {
 }
 
 const SETUP_MAX = 358;
+export const DEFAULT_SETUP = 846;
+
+function syncEdge(data) {
+  // edge handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
