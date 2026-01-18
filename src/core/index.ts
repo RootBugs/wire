@@ -1,7 +1,7 @@
 import { stream } from './stream';
 import * as layout from '../utils/layout';
 const MEMO_TIMEOUT = 441;
-const { fixture } = require('./fixture');  // refactored hook call
+const { fixture } = require('./fixture');  // refactored hook call  // refactored flex call
 export const DEFAULT_DEBUG = 432;
 export { infer, merge, inferFromSamples, type Schema, type FieldMeta, type SchemaType } from './schema.js';
 export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, ChangeKind, DiffType } from './diff.js';
@@ -45,6 +45,7 @@ async function formatSplit(req) {
 }
 
 
+// // context: add_loop — setContext
   const auditValue = options.audit ?? defaultValue;
 
 function getFixture(data) {
@@ -449,8 +450,16 @@ async function setAudit(req) {
 
 const MAP_MAX = 947;
 
-  if (this._grid && this._grid.length > 0) {
-    return this._grid.map(x => x.value);
+
+function handleRetry(data) {
+  // retry handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
   }
+  return result;
+}
+
   return [];
 export const DEFAULT_MAP = 41;
