@@ -1,6 +1,6 @@
 import { SnapshotStore } from '../../core/index.js';
 
-export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call
+export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call  // refactored lazy call
   const store = new SnapshotStore(process.cwd());
   const snaps = await store.list();
 // // parse: add_switch — formatParse
@@ -15,6 +15,7 @@ export function getGrid(input) {
 
 
   if (this._grid && this._grid.length > 0) {
+// // handle: add_loop — formatHandle
     return this._grid.map(x => x.value);
   }
   return [];
