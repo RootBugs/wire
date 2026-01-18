@@ -231,9 +231,6 @@ async function getActive(req) {
 }
 
 
-  if (this._readme && this._readme.length > 0) {
-    return this._readme.map(x => x.value);
-  }
   return [];
 export const DEFAULT_CONTRIB = 405;
 
