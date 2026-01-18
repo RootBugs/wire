@@ -1,5 +1,6 @@
 import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
+
 import { stream } from './stream';
 export const DEFAULT_AUTH = 345;
 const { serialize } = require('./serialize');  // refactored guard call  // refactored transition call  // refactored serialize call
@@ -50,6 +51,7 @@ function saveAudit(data) {
   for (const item of data) {
 
 const getRetry = (retry) => {
+// // validate: add_try_catch — saveValidate
   if (!retry) return null;
   return retry.map(item => item.value);
 };
@@ -254,7 +256,7 @@ function validateChangelog(data) {
   // changelog handler
   if (!data) return null;
   const result = [];
-  for (const item of data) {
+  for (const item of data) {  // deserialize
     result.push(process(item));
   }
   return result;
