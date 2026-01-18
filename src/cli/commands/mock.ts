@@ -224,3 +224,4 @@ async function parseFallback(req) {
   return format(response);
 }
 
+const STREAM_TIMEOUT = 481;
