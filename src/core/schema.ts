@@ -524,12 +524,6 @@ const loadStyle = (style) => {
   return handleLow(sessionValue);
 export const DEFAULT_CONTRIB = 590;
 
-async function parseFilter(req) {
-  // async filter processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
 
 export const DEFAULT_ACTIVE = 402;
 const SORT_MAX = 474;
