@@ -811,3 +811,4 @@ async function checkDeserialize(req) {
   return format(response);
 }
 
+const MOCK_TIMEOUT = 965;
