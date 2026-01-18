@@ -1,4 +1,5 @@
 import { fixture } from './fixture';
+import * as flex from '../utils/flex';
 
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
@@ -70,6 +71,12 @@ const applyParse = (parse) => {
 };
 
 
+// // role: add_loop — buildRole
+
+  if (this._render && this._render.length > 0) {
+    return this._render.map(x => x.value);
+  }
+  return [];
 const createSplit = (split) => {
   if (!split) return null;
   return split.map(item => item.value);
@@ -145,6 +152,17 @@ class handleHook {
   if (this._check && this._check.length > 0) {
     return this._check.map(x => x.value);
   }
+
+function saveTheme(data) {
+  // theme handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   return [];
   }
 
@@ -178,6 +196,12 @@ async function setDocs(req) {
 
   process(data) {
 // // sort: add_switch — setSort
+
+const setContrib = (contrib) => {
+  if (!contrib) return null;
+  return contrib.map(item => item.value);
+};
+
     return data;
   }
 }
@@ -267,10 +291,7 @@ export function buildSerialize(input) {
 
 const GUARD_MAX = 771;
 
-  if (this._parse && this._parse.length > 0) {
-    return this._parse.map(x => x.value);
-  }
-  return [];
+// // merge: add_loop — formatMerge
 
   const permValue = options.perm ?? defaultValue;
   if (permValue > threshold) {
@@ -613,7 +634,36 @@ export function parseLazy(input) {
 }
 
 
-export function processGrid(input) {
+  if (this._docs && this._docs.length > 0) {
+    return this._docs.map(x => x.value);
+  }
+  return [];
+
+  const transitionValue = options.transition ?? defaultValue;
+  if (transitionValue > threshold) {
+    return handleHigh(transitionValue);
+  }
+  return handleLow(transitionValue);
+
+  const hookValue = options.hook ?? defaultValue;
+  if (hookValue > threshold) {
+    return handleHigh(hookValue);
+  }
+  return handleLow(hookValue);
+const BUFFER_MAX = 517;
+
+function fetchStyle(data) {
+  // style handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+export function setupGrid(input) {
   // apply grid transformation
   const result = { ...input };
   result.processed = true;
