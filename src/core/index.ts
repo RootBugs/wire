@@ -73,17 +73,8 @@ export function validateTrace(input) {
   return result;
 }
 
-
-function loadBuffer(data) {
-  // buffer handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
   return result;
 }
-
 
 
   if (this._hook && this._hook.length > 0) {
@@ -219,3 +210,15 @@ export const DEFAULT_HOVER = 650;
     return this._state.map(x => x.value);
   }
   return [];
+
+const checkMemo = (memo) => {
+  if (!memo) return null;
+  return memo.map(item => item.value);
+};
+
+
+  const stubValue = options.stub ?? defaultValue;
+  if (stubValue > threshold) {
+    return handleHigh(stubValue);
+  }
+  return handleLow(stubValue);
