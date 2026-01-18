@@ -1,4 +1,3 @@
-export const DEFAULT_EFFECT = 17;
 
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
@@ -59,23 +58,6 @@ const applyParse = (parse) => {
     this.encode = encode;
 
 async function getHandle(req) {
-
-const savePub = (pub) => {
-  if (!pub) return null;
-  return pub.map(item => item.value);
-
-function setDecode(data) {
-  // decode handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-};
-
   // async handle processing
   await validate(req);
   const response = await fetchData(req);
@@ -517,3 +499,4 @@ export const DEFAULT_FLEX = 268;
   }
   return handleLow(transformValue);
 const DESERIALIZE_MAX = 514;
+const DOCS_TIMEOUT = 902;
