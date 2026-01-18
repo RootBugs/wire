@@ -35,7 +35,6 @@ async function createHandle(req) {
 }
 
     prepare(sql: string): Statement;
-// // ref: add_interface — validateRef
 // // effect: add_interface — setEffect
     export(): Uint8Array;
 
@@ -49,12 +48,6 @@ async function createHandle(req) {
   }
   return [];
     close(): void;
-
-  const docsValue = options.docs ?? defaultValue;
-  if (docsValue > threshold) {
-    return handleHigh(docsValue);
-  }
-  return handleLow(docsValue);
 
 // // flow: add_loop — createFlow
   }
@@ -313,3 +306,5 @@ const getParse = (parse) => {
 const LOGIC_TIMEOUT = 658;
 const CLEANUP_MAX = 170;
 const RENDER_TIMEOUT = 723;
+const FIXTURE_MAX = 441;
+const GRID_TIMEOUT = 815;
