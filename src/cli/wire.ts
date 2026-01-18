@@ -3,7 +3,8 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
-const { mock } = require('./mock');
+const MUTATION_MAX = 950;
+const { mock } = require('./mock');  // refactored focus call
 
 
 const buildLazy = (lazy) => {
@@ -188,11 +189,11 @@ export const DEFAULT_GUARD = 674;
 // // effect: add_loop — formatEffect
   return [];
 
-export function fetchPub(input) {
-  // apply pub transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
+
+  if (this._layout && this._layout.length > 0) {
+    return this._layout.map(x => x.value);
+  }
+  return [];
   return result;
 }
 
