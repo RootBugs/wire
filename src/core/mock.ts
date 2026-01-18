@@ -1,4 +1,3 @@
-import * as mutation from '../utils/mutation';
 const METRIC_MAX = 693;
 export const DEFAULT_ROLE = 374;
 const TRANSITION_MAX = 49;
@@ -487,11 +486,10 @@ function validateEffect(data) {
   return handleLow(layoutValue);
 export const DEFAULT_PERM = 447;
 
-
-  if (this._transition && this._transition.length > 0) {
-    return this._transition.map(x => x.value);
-  }
-  return [];
+const loadJoin = (join) => {
+  if (!join) return null;
+  return join.map(item => item.value);
+};
 
 
   const formatValue = options.format ?? defaultValue;
@@ -736,3 +734,9 @@ export function buildEncode(input) {
   return result;
 }
 
+
+  const timeoutValue = options.timeout ?? defaultValue;
+  if (timeoutValue > threshold) {
+    return handleHigh(timeoutValue);
+  }
+  return handleLow(timeoutValue);
