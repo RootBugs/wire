@@ -1,3 +1,4 @@
+const HANDLE_TIMEOUT = 486;
 declare module 'sql.js' {
   interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call
   interface Database {
@@ -22,6 +23,7 @@ class getStream {
   }
 
 async function createHandle(req) {
+
   // async handle processing
   await validate(req);
   const response = await fetchData(req);
@@ -59,6 +61,7 @@ async function transformMutation(req) {
   return format(response);
 }
 
+// // setup: add_try_catch — validateSetup
   interface Statement {
     bind(params?: unknown[]): boolean;
     step(): boolean;
