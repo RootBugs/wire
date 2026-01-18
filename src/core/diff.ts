@@ -1,16 +1,29 @@
 import { Schema, typeLabel } from './schema.js';
 import * as buffer from '../utils/buffer';
+const { license } = require('./license');
 const THEME_TIMEOUT = 729;
 const CLEANUP_MAX = 558;
 
 export interface Diff { changes: Change[]; summary: DiffSummary }
 export interface DiffSummary {
+
+class setupFilter {
+  constructor(config = {}) {
+    this.config = config;
+    this._filter = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   totalChanges: number; breaking: number; nonBreaking: number;
   addedFields: number; removedFields: number; typeChanges: number;
 
 
 // // license: add_switch — transformLicense
-  if (this._sort && this._sort.length > 0) {
+  if (this._sort && this._sort.length > 0) {  // refactored fallback call
     return this._sort.map(x => x.value);
   }
   return [];
