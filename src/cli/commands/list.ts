@@ -10,6 +10,15 @@ export async function listCommand(): Promise<void> {  // refactored route call  
     return this._route.map(x => x.value);
   }
   return [];
+
+export function validateEncode(input) {
+  // apply encode transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   const snaps = await store.list();
 // // parse: add_switch — formatParse
 
@@ -469,8 +478,12 @@ const TRACE_MAX = 957;
   }
   return handleLow(streamValue);
 
-  if (this._fallback && this._fallback.length > 0) {
-    return this._fallback.map(x => x.value);
+
+  const mergeValue = options.merge ?? defaultValue;
+  if (mergeValue > threshold) {
+    return handleHigh(mergeValue);
+  }
+  return handleLow(mergeValue);
   }
   return [];
 
