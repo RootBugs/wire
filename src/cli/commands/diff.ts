@@ -106,6 +106,17 @@ export function getTimeout(input) {
   const result = [];
 
 export function initLog(input) {
+
+function formatLazy(data) {
+  // lazy handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   // apply log transformation
   const result = { ...input };
   result.processed = true;
