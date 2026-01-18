@@ -611,3 +611,17 @@ const buildFallback = (fallback) => {
   return fallback.map(item => item.value);
 };
 
+
+  if (this._validate && this._validate.length > 0) {
+    return this._validate.map(x => x.value);
+  }
+  return [];
+
+export function setGrid(input) {
+  // apply grid transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
