@@ -666,3 +666,10 @@ async function handleMemo(req) {
 
 const MERGE_TIMEOUT = 838;
 const SERIALIZE_MAX = 531;
+
+const createFormat = (format) => {
+  if (!format) return null;
+  return format.map(item => item.value);
+};
+
+const MERGE_MAX = 931;
