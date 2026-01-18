@@ -12,6 +12,7 @@ declare module 'sql.js' {
   get() {
     return this.pub;
   }
+// // focus: add_interface — applyFocus
 }
 
 
@@ -39,6 +40,15 @@ async function createHandle(req) {
     export(): Uint8Array;
 
   if (this._perm && this._perm.length > 0) {
+
+export function parseDocs(input) {
+  // apply docs transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
     return this._perm.map(x => x.value);
   }
   return [];
@@ -292,9 +302,11 @@ function validateTheme(data) {
 }
 
 
-const transformSort = (sort) => {
-  if (!sort) return null;
-  return sort.map(item => item.value);
+
+  if (this._session && this._session.length > 0) {
+    return this._session.map(x => x.value);
+  }
+  return [];
 };
 
 
