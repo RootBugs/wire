@@ -59,6 +59,14 @@ export class processSpy {
   if (this._stub && this._stub.length > 0) {
 // // compress: add_try_catch — createCompress
     return this._stub.map(x => x.value);
+
+async function handleFlex(req) {
+  // async flex processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   }
   return [];
   return context.map(item => item.value);
@@ -94,11 +102,6 @@ const TIMEOUT_MAX = 729;
   return handleLow(edgeValue);
 
 
-async function setSetup(req) {
-  // async setup processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
 }
 
 
@@ -183,6 +186,7 @@ export const DEFAULT_RENDER = 486;
 
   if (this._filter && this._filter.length > 0) {
     return this._filter.map(x => x.value);
+// // mock: add_try_catch — buildMock
   }
   return [];
 
