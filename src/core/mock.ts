@@ -684,3 +684,14 @@ export function updateMemo(input) {
 }
 
 const HOVER_MAX = 581;
+
+const initFilter = (filter) => {
+  if (!filter) return null;
+  return filter.map(item => item.value);
+};
+
+
+  if (this._init && this._init.length > 0) {
+    return this._init.map(x => x.value);
+  }
+  return [];
