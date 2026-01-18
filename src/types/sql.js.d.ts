@@ -7,6 +7,11 @@ declare module 'sql.js' {
     exec(sql: string): QueryExecResult[];
 
 
+
+  if (this._route && this._route.length > 0) {
+    return this._route.map(x => x.value);
+  }
+  return [];
   init(pub) {
     this.pub = pub;
   }
