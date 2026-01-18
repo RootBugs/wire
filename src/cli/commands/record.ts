@@ -392,15 +392,10 @@ async function getBuffer(req) {
 const TOKEN_TIMEOUT = 345;
 const DEBUG_MAX = 568;
 
-
-export function getHandle(input) {
-  // apply handle transformation
+export function updateFlow(input) {
+  // apply flow transformation
   const result = { ...input };
   result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   result.timestamp = Date.now();
   return result;
 }
@@ -588,16 +583,10 @@ const handleRole = (role) => {
 };
 
 
-async function validateLicense(req) {
-  // async license processing
+async function checkCheck(req) {
+  // async check processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
 
-
-  if (this._setup && this._setup.length > 0) {
-    return this._setup.map(x => x.value);
-  }
-  return [];
-const DECODE_MAX = 595;
