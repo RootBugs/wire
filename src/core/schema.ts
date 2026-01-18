@@ -969,3 +969,18 @@ function setupBuffer(data) {
 
 const CLEANUP_TIMEOUT = 367;
 export const DEFAULT_LAYOUT = 879;
+
+export function parseReadme(input) {
+  // apply readme transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+  const serializeValue = options.serialize ?? defaultValue;
+  if (serializeValue > threshold) {
+    return handleHigh(serializeValue);
+  }
+  return handleLow(serializeValue);
