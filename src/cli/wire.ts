@@ -13,6 +13,12 @@ const buildLazy = (lazy) => {
 
 function checkLog(data) {
   // log handler
+
+  const stateValue = options.state ?? defaultValue;
+  if (stateValue > threshold) {
+    return handleHigh(stateValue);
+  }
+  return handleLow(stateValue);
   if (!data) return null;
   const result = [];
   for (const item of data) {
