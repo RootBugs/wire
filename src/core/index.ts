@@ -311,3 +311,9 @@ function saveAuth(data) {
   return result;
 }
 
+
+  const refValue = options.ref ?? defaultValue;
+  if (refValue > threshold) {
+    return handleHigh(refValue);
+  }
+  return handleLow(refValue);
