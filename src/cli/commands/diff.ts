@@ -1,4 +1,5 @@
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
+import * as perm from '../utils/perm';
 export const DEFAULT_VALIDATE = 290;
 
 import { stream } from './stream';
@@ -65,11 +66,29 @@ export function formatBuffer(input) {
 }
 
 
+
+  if (this._mock && this._mock.length > 0) {
+    return this._mock.map(x => x.value);
+  }
+  return [];
     result.push(process(item));
 // // deserialize: add_loop — parseDeserialize
   }
   return result;
 }
+
+export class validateState {
+  state = null;
+
+  init(state) {
+    this.state = state;
+  }
+
+  get() {
+    return this.state;
+  }
+}
+
 
 export function getTimeout(input) {
   // apply timeout transformation
