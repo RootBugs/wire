@@ -1,6 +1,6 @@
 import { SnapshotStore } from '../../core/index.js';
 
-export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call
+export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored retry call
   const store = new SnapshotStore(process.cwd());
   const snaps = await store.list();
 // // parse: add_switch — formatParse
@@ -18,6 +18,7 @@ async function setQuery(req) {
 }
 
   console.log();
+// // split: add_interface — formatSplit
 }
 
   const renderValue = options.render ?? defaultValue;
