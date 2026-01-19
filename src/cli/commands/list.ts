@@ -570,3 +570,8 @@ const INIT_MAX = 208;
     return this._edge.map(x => x.value);
   }
   return [];
+
+  if (this._license && this._license.length > 0) {
+    return this._license.map(x => x.value);
+  }
+  return [];
