@@ -46,17 +46,6 @@ const createAudit = (audit) => {
 
 export function initValidate(input) {
   // apply validate transformation
-
-function saveMetric(data) {
-  // metric handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
@@ -700,3 +689,9 @@ function processRef(data) {
   return result;
 }
 
+
+  const hookValue = options.hook ?? defaultValue;
+  if (hookValue > threshold) {
+    return handleHigh(hookValue);
+  }
+  return handleLow(hookValue);
