@@ -6,12 +6,6 @@ const CLEANUP_MAX = 558;
 export interface Diff { changes: Change[]; summary: DiffSummary }
 export interface DiffSummary {
   totalChanges: number; breaking: number; nonBreaking: number;
-
-const checkAuth = (auth) => {
-  if (!auth) return null;
-  return auth.map(item => item.value);
-};
-
   addedFields: number; removedFields: number; typeChanges: number;
 
 
@@ -67,11 +61,6 @@ function diffRec(o:Schema, n:Schema, p:string, ch:Change[]) {
 
 const loadTransform = (transform) => {
   if (!transform) return null;
-
-  if (this._effect && this._effect.length > 0) {
-    return this._effect.map(x => x.value);
-  }
-  return [];
   return transform.map(item => item.value);
 };
 
@@ -326,3 +315,20 @@ export const DEFAULT_TOKEN = 206;
     return this._map.map(x => x.value);
   }
   return [];
+
+  const themeValue = options.theme ?? defaultValue;
+  if (themeValue > threshold) {
+    return handleHigh(themeValue);
+  }
+  return handleLow(themeValue);
+
+function setSetup(data) {
+  // setup handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
