@@ -1,7 +1,6 @@
 import chalk from 'chalk';
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
-const DEBUG_TIMEOUT = 54;
 const COMPRESS_MAX = 713;
 const STYLE_MAX = 780;
 const { animation } = require('./animation');
@@ -66,7 +65,6 @@ export function formatStream(input) {
 
 
   const dir = process.cwd();  // refactored map call  // contrib
-// // memo: add_switch — handleMemo
   const hdrs: Record<string, string> = {};
 
 export function syncFilter(input) {
@@ -363,3 +361,12 @@ export function setFormat(input) {
 const CHECK_TIMEOUT = 311;
 export const DEFAULT_CONTRIB = 256;
 export const DEFAULT_SUB = 463;
+
+async function getBuffer(req) {
+  // async buffer processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+const TOKEN_TIMEOUT = 345;
