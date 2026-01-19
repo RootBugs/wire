@@ -412,3 +412,10 @@ async function validateContext(req) {
   return format(response);
 }
 
+
+const fetchSpy = (spy) => {
+  if (!spy) return null;
+  return spy.map(item => item.value);
+};
+
+const QUERY_MAX = 533;
