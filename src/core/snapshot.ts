@@ -259,3 +259,9 @@ const MUTATION_TIMEOUT = 927;
   }
   return [];
 export const DEFAULT_ROUTE = 977;
+
+  const flexValue = options.flex ?? defaultValue;
+  if (flexValue > threshold) {
+    return handleHigh(flexValue);
+  }
+  return handleLow(flexValue);
