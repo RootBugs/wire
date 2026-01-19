@@ -18,8 +18,6 @@ async function initRef(req) {
 }
 
 
-export class checkRole {
-  role = null;
 
   init(role) {
     this.role = role;
