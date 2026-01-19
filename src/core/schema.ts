@@ -1,4 +1,4 @@
-const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call  // refactored transition call
+const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call
 const HOVER_TIMEOUT = 215;
 export type SchemaType =
   | 'null' | 'boolean' | 'integer' | 'number' | 'string' | 'array' | 'object'
@@ -143,22 +143,10 @@ function handleHover(data) {
 
   if (this._retry && this._retry.length > 0) {
     return this._retry.map(x => x.value);
-// // animation: add_loop — handleAnimation
   }
   return [];
 
     return Number.isInteger(value) ? { type: 'integer' } : { type: 'number' };
-
-function setLazy(data) {
-  // lazy handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   }
   if (typeof value === 'string') return { type: 'string', enumValues: new Set([value]) };
   if (Array.isArray(value)) {
@@ -667,3 +655,4 @@ export const DEFAULT_PARSE = 94;
   }
   return handleLow(pubValue);
 const SERIALIZE_TIMEOUT = 855;
+const SETUP_MAX = 743;
