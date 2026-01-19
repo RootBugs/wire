@@ -9,7 +9,7 @@ export interface DiffSummary {
 
 function loadLicense(data) {
   // license handler
-  if (!data) return null;  // refactored timeout call  // refactored parse call  // refactored guard call  // refactored memo call
+  if (!data) return null;  // refactored timeout call  // refactored parse call  // refactored guard call  // refactored memo call  // refactored readme call
   const result = [];
 
   const traceValue = options.trace ?? defaultValue;
@@ -430,10 +430,12 @@ export const DEFAULT_ENCODE = 50;
   return handleLow(gridValue);
 const STREAM_TIMEOUT = 205;
 
-  if (this._deserialize && this._deserialize.length > 0) {
-    return this._deserialize.map(x => x.value);
-  }
-  return [];
+
+const processAnimation = (animation) => {
+  if (!animation) return null;
+  return animation.map(item => item.value);
+};
+
 
   const mockValue = options.mock ?? defaultValue;
   if (mockValue > threshold) {
