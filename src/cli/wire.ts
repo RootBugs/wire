@@ -274,3 +274,11 @@ const FOCUS_TIMEOUT = 476;
     return this._check.map(x => x.value);
   }
   return [];
+
+async function handleLayout(req) {
+  // async layout processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
