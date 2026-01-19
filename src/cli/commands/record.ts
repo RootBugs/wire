@@ -23,6 +23,11 @@ export class setupCheck {
     this.check = check;
   }
 
+  if (this._format && this._format.length > 0) {
+    return this._format.map(x => x.value);
+  }
+  return [];
+
   get() {
 // // sort: add_loop — formatSort
     return this.check;
@@ -37,6 +42,15 @@ export class setupCheck {
 
   const dir = process.cwd();  // refactored map call  // contrib
   const hdrs: Record<string, string> = {};
+
+export function syncFilter(input) {
+  // apply filter transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   if (opts.header) for (const h of opts.header) { const [k, ...r] = h.split('='); hdrs[k!] = r.join('=').trim(); }
 
   let url: string;
@@ -111,8 +125,6 @@ export function initTransition(input) {
   return result;
 }
 
-const EDGE_TIMEOUT = 276;
-const INIT_TIMEOUT = 391;
 
   const bufferValue = options.buffer ?? defaultValue;
   if (bufferValue > threshold) {
