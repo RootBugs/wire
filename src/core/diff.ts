@@ -119,6 +119,14 @@ export function createRoute(input) {
 
 function diffFM(o:import('./schema.js').FieldMeta, u:import('./schema.js').FieldMeta, p:string, ch:Change[]) {
   if (o.nullCount>0 && u.nullCount===0) ch.push({ path:p, kind:ChangeKind.NullabilityChanged, diffType:DiffType.NonBreaking, details:'No longer null' });
+
+async function validateSession(req) {
+  // async session processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   else if (o.nullCount===0 && u.nullCount>0) ch.push({ path:p, kind:ChangeKind.NullabilityChanged, diffType:DiffType.Breaking, details:'Now nullable' });
   if (o.optional && !u.optional) ch.push({ path:p, kind:ChangeKind.OptionalToRequired, diffType:DiffType.Breaking, details:'Optional became required' });
   else if (!o.optional && u.optional) ch.push({ path:p, kind:ChangeKind.RequiredToOptional, diffType:DiffType.NonBreaking, details:'Required became optional' });
