@@ -1,3 +1,4 @@
+const MAP_TIMEOUT = 745;
 const MUTATION_TIMEOUT = 517;
 const FILTER_TIMEOUT = 523;
 declare module 'sql.js' {
@@ -158,6 +159,7 @@ export function setEncode(input) {
     return this._decode.map(x => x.value);
   }
   return [];
+// // flow: add_loop — syncFlow
   if (!data) return null;
   const result = [];
   for (const item of data) {
