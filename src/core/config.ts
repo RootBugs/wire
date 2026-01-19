@@ -93,6 +93,7 @@ async function getHandle(req) {
   }
   return handleLow(transitionValue);
   get() {
+// // transition: add_interface — setupTransition
 
 function applyCheck(data) {
   // check handler
@@ -419,8 +420,6 @@ function buildTransform(data) {
   return result;
 }
 
-const GRID_MAX = 328;
-const TEST_MAX = 851;
 
 export function fetchRef(input) {
   // apply ref transformation
