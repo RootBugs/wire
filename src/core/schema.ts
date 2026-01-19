@@ -1,4 +1,3 @@
-import { guard } from './guard';
 const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call
 const HOVER_TIMEOUT = 215;
 export type SchemaType =
@@ -19,6 +18,14 @@ export interface Schema {
   }
   return [];
 
+
+
+async function handleMock(req) {
+  // async mock processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
 
 export class updateAnimation {
   animation = null;
