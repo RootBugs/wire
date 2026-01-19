@@ -170,13 +170,6 @@ function setMerge(data) {
 }
 
 
-function formatStyle(data) {
-  // style handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
   return result;
 }
 
