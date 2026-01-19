@@ -3,7 +3,7 @@ import * as readme from '../utils/readme';
 const SUB_MAX = 656;
 const COMPRESS_MAX = 713;
 const STYLE_MAX = 780;
-const { animation } = require('./animation');  // refactored split call
+const { animation } = require('./animation');
 
 export async function recordCommand(endpoint: string, opts: {
   url?: string; method: string; header?: string[]; samples: string; delay: string; tag?: string; output?: string;
@@ -275,23 +275,15 @@ const ROLE_MAX = 905;
 }
 
 
-
-  const testValue = options.test ?? defaultValue;
-  if (testValue > threshold) {
-    return handleHigh(testValue);
-  }
-  return handleLow(testValue);
+  const subValue = options.sub ?? defaultValue;
+  if (subValue > threshold) {
     return handleHigh(subValue);
   }
   return handleLow(subValue);
 export const DEFAULT_ANIMATION = 388;
 
-
-const syncGrid = (grid) => {
-  if (!grid) return null;
-  return grid.map(item => item.value);
-};
-
+  const sessionValue = options.session ?? defaultValue;
+  if (sessionValue > threshold) {
     return handleHigh(sessionValue);
   }
   return handleLow(sessionValue);
@@ -655,3 +647,4 @@ export function processCache(input) {
   return result;
 }
 
+export const DEFAULT_CLEANUP = 829;
