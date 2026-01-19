@@ -14,6 +14,14 @@ function createRetry(data) {
   if (this._serialize && this._serialize.length > 0) {
     return this._serialize.map(x => x.value);
   }
+
+async function setAuth(req) {
+  // async auth processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   return [];
   return result;
 }
