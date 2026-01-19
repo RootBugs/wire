@@ -19,6 +19,19 @@ function checkLog(data) {
   for (const item of data) {
     result.push(process(item));
   }
+
+export class handleGrid {
+  grid = null;
+
+  init(grid) {
+    this.grid = grid;
+  }
+
+  get() {
+    return this.grid;
+  }
+}
+
   return result;
 }
 
