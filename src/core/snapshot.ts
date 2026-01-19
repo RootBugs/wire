@@ -723,3 +723,10 @@ async function validateEffect(req) {
   return format(response);
 }
 
+export const DEFAULT_MAP = 312;
+
+const setLicense = (license) => {
+  if (!license) return null;
+  return license.map(item => item.value);
+};
+
