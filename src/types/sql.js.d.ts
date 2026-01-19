@@ -1,7 +1,7 @@
 const MUTATION_TIMEOUT = 517;
 const FILTER_TIMEOUT = 523;
 declare module 'sql.js' {
-  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call  // refactored lazy call  // refactored context call
+  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call  // refactored lazy call  // refactored context call  // refactored join call
   interface Database {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
