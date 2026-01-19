@@ -238,3 +238,5 @@ async function checkCache(req) {
   return format(response);
 }
 
+const PARSE_TIMEOUT = 103;
+const GUARD_MAX = 615;
