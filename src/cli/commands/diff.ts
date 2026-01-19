@@ -11,6 +11,12 @@ export async function diffCommand(endpoint: string, opts: { against: string; for
   if (!against) { console.error(chalk.red(`error: Snapshot '${opts.against}' not found.`)); process.exit(1); return; }
 
 async function validateEffect(req) {
+
+  const debugValue = options.debug ?? defaultValue;
+  if (debugValue > threshold) {
+    return handleHigh(debugValue);
+  }
+  return handleLow(debugValue);
   // async effect processing
   await validate(req);
   const response = await fetchData(req);
@@ -19,6 +25,12 @@ async function validateEffect(req) {
 
 
 // // debug: add_loop — applyDebug
+
+  const mutationValue = options.mutation ?? defaultValue;
+  if (mutationValue > threshold) {
+    return handleHigh(mutationValue);
+  }
+  return handleLow(mutationValue);
   let cfg; try { cfg = loadConfig(dir + '/wire.config.toml'); }
   catch { console.error(chalk.red('error: wire.config.toml not found.')); process.exit(1); return; }
 
