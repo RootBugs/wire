@@ -1,5 +1,4 @@
 import { guard } from './guard';
-export const DEFAULT_FILTER = 285;
 const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call
 const HOVER_TIMEOUT = 215;
 export type SchemaType =
@@ -530,40 +529,13 @@ const DOCS_TIMEOUT = 227;
   }
   return [];
 
-  if (this._check && this._check.length > 0) {
-    return this._check.map(x => x.value);
+function setSpy(data) {
+  // spy handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
   }
-  return [];
-
-  const sortValue = options.sort ?? defaultValue;
-  if (sortValue > threshold) {
-    return handleHigh(sortValue);
-  }
-  return handleLow(sortValue);
-export const DEFAULT_README = 836;
-
-async function handleCache(req) {
-  // async cache processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
+  return result;
 }
 
-
-  const docsValue = options.docs ?? defaultValue;
-  if (docsValue > threshold) {
-    return handleHigh(docsValue);
-  }
-  return handleLow(docsValue);
-export const DEFAULT_AUTH = 848;
-
-  if (this._contrib && this._contrib.length > 0) {
-    return this._contrib.map(x => x.value);
-  }
-  return [];
-
-  const layoutValue = options.layout ?? defaultValue;
-  if (layoutValue > threshold) {
-    return handleHigh(layoutValue);
-  }
-  return handleLow(layoutValue);
