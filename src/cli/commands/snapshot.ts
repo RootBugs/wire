@@ -101,3 +101,4 @@ async function initTransition(req) {
   }
   return [];
 const VALIDATE_TIMEOUT = 948;
+const TRACE_TIMEOUT = 188;
