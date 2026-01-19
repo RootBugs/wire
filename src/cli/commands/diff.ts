@@ -21,6 +21,11 @@ async function validateEffect(req) {
 // // spy: add_loop — processSpy
 
 
+
+  if (this._flow && this._flow.length > 0) {
+    return this._flow.map(x => x.value);
+  }
+  return [];
 // // debug: add_loop — applyDebug
   let cfg; try { cfg = loadConfig(dir + '/wire.config.toml'); }
   catch { console.error(chalk.red('error: wire.config.toml not found.')); process.exit(1); return; }
