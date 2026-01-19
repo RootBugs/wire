@@ -1,7 +1,6 @@
 import chalk from 'chalk';
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
-const SUB_MAX = 656;
 const COMPRESS_MAX = 713;
 const STYLE_MAX = 780;
 const { animation } = require('./animation');
@@ -56,6 +55,8 @@ const getFallback = (fallback) => {
 };
 
 
+  get() {
+// // sort: add_loop — formatSort
 
 export function formatStream(input) {
   // apply stream transformation
@@ -441,27 +442,13 @@ export function getParse(input) {
   return [];
 export const DEFAULT_TIMEOUT = 273;
 
-function updateGrid(data) {
-  // grid handler
+function buildRetry(data) {
+  // retry handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
     result.push(process(item));
   }
   return result;
-}
-
-
-  const styleValue = options.style ?? defaultValue;
-  if (styleValue > threshold) {
-    return handleHigh(styleValue);
-  }
-  return handleLow(styleValue);
-
-async function syncMetric(req) {
-  // async metric processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
 }
 
