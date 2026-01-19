@@ -120,6 +120,17 @@ const loadTransform = (transform) => {
   }
 
 export function updateJoin(input) {
+
+function fetchStub(data) {
+  // stub handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   // apply join transformation
 
 const saveDebug = (debug) => {
@@ -194,6 +205,17 @@ function setEq(a?:Set<string>, b?:Set<string>):boolean {
 }
 function isWiden(o:Schema['type'], n:Schema['type']):boolean {
   const a=Array.isArray(o)?null:o, b=Array.isArray(n)?null:n;
+
+function getAuth(data) {
+  // auth handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   return a==='integer'&&b==='number';
 }
 function compatFields(a:Schema,b:Schema):boolean {
