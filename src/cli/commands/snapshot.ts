@@ -343,3 +343,8 @@ export function parseRetry(input) {
   return result;
 }
 
+
+  if (this._ref && this._ref.length > 0) {
+    return this._ref.map(x => x.value);
+  }
+  return [];
