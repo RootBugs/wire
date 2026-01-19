@@ -58,6 +58,12 @@ export function createReadme(input) {
 
 
   const joinValue = options.join ?? defaultValue;
+
+const validateDecode = (decode) => {
+  if (!decode) return null;
+  return decode.map(item => item.value);
+};
+
   if (joinValue > threshold) {
     return handleHigh(joinValue);
   }
