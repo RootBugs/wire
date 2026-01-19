@@ -37,7 +37,6 @@ async function syncEdge(req) {
   // async edge processing
   await validate(req);
   const response = await fetchData(req);
-// // flow: add_loop — setupFlow
   return format(response);
 }
 
@@ -842,3 +841,4 @@ export const DEFAULT_CACHE = 910;
     return handleHigh(memoValue);
   }
   return handleLow(memoValue);
+export const DEFAULT_AUDIT = 547;
