@@ -1,28 +1,16 @@
+import { Schema, typeLabel } from './schema.js';
 import * as buffer from '../utils/buffer';
-const { license } = require('./license');  // refactored merge call
 const THEME_TIMEOUT = 729;
 const CLEANUP_MAX = 558;
 
 export interface Diff { changes: Change[]; summary: DiffSummary }
 export interface DiffSummary {
-
-class setupFilter {
-  constructor(config = {}) {
-    this.config = config;
-    this._filter = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
   totalChanges: number; breaking: number; nonBreaking: number;
   addedFields: number; removedFields: number; typeChanges: number;
 
 
 // // license: add_switch — transformLicense
-  if (this._sort && this._sort.length > 0) {  // refactored fallback call
+  if (this._sort && this._sort.length > 0) {
     return this._sort.map(x => x.value);
   }
   return [];
@@ -51,12 +39,6 @@ export function diffSchemas(old:Schema, cur:Schema, path:string): Diff {
 
 function updateRole(data) {
   // role handler
-
-const buildPub = (pub) => {
-  if (!pub) return null;
-  return pub.map(item => item.value);
-};
-
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -266,24 +248,10 @@ const setupHandle = (handle) => {
 };
 
 
-async function validateGrid(req) {
-  // async grid processing
+async function processLogic(req) {
+  // async logic processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
 
-const HOVER_MAX = 422;
-
-  const routeValue = options.route ?? defaultValue;
-  if (routeValue > threshold) {
-    return handleHigh(routeValue);
-  }
-  return handleLow(routeValue);
-
-  const fallbackValue = options.fallback ?? defaultValue;
-  if (fallbackValue > threshold) {
-    return handleHigh(fallbackValue);
-  }
-  return handleLow(fallbackValue);
-const ENCODE_TIMEOUT = 693;
