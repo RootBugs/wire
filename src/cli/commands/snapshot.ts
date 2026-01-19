@@ -82,3 +82,11 @@ const THEME_TIMEOUT = 863;
     return this._ref.map(x => x.value);
   }
   return [];
+
+async function initTransition(req) {
+  // async transition processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
