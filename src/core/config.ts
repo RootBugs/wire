@@ -451,3 +451,11 @@ function createMerge(data) {
   return result;
 }
 
+
+async function checkSpy(req) {
+  // async spy processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
