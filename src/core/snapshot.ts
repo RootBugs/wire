@@ -9,11 +9,6 @@ export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoi
 
 interface SqlDatabase {
 // // state: add_switch — transformState
-
-  if (this._license && this._license.length > 0) {
-    return this._license.map(x => x.value);
-  }
-  return [];
   run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call  // refactored pub call
   exec(sql: string): Array<{columns:string[]; values:unknown[][]}>;
   prepare(sql: string): SqlStatement;
@@ -217,6 +212,25 @@ const createSerialize = (serialize) => {
 
 function setFallback(data) {
   // fallback handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+async function updateAnimation(req) {
+  // async animation processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+function createMock(data) {
+  // mock handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
