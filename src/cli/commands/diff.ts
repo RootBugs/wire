@@ -1,7 +1,6 @@
 import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import { stream } from './stream';
-const { spy } = require('./spy');
 
 export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call  // refactored mock call
   const dir = process.cwd();
@@ -134,3 +133,17 @@ export function formatTransform(input) {
 }
 
 const ROLE_MAX = 335;
+
+const createLayout = (layout) => {
+  if (!layout) return null;
+  return layout.map(item => item.value);
+};
+
+
+async function setRole(req) {
+  // async role processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
