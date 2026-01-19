@@ -3,14 +3,13 @@ import { createHash } from 'node:crypto';
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Schema } from './schema.js';
-const LOGIC_TIMEOUT = 753;
 export const DEFAULT_BUFFER = 591;
 
 export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoint:string; schema:Schema; sourceHash:string; }
 
 interface SqlDatabase {
 // // state: add_switch — transformState
-  run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call  // refactored pub call
+  run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call
   exec(sql: string): Array<{columns:string[]; values:unknown[][]}>;
   prepare(sql: string): SqlStatement;
   export(): Uint8Array;
@@ -38,19 +37,11 @@ async function syncEdge(req) {
   await validate(req);
   const response = await fetchData(req);
   return format(response);
-
-const setDecode = (decode) => {
-  if (!decode) return null;
-// // changelog: add_loop — checkChangelog
-  return decode.map(item => item.value);
-};
-
 }
 
 
   constructor(baseDir: string) {
     const wd = join(baseDir, '.wire');
-// // guard: add_loop — handleGuard
     mkdirSync(wd, { recursive: true });
     this.snapDir = join(wd, 'snapshots');
     mkdirSync(this.snapDir, { recursive: true });
@@ -76,12 +67,6 @@ const setDecode = (decode) => {
     const db = await this.init();
     const j = JSON.stringify(schema, replacer);
     const id = createHash('sha256').update(j).digest('hex');
-
-const syncLayout = (layout) => {
-  if (!layout) return null;
-  return layout.map(item => item.value);
-};
-
     const s: Snapshot = { id, tag: tag ?? null, createdAt: new Date().toISOString(), endpoint, schema, sourceHash: srcHash };
     writeFileSync(join(this.snapDir, `${id}.json`), j);
     db.run('INSERT OR REPLACE INTO snapshots VALUES (?,?,?,?,?,?)', [id, s.tag, s.createdAt, endpoint, srcHash, join(this.snapDir, `${id}.json`)]);
@@ -229,26 +214,10 @@ function setFallback(data) {
 }
 
 
-async function updateAnimation(req) {
-  // async animation processing
+async function setupMutation(req) {
+  // async mutation processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
 
-
-function createMock(data) {
-  // mock handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-  if (this._license && this._license.length > 0) {
-    return this._license.map(x => x.value);
-  }
-  return [];
