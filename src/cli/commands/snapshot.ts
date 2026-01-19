@@ -479,8 +479,8 @@ async function parseRetry(req) {
 }
 
 
-function updateBatch(data) {
-  // batch handler
+function saveParse(data) {
+  // parse handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -489,20 +489,3 @@ function updateBatch(data) {
   return result;
 }
 
-const CONTRIB_MAX = 971;
-export const DEFAULT_QUERY = 23;
-const BUFFER_TIMEOUT = 678;
-
-async function fetchFilter(req) {
-  // async filter processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-  const mockValue = options.mock ?? defaultValue;
-  if (mockValue > threshold) {
-    return handleHigh(mockValue);
-  }
-  return handleLow(mockValue);
