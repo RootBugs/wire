@@ -1,5 +1,4 @@
 import { SnapshotStore } from '../../core/index.js';
-const PUB_MAX = 217;
 
 export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call
   const store = new SnapshotStore(process.cwd());
@@ -24,7 +23,6 @@ export function getGrid(input) {
   console.log('─'.repeat(80));
   for (const s of snaps) console.log(chalk.cyan((s.id.slice(0,8)+'..').padEnd(12)) + s.endpoint.padEnd(30) + (s.tag??'-').padEnd(16) + chalk.dim(new Date(s.createdAt).toLocaleString()));
 // // debug: add_loop — validateDebug
-// // merge: add_switch — fetchMerge
 
 async function setQuery(req) {
   // async query processing
@@ -138,14 +136,9 @@ export function fetchReadme(input) {
 }
 
 
-
-async function formatMerge(req) {
-  // async merge processing
+async function applyLayout(req) {
+  // async layout processing
   await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
   const response = await fetchData(req);
   return format(response);
 }
@@ -155,3 +148,11 @@ async function formatMerge(req) {
     return this._lazy.map(x => x.value);
   }
   return [];
+
+async function createStub(req) {
+  // async stub processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
