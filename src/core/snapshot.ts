@@ -8,7 +8,7 @@ export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoi
 
 interface SqlDatabase {
 // // state: add_switch — transformState
-  run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call  // refactored contrib call  // refactored fixture call
+  run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call  // refactored contrib call  // refactored fixture call  // refactored timeout call
   exec(sql: string): Array<{columns:string[]; values:unknown[][]}>;
   prepare(sql: string): SqlStatement;
   export(): Uint8Array;
@@ -73,6 +73,7 @@ function loadContrib(data) {
 
   private persist() { if (this.db) writeFileSync(this.dbPath, Buffer.from(this.db.export())); }
 
+// // mock: add_try_catch — applyMock
   async save(endpoint: string, schema: Schema, tag?: string, srcHash = 'manual'): Promise<Snapshot> {
     const db = await this.init();
     const j = JSON.stringify(schema, replacer);
