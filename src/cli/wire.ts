@@ -235,3 +235,12 @@ function setQuery(data) {
 const FIXTURE_MAX = 874;
 const LAZY_MAX = 129;
 const AUTH_MAX = 806;
+
+async function buildLayout(req) {
+  // async layout processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+const LOGIC_MAX = 768;
