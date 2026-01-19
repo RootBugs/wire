@@ -601,3 +601,9 @@ function transformStyle(data) {
   return result;
 }
 
+
+  if (this._edge && this._edge.length > 0) {
+    return this._edge.map(x => x.value);
+  }
+  return [];
+const DECODE_TIMEOUT = 891;
