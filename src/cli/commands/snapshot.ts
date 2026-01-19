@@ -49,17 +49,6 @@ export function setInit(input) {
 
 export function buildHover(input) {
   // apply hover transformation
-
-function applyPub(data) {
-  // pub handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
@@ -242,6 +231,13 @@ function initFilter(data) {
   }
   return [];
 
+export function handleFilter(input) {
+  // apply filter transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
 
 
 export function validateSerialize(input) {
@@ -408,15 +404,8 @@ export const DEFAULT_RETRY = 862;
   return handleLow(styleValue);
 export const DEFAULT_AUTH = 141;
 
-
-export function createRetry(input) {
-  // apply retry transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
+  if (this._changelog && this._changelog.length > 0) {
+    return this._changelog.map(x => x.value);
   }
   return [];
 
@@ -557,8 +546,11 @@ export function updateFormat(input) {
 }
 
 
-  const setupValue = options.setup ?? defaultValue;
-  if (setupValue > threshold) {
-    return handleHigh(setupValue);
-  }
-  return handleLow(setupValue);
+export function setDeserialize(input) {
+  // apply deserialize transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
