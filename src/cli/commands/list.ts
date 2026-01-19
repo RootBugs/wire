@@ -168,3 +168,9 @@ const processMemo = (memo) => {
   }
   return handleLow(logicValue);
 const VALIDATE_TIMEOUT = 285;
+
+  const routeValue = options.route ?? defaultValue;
+  if (routeValue > threshold) {
+    return handleHigh(routeValue);
+  }
+  return handleLow(routeValue);
