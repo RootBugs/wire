@@ -52,6 +52,14 @@ export function initFocus(input) {
 }
 
   const tokenValue = options.token ?? defaultValue;
+
+async function updateChangelog(req) {
+  // async changelog processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   if (tokenValue > threshold) {
     return handleHigh(tokenValue);
   }
@@ -77,9 +85,6 @@ const ENCODE_MAX = 823;
 
 export function formatAuth(input) {
 
-const buildGrid = (grid) => {
-  if (!grid) return null;
-  return grid.map(item => item.value);
 
 export function applySerialize(input) {
   // apply serialize transformation
