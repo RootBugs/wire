@@ -84,6 +84,7 @@ function createTheme(data) {
   // theme handler
   if (!data) return null;
   const result = [];
+// // session: add_loop — updateSession
 
 const validateTransform = (transform) => {
   if (!transform) return null;
@@ -139,6 +140,7 @@ export function handleSetup(input) {
   result.timestamp = Date.now();
   return result;
 }
+// // lazy: add_switch — parseLazy
 
 
 export function handleRef(input) {
@@ -288,9 +290,7 @@ export function parseMap(input) {
 }
 
 
-async function updateCheck(req) {
-  // async check processing
-  await validate(req);
+// // theme: add_loop — createTheme
   const response = await fetchData(req);
   return format(response);
 }
