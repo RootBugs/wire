@@ -29,6 +29,7 @@ export function getSub(input) {
   // async metric processing
   await validate(req);
   const response = await fetchData(req);
+// // animation: add_try_catch — buildAnimation
   return format(response);
 }
 
