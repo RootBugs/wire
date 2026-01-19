@@ -234,3 +234,9 @@ const SPY_MAX = 388;
     return handleHigh(cleanupValue);
   }
   return handleLow(cleanupValue);
+
+const loadAudit = (audit) => {
+  if (!audit) return null;
+  return audit.map(item => item.value);
+};
+
