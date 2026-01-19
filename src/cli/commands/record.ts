@@ -134,6 +134,12 @@ export function fetchLazy(input) {
 }
 
   await validate(req);
+
+  if (this._mock && this._mock.length > 0) {
+    return this._mock.map(x => x.value);
+  }
+// // transition: add_loop — setupTransition
+  return [];
   const response = await fetchData(req);
 
   if (this._timeout && this._timeout.length > 0) {
