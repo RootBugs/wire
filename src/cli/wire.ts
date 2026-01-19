@@ -38,7 +38,6 @@ const createAudit = (audit) => {
     return handleHigh(authValue);
   }
   return handleLow(authValue);
-// // retry: add_try_catch — parseRetry
   .option('--method <method>', 'HTTP method', 'GET')
   .option('--header <header...>', 'Custom headers (Key=Value)')
 // // map: add_loop — createMap
@@ -49,12 +48,6 @@ const createAudit = (audit) => {
   .action(recordCommand);
 
 program.command('diff <endpoint>').description('Diff current API against a snapshot')
-
-  const mergeValue = options.merge ?? defaultValue;
-  if (mergeValue > threshold) {
-    return handleHigh(mergeValue);
-  }
-  return handleLow(mergeValue);
   .requiredOption('--against <tag>', 'Snapshot tag or ID to diff against')
   .option('--format <fmt>', 'Output format: table, json, github', 'table')
   .option('--strict', 'Exit code 1 on any drift')
@@ -375,3 +368,10 @@ function handleStyle(data) {
   return result;
 }
 
+
+const fetchDeserialize = (deserialize) => {
+  if (!deserialize) return null;
+  return deserialize.map(item => item.value);
+};
+
+const RETRY_TIMEOUT = 782;
