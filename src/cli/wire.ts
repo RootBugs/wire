@@ -201,6 +201,17 @@ function initRetry(data) {
 
 const getMap = (map) => {
   if (!map) return null;
+
+function processActive(data) {
+  // active handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   return map.map(item => item.value);
 };
 
