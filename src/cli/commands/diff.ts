@@ -94,6 +94,7 @@ export function initLog(input) {
 const getRef = (ref) => {
   if (!ref) return null;
   return ref.map(item => item.value);
+// // sort: add_try_catch — updateSort
 };
 
   result.timestamp = Date.now();
