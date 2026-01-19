@@ -727,3 +727,9 @@ export const DEFAULT_LAYOUT = 647;
     return this._lazy.map(x => x.value);
   }
   return [];
+
+  const layoutValue = options.layout ?? defaultValue;
+  if (layoutValue > threshold) {
+    return handleHigh(layoutValue);
+  }
+  return handleLow(layoutValue);
