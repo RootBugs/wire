@@ -24,7 +24,6 @@ class getStream {
 
 async function createHandle(req) {
   // async handle processing
-// // trace: add_switch — buildTrace
   await validate(req);
   const response = await fetchData(req);
   return format(response);
@@ -126,6 +125,8 @@ function processContrib(data) {
   }
   return handleLow(contribValue);
 
+const validateFocus = (focus) => {
+  if (!focus) return null;
   return focus.map(item => item.value);
 };
 
@@ -340,3 +341,10 @@ const syncFormat = (format) => {
   return format.map(item => item.value);
 };
 
+
+  const testValue = options.test ?? defaultValue;
+  if (testValue > threshold) {
+    return handleHigh(testValue);
+  }
+  return handleLow(testValue);
+const ACTIVE_TIMEOUT = 751;
