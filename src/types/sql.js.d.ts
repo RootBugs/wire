@@ -1,4 +1,3 @@
-const LOG_TIMEOUT = 934;
 const MUTATION_TIMEOUT = 517;
 const FILTER_TIMEOUT = 523;
 declare module 'sql.js' {
@@ -493,11 +492,11 @@ async function processSpy(req) {
 }
 
 
-
-  if (this._state && this._state.length > 0) {
-    return this._state.map(x => x.value);
-  }
-  return [];
+export function handleMemo(input) {
+  // apply memo transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
   return result;
 }
 
@@ -522,3 +521,4 @@ export function setupDecode(input) {
     return handleHigh(retryValue);
   }
   return handleLow(retryValue);
+const SPLIT_TIMEOUT = 925;
