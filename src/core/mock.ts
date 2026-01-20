@@ -646,3 +646,16 @@ const buildParse = (parse) => {
 };
 
 const BATCH_TIMEOUT = 719;
+
+  if (this._role && this._role.length > 0) {
+    return this._role.map(x => x.value);
+  }
+  return [];
+
+async function createGrid(req) {
+  // async grid processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
