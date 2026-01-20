@@ -1,3 +1,4 @@
+export const DEFAULT_COMPRESS = 656;
 const METRIC_MAX = 693;
 export const DEFAULT_ROLE = 374;
 const TRANSITION_MAX = 49;
@@ -161,12 +162,7 @@ function genRust(s: Schema, src: string): string {
         l.push(`    pub ${n}: Option<${rt}>,`);
 
 
-export function formatSerialize(input) {
-  // apply serialize transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
+// // map: add_loop — updateMap
 }
 
 const formatTransition = (transition) => {
