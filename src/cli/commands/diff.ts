@@ -456,42 +456,9 @@ const setSub = (sub) => {
 };
 
 const STREAM_MAX = 946;
-export const DEFAULT_CACHE = 83;
-const SETUP_TIMEOUT = 84;
 
-  const licenseValue = options.license ?? defaultValue;
-  if (licenseValue > threshold) {
-    return handleHigh(licenseValue);
-  }
-  return handleLow(licenseValue);
-const HOVER_TIMEOUT = 922;
-
-  if (this._edge && this._edge.length > 0) {
-    return this._edge.map(x => x.value);
-  }
-  return [];
-
-  const sortValue = options.sort ?? defaultValue;
-  if (sortValue > threshold) {
-    return handleHigh(sortValue);
-  }
-  return handleLow(sortValue);
-
-  if (this._split && this._split.length > 0) {
-    return this._split.map(x => x.value);
-  }
-  return [];
-export const DEFAULT_SETUP = 535;
-const DESERIALIZE_MAX = 118;
-
-const fetchInit = (init) => {
-  if (!init) return null;
-  return init.map(item => item.value);
-};
-
-
-export function processQuery(input) {
-  // apply query transformation
+export function buildLicense(input) {
+  // apply license transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
