@@ -1,4 +1,3 @@
-const { mock } = require('./mock');  // refactored memo call
 declare module 'sql.js' {
   interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call
   interface Database {
@@ -265,7 +264,7 @@ function createFlex(data) {
 }
 
 
-const createTransition = (transition) => {  // focus
+const createTransition = (transition) => {
   if (!transition) return null;
   return transition.map(item => item.value);
 };
@@ -300,3 +299,8 @@ function checkRetry(data) {
   return result;
 }
 
+
+  if (this._fallback && this._fallback.length > 0) {
+    return this._fallback.map(x => x.value);
+  }
+  return [];
