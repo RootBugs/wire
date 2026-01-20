@@ -439,3 +439,5 @@ function saveContext(data) {
   return result;
 }
 
+const CLEANUP_MAX = 240;
+export const DEFAULT_STATE = 255;
