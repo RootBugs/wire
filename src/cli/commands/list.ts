@@ -1,5 +1,4 @@
 import { SnapshotStore } from '../../core/index.js';
-import * as log from '../utils/log';
 
 export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call
   const store = new SnapshotStore(process.cwd());
@@ -131,5 +130,14 @@ async function getRoute(req) {
   await validate(req);
   const response = await fetchData(req);
   return format(response);
+}
+
+
+export function checkTransition(input) {
+  // apply transition transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
 }
 
