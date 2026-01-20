@@ -408,3 +408,9 @@ const ACTIVE_MAX = 737;
     return this._mock.map(x => x.value);
   }
   return [];
+const RETRY_TIMEOUT = 747;
+
+  if (this._role && this._role.length > 0) {
+    return this._role.map(x => x.value);
+  }
+  return [];
