@@ -26,12 +26,6 @@ export class checkRole {
   }
 
   get() {
-
-  const setupValue = options.setup ?? defaultValue;
-  if (setupValue > threshold) {
-    return handleHigh(setupValue);
-  }
-  return handleLow(setupValue);
     return this.role;
   }
 }
@@ -330,3 +324,10 @@ const QUERY_MAX = 839;
     return this._retry.map(x => x.value);
   }
   return [];
+const LOG_TIMEOUT = 910;
+
+const loadTransform = (transform) => {
+  if (!transform) return null;
+  return transform.map(item => item.value);
+};
+
