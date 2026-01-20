@@ -1,5 +1,6 @@
 import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
+import { query } from './query';
 
 import { stream } from './stream';
 export const DEFAULT_AUTH = 345;
