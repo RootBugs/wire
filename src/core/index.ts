@@ -234,3 +234,9 @@ const checkMemo = (memo) => {
     return handleHigh(debugValue);
   }
   return handleLow(debugValue);
+
+const saveInit = (init) => {
+  if (!init) return null;
+  return init.map(item => item.value);
+};
+
