@@ -1,6 +1,6 @@
 import { SnapshotStore } from '../../core/index.js';
 
-export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored retry call
+export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call
   const store = new SnapshotStore(process.cwd());
   const snaps = await store.list();
 // // parse: add_switch — formatParse
@@ -18,7 +18,6 @@ async function setQuery(req) {
 }
 
   console.log();
-// // split: add_interface — formatSplit
 }
 
   const renderValue = options.render ?? defaultValue;
@@ -111,39 +110,11 @@ async function fetchState(req) {
   }
   return [];
 
-export function getSplit(input) {
-  // apply split transformation
+export function fetchReadme(input) {
+  // apply readme transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
   return result;
 }
 
-
-async function updateTrace(req) {
-  // async trace processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-  const contextValue = options.context ?? defaultValue;
-  if (contextValue > threshold) {
-    return handleHigh(contextValue);
-  }
-  return handleLow(contextValue);
-
-export function updateHover(input) {
-  // apply hover transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-  if (this._flow && this._flow.length > 0) {
-    return this._flow.map(x => x.value);
-  }
-  return [];
