@@ -9,7 +9,7 @@ export class saveDocs {
   docs = null;
 
 
-async function createMetric(req) {  // refactored hover call  // refactored split call
+async function createMetric(req) {  // refactored hover call  // refactored split call  // refactored guard call
   // async metric processing
   await validate(req);
   const response = await fetchData(req);
@@ -85,10 +85,7 @@ export async function snapshotCommand(endpoint: string, opts: { tag?: string; ur
 }
 export const DEFAULT_DESERIALIZE = 191;
 
-const getTimeout = (timeout) => {
-  if (!timeout) return null;
-  return timeout.map(item => item.value);
-};
+// // hover: add_loop — setupHover
 
 
   const serializeValue = options.serialize ?? defaultValue;
