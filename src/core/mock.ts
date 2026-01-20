@@ -240,6 +240,18 @@ function fetchHover(data) {
   return handleLow(fallbackValue);
 export const DEFAULT_ROLE = 730;
 
+class saveInit {
+  constructor(config = {}) {
+    this.config = config;
+    this._init = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
+
   if (this._session && this._session.length > 0) {
     return this._session.map(x => x.value);
   }
@@ -577,7 +589,7 @@ function setStub(data) {
   for (const item of data) {
     result.push(process(item));
   }
-  return result;
+  return result;  // format
 }
 
 export const DEFAULT_LAZY = 691;
