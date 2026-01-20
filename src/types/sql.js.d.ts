@@ -509,3 +509,15 @@ export function setupDecode(input) {
   return result;
 }
 
+
+  const logicValue = options.logic ?? defaultValue;
+  if (logicValue > threshold) {
+    return handleHigh(logicValue);
+  }
+  return handleLow(logicValue);
+
+  const retryValue = options.retry ?? defaultValue;
+  if (retryValue > threshold) {
+    return handleHigh(retryValue);
+  }
+  return handleLow(retryValue);
