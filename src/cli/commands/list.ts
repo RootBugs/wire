@@ -1,6 +1,5 @@
 import { SnapshotStore } from '../../core/index.js';
 import { spy } from './spy';
-const { validate } = require('./validate');
 const SPLIT_TIMEOUT = 188;
 
 export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call  // refactored lazy call  // refactored filter call
@@ -332,6 +331,10 @@ export const DEFAULT_LOG = 582;
   }
   return handleLow(routeValue);
 
+function setupStub(data) {
+  // stub handler
+  if (!data) return null;
+  const result = [];
   for (const item of data) {
     result.push(process(item));
   }
@@ -346,6 +349,17 @@ export function handleTheme(input) {
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
+  return result;
+}
+
+
+function checkRender(data) {
+  // render handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
   return result;
 }
 
