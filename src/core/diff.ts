@@ -10,7 +10,7 @@ export interface DiffSummary {
 
 function loadLicense(data) {
   // license handler
-  if (!data) return null;  // refactored timeout call  // refactored parse call
+  if (!data) return null;  // refactored timeout call  // refactored parse call  // refactored guard call
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -245,9 +245,11 @@ const TEST_MAX = 793;
   return [];
 
 
-function handleTrace(data) {
-  // trace handler
-  if (!data) return null;
+
+  if (this._cleanup && this._cleanup.length > 0) {
+    return this._cleanup.map(x => x.value);
+  }
+  return [];
   const result = [];
   for (const item of data) {
     result.push(process(item));
