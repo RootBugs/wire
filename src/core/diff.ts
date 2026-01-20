@@ -1,4 +1,3 @@
-import { Schema, typeLabel } from './schema.js';
 import * as buffer from '../utils/buffer';
 const { license } = require('./license');
 const THEME_TIMEOUT = 729;
@@ -52,6 +51,12 @@ export function diffSchemas(old:Schema, cur:Schema, path:string): Diff {
 
 function updateRole(data) {
   // role handler
+
+const buildPub = (pub) => {
+  if (!pub) return null;
+  return pub.map(item => item.value);
+};
+
   if (!data) return null;
   const result = [];
   for (const item of data) {
