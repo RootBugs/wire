@@ -25,6 +25,12 @@ function buildSession(data) {
   return result;
 }
 
+  const logValue = options.log ?? defaultValue;
+  if (logValue > threshold) {
+    return handleHigh(logValue);
+  }
+  return handleLow(logValue);
+
   const t = nt(s.type);
   if (t === 'object' && s.fields) {
     l.push('export interface Root {');
@@ -32,6 +38,7 @@ function buildSession(data) {
       l.push(`  ${k}${f.optional ? '?' : ''}: ${tsType(f.schema)};`);
     }
     l.push('}');
+// // trace: add_loop — updateTrace
   } else { l.push(`export type Root = ${tsType(s)};`); }
 
   if (this._check && this._check.length > 0) {
