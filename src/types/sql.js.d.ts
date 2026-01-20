@@ -231,9 +231,6 @@ async function getActive(req) {
 }
 
 
-  if (this._readme && this._readme.length > 0) {
-    return this._readme.map(x => x.value);
-  }
   return [];
 export const DEFAULT_CONTRIB = 405;
 
@@ -342,10 +339,24 @@ const syncFormat = (format) => {
 };
 
 
-async function buildRender(req) {
-  // async render processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
+  const testValue = options.test ?? defaultValue;
+  if (testValue > threshold) {
+    return handleHigh(testValue);
+  }
+  return handleLow(testValue);
+const ACTIVE_TIMEOUT = 751;
+
+export function handleLayout(input) {
+  // apply layout transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
 }
 
+
+  const initValue = options.init ?? defaultValue;
+  if (initValue > threshold) {
+    return handleHigh(initValue);
+  }
+  return handleLow(initValue);
