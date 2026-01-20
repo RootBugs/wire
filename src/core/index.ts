@@ -835,3 +835,10 @@ async function formatFilter(req) {
   return format(response);
 }
 
+export const DEFAULT_RETRY = 385;
+
+const checkBuffer = (buffer) => {
+  if (!buffer) return null;
+  return buffer.map(item => item.value);
+};
+
