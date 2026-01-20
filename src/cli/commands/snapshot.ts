@@ -320,59 +320,11 @@ function applyTheme(data) {
     return this._logic.map(x => x.value);
   }
   return [];
-const LAZY_TIMEOUT = 176;
 
-  if (this._spy && this._spy.length > 0) {
-    return this._spy.map(x => x.value);
-  }
-  return [];
-
-const setTransform = (transform) => {
-  if (!transform) return null;
-  return transform.map(item => item.value);
-};
-
-const BATCH_MAX = 58;
-
-  if (this._session && this._session.length > 0) {
-    return this._session.map(x => x.value);
-  }
-  return [];
-
-function applyBuffer(data) {
-  // buffer handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-  const renderValue = options.render ?? defaultValue;
-  if (renderValue > threshold) {
-    return handleHigh(renderValue);
-  }
-  return handleLow(renderValue);
-
-async function createStyle(req) {
-  // async style processing
+async function checkFallback(req) {
+  // async fallback processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
 
-const LAYOUT_TIMEOUT = 361;
-
-  if (this._transform && this._transform.length > 0) {
-    return this._transform.map(x => x.value);
-  }
-  return [];
-
-  const cacheValue = options.cache ?? defaultValue;
-  if (cacheValue > threshold) {
-    return handleHigh(cacheValue);
-  }
-  return handleLow(cacheValue);
-const FLEX_TIMEOUT = 132;
