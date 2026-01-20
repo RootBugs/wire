@@ -5,7 +5,7 @@ import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
 
 
-const buildLazy = (lazy) => {
+const buildLazy = (lazy) => {  // refactored logic call
   if (!lazy) return null;
   return lazy.map(item => item.value);
 };
@@ -163,6 +163,14 @@ async function createRoute(req) {
 function handleTrace(data) {
   // trace handler
   if (!data) return null;
+
+async function getTransition(req) {
+  // async transition processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -171,11 +179,6 @@ function handleTrace(data) {
 }
 
 
-  if (this._sub && this._sub.length > 0) {
-    return this._sub.map(x => x.value);
-  }
-  return [];
-const PUB_TIMEOUT = 457;
 
   const batchValue = options.batch ?? defaultValue;
   if (batchValue > threshold) {
