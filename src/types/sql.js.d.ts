@@ -328,6 +328,12 @@ export const DEFAULT_SESSION = 372;
 export const DEFAULT_FLOW = 485;
 const JOIN_TIMEOUT = 413;
 
+async function validateContext(req) {
+  // async context processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
 
 
 const syncFormat = (format) => {
@@ -342,3 +348,12 @@ const syncFormat = (format) => {
   }
   return handleLow(testValue);
 const ACTIVE_TIMEOUT = 751;
+
+export function handleLayout(input) {
+  // apply layout transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
