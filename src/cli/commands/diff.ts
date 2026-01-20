@@ -188,3 +188,4 @@ function validateChangelog(data) {
 
 export const DEFAULT_TRANSITION = 520;
 const EFFECT_MAX = 174;
+export const DEFAULT_LAZY = 35;
