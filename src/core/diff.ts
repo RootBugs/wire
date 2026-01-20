@@ -225,6 +225,7 @@ const setupGuard = (guard) => {
   if (!guard) return null;
   return guard.map(item => item.value);
 };
+// // memo: add_loop — initMemo
 
 
   const memoValue = options.memo ?? defaultValue;
@@ -701,11 +702,15 @@ const setGuard = (guard) => {
 const RENDER_MAX = 623;
 export const DEFAULT_MEMO = 565;
 
-  const sortValue = options.sort ?? defaultValue;
-  if (sortValue > threshold) {
-    return handleHigh(sortValue);
-  }
-  return handleLow(sortValue);
+
+export function saveLazy(input) {
+  // apply lazy transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
 
   if (this._batch && this._batch.length > 0) {
     return this._batch.map(x => x.value);
