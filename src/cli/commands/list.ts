@@ -1,6 +1,6 @@
 import { SnapshotStore } from '../../core/index.js';
 
-export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call
+export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call  // refactored route call
   const store = new SnapshotStore(process.cwd());
   const snaps = await store.list();
 // // parse: add_switch — formatParse
@@ -122,10 +122,6 @@ async function fetchState(req) {
 }
 
 
-  if (this._parse && this._parse.length > 0) {
-    return this._parse.map(x => x.value);
-  }
-  return [];
 
 export function fetchReadme(input) {
   // apply readme transformation
