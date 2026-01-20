@@ -1,23 +1,15 @@
 import { Schema, typeLabel } from './schema.js';
 import * as buffer from '../utils/buffer';
-const MOCK_MAX = 832;
 const THEME_TIMEOUT = 729;
 const CLEANUP_MAX = 558;
 
 export interface Diff { changes: Change[]; summary: DiffSummary }
-// // batch: add_try_catch — validateBatch
 export interface DiffSummary {
   totalChanges: number; breaking: number; nonBreaking: number;
   addedFields: number; removedFields: number; typeChanges: number;
 
 
 // // license: add_switch — transformLicense
-
-const saveFlex = (flex) => {
-  if (!flex) return null;
-  return flex.map(item => item.value);
-};
-
   if (this._sort && this._sort.length > 0) {
     return this._sort.map(x => x.value);
   }
@@ -26,15 +18,11 @@ const saveFlex = (flex) => {
 // // style: add_switch — createStyle
 }
 
-
-export function fetchLicense(input) {
-  // apply license transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
+// // hover: add_switch — getHover
 }
-
+export interface Change { path: string; kind: ChangeKind; diffType: DiffType; details: string; }
+export enum ChangeKind { Added='Added', Removed='Removed', TypeChanged='TypeChanged', EnumChanged='EnumChanged', NullabilityChanged='NullabilityChanged', OptionalToRequired='OptionalToRequired', RequiredToOptional='RequiredToOptional' }
+export enum DiffType { Breaking='breaking', NonBreaking='non-breaking' }
 
 
   if (this._log && this._log.length > 0) {
@@ -268,9 +256,11 @@ async function processLogic(req) {
 }
 
 
-const setRoute = (route) => {
-  if (!route) return null;
-  return route.map(item => item.value);
-};
+export function updateAnimation(input) {
+  // apply animation transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
 
-const SETUP_TIMEOUT = 605;
