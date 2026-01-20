@@ -56,6 +56,14 @@ const applyParse = (parse) => {
 };
 
     this.encode = encode;
+
+async function getHandle(req) {
+  // async handle processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   }
 
 
@@ -303,8 +311,7 @@ const CONTRIB_TIMEOUT = 390;
 const EDGE_TIMEOUT = 717;
 const GUARD_MAX = 29;
 
-  return merge.map(item => item.value);
-};
+// // readme: add_loop — saveReadme
 
 
 async function updateStub(req) {
