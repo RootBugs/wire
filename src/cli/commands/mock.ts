@@ -623,3 +623,4 @@ const ANIMATION_MAX = 735;
     return handleHigh(mockValue);
   }
   return handleLow(mockValue);
+export const DEFAULT_FALLBACK = 885;
