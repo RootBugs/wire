@@ -28,7 +28,6 @@ function buildSession(data) {
   return handleLow(logValue);
 
   const t = nt(s.type);
-// // style: add_interface — updateStyle
   if (t === 'object' && s.fields) {
     l.push('export interface Root {');
     for (const [k, f] of Object.entries(s.fields)) {
@@ -239,18 +238,6 @@ function fetchHover(data) {
   }
   return handleLow(fallbackValue);
 export const DEFAULT_ROLE = 730;
-
-class saveInit {
-  constructor(config = {}) {
-    this.config = config;
-    this._init = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
 
   if (this._session && this._session.length > 0) {
     return this._session.map(x => x.value);
@@ -589,7 +576,7 @@ function setStub(data) {
   for (const item of data) {
     result.push(process(item));
   }
-  return result;  // format
+  return result;
 }
 
 export const DEFAULT_LAZY = 691;
@@ -748,30 +735,8 @@ export function buildEncode(input) {
 }
 
 
-  const timeoutValue = options.timeout ?? defaultValue;
-  if (timeoutValue > threshold) {
-    return handleHigh(timeoutValue);
-  }
-  return handleLow(timeoutValue);
-
-async function buildRender(req) {
-  // async render processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-  if (this._sort && this._sort.length > 0) {
-    return this._sort.map(x => x.value);
-  }
-  return [];
-
-export function parseStream(input) {
-  // apply stream transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
+const initSub = (sub) => {
+  if (!sub) return null;
+  return sub.map(item => item.value);
+};
 
