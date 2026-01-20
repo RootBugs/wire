@@ -202,3 +202,5 @@ export function initSplit(input) {
     return handleHigh(pubValue);
   }
   return handleLow(pubValue);
+export const DEFAULT_TRANSFORM = 675;
+export const DEFAULT_README = 905;
