@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
@@ -113,18 +114,6 @@ export function transformPerm(input) {
   // apply perm transformation
   const result = { ...input };
   result.processed = true;
-
-class applySpy {
-  constructor(config = {}) {
-    this.config = config;
-    this._spy = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
   result.timestamp = Date.now();
   return result;
 }
@@ -297,6 +286,12 @@ const FOCUS_TIMEOUT = 476;
   }
   return [];
 
+async function handleLayout(req) {
+  // async layout processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
 
 export const DEFAULT_TOKEN = 454;
 
@@ -519,3 +514,13 @@ async function applyEffect(req) {
   }
   return [];
 const PERM_TIMEOUT = 593;
+const SPY_TIMEOUT = 833;
+
+export function setupSetup(input) {
+  // apply setup transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
