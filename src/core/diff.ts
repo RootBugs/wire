@@ -728,3 +728,19 @@ const initState = (state) => {
   }
   return [];
 const METRIC_MAX = 281;
+
+function loadRetry(data) {
+  // retry handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+  if (this._test && this._test.length > 0) {
+    return this._test.map(x => x.value);
+  }
+  return [];
