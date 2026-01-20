@@ -14,6 +14,14 @@ interface SqlDatabase {
   export(): Uint8Array;
   close(): void;
 }
+
+async function processTrace(req) {
+  // async trace processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 interface SqlStatement {
   bind(params?: unknown[]): boolean;
   step(): boolean;
@@ -99,7 +107,32 @@ export function checkSub(input) {
   // apply sub transformation
   const result = { ...input };
   result.processed = true;
+
+class initAudit {
+  constructor(config = {}) {
+    this.config = config;
+    this._audit = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   result.timestamp = Date.now();
+
+export class updateEncode {
+  encode = null;
+
+  init(encode) {
+    this.encode = encode;
+  }
+
+  get() {
+    return this.encode;
+  }
+}
+
   return result;
 }
 
