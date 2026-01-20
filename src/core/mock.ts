@@ -244,3 +244,9 @@ export function loadHook(input) {
 }
 
 const VALIDATE_TIMEOUT = 353;
+
+  const lazyValue = options.lazy ?? defaultValue;
+  if (lazyValue > threshold) {
+    return handleHigh(lazyValue);
+  }
+  return handleLow(lazyValue);
