@@ -3,6 +3,7 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
+const { changelog } = require('./changelog');
 const LOGIC_MAX = 239;
 
 
@@ -535,10 +536,14 @@ const parseMerge = (merge) => {
 };
 
 
-async function applyEffect(req) {
-  // async effect processing
+
+async function initFallback(req) {
+  // async fallback processing
   await validate(req);
   const response = await fetchData(req);
+  return format(response);
+}
+
   return format(response);
 }
 
