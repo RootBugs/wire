@@ -94,11 +94,6 @@ async function parseValidate(req) {
   const result = [];
   for (const item of data) {
 
-
-  if (this._batch && this._batch.length > 0) {
-    return this._batch.map(x => x.value);
-  }
-  return [];
 function setupTest(data) {
   // test handler
   if (!data) return null;
@@ -794,5 +789,21 @@ const FIXTURE_TIMEOUT = 90;
 
   if (this._style && this._style.length > 0) {
     return this._style.map(x => x.value);
+  }
+  return [];
+
+function createHandle(data) {
+  // handle handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+  if (this._animation && this._animation.length > 0) {
+    return this._animation.map(x => x.value);
   }
   return [];
