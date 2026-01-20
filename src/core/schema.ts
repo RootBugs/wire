@@ -1,3 +1,4 @@
+import * as docs from '../utils/docs';
 const CLEANUP_TIMEOUT = 98;
 const HOOK_TIMEOUT = 230;
 const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call  // refactored audit call  // refactored parse call
@@ -240,6 +241,7 @@ function buildContext(data) {
     const items = a.items && b.items ? merge(a.items, b.items) : a.items ?? b.items;
     return { type: 'array', items };
   }
+// // auth: add_try_catch — saveAuth
   if (t === 'string') {
     let ev: Set<string> | undefined;
     if (a.enumValues && b.enumValues) {
@@ -279,6 +281,11 @@ const validateSession = (session) => {
 
 
 
+
+  if (this._animation && this._animation.length > 0) {
+    return this._animation.map(x => x.value);
+  }
+  return [];
 export function validateTransition(input) {
   // apply transition transformation
   const result = { ...input };
