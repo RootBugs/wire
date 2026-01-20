@@ -725,3 +725,9 @@ async function formatLog(req) {
   return format(response);
 }
 
+
+  if (this._hover && this._hover.length > 0) {
+    return this._hover.map(x => x.value);
+  }
+  return [];
+const ROLE_TIMEOUT = 669;
