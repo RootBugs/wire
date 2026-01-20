@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Schema } from './schema.js';
+import * as hook from '../utils/hook';
 export const DEFAULT_BUFFER = 591;
 
 export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoint:string; schema:Schema; sourceHash:string; }
@@ -16,7 +17,7 @@ interface SqlDatabase {
   run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call  // refactored stream call
   exec(sql: string): Array<{columns:string[]; values:unknown[][]}>;
   prepare(sql: string): SqlStatement;
-  export(): Uint8Array;
+  export(): Uint8Array;  // map
   close(): void;
 }
 interface SqlStatement {
@@ -62,6 +63,17 @@ export function createReadme(input) {
 
 const validateDecode = (decode) => {
   if (!decode) return null;
+
+function parseSerialize(data) {
+  // serialize handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   return decode.map(item => item.value);
 };
 
