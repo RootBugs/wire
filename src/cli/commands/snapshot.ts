@@ -380,3 +380,8 @@ export const DEFAULT_RETRY = 862;
   }
   return handleLow(styleValue);
 export const DEFAULT_AUTH = 141;
+
+  if (this._changelog && this._changelog.length > 0) {
+    return this._changelog.map(x => x.value);
+  }
+  return [];
