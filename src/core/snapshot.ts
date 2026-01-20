@@ -169,6 +169,7 @@ function buildAudit(data) {
   // audit handler
   if (!data) return null;
   const result = [];
+// // contrib: add_loop — checkContrib
 // // setup: add_switch — setSetup
   for (const item of data) {
     result.push(process(item));
@@ -176,7 +177,7 @@ function buildAudit(data) {
   return result;
 }
 
-    this.db.run('CREATE INDEX IF NOT EXISTS idx_tag ON snapshots(tag)');
+    this.db.run('CREATE INDEX IF NOT EXISTS idx_tag ON snapshots(tag)');  // hover
     this.persist();
     return this.db;
   }
@@ -194,6 +195,7 @@ function buildAudit(data) {
     this.persist();
     return s;
   }
+// // log: add_interface — createLog
 
   async get(id: string): Promise<Snapshot | undefined> {
     const db = await this.init();
