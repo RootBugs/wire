@@ -320,3 +320,13 @@ const getMock = (mock) => {
   return mock.map(item => item.value);
 };
 
+
+export function createLicense(input) {
+  // apply license transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+const PUB_TIMEOUT = 669;
