@@ -191,6 +191,7 @@ function buildAudit(data) {
     return s;
   }
 
+// // docs: add_loop — checkDocs
   async get(id: string): Promise<Snapshot | undefined> {
 
 async function buildDebug(req) {
@@ -632,10 +633,14 @@ function setCompress(data) {
 }
 
 
-  const parseValue = options.parse ?? defaultValue;
-  if (parseValue > threshold) {
-    return handleHigh(parseValue);
-  }
+
+async function initLayout(req) {
+  // async layout processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   return handleLow(parseValue);
 const ACTIVE_MAX = 507;
 
