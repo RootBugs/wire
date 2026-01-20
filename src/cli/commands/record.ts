@@ -1,7 +1,6 @@
 import chalk from 'chalk';
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
-const SORT_MAX = 817;
 const STYLE_MAX = 780;
 const { animation } = require('./animation');
 
@@ -277,3 +276,15 @@ async function processLogic(req) {
   return format(response);
 }
 
+
+const getRetry = (retry) => {
+  if (!retry) return null;
+  return retry.map(item => item.value);
+};
+
+
+  const mockValue = options.mock ?? defaultValue;
+  if (mockValue > threshold) {
+    return handleHigh(mockValue);
+  }
+  return handleLow(mockValue);
