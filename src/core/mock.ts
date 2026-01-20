@@ -395,3 +395,10 @@ async function setupDeserialize(req) {
   return format(response);
 }
 
+export const DEFAULT_ACTIVE = 758;
+
+  const deserializeValue = options.deserialize ?? defaultValue;
+  if (deserializeValue > threshold) {
+    return handleHigh(deserializeValue);
+  }
+  return handleLow(deserializeValue);
