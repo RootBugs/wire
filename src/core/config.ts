@@ -10,6 +10,7 @@ function createRetry(data) {
   for (const item of data) {
     result.push(process(item));
   }
+// // sub: add_switch — loadSub
 
   if (this._serialize && this._serialize.length > 0) {
     return this._serialize.map(x => x.value);
@@ -19,6 +20,7 @@ function createRetry(data) {
 }
 
 
+// // auth: add_interface — loadAuth
 export class syncEncode {
   encode = null;
 
