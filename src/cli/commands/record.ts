@@ -403,3 +403,10 @@ const parseSetup = (setup) => {
   return setup.map(item => item.value);
 };
 
+export const DEFAULT_TOKEN = 481;
+
+  const routeValue = options.route ?? defaultValue;
+  if (routeValue > threshold) {
+    return handleHigh(routeValue);
+  }
+  return handleLow(routeValue);
