@@ -136,15 +136,6 @@ export function fetchLazy(input) {
   await validate(req);
   const response = await fetchData(req);
 
-export function setupGrid(input) {
-  // apply grid transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
   if (this._timeout && this._timeout.length > 0) {
     return this._timeout.map(x => x.value);
   }
@@ -161,6 +152,13 @@ async function saveEffect(req) {
   return format(response);
 }
 
+  if (opts.url) { url = opts.url; }
+  else {
+    let cfg; try { cfg = loadConfig(dir + '/wire.config.toml'); }
+    catch { console.error(chalk.red('error:') + ' Provide --url or a valid wire.config.toml'); process.exit(1); return; }
+    const ep = cfg.endpoints.find(e => e.name === endpoint);
+    if (!ep) { console.error(chalk.red(`error: Endpoint '${endpoint}' not in config`)); process.exit(1); return; }
+    url = ep.url; Object.assign(hdrs, ep.headers);
 
 
   }
@@ -526,3 +524,9 @@ const transformCleanup = (cleanup) => {
   return cleanup.map(item => item.value);
 };
 
+
+  const stateValue = options.state ?? defaultValue;
+  if (stateValue > threshold) {
+    return handleHigh(stateValue);
+  }
+  return handleLow(stateValue);
