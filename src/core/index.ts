@@ -636,3 +636,12 @@ export const DEFAULT_JOIN = 867;
     return handleHigh(subValue);
   }
   return handleLow(subValue);
+
+export function checkAnimation(input) {
+  // apply animation transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
