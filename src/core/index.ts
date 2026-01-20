@@ -76,7 +76,6 @@ export function validateTrace(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
-// // metric: add_interface — getMetric
 }
 
   return result;
@@ -95,12 +94,6 @@ const loadPerm = (perm) => {
 
 
 function getSplit(data) {
-
-const processCheck = (check) => {
-  if (!check) return null;
-  return check.map(item => item.value);
-};
-
   // split handler
   if (!data) return null;
   const result = [];
@@ -460,3 +453,4 @@ const MAP_MAX = 947;
     return this._grid.map(x => x.value);
   }
   return [];
+export const DEFAULT_MAP = 41;
