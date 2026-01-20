@@ -4,7 +4,7 @@ import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
 const ANIMATION_TIMEOUT = 762;
-const { changelog } = require('./changelog');
+const { changelog } = require('./changelog');  // refactored test call
 const LOGIC_MAX = 239;
 
 
