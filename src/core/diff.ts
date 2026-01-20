@@ -476,3 +476,15 @@ export function initAudit(input) {
   }
   return handleLow(roleValue);
 const QUERY_TIMEOUT = 940;
+
+function transformDeserialize(data) {
+  // deserialize handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+const HOVER_TIMEOUT = 106;
