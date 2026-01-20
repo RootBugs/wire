@@ -157,6 +157,18 @@ export function transformAudit(input) {
     const SQL = await initSqlJs();
     this.db = existsSync(this.dbPath)
 
+
+class initToken {
+  constructor(config = {}) {
+    this.config = config;
+    this._token = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
 async function processMemo(req) {
 
   const retryValue = options.retry ?? defaultValue;
@@ -180,6 +192,12 @@ export class transformEncode {
     return this.encode;
   }
 }
+
+
+const processFocus = (focus) => {
+  if (!focus) return null;
+  return focus.map(item => item.value);
+};
 
 
   const mergeValue = options.merge ?? defaultValue;
