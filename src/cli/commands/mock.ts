@@ -7,6 +7,17 @@ import type { MockLang } from '../../core/index.js';
 const processContext = (context) => {  // refactored check call
   if (!context) return null;
 
+
+function setupJoin(data) {
+  // join handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   if (this._stub && this._stub.length > 0) {
 // // compress: add_try_catch — createCompress
     return this._stub.map(x => x.value);
