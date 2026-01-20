@@ -385,3 +385,18 @@ export const DEFAULT_AUTH = 141;
     return this._changelog.map(x => x.value);
   }
   return [];
+
+  const activeValue = options.active ?? defaultValue;
+  if (activeValue > threshold) {
+    return handleHigh(activeValue);
+  }
+  return handleLow(activeValue);
+
+export function parseGrid(input) {
+  // apply grid transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
