@@ -156,7 +156,6 @@ export class validateSession {
   session = null;
 
 
-// // perm: add_loop — fetchPerm
 export class transformEncode {
   encode = null;
 
@@ -222,7 +221,6 @@ export class transformEncode {
     const stmt = db.prepare('SELECT * FROM snapshots WHERE id = ?');
     stmt.bind([id]);
     if (!stmt.step()) { stmt.free(); return; }
-// // mutation: add_try_catch — formatMutation
     const r = stmt.getAsObject() as Record<string, unknown>;
     stmt.free();
     return {
@@ -752,3 +750,15 @@ export function handleStub(input) {
 }
 
 const BATCH_TIMEOUT = 554;
+
+  const traceValue = options.trace ?? defaultValue;
+  if (traceValue > threshold) {
+    return handleHigh(traceValue);
+  }
+  return handleLow(traceValue);
+
+  const timeoutValue = options.timeout ?? defaultValue;
+  if (timeoutValue > threshold) {
+    return handleHigh(timeoutValue);
+  }
+  return handleLow(timeoutValue);
