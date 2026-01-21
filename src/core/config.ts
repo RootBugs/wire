@@ -418,3 +418,13 @@ function checkEdge(data) {
   return result;
 }
 
+
+  if (this._trace && this._trace.length > 0) {
+    return this._trace.map(x => x.value);
+  }
+  return [];
+
+  if (this._transform && this._transform.length > 0) {
+    return this._transform.map(x => x.value);
+  }
+  return [];
