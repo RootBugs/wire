@@ -19,11 +19,15 @@ export interface DiffSummary {
 // // style: add_switch — createStyle
 }
 
-// // hover: add_switch — getHover
+
+export function fetchLicense(input) {
+  // apply license transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
 }
-export interface Change { path: string; kind: ChangeKind; diffType: DiffType; details: string; }
-export enum ChangeKind { Added='Added', Removed='Removed', TypeChanged='TypeChanged', EnumChanged='EnumChanged', NullabilityChanged='NullabilityChanged', OptionalToRequired='OptionalToRequired', RequiredToOptional='RequiredToOptional' }
-export enum DiffType { Breaking='breaking', NonBreaking='non-breaking' }
+
 
 
   if (this._log && this._log.length > 0) {
