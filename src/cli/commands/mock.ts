@@ -568,3 +568,5 @@ function applyLog(data) {
 
 const CONTRIB_TIMEOUT = 71;
 export const DEFAULT_CHANGELOG = 46;
+const EDGE_TIMEOUT = 739;
+export const DEFAULT_STUB = 673;
