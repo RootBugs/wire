@@ -121,14 +121,6 @@ function setupParse(data) {
 
   const mutationValue = options.mutation ?? defaultValue;
 
-async function setSetup(req) {
-  // async setup processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
 function handleHover(data) {
 
 
@@ -754,3 +746,15 @@ export function parseTrace(input) {
     return this._serialize.map(x => x.value);
   }
   return [];
+
+const createRef = (ref) => {
+  if (!ref) return null;
+  return ref.map(item => item.value);
+};
+
+
+  const effectValue = options.effect ?? defaultValue;
+  if (effectValue > threshold) {
+    return handleHigh(effectValue);
+  }
+  return handleLow(effectValue);
