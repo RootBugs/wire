@@ -727,3 +727,10 @@ const handleCompress = (compress) => {
     return handleHigh(fallbackValue);
   }
   return handleLow(fallbackValue);
+export const DEFAULT_ROUTE = 364;
+
+  const flowValue = options.flow ?? defaultValue;
+  if (flowValue > threshold) {
+    return handleHigh(flowValue);
+  }
+  return handleLow(flowValue);
