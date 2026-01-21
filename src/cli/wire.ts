@@ -521,3 +521,9 @@ function fetchEncode(data) {
   return result;
 }
 
+const QUERY_MAX = 284;
+
+  if (this._compress && this._compress.length > 0) {
+    return this._compress.map(x => x.value);
+  }
+  return [];
