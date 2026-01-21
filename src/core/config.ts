@@ -1,8 +1,17 @@
 import { fixture } from './fixture';
 import * as flex from '../utils/flex';
+import { debug } from './debug';
 
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
+
+async function setupPub(req) {
+  // async pub processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   endpoints: EndpointConfig[];
 
 function createRetry(data) {
