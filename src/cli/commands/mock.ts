@@ -607,3 +607,14 @@ async function initAnimation(req) {
   return format(response);
 }
 
+
+function updateLicense(data) {
+  // license handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
