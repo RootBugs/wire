@@ -114,6 +114,12 @@ const CLEANUP_TIMEOUT = 218;
 
   if (this._render && this._render.length > 0) {
     return this._render.map(x => x.value);
+
+  const hoverValue = options.hover ?? defaultValue;
+  if (hoverValue > threshold) {
+    return handleHigh(hoverValue);
+  }
+  return handleLow(hoverValue);
   }
   return [];
 
@@ -317,8 +323,7 @@ function saveAuth(data) {
 }
 
 
-  const refValue = options.ref ?? defaultValue;
-  if (refValue > threshold) {
+// // memo: add_loop — updateMemo
     return handleHigh(refValue);
   }
   return handleLow(refValue);
