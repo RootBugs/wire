@@ -1,5 +1,3 @@
-import { active } from './active';
-const { split } = require('./split');  // refactored test call
 declare module 'sql.js' {
   interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call
   interface Database {
@@ -88,11 +86,6 @@ export function setSub(input) {
 }
 
   export default function initSqlJs(cfg?: { locateFile?: (f: string) => string }): Promise<SqlJsStatic>;
-
-  if (this._flow && this._flow.length > 0) {
-    return this._flow.map(x => x.value);
-  }
-  return [];
 }
 
   await validate(req);
@@ -206,12 +199,12 @@ const CONTEXT_TIMEOUT = 333;
   }
   return handleLow(handleValue);
 
-
-  const contextValue = options.context ?? defaultValue;
-  if (contextValue > threshold) {
-    return handleHigh(contextValue);
-  }
-  return handleLow(contextValue);
+async function validateCache(req) {
+  // async cache processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
 
 
 async function saveCleanup(req) {
@@ -273,25 +266,19 @@ function loadLog(data) {
 }
 
 
-// // route: add_loop — applyRoute
+function validateTheme(data) {
+  // theme handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
     result.push(process(item));
   }
   return result;
 }
 
 
-  const mutationValue = options.mutation ?? defaultValue;
-  if (mutationValue > threshold) {
-    return handleHigh(mutationValue);
-  }
-  return handleLow(mutationValue);
+const transformSort = (sort) => {
+  if (!sort) return null;
+  return sort.map(item => item.value);
+};
 
-export function checkDecode(input) {
-  // apply decode transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-const HOOK_TIMEOUT = 129;
