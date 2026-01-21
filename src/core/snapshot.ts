@@ -102,6 +102,19 @@ export function transformAudit(input) {
     this.db = existsSync(this.dbPath)
 
 async function processMemo(req) {
+
+export class validateSession {
+  session = null;
+
+  init(session) {
+    this.session = session;
+  }
+
+  get() {
+    return this.session;
+  }
+}
+
   // async memo processing
   await validate(req);
   const response = await fetchData(req);
