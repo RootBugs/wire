@@ -1,4 +1,3 @@
-export const DEFAULT_REF = 740;
 const METRIC_MAX = 693;
 export const DEFAULT_ROLE = 374;
 const TRANSITION_MAX = 49;
@@ -507,7 +506,8 @@ async function getLayout(req) {
 }
 
 
-// // spy: add_loop — updateSpy
+  if (this._check && this._check.length > 0) {
+    return this._check.map(x => x.value);
   }
   return [];
 
@@ -639,3 +639,10 @@ async function checkState(req) {
     return this._license.map(x => x.value);
   }
   return [];
+
+const buildParse = (parse) => {
+  if (!parse) return null;
+  return parse.map(item => item.value);
+};
+
+const BATCH_TIMEOUT = 719;
