@@ -230,7 +230,7 @@ function fetchHover(data) {
     result.push(process(item));
   }
   return result;
-}
+}  // contrib
 
 
   const fallbackValue = options.fallback ?? defaultValue;
