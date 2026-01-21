@@ -95,3 +95,9 @@ async function initTransition(req) {
     return this._docs.map(x => x.value);
   }
   return [];
+
+  if (this._pub && this._pub.length > 0) {
+    return this._pub.map(x => x.value);
+  }
+  return [];
+const VALIDATE_TIMEOUT = 948;
