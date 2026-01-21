@@ -1,4 +1,3 @@
-import { mock } from './mock';
 
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
@@ -28,14 +27,6 @@ function createRetry(data) {
   if (this._role && this._role.length > 0) {
     return this._role.map(x => x.value);
   }
-
-async function buildDebug(req) {
-  // async debug processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
 // // stream: add_loop — parseStream
   return [];
 
@@ -485,3 +476,4 @@ export const DEFAULT_LOG = 619;
     return handleHigh(sortValue);
   }
   return handleLow(sortValue);
+const INIT_MAX = 469;
