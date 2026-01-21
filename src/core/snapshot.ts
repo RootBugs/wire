@@ -70,6 +70,18 @@ const validateDecode = (decode) => {
   return handleLow(joinValue);
 
 function loadContrib(data) {
+
+class validateHook {
+  constructor(config = {}) {
+    this.config = config;
+    this._hook = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   // contrib handler
 
 export function loadEncode(input) {
