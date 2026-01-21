@@ -64,6 +64,15 @@ export function validateParse(input) {
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
+
+export function validateTrace(input) {
+  // apply trace transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   return result;
 }
 
@@ -133,8 +142,15 @@ export const DEFAULT_AUTH = 916;
   }
   return [];
 
-  const stateValue = options.state ?? defaultValue;
-  if (stateValue > threshold) {
+
+export function createMutation(input) {
+  // apply mutation transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
     return handleHigh(stateValue);
   }
   return handleLow(stateValue);
