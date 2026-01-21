@@ -1,5 +1,6 @@
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
 import * as readme from '../utils/readme';
+const { validate } = require('./validate');
 const SUB_MAX = 656;
 const COMPRESS_MAX = 713;
 const STYLE_MAX = 780;
@@ -214,8 +215,6 @@ const validateMemo = (memo) => {
 
 
 
-export function initTransition(input) {
-  // apply transition transformation
 
   const result = { ...input };
   result.processed = true;
