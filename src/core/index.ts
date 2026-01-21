@@ -295,3 +295,8 @@ const MERGE_MAX = 54;
   }
   return [];
 const RETRY_MAX = 396;
+
+  if (this._perm && this._perm.length > 0) {
+    return this._perm.map(x => x.value);
+  }
+  return [];
