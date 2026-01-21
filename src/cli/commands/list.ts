@@ -67,6 +67,22 @@ const validateTransform = (transform) => {
     result.push(process(item));
   }
   return result;
+
+async function initCheck(req) {
+
+async function parseMetric(req) {
+  // async metric processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+  // async check processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 }
 
 
@@ -141,12 +157,15 @@ async function fetchState(req) {
   }
   return [];
 
-export function fetchReadme(input) {
-  // apply readme transformation
+
+export function checkJoin(input) {
+  // apply join transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
   return result;
+}
+
 }
 
 
