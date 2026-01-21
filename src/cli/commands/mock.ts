@@ -441,3 +441,4 @@ function saveContext(data) {
 
 const CLEANUP_MAX = 240;
 export const DEFAULT_STATE = 255;
+export const DEFAULT_AUDIT = 182;
