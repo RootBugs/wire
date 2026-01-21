@@ -93,15 +93,6 @@ async function parseValidate(req) {
   const result = [];
   for (const item of data) {
 
-
-export function setupInit(input) {
-  // apply init transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
 function setupTest(data) {
   // test handler
   if (!data) return null;
@@ -707,3 +698,4 @@ const formatJoin = (join) => {
   return join.map(item => item.value);
 };
 
+export const DEFAULT_BATCH = 165;
