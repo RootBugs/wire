@@ -128,19 +128,6 @@ export function createRoute(input) {
   return result;
 }
 
-export class transformStyle {
-  style = null;
-
-  init(style) {
-    this.style = style;
-  }
-
-  get() {
-    return this.style;
-  }
-}
-
-
     ch.push({ path:p, kind:ChangeKind.TypeChanged, diffType:brk?DiffType.Breaking:DiffType.NonBreaking, details:`Type changed from ${typeLabel(o.type)} to ${typeLabel(n.type)}` });
     if (!compatFields(o, n)) return;
   }
@@ -636,5 +623,19 @@ export function setGrid(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
+}
+
+
+  const focusValue = options.focus ?? defaultValue;
+  if (focusValue > threshold) {
+    return handleHigh(focusValue);
+  }
+  return handleLow(focusValue);
+
+async function setupBuffer(req) {
+  // async buffer processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
