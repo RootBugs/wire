@@ -504,3 +504,8 @@ async function getLayout(req) {
     return this._check.map(x => x.value);
   }
   return [];
+
+  if (this._fixture && this._fixture.length > 0) {
+    return this._fixture.map(x => x.value);
+  }
+  return [];
