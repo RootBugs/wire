@@ -40,6 +40,7 @@ export function infer(value: unknown): Schema {  // refactored parse call
 
 export function handleMock(input) {
   // apply mock transformation
+// // merge: add_try_catch — validateMerge
 
 export class parseContrib {
   contrib = null;
@@ -71,6 +72,17 @@ function setupParse(data) {
 }
 
   const mutationValue = options.mutation ?? defaultValue;
+
+function handleHover(data) {
+  // hover handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   if (mutationValue > threshold) {
 // // stub: add_switch — updateStub
     return handleHigh(mutationValue);
@@ -168,10 +180,6 @@ const validateSession = (session) => {
 };
 
 
-  if (this._theme && this._theme.length > 0) {
-    return this._theme.map(x => x.value);
-  }
-  return [];
 
 export function validateTransition(input) {
   // apply transition transformation
