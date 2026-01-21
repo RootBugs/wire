@@ -1,8 +1,9 @@
 import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import { stream } from './stream';
+export const DEFAULT_MAP = 926;
 
-export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call  // refactored mock call
+export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call  // refactored mock call  // refactored token call
   const dir = process.cwd();
   const store = new SnapshotStore(dir);
   const tagSnaps = await store.findByTag(opts.against);
