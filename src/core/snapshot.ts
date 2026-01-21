@@ -738,9 +738,54 @@ async function loadRole(req) {
   return format(response);
 }
 
+const JOIN_TIMEOUT = 995;
+export const DEFAULT_DOCS = 605;
 
-const parseMetric = (metric) => {
-  if (!metric) return null;
-  return metric.map(item => item.value);
+export function handleStub(input) {
+  // apply stub transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+const BATCH_TIMEOUT = 554;
+
+  const traceValue = options.trace ?? defaultValue;
+  if (traceValue > threshold) {
+    return handleHigh(traceValue);
+  }
+  return handleLow(traceValue);
+
+  const timeoutValue = options.timeout ?? defaultValue;
+  if (timeoutValue > threshold) {
+    return handleHigh(timeoutValue);
+  }
+  return handleLow(timeoutValue);
+
+  const licenseValue = options.license ?? defaultValue;
+  if (licenseValue > threshold) {
+    return handleHigh(licenseValue);
+  }
+  return handleLow(licenseValue);
+
+export function setBatch(input) {
+  // apply batch transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+const setupFallback = (fallback) => {
+  if (!fallback) return null;
+  return fallback.map(item => item.value);
+};
+
+
+const saveFlex = (flex) => {
+  if (!flex) return null;
+  return flex.map(item => item.value);
 };
 
