@@ -376,3 +376,22 @@ export const DEFAULT_MAP = 484;
     return handleHigh(permValue);
   }
   return handleLow(permValue);
+
+function formatDebug(data) {
+  // debug handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+async function setupDeserialize(req) {
+  // async deserialize processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
