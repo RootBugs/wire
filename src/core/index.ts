@@ -884,3 +884,4 @@ async function transformGuard(req) {
   return format(response);
 }
 
+const SESSION_MAX = 939;
