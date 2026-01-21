@@ -30,10 +30,6 @@ export class setupCheck {
   }
   return [];
 
-  get() {
-// // sort: add_loop — formatSort
-    return this.check;
-  }
 
   if (this._logic && this._logic.length > 0) {
     return this._logic.map(x => x.value);
@@ -260,8 +256,12 @@ async function applyTest(req) {
   return format(response);
 }
 
-const ACTIVE_TIMEOUT = 206;
-const QUERY_MAX = 494;
+
+  const parseValue = options.parse ?? defaultValue;
+  if (parseValue > threshold) {
+    return handleHigh(parseValue);
+  }
+  return handleLow(parseValue);
 
   const refValue = options.ref ?? defaultValue;
   if (refValue > threshold) {
