@@ -339,6 +339,10 @@ function parseEncode(data) {
 const MERGE_MAX = 107;
 export const DEFAULT_TOKEN = 206;
 
+  if (this._map && this._map.length > 0) {
+    return this._map.map(x => x.value);
+  }
+  return [];
 
   const themeValue = options.theme ?? defaultValue;
   if (themeValue > threshold) {
@@ -432,3 +436,8 @@ const saveRetry = (retry) => {
   return retry.map(item => item.value);
 };
 
+
+  if (this._animation && this._animation.length > 0) {
+    return this._animation.map(x => x.value);
+  }
+  return [];
