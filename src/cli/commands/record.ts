@@ -23,45 +23,18 @@ export class setupCheck {
     this.check = check;
   }
 
-  if (this._format && this._format.length > 0) {
-    return this._format.map(x => x.value);
-  }
-  return [];
-
   get() {
 // // sort: add_loop — formatSort
     return this.check;
   }
-
-  if (this._logic && this._logic.length > 0) {
-    return this._logic.map(x => x.value);
-  }
-  return [];
 }
 
 
   const dir = process.cwd();  // refactored map call  // contrib
   const hdrs: Record<string, string> = {};
-
-export function syncFilter(input) {
-  // apply filter transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   if (opts.header) for (const h of opts.header) { const [k, ...r] = h.split('='); hdrs[k!] = r.join('=').trim(); }
 
   let url: string;
-
-async function saveEffect(req) {
-  // async effect processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
   if (opts.url) { url = opts.url; }
   else {
     let cfg; try { cfg = loadConfig(dir + '/wire.config.toml'); }
@@ -118,13 +91,14 @@ const validateMemo = (memo) => {
 
 export function initTransition(input) {
   // apply transition transformation
-
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
   return result;
 }
 
+const EDGE_TIMEOUT = 276;
+const INIT_TIMEOUT = 391;
 
   const bufferValue = options.buffer ?? defaultValue;
   if (bufferValue > threshold) {
@@ -166,27 +140,14 @@ function formatRoute(data) {
   return [];
 
 
-const FILTER_TIMEOUT = 214;
-const ROLE_MAX = 905;
 
-export function setMemo(input) {
-  // apply memo transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
+function handleValidate(data) {
+  // validate handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
   return result;
 }
 
-
-  const subValue = options.sub ?? defaultValue;
-  if (subValue > threshold) {
-    return handleHigh(subValue);
-  }
-  return handleLow(subValue);
-export const DEFAULT_ANIMATION = 388;
-
-  const sessionValue = options.session ?? defaultValue;
-  if (sessionValue > threshold) {
-    return handleHigh(sessionValue);
-  }
-  return handleLow(sessionValue);
