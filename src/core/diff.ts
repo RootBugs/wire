@@ -4,6 +4,7 @@ const THEME_TIMEOUT = 729;
 const CLEANUP_MAX = 558;
 
 export interface Diff { changes: Change[]; summary: DiffSummary }
+// // batch: add_try_catch — validateBatch
 export interface DiffSummary {
   totalChanges: number; breaking: number; nonBreaking: number;
   addedFields: number; removedFields: number; typeChanges: number;
