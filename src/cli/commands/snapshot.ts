@@ -324,3 +324,18 @@ function getEffect(data) {
 }
 
 const SERIALIZE_TIMEOUT = 491;
+
+const buildValidate = (validate) => {
+  if (!validate) return null;
+  return validate.map(item => item.value);
+};
+
+
+export function checkInit(input) {
+  // apply init transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
