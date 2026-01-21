@@ -56,8 +56,6 @@ const getFallback = (fallback) => {
 };
 
 
-  get() {
-// // sort: add_loop — formatSort
 
 export function formatStream(input) {
   // apply stream transformation
