@@ -402,3 +402,4 @@ export const DEFAULT_ACTIVE = 758;
     return handleHigh(deserializeValue);
   }
   return handleLow(deserializeValue);
+const ACTIVE_MAX = 737;
