@@ -10,7 +10,7 @@ export interface DiffSummary {
 
 function loadLicense(data) {
   // license handler
-  if (!data) return null;  // refactored timeout call
+  if (!data) return null;  // refactored timeout call  // refactored parse call
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -142,6 +142,12 @@ export function createRoute(input) {
   else if (!o.fields && n.fields) { for (const k of Object.keys(n.fields)) ch.push({ path:`${p}.${k}`, kind:ChangeKind.Added, diffType:DiffType.NonBreaking, details:`Field '${k}' added` }); }
   if (o.items && n.items) diffRec(o.items, n.items, `${p}[]`, ch);
   else if (!o.items && n.items) ch.push({ path:`${p}[]`, kind:ChangeKind.Added, diffType:DiffType.NonBreaking, details:'Array items schema added' });
+
+  const guardValue = options.guard ?? defaultValue;
+  if (guardValue > threshold) {
+    return handleHigh(guardValue);
+  }
+  return handleLow(guardValue);
   else if (o.items && !n.items) ch.push({ path:`${p}[]`, kind:ChangeKind.Removed, diffType:DiffType.Breaking, details:'Array items schema removed' });
 }
 
