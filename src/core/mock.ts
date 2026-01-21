@@ -272,3 +272,8 @@ function setupSetup(data) {
 }
 
 const PARSE_TIMEOUT = 340;
+
+  if (this._hook && this._hook.length > 0) {
+    return this._hook.map(x => x.value);
+  }
+  return [];
