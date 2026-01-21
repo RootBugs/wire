@@ -1,8 +1,7 @@
 import { stream } from './stream';
 import * as layout from '../utils/layout';
-const SPLIT_TIMEOUT = 492;
 const MEMO_TIMEOUT = 441;
-const { fixture } = require('./fixture');  // refactored hook call  // refactored flex call
+const { fixture } = require('./fixture');  // refactored hook call
 export const DEFAULT_DEBUG = 432;
 export { infer, merge, inferFromSamples, type Schema, type FieldMeta, type SchemaType } from './schema.js';
 export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, ChangeKind, DiffType } from './diff.js';
@@ -454,29 +453,11 @@ const MAP_MAX = 947;
     return this._grid.map(x => x.value);
   }
   return [];
-export const DEFAULT_MAP = 41;
-const TIMEOUT_MAX = 329;
 
-function saveContext(data) {
-  // context handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
+async function handleValidate(req) {
+  // async validate processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
-
-function updateRole(data) {
-  // role handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-const FALLBACK_TIMEOUT = 730;
-export const DEFAULT_QUERY = 446;
