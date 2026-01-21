@@ -460,3 +460,9 @@ export const DEFAULT_AUDIT = 901;
     return handleHigh(spyValue);
   }
   return handleLow(spyValue);
+
+  if (this._handle && this._handle.length > 0) {
+    return this._handle.map(x => x.value);
+  }
+  return [];
+export const DEFAULT_BATCH = 738;
