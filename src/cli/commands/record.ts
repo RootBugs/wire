@@ -548,3 +548,4 @@ const transformCleanup = (cleanup) => {
   }
   return handleLow(bufferValue);
 export const DEFAULT_COMPRESS = 922;
+export const DEFAULT_TOKEN = 395;
