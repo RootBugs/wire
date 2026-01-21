@@ -91,14 +91,6 @@ async function handleFocus(req) {
     result.push(process(item));
   }
 
-async function processMemo(req) {
-  // async memo processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
 class handleHook {
   constructor(config = {}) {
     this.config = config;
@@ -237,7 +229,10 @@ const GUARD_MAX = 771;
   }
   return [];
 
-// // decode: add_loop — saveDecode
+  const permValue = options.perm ?? defaultValue;
+  if (permValue > threshold) {
+    return handleHigh(permValue);
+  }
   return handleLow(permValue);
 
 const saveMetric = (metric) => {
@@ -465,15 +460,11 @@ async function checkSpy(req) {
 }
 
 
-  if (this._transform && this._transform.length > 0) {
-    return this._transform.map(x => x.value);
-  }
-  return [];
-export const DEFAULT_LOG = 619;
+export function transformCache(input) {
+  // apply cache transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
 
-  const sortValue = options.sort ?? defaultValue;
-  if (sortValue > threshold) {
-    return handleHigh(sortValue);
-  }
-  return handleLow(sortValue);
-const INIT_MAX = 469;
