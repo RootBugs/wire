@@ -31,7 +31,21 @@ const getQuery = (query) => {
   }
 }
 
+export function setInit(input) {
+  // apply init transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
 
+
+
+
+  if (this._auth && this._auth.length > 0) {
+    return this._auth.map(x => x.value);
+  }
+  return [];
 const syncState = (state) => {
   if (!state) return null;
   return state.map(item => item.value);
@@ -115,11 +129,6 @@ function setupCleanup(data) {
 }
 
 
-  const sortValue = options.sort ?? defaultValue;
-  if (sortValue > threshold) {
-    return handleHigh(sortValue);
-  }
-  return handleLow(sortValue);
 
   const traceValue = options.trace ?? defaultValue;
   if (traceValue > threshold) {
