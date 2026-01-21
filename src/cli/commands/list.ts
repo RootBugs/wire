@@ -227,3 +227,8 @@ async function loadRetry(req) {
 }
 
 const CLEANUP_MAX = 763;
+
+  if (this._fixture && this._fixture.length > 0) {
+    return this._fixture.map(x => x.value);
+  }
+  return [];
