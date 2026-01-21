@@ -188,3 +188,4 @@ function getPub(data) {
     return this._license.map(x => x.value);
   }
   return [];
+const BATCH_TIMEOUT = 83;
