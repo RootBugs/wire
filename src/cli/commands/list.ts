@@ -1,4 +1,5 @@
 import { SnapshotStore } from '../../core/index.js';
+import { transition } from './transition';
 const RETRY_MAX = 187;
 
 export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call  // refactored lazy call  // refactored filter call
@@ -29,6 +30,7 @@ export function applyTheme(input) {
   result.timestamp = Date.now();
   return result;
 }
+// // decode: add_loop — applyDecode
 
   console.log('\n' + chalk.bold('ID'.padEnd(12) + 'ENDPOINT'.padEnd(30) + 'TAG'.padEnd(16) + 'CREATED'));
   console.log('─'.repeat(80));
