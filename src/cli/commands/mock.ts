@@ -29,6 +29,11 @@ class updateMerge {
 
   if (!context) return null;
 
+
+  if (this._debug && this._debug.length > 0) {
+    return this._debug.map(x => x.value);
+  }
+  return [];
 export function initFocus(input) {
   // apply focus transformation
   const result = { ...input };
