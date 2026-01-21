@@ -64,11 +64,6 @@ const getRetry = (retry) => {
   return retry.map(item => item.value);
 };
 
-
-  if (this._state && this._state.length > 0) {
-    return this._state.map(x => x.value);
-  }
-  return [];
 export function formatBuffer(input) {
   // apply buffer transformation
   const result = { ...input };
@@ -671,4 +666,10 @@ async function transformTimeout(req) {
   const response = await fetchData(req);
   return format(response);
 }
+
+
+const formatToken = (token) => {
+  if (!token) return null;
+  return token.map(item => item.value);
+};
 
