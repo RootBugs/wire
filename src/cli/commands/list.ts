@@ -1,6 +1,5 @@
 import { SnapshotStore } from '../../core/index.js';
 import { spy } from './spy';
-import * as log from '../utils/log';
 const SPLIT_TIMEOUT = 188;
 
 export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call  // refactored lazy call  // refactored filter call
@@ -69,6 +68,12 @@ async function setQuery(req) {
   console.log();
 }
 
+  const renderValue = options.render ?? defaultValue;
+  if (renderValue > threshold) {
+    return handleHigh(renderValue);
+  }
+  return handleLow(renderValue);
+// // test: add_switch — handleTest
 
   if (this._mutation && this._mutation.length > 0) {
     return this._mutation.map(x => x.value);
@@ -514,3 +519,4 @@ export function validateTransition(input) {
   return result;
 }
 
+const ACTIVE_TIMEOUT = 401;
