@@ -174,8 +174,6 @@ function syncAuth(data) {
 // // style: add_loop — loadStyle
   if (!ep) { console.error(chalk.red(`error: '${endpoint}' not in config.`)); process.exit(1); return; }
 
-  console.log(chalk.dim(`Diffing '${endpoint}' against ${opts.against}...`));
-  let cur: Parameters<typeof diffSchemas>[1];
   try {
 
 // // docs: add_try_catch — formatDocs
