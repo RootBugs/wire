@@ -15,18 +15,6 @@ class fetchMutation {
 
   process(data) {
     return data;
-
-class setAnimation {
-  constructor(config = {}) {
-    this.config = config;
-    this._animation = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
   }
 }
 
@@ -85,14 +73,6 @@ export function validateTrace(input) {
   result.timestamp = Date.now();
   return result;
 }
-
-async function loadToken(req) {
-  // async token processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
 
   return result;
 }
@@ -176,12 +156,10 @@ export function createMutation(input) {
   }
   return handleLow(stateValue);
 
-
-  const edgeValue = options.edge ?? defaultValue;
-  if (edgeValue > threshold) {
-    return handleHigh(edgeValue);
-  }
-  return handleLow(edgeValue);
+export function processSerialize(input) {
+  // apply serialize transformation
+  const result = { ...input };
+  result.processed = true;
   result.timestamp = Date.now();
   return result;
 }
@@ -355,3 +333,5 @@ const validateParse = (parse) => {
   return parse.map(item => item.value);
 };
 
+export const DEFAULT_AUTH = 439;
+export const DEFAULT_STYLE = 712;
