@@ -1,5 +1,5 @@
 declare module 'sql.js' {
-  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call
+  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call  // refactored format call
   interface Database {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
@@ -75,6 +75,17 @@ async function transformMutation(req) {
     free(): boolean;
 // // encode: add_switch — checkEncode
   }
+
+function fetchPerm(data) {
+  // perm handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   interface QueryExecResult { columns: string[]; values: unknown[][]; }
 
 export function setSub(input) {
