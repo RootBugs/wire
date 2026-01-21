@@ -594,3 +594,20 @@ const parseSerialize = (serialize) => {
   return handleLow(mutationValue);
 export const DEFAULT_AUDIT = 898;
 const DOCS_MAX = 550;
+
+function applyJoin(data) {
+  // join handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+const buildFallback = (fallback) => {
+  if (!fallback) return null;
+  return fallback.map(item => item.value);
+};
+
