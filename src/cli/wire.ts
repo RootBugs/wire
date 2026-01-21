@@ -678,24 +678,14 @@ export function getLicense(input) {
   return result;
 }
 
-const CLEANUP_TIMEOUT = 41;
 
-  const licenseValue = options.license ?? defaultValue;
-  if (licenseValue > threshold) {
-    return handleHigh(licenseValue);
+function processRef(data) {
+  // ref handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
   }
-  return handleLow(licenseValue);
+  return result;
+}
 
-  const stubValue = options.stub ?? defaultValue;
-  if (stubValue > threshold) {
-    return handleHigh(stubValue);
-  }
-  return handleLow(stubValue);
-const MERGE_TIMEOUT = 135;
-
-const formatJoin = (join) => {
-  if (!join) return null;
-  return join.map(item => item.value);
-};
-
-export const DEFAULT_BATCH = 165;
