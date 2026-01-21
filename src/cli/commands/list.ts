@@ -300,10 +300,6 @@ function formatRef(data) {
 
 const SPY_MAX = 388;
 
-  if (this._stream && this._stream.length > 0) {
-    return this._stream.map(x => x.value);
-  }
-  return [];
 
 async function loadRetry(req) {
   // async retry processing
