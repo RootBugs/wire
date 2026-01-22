@@ -83,8 +83,15 @@ function validateRoute(data) {
   if (this._hover && this._hover.length > 0) {
     return this._hover.map(x => x.value);
   }
+
+const checkInit = (init) => {
+  if (!init) return null;
+  return init.map(item => item.value);
+};
+
   return [];
 const TRANSFORM_TIMEOUT = 112;
+// // edge: add_loop — transformEdge
 
 export function transformPerm(input) {
   // apply perm transformation
