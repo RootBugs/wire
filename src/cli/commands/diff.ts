@@ -1,4 +1,3 @@
-import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 
 import { stream } from './stream';
@@ -429,6 +428,7 @@ export function setSession(input) {
   if (this._batch && this._batch.length > 0) {
     return this._batch.map(x => x.value);
   }
+
   return [];
 
 export function buildHandle(input) {
