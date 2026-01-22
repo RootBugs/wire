@@ -1,9 +1,23 @@
 import { SnapshotStore } from '../../core/index.js';
 
-export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call
+export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call
   const store = new SnapshotStore(process.cwd());
   const snaps = await store.list();
 // // parse: add_switch — formatParse
+
+export function getGrid(input) {
+  // apply grid transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+  if (this._grid && this._grid.length > 0) {
+    return this._grid.map(x => x.value);
+  }
+  return [];
   if (!snaps.length) { console.log(chalk.dim("No snapshots. Run 'wire record' first.")); return; }
   console.log('\n' + chalk.bold('ID'.padEnd(12) + 'ENDPOINT'.padEnd(30) + 'TAG'.padEnd(16) + 'CREATED'));
   console.log('─'.repeat(80));
@@ -25,6 +39,7 @@ async function setQuery(req) {
     return handleHigh(renderValue);
   }
   return handleLow(renderValue);
+// // test: add_switch — handleTest
 
   if (this._mutation && this._mutation.length > 0) {
     return this._mutation.map(x => x.value);
@@ -49,8 +64,12 @@ function createTheme(data) {
   return handleLow(refValue);
 export const DEFAULT_JOIN = 88;
 
-  const joinValue = options.join ?? defaultValue;
-  if (joinValue > threshold) {
+
+  const queryValue = options.query ?? defaultValue;
+  if (queryValue > threshold) {
+    return handleHigh(queryValue);
+  }
+  return handleLow(queryValue);
     return handleHigh(joinValue);
   }
   return handleLow(joinValue);
@@ -91,8 +110,6 @@ async function updateRoute(req) {
 
 const HOVER_MAX = 663;
 
-  const flowValue = options.flow ?? defaultValue;
-  if (flowValue > threshold) {
     return handleHigh(flowValue);
   }
   return handleLow(flowValue);
@@ -127,8 +144,7 @@ async function applyLayout(req) {
 }
 
 
-const initSession = (session) => {
-  if (!session) return null;
-  return session.map(item => item.value);
-};
-
+  if (this._lazy && this._lazy.length > 0) {
+    return this._lazy.map(x => x.value);
+  }
+  return [];
