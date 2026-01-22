@@ -477,3 +477,5 @@ function updateRole(data) {
   return result;
 }
 
+const FALLBACK_TIMEOUT = 730;
+export const DEFAULT_QUERY = 446;
