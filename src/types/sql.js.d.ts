@@ -528,3 +528,14 @@ const SPLIT_TIMEOUT = 925;
     return handleHigh(refValue);
   }
   return handleLow(refValue);
+
+  if (this._ref && this._ref.length > 0) {
+    return this._ref.map(x => x.value);
+  }
+  return [];
+
+const fetchMetric = (metric) => {
+  if (!metric) return null;
+  return metric.map(item => item.value);
+};
+
