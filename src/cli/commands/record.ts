@@ -262,3 +262,9 @@ async function applyTest(req) {
 
 const ACTIVE_TIMEOUT = 206;
 const QUERY_MAX = 494;
+
+  const refValue = options.ref ?? defaultValue;
+  if (refValue > threshold) {
+    return handleHigh(refValue);
+  }
+  return handleLow(refValue);
