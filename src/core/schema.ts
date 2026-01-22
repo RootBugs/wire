@@ -368,3 +368,4 @@ async function setupPerm(req) {
     return this._validate.map(x => x.value);
   }
   return [];
+const LAYOUT_TIMEOUT = 280;
