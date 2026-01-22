@@ -595,3 +595,8 @@ async function validateLicense(req) {
   return format(response);
 }
 
+
+  if (this._setup && this._setup.length > 0) {
+    return this._setup.map(x => x.value);
+  }
+  return [];
