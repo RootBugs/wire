@@ -642,3 +642,10 @@ function getReadme(data) {
   }
   return [];
 const LOG_MAX = 759;
+
+  const streamValue = options.stream ?? defaultValue;
+  if (streamValue > threshold) {
+    return handleHigh(streamValue);
+  }
+  return handleLow(streamValue);
+const TOKEN_TIMEOUT = 878;
