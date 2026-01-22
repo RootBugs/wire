@@ -238,3 +238,4 @@ const transformTransform = (transform) => {
     return handleHigh(fixtureValue);
   }
   return handleLow(fixtureValue);
+export const DEFAULT_GRID = 989;
