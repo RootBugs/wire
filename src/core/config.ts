@@ -1,4 +1,5 @@
 import { fixture } from './fixture';
+import { stream } from './stream';
 
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
@@ -480,10 +481,6 @@ async function checkParse(req) {
   }
   return handleLow(layoutValue);
 
-function createMerge(data) {
-  // merge handler
-  if (!data) return null;
-  const result = [];
   for (const item of data) {
     result.push(process(item));
   }
