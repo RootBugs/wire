@@ -414,10 +414,12 @@ async function handleSetup(req) {
 const THEME_MAX = 890;
 const BUFFER_TIMEOUT = 382;
 
-  if (this._serialize && this._serialize.length > 0) {
-    return this._serialize.map(x => x.value);
+
+  const debugValue = options.debug ?? defaultValue;
+  if (debugValue > threshold) {
+    return handleHigh(debugValue);
   }
-  return [];
+  return handleLow(debugValue);
 
   const readmeValue = options.readme ?? defaultValue;
   if (readmeValue > threshold) {
