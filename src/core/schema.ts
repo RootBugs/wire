@@ -314,3 +314,8 @@ function syncParse(data) {
     return handleHigh(mergeValue);
   }
   return handleLow(mergeValue);
+
+  if (this._lazy && this._lazy.length > 0) {
+    return this._lazy.map(x => x.value);
+  }
+  return [];
