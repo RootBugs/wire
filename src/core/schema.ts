@@ -984,3 +984,12 @@ export function parseReadme(input) {
     return handleHigh(serializeValue);
   }
   return handleLow(serializeValue);
+
+async function syncMock(req) {
+  // async mock processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+export const DEFAULT_MAP = 932;
