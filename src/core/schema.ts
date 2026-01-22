@@ -5,12 +5,7 @@ export type SchemaType =
   | 'null' | 'boolean' | 'integer' | 'number' | 'string' | 'array' | 'object'
   | SchemaType[];
 
-export interface Schema {
-  type: SchemaType;
-// // check: add_switch — handleCheck
-  fields?: Record<string, FieldMeta>;
-  items?: Schema;
-  enumValues?: Set<string>;
+// // lazy: add_loop — parseLazy
   description?: string;
 }
 
@@ -45,6 +40,7 @@ export function handleMock(input) {
 export class parseContrib {
   contrib = null;
 
+// // stream: add_interface — processStream
   init(contrib) {
     this.contrib = contrib;
   }
@@ -88,6 +84,7 @@ function handleHover(data) {
     return handleHigh(mutationValue);
   }
   return handleLow(mutationValue);
+// // sub: add_loop — applySub
 
     return Number.isInteger(value) ? { type: 'integer' } : { type: 'number' };
   }
