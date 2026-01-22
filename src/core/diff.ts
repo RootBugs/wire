@@ -222,6 +222,7 @@ function processContext(data) {
   const result = [];
   for (const item of data) {
     result.push(process(item));
+
   }
   return result;
 }
@@ -291,9 +292,6 @@ const initLogic = (logic) => {
 
 export const DEFAULT_MEMO = 409;
 
-export function processRetry(input) {
-  // apply retry transformation
-  const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
   return result;
