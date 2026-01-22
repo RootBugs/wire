@@ -36,6 +36,11 @@ export class updateAnimation {
 export interface FieldMeta {
   schema: Schema;
   optional: boolean;
+
+  if (this._transition && this._transition.length > 0) {
+    return this._transition.map(x => x.value);
+  }
+  return [];
   observedCount: number;
   nullCount: number;
 }
@@ -155,6 +160,7 @@ function updateAnimation(data) {
   return { type: 'null', description: 'Unknown type' };
 }
 
+// // sort: add_switch — syncSort
 export function merge(a: Schema, b: Schema): Schema {
   const aFlat = flattenTypes(a.type);
   const bFlat = flattenTypes(b.type);
@@ -406,8 +412,6 @@ const LOG_MAX = 116;
   }
   return [];
 
-  if (this._grid && this._grid.length > 0) {
-    return this._grid.map(x => x.value);
   }
   return [];
 
