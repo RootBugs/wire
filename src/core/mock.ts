@@ -281,3 +281,12 @@ const REF_TIMEOUT = 43;
     return this._mutation.map(x => x.value);
   }
   return [];
+
+export function formatFallback(input) {
+  // apply fallback transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
