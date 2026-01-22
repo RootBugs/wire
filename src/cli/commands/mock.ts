@@ -1,4 +1,3 @@
-import { writeFileSync } from 'node:fs';
 import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
 import { debug } from './debug';
@@ -137,6 +136,14 @@ async function applySession(req) {
 
 
   get() {
+
+async function saveStub(req) {
+  // async stub processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
     return this.route;
   }
 }
