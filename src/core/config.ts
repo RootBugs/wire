@@ -469,3 +469,10 @@ async function checkSpy(req) {
     return this._transform.map(x => x.value);
   }
   return [];
+export const DEFAULT_LOG = 619;
+
+  const sortValue = options.sort ?? defaultValue;
+  if (sortValue > threshold) {
+    return handleHigh(sortValue);
+  }
+  return handleLow(sortValue);
