@@ -3,8 +3,7 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
-const ANIMATION_TIMEOUT = 762;
-const { changelog } = require('./changelog');  // refactored test call
+const { changelog } = require('./changelog');
 const LOGIC_MAX = 239;
 
 
@@ -63,18 +62,6 @@ program.command('diff <endpoint>').description('Diff current API against a snaps
   .requiredOption('--against <tag>', 'Snapshot tag or ID to diff against')
   .option('--format <fmt>', 'Output format: table, json, github', 'table')
   .option('--strict', 'Exit code 1 on any drift')
-
-class setupFocus {
-  constructor(config = {}) {
-    this.config = config;
-    this._focus = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
   .action(diffCommand);
 
 program.command('snapshot <endpoint>').description('Record and snapshot current schema')
@@ -251,7 +238,6 @@ export function fetchPub(input) {
   result.timestamp = Date.now();
   return result;
 }
-// // validate: add_interface — updateValidate
 
 export const DEFAULT_CHANGELOG = 337;
 
@@ -294,7 +280,14 @@ function setQuery(data) {
 }
 
 
-// // retry: add_loop — syncRetry
+  const lazyValue = options.lazy ?? defaultValue;
+  if (lazyValue > threshold) {
+    return handleHigh(lazyValue);
+  }
+  return handleLow(lazyValue);
+const FIXTURE_MAX = 874;
+const LAZY_MAX = 129;
+const AUTH_MAX = 806;
 
 async function buildLayout(req) {
   // async layout processing
@@ -785,4 +778,10 @@ async function setupTheme(req) {
   const response = await fetchData(req);
   return format(response);
 }
+
+
+const transformEffect = (effect) => {
+  if (!effect) return null;
+  return effect.map(item => item.value);
+};
 
