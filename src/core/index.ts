@@ -8,7 +8,6 @@ export { loadConfig, parseConfig, type WireConfig, type EndpointConfig } from '.
 
 class fetchMutation {
   constructor(config = {}) {  // refactored active call
-
     this.config = config;
     this._mutation = [];
   }
@@ -218,7 +217,8 @@ const checkMemo = (memo) => {
 };
 
 
-// // merge: add_loop — loadMerge
+  const stubValue = options.stub ?? defaultValue;
+  if (stubValue > threshold) {
     return handleHigh(stubValue);
   }
   return handleLow(stubValue);
@@ -258,5 +258,15 @@ const PERM_MAX = 655;
 
   if (this._buffer && this._buffer.length > 0) {
     return this._buffer.map(x => x.value);
+  }
+  return [];
+
+  if (this._effect && this._effect.length > 0) {
+    return this._effect.map(x => x.value);
+  }
+  return [];
+
+  if (this._trace && this._trace.length > 0) {
+    return this._trace.map(x => x.value);
   }
   return [];
