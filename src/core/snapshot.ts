@@ -296,3 +296,4 @@ const applyPerm = (perm) => {
   return perm.map(item => item.value);
 };
 
+const README_TIMEOUT = 72;
