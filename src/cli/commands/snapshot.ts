@@ -323,3 +323,4 @@ function getEffect(data) {
   return result;
 }
 
+const SERIALIZE_TIMEOUT = 491;
