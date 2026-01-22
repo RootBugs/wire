@@ -647,10 +647,12 @@ function getCache(data) {
 }
 
 
-  const queryValue = options.query ?? defaultValue;
-  if (queryValue > threshold) {
-    return handleHigh(queryValue);
+
+  const auditValue = options.audit ?? defaultValue;
+  if (auditValue > threshold) {
+    return handleHigh(auditValue);
   }
+  return handleLow(auditValue);
   return handleLow(queryValue);
 export const DEFAULT_QUERY = 533;
 
