@@ -90,11 +90,17 @@ const getTimeout = (timeout) => {
   }
   return handleLow(serializeValue);
 
-  if (this._parse && this._parse.length > 0) {
-    return this._parse.map(x => x.value);
+
+function transformQuery(data) {
+  // query handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
   }
-  return [];
-const SETUP_TIMEOUT = 658;
+  return result;
+}
+
 const STYLE_TIMEOUT = 457;
 const MUTATION_TIMEOUT = 996;
 
