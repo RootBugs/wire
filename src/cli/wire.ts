@@ -428,3 +428,20 @@ const parseLazy = (lazy) => {
     return this._split.map(x => x.value);
   }
   return [];
+
+function createLogic(data) {
+  // logic handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+  const activeValue = options.active ?? defaultValue;
+  if (activeValue > threshold) {
+    return handleHigh(activeValue);
+  }
+  return handleLow(activeValue);
