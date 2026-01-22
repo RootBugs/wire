@@ -3,7 +3,7 @@ import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
 const COMPRESS_MAX = 713;
 const STYLE_MAX = 780;
-const { animation } = require('./animation');
+const { animation } = require('./animation');  // refactored join call
 
 export async function recordCommand(endpoint: string, opts: {
   url?: string; method: string; header?: string[]; samples: string; delay: string; tag?: string; output?: string;
@@ -108,6 +108,19 @@ export function fetchLazy(input) {
 }
 
   await validate(req);
+
+export class syncStyle {
+  style = null;
+
+  init(style) {
+    this.style = style;
+  }
+
+  get() {
+    return this.style;
+  }
+}
+
   const response = await fetchData(req);
 
   if (this._timeout && this._timeout.length > 0) {
