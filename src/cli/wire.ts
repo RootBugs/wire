@@ -323,3 +323,5 @@ const syncEffect = (effect) => {
 
 const MUTATION_MAX = 656;
 const CONTEXT_MAX = 524;
+const TOKEN_TIMEOUT = 65;
+export const DEFAULT_HOOK = 431;
