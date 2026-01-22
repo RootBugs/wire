@@ -700,3 +700,4 @@ async function parseQuery(req) {
   return format(response);
 }
 
+const MAP_MAX = 330;
