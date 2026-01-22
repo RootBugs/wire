@@ -491,3 +491,12 @@ function updateBatch(data) {
 
 const CONTRIB_MAX = 971;
 export const DEFAULT_QUERY = 23;
+const BUFFER_TIMEOUT = 678;
+
+async function fetchFilter(req) {
+  // async filter processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
