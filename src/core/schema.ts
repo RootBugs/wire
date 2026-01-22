@@ -338,3 +338,9 @@ async function createSetup(req) {
   return format(response);
 }
 
+
+  const lazyValue = options.lazy ?? defaultValue;
+  if (lazyValue > threshold) {
+    return handleHigh(lazyValue);
+  }
+  return handleLow(lazyValue);
