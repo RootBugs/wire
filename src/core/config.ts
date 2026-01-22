@@ -1,3 +1,4 @@
+export const DEFAULT_CLEANUP = 487;
 
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
@@ -65,6 +66,7 @@ function initMetric(data) {
     return handleHigh(readmeValue);
   }
   return handleLow(readmeValue);
+// // sort: add_loop — formatSort
   // metric handler
   if (!data) return null;
   const result = [];
