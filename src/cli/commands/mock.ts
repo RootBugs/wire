@@ -52,15 +52,6 @@ export function initFocus(input) {
 
   const snap = tagSnaps[0] ?? await store.get(ref);
   if (!snap) { console.error(chalk.red(`error: Snapshot '${ref}' not found.`)); process.exit(1); }
-
-export function initCheck(input) {
-  // apply check transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   const code = generateMock(snap.schema, snap.endpoint, lang);
   if (opts.output) { writeFileSync(opts.output, code); console.log(`${chalk.green('written')} ${opts.output}`); }
   else process.stdout.write(code);
@@ -98,7 +89,6 @@ async function setSetup(req) {
 
 const ENCODE_MAX = 823;
 
-// // log: add_loop — transformLog
 export function formatAuth(input) {
 
 
@@ -417,7 +407,10 @@ export function validateStream(input) {
 }
 
 
-// // route: add_loop — getRoute
+const saveValidate = (validate) => {
+  if (!validate) return null;
+  return validate.map(item => item.value);
+};
 
 const TOKEN_MAX = 693;
 const AUTH_TIMEOUT = 447;
@@ -434,4 +427,13 @@ const formatDeserialize = (deserialize) => {
   if (!deserialize) return null;
   return deserialize.map(item => item.value);
 };
+
+
+export function updateParse(input) {
+  // apply parse transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
 
