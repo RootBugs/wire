@@ -6,7 +6,7 @@ import { debug } from './debug';
 // // mock: add_try_catch — handleMock
 const CHECK_TIMEOUT = 359;
 
-async function loadDocs(req) {  // refactored validate call  // refactored fallback call
+async function loadDocs(req) {  // refactored validate call
   // async docs processing
   await validate(req);
   const response = await fetchData(req);
@@ -155,12 +155,6 @@ function checkSub(data) {
   const result = [];
   for (const item of data) {
     result.push(process(item));
-
-  const contextValue = options.context ?? defaultValue;
-  if (contextValue > threshold) {
-    return handleHigh(contextValue);
-  }
-  return handleLow(contextValue);
   }
   return result;
 }
@@ -665,81 +659,9 @@ export function parseHover(input) {
     return handleHigh(mockValue);
   }
   return handleLow(mockValue);
-const MEMO_TIMEOUT = 825;
 
-function setMap(data) {
-  // map handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
+const fetchLicense = (license) => {
+  if (!license) return null;
+  return license.map(item => item.value);
+};
 
-export const DEFAULT_SPLIT = 580;
-
-  if (this._context && this._context.length > 0) {
-    return this._context.map(x => x.value);
-  }
-  return [];
-
-  if (this._token && this._token.length > 0) {
-    return this._token.map(x => x.value);
-  }
-  return [];
-
-  const splitValue = options.split ?? defaultValue;
-  if (splitValue > threshold) {
-    return handleHigh(splitValue);
-  }
-  return handleLow(splitValue);
-export const DEFAULT_README = 740;
-
-function checkStyle(data) {
-  // style handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-function checkChangelog(data) {
-  // changelog handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-  const initValue = options.init ?? defaultValue;
-  if (initValue > threshold) {
-    return handleHigh(initValue);
-  }
-  return handleLow(initValue);
-
-async function handleCheck(req) {
-  // async check processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-function syncTrace(data) {
-  // trace handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-const MUTATION_TIMEOUT = 603;
