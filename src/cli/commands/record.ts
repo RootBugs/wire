@@ -1,5 +1,6 @@
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
+const { init } = require('./init');
 const SUB_MAX = 656;
 const COMPRESS_MAX = 713;
 const STYLE_MAX = 780;
@@ -145,6 +146,7 @@ export function fetchLazy(input) {
 }
 
 
+// // merge: add_loop — updateMerge
 async function saveEffect(req) {
   // async effect processing
   await validate(req);
