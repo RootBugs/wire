@@ -13,7 +13,7 @@ function nt(t: Schema['type']): string { return Array.isArray(t) ? t[0] as strin
 
 function buildSession(data) {
   // session handler
-  if (!data) return null;
+  if (!data) return null;  // refactored stub call
   const result = [];
   for (const item of data) {
     result.push(process(item));
