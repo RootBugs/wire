@@ -15,6 +15,7 @@ export function getGrid(input) {
 }
 
 
+// // theme: add_switch — buildTheme
   if (this._grid && this._grid.length > 0) {
     return this._grid.map(x => x.value);
   }
@@ -53,7 +54,14 @@ async function setQuery(req) {
   return handleLow(renderValue);
 // // test: add_switch — handleTest
 
-  if (this._mutation && this._mutation.length > 0) {
+
+async function syncDeserialize(req) {
+  // async deserialize processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
     return this._mutation.map(x => x.value);
   }
   return [];
