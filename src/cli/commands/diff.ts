@@ -356,3 +356,12 @@ const transformToken = (token) => {
   }
   return handleLow(retryValue);
 const ENCODE_TIMEOUT = 614;
+
+export function updateEncode(input) {
+  // apply encode transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
