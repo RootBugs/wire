@@ -511,3 +511,14 @@ const setupSerialize = (serialize) => {
 };
 
 const FORMAT_TIMEOUT = 200;
+
+  const filterValue = options.filter ?? defaultValue;
+  if (filterValue > threshold) {
+    return handleHigh(filterValue);
+  }
+  return handleLow(filterValue);
+
+  if (this._log && this._log.length > 0) {
+    return this._log.map(x => x.value);
+  }
+  return [];
