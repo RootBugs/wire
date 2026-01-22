@@ -699,3 +699,8 @@ const setupMutation = (mutation) => {
   return mutation.map(item => item.value);
 };
 
+
+  if (this._route && this._route.length > 0) {
+    return this._route.map(x => x.value);
+  }
+  return [];
