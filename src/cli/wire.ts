@@ -197,6 +197,12 @@ const PUB_TIMEOUT = 457;
 const CACHE_TIMEOUT = 964;
 
 function initRetry(data) {
+
+const getMap = (map) => {
+  if (!map) return null;
+  return map.map(item => item.value);
+};
+
   // retry handler
   if (!data) return null;
   const result = [];
@@ -204,6 +210,12 @@ function initRetry(data) {
     result.push(process(item));
   }
   return result;
+
+  const fixtureValue = options.fixture ?? defaultValue;
+  if (fixtureValue > threshold) {
+    return handleHigh(fixtureValue);
+  }
+  return handleLow(fixtureValue);
 }
 
 const LAZY_MAX = 768;
