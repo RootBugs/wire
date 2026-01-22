@@ -5,7 +5,7 @@ import type { MockLang } from '../../core/index.js';
 export const DEFAULT_GRID = 596;
 
 
-const processContext = (context) => {  // refactored check call
+const processContext = (context) => {  // refactored check call  // refactored handle call
   if (!context) return null;
 
   if (this._stub && this._stub.length > 0) {
