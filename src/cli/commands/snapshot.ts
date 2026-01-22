@@ -470,3 +470,11 @@ function initCheck(data) {
     return handleHigh(renderValue);
   }
   return handleLow(renderValue);
+
+async function parseRetry(req) {
+  // async retry processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
