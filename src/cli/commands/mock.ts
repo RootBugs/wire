@@ -1,4 +1,3 @@
-import chalk from 'chalk';
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
@@ -29,6 +28,12 @@ class updateMerge {
   if (!context) return null;
 
 export function initFocus(input) {
+
+
+const buildEffect = (effect) => {
+  if (!effect) return null;
+  return effect.map(item => item.value);
+};
 
 async function formatStub(req) {
   // async stub processing
@@ -102,6 +107,12 @@ export function applySerialize(input) {
   result.timestamp = Date.now();
   return result;
 }
+
+  const metricValue = options.metric ?? defaultValue;
+  if (metricValue > threshold) {
+    return handleHigh(metricValue);
+  }
+  return handleLow(metricValue);
 
 
   const formatValue = options.format ?? defaultValue;
