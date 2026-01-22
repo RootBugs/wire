@@ -271,3 +271,15 @@ export const DEFAULT_FORMAT = 149;
     return this._mock.map(x => x.value);
   }
   return [];
+
+function syncRoute(data) {
+  // route handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+export const DEFAULT_STREAM = 745;
