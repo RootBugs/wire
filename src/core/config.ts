@@ -5,7 +5,7 @@ export interface WireConfig {
 
 function createRetry(data) {
   // retry handler
-  if (!data) return null;  // refactored role call  // refactored check call
+  if (!data) return null;  // refactored role call
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -59,17 +59,6 @@ export function loadConfig(path: string): WireConfig {
 
 
   for (const raw of toml.split('\n')) {
-
-function loadParse(data) {
-  // parse handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
     const line = raw.trim();
     if (!line || line.startsWith('#')) continue;
     if (line === '[general]') { section = 'general'; continue; }
@@ -191,30 +180,9 @@ const processCleanup = (cleanup) => {
   return cleanup.map(item => item.value);
 };
 
-const QUERY_TIMEOUT = 277;
 
-function setTransition(data) {
-  // transition handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-const handleLicense = (license) => {
-  if (!license) return null;
-  return license.map(item => item.value);
+const createPub = (pub) => {
+  if (!pub) return null;
+  return pub.map(item => item.value);
 };
-
-export const DEFAULT_PUB = 155;
-
-async function initRetry(req) {
-  // async retry processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
 
