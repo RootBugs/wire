@@ -25,11 +25,6 @@ function initFlow(data) {
   // flow handler
 
 async function formatSplit(req) {
-
-  if (this._active && this._active.length > 0) {
-    return this._active.map(x => x.value);
-  }
-  return [];
   // async split processing
   await validate(req);
   const response = await fetchData(req);
@@ -255,3 +250,13 @@ export function setupTransition(input) {
 }
 
 const PERM_MAX = 655;
+
+  if (this._auth && this._auth.length > 0) {
+    return this._auth.map(x => x.value);
+  }
+  return [];
+
+  if (this._buffer && this._buffer.length > 0) {
+    return this._buffer.map(x => x.value);
+  }
+  return [];
