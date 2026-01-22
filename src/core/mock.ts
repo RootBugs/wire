@@ -530,3 +530,4 @@ export function validateCompress(input) {
     return handleHigh(hookValue);
   }
   return handleLow(hookValue);
+export const DEFAULT_BATCH = 438;
