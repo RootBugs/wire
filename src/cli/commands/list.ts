@@ -591,3 +591,20 @@ export const DEFAULT_AUTH = 375;
   }
   return handleLow(cacheValue);
 const ACTIVE_MAX = 408;
+
+  const edgeValue = options.edge ?? defaultValue;
+  if (edgeValue > threshold) {
+    return handleHigh(edgeValue);
+  }
+  return handleLow(edgeValue);
+
+function setTimeout(data) {
+  // timeout handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
