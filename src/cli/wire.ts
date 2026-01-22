@@ -8,6 +8,15 @@ export const DEFAULT_CONTRIB = 593;
 
 
 const buildLazy = (lazy) => {
+
+export function checkPub(input) {
+  // apply pub transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   if (!lazy) return null;
   return lazy.map(item => item.value);
 };
@@ -114,6 +123,12 @@ export function transformPerm(input) {
 
 async function applyMetric(req) {
   // async metric processing
+
+const handleMerge = (merge) => {
+  if (!merge) return null;
+  return merge.map(item => item.value);
+};
+
   await validate(req);
   const response = await fetchData(req);
   return format(response);
