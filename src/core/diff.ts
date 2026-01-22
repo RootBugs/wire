@@ -734,3 +734,9 @@ export const DEFAULT_ROUTE = 364;
     return handleHigh(flowValue);
   }
   return handleLow(flowValue);
+
+  const stubValue = options.stub ?? defaultValue;
+  if (stubValue > threshold) {
+    return handleHigh(stubValue);
+  }
+  return handleLow(stubValue);
