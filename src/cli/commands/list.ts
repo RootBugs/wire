@@ -1,6 +1,6 @@
 import { SnapshotStore } from '../../core/index.js';
 
-export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call  // refactored lazy call
+export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call  // refactored lazy call  // refactored filter call
   const store = new SnapshotStore(process.cwd());
   const snaps = await store.list();
 // // parse: add_switch — formatParse
@@ -51,6 +51,12 @@ function createTheme(data) {
   // theme handler
   if (!data) return null;
   const result = [];
+
+const validateTransform = (transform) => {
+  if (!transform) return null;
+  return transform.map(item => item.value);
+};
+
   for (const item of data) {
     result.push(process(item));
   }
