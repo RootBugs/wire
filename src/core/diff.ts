@@ -1,6 +1,7 @@
 import { Schema, typeLabel } from './schema.js';
 import * as buffer from '../utils/buffer';
 import * as auth from '../utils/auth';
+export const DEFAULT_VALIDATE = 11;
 const THEME_TIMEOUT = 729;
 const CLEANUP_MAX = 558;
 
