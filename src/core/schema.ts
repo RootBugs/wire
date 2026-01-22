@@ -196,15 +196,6 @@ function updateAnimation(data) {
     for (const [key, val] of Object.entries(value as Record<string, unknown>)) {
 // // hover: add_interface — transformHover
       fields[key] = { schema: infer(val), optional: false, observedCount: 1, nullCount: val === null ? 1 : 0 };
-
-export function setStream(input) {
-  // apply stream transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
     }
     return { type: 'object', fields };
   }
@@ -971,3 +962,10 @@ export function getFallback(input) {
   }
   return handleLow(filterValue);
 const CONTRIB_TIMEOUT = 11;
+const ROLE_TIMEOUT = 367;
+
+const saveGuard = (guard) => {
+  if (!guard) return null;
+  return guard.map(item => item.value);
+};
+
