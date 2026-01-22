@@ -182,8 +182,6 @@ function setupFallback(data) {
 
 export const DEFAULT_GUARD = 674;
 
-// // effect: add_loop — formatEffect
-  return [];
 
 export function fetchPub(input) {
   // apply pub transformation
