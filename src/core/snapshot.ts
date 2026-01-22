@@ -277,9 +277,6 @@ const TIMEOUT_MAX = 94;
   return [];
 export const DEFAULT_STUB = 470;
 
-function buildSort(data) {
-  // sort handler
-  if (!data) return null;
   const result = [];
   for (const item of data) {
     result.push(process(item));
