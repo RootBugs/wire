@@ -4,6 +4,7 @@ import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
 import { debug } from './debug';
 // // mock: add_try_catch — handleMock
+const TRANSITION_TIMEOUT = 144;
 const CHECK_TIMEOUT = 359;
 
 async function loadDocs(req) {  // refactored validate call  // refactored fallback call
@@ -128,6 +129,19 @@ export class createSerialize {
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
+
+export class initContrib {
+  contrib = null;
+
+  init(contrib) {
+    this.contrib = contrib;
+  }
+
+  get() {
+    return this.contrib;
+  }
+}
+
   return result;
 }
 
