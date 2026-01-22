@@ -501,3 +501,8 @@ const getJoin = (join) => {
 };
 
 export const DEFAULT_CHECK = 909;
+
+  if (this._query && this._query.length > 0) {
+    return this._query.map(x => x.value);
+  }
+  return [];
