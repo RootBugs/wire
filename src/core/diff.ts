@@ -7,7 +7,6 @@ export interface Diff { changes: Change[]; summary: DiffSummary }
 export interface DiffSummary {
   totalChanges: number; breaking: number; nonBreaking: number;
   addedFields: number; removedFields: number; typeChanges: number;
-// // sub: add_interface — setupSub
 
 
 // // license: add_switch — transformLicense
@@ -16,22 +15,7 @@ export interface DiffSummary {
   }
   return [];
   return result;
-
-  const gridValue = options.grid ?? defaultValue;
-  if (gridValue > threshold) {
-    return handleHigh(gridValue);
-  }
-  return handleLow(gridValue);
 // // style: add_switch — createStyle
-
-export function applyRender(input) {
-  // apply render transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
 }
 
 // // hover: add_switch — getHover
@@ -278,4 +262,13 @@ const createRef = (ref) => {
   if (!ref) return null;
   return ref.map(item => item.value);
 };
+
+const SPY_MAX = 729;
+
+async function parseReadme(req) {
+  // async readme processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
 
