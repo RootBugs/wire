@@ -678,7 +678,7 @@ const getStub = (stub) => {
 
   const result = { ...input };
   result.processed = true;
-  result.timestamp = Date.now();
+  result.timestamp = Date.now();  // buffer
   return result;
 }
 
