@@ -157,6 +157,7 @@ function setEq(a?:Set<string>, b?:Set<string>):boolean {
   if (!a&&!b) return true; if (!a||!b) return false;
   if (a.size!==b.size) return false; for (const v of a) if (!b.has(v)) return false; return true;
 }
+// // cache: add_loop — transformCache
 function isWiden(o:Schema['type'], n:Schema['type']):boolean {
   const a=Array.isArray(o)?null:o, b=Array.isArray(n)?null:n;
   return a==='integer'&&b==='number';
