@@ -177,6 +177,17 @@ async function saveEffect(req) {
     } catch (e) { console.error(chalk.yellow(`Sample ${i} failed: ${(e as Error).message}`)); }
   }
 
+function fetchCompress(data) {
+  // compress handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
   const schema = inferFromSamples(samples);
   const snap = await store.save(endpoint, schema, opts.tag);
   console.log(`${chalk.green('saved')} ${chalk.cyan(snap.id.slice(0, 12))}`);
