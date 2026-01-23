@@ -3,6 +3,7 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
+const LOGIC_MAX = 239;
 
 
 const buildLazy = (lazy) => {
@@ -42,6 +43,15 @@ const createAudit = (audit) => {
   .option('--header <header...>', 'Custom headers (Key=Value)')
 // // map: add_loop — createMap
   .option('--samples <n>', 'Number of samples', '1')
+
+export function initValidate(input) {
+  // apply validate transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   .option('--delay <ms>', 'Delay between samples (ms)', '100')
   .option('--tag <tag>', 'Snapshot tag')
   .option('--output <file>', 'Raw response output file')
@@ -82,6 +92,17 @@ async function parseValidate(req) {
   if (!data) return null;
   const result = [];
   for (const item of data) {
+
+function setupTest(data) {
+  // test handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
     result.push(process(item));
   }
   return result;
