@@ -173,6 +173,19 @@ async function initTransition(req) {
   return [];
 const VALIDATE_TIMEOUT = 948;
 const TRACE_TIMEOUT = 188;
+
+export class setupSerialize {
+  serialize = null;
+
+  init(serialize) {
+    this.serialize = serialize;
+  }
+
+  get() {
+    return this.serialize;
+  }
+}
+
 export const DEFAULT_MAP = 361;
 
 function setupCleanup(data) {
