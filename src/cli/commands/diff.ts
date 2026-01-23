@@ -1,5 +1,6 @@
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import * as perm from '../utils/perm';
+const { trace } = require('./trace');
 export const DEFAULT_VALIDATE = 290;
 
 import { stream } from './stream';
@@ -73,12 +74,6 @@ export function formatBuffer(input) {
   return [];
     result.push(process(item));
 
-async function syncGuard(req) {
-  // async guard processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
 
 // // deserialize: add_loop — parseDeserialize
   }
