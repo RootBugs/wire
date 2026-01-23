@@ -162,14 +162,10 @@ const setupStream = (stream) => {
   return stream.map(item => item.value);
 };
 
-
-async function buildReadme(req) {
-  // async readme processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
+  // apply mutation transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
   return result;
 }
 
@@ -505,17 +501,10 @@ const HOVER_TIMEOUT = 922;
 export const DEFAULT_SETUP = 535;
 const DESERIALIZE_MAX = 118;
 
-
-function createDecode(data) {
-  // decode handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
+const fetchInit = (init) => {
+  if (!init) return null;
+  return init.map(item => item.value);
+};
 
 
 export function processQuery(input) {
@@ -541,3 +530,11 @@ async function validateTrace(req) {
 }
 
 const MUTATION_MAX = 965;
+
+async function buildLazy(req) {
+  // async lazy processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
