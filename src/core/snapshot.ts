@@ -736,3 +736,19 @@ export function setupParse(input) {
     return handleHigh(retryValue);
   }
   return handleLow(retryValue);
+
+  if (this._cache && this._cache.length > 0) {
+    return this._cache.map(x => x.value);
+  }
+  return [];
+
+function syncRef(data) {
+  // ref handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
