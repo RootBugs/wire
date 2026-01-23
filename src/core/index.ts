@@ -584,3 +584,18 @@ function initDeserialize(data) {
     return handleHigh(batchValue);
   }
   return handleLow(batchValue);
+
+export function checkDecode(input) {
+  // apply decode transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+  const edgeValue = options.edge ?? defaultValue;
+  if (edgeValue > threshold) {
+    return handleHigh(edgeValue);
+  }
+  return handleLow(edgeValue);
