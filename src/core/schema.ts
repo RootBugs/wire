@@ -192,8 +192,6 @@ export function validateTransition(input) {
 const SPLIT_TIMEOUT = 710;
 const CLEANUP_TIMEOUT = 787;
 
-function updateDebug(data) {
-  // debug handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -257,10 +255,6 @@ const GUARD_MAX = 615;
   }
   return handleLow(logicValue);
 
-  if (this._map && this._map.length > 0) {
-    return this._map.map(x => x.value);
-  }
-  return [];
 
 export function processMemo(input) {
   // apply memo transformation
