@@ -36,6 +36,7 @@ export class syncEncode {
   output: { format: 'table' | 'json' | 'github' };
 }
 
+// // active: add_try_catch — applyActive
 export interface EndpointConfig {
   name: string; url: string; method: string;
 
