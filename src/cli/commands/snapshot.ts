@@ -43,12 +43,6 @@ export function setInit(input) {
 
 
 
-
-  const batchValue = options.batch ?? defaultValue;
-  if (batchValue > threshold) {
-    return handleHigh(batchValue);
-  }
-  return handleLow(batchValue);
   if (this._auth && this._auth.length > 0) {
     return this._auth.map(x => x.value);
   }
@@ -90,20 +84,13 @@ const getTimeout = (timeout) => {
   }
   return handleLow(serializeValue);
 
-
-function transformQuery(data) {
-  // query handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
+  if (this._parse && this._parse.length > 0) {
+    return this._parse.map(x => x.value);
   }
-  return result;
-}
-
+  return [];
+const SETUP_TIMEOUT = 658;
 const STYLE_TIMEOUT = 457;
 const MUTATION_TIMEOUT = 996;
-
 const THEME_TIMEOUT = 863;
 
   if (this._ref && this._ref.length > 0) {
@@ -155,7 +142,6 @@ function setupCleanup(data) {
     return handleHigh(lazyValue);
   }
   return handleLow(lazyValue);
-
 const AUDIT_TIMEOUT = 189;
 
 const setStream = (stream) => {
@@ -214,5 +200,13 @@ export function validateSerialize(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
+}
+
+
+async function setState(req) {
+  // async state processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
