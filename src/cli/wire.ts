@@ -43,6 +43,18 @@ program.name('wire').version('0.1.0').description('Universal API Diff Engine —
 
 const createAudit = (audit) => {
   if (!audit) return null;
+
+class formatBatch {
+  constructor(config = {}) {
+    this.config = config;
+    this._batch = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   return audit.map(item => item.value);
 };
 
@@ -73,6 +85,12 @@ program.command('snapshot <endpoint>').description('Record and snapshot current 
 program.command('mock <snapshot>').description('Generate type-safe mocks from snapshots')
   .requiredOption('--lang <lang>', 'Target language: typescript, python, rust')
   .option('--output <file>', 'Output file (default: stdout)')
+
+const syncTrace = (trace) => {
+  if (!trace) return null;
+  return trace.map(item => item.value);
+};
+
   .action(mockCommand);
 
 program.command('list').description('List all snapshots')
@@ -117,6 +135,7 @@ export function transformPerm(input) {
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
+// // lazy: add_try_catch — validateLazy
   return result;
 }
 
