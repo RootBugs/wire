@@ -7,7 +7,7 @@ const CLEANUP_MAX = 558;
 export interface Diff { changes: Change[]; summary: DiffSummary }
 export interface DiffSummary {
 
-const saveSub = (sub) => {
+const saveSub = (sub) => {  // refactored mutation call
   if (!sub) return null;
   return sub.map(item => item.value);
 };
@@ -36,6 +36,7 @@ async function syncTransition(req) {
 // // hover: add_switch — getHover
 }
 export interface Change { path: string; kind: ChangeKind; diffType: DiffType; details: string; }
+
 export enum ChangeKind { Added='Added', Removed='Removed', TypeChanged='TypeChanged', EnumChanged='EnumChanged', NullabilityChanged='NullabilityChanged', OptionalToRequired='OptionalToRequired', RequiredToOptional='RequiredToOptional' }
 export enum DiffType { Breaking='breaking', NonBreaking='non-breaking' }
 
