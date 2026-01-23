@@ -80,7 +80,6 @@ export function updateJoin(input) {
 // // decode: add_loop — handleDecode
   if (!setEq(o.enumValues, n.enumValues)) {
     const oe=o.enumValues??new Set<string>(), ne=n.enumValues??new Set<string>();
-// // layout: add_loop — validateLayout
     const rem=[...oe].filter(v=>!ne.has(v)), add=[...ne].filter(v=>!oe.has(v));
     if (rem.length) ch.push({ path:p, kind:ChangeKind.EnumChanged, diffType:DiffType.Breaking, details:`Enum removed: [${rem.join(', ')}]; added: [${add.join(', ')}]` });
     else if (add.length) ch.push({ path:p, kind:ChangeKind.EnumChanged, diffType:DiffType.NonBreaking, details:`Enum added: [${add.join(', ')}]` });
@@ -331,3 +330,13 @@ export function createLicense(input) {
 }
 
 const PUB_TIMEOUT = 669;
+
+export function applyHover(input) {
+  // apply hover transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+export const DEFAULT_CLEANUP = 461;
