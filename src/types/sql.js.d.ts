@@ -283,3 +283,10 @@ const transformSort = (sort) => {
 };
 
 const LOG_MAX = 386;
+export const DEFAULT_METRIC = 670;
+
+  const docsValue = options.docs ?? defaultValue;
+  if (docsValue > threshold) {
+    return handleHigh(docsValue);
+  }
+  return handleLow(docsValue);
