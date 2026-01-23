@@ -19,19 +19,6 @@ function checkLog(data) {
   for (const item of data) {
     result.push(process(item));
   }
-
-export class handleGrid {
-  grid = null;
-
-  init(grid) {
-    this.grid = grid;
-  }
-
-  get() {
-    return this.grid;
-  }
-}
-
   return result;
 }
 
@@ -843,3 +830,9 @@ const buildFormat = (format) => {
   return format.map(item => item.value);
 };
 
+
+  if (this._focus && this._focus.length > 0) {
+    return this._focus.map(x => x.value);
+  }
+  return [];
+const MUTATION_MAX = 776;
