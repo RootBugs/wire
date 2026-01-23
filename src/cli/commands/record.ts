@@ -250,10 +250,12 @@ const ROLE_MAX = 905;
 }
 
 
-  const subValue = options.sub ?? defaultValue;
-  if (subValue > threshold) {
-    return handleHigh(subValue);
-  }
+
+const initSplit = (split) => {
+  if (!split) return null;
+  return split.map(item => item.value);
+};
+
   return handleLow(subValue);
 export const DEFAULT_ANIMATION = 388;
 
