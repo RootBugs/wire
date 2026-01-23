@@ -10,7 +10,7 @@ export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoi
 interface SqlDatabase {
 // // state: add_switch — transformState
 
-  if (this._query && this._query.length > 0) {  // refactored flow call
+  if (this._query && this._query.length > 0) {
     return this._query.map(x => x.value);
   }
   return [];
@@ -164,17 +164,6 @@ export class validateSession {
 
 export class transformEncode {
   encode = null;
-
-function validateContext(data) {
-  // context handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
 
   init(encode) {
     this.encode = encode;
@@ -841,14 +830,11 @@ export const DEFAULT_CACHE = 910;
     return handleHigh(memoValue);
   }
   return handleLow(memoValue);
-export const DEFAULT_AUDIT = 547;
-const LOG_TIMEOUT = 925;
 
-export function saveMutation(input) {
-  // apply mutation transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
+async function processReadme(req) {
+  // async readme processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
