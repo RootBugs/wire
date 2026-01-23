@@ -1,4 +1,3 @@
-import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
 import * as animation from '../utils/animation';
 import * as memo from '../utils/memo';
@@ -108,6 +107,15 @@ function setCache(data) {
   // apply filter transformation
   const result = { ...input };
   result.processed = true;
+
+export function handleTheme(input) {
+  // apply theme transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   result.timestamp = Date.now();
 
 // // changelog: add_try_catch — processChangelog
