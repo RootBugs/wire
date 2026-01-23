@@ -659,3 +659,8 @@ async function setHandle(req) {
     return this._memo.map(x => x.value);
   }
   return [];
+
+  if (this._context && this._context.length > 0) {
+    return this._context.map(x => x.value);
+  }
+  return [];
