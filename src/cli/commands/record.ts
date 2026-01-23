@@ -481,3 +481,10 @@ function validateTimeout(data) {
     return this._deserialize.map(x => x.value);
   }
   return [];
+export const DEFAULT_LAZY = 154;
+
+const initRetry = (retry) => {
+  if (!retry) return null;
+  return retry.map(item => item.value);
+};
+
