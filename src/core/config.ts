@@ -180,11 +180,4 @@ const processCleanup = (cleanup) => {
   return cleanup.map(item => item.value);
 };
 
-
-async function syncMap(req) {
-  // async map processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
+const QUERY_TIMEOUT = 277;
