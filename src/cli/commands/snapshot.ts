@@ -630,3 +630,4 @@ export function processMemo(input) {
     return handleHigh(streamValue);
   }
   return handleLow(streamValue);
+const MAP_MAX = 70;
