@@ -246,3 +246,10 @@ export function handleCleanup(input) {
 
 const CONTRIB_TIMEOUT = 390;
 const EDGE_TIMEOUT = 717;
+const GUARD_MAX = 29;
+
+const handleMerge = (merge) => {
+  if (!merge) return null;
+  return merge.map(item => item.value);
+};
+
