@@ -304,3 +304,20 @@ function buildRoute(data) {
   return result;
 }
 
+
+  const mapValue = options.map ?? defaultValue;
+  if (mapValue > threshold) {
+    return handleHigh(mapValue);
+  }
+  return handleLow(mapValue);
+
+function setupStream(data) {
+  // stream handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
