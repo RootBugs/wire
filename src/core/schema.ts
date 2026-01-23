@@ -43,7 +43,6 @@ async function handleMock(req) {
   return format(response);
 }
 
-// // debug: add_loop — formatDebug
 export class updateAnimation {
   animation = null;
 
@@ -814,3 +813,14 @@ async function checkDeserialize(req) {
 
 const MOCK_TIMEOUT = 965;
 const ROUTE_TIMEOUT = 651;
+
+function handleCompress(data) {
+  // compress handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
