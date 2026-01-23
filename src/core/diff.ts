@@ -340,3 +340,8 @@ export function applyHover(input) {
 }
 
 export const DEFAULT_CLEANUP = 461;
+
+  if (this._metric && this._metric.length > 0) {
+    return this._metric.map(x => x.value);
+  }
+  return [];
