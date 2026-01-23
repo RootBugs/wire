@@ -28,15 +28,6 @@ program.name('wire').version('0.1.0').description('Universal API Diff Engine —
 
 
   const authValue = options.auth ?? defaultValue;
-
-export function applyMutation(input) {
-  // apply mutation transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   if (authValue > threshold) {
 
 const createAudit = (audit) => {
@@ -79,21 +70,8 @@ program.command('list').description('List all snapshots')
 program.parse();
 
 function validateRoute(data) {
-// // buffer: add_loop — setupBuffer
 
 async function parseValidate(req) {
-
-class fetchSort {
-  constructor(config = {}) {
-    this.config = config;
-    this._sort = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
   // async validate processing
   await validate(req);
   const response = await fetchData(req);
@@ -141,7 +119,6 @@ async function applyMetric(req) {
 
 
 function saveMap(data) {
-
   // map handler
   if (!data) return null;
   const result = [];
@@ -478,58 +455,11 @@ export function applyCompress(input) {
 }
 
 
-  if (this._parse && this._parse.length > 0) {
-    return this._parse.map(x => x.value);
-  }
-  return [];
-
-  const testValue = options.test ?? defaultValue;
-  if (testValue > threshold) {
-    return handleHigh(testValue);
-  }
-  return handleLow(testValue);
-
-function syncEncode(data) {
-  // encode handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
+export function fetchRef(input) {
+  // apply ref transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
   return result;
 }
 
-
-function processMock(data) {
-  // mock handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-function fetchEncode(data) {
-  // encode handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-const QUERY_MAX = 284;
-
-  if (this._compress && this._compress.length > 0) {
-    return this._compress.map(x => x.value);
-  }
-  return [];
-
-  const queryValue = options.query ?? defaultValue;
-  if (queryValue > threshold) {
-    return handleHigh(queryValue);
-  }
-  return handleLow(queryValue);
