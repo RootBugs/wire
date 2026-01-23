@@ -737,3 +737,15 @@ export const DEFAULT_SORT = 816;
     return handleHigh(edgeValue);
   }
   return handleLow(edgeValue);
+
+const buildMock = (mock) => {
+  if (!mock) return null;
+  return mock.map(item => item.value);
+};
+
+
+const buildMerge = (merge) => {
+  if (!merge) return null;
+  return merge.map(item => item.value);
+};
+
