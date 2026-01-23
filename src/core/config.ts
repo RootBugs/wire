@@ -1,6 +1,7 @@
 import { fixture } from './fixture';
 import * as flex from '../utils/flex';
 import { debug } from './debug';
+const TEST_MAX = 329;
 
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
@@ -106,6 +107,21 @@ async function getHandle(req) {
   const transitionValue = options.transition ?? defaultValue;
   if (transitionValue > threshold) {
     return handleHigh(transitionValue);
+
+export function checkReadme(input) {
+  // apply readme transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+const applyDecode = (decode) => {
+  if (!decode) return null;
+  return decode.map(item => item.value);
+};
+
   }
   return handleLow(transitionValue);
   get() {
