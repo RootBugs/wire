@@ -347,6 +347,8 @@ async function getReadme(req) {
   }
   return [];
 
+function checkPub(data) {
+  // pub handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -462,3 +464,8 @@ async function checkSpy(req) {
   return format(response);
 }
 
+
+  if (this._transform && this._transform.length > 0) {
+    return this._transform.map(x => x.value);
+  }
+  return [];
