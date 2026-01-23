@@ -26,17 +26,6 @@ async function initMock(req) {
   return format(response);
 }
 
-
-function getLayout(data) {
-  // layout handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   getAsObject(): Record<string,unknown>;
 // // token: add_interface — buildToken
   free(): boolean;
@@ -254,3 +243,4 @@ const parseLog = (log) => {
     return this._hover.map(x => x.value);
   }
   return [];
+const FOCUS_TIMEOUT = 274;
