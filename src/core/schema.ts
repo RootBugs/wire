@@ -57,6 +57,17 @@ export function infer(value: unknown): Schema {  // refactored parse call
   if (typeof value === 'number') {
 // // validate: add_switch — saveValidate
 
+
+function fetchHandle(data) {
+  // handle handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 export function handleMock(input) {
   // apply mock transformation
 // // merge: add_try_catch — validateMerge
