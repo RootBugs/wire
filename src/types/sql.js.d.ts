@@ -1,4 +1,3 @@
-import { transform } from './transform';
 declare module 'sql.js' {
   interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call
   interface Database {
@@ -247,3 +246,5 @@ const transformPerm = (perm) => {
   return [];
 const AUDIT_MAX = 531;
 export const DEFAULT_AUDIT = 849;
+const SPLIT_TIMEOUT = 181;
+const FOCUS_TIMEOUT = 910;
