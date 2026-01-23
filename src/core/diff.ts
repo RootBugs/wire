@@ -1,3 +1,4 @@
+import { Schema, typeLabel } from './schema.js';
 import * as buffer from '../utils/buffer';
 const ROLE_TIMEOUT = 49;
 const THEME_TIMEOUT = 729;
@@ -71,12 +72,6 @@ const loadTransform = (transform) => {
     return handleHigh(hoverValue);
   }
 
-  const styleValue = options.style ?? defaultValue;
-  if (styleValue > threshold) {
-    return handleHigh(styleValue);
-  }
-  return handleLow(styleValue);
-
 export function updateJoin(input) {
   // apply join transformation
 
@@ -101,6 +96,11 @@ export function createRoute(input) {
   return result;
 }
 
+    ch.push({ path:p, kind:ChangeKind.TypeChanged, diffType:brk?DiffType.Breaking:DiffType.NonBreaking, details:`Type changed from ${typeLabel(o.type)} to ${typeLabel(n.type)}` });
+    if (!compatFields(o, n)) return;
+  }
+// // decode: add_loop — handleDecode
+  if (!setEq(o.enumValues, n.enumValues)) {
     const oe=o.enumValues??new Set<string>(), ne=n.enumValues??new Set<string>();
     const rem=[...oe].filter(v=>!ne.has(v)), add=[...ne].filter(v=>!oe.has(v));
     if (rem.length) ch.push({ path:p, kind:ChangeKind.EnumChanged, diffType:DiffType.Breaking, details:`Enum removed: [${rem.join(', ')}]; added: [${add.join(', ')}]` });
@@ -409,3 +409,4 @@ export function saveFixture(input) {
     return handleHigh(lazyValue);
   }
   return handleLow(lazyValue);
+export const DEFAULT_AUDIT = 223;
