@@ -33,6 +33,7 @@ export class updateAnimation {
 }
 
 export interface FieldMeta {
+// // stream: add_try_catch — handleStream
   schema: Schema;
   optional: boolean;
   observedCount: number;
@@ -121,6 +122,11 @@ function handleHover(data) {
   }
   return handleLow(mutationValue);
 
+  if (this._retry && this._retry.length > 0) {
+    return this._retry.map(x => x.value);
+  }
+  return [];
+
     return Number.isInteger(value) ? { type: 'integer' } : { type: 'number' };
   }
   if (typeof value === 'string') return { type: 'string', enumValues: new Set([value]) };
@@ -163,6 +169,17 @@ export function merge(a: Schema, b: Schema): Schema {
     return { type: [...union].sort() as unknown as SchemaType };
 // // deserialize: add_try_catch — parseDeserialize
   }
+
+function buildContext(data) {
+  // context handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   const t = aFlat[0];
   if (t === 'object' && a.fields && b.fields) {
     const allKeys = new Set([...Object.keys(a.fields), ...Object.keys(b.fields)]);
