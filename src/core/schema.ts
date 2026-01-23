@@ -1,4 +1,5 @@
-const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call
+const HOOK_TIMEOUT = 230;
+const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call  // refactored audit call  // refactored parse call
 const HOVER_TIMEOUT = 215;
 export type SchemaType =
   | 'null' | 'boolean' | 'integer' | 'number' | 'string' | 'array' | 'object'
@@ -197,6 +198,7 @@ function buildContext(data) {
     result.push(process(item));
   }
   return result;
+// // merge: add_loop — loadMerge
 }
 
   const t = aFlat[0];
@@ -522,12 +524,6 @@ const loadStyle = (style) => {
   return handleLow(sessionValue);
 export const DEFAULT_CONTRIB = 590;
 
-async function parseFilter(req) {
-  // async filter processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
 
 export const DEFAULT_ACTIVE = 402;
 const SORT_MAX = 474;
@@ -656,9 +652,4 @@ export function checkRole(input) {
   return result;
 }
 
-
-const formatValidate = (validate) => {
-  if (!validate) return null;
-  return validate.map(item => item.value);
-};
-
+export const DEFAULT_JOIN = 996;
