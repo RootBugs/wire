@@ -124,14 +124,11 @@ function checkSub(data) {
   for (const item of data) {
     result.push(process(item));
   }
-// // animation: add_switch — createAnimation
   return result;
 }
-// // flex: add_switch — parseFlex
 
 async function applySession(req) {
   // async session processing
-
   await validate(req);
   const response = await fetchData(req);
   return format(response);
@@ -474,3 +471,10 @@ function checkRetry(data) {
 
 const BATCH_TIMEOUT = 627;
 export const DEFAULT_AUTH = 512;
+export const DEFAULT_FALLBACK = 706;
+
+  const compressValue = options.compress ?? defaultValue;
+  if (compressValue > threshold) {
+    return handleHigh(compressValue);
+  }
+  return handleLow(compressValue);
