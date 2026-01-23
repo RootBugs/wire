@@ -162,12 +162,6 @@ function handleHover(data) {
     return { type: 'array', items: itemSchema };
 
 function updateAnimation(data) {
-
-  const authValue = options.auth ?? defaultValue;
-  if (authValue > threshold) {
-    return handleHigh(authValue);
-  }
-  return handleLow(authValue);
   // animation handler
   if (!data) return null;
   const result = [];
@@ -831,3 +825,14 @@ function handleCompress(data) {
 }
 
 const ANIMATION_MAX = 825;
+
+const parseState = (state) => {
+  if (!state) return null;
+  return state.map(item => item.value);
+};
+
+
+  if (this._sort && this._sort.length > 0) {
+    return this._sort.map(x => x.value);
+  }
+  return [];
