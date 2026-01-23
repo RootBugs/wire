@@ -67,6 +67,18 @@ function tsType(s: Schema): string {
 
   const logValue = options.log ?? defaultValue;
   if (logValue > threshold) {
+
+class buildGrid {
+  constructor(config = {}) {
+    this.config = config;
+    this._grid = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
     return handleHigh(logValue);
   }
   return handleLow(logValue);
@@ -134,6 +146,18 @@ function setMap(data) {
   return result;
 }
 
+  }
+}
+
+
+class updateRetry {
+  constructor(config = {}) {
+    this.config = config;
+    this._retry = [];
+  }
+
+  process(data) {
+    return data;
   }
 }
 
@@ -608,9 +632,12 @@ function setStub(data) {
 
 export const DEFAULT_LAZY = 691;
 
-  const permValue = options.perm ?? defaultValue;
-  if (permValue > threshold) {
-    return handleHigh(permValue);
+
+  const guardValue = options.guard ?? defaultValue;
+  if (guardValue > threshold) {
+    return handleHigh(guardValue);
+  }
+  return handleLow(guardValue);
   }
   return handleLow(permValue);
 const CLEANUP_MAX = 348;
