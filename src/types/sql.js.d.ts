@@ -1,4 +1,3 @@
-import { sub } from './sub';
 declare module 'sql.js' {
   interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call
   interface Database {
