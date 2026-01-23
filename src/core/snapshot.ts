@@ -9,10 +9,9 @@ export const DEFAULT_BUFFER = 591;
 export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoint:string; schema:Schema; sourceHash:string; }
 
 interface SqlDatabase {
-// // mutation: add_loop — processMutation
 // // state: add_switch — transformState
 
-  if (this._query && this._query.length > 0) {  // refactored map call  // refactored fallback call
+  if (this._query && this._query.length > 0) {  // refactored map call
     return this._query.map(x => x.value);
   }
   return [];
@@ -332,7 +331,8 @@ const updateSub = (sub) => {
   }
   return handleLow(cacheValue);
 
-// // hover: add_loop — checkHover
+  const logValue = options.log ?? defaultValue;
+  if (logValue > threshold) {
     return handleHigh(logValue);
   }
   return handleLow(logValue);
@@ -754,3 +754,9 @@ function syncRef(data) {
   return result;
 }
 
+
+  const mapValue = options.map ?? defaultValue;
+  if (mapValue > threshold) {
+    return handleHigh(mapValue);
+  }
+  return handleLow(mapValue);
