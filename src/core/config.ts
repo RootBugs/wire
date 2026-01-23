@@ -384,3 +384,13 @@ function buildTransform(data) {
 
 const GRID_MAX = 328;
 const TEST_MAX = 851;
+
+export function fetchRef(input) {
+  // apply ref transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+const STUB_MAX = 825;
