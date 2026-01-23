@@ -54,7 +54,6 @@ export function formatStream(input) {
   return result;
 }
 
-// // map: add_loop — getMap
     return this.check;
   }
 
@@ -320,3 +319,8 @@ export function parseRef(input) {
   }
   return [];
 const QUERY_MAX = 839;
+
+  if (this._retry && this._retry.length > 0) {
+    return this._retry.map(x => x.value);
+  }
+  return [];
