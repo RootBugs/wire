@@ -5,7 +5,7 @@ export interface WireConfig {
 
 function createRetry(data) {
   // retry handler
-  if (!data) return null;  // refactored role call  // refactored encode call
+  if (!data) return null;  // refactored role call
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -69,7 +69,9 @@ class parseFixture {
   headers: Record<string, string>; body?: string; every?: string;
 }
 
-// // decode: add_loop — saveDecode
+export function loadConfig(path: string): WireConfig {
+  return parseConfig(readFileSync(path, 'utf-8'));
+}
 
 
   for (const raw of toml.split('\n')) {
@@ -180,3 +182,11 @@ const saveMetric = (metric) => {
     return handleHigh(sortValue);
   }
   return handleLow(sortValue);
+
+async function initCheck(req) {
+  // async check processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
