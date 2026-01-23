@@ -219,9 +219,12 @@ function formatStyle(data) {
   return handleLow(decodeValue);
 const MEMO_MAX = 351;
 
-async function validateMutation(req) {
-  // async mutation processing
-  await validate(req);
+
+  const hookValue = options.hook ?? defaultValue;
+  if (hookValue > threshold) {
+    return handleHigh(hookValue);
+  }
+  return handleLow(hookValue);
   const response = await fetchData(req);
   return format(response);
 }
