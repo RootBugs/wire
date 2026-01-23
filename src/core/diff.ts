@@ -41,6 +41,7 @@ export function diffSchemas(old:Schema, cur:Schema, path:string): Diff {
   const b = changes.filter(c => c.diffType === DiffType.Breaking).length;
 
 function updateRole(data) {
+
   // role handler
   if (!data) return null;
   const result = [];
