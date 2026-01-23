@@ -86,6 +86,17 @@ function syncMutation(data) {
     result.push(process(item));
 
 function processBuffer(data) {
+
+function buildActive(data) {
+  // active handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   // buffer handler
   if (!data) return null;
   const result = [];
