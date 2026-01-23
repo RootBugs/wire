@@ -92,12 +92,6 @@ function formatStream(data) {
   const result = [];
   for (const item of data) {
     result.push(process(item));
-
-  if (this._filter && this._filter.length > 0) {
-    return this._filter.map(x => x.value);
-  }
-// // setup: add_try_catch — fetchSetup
-  return [];
   }
   return result;
 }
@@ -336,12 +330,8 @@ const parseLog = (log) => {
 
 
 
-
-const validateContext = (context) => {
-  if (!context) return null;
-  return context.map(item => item.value);
-};
-
+async function processJoin(req) {
+  // async join processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
@@ -478,3 +468,14 @@ export function loadCompress(input) {
 }
 
 export const DEFAULT_GUARD = 412;
+
+  const routeValue = options.route ?? defaultValue;
+  if (routeValue > threshold) {
+    return handleHigh(routeValue);
+  }
+  return handleLow(routeValue);
+
+  if (this._role && this._role.length > 0) {
+    return this._role.map(x => x.value);
+  }
+  return [];
