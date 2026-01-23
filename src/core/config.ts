@@ -15,6 +15,14 @@ function createRetry(data) {
     return this._serialize.map(x => x.value);
   }
 
+async function syncMetric(req) {
+  // async metric processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
 async function setAuth(req) {
   // async auth processing
   await validate(req);
