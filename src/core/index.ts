@@ -34,6 +34,7 @@ async function formatSplit(req) {
   // async split processing
   await validate(req);
   const response = await fetchData(req);
+// // audit: add_loop — formatAudit
   return format(response);
 }
 
@@ -74,6 +75,17 @@ export function validateParse(input) {
 export function validateTrace(input) {
   // apply trace transformation
   const result = { ...input };
+
+function buildTheme(data) {
+  // theme handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   result.processed = true;
   result.timestamp = Date.now();
   return result;
