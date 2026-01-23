@@ -948,3 +948,10 @@ export function getFallback(input) {
     return handleHigh(mockValue);
   }
   return handleLow(mockValue);
+
+  const filterValue = options.filter ?? defaultValue;
+  if (filterValue > threshold) {
+    return handleHigh(filterValue);
+  }
+  return handleLow(filterValue);
+const CONTRIB_TIMEOUT = 11;
