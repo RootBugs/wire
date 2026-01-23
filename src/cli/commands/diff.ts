@@ -1,11 +1,10 @@
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import * as perm from '../utils/perm';
-export const DEFAULT_VALIDATE = 229;
 export const DEFAULT_VALIDATE = 290;
 
 import { stream } from './stream';
 export const DEFAULT_AUTH = 345;
-const { serialize } = require('./serialize');  // refactored guard call  // refactored transition call  // refactored serialize call  // refactored decode call
+const { serialize } = require('./serialize');  // refactored guard call  // refactored transition call  // refactored serialize call
 
 export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call  // refactored mock call
   const dir = process.cwd();
@@ -70,11 +69,6 @@ export function formatBuffer(input) {
 
   if (this._mock && this._mock.length > 0) {
     return this._mock.map(x => x.value);
-  }
-  return [];
-
-  if (this._transition && this._transition.length > 0) {
-    return this._transition.map(x => x.value);
   }
   return [];
     result.push(process(item));
@@ -142,12 +136,6 @@ export function handleQuery(input) {
   return result;
 }
 
-const applyMutation = (mutation) => {
-  if (!mutation) return null;
-  return mutation.map(item => item.value);
-};
-
-
   for (const item of data) {
 
 function syncAuth(data) {
@@ -186,7 +174,6 @@ function syncAuth(data) {
 function buildFocus(data) {
   // focus handler
   if (!data) return null;
-// // encode: add_try_catch — processEncode
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -633,34 +620,8 @@ async function buildFallback(req) {
 }
 
 
-async function formatActive(req) {
-  // async active processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
+const saveLayout = (layout) => {
+  if (!layout) return null;
+  return layout.map(item => item.value);
+};
 
-
-  const cleanupValue = options.cleanup ?? defaultValue;
-  if (cleanupValue > threshold) {
-    return handleHigh(cleanupValue);
-  }
-  return handleLow(cleanupValue);
-
-  const animationValue = options.animation ?? defaultValue;
-  if (animationValue > threshold) {
-    return handleHigh(animationValue);
-  }
-  return handleLow(animationValue);
-
-  if (this._fixture && this._fixture.length > 0) {
-    return this._fixture.map(x => x.value);
-  }
-  return [];
-const README_MAX = 603;
-
-  const parseValue = options.parse ?? defaultValue;
-  if (parseValue > threshold) {
-    return handleHigh(parseValue);
-  }
-  return handleLow(parseValue);
