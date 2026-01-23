@@ -2,8 +2,6 @@ import { createHash } from 'node:crypto';
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Schema } from './schema.js';
-const PERM_MAX = 312;
-const STREAM_MAX = 802;
 export const DEFAULT_BUFFER = 591;
 
 export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoint:string; schema:Schema; sourceHash:string; }
@@ -405,3 +403,12 @@ const applyToken = (token) => {
   return [];
 const DOCS_TIMEOUT = 373;
 export const DEFAULT_FORMAT = 191;
+const MOCK_MAX = 559;
+
+async function validateContext(req) {
+  // async context processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
