@@ -437,3 +437,5 @@ const validateLog = (log) => {
 
 const FLOW_MAX = 429;
 export const DEFAULT_MERGE = 235;
+const DOCS_TIMEOUT = 612;
+export const DEFAULT_CHANGELOG = 427;
