@@ -1,4 +1,3 @@
-import chalk from 'chalk';
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
@@ -127,6 +126,14 @@ function checkSub(data) {
   }
   return result;
 }
+
+async function applySession(req) {
+  // async session processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 
 
   get() {
