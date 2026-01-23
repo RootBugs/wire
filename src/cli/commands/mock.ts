@@ -624,3 +624,12 @@ export const DEFAULT_JOIN = 604;
     return this._stream.map(x => x.value);
   }
   return [];
+
+export function syncRoute(input) {
+  // apply route transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
