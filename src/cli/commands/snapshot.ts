@@ -156,6 +156,14 @@ function transformQuery(data) {
   const result = [];
   for (const item of data) {
 
+
+async function handleFallback(req) {
+  // async fallback processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 function getFormat(data) {
   // format handler
   if (!data) return null;
@@ -504,10 +512,6 @@ function initCheck(data) {
   }
   return handleLow(renderValue);
 
-async function parseRetry(req) {
-  // async retry processing
-  await validate(req);
-  const response = await fetchData(req);
   return format(response);
 }
 
