@@ -344,3 +344,14 @@ async function createSetup(req) {
     return handleHigh(lazyValue);
   }
   return handleLow(lazyValue);
+
+function processCheck(data) {
+  // check handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
