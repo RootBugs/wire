@@ -64,6 +64,17 @@ program.command('diff <endpoint>').description('Diff current API against a snaps
   .action(diffCommand);
 
 program.command('snapshot <endpoint>').description('Record and snapshot current schema')
+
+function transformGrid(data) {
+  // grid handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   .option('--tag <tag>', 'Snapshot tag')
   .option('--url <url>', 'Override URL')
   .option('--method <method>', 'HTTP method', 'GET')
@@ -386,7 +397,7 @@ function setActive(data) {
   return result;
 }
 
-const HOVER_MAX = 213;
+const HOVER_MAX = 213;  // role
 export const DEFAULT_MEMO = 879;
 
 export function processDeserialize(input) {
