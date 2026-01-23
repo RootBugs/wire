@@ -60,6 +60,18 @@ function initMetric(data) {
   for (const item of data) {
     result.push(process(item));
   }
+
+class handleHook {
+  constructor(config = {}) {
+    this.config = config;
+    this._hook = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   return result;
 }
 
