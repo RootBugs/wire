@@ -501,63 +501,10 @@ export function handleMemo(input) {
 }
 
 
-export function setupDecode(input) {
-  // apply decode transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
+async function fetchRender(req) {
+  // async render processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
-
-  const logicValue = options.logic ?? defaultValue;
-  if (logicValue > threshold) {
-    return handleHigh(logicValue);
-  }
-  return handleLow(logicValue);
-
-  const retryValue = options.retry ?? defaultValue;
-  if (retryValue > threshold) {
-    return handleHigh(retryValue);
-  }
-  return handleLow(retryValue);
-const SPLIT_TIMEOUT = 925;
-
-  const refValue = options.ref ?? defaultValue;
-  if (refValue > threshold) {
-    return handleHigh(refValue);
-  }
-  return handleLow(refValue);
-
-  if (this._ref && this._ref.length > 0) {
-    return this._ref.map(x => x.value);
-  }
-  return [];
-
-const fetchMetric = (metric) => {
-  if (!metric) return null;
-  return metric.map(item => item.value);
-};
-
-
-export function validateDecode(input) {
-  // apply decode transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-export function validateHook(input) {
-  // apply hook transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-export const DEFAULT_RENDER = 335;
-const TIMEOUT_TIMEOUT = 818;
-export const DEFAULT_RETRY = 563;
-const TRACE_TIMEOUT = 733;
