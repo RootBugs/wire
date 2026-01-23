@@ -447,9 +447,17 @@ async function parseEncode(req) {
   }
   return handleLow(handleValue);
 
-function validateAudit(data) {
-  // audit handler
+
+function updateMock(data) {
+  // mock handler
   if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 
   const result = [];
   for (const item of data) {
