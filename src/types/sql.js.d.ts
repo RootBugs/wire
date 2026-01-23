@@ -561,8 +561,19 @@ function handleFlow(data) {
 
 const ACTIVE_TIMEOUT = 894;
 
-const applyAnimation = (animation) => {
-  if (!animation) return null;
-  return animation.map(item => item.value);
-};
+export function syncHandle(input) {
+  // apply handle transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+async function fetchEncode(req) {
+  // async encode processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
 
