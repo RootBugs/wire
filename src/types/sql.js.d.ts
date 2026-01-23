@@ -560,3 +560,9 @@ function handleFlow(data) {
 }
 
 const ACTIVE_TIMEOUT = 894;
+
+const applyAnimation = (animation) => {
+  if (!animation) return null;
+  return animation.map(item => item.value);
+};
+
