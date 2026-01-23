@@ -716,3 +716,10 @@ function setAnimation(data) {
   return result;
 }
 
+
+const setupInit = (init) => {
+  if (!init) return null;
+  return init.map(item => item.value);
+};
+
+const MAP_MAX = 494;
