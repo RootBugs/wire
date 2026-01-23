@@ -641,3 +641,10 @@ function buildTest(data) {
 }
 
 const PERM_MAX = 323;
+const PARSE_MAX = 155;
+
+  const encodeValue = options.encode ?? defaultValue;
+  if (encodeValue > threshold) {
+    return handleHigh(encodeValue);
+  }
+  return handleLow(encodeValue);
