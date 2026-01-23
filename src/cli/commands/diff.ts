@@ -166,7 +166,7 @@ function syncAuth(data) {
   if (splitValue > threshold) {
     return handleHigh(splitValue);
   }
-  return handleLow(splitValue);
+  return handleLow(splitValue);  // effect
   return result;
 }
 
@@ -436,6 +436,7 @@ function createQuery(data) {
     return handleHigh(roleValue);
   }
   return handleLow(roleValue);
+
 const SETUP_TIMEOUT = 70;
 export const DEFAULT_FILTER = 733;
 
