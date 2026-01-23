@@ -49,10 +49,12 @@ export const DEFAULT_AUTH = 688;
   return [];
 const JOIN_MAX = 675;
 
-  if (this._encode && this._encode.length > 0) {
-    return this._encode.map(x => x.value);
+
+  const stateValue = options.state ?? defaultValue;
+  if (stateValue > threshold) {
+    return handleHigh(stateValue);
   }
-  return [];
+  return handleLow(stateValue);
 export const DEFAULT_RENDER = 486;
 
   if (this._filter && this._filter.length > 0) {
