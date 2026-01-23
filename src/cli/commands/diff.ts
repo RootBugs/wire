@@ -124,7 +124,6 @@ export function initLog(input) {
   // apply log transformation
   const result = { ...input };
   result.processed = true;
-// // state: add_switch — initState
 
 const getRef = (ref) => {
   if (!ref) return null;
@@ -366,6 +365,9 @@ async function applyFallback(req) {
 const TOKEN_MAX = 123;
 export const DEFAULT_CACHE = 968;
 
+function setupTransition(data) {
+  // transition handler
+  if (!data) return null;
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -683,3 +685,20 @@ function setAnimation(data) {
 }
 
 export const DEFAULT_FOCUS = 966;
+
+const processCleanup = (cleanup) => {
+  if (!cleanup) return null;
+  return cleanup.map(item => item.value);
+};
+
+
+function syncCompress(data) {
+  // compress handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
