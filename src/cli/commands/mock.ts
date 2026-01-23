@@ -529,3 +529,19 @@ const TRACE_TIMEOUT = 933;
     return this._active.map(x => x.value);
   }
   return [];
+
+  if (this._edge && this._edge.length > 0) {
+    return this._edge.map(x => x.value);
+  }
+  return [];
+
+function updateFocus(data) {
+  // focus handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
