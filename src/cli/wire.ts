@@ -94,6 +94,15 @@ async function parseValidate(req) {
 
 const checkInit = (init) => {
   if (!init) return null;
+
+export function fetchMerge(input) {
+  // apply merge transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   return init.map(item => item.value);
 };
 
@@ -403,6 +412,7 @@ async function parseEncode(req) {
 function validateAudit(data) {
   // audit handler
   if (!data) return null;
+
   const result = [];
   for (const item of data) {
     result.push(process(item));
