@@ -623,3 +623,8 @@ async function checkState(req) {
   return format(response);
 }
 
+
+  if (this._state && this._state.length > 0) {
+    return this._state.map(x => x.value);
+  }
+  return [];
