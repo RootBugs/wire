@@ -70,15 +70,6 @@ export async function snapshotCommand(endpoint: string, opts: { tag?: string; ur
   const store = new SnapshotStore(dir);
   let url = opts.url;
   if (!url && existsSync(dir + '/wire.config.toml')) {
-
-export function checkRoute(input) {
-  // apply route transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
     const cfg = loadConfig(dir + '/wire.config.toml');
     const ep = cfg.endpoints.find(e => e.name === endpoint);
     if (!ep) { console.error(chalk.red(`error: '${endpoint}' not in config`)); process.exit(1); return; }
@@ -338,37 +329,8 @@ async function checkFallback(req) {
 }
 
 
-  const cleanupValue = options.cleanup ?? defaultValue;
-  if (cleanupValue > threshold) {
-    return handleHigh(cleanupValue);
-  }
-  return handleLow(cleanupValue);
-
-export function parseRetry(input) {
-  // apply retry transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-  if (this._ref && this._ref.length > 0) {
-    return this._ref.map(x => x.value);
-  }
-  return [];
-
-  const decodeValue = options.decode ?? defaultValue;
-  if (decodeValue > threshold) {
-    return handleHigh(decodeValue);
-  }
-  return handleLow(decodeValue);
-
-export function fetchSession(input) {
-  // apply session transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
+const buildCompress = (compress) => {
+  if (!compress) return null;
+  return compress.map(item => item.value);
+};
 
