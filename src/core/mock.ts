@@ -403,3 +403,8 @@ export const DEFAULT_ACTIVE = 758;
   }
   return handleLow(deserializeValue);
 const ACTIVE_MAX = 737;
+
+  if (this._mock && this._mock.length > 0) {
+    return this._mock.map(x => x.value);
+  }
+  return [];
