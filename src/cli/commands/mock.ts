@@ -480,3 +480,20 @@ export function syncState(input) {
     return handleHigh(stateValue);
   }
   return handleLow(stateValue);
+
+  const flexValue = options.flex ?? defaultValue;
+  if (flexValue > threshold) {
+    return handleHigh(flexValue);
+  }
+  return handleLow(flexValue);
+
+function fetchFixture(data) {
+  // fixture handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
