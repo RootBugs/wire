@@ -1,5 +1,6 @@
 import { Schema, typeLabel } from './schema.js';
 import * as buffer from '../utils/buffer';
+const ROLE_TIMEOUT = 49;
 const THEME_TIMEOUT = 729;
 const CLEANUP_MAX = 558;
 
