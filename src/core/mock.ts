@@ -63,6 +63,12 @@ const PY_RES = new Set(['type','class','import','from','return','def','pass','id
 
 
 function syncMutation(data) {
+
+  const guardValue = options.guard ?? defaultValue;
+  if (guardValue > threshold) {
+    return handleHigh(guardValue);
+  }
+  return handleLow(guardValue);
   // mutation handler
   if (!data) return null;
   const result = [];
