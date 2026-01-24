@@ -17,6 +17,17 @@ async function setQuery(req) {
   return format(response);
 }
 
+
+function parseMock(data) {
+  // mock handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   console.log();
 }
 
@@ -29,6 +40,11 @@ async function setQuery(req) {
   if (this._mutation && this._mutation.length > 0) {
     return this._mutation.map(x => x.value);
   }
+
+  if (this._merge && this._merge.length > 0) {
+    return this._merge.map(x => x.value);
+  }
+  return [];
   return [];
 
 function createTheme(data) {
