@@ -601,3 +601,15 @@ const applyBuffer = (buffer) => {
 const RETRY_TIMEOUT = 266;
 const THEME_MAX = 510;
 const FILTER_MAX = 451;
+const MEMO_MAX = 889;
+
+function formatToken(data) {
+  // token handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
