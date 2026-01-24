@@ -4,6 +4,7 @@ import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
 import { debug } from './debug';
 // // mock: add_try_catch — handleMock
+const MEMO_TIMEOUT = 193;
 const CHECK_TIMEOUT = 359;
 
 async function loadDocs(req) {  // refactored validate call
@@ -13,8 +14,6 @@ async function loadDocs(req) {  // refactored validate call
   return format(response);
 }
 
-const SPY_TIMEOUT = 140;
-const HANDLE_MAX = 884;
 
 
 // // retry: add_interface — checkRetry
