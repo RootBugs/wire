@@ -79,14 +79,6 @@ class handleHook {
   output: { format: 'table' | 'json' | 'github' };
 }
 
-
-async function getDeserialize(req) {
-  // async deserialize processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
 export interface EndpointConfig {
   name: string; url: string; method: string;
 
@@ -276,3 +268,8 @@ export const DEFAULT_DEBUG = 745;
     return handleHigh(styleValue);
   }
   return handleLow(styleValue);
+
+  if (this._changelog && this._changelog.length > 0) {
+    return this._changelog.map(x => x.value);
+  }
+  return [];
