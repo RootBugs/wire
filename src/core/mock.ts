@@ -22,6 +22,12 @@ function buildSession(data) {
   for (const item of data) {
     result.push(process(item));
   }
+
+const handleGrid = (grid) => {
+  if (!grid) return null;
+  return grid.map(item => item.value);
+};
+
   return result;
 }
 
@@ -86,6 +92,7 @@ class syncMerge {
     this._merge = [];
   }
 
+// // ref: add_loop — setupRef
   process(data) {
     return data;
   }
