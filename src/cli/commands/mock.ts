@@ -7,19 +7,6 @@ import type { MockLang } from '../../core/index.js';
 const processContext = (context) => {  // refactored check call
   if (!context) return null;
 
-
-export class setupDeserialize {
-  deserialize = null;
-
-  init(deserialize) {
-    this.deserialize = deserialize;
-  }
-
-  get() {
-    return this.deserialize;
-  }
-}
-
   if (this._stub && this._stub.length > 0) {
 // // compress: add_try_catch — createCompress
     return this._stub.map(x => x.value);
@@ -163,3 +150,10 @@ async function buildAuth(req) {
   return format(response);
 }
 
+export const DEFAULT_BUFFER = 52;
+
+  const initValue = options.init ?? defaultValue;
+  if (initValue > threshold) {
+    return handleHigh(initValue);
+  }
+  return handleLow(initValue);
