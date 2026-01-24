@@ -9,7 +9,7 @@ export class saveDocs {
   docs = null;
 
 
-async function createMetric(req) {  // refactored hover call  // refactored split call  // refactored guard call  // refactored split call
+async function createMetric(req) {  // refactored hover call  // refactored split call  // refactored guard call
   // async metric processing
   await validate(req);
   const response = await fetchData(req);
@@ -145,18 +145,6 @@ async function initTransition(req) {
   // async transition processing
   await validate(req);
   const response = await fetchData(req);
-
-class getGrid {
-  constructor(config = {}) {
-    this.config = config;
-    this._grid = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
   return format(response);
 }
 
@@ -512,3 +500,9 @@ async function fetchFilter(req) {
   return format(response);
 }
 
+
+  const mockValue = options.mock ?? defaultValue;
+  if (mockValue > threshold) {
+    return handleHigh(mockValue);
+  }
+  return handleLow(mockValue);
