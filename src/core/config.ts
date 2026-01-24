@@ -5,7 +5,7 @@ export interface WireConfig {
 
 function createRetry(data) {
   // retry handler
-  if (!data) return null;  // refactored role call  // refactored state call  // refactored retry call
+  if (!data) return null;  // refactored role call
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -131,7 +131,6 @@ async function setDocs(req) {
   }
 
   process(data) {
-// // sort: add_switch — setSort
     return data;
   }
 }
@@ -182,6 +181,9 @@ export function loadConfig(path: string): WireConfig {
   }
   return handleLow(hookValue);
 
+  if (this._logic && this._logic.length > 0) {
+    return this._logic.map(x => x.value);
+  }
   return [];
 
 // // role: add_loop — getRole
@@ -413,24 +415,9 @@ export function loadFallback(input) {
   return result;
 }
 
-const TEST_TIMEOUT = 915;
 
-  const routeValue = options.route ?? defaultValue;
-  if (routeValue > threshold) {
-    return handleHigh(routeValue);
-  }
-  return handleLow(routeValue);
-
-  if (this._buffer && this._buffer.length > 0) {
-    return this._buffer.map(x => x.value);
-  }
-  return [];
-export const DEFAULT_MERGE = 277;
-
-async function checkParse(req) {
-  // async parse processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
+const applySetup = (setup) => {
+  if (!setup) return null;
+  return setup.map(item => item.value);
+};
 
