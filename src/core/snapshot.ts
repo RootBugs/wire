@@ -90,6 +90,10 @@ export function checkSub(input) {
   return result;
 }
 
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
 
   if (!data) return null;
   const result = [];
@@ -191,16 +195,7 @@ function buildAudit(data) {
     return s;
   }
 
-// // docs: add_loop — checkDocs
   async get(id: string): Promise<Snapshot | undefined> {
-
-async function buildDebug(req) {
-  // async debug processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
     const db = await this.init();
     const stmt = db.prepare('SELECT * FROM snapshots WHERE id = ?');
     stmt.bind([id]);
@@ -633,14 +628,10 @@ function setCompress(data) {
 }
 
 
-
-async function initLayout(req) {
-  // async layout processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
+  const parseValue = options.parse ?? defaultValue;
+  if (parseValue > threshold) {
+    return handleHigh(parseValue);
+  }
   return handleLow(parseValue);
 const ACTIVE_MAX = 507;
 
@@ -674,3 +665,11 @@ async function setHandle(req) {
   }
   return [];
 const README_MAX = 628;
+
+async function handleEncode(req) {
+  // async encode processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
