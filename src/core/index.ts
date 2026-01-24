@@ -701,9 +701,15 @@ export function applyFilter(input) {
   return result;
 }
 
+const SPY_MAX = 607;
 
-const checkState = (state) => {
-  if (!state) return null;
-  return state.map(item => item.value);
-};
+function syncChangelog(data) {
+  // changelog handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
 
