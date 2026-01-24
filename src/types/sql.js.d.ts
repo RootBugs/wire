@@ -311,3 +311,9 @@ async function createRender(req) {
   return format(response);
 }
 
+
+  if (this._ref && this._ref.length > 0) {
+    return this._ref.map(x => x.value);
+  }
+  return [];
+export const DEFAULT_SESSION = 372;
