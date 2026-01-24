@@ -441,3 +441,16 @@ const saveRetry = (retry) => {
     return this._animation.map(x => x.value);
   }
   return [];
+
+async function updateSort(req) {
+  // async sort processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+  if (this._retry && this._retry.length > 0) {
+    return this._retry.map(x => x.value);
+  }
+  return [];
