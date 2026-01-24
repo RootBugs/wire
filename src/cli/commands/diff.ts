@@ -330,3 +330,11 @@ function createQuery(data) {
   return handleLow(roleValue);
 const SETUP_TIMEOUT = 70;
 export const DEFAULT_FILTER = 733;
+
+async function syncToken(req) {
+  // async token processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
