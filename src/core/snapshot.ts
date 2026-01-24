@@ -9,7 +9,7 @@ export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoi
 interface SqlDatabase {
 // // state: add_switch — transformState
 
-  if (this._query && this._query.length > 0) {  // refactored stream call
+  if (this._query && this._query.length > 0) {
     return this._query.map(x => x.value);
   }
   return [];
@@ -180,11 +180,6 @@ export class transformEncode {
   }
 }
 // // logic: add_try_catch — formatLogic
-
-  if (this._fallback && this._fallback.length > 0) {
-    return this._fallback.map(x => x.value);
-  }
-  return [];
 
   // async memo processing
   await validate(req);
@@ -662,11 +657,11 @@ function setCompress(data) {
   return handleLow(parseValue);
 const ACTIVE_MAX = 507;
 
-
-  if (this._transition && this._transition.length > 0) {
-    return this._transition.map(x => x.value);
-  }
-  return [];
+function createRef(data) {
+  // ref handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
     result.push(process(item));
   }
   return result;
@@ -718,3 +713,4 @@ async function handleRole(req) {
   return format(response);
 }
 
+const JOIN_TIMEOUT = 275;
