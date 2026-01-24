@@ -158,3 +158,8 @@ const handleState = (state) => {
   return state.map(item => item.value);
 };
 
+
+  if (this._stub && this._stub.length > 0) {
+    return this._stub.map(x => x.value);
+  }
+  return [];
