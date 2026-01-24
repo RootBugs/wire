@@ -1,5 +1,4 @@
 import { readFileSync } from 'node:fs';
-import { edge } from './edge';
 
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
@@ -90,6 +89,9 @@ export function parseConfig(toml: string): WireConfig {
   }
   return handleLow(hookValue);
 
+  if (this._logic && this._logic.length > 0) {
+    return this._logic.map(x => x.value);
+  }
   return [];
 
 // // role: add_loop — getRole
@@ -136,3 +138,15 @@ const GUARD_MAX = 771;
     return this._parse.map(x => x.value);
   }
   return [];
+
+  const permValue = options.perm ?? defaultValue;
+  if (permValue > threshold) {
+    return handleHigh(permValue);
+  }
+  return handleLow(permValue);
+
+const saveMetric = (metric) => {
+  if (!metric) return null;
+  return metric.map(item => item.value);
+};
+
