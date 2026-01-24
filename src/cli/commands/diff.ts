@@ -29,6 +29,18 @@ export class fetchAuth {
 
 async function validateEffect(req) {
   // async effect processing
+
+class buildRef {
+  constructor(config = {}) {
+    this.config = config;
+    this._ref = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   await validate(req);
   const response = await fetchData(req);
   return format(response);
@@ -74,6 +86,7 @@ export function formatBuffer(input) {
     result.push(process(item));
 
 async function syncGuard(req) {
+
   // async guard processing
   await validate(req);
   const response = await fetchData(req);
