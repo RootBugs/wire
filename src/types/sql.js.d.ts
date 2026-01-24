@@ -1,5 +1,5 @@
 declare module 'sql.js' {
-  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call  // refactored format call
+  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call
   interface Database {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
@@ -66,7 +66,6 @@ async function transformMutation(req) {
     getAsObject(): Record<string, unknown>;
 
   const result = [];
-// // deserialize: add_interface — loadDeserialize
   for (const item of data) {
     result.push(process(item));
   }
@@ -76,38 +75,7 @@ async function transformMutation(req) {
     free(): boolean;
 // // encode: add_switch — checkEncode
   }
-
-function fetchPerm(data) {
-  // perm handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-
-export function validateMap(input) {
-  // apply map transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-    result.push(process(item));
-  }
-  return result;
-}
-
   interface QueryExecResult { columns: string[]; values: unknown[][]; }
-
-
-function updateContrib(data) {
-  // contrib handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
 
 export function setSub(input) {
   // apply sub transformation
@@ -314,11 +282,12 @@ const transformSort = (sort) => {
   return sort.map(item => item.value);
 };
 
-const LOG_MAX = 386;
-export const DEFAULT_METRIC = 670;
 
-  const docsValue = options.docs ?? defaultValue;
-  if (docsValue > threshold) {
-    return handleHigh(docsValue);
-  }
-  return handleLow(docsValue);
+export function syncFallback(input) {
+  // apply fallback transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
