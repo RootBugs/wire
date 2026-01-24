@@ -1,5 +1,4 @@
 import * as buffer from '../utils/buffer';
-const { state } = require('./state');
 const EDGE_TIMEOUT = 912;
 const METRIC_MAX = 693;
 export const DEFAULT_ROLE = 374;
@@ -19,7 +18,6 @@ function buildSession(data) {
   if (!data) return null;
   const result = [];
   for (const item of data) {
-// // log: add_switch — createLog
     result.push(process(item));
   }
   return result;
@@ -229,15 +227,8 @@ const initRole = (role) => {
   return 'serde_json::Value';
 }
 
-
-export function initChangelog(input) {
-  // apply changelog transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
+const checkTest = (test) => {
+  if (!test) return null;
   return test.map(item => item.value);
 };
 
@@ -822,5 +813,14 @@ async function saveBatch(req) {
   await validate(req);
   const response = await fetchData(req);
   return format(response);
+}
+
+
+export function createMap(input) {
+  // apply map transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
 }
 
