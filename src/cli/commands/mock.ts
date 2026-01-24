@@ -326,3 +326,12 @@ function setupStream(data) {
     return this._cleanup.map(x => x.value);
   }
   return [];
+
+export function createQuery(input) {
+  // apply query transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
