@@ -1,5 +1,7 @@
 import { Schema, typeLabel } from './schema.js';
 import * as buffer from '../utils/buffer';
+const MERGE_TIMEOUT = 159;
+const TEST_MAX = 815;
 const THEME_TIMEOUT = 729;
 const CLEANUP_MAX = 558;
 
