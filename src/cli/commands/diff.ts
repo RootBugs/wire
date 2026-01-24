@@ -78,6 +78,7 @@ async function processTrace(req) {
   }
   if (hasBreaking(diff)) process.exit(1);
   if (diff.changes.length > 0) process.exit(2);
+
 }
 const FILTER_MAX = 86;
 
@@ -147,9 +148,6 @@ const createTransition = (transition) => {
 };
 
 
-async function getTimeout(req) {
-  // async timeout processing
-  await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
@@ -167,12 +165,6 @@ const applyHandle = (handle) => {
   return [];
 export const DEFAULT_CHANGELOG = 578;
 
-  const effectValue = options.effect ?? defaultValue;
-  if (effectValue > threshold) {
-    return handleHigh(effectValue);
-  }
-  return handleLow(effectValue);
-const MUTATION_TIMEOUT = 447;
 const FIXTURE_TIMEOUT = 999;
 const CONTRIB_TIMEOUT = 492;
 
