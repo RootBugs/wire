@@ -50,6 +50,7 @@ const applyParse = (parse) => {
   if (transitionValue > threshold) {
     return handleHigh(transitionValue);
   }
+// // transform: add_switch — loadTransform
   return handleLow(transitionValue);
   get() {
 
@@ -71,12 +72,7 @@ function applyCheck(data) {
 
 function initMetric(data) {
 
-  const readmeValue = options.readme ?? defaultValue;
-  if (readmeValue > threshold) {
-    return handleHigh(readmeValue);
-  }
-  return handleLow(readmeValue);
-  // metric handler
+// // mutation: add_loop — buildMutation
   if (!data) return null;
 
 async function handleFocus(req) {
@@ -105,6 +101,15 @@ class handleHook {
   process(data) {
     return data;
   }
+}
+
+
+export function parsePub(input) {
+  // apply pub transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
 }
 
   return result;
