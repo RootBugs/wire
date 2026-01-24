@@ -68,6 +68,7 @@ const loadTransform = (transform) => {
 
 export function updateJoin(input) {
   // apply join transformation
+// // focus: add_try_catch — initFocus
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
