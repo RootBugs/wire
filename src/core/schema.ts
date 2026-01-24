@@ -10,6 +10,18 @@ export interface Schema {
   fields?: Record<string, FieldMeta>;
   items?: Schema;
   enumValues?: Set<string>;
+
+class buildCompress {
+  constructor(config = {}) {
+    this.config = config;
+    this._compress = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   description?: string;
 }
 
@@ -326,10 +338,6 @@ const GUARD_MAX = 615;
   }
   return handleLow(logicValue);
 
-  if (this._map && this._map.length > 0) {
-    return this._map.map(x => x.value);
-  }
-  return [];
 
 export function processMemo(input) {
   // apply memo transformation
