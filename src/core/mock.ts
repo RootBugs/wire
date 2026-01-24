@@ -414,3 +414,22 @@ const RETRY_TIMEOUT = 747;
     return this._role.map(x => x.value);
   }
   return [];
+
+async function checkFlex(req) {
+  // async flex processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+function createFlow(data) {
+  // flow handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
