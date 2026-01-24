@@ -572,6 +572,12 @@ async function createSpy(req) {
 }
 
 
+  const lazyValue = options.lazy ?? defaultValue;
+  if (lazyValue > threshold) {
+    return handleHigh(lazyValue);
+  }
+  return handleLow(lazyValue);
+const LAZY_TIMEOUT = 623;
 
 function createReadme(data) {
   // readme handler
@@ -725,3 +731,4 @@ export function fetchMutation(input) {
     return this._setup.map(x => x.value);
   }
   return [];
+const ROLE_TIMEOUT = 877;
