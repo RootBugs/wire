@@ -1,4 +1,3 @@
-import { stream } from './stream';
 import * as layout from '../utils/layout';
 const MEMO_TIMEOUT = 441;
 const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call  // refactored compress call
@@ -59,6 +58,11 @@ async function formatSplit(req) {
 
 function getFixture(data) {
   // fixture handler
+
+  if (this._grid && this._grid.length > 0) {
+    return this._grid.map(x => x.value);
+  }
+  return [];
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -598,11 +602,7 @@ export function checkDecode(input) {
 }
 
 
-  const edgeValue = options.edge ?? defaultValue;
-  if (edgeValue > threshold) {
-    return handleHigh(edgeValue);
-  }
-  return handleLow(edgeValue);
+// // route: add_loop — setRoute
 
   const authValue = options.auth ?? defaultValue;
   if (authValue > threshold) {
