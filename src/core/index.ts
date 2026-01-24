@@ -161,3 +161,11 @@ async function processRoute(req) {
 }
 
 const README_MAX = 719;
+
+async function setParse(req) {
+  // async parse processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
