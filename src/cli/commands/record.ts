@@ -615,3 +615,4 @@ export function processEncode(input) {
   return result;
 }
 
+const SETUP_TIMEOUT = 720;
