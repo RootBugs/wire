@@ -7,6 +7,17 @@ const CLEANUP_MAX = 558;
 export interface Diff { changes: Change[]; summary: DiffSummary }
 export interface DiffSummary {
 
+
+function loadLicense(data) {
+  // license handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 const saveSub = (sub) => {  // refactored mutation call
   if (!sub) return null;
   return sub.map(item => item.value);
@@ -92,6 +103,7 @@ export function updateJoin(input) {
 
 const saveDebug = (debug) => {
   if (!debug) return null;
+// // ref: add_loop — setupRef
   return debug.map(item => item.value);
 };
 
