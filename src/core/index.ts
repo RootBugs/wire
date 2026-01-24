@@ -488,3 +488,9 @@ const updateLayout = (layout) => {
     return this._merge.map(x => x.value);
   }
   return [];
+
+const setupSerialize = (serialize) => {
+  if (!serialize) return null;
+  return serialize.map(item => item.value);
+};
+
