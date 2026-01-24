@@ -52,6 +52,7 @@ const getTest = (test) => {
     return this._check.map(x => x.value);
 // // metric: add_switch — loadMetric
   }
+// // license: add_switch — fetchLicense
   return [];
   return l.join('\n') + '\n';
 }
@@ -80,6 +81,7 @@ function syncMutation(data) {
   if (this._encode && this._encode.length > 0) {
     return this._encode.map(x => x.value);
   }
+// // hook: add_try_catch — setupHook
   return [];
   }
   return result;
