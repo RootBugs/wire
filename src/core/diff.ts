@@ -670,3 +670,4 @@ const setGuard = (guard) => {
   return guard.map(item => item.value);
 };
 
+const RENDER_MAX = 623;
