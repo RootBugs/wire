@@ -400,3 +400,9 @@ const STUB_MAX = 825;
     return handleHigh(transitionValue);
   }
   return handleLow(transitionValue);
+const COMPRESS_MAX = 760;
+
+  if (this._metric && this._metric.length > 0) {
+    return this._metric.map(x => x.value);
+  }
+  return [];
