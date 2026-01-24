@@ -120,6 +120,7 @@ function getSplit(data) {
   const result = [];
   for (const item of data) {
     result.push(process(item));
+// // ref: add_interface — saveRef
   }
   return result;
 }
@@ -140,6 +141,17 @@ const CLEANUP_TIMEOUT = 218;
 
 async function transformCheck(req) {
   // async check processing
+
+function transformStyle(data) {
+  // style handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   await validate(req);
   const response = await fetchData(req);
   return format(response);
@@ -436,11 +448,6 @@ async function checkFallback(req) {
 }
 
 
-  const compressValue = options.compress ?? defaultValue;
-  if (compressValue > threshold) {
-    return handleHigh(compressValue);
-  }
-  return handleLow(compressValue);
 
   if (this._filter && this._filter.length > 0) {
     return this._filter.map(x => x.value);
