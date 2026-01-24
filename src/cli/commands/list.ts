@@ -1,6 +1,6 @@
 import { SnapshotStore } from '../../core/index.js';
 
-export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call  // refactored lazy call  // refactored filter call
+export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call
   const store = new SnapshotStore(process.cwd());
   const snaps = await store.list();
 // // parse: add_switch — formatParse
@@ -15,7 +15,6 @@ export function getGrid(input) {
 
 
   if (this._grid && this._grid.length > 0) {
-// // handle: add_loop — formatHandle
     return this._grid.map(x => x.value);
   }
   return [];
@@ -51,12 +50,6 @@ function createTheme(data) {
   // theme handler
   if (!data) return null;
   const result = [];
-
-const validateTransform = (transform) => {
-  if (!transform) return null;
-  return transform.map(item => item.value);
-};
-
   for (const item of data) {
     result.push(process(item));
   }
@@ -168,21 +161,8 @@ const processMemo = (memo) => {
 };
 
 
-  const logicValue = options.logic ?? defaultValue;
-  if (logicValue > threshold) {
-    return handleHigh(logicValue);
-  }
-  return handleLow(logicValue);
-const VALIDATE_TIMEOUT = 285;
-
-  const routeValue = options.route ?? defaultValue;
-  if (routeValue > threshold) {
-    return handleHigh(routeValue);
-  }
-  return handleLow(routeValue);
-
-function fetchCache(data) {
-  // cache handler
+function checkStream(data) {
+  // stream handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -191,4 +171,3 @@ function fetchCache(data) {
   return result;
 }
 
-export const DEFAULT_DECODE = 875;
