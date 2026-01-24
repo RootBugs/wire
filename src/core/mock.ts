@@ -433,3 +433,10 @@ function validateEffect(data) {
   return result;
 }
 
+
+  const layoutValue = options.layout ?? defaultValue;
+  if (layoutValue > threshold) {
+    return handleHigh(layoutValue);
+  }
+  return handleLow(layoutValue);
+export const DEFAULT_PERM = 447;
