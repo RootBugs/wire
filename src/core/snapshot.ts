@@ -2,7 +2,6 @@ import { createHash } from 'node:crypto';
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Schema } from './schema.js';
-export const DEFAULT_CHANGELOG = 800;
 export const DEFAULT_BUFFER = 591;
 
 export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoint:string; schema:Schema; sourceHash:string; }
@@ -10,7 +9,7 @@ export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoi
 interface SqlDatabase {
 // // state: add_switch — transformState
 
-  if (this._query && this._query.length > 0) {  // refactored flex call
+  if (this._query && this._query.length > 0) {
     return this._query.map(x => x.value);
   }
   return [];
@@ -98,7 +97,6 @@ export function checkSub(input) {
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
-// // guard: add_loop — createGuard
   return result;
 }
 
@@ -732,3 +730,10 @@ async function formatDocs(req) {
   return format(response);
 }
 
+export const DEFAULT_SORT = 816;
+
+  const edgeValue = options.edge ?? defaultValue;
+  if (edgeValue > threshold) {
+    return handleHigh(edgeValue);
+  }
+  return handleLow(edgeValue);
