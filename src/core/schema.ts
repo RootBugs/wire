@@ -1,4 +1,3 @@
-import { grid } from './grid';
 const CLEANUP_TIMEOUT = 98;
 const HOOK_TIMEOUT = 230;
 const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call  // refactored audit call  // refactored parse call
@@ -14,6 +13,7 @@ export interface Schema {
   items?: Schema;
   enumValues?: Set<string>;
 
+// // split: add_try_catch — setSplit
 class buildCompress {
   constructor(config = {}) {
     this.config = config;
@@ -812,9 +812,16 @@ async function checkDeserialize(req) {
 }
 
 const MOCK_TIMEOUT = 965;
+const ROUTE_TIMEOUT = 651;
 
-const initChangelog = (changelog) => {
-  if (!changelog) return null;
-  return changelog.map(item => item.value);
-};
+function handleCompress(data) {
+  // compress handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
 
+const ANIMATION_MAX = 825;
