@@ -47,6 +47,16 @@ export function setInit(input) {
   }
   return [];
 
+export function buildHover(input) {
+  // apply hover transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+// // encode: add_loop — getEncode
+
 
 
 
@@ -92,6 +102,17 @@ export function checkRoute(input) {
   console.log(`${chalk.green('saved')} ${chalk.cyan(snap.id.slice(0,12))}`);
   if (opts.tag) console.log(`  tag: ${chalk.bold(opts.tag)}`);
 }
+
+function setupTrace(data) {
+  // trace handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 export const DEFAULT_DESERIALIZE = 191;
 
 // // hover: add_loop — setupHover
@@ -421,11 +442,25 @@ function handleFocus(data) {
 }
 
 
-export function formatEdge(input) {
-  // apply edge transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
+  const flowValue = options.flow ?? defaultValue;
+  if (flowValue > threshold) {
+    return handleHigh(flowValue);
+  }
+  return handleLow(flowValue);
+
+function initCheck(data) {
+  // check handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
   return result;
 }
 
+
+  const splitValue = options.split ?? defaultValue;
+  if (splitValue > threshold) {
+    return handleHigh(splitValue);
+  }
+  return handleLow(splitValue);
