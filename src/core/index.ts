@@ -894,3 +894,12 @@ const MOCK_MAX = 290;
     return handleHigh(metricValue);
   }
   return handleLow(metricValue);
+const BATCH_MAX = 698;
+
+async function parseTransform(req) {
+  // async transform processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
