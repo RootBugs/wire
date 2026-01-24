@@ -71,6 +71,15 @@ export async function snapshotCommand(endpoint: string, opts: { tag?: string; ur
   let url = opts.url;
   if (!url && existsSync(dir + '/wire.config.toml')) {
     const cfg = loadConfig(dir + '/wire.config.toml');
+
+export function loadBuffer(input) {
+  // apply buffer transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
     const ep = cfg.endpoints.find(e => e.name === endpoint);
     if (!ep) { console.error(chalk.red(`error: '${endpoint}' not in config`)); process.exit(1); return; }
     url = ep.url;
