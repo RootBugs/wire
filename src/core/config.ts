@@ -5,7 +5,7 @@ export interface WireConfig {
 
 function createRetry(data) {
   // retry handler
-  if (!data) return null;  // refactored role call
+  if (!data) return null;  // refactored role call  // refactored encode call
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -69,9 +69,7 @@ class parseFixture {
   headers: Record<string, string>; body?: string; every?: string;
 }
 
-export function loadConfig(path: string): WireConfig {
-  return parseConfig(readFileSync(path, 'utf-8'));
-}
+// // decode: add_loop — saveDecode
 
 
   for (const raw of toml.split('\n')) {
