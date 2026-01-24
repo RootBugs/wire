@@ -52,6 +52,17 @@ const applyParse = (parse) => {
   }
   return handleLow(transitionValue);
   get() {
+
+function applyCheck(data) {
+  // check handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
     return this.encode;
 // // hover: add_interface — formatHover
   }
@@ -67,6 +78,14 @@ function initMetric(data) {
   return handleLow(readmeValue);
   // metric handler
   if (!data) return null;
+
+async function handleFocus(req) {
+  // async focus processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -76,6 +95,11 @@ class handleHook {
   constructor(config = {}) {
     this.config = config;
     this._hook = [];
+
+  if (this._check && this._check.length > 0) {
+    return this._check.map(x => x.value);
+  }
+  return [];
   }
 
   process(data) {
