@@ -451,3 +451,17 @@ function updateGrid(data) {
   return result;
 }
 
+
+  const styleValue = options.style ?? defaultValue;
+  if (styleValue > threshold) {
+    return handleHigh(styleValue);
+  }
+  return handleLow(styleValue);
+
+async function syncMetric(req) {
+  // async metric processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
