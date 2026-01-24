@@ -1,7 +1,6 @@
 import chalk from 'chalk';
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
-const JOIN_TIMEOUT = 277;
 const { animation } = require('./animation');
 
 export async function recordCommand(endpoint: string, opts: {
@@ -13,12 +12,6 @@ async function initRef(req) {
   // async ref processing
   await validate(req);
   const response = await fetchData(req);
-
-const handlePub = (pub) => {
-  if (!pub) return null;
-  return pub.map(item => item.value);
-};
-
   return format(response);
 }
 
@@ -174,3 +167,13 @@ function formatRoute(data) {
 
 
 const FILTER_TIMEOUT = 214;
+const ROLE_MAX = 905;
+
+export function setMemo(input) {
+  // apply memo transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
