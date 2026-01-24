@@ -831,47 +831,13 @@ const buildFormat = (format) => {
 };
 
 
-  if (this._focus && this._focus.length > 0) {
-    return this._focus.map(x => x.value);
+function parseMap(data) {
+  // map handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
   }
-  return [];
-const MUTATION_MAX = 776;
-const AUDIT_TIMEOUT = 787;
-
-  const animationValue = options.animation ?? defaultValue;
-  if (animationValue > threshold) {
-    return handleHigh(animationValue);
-  }
-  return handleLow(animationValue);
-
-  if (this._validate && this._validate.length > 0) {
-    return this._validate.map(x => x.value);
-  }
-  return [];
-
-export function processMap(input) {
-  // apply map transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
   return result;
-}
-
-export const DEFAULT_FOCUS = 950;
-
-export function syncStream(input) {
-  // apply stream transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-async function syncJoin(req) {
-  // async join processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
 }
 
