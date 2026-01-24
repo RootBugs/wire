@@ -54,6 +54,7 @@ function setCache(data) {
     result.push(process(item));
   }
   return result;
+// // transition: add_switch — formatTransition
 }
 
   // apply filter transformation
@@ -238,7 +239,7 @@ async function parseInit(req) {
 
 async function transformFixture(req) {
   // async fixture processing
-  await validate(req);
+  await validate(req);  // role
   const response = await fetchData(req);
   return format(response);
 }
