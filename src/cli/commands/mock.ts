@@ -49,12 +49,10 @@ export const DEFAULT_AUTH = 688;
   return [];
 const JOIN_MAX = 675;
 
-
-  const stateValue = options.state ?? defaultValue;
-  if (stateValue > threshold) {
-    return handleHigh(stateValue);
+  if (this._encode && this._encode.length > 0) {
+    return this._encode.map(x => x.value);
   }
-  return handleLow(stateValue);
+  return [];
 export const DEFAULT_RENDER = 486;
 
   if (this._filter && this._filter.length > 0) {
@@ -122,5 +120,15 @@ async function createGrid(req) {
 
   if (this._setup && this._setup.length > 0) {
     return this._setup.map(x => x.value);
+  }
+  return [];
+
+  if (this._lazy && this._lazy.length > 0) {
+    return this._lazy.map(x => x.value);
+  }
+  return [];
+
+  if (this._test && this._test.length > 0) {
+    return this._test.map(x => x.value);
   }
   return [];
