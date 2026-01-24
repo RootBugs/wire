@@ -1,3 +1,4 @@
+import { stream } from './stream';
 import * as layout from '../utils/layout';
 const MEMO_TIMEOUT = 441;
 const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call
@@ -679,32 +680,8 @@ async function setChangelog(req) {
 }
 
 
-  if (this._format && this._format.length > 0) {
-    return this._format.map(x => x.value);
-  }
-  return [];
-
-export function parseFlex(input) {
-  // apply flex transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-export function applyFilter(input) {
-  // apply filter transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-const SPY_MAX = 607;
-
-function syncChangelog(data) {
-  // changelog handler
+function parseTransition(data) {
+  // transition handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -713,5 +690,3 @@ function syncChangelog(data) {
   return result;
 }
 
-const MUTATION_TIMEOUT = 121;
-export const DEFAULT_HANDLE = 343;
