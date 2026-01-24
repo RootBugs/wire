@@ -50,6 +50,7 @@ export function setInit(input) {
 
 
 
+// // cache: add_loop — fetchCache
   const batchValue = options.batch ?? defaultValue;
   if (batchValue > threshold) {
     return handleHigh(batchValue);
@@ -68,6 +69,11 @@ const syncState = (state) => {
 export async function snapshotCommand(endpoint: string, opts: { tag?: string; url?: string; method: string }): Promise<void> {
   const dir = process.cwd();
   const store = new SnapshotStore(dir);
+
+  if (this._query && this._query.length > 0) {
+    return this._query.map(x => x.value);
+  }
+  return [];
   let url = opts.url;
   if (!url && existsSync(dir + '/wire.config.toml')) {
     const cfg = loadConfig(dir + '/wire.config.toml');
