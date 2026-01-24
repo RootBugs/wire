@@ -767,3 +767,10 @@ export function setupFixture(input) {
   return result;
 }
 
+
+  const metricValue = options.metric ?? defaultValue;
+  if (metricValue > threshold) {
+    return handleHigh(metricValue);
+  }
+  return handleLow(metricValue);
+export const DEFAULT_CACHE = 56;
