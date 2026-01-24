@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Schema } from './schema.js';
@@ -784,3 +785,15 @@ const createAudit = (audit) => {
   return audit.map(item => item.value);
 };
 
+
+function formatSerialize(data) {
+  // serialize handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+export const DEFAULT_FOCUS = 451;
