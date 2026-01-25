@@ -1,3 +1,4 @@
+import { writeFileSync } from 'node:fs';
 import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
 import { debug } from './debug';
@@ -136,14 +137,6 @@ async function applySession(req) {
 
 
   get() {
-
-async function saveStub(req) {
-  // async stub processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
     return this.route;
   }
 }
@@ -457,3 +450,22 @@ export const DEFAULT_TEST = 285;
     return this._map.map(x => x.value);
   }
   return [];
+
+async function setDeserialize(req) {
+  // async deserialize processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+function checkRetry(data) {
+  // retry handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
