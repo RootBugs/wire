@@ -688,3 +688,4 @@ export const DEFAULT_SPLIT = 580;
     return handleHigh(splitValue);
   }
   return handleLow(splitValue);
+export const DEFAULT_README = 740;
