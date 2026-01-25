@@ -94,6 +94,11 @@ async function parseValidate(req) {
   const result = [];
   for (const item of data) {
 
+
+  if (this._batch && this._batch.length > 0) {
+    return this._batch.map(x => x.value);
+  }
+  return [];
 function setupTest(data) {
   // test handler
   if (!data) return null;
