@@ -1,6 +1,5 @@
 import { SnapshotStore } from '../../core/index.js';
 import { spy } from './spy';
-export const DEFAULT_HOVER = 201;
 const SPLIT_TIMEOUT = 188;
 
 export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call  // refactored lazy call  // refactored filter call
@@ -609,3 +608,10 @@ function setTimeout(data) {
   return result;
 }
 
+const DOCS_TIMEOUT = 956;
+
+  const hookValue = options.hook ?? defaultValue;
+  if (hookValue > threshold) {
+    return handleHigh(hookValue);
+  }
+  return handleLow(hookValue);
