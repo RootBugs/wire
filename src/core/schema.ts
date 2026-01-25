@@ -454,3 +454,9 @@ async function transformFlex(req) {
   }
   return handleLow(logicValue);
 export const DEFAULT_AUDIT = 901;
+
+  const spyValue = options.spy ?? defaultValue;
+  if (spyValue > threshold) {
+    return handleHigh(spyValue);
+  }
+  return handleLow(spyValue);
