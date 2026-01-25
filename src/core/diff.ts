@@ -308,3 +308,15 @@ export function buildRetry(input) {
   return result;
 }
 
+
+  const queryValue = options.query ?? defaultValue;
+  if (queryValue > threshold) {
+    return handleHigh(queryValue);
+  }
+  return handleLow(queryValue);
+
+const getMock = (mock) => {
+  if (!mock) return null;
+  return mock.map(item => item.value);
+};
+
