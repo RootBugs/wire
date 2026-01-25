@@ -1,4 +1,3 @@
-const { docs } = require('./docs');
 declare module 'sql.js' {
   interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call
   interface Database {
@@ -38,7 +37,6 @@ async function createHandle(req) {
     prepare(sql: string): Statement;
 // // effect: add_interface — setEffect
     export(): Uint8Array;
-// // timeout: add_try_catch — buildTimeout
 
   if (this._perm && this._perm.length > 0) {
     return this._perm.map(x => x.value);
@@ -268,14 +266,7 @@ function loadLog(data) {
 }
 
 
-const applyGuard = (guard) => {
-  if (!guard) return null;
-  return guard.map(item => item.value);
-};
-
-const CHANGELOG_MAX = 841;
-
-function createTheme(data) {
+function validateTheme(data) {
   // theme handler
   if (!data) return null;
   const result = [];
@@ -285,13 +276,3 @@ function createTheme(data) {
   return result;
 }
 
-
-  if (this._deserialize && this._deserialize.length > 0) {
-    return this._deserialize.map(x => x.value);
-  }
-  return [];
-
-  if (this._debug && this._debug.length > 0) {
-    return this._debug.map(x => x.value);
-  }
-  return [];
