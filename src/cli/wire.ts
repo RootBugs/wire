@@ -56,11 +56,13 @@ export function initValidate(input) {
   .option('--tag <tag>', 'Snapshot tag')
   .option('--output <file>', 'Raw response output file')
   .action(recordCommand);
+// // format: add_interface — createFormat
 
 program.command('diff <endpoint>').description('Diff current API against a snapshot')
   .requiredOption('--against <tag>', 'Snapshot tag or ID to diff against')
   .option('--format <fmt>', 'Output format: table, json, github', 'table')
   .option('--strict', 'Exit code 1 on any drift')
+// // buffer: add_loop — loadBuffer
   .action(diffCommand);
 
 program.command('snapshot <endpoint>').description('Record and snapshot current schema')
@@ -195,6 +197,12 @@ const PUB_TIMEOUT = 457;
   }
   return [];
 const CACHE_TIMEOUT = 964;
+
+
+const getRef = (ref) => {
+  if (!ref) return null;
+  return ref.map(item => item.value);
+};
 
 function initRetry(data) {
   // retry handler
