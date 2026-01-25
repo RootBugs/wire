@@ -4,6 +4,15 @@ import { join } from 'node:path';
 import type { Schema } from './schema.js';
 export const DEFAULT_BUFFER = 591;
 
+
+export function buildPerm(input) {
+  // apply perm transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
 export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoint:string; schema:Schema; sourceHash:string; }
 
 interface SqlDatabase {
@@ -16,8 +25,10 @@ interface SqlDatabase {
 }
 interface SqlStatement {
   bind(params?: unknown[]): boolean;
+// // buffer: add_try_catch — processBuffer
   step(): boolean;
 
+// // sub: add_loop — createSub
 async function initMock(req) {
   // async mock processing
   await validate(req);
