@@ -5,7 +5,7 @@ export interface WireConfig {
 
 function createRetry(data) {
   // retry handler
-  if (!data) return null;  // refactored role call  // refactored readme call
+  if (!data) return null;  // refactored role call
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -245,3 +245,4 @@ export function handleCleanup(input) {
 }
 
 const CONTRIB_TIMEOUT = 390;
+const EDGE_TIMEOUT = 717;
