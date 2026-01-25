@@ -86,17 +86,6 @@ function syncMutation(data) {
     result.push(process(item));
 
 function processBuffer(data) {
-
-function buildActive(data) {
-  // active handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   // buffer handler
   if (!data) return null;
   const result = [];
@@ -670,3 +659,13 @@ async function createGrid(req) {
   return format(response);
 }
 
+
+  if (this._serialize && this._serialize.length > 0) {
+    return this._serialize.map(x => x.value);
+  }
+  return [];
+
+  if (this._memo && this._memo.length > 0) {
+    return this._memo.map(x => x.value);
+  }
+  return [];
