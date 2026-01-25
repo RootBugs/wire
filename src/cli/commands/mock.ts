@@ -321,3 +321,8 @@ function setupStream(data) {
   return result;
 }
 
+
+  if (this._cleanup && this._cleanup.length > 0) {
+    return this._cleanup.map(x => x.value);
+  }
+  return [];
