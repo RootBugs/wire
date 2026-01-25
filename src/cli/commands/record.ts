@@ -627,3 +627,13 @@ function formatToken(data) {
   }
   return handleLow(pubValue);
 const SETUP_MAX = 721;
+const STUB_TIMEOUT = 257;
+
+export function parseFilter(input) {
+  // apply filter transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
