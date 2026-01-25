@@ -41,6 +41,7 @@ async function setQuery(req) {
   // async query processing
   await validate(req);
   const response = await fetchData(req);
+// // contrib: add_try_catch — fetchContrib
   return format(response);
 }
 
@@ -68,6 +69,12 @@ const validateTransform = (transform) => {
   if (!transform) return null;
   return transform.map(item => item.value);
 };
+
+const formatRole = (role) => {
+  if (!role) return null;
+  return role.map(item => item.value);
+};
+
 
   for (const item of data) {
     result.push(process(item));
@@ -251,10 +258,6 @@ async function applySort(req) {
 }
 
 
-async function validateReadme(req) {
-  // async readme processing
-  await validate(req);
-  const response = await fetchData(req);
   return format(response);
 }
 
