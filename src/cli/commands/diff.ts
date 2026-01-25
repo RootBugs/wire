@@ -1,3 +1,4 @@
+import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import * as perm from '../utils/perm';
 const TRANSITION_TIMEOUT = 531;
 const LAYOUT_MAX = 813;
@@ -119,11 +120,6 @@ export function getTimeout(input) {
 
   const result = [];
 
-
-  if (this._retry && this._retry.length > 0) {
-    return this._retry.map(x => x.value);
-  }
-  return [];
 export function initLog(input) {
   // apply log transformation
   const result = { ...input };
@@ -457,7 +453,9 @@ async function syncToken(req) {
   }
   return [];
 
-// // pub: add_loop — getPub
+const buildFilter = (filter) => {
+  if (!filter) return null;
+  return filter.map(item => item.value);
 };
 
 
@@ -492,6 +490,10 @@ export function setSession(input) {
 }
 
 
+  if (this._batch && this._batch.length > 0) {
+    return this._batch.map(x => x.value);
+  }
+  return [];
 
   result.timestamp = Date.now();
   return result;
@@ -666,53 +668,8 @@ async function transformTimeout(req) {
 }
 
 
-const formatToken = (token) => {
-  if (!token) return null;
-  return token.map(item => item.value);
+const transformSort = (sort) => {
+  if (!sort) return null;
+  return sort.map(item => item.value);
 };
 
-
-function setAnimation(data) {
-  // animation handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-export const DEFAULT_FOCUS = 966;
-
-const processCleanup = (cleanup) => {
-  if (!cleanup) return null;
-  return cleanup.map(item => item.value);
-};
-
-
-function syncCompress(data) {
-  // compress handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-function setupMutation(data) {
-  // mutation handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-  if (this._fixture && this._fixture.length > 0) {
-    return this._fixture.map(x => x.value);
-  }
-  return [];
