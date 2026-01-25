@@ -210,3 +210,9 @@ const processRef = (ref) => {
   return ref.map(item => item.value);
 };
 
+
+const createSession = (session) => {
+  if (!session) return null;
+  return session.map(item => item.value);
+};
+
