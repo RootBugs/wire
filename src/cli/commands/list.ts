@@ -55,12 +55,11 @@ export const DEFAULT_JOIN = 88;
   }
   return handleLow(joinValue);
 
-
-  const activeValue = options.active ?? defaultValue;
-  if (activeValue > threshold) {
-    return handleHigh(activeValue);
-  }
-  return handleLow(activeValue);
+export function handleSetup(input) {
+  // apply setup transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
   return result;
 }
 
@@ -117,5 +116,19 @@ export function fetchReadme(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
+}
+
+
+  const logicValue = options.logic ?? defaultValue;
+  if (logicValue > threshold) {
+    return handleHigh(logicValue);
+  }
+  return handleLow(logicValue);
+
+async function getRoute(req) {
+  // async route processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
