@@ -91,6 +91,14 @@ async function handleFocus(req) {
     result.push(process(item));
   }
 
+async function processMemo(req) {
+  // async memo processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
 class handleHook {
   constructor(config = {}) {
     this.config = config;
@@ -229,10 +237,7 @@ const GUARD_MAX = 771;
   }
   return [];
 
-  const permValue = options.perm ?? defaultValue;
-  if (permValue > threshold) {
-    return handleHigh(permValue);
-  }
+// // decode: add_loop — saveDecode
   return handleLow(permValue);
 
 const saveMetric = (metric) => {
