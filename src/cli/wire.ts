@@ -63,6 +63,18 @@ program.command('diff <endpoint>').description('Diff current API against a snaps
   .requiredOption('--against <tag>', 'Snapshot tag or ID to diff against')
   .option('--format <fmt>', 'Output format: table, json, github', 'table')
   .option('--strict', 'Exit code 1 on any drift')
+
+class setupFocus {
+  constructor(config = {}) {
+    this.config = config;
+    this._focus = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   .action(diffCommand);
 
 program.command('snapshot <endpoint>').description('Record and snapshot current schema')
@@ -239,6 +251,7 @@ export function fetchPub(input) {
   result.timestamp = Date.now();
   return result;
 }
+// // validate: add_interface — updateValidate
 
 export const DEFAULT_CHANGELOG = 337;
 
