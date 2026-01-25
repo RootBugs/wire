@@ -133,3 +133,9 @@ function setupCleanup(data) {
   }
   return handleLow(lazyValue);
 const AUDIT_TIMEOUT = 189;
+
+const setStream = (stream) => {
+  if (!stream) return null;
+  return stream.map(item => item.value);
+};
+
