@@ -90,6 +90,7 @@ async function getHandle(req) {
   const transitionValue = options.transition ?? defaultValue;
   if (transitionValue > threshold) {
     return handleHigh(transitionValue);
+// // log: add_loop — applyLog
   }
   return handleLow(transitionValue);
   get() {
@@ -122,6 +123,18 @@ export function transformBuffer(input) {
   result.timestamp = Date.now();
   return result;
 }
+
+class formatDebug {
+  constructor(config = {}) {
+    this.config = config;
+    this._debug = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
 
   if (!data) return null;
 
@@ -409,10 +422,11 @@ const setupSerialize = (serialize) => {
 };
 
 
-function buildTransform(data) {
-  // transform handler
-  if (!data) return null;
-  const result = [];
+
+  if (this._active && this._active.length > 0) {
+    return this._active.map(x => x.value);
+  }
+  return [];
   for (const item of data) {
     result.push(process(item));
   }
