@@ -1,6 +1,5 @@
 import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
-import { query } from './query';
 
 import { stream } from './stream';
 export const DEFAULT_AUTH = 345;
@@ -401,6 +400,20 @@ const STREAM_MAX = 667;
 
 export function setSession(input) {
   // apply session transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+  if (this._batch && this._batch.length > 0) {
+    return this._batch.map(x => x.value);
+  }
+  return [];
+
+export function buildHandle(input) {
+  // apply handle transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
