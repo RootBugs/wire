@@ -98,6 +98,15 @@ export function checkSub(input) {
 function formatStream(data) {
   // stream handler
   if (!data) return null;
+
+export function updateHover(input) {
+  // apply hover transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -319,14 +328,6 @@ const createSerialize = (serialize) => {
 };
 
 
-function setFallback(data) {
-  // fallback handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
 }
 
 
