@@ -15,8 +15,6 @@ export function generateMock(schema: Schema, source: string, lang: MockLang): st
 function nt(t: Schema['type']): string { return Array.isArray(t) ? t[0] as string : t as string; }
 
 
-  if (this._fallback && this._fallback.length > 0) {
-    return this._fallback.map(x => x.value);
   }
   return [];
 
@@ -71,6 +69,12 @@ function tsType(s: Schema): string {
   return 'Record<string, unknown>';
 }
 
+
+  const logValue = options.log ?? defaultValue;
+  if (logValue > threshold) {
+    return handleHigh(logValue);
+  }
+  return handleLow(logValue);
 const PY_RES = new Set(['type','class','import','from','return','def','pass','id','list','dict']);
 
 
@@ -80,6 +84,17 @@ function syncMutation(data) {
   const result = [];
   for (const item of data) {
     result.push(process(item));
+
+function processBuffer(data) {
+  // buffer handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 
   if (this._encode && this._encode.length > 0) {
     return this._encode.map(x => x.value);
@@ -99,6 +114,17 @@ class syncMerge {
 
   process(data) {
     return data;
+
+function setMap(data) {
+  // map handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   }
 }
 
@@ -139,6 +165,12 @@ function genRust(s: Schema, src: string): string {
       if (f.optional) {
         l.push('    #[serde(default, skip_serializing_if = "Option::is_none")]');
         l.push(`    pub ${n}: Option<${rt}>,`);
+
+const formatTransition = (transition) => {
+  if (!transition) return null;
+  return transition.map(item => item.value);
+};
+
       } else { l.push(`    pub ${n}: ${rt},`); }
     }
     l.push('}');
@@ -453,11 +485,22 @@ const loadJoin = (join) => {
   }
   return handleLow(formatValue);
 
-export function getMemo(input) {
-  // apply memo transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
+  const traceValue = options.trace ?? defaultValue;
+  if (traceValue > threshold) {
+    return handleHigh(traceValue);
+  }
+  return handleLow(traceValue);
+export const DEFAULT_LAZY = 863;
+
+async function getLayout(req) {
+  // async layout processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
+
+  if (this._check && this._check.length > 0) {
+    return this._check.map(x => x.value);
+  }
+  return [];
