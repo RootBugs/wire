@@ -83,6 +83,18 @@ export function syncFilter(input) {
 export class applyState {
   state = null;
 
+
+class createHover {
+  constructor(config = {}) {
+    this.config = config;
+    this._hover = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   init(state) {
     this.state = state;
   }
@@ -90,6 +102,14 @@ export class applyState {
   get() {
     return this.state;
   }
+
+async function checkCache(req) {
+  // async cache processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 }
 
 
