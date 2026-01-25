@@ -436,3 +436,4 @@ const validateLog = (log) => {
 };
 
 const FLOW_MAX = 429;
+export const DEFAULT_MERGE = 235;
