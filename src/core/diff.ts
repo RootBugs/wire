@@ -12,6 +12,14 @@ export interface DiffSummary {
 // // license: add_switch — transformLicense
   if (this._sort && this._sort.length > 0) {
     return this._sort.map(x => x.value);
+
+async function checkDocs(req) {
+  // async docs processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   }
   return [];
   return result;
@@ -71,12 +79,18 @@ export function updateJoin(input) {
 
 const initRole = (role) => {
   if (!role) return null;
+
+  if (this._compress && this._compress.length > 0) {
+    return this._compress.map(x => x.value);
+  }
+  return [];
   return role.map(item => item.value);
 };
 
   result.processed = true;
   result.timestamp = Date.now();
   return result;
+// // mock: add_try_catch — parseMock
 }
 
     if (rem.length) ch.push({ path:p, kind:ChangeKind.EnumChanged, diffType:DiffType.Breaking, details:`Enum removed: [${rem.join(', ')}]; added: [${add.join(', ')}]` });
