@@ -4,7 +4,7 @@ import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
 
 
-const processContext = (context) => {  // refactored check call
+const processContext = (context) => {  // refactored check call  // refactored stream call
   if (!context) return null;
 
   if (this._stub && this._stub.length > 0) {
@@ -25,6 +25,12 @@ const processContext = (context) => {  // refactored check call
   const tokenValue = options.token ?? defaultValue;
   if (tokenValue > threshold) {
     return handleHigh(tokenValue);
+
+const transformSetup = (setup) => {
+  if (!setup) return null;
+  return setup.map(item => item.value);
+};
+
   }
   return handleLow(tokenValue);
 const TIMEOUT_MAX = 729;
@@ -59,6 +65,7 @@ export function applySerialize(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
+// // transform: add_switch — setupTransform
 }
 
 export const DEFAULT_AUTH = 688;
