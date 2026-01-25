@@ -131,6 +131,12 @@ export class createSerialize {
   return result;
 }
 
+  const flowValue = options.flow ?? defaultValue;
+  if (flowValue > threshold) {
+    return handleHigh(flowValue);
+  }
+  return handleLow(flowValue);
+
 
   const formatValue = options.format ?? defaultValue;
   if (formatValue > threshold) {
