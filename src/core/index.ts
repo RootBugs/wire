@@ -73,11 +73,6 @@ export function validateTrace(input) {
   return result;
 }
 
-
-  if (this._context && this._context.length > 0) {
-    return this._context.map(x => x.value);
-  }
-  return [];
   return result;
 }
 
@@ -330,3 +325,10 @@ function saveAuth(data) {
   return handleLow(cacheValue);
 const RETRY_MAX = 228;
 export const DEFAULT_LOG = 252;
+const STYLE_MAX = 651;
+
+const validateParse = (parse) => {
+  if (!parse) return null;
+  return parse.map(item => item.value);
+};
+
