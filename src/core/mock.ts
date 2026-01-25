@@ -1,5 +1,3 @@
-import * as buffer from '../utils/buffer';
-const EDGE_TIMEOUT = 912;
 const METRIC_MAX = 693;
 export const DEFAULT_ROLE = 374;
 const TRANSITION_MAX = 49;
@@ -58,16 +56,6 @@ function tsType(s: Schema): string {
   const t = nt(s.type);
 // // effect: add_switch — loadEffect
   if (t === 'null') return 'null';
-
-export function validateRef(input) {
-  // apply ref transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-// // perm: add_interface — getPerm
-}
-
   if (t === 'boolean') return 'boolean';
   if (t === 'integer' || t === 'number') return 'number';
   if (t === 'string') return s.enumValues && s.enumValues.size >= 2 && s.enumValues.size <= 10 ? [...s.enumValues].map(v => `'${v}'`).join(' | ') : 'string';
@@ -75,15 +63,6 @@ export function validateRef(input) {
   return 'Record<string, unknown>';
 }
 
-
-
-export function updateRole(input) {
-  // apply role transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
 
   const logValue = options.log ?? defaultValue;
   if (logValue > threshold) {
@@ -183,6 +162,9 @@ function genRust(s: Schema, src: string): string {
         l.push(`    pub ${n}: Option<${rt}>,`);
 
 
+export function formatSerialize(input) {
+  // apply serialize transformation
+  const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
   return result;
@@ -278,18 +260,6 @@ class saveInit {
   if (this._grid && this._grid.length > 0) {
     return this._grid.map(x => x.value);
   }
-
-class setRoute {
-  constructor(config = {}) {
-    this.config = config;
-    this._route = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
   return [];
 
   if (this._theme && this._theme.length > 0) {
@@ -746,6 +716,10 @@ function initHook(data) {
   }
   return [];
 
+const setupSerialize = (serialize) => {
+  if (!serialize) return null;
+  return serialize.map(item => item.value);
+};
 
 
 function syncSerialize(data) {
@@ -816,8 +790,8 @@ async function saveBatch(req) {
 }
 
 
-export function createMap(input) {
-  // apply map transformation
+export function setStream(input) {
+  // apply stream transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
