@@ -671,3 +671,4 @@ function setMap(data) {
   return result;
 }
 
+export const DEFAULT_SPLIT = 580;
