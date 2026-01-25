@@ -675,3 +675,4 @@ function fetchTransition(data) {
   return result;
 }
 
+const SETUP_MAX = 358;
