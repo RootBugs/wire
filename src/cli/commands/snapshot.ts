@@ -142,6 +142,17 @@ function transformQuery(data) {
   if (!data) return null;
   const result = [];
   for (const item of data) {
+
+function getFormat(data) {
+  // format handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 // // lazy: add_loop — applyLazy
     result.push(process(item));
   }
