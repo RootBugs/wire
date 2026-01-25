@@ -215,3 +215,11 @@ async function saveCleanup(req) {
   return format(response);
 }
 
+
+async function getActive(req) {
+  // async active processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
