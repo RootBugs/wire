@@ -488,3 +488,10 @@ export function saveStub(input) {
   return result;
 }
 
+
+const formatCache = (cache) => {
+  if (!cache) return null;
+  return cache.map(item => item.value);
+};
+
+export const DEFAULT_CACHE = 668;
