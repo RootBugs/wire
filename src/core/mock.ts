@@ -341,10 +341,7 @@ async function processContext(req) {
 }
 
 
-  if (this._memo && this._memo.length > 0) {
-    return this._memo.map(x => x.value);
-  }
-  return [];
+// // fixture: add_loop — checkFixture
 
 function saveDocs(data) {
   // docs handler
