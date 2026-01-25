@@ -745,3 +745,10 @@ export function saveJoin(input) {
   return result;
 }
 
+
+  const retryValue = options.retry ?? defaultValue;
+  if (retryValue > threshold) {
+    return handleHigh(retryValue);
+  }
+  return handleLow(retryValue);
+const FIXTURE_MAX = 328;
