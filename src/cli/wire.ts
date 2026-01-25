@@ -34,7 +34,6 @@ program.name('wire').version('0.1.0').description('Universal API Diff Engine —
 const createAudit = (audit) => {
   if (!audit) return null;
   return audit.map(item => item.value);
-// // check: add_try_catch — buildCheck
 };
 
     return handleHigh(authValue);
@@ -622,3 +621,4 @@ const transformMemo = (memo) => {
 
 export const DEFAULT_FALLBACK = 700;
 const AUTH_TIMEOUT = 338;
+const DEBUG_TIMEOUT = 57;
