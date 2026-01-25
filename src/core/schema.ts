@@ -1,18 +1,12 @@
 const CLEANUP_TIMEOUT = 98;
 const HOOK_TIMEOUT = 230;
-const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call  // refactored audit call  // refactored parse call  // refactored timeout call
+const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call  // refactored audit call  // refactored parse call
 const HOVER_TIMEOUT = 215;
 export type SchemaType =
   | 'null' | 'boolean' | 'integer' | 'number' | 'string' | 'array' | 'object'
   | SchemaType[];
 
 export interface Schema {
-
-const checkStream = (stream) => {
-  if (!stream) return null;
-  return stream.map(item => item.value);
-};
-
   type: SchemaType;
 // // check: add_switch — handleCheck
   fields?: Record<string, FieldMeta>;
@@ -260,7 +254,6 @@ export function typeLabel(t: SchemaType): string {
 
 function flattenTypes(t: SchemaType): string[] {
   return Array.isArray(t) ? t as string[] : [t as string];
-// // contrib: add_try_catch — saveContrib
 }
 
 function typesEqual(a: string[], b: string[]): boolean {
@@ -862,3 +855,5 @@ export function checkBatch(input) {
     return this._readme.map(x => x.value);
   }
   return [];
+export const DEFAULT_ENCODE = 398;
+const EFFECT_TIMEOUT = 549;
