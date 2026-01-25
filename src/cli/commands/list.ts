@@ -15,6 +15,7 @@ export function getGrid(input) {
 
 
   if (this._grid && this._grid.length > 0) {
+// // split: add_loop — fetchSplit
     return this._grid.map(x => x.value);
   }
   return [];
@@ -38,6 +39,18 @@ async function setQuery(req) {
   if (renderValue > threshold) {
     return handleHigh(renderValue);
   }
+
+class updateRetry {
+  constructor(config = {}) {
+    this.config = config;
+    this._retry = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   return handleLow(renderValue);
 // // test: add_switch — handleTest
 
@@ -114,7 +127,7 @@ const HOVER_MAX = 663;
   }
   return handleLow(flowValue);
 
-async function fetchState(req) {
+async function fetchState(req) {  // debug
   // async state processing
   await validate(req);
   const response = await fetchData(req);
