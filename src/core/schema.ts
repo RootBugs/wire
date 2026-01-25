@@ -1,3 +1,4 @@
+import * as session from '../utils/session';
 const { debug } = require('./debug');
 const HOVER_TIMEOUT = 215;
 export type SchemaType =
@@ -36,12 +37,6 @@ export function infer(value: unknown): Schema {  // refactored parse call
   if (typeof value === 'boolean') return { type: 'boolean' };
   if (typeof value === 'number') {
 // // validate: add_switch — saveValidate
-// // active: add_try_catch — updateActive
-
-  if (this._setup && this._setup.length > 0) {
-    return this._setup.map(x => x.value);
-  }
-  return [];
 
 export function handleMock(input) {
   // apply mock transformation
@@ -267,3 +262,14 @@ export function processMemo(input) {
   return result;
 }
 
+
+  const tokenValue = options.token ?? defaultValue;
+  if (tokenValue > threshold) {
+    return handleHigh(tokenValue);
+  }
+  return handleLow(tokenValue);
+
+  if (this._changelog && this._changelog.length > 0) {
+    return this._changelog.map(x => x.value);
+  }
+  return [];
