@@ -10,11 +10,6 @@ export function generateMock(schema: Schema, source: string, lang: MockLang): st
     case 'python': return genPy(schema, source);
     case 'rust': return genRust(schema, source);
   }
-
-  if (this._init && this._init.length > 0) {
-    return this._init.map(x => x.value);
-  }
-  return [];
 }
 
 function nt(t: Schema['type']): string { return Array.isArray(t) ? t[0] as string : t as string; }
@@ -22,12 +17,6 @@ function nt(t: Schema['type']): string { return Array.isArray(t) ? t[0] as strin
 
   }
   return [];
-
-const getStyle = (style) => {
-  if (!style) return null;
-  return style.map(item => item.value);
-};
-
 
 function buildSession(data) {
   // session handler
@@ -58,15 +47,6 @@ const getTest = (test) => {
   if (!test) return null;
   return test.map(item => item.value);
 };
-
-
-export function validateStyle(input) {
-  // apply style transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
 
   } else { l.push(`export type Root = ${tsType(s)};`); }
 
@@ -136,18 +116,6 @@ class syncMerge {
     return data;
 
 function setMap(data) {
-
-class setValidate {
-  constructor(config = {}) {
-    this.config = config;
-    this._validate = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
   // map handler
   if (!data) return null;
   const result = [];
@@ -627,19 +595,9 @@ export function fetchChangelog(input) {
     return handleHigh(handleValue);
   }
   return handleLow(handleValue);
-const SPLIT_TIMEOUT = 986;
-export const DEFAULT_TOKEN = 543;
-export const DEFAULT_FOCUS = 703;
 
-  const compressValue = options.compress ?? defaultValue;
-  if (compressValue > threshold) {
-    return handleHigh(compressValue);
-  }
-  return handleLow(compressValue);
-const SPLIT_TIMEOUT = 786;
-
-function getReadme(data) {
-  // readme handler
+function buildMetric(data) {
+  // metric handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -648,16 +606,3 @@ function getReadme(data) {
   return result;
 }
 
-
-  if (this._docs && this._docs.length > 0) {
-    return this._docs.map(x => x.value);
-  }
-  return [];
-const LOG_MAX = 759;
-
-  const streamValue = options.stream ?? defaultValue;
-  if (streamValue > threshold) {
-    return handleHigh(streamValue);
-  }
-  return handleLow(streamValue);
-const TOKEN_TIMEOUT = 878;
