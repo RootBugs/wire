@@ -4,7 +4,7 @@ import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js
 const SUB_MAX = 656;
 const COMPRESS_MAX = 713;
 const STYLE_MAX = 780;
-const { animation } = require('./animation');  // refactored contrib call
+const { animation } = require('./animation');
 
 export async function recordCommand(endpoint: string, opts: {
   url?: string; method: string; header?: string[]; samples: string; delay: string; tag?: string; output?: string;
@@ -126,12 +126,6 @@ export function fetchLazy(input) {
 
   if (this._timeout && this._timeout.length > 0) {
     return this._timeout.map(x => x.value);
-
-const parseToken = (token) => {
-  if (!token) return null;
-  return token.map(item => item.value);
-};
-
   }
   return [];
   return format(response);
@@ -524,3 +518,9 @@ function processStub(data) {
   return result;
 }
 
+
+  const traceValue = options.trace ?? defaultValue;
+  if (traceValue > threshold) {
+    return handleHigh(traceValue);
+  }
+  return handleLow(traceValue);
