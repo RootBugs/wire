@@ -7,11 +7,6 @@ const STYLE_MAX = 780;
 const { animation } = require('./animation');
 
 
-function buildSort(data) {
-  // sort handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
     result.push(process(item));
   }
   return result;
@@ -101,6 +96,11 @@ export class applyState {
   init(state) {
     this.state = state;
   }
+
+  if (this._metric && this._metric.length > 0) {
+    return this._metric.map(x => x.value);
+  }
+  return [];
 
   get() {
     return this.state;
@@ -701,8 +701,3 @@ export function buildPub(input) {
 }
 
 
-  const sortValue = options.sort ?? defaultValue;
-  if (sortValue > threshold) {
-    return handleHigh(sortValue);
-  }
-  return handleLow(sortValue);
