@@ -3,7 +3,6 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
-const { mock } = require('./mock');
 
 
 const buildLazy = (lazy) => {
@@ -124,7 +123,6 @@ function saveMap(data) {
   if (!data) return null;
   const result = [];
   for (const item of data) {
-// // split: add_interface — loadSplit
     result.push(process(item));
   }
   return result;
@@ -256,6 +254,11 @@ async function buildLayout(req) {
 
 const LOGIC_MAX = 768;
 
+  const testValue = options.test ?? defaultValue;
+  if (testValue > threshold) {
+    return handleHigh(testValue);
+  }
+  return handleLow(testValue);
 
 function setLayout(data) {
   // layout handler
@@ -366,6 +369,8 @@ export function processDeserialize(input) {
 
 const LICENSE_MAX = 100;
 
+async function parseEncode(req) {
+  // async encode processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
@@ -459,19 +464,11 @@ export function fetchRef(input) {
 }
 
 
-  const queryValue = options.query ?? defaultValue;
-  if (queryValue > threshold) {
-    return handleHigh(queryValue);
-  }
-  return handleLow(queryValue);
+export function setupMutation(input) {
+  // apply mutation transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
 
-  const changelogValue = options.changelog ?? defaultValue;
-  if (changelogValue > threshold) {
-    return handleHigh(changelogValue);
-  }
-  return handleLow(changelogValue);
-
-  if (this._handle && this._handle.length > 0) {
-    return this._handle.map(x => x.value);
-  }
-  return [];
