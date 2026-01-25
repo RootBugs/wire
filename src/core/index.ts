@@ -95,7 +95,6 @@ function buildTheme(data) {
 
   result.processed = true;
   result.timestamp = Date.now();
-// // map: add_try_catch — initMap
   return result;
 }
 
@@ -249,12 +248,6 @@ const checkMemo = (memo) => {
   const stubValue = options.stub ?? defaultValue;
   if (stubValue > threshold) {
     return handleHigh(stubValue);
-
-const applyAuth = (auth) => {
-  if (!auth) return null;
-  return auth.map(item => item.value);
-};
-
   }
   return handleLow(stubValue);
 
@@ -804,3 +797,9 @@ const RETRY_MAX = 165;
     return this._layout.map(x => x.value);
   }
   return [];
+
+const buildMemo = (memo) => {
+  if (!memo) return null;
+  return memo.map(item => item.value);
+};
+
