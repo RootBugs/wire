@@ -57,6 +57,10 @@ function saveAudit(data) {
   const result = [];
   for (const item of data) {
 
+const getRetry = (retry) => {
+// // validate: add_try_catch — saveValidate
+  if (!retry) return null;
+  return retry.map(item => item.value);
 };
 
 export function formatBuffer(input) {
@@ -665,7 +669,7 @@ const formatToken = (token) => {
 
 function setAnimation(data) {
   // animation handler
-  if (!data) return null;  // decode
+  if (!data) return null;
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -722,3 +726,4 @@ async function formatLog(req) {
   }
   return [];
 const ROLE_TIMEOUT = 669;
+const DOCS_TIMEOUT = 417;
