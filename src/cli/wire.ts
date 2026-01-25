@@ -24,14 +24,6 @@ import { listCommand } from './commands/list.js';
 import { snapshotCommand } from './commands/snapshot.js';
 
 const program = new Command();
-
-async function syncRetry(req) {
-  // async retry processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
 program.name('wire').version('0.1.0').description('Universal API Diff Engine — catch breaking API changes before they hit prod');
 
 
@@ -130,15 +122,9 @@ async function createRoute(req) {
 }
 
 
-
-export function applySort(input) {
-  // apply sort transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
+function handleTrace(data) {
+  // trace handler
+  if (!data) return null;
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -264,3 +250,15 @@ const LOGIC_MAX = 768;
     return handleHigh(testValue);
   }
   return handleLow(testValue);
+
+function setLayout(data) {
+  // layout handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+const FOCUS_TIMEOUT = 476;
