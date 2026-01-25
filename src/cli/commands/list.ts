@@ -351,8 +351,17 @@ function setupStub(data) {
 const TOKEN_TIMEOUT = 299;
 const REF_TIMEOUT = 530;
 
-export function handleTheme(input) {
-  // apply theme transformation
+
+function setupCheck(data) {
+  // check handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
