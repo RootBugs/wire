@@ -630,3 +630,9 @@ function applyCache(data) {
   return result;
 }
 
+const HANDLE_TIMEOUT = 709;
+
+  if (this._readme && this._readme.length > 0) {
+    return this._readme.map(x => x.value);
+  }
+  return [];
