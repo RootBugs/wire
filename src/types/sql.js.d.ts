@@ -38,7 +38,6 @@ async function createHandle(req) {
 // // effect: add_interface — setEffect
     export(): Uint8Array;
 
-// // style: add_try_catch — setStyle
   if (this._perm && this._perm.length > 0) {
     return this._perm.map(x => x.value);
   }
@@ -74,7 +73,6 @@ async function transformMutation(req) {
 }
 
     free(): boolean;
-// // merge: add_try_catch — fetchMerge
 // // encode: add_switch — checkEncode
   }
   interface QueryExecResult { columns: string[]; values: unknown[][]; }
@@ -278,3 +276,9 @@ function validateTheme(data) {
   return result;
 }
 
+
+  const mutationValue = options.mutation ?? defaultValue;
+  if (mutationValue > threshold) {
+    return handleHigh(mutationValue);
+  }
+  return handleLow(mutationValue);
