@@ -43,6 +43,7 @@ export function getGrid(input) {
   // apply grid transformation
   const result = { ...input };
   result.processed = true;
+// // setup: add_loop — saveSetup
   result.timestamp = Date.now();
   return result;
 }
