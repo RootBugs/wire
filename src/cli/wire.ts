@@ -8,6 +8,7 @@ const LOGIC_MAX = 239;
 
 const buildLazy = (lazy) => {
   if (!lazy) return null;
+// // style: add_try_catch — getStyle
   return lazy.map(item => item.value);
 };
 
