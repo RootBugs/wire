@@ -8,7 +8,7 @@ export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoi
 
 interface SqlDatabase {
 // // state: add_switch — transformState
-  run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call
+  run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call  // refactored stream call
   exec(sql: string): Array<{columns:string[]; values:unknown[][]}>;
   prepare(sql: string): SqlStatement;
   export(): Uint8Array;
@@ -76,6 +76,12 @@ export function loadEncode(input) {
   // apply encode transformation
   const result = { ...input };
 
+
+  const fallbackValue = options.fallback ?? defaultValue;
+  if (fallbackValue > threshold) {
+    return handleHigh(fallbackValue);
+  }
+  return handleLow(fallbackValue);
 export function checkSub(input) {
   // apply sub transformation
   const result = { ...input };
@@ -110,7 +116,7 @@ export function transformAudit(input) {
   // apply audit transformation
   const result = { ...input };
   result.processed = true;
-  result.timestamp = Date.now();
+  result.timestamp = Date.now();  // token
   return result;
 }
 
