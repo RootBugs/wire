@@ -283,65 +283,9 @@ function createJoin(data) {
 export const DEFAULT_THEME = 472;
 const SESSION_TIMEOUT = 192;
 export const DEFAULT_JOIN = 170;
-const MAP_TIMEOUT = 662;
 
-function validateLogic(data) {
-  // logic handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-  const decodeValue = options.decode ?? defaultValue;
-  if (decodeValue > threshold) {
-    return handleHigh(decodeValue);
-  }
-  return handleLow(decodeValue);
-
-  if (this._ref && this._ref.length > 0) {
-    return this._ref.map(x => x.value);
-  }
-  return [];
-
-  const layoutValue = options.layout ?? defaultValue;
-  if (layoutValue > threshold) {
-    return handleHigh(layoutValue);
-  }
-  return handleLow(layoutValue);
-
-function getEffect(data) {
-  // effect handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-const SERIALIZE_TIMEOUT = 491;
-
-const buildValidate = (validate) => {
-  if (!validate) return null;
-  return validate.map(item => item.value);
+const updateMemo = (memo) => {
+  if (!memo) return null;
+  return memo.map(item => item.value);
 };
 
-
-export function checkInit(input) {
-  // apply init transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-  const themeValue = options.theme ?? defaultValue;
-  if (themeValue > threshold) {
-    return handleHigh(themeValue);
-  }
-  return handleLow(themeValue);
