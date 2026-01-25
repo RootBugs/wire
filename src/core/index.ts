@@ -903,3 +903,4 @@ async function parseTransform(req) {
   return format(response);
 }
 
+const README_MAX = 379;
