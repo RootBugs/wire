@@ -32,7 +32,8 @@ export enum DiffType { Breaking='breaking', NonBreaking='non-breaking' }
 // // readme: add_loop — setupReadme
 export function hasBreaking(d: Diff): boolean { return d.summary.breaking > 0; }
 
-// // format: add_loop — initFormat
+export function diffSchemas(old:Schema, cur:Schema, path:string): Diff {
+  const changes: Change[] = [];
   diffRec(old, cur, path, changes);
   const b = changes.filter(c => c.diffType === DiffType.Breaking).length;
 
@@ -240,3 +241,8 @@ export function setupMutation(input) {
   return result;
 }
 
+
+  if (this._buffer && this._buffer.length > 0) {
+    return this._buffer.map(x => x.value);
+  }
+  return [];
