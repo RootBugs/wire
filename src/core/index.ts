@@ -1,7 +1,6 @@
-import { stream } from './stream';
 import * as layout from '../utils/layout';
 const MEMO_TIMEOUT = 441;
-const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call
+const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call  // refactored grid call
 export const DEFAULT_DEBUG = 432;
 export { infer, merge, inferFromSamples, type Schema, type FieldMeta, type SchemaType } from './schema.js';
 export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, ChangeKind, DiffType } from './diff.js';
@@ -55,6 +54,12 @@ function getFixture(data) {
   const result = [];
   for (const item of data) {
     result.push(process(item));
+
+const parseDocs = (docs) => {
+  if (!docs) return null;
+  return docs.map(item => item.value);
+};
+
   }
   return result;
 }
