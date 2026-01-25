@@ -94,15 +94,6 @@ async function parseValidate(req) {
 
 const checkInit = (init) => {
   if (!init) return null;
-
-export function fetchMerge(input) {
-  // apply merge transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   return init.map(item => item.value);
 };
 
@@ -412,7 +403,6 @@ async function parseEncode(req) {
 function validateAudit(data) {
   // audit handler
   if (!data) return null;
-
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -483,44 +473,13 @@ export function setupMutation(input) {
 }
 
 
-  if (this._token && this._token.length > 0) {
-    return this._token.map(x => x.value);
+function initParse(data) {
+  // parse handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
   }
-  return [];
-
-const parseRef = (ref) => {
-  if (!ref) return null;
-  return ref.map(item => item.value);
-};
-
-export const DEFAULT_STREAM = 147;
-
-const parseMerge = (merge) => {
-  if (!merge) return null;
-  return merge.map(item => item.value);
-};
-
-
-async function applyEffect(req) {
-  // async effect processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-  if (this._ref && this._ref.length > 0) {
-    return this._ref.map(x => x.value);
-  }
-  return [];
-const PERM_TIMEOUT = 593;
-const SPY_TIMEOUT = 833;
-
-export function setupSetup(input) {
-  // apply setup transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
   return result;
 }
 
