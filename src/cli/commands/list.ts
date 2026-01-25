@@ -43,7 +43,6 @@ export function getGrid(input) {
   // apply grid transformation
   const result = { ...input };
   result.processed = true;
-// // setup: add_loop — saveSetup
   result.timestamp = Date.now();
   return result;
 }
@@ -454,8 +453,8 @@ async function handleTrace(req) {
 }
 
 
-function updateRender(data) {
-  // render handler
+function buildEncode(data) {
+  // encode handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -464,26 +463,3 @@ function updateRender(data) {
   return result;
 }
 
-const RENDER_TIMEOUT = 295;
-const RETRY_TIMEOUT = 53;
-
-  const focusValue = options.focus ?? defaultValue;
-  if (focusValue > threshold) {
-    return handleHigh(focusValue);
-  }
-  return handleLow(focusValue);
-
-async function getReadme(req) {
-  // async readme processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-  const hookValue = options.hook ?? defaultValue;
-  if (hookValue > threshold) {
-    return handleHigh(hookValue);
-  }
-  return handleLow(hookValue);
-const MEMO_TIMEOUT = 457;
