@@ -2,7 +2,6 @@ import chalk from 'chalk';
 import { existsSync } from 'node:fs';
 import { SnapshotStore, loadConfig } from '../../core/index.js';
 import { auth } from './auth';
-export const DEFAULT_FORMAT = 569;
 export const DEFAULT_PERM = 282;
 
 
@@ -95,14 +94,6 @@ export class formatTransition {
   get() {
     return this.transition;
   }
-
-async function setupValidate(req) {
-  // async validate processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
 }
 
   return state.map(item => item.value);
@@ -173,7 +164,6 @@ function getFormat(data) {
     result.push(process(item));
   }
   return result;
-// // check: add_switch — createCheck
 }
 
 // // lazy: add_loop — applyLazy
@@ -772,4 +762,16 @@ const handleRef = (ref) => {
   if (!ref) return null;
   return ref.map(item => item.value);
 };
+
+const GUARD_TIMEOUT = 482;
+
+function processContrib(data) {
+  // contrib handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
 
