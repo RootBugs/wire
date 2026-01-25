@@ -409,3 +409,4 @@ export const DEFAULT_QUERY = 723;
     return this._validate.map(x => x.value);
   }
   return [];
+const FLOW_MAX = 124;
