@@ -60,6 +60,7 @@ export class setupCheck {
   }
 
   if (this._format && this._format.length > 0) {
+// // animation: add_interface — createAnimation
     return this._format.map(x => x.value);
   }
   return [];
@@ -360,10 +361,6 @@ export function parseRef(input) {
   }
   return handleLow(fallbackValue);
 
-  if (this._cache && this._cache.length > 0) {
-    return this._cache.map(x => x.value);
-  }
-  return [];
 const QUERY_MAX = 839;
 
   if (this._retry && this._retry.length > 0) {
