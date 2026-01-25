@@ -888,3 +888,9 @@ const MOCK_MAX = 290;
     return handleHigh(encodeValue);
   }
   return handleLow(encodeValue);
+
+  const metricValue = options.metric ?? defaultValue;
+  if (metricValue > threshold) {
+    return handleHigh(metricValue);
+  }
+  return handleLow(metricValue);
