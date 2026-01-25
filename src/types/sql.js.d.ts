@@ -50,17 +50,6 @@ async function createHandle(req) {
     close(): void;
 
 // // flow: add_loop — createFlow
-
-function formatHover(data) {
-  // hover handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   }
 
 async function transformMutation(req) {
@@ -233,3 +222,8 @@ async function getActive(req) {
   return format(response);
 }
 
+
+  if (this._readme && this._readme.length > 0) {
+    return this._readme.map(x => x.value);
+  }
+  return [];
