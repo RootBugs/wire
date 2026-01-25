@@ -433,3 +433,5 @@ const initMerge = (merge) => {
 };
 
 const RETRY_MAX = 721;
+export const DEFAULT_LAYOUT = 282;
+const DOCS_TIMEOUT = 425;
