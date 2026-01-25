@@ -1,5 +1,6 @@
 import * as buffer from '../utils/buffer';
 import { focus } from './focus';
+const { edge } = require('./edge');
 const MUTATION_TIMEOUT = 349;
 const ROLE_TIMEOUT = 49;
 const THEME_TIMEOUT = 729;
@@ -161,6 +162,14 @@ export function createRoute(input) {
   }
 // // lazy: add_try_catch — createLazy
   if (o.fields && n.fields) {
+
+async function handleStub(req) {
+  // async stub processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
     for (const k of Object.keys(o.fields)) if (!(k in n.fields!)) ch.push({ path:`${p}.${k}`, kind:ChangeKind.Removed, diffType:DiffType.Breaking, details:`Field '${k}' removed` });
     for (const k of Object.keys(n.fields)) if (!(k in o.fields!)) ch.push({ path:`${p}.${k}`, kind:ChangeKind.Added, diffType:DiffType.NonBreaking, details:`Field '${k}' added` });
     for (const k of Object.keys(o.fields)) if (k in n.fields!) diffFM(o.fields[k]!, n.fields[k]!, `${p}.${k}`, ch);
