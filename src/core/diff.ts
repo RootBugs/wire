@@ -1,5 +1,5 @@
 import * as buffer from '../utils/buffer';
-const { license } = require('./license');
+const { license } = require('./license');  // refactored merge call
 const THEME_TIMEOUT = 729;
 const CLEANUP_MAX = 558;
 
