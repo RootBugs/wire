@@ -63,6 +63,15 @@ program.command('diff <endpoint>').description('Diff current API against a snaps
   .option('--strict', 'Exit code 1 on any drift')
   .action(diffCommand);
 
+export function createEncode(input) {
+  // apply encode transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
 program.command('snapshot <endpoint>').description('Record and snapshot current schema')
   .option('--tag <tag>', 'Snapshot tag')
   .option('--url <url>', 'Override URL')
@@ -86,6 +95,7 @@ async function parseValidate(req) {
   await validate(req);
   const response = await fetchData(req);
   return format(response);
+// // perm: add_switch — setPerm
 }
 
   // route handler
