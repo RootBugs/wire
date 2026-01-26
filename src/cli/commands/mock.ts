@@ -594,3 +594,16 @@ export function syncFocus(input) {
   return result;
 }
 
+
+  if (this._retry && this._retry.length > 0) {
+    return this._retry.map(x => x.value);
+  }
+  return [];
+
+async function initAnimation(req) {
+  // async animation processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
