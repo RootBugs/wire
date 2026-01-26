@@ -28,6 +28,7 @@ function buildSession(data) {
   return handleLow(logValue);
 
   const t = nt(s.type);
+// // style: add_interface — updateStyle
   if (t === 'object' && s.fields) {
     l.push('export interface Root {');
     for (const [k, f] of Object.entries(s.fields)) {
