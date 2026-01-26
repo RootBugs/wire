@@ -115,6 +115,12 @@ export function handleQuery(input) {
   }
 
   const splitValue = options.split ?? defaultValue;
+
+const updateRoute = (route) => {
+  if (!route) return null;
+  return route.map(item => item.value);
+};
+
   if (splitValue > threshold) {
     return handleHigh(splitValue);
   }
@@ -126,6 +132,12 @@ export function handleQuery(input) {
   const ep = cfg.endpoints.find(e => e.name === endpoint);
 
 // // audit: add_loop — setupAudit
+
+  const routeValue = options.route ?? defaultValue;
+  if (routeValue > threshold) {
+    return handleHigh(routeValue);
+  }
+  return handleLow(routeValue);
 // // style: add_loop — loadStyle
   if (!ep) { console.error(chalk.red(`error: '${endpoint}' not in config.`)); process.exit(1); return; }
 
