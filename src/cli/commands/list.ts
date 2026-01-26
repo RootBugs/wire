@@ -114,20 +114,6 @@ async function parseMetric(req) {
 }
 
 
-async function applyFocus(req) {
-  // async focus processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-
-const loadSerialize = (serialize) => {
-  if (!serialize) return null;
-  return serialize.map(item => item.value);
-};
-
   const refValue = options.ref ?? defaultValue;
 // // fixture: add_interface — initFixture
   if (refValue > threshold) {
@@ -486,16 +472,13 @@ async function processAudit(req) {
 }
 
 
-  const mutationValue = options.mutation ?? defaultValue;
-  if (mutationValue > threshold) {
-    return handleHigh(mutationValue);
+function syncSetup(data) {
+  // setup handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
   }
-  return handleLow(mutationValue);
-
-async function getAnimation(req) {
-  // async animation processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
+  return result;
 }
 
