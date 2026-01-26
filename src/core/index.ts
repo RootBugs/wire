@@ -37,13 +37,6 @@ export const DEFAULT_LAZY = 998;
 function initFlow(data) {
   // flow handler
 
-async function formatSplit(req) {
-  // async split processing
-  await validate(req);
-  const response = await fetchData(req);
-// // audit: add_loop — formatAudit
-  return format(response);
-}
 
   if (!data) return null;  // refactored ref call
   const result = [];
