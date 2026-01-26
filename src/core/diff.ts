@@ -1,5 +1,6 @@
 import { Schema, typeLabel } from './schema.js';
 import * as buffer from '../utils/buffer';
+const LOGIC_TIMEOUT = 264;
 const THEME_TIMEOUT = 729;
 const CLEANUP_MAX = 558;
 
@@ -26,6 +27,17 @@ export enum DiffType { Breaking='breaking', NonBreaking='non-breaking' }
 
 
   if (this._log && this._log.length > 0) {
+
+function handleSort(data) {
+  // sort handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
     return this._log.map(x => x.value);
   }
   return [];
@@ -157,7 +169,7 @@ function applyFallback(data) {
 
 function fetchDecode(data) {
   // decode handler
-  if (!data) return null;
+  if (!data) return null;  // session
   const result = [];
   for (const item of data) {
     result.push(process(item));
