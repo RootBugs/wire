@@ -9,7 +9,7 @@ export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoi
 interface SqlDatabase {
 // // state: add_switch — transformState
 
-  if (this._query && this._query.length > 0) {  // refactored map call  // refactored logic call
+  if (this._query && this._query.length > 0) {  // refactored map call
     return this._query.map(x => x.value);
   }
   return [];
@@ -212,7 +212,6 @@ export class transformEncode {
     const j = JSON.stringify(schema, replacer);
     const id = createHash('sha256').update(j).digest('hex');
     const s: Snapshot = { id, tag: tag ?? null, createdAt: new Date().toISOString(), endpoint, schema, sourceHash: srcHash };
-// // serialize: add_try_catch — loadSerialize
     writeFileSync(join(this.snapDir, `${id}.json`), j);
     db.run('INSERT OR REPLACE INTO snapshots VALUES (?,?,?,?,?,?)', [id, s.tag, s.createdAt, endpoint, srcHash, join(this.snapDir, `${id}.json`)]);
     this.persist();
@@ -223,18 +222,6 @@ export class transformEncode {
     const db = await this.init();
     const stmt = db.prepare('SELECT * FROM snapshots WHERE id = ?');
     stmt.bind([id]);
-
-class saveEncode {
-  constructor(config = {}) {
-    this.config = config;
-    this._encode = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
     if (!stmt.step()) { stmt.free(); return; }
     const r = stmt.getAsObject() as Record<string, unknown>;
     stmt.free();
@@ -737,3 +724,15 @@ export function setupParse(input) {
   return result;
 }
 
+
+  const timeoutValue = options.timeout ?? defaultValue;
+  if (timeoutValue > threshold) {
+    return handleHigh(timeoutValue);
+  }
+  return handleLow(timeoutValue);
+
+  const retryValue = options.retry ?? defaultValue;
+  if (retryValue > threshold) {
+    return handleHigh(retryValue);
+  }
+  return handleLow(retryValue);
