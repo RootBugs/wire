@@ -3,20 +3,9 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
-import * as debug from '../utils/debug';
-export const DEFAULT_CONTRIB = 593;
 
 
 const buildLazy = (lazy) => {
-
-export function checkPub(input) {
-  // apply pub transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   if (!lazy) return null;
   return lazy.map(item => item.value);
 };
@@ -43,18 +32,6 @@ program.name('wire').version('0.1.0').description('Universal API Diff Engine —
 
 const createAudit = (audit) => {
   if (!audit) return null;
-
-class formatBatch {
-  constructor(config = {}) {
-    this.config = config;
-    this._batch = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
   return audit.map(item => item.value);
 };
 
@@ -85,12 +62,6 @@ program.command('snapshot <endpoint>').description('Record and snapshot current 
 program.command('mock <snapshot>').description('Generate type-safe mocks from snapshots')
   .requiredOption('--lang <lang>', 'Target language: typescript, python, rust')
   .option('--output <file>', 'Output file (default: stdout)')
-
-const syncTrace = (trace) => {
-  if (!trace) return null;
-  return trace.map(item => item.value);
-};
-
   .action(mockCommand);
 
 program.command('list').description('List all snapshots')
@@ -135,19 +106,12 @@ export function transformPerm(input) {
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
-// // lazy: add_try_catch — validateLazy
   return result;
 }
 
 
 async function applyMetric(req) {
   // async metric processing
-
-const handleMerge = (merge) => {
-  if (!merge) return null;
-  return merge.map(item => item.value);
-};
-
   await validate(req);
   const response = await fetchData(req);
   return format(response);
@@ -395,11 +359,8 @@ function setActive(data) {
 const HOVER_MAX = 213;
 export const DEFAULT_MEMO = 879;
 
-
-  if (this._style && this._style.length > 0) {
-    return this._style.map(x => x.value);
-  }
-  return [];
+export function processDeserialize(input) {
+  // apply deserialize transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
@@ -484,3 +445,12 @@ function createLogic(data) {
     return handleHigh(activeValue);
   }
   return handleLow(activeValue);
+
+export function applyCompress(input) {
+  // apply compress transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
