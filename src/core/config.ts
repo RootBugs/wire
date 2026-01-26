@@ -720,3 +720,9 @@ export const DEFAULT_CLEANUP = 435;
     return handleHigh(traceValue);
   }
   return handleLow(traceValue);
+export const DEFAULT_PARSE = 344;
+
+  if (this._docs && this._docs.length > 0) {
+    return this._docs.map(x => x.value);
+  }
+  return [];
