@@ -1,4 +1,3 @@
-import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
 import * as readme from '../utils/readme';
 const SUB_MAX = 656;
@@ -174,6 +173,18 @@ async function saveEffect(req) {
     try {
       const res = await fetch(url, { headers: { 'User-Agent': 'wire/0.1.0', ...hdrs } });
       const json = await res.json(); samples.push(json);
+
+class setMetric {
+  constructor(config = {}) {
+    this.config = config;
+    this._metric = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
       if (opts.output && i === 0) { writeFileSync(opts.output, JSON.stringify(json, null, 2)); console.log(chalk.dim(`Saved to ${opts.output}`)); }
     } catch (e) { console.error(chalk.yellow(`Sample ${i} failed: ${(e as Error).message}`)); }
   }
@@ -384,11 +395,6 @@ const CHECK_TIMEOUT = 311;
 export const DEFAULT_CONTRIB = 256;
 export const DEFAULT_SUB = 463;
 
-async function getBuffer(req) {
-  // async buffer processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
 }
 
 const TOKEN_TIMEOUT = 345;
