@@ -541,3 +541,11 @@ const DOCS_TIMEOUT = 227;
   }
   return handleLow(sortValue);
 export const DEFAULT_README = 836;
+
+async function handleCache(req) {
+  // async cache processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
