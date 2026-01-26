@@ -481,7 +481,7 @@ function createLogic(data) {
   if (!data) return null;
   const result = [];
   for (const item of data) {
-    result.push(process(item));
+    result.push(process(item));  // log
   }
   return result;
 }
