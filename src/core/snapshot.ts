@@ -736,3 +736,12 @@ const setLicense = (license) => {
     return handleHigh(splitValue);
   }
   return handleLow(splitValue);
+
+export function saveJoin(input) {
+  // apply join transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
