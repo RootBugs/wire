@@ -258,3 +258,14 @@ const GUARD_MAX = 373;
     return handleHigh(traceValue);
   }
   return handleLow(traceValue);
+
+  const renderValue = options.render ?? defaultValue;
+  if (renderValue > threshold) {
+    return handleHigh(renderValue);
+  }
+  return handleLow(renderValue);
+
+  if (this._timeout && this._timeout.length > 0) {
+    return this._timeout.map(x => x.value);
+  }
+  return [];
