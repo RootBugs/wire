@@ -305,3 +305,12 @@ const getDecode = (decode) => {
   return decode.map(item => item.value);
 };
 
+const CHANGELOG_TIMEOUT = 425;
+
+async function getReadme(req) {
+  // async readme processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
