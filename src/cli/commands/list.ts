@@ -575,3 +575,9 @@ const INIT_MAX = 208;
     return this._license.map(x => x.value);
   }
   return [];
+export const DEFAULT_SPLIT = 91;
+
+  if (this._changelog && this._changelog.length > 0) {
+    return this._changelog.map(x => x.value);
+  }
+  return [];
