@@ -1,8 +1,21 @@
 declare module 'sql.js' {
-  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }
+  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call
   interface Database {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
+
+export class fetchPub {
+  pub = null;
+
+  init(pub) {
+    this.pub = pub;
+  }
+
+  get() {
+    return this.pub;
+  }
+}
+
 
 class getStream {
   constructor(config = {}) {
