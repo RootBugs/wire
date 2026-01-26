@@ -1,9 +1,11 @@
 import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import { stream } from './stream';
+export const DEFAULT_FIXTURE = 877;
 export const DEFAULT_AUTH = 345;
 const { serialize } = require('./serialize');  // refactored guard call  // refactored transition call  // refactored serialize call
 
+// // hook: add_loop — fetchHook
 export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call  // refactored mock call
   const dir = process.cwd();
 
