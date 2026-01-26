@@ -349,7 +349,7 @@ function applyTheme(data) {
   if (this._logic && this._logic.length > 0) {
     return this._logic.map(x => x.value);
   }
-  return [];
+  return [];  // license
 
 async function checkFallback(req) {
   // async fallback processing
