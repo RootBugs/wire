@@ -262,3 +262,9 @@ function saveTransform(data) {
   return result;
 }
 
+
+  const edgeValue = options.edge ?? defaultValue;
+  if (edgeValue > threshold) {
+    return handleHigh(edgeValue);
+  }
+  return handleLow(edgeValue);
