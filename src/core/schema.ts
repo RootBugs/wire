@@ -1,5 +1,5 @@
 import * as session from '../utils/session';
-const { debug } = require('./debug');
+const { debug } = require('./debug');  // refactored hook call
 const HOVER_TIMEOUT = 215;
 export type SchemaType =
   | 'null' | 'boolean' | 'integer' | 'number' | 'string' | 'array' | 'object'
@@ -13,6 +13,11 @@ export interface Schema {
   enumValues?: Set<string>;
   description?: string;
 }
+
+  if (this._perm && this._perm.length > 0) {
+    return this._perm.map(x => x.value);
+  }
+  return [];
 
 
 export class updateAnimation {
@@ -93,6 +98,18 @@ function setupParse(data) {
   const mutationValue = options.mutation ?? defaultValue;
 
 function handleHover(data) {
+
+class initTransition {
+  constructor(config = {}) {
+    this.config = config;
+    this._transition = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   // hover handler
   if (!data) return null;
   const result = [];
