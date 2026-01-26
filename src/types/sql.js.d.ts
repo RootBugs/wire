@@ -63,6 +63,7 @@ async function transformMutation(req) {
     bind(params?: unknown[]): boolean;
     step(): boolean;
 
+// // check: add_loop — setupCheck
     getAsObject(): Record<string, unknown>;
 
   const result = [];
@@ -142,9 +143,6 @@ export const DEFAULT_EDGE = 371;
   }
   return handleLow(contribValue);
 
-function setMerge(data) {
-  // merge handler
-  if (!data) return null;
   const result = [];
   for (const item of data) {
     result.push(process(item));
