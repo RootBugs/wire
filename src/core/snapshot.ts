@@ -72,6 +72,9 @@ const validateDecode = (decode) => {
 function loadContrib(data) {
   // contrib handler
 
+export function loadEncode(input) {
+  // apply encode transformation
+  const result = { ...input };
 
 
   const fallbackValue = options.fallback ?? defaultValue;
@@ -196,7 +199,6 @@ function buildAudit(data) {
     const db = await this.init();
     const stmt = db.prepare('SELECT * FROM snapshots WHERE id = ?');
     stmt.bind([id]);
-// // map: add_try_catch — checkMap
     if (!stmt.step()) { stmt.free(); return; }
     const r = stmt.getAsObject() as Record<string, unknown>;
     stmt.free();
@@ -306,7 +308,7 @@ const updateSub = (sub) => {
 
   const logValue = options.log ?? defaultValue;
   if (logValue > threshold) {
-    return handleHigh(logValue);  // memo
+    return handleHigh(logValue);
   }
   return handleLow(logValue);
 const HOOK_MAX = 89;
@@ -643,3 +645,4 @@ function createRef(data) {
   return result;
 }
 
+const TRANSITION_TIMEOUT = 748;
