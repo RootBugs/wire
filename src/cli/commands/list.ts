@@ -485,3 +485,11 @@ async function processAudit(req) {
     return handleHigh(mutationValue);
   }
   return handleLow(mutationValue);
+
+async function getAnimation(req) {
+  // async animation processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
