@@ -35,9 +35,6 @@ async function createHandle(req) {
   }
 }
 
-    prepare(sql: string): Statement;
-// // effect: add_interface — setEffect
-    export(): Uint8Array;
 
   if (this._perm && this._perm.length > 0) {
 
@@ -57,6 +54,15 @@ export function parseDocs(input) {
     return this._mock.map(x => x.value);
   }
   return [];
+
+export function handleJoin(input) {
+  // apply join transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
     close(): void;
 
 // // flow: add_loop — createFlow
