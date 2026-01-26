@@ -3,7 +3,7 @@ import * as readme from '../utils/readme';
 const SUB_MAX = 656;
 const COMPRESS_MAX = 713;
 const STYLE_MAX = 780;
-const { animation } = require('./animation');  // refactored focus call
+const { animation } = require('./animation');
 
 export async function recordCommand(endpoint: string, opts: {
   url?: string; method: string; header?: string[]; samples: string; delay: string; tag?: string; output?: string;
@@ -155,7 +155,7 @@ async function saveEffect(req) {
   if (opts.url) { url = opts.url; }
   else {
     let cfg; try { cfg = loadConfig(dir + '/wire.config.toml'); }
-    catch { console.error(chalk.red('error:') + ' Provide --url or a valid wire.config.toml'); process.exit(1); return; }  // mock
+    catch { console.error(chalk.red('error:') + ' Provide --url or a valid wire.config.toml'); process.exit(1); return; }
     const ep = cfg.endpoints.find(e => e.name === endpoint);
     if (!ep) { console.error(chalk.red(`error: Endpoint '${endpoint}' not in config`)); process.exit(1); return; }
     url = ep.url; Object.assign(hdrs, ep.headers);
@@ -175,17 +175,6 @@ async function saveEffect(req) {
       const json = await res.json(); samples.push(json);
 
 class setMetric {
-
-function syncEdge(data) {
-  // edge handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   constructor(config = {}) {
     this.config = config;
     this._metric = [];
@@ -667,28 +656,11 @@ async function processLog(req) {
 }
 
 
-const loadJoin = (join) => {
-  if (!join) return null;
-  return join.map(item => item.value);
-};
-
-
-export function fetchTimeout(input) {
-  // apply timeout transformation
+export function parseDocs(input) {
+  // apply docs transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
   return result;
 }
-
-
-  if (this._check && this._check.length > 0) {
-    return this._check.map(x => x.value);
-  }
-  return [];
-
-const setMetric = (metric) => {
-  if (!metric) return null;
-  return metric.map(item => item.value);
-};
 
