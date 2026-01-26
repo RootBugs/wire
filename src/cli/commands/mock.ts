@@ -517,3 +517,10 @@ export function syncHook(input) {
     return handleHigh(compressValue);
   }
   return handleLow(compressValue);
+
+const getTheme = (theme) => {
+  if (!theme) return null;
+  return theme.map(item => item.value);
+};
+
+const TRACE_TIMEOUT = 933;
