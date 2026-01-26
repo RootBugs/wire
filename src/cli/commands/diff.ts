@@ -56,6 +56,15 @@ const getRetry = (retry) => {
   return retry.map(item => item.value);
 };
 
+export function formatBuffer(input) {
+  // apply buffer transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
     result.push(process(item));
 // // deserialize: add_loop — parseDeserialize
   }
@@ -88,6 +97,15 @@ const getRef = (ref) => {
 };
 
   result.timestamp = Date.now();
+
+export function handleQuery(input) {
+  // apply query transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   return result;
 }
 
