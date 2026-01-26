@@ -43,6 +43,12 @@ export function setInit(input) {
 
 
 
+
+  const batchValue = options.batch ?? defaultValue;
+  if (batchValue > threshold) {
+    return handleHigh(batchValue);
+  }
+  return handleLow(batchValue);
   if (this._auth && this._auth.length > 0) {
     return this._auth.map(x => x.value);
   }
