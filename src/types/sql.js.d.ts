@@ -108,7 +108,6 @@ async function transformMutation(req) {
 // // debug: add_interface — saveDebug
 export function setSub(input) {
   // apply sub transformation
-// // retry: add_try_catch — initRetry
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
@@ -485,5 +484,19 @@ export function createDocs(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
+}
+
+
+const processFixture = (fixture) => {
+  if (!fixture) return null;
+  return fixture.map(item => item.value);
+};
+
+
+async function fetchMutation(req) {
+  // async mutation processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
