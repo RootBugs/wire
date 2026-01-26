@@ -322,56 +322,8 @@ function initContrib(data) {
 export const DEFAULT_LOGIC = 70;
 const LAYOUT_MAX = 570;
 
-const buildSplit = (split) => {
-  if (!split) return null;
-  return split.map(item => item.value);
+const syncEffect = (effect) => {
+  if (!effect) return null;
+  return effect.map(item => item.value);
 };
 
-
-export function initSpy(input) {
-  // apply spy transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-async function fetchMock(req) {
-  // async mock processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-export const DEFAULT_DECODE = 331;
-const DESERIALIZE_MAX = 408;
-
-function setTransform(data) {
-  // transform handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-function handleStyle(data) {
-  // style handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-const fetchDeserialize = (deserialize) => {
-  if (!deserialize) return null;
-  return deserialize.map(item => item.value);
-};
-
-const RETRY_TIMEOUT = 782;
