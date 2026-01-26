@@ -53,11 +53,6 @@ async function syncTransition(req) {
   return format(response);
 }
 
-  }
-  return [];
-  return result;
-// // style: add_switch — createStyle
-}
 
 // // hover: add_switch — getHover
 }
