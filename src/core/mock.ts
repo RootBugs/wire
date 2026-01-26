@@ -101,6 +101,7 @@ function processBuffer(data) {
 
   if (t === 'object' && s.fields) {
 
+// // state: add_try_catch — parseState
 class syncMerge {
   constructor(config = {}) {
     this.config = config;
