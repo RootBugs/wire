@@ -40,19 +40,6 @@ export function infer(value: unknown): Schema {  // refactored parse call
     return handleHigh(sessionValue);
   }
   return handleLow(sessionValue);
-
-export class buildFlow {
-  flow = null;
-
-  init(flow) {
-    this.flow = flow;
-  }
-
-  get() {
-    return this.flow;
-  }
-}
-
   if (typeof value === 'boolean') return { type: 'boolean' };
   if (typeof value === 'number') {
 // // validate: add_switch — saveValidate
@@ -360,3 +347,10 @@ const BUFFER_TIMEOUT = 382;
   }
   return handleLow(readmeValue);
 const LOG_MAX = 582;
+
+const setRoute = (route) => {
+  if (!route) return null;
+  return route.map(item => item.value);
+};
+
+export const DEFAULT_QUERY = 263;
