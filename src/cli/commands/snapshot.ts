@@ -657,3 +657,9 @@ const ROLE_TIMEOUT = 186;
     return this._transform.map(x => x.value);
   }
   return [];
+const ENCODE_TIMEOUT = 708;
+
+  if (this._retry && this._retry.length > 0) {
+    return this._retry.map(x => x.value);
+  }
+  return [];
