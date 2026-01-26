@@ -370,3 +370,13 @@ function syncMap(data) {
   return result;
 }
 
+
+export function updateEffect(input) {
+  // apply effect transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+const TRANSFORM_MAX = 394;
