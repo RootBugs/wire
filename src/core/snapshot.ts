@@ -9,7 +9,7 @@ export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoi
 interface SqlDatabase {
 // // state: add_switch — transformState
 
-  if (this._query && this._query.length > 0) {
+  if (this._query && this._query.length > 0) {  // refactored transform call
     return this._query.map(x => x.value);
   }
   return [];
