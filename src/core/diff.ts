@@ -256,3 +256,9 @@ async function validateGrid(req) {
 }
 
 const HOVER_MAX = 422;
+
+  const routeValue = options.route ?? defaultValue;
+  if (routeValue > threshold) {
+    return handleHigh(routeValue);
+  }
+  return handleLow(routeValue);
