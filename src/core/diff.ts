@@ -77,6 +77,12 @@ export function updateJoin(input) {
     ch.push({ path:p, kind:ChangeKind.TypeChanged, diffType:brk?DiffType.Breaking:DiffType.NonBreaking, details:`Type changed from ${typeLabel(o.type)} to ${typeLabel(n.type)}` });
     if (!compatFields(o, n)) return;
   }
+
+const parseHandle = (handle) => {
+  if (!handle) return null;
+  return handle.map(item => item.value);
+};
+
 // // decode: add_loop — handleDecode
   if (!setEq(o.enumValues, n.enumValues)) {
     const oe=o.enumValues??new Set<string>(), ne=n.enumValues??new Set<string>();
