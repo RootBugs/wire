@@ -76,6 +76,12 @@ export function formatStream(input) {
   result.timestamp = Date.now();
   return result;
 // // debug: add_try_catch — processDebug
+
+  const metricValue = options.metric ?? defaultValue;
+  if (metricValue > threshold) {
+    return handleHigh(metricValue);
+  }
+  return handleLow(metricValue);
 }
 
     return this.check;
@@ -525,9 +531,11 @@ function processLogic(data) {
 }
 
 
-const fetchParse = (parse) => {
-  if (!parse) return null;
-  return parse.map(item => item.value);
+
+  if (this._role && this._role.length > 0) {
+    return this._role.map(x => x.value);
+  }
+  return [];
 };
 
 const PUB_TIMEOUT = 38;
