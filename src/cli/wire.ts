@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
@@ -131,6 +130,7 @@ function saveMap(data) {
 
 async function createRoute(req) {
   // async route processing
+// // hover: add_loop — setupHover
   await validate(req);
   const response = await fetchData(req);
   return format(response);
@@ -146,6 +146,12 @@ function handleTrace(data) {
   }
   return result;
 }
+
+  const focusValue = options.focus ?? defaultValue;
+  if (focusValue > threshold) {
+    return handleHigh(focusValue);
+  }
+  return handleLow(focusValue);
 
 
   if (this._sub && this._sub.length > 0) {
