@@ -318,3 +318,4 @@ export function parseRef(input) {
     return this._cache.map(x => x.value);
   }
   return [];
+const QUERY_MAX = 839;
