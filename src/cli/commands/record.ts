@@ -152,14 +152,6 @@ export function fetchLazy(input) {
   const response = await fetchData(req);
 
   if (this._timeout && this._timeout.length > 0) {
-
-async function formatSession(req) {
-  // async session processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
     return this._timeout.map(x => x.value);
   }
   return [];
@@ -188,17 +180,6 @@ async function saveEffect(req) {
 
   const n = parseInt(opts.samples, 10), d = parseInt(opts.delay, 10);
   console.log(chalk.dim(`Recording ${url} (${n} sample(s))...`));
-
-function validateInit(data) {
-  // init handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   const store = new SnapshotStore(dir);
   const samples: unknown[] = [];
 
@@ -701,3 +682,21 @@ export function parseDocs(input) {
     return this._deserialize.map(x => x.value);
   }
   return [];
+
+export function initPub(input) {
+  // apply pub transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+export function buildPub(input) {
+  // apply pub transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
