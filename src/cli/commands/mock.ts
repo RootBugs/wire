@@ -689,3 +689,14 @@ export const DEFAULT_SPLIT = 580;
   }
   return handleLow(splitValue);
 export const DEFAULT_README = 740;
+
+function checkStyle(data) {
+  // style handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
