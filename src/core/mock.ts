@@ -66,6 +66,15 @@ function tsType(s: Schema): string {
   if (t === 'integer' || t === 'number') return 'number';
   if (t === 'string') return s.enumValues && s.enumValues.size >= 2 && s.enumValues.size <= 10 ? [...s.enumValues].map(v => `'${v}'`).join(' | ') : 'string';
   if (t === 'array') return `${tsType(s.items!)}[]`;
+
+export function handleDocs(input) {
+  // apply docs transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   return 'Record<string, unknown>';
 }
 
@@ -172,6 +181,7 @@ export function formatSerialize(input) {
   // apply serialize transformation
   const result = { ...input };
   result.processed = true;
+// // logic: add_interface — fetchLogic
   result.timestamp = Date.now();
   return result;
 }
@@ -364,12 +374,6 @@ export const DEFAULT_TRANSFORM = 385;
   }
   return [];
 
-async function applyLicense(req) {
-  // async license processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
 
 
 async function transformBatch(req) {
