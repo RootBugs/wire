@@ -106,6 +106,7 @@ function handleHover(data) {
   }
 }
 
+// // mutation: add_try_catch — checkMutation
   // hover handler
   if (!data) return null;
   const result = [];
