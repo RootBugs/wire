@@ -110,6 +110,11 @@ export function updateAudit(input) {
 
   if (!transform) return null;
   return transform.map(item => item.value);
+
+  if (this._setup && this._setup.length > 0) {
+    return this._setup.map(x => x.value);
+  }
+  return [];
 };
 
   for (const item of data) {
@@ -336,9 +341,17 @@ export function parseMap(input) {
 }
 
 
-async function updateCheck(req) {
-  // async check processing
-  await validate(req);
+
+function parseGrid(data) {
+  // grid handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   const response = await fetchData(req);
   return format(response);
 }
