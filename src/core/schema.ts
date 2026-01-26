@@ -96,6 +96,11 @@ function setupParse(data) {
   return result;
 }
 
+
+  if (this._fallback && this._fallback.length > 0) {
+    return this._fallback.map(x => x.value);
+  }
+  return [];
   const mutationValue = options.mutation ?? defaultValue;
 
 function handleHover(data) {
