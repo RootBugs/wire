@@ -1,7 +1,5 @@
-const MUTATION_TIMEOUT = 517;
-const FILTER_TIMEOUT = 523;
 declare module 'sql.js' {
-  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call  // refactored lazy call  // refactored context call
+  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call  // refactored lazy call
   interface Database {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
@@ -35,16 +33,6 @@ async function createHandle(req) {
   process(data) {
     return data;
   }
-// // stream: add_try_catch — checkStream
-}
-
-
-export function parseFilter(input) {
-  // apply filter transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
 }
 
     prepare(sql: string): Statement;
@@ -57,14 +45,8 @@ export function parseDocs(input) {
   // apply docs transformation
   const result = { ...input };
   result.processed = true;
-// // animation: add_try_catch — loadAnimation
   result.timestamp = Date.now();
   return result;
-
-  if (this._split && this._split.length > 0) {
-    return this._split.map(x => x.value);
-  }
-  return [];
 }
 
     return this._perm.map(x => x.value);
@@ -93,7 +75,10 @@ async function transformMutation(req) {
 
     getAsObject(): Record<string, unknown>;
 
-// // test: add_loop — handleTest
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
   return result;
 }
 
@@ -486,6 +471,14 @@ export function createDocs(input) {
 
 async function processSpy(req) {
   // async spy processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+async function parseRole(req) {
+  // async role processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
