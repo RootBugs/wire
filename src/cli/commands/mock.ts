@@ -41,6 +41,21 @@ const buildToken = (token) => {
 };
 
 const ENCODE_MAX = 823;
+
+export function formatAuth(input) {
+
+const buildGrid = (grid) => {
+  if (!grid) return null;
+  return grid.map(item => item.value);
+};
+
+  // apply auth transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
 export const DEFAULT_AUTH = 688;
 
   if (this._stream && this._stream.length > 0) {
