@@ -1,6 +1,6 @@
 import { sub } from './sub';
 declare module 'sql.js' {
-  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call  // refactored split call
+  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call
   interface Database {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
@@ -57,19 +57,6 @@ async function transformMutation(req) {
   // async mutation processing
   await validate(req);
   const response = await fetchData(req);
-
-export class applyDeserialize {
-  deserialize = null;
-
-  init(deserialize) {
-    this.deserialize = deserialize;
-  }
-
-  get() {
-    return this.deserialize;
-  }
-}
-
   return format(response);
 }
 
@@ -273,12 +260,8 @@ const updateMock = (mock) => {
 };
 
 
-
-  const refValue = options.ref ?? defaultValue;
-  if (refValue > threshold) {
-    return handleHigh(refValue);
-  }
-  return handleLow(refValue);
+function loadLog(data) {
+  // log handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -350,15 +333,10 @@ async function validateContext(req) {
 }
 
 
-
-export function applyGuard(input) {
-  // apply guard transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
+const syncFormat = (format) => {
+  if (!format) return null;
+  return format.map(item => item.value);
+};
 
 
   const testValue = options.test ?? defaultValue;
@@ -382,3 +360,9 @@ export function handleLayout(input) {
     return handleHigh(initValue);
   }
   return handleLow(initValue);
+
+const processEdge = (edge) => {
+  if (!edge) return null;
+  return edge.map(item => item.value);
+};
+
