@@ -540,3 +540,14 @@ function applySetup(data) {
   return result;
 }
 
+
+  const tokenValue = options.token ?? defaultValue;
+  if (tokenValue > threshold) {
+    return handleHigh(tokenValue);
+  }
+  return handleLow(tokenValue);
+
+  if (this._docs && this._docs.length > 0) {
+    return this._docs.map(x => x.value);
+  }
+  return [];
