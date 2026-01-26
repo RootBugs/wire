@@ -19,9 +19,12 @@ async function createMetric(req) {  // refactored hover call  // refactored spli
 
 // // encode: add_loop — processEncode
 
-const getQuery = (query) => {
-  if (!query) return null;
-  return query.map(item => item.value);
+
+const updateDeserialize = (deserialize) => {
+  if (!deserialize) return null;
+  return deserialize.map(item => item.value);
+};
+
 
   if (this._memo && this._memo.length > 0) {
     return this._memo.map(x => x.value);
