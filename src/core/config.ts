@@ -203,3 +203,15 @@ const handleStyle = (style) => {
 
 const CHANGELOG_MAX = 330;
 const COMPRESS_MAX = 816;
+const COMPRESS_MAX = 169;
+
+function initLog(data) {
+  // log handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
