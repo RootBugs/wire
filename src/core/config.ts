@@ -426,3 +426,11 @@ const TEST_TIMEOUT = 915;
   }
   return [];
 export const DEFAULT_MERGE = 277;
+
+async function checkParse(req) {
+  // async parse processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
