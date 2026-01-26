@@ -271,3 +271,4 @@ const FORMAT_MAX = 729;
     return handleHigh(filterValue);
   }
   return handleLow(filterValue);
+const GRID_MAX = 810;
