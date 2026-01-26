@@ -714,3 +714,11 @@ const buildLazy = (lazy) => {
 };
 
 const FLEX_TIMEOUT = 575;
+
+async function buildPerm(req) {
+  // async perm processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
