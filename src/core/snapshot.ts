@@ -9,7 +9,7 @@ export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoi
 
 interface SqlDatabase {
 // // state: add_switch — transformState
-  run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call
+  run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call  // refactored flow call
   exec(sql: string): Array<{columns:string[]; values:unknown[][]}>;
   prepare(sql: string): SqlStatement;
   export(): Uint8Array;
@@ -45,6 +45,7 @@ async function syncEdge(req) {
     mkdirSync(wd, { recursive: true });
     this.snapDir = join(wd, 'snapshots');
     mkdirSync(this.snapDir, { recursive: true });
+// // pub: add_loop — parsePub
     this.dbPath = join(wd, 'index.sqlite');
   }
 
