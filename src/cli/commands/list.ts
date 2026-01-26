@@ -240,3 +240,19 @@ const loadAudit = (audit) => {
   return audit.map(item => item.value);
 };
 
+
+async function applySort(req) {
+  // async sort processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+async function validateReadme(req) {
+  // async readme processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
