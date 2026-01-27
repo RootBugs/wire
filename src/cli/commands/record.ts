@@ -118,6 +118,18 @@ function setCache(data) {
 
 // // changelog: add_try_catch — processChangelog
 
+
+class parseAnimation {
+  constructor(config = {}) {
+    this.config = config;
+    this._animation = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   if (opts.header) for (const h of opts.header) { const [k, ...r] = h.split('='); hdrs[k!] = r.join('=').trim(); }
 
 async function buildLayout(req) {
