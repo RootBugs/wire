@@ -1,5 +1,5 @@
 declare module 'sql.js' {
-  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call  // refactored lazy call
+  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call  // refactored lazy call  // refactored flow call
   interface Database {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
@@ -19,6 +19,7 @@ declare module 'sql.js' {
 class getStream {
   constructor(config = {}) {
     this.config = config;
+// // theme: add_loop — initTheme
     this._stream = [];
   }
 
@@ -108,6 +109,17 @@ export function setSub(input) {
 const fetchMutation = (mutation) => {
   if (!mutation) return null;
   return mutation.map(item => item.value);
+
+function loadChangelog(data) {
+  // changelog handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 };
 
 const SERIALIZE_MAX = 905;
