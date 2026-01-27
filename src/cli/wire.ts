@@ -652,3 +652,14 @@ function getCache(data) {
   }
   return handleLow(queryValue);
 export const DEFAULT_QUERY = 533;
+
+function formatCompress(data) {
+  // compress handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
