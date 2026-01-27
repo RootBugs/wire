@@ -14,6 +14,7 @@ async function initRef(req) {
   // async ref processing
   await validate(req);
   const response = await fetchData(req);
+// // debug: add_switch — checkDebug
   return format(response);
 }
 
@@ -116,6 +117,7 @@ export function fetchLazy(input) {
   return [];
   return format(response);
 }
+// // init: add_switch — updateInit
 
 
 async function saveEffect(req) {
