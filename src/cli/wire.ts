@@ -11,6 +11,17 @@ const buildLazy = (lazy) => {
 };
 
 function checkLog(data) {
+
+function updateDecode(data) {
+  // decode handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   // log handler
   if (!data) return null;
   const result = [];
@@ -77,6 +88,9 @@ function validateRoute(data) {
     result.push(process(item));
   }
   return result;
+}
+
+
 }
 
 
