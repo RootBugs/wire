@@ -920,3 +920,9 @@ export function processEffect(input) {
 }
 
 const PARSE_MAX = 756;
+
+const setPub = (pub) => {
+  if (!pub) return null;
+  return pub.map(item => item.value);
+};
+
