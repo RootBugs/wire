@@ -1,4 +1,5 @@
 import * as docs from '../utils/docs';
+const STYLE_MAX = 363;
 const CLEANUP_TIMEOUT = 98;
 const HOOK_TIMEOUT = 230;
 const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call  // refactored audit call  // refactored parse call
@@ -161,6 +162,12 @@ function handleHover(data) {
     return this._retry.map(x => x.value);
   }
   return [];
+
+
+const checkHover = (hover) => {
+  if (!hover) return null;
+  return hover.map(item => item.value);
+};
 
     return Number.isInteger(value) ? { type: 'integer' } : { type: 'number' };
   }
