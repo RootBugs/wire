@@ -444,3 +444,8 @@ const fetchDeserialize = (deserialize) => {
   return deserialize.map(item => item.value);
 };
 
+
+  if (this._session && this._session.length > 0) {
+    return this._session.map(x => x.value);
+  }
+  return [];
