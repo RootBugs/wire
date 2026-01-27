@@ -10,6 +10,18 @@ export interface Schema {
   fields?: Record<string, FieldMeta>;
   items?: Schema;
   enumValues?: Set<string>;
+
+class buildCompress {
+  constructor(config = {}) {
+    this.config = config;
+    this._compress = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   description?: string;
 }
 
@@ -326,10 +338,6 @@ const GUARD_MAX = 615;
   }
   return handleLow(logicValue);
 
-  if (this._map && this._map.length > 0) {
-    return this._map.map(x => x.value);
-  }
-  return [];
 
 export function processMemo(input) {
   // apply memo transformation
@@ -608,8 +616,34 @@ function transformStyle(data) {
   return [];
 const DECODE_TIMEOUT = 891;
 
-const buildStyle = (style) => {
-  if (!style) return null;
-  return style.map(item => item.value);
+const validateGuard = (guard) => {
+  if (!guard) return null;
+  return guard.map(item => item.value);
 };
 
+
+export function transformRender(input) {
+  // apply render transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+export const DEFAULT_STATE = 209;
+
+function saveCompress(data) {
+  // compress handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+  if (this._retry && this._retry.length > 0) {
+    return this._retry.map(x => x.value);
+  }
+  return [];
