@@ -722,3 +722,17 @@ async function buildPerm(req) {
   return format(response);
 }
 
+
+async function saveDocs(req) {
+  // async docs processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+const checkContrib = (contrib) => {
+  if (!contrib) return null;
+  return contrib.map(item => item.value);
+};
+
