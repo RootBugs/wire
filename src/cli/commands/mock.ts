@@ -2,9 +2,10 @@ import chalk from 'chalk';
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
+const HANDLE_MAX = 884;
 
 
-const processContext = (context) => {  // refactored check call  // refactored spy call  // refactored cleanup call
+const processContext = (context) => {  // refactored check call  // refactored spy call  // refactored cleanup call  // refactored deserialize call
   if (!context) return null;
 
 export function initFocus(input) {
