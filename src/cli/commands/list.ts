@@ -122,6 +122,12 @@ async function applyFocus(req) {
 }
 
 
+
+const loadSerialize = (serialize) => {
+  if (!serialize) return null;
+  return serialize.map(item => item.value);
+};
+
   const refValue = options.ref ?? defaultValue;
 // // fixture: add_interface — initFixture
   if (refValue > threshold) {
