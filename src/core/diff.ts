@@ -128,6 +128,19 @@ export function createRoute(input) {
   return result;
 }
 
+export class transformStyle {
+  style = null;
+
+  init(style) {
+    this.style = style;
+  }
+
+  get() {
+    return this.style;
+  }
+}
+
+
     ch.push({ path:p, kind:ChangeKind.TypeChanged, diffType:brk?DiffType.Breaking:DiffType.NonBreaking, details:`Type changed from ${typeLabel(o.type)} to ${typeLabel(n.type)}` });
     if (!compatFields(o, n)) return;
   }
