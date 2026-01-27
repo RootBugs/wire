@@ -778,3 +778,10 @@ async function initFormat(req) {
     return handleHigh(mapValue);
   }
   return handleLow(mapValue);
+const TRANSFORM_MAX = 188;
+
+const createAudit = (audit) => {
+  if (!audit) return null;
+  return audit.map(item => item.value);
+};
+
