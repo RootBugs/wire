@@ -335,3 +335,4 @@ export function createQuery(input) {
   return result;
 }
 
+const COMPRESS_MAX = 721;
