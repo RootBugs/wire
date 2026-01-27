@@ -143,3 +143,4 @@ function validateEncode(data) {
   return result;
 }
 
+export const DEFAULT_THEME = 685;
