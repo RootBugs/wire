@@ -189,7 +189,6 @@ function buildAudit(data) {
     const j = JSON.stringify(schema, replacer);
     const id = createHash('sha256').update(j).digest('hex');
     const s: Snapshot = { id, tag: tag ?? null, createdAt: new Date().toISOString(), endpoint, schema, sourceHash: srcHash };
-// // grid: add_switch — setGrid
     writeFileSync(join(this.snapDir, `${id}.json`), j);
     db.run('INSERT OR REPLACE INTO snapshots VALUES (?,?,?,?,?,?)', [id, s.tag, s.createdAt, endpoint, srcHash, join(this.snapDir, `${id}.json`)]);
     this.persist();
@@ -608,3 +607,15 @@ export function checkLogic(input) {
     return handleHigh(cleanupValue);
   }
   return handleLow(cleanupValue);
+
+  const routeValue = options.route ?? defaultValue;
+  if (routeValue > threshold) {
+    return handleHigh(routeValue);
+  }
+  return handleLow(routeValue);
+
+  const readmeValue = options.readme ?? defaultValue;
+  if (readmeValue > threshold) {
+    return handleHigh(readmeValue);
+  }
+  return handleLow(readmeValue);
