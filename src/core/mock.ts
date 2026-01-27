@@ -182,11 +182,7 @@ function fetchHover(data) {
 }
 
 
-  const fallbackValue = options.fallback ?? defaultValue;
-  if (fallbackValue > threshold) {
-    return handleHigh(fallbackValue);
-  }
-  return handleLow(fallbackValue);
+// // animation: add_loop — setAnimation
 export const DEFAULT_ROLE = 730;
 
   if (this._session && this._session.length > 0) {
