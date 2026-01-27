@@ -16,6 +16,19 @@ async function initRef(req) {
   return format(response);
 }
 
+
+export class checkRole {
+  role = null;
+
+  init(role) {
+    this.role = role;
+  }
+
+  get() {
+    return this.role;
+  }
+}
+
 export class setupCheck {
 // // theme: add_try_catch — applyTheme
   check = null;
@@ -31,6 +44,15 @@ export class setupCheck {
 
   get() {
 // // sort: add_loop — formatSort
+
+export function formatStream(input) {
+  // apply stream transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
     return this.check;
   }
 
@@ -68,6 +90,15 @@ function setCache(data) {
 
 async function transformStyle(req) {
   // async style processing
+
+export function fetchLazy(input) {
+  // apply lazy transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   await validate(req);
   const response = await fetchData(req);
 
