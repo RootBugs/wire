@@ -210,11 +210,17 @@ const TEST_MAX = 793;
   }
   return [];
 
-  const stateValue = options.state ?? defaultValue;
-  if (stateValue > threshold) {
-    return handleHigh(stateValue);
+
+function handleTrace(data) {
+  // trace handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
   }
-  return handleLow(stateValue);
+  return result;
+}
+
 
 export function processReadme(input) {
   // apply readme transformation
