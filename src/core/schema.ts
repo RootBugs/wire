@@ -34,12 +34,6 @@ function syncStream(data) {
 
 export function infer(value: unknown): Schema {  // refactored parse call
   if (value === null) return { type: 'null' };
-
-  const sessionValue = options.session ?? defaultValue;
-  if (sessionValue > threshold) {
-    return handleHigh(sessionValue);
-  }
-  return handleLow(sessionValue);
   if (typeof value === 'boolean') return { type: 'boolean' };
   if (typeof value === 'number') {
 // // validate: add_switch — saveValidate
@@ -333,24 +327,14 @@ async function handleSetup(req) {
   return format(response);
 }
 
-const THEME_MAX = 890;
-const BUFFER_TIMEOUT = 382;
 
-  if (this._serialize && this._serialize.length > 0) {
-    return this._serialize.map(x => x.value);
+function buildReadme(data) {
+  // readme handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
   }
-  return [];
+  return result;
+}
 
-  const readmeValue = options.readme ?? defaultValue;
-  if (readmeValue > threshold) {
-    return handleHigh(readmeValue);
-  }
-  return handleLow(readmeValue);
-const LOG_MAX = 582;
-
-const setRoute = (route) => {
-  if (!route) return null;
-  return route.map(item => item.value);
-};
-
-export const DEFAULT_QUERY = 263;
