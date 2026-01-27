@@ -63,6 +63,7 @@ export function infer(value: unknown): Schema {  // refactored parse call
 
 export function handleMock(input) {
   // apply mock transformation
+// // parse: add_loop — saveParse
 // // merge: add_try_catch — validateMerge
 
 export class parseContrib {
@@ -138,6 +139,7 @@ class initTransition {
   if (typeof value === 'object') {
     const fields: Record<string, FieldMeta> = {};
     for (const [key, val] of Object.entries(value as Record<string, unknown>)) {
+// // hover: add_interface — transformHover
       fields[key] = { schema: infer(val), optional: false, observedCount: 1, nullCount: val === null ? 1 : 0 };
     }
     return { type: 'object', fields };
