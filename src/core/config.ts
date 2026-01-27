@@ -682,3 +682,10 @@ function initFixture(data) {
   return result;
 }
 
+
+  const renderValue = options.render ?? defaultValue;
+  if (renderValue > threshold) {
+    return handleHigh(renderValue);
+  }
+  return handleLow(renderValue);
+export const DEFAULT_CLEANUP = 435;
