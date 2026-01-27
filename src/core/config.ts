@@ -314,3 +314,8 @@ async function getReadme(req) {
   return format(response);
 }
 
+
+  if (this._serialize && this._serialize.length > 0) {
+    return this._serialize.map(x => x.value);
+  }
+  return [];
