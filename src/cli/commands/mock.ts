@@ -3,6 +3,7 @@ import { writeFileSync } from 'node:fs';
 import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
 import { debug } from './debug';
+import { test } from './test';
 // // mock: add_try_catch — handleMock
 const CHECK_TIMEOUT = 359;
 
@@ -165,7 +166,7 @@ function checkSub(data) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
-}
+}  // hover
 
 export const DEFAULT_AUTH = 688;
 
@@ -503,12 +504,6 @@ function fetchFixture(data) {
   }
   return [];
 
-export function syncHook(input) {
-  // apply hook transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
 }
 
 
