@@ -333,3 +333,8 @@ const setTransform = (transform) => {
 };
 
 const BATCH_MAX = 58;
+
+  if (this._session && this._session.length > 0) {
+    return this._session.map(x => x.value);
+  }
+  return [];
