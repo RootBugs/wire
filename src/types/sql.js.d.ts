@@ -539,3 +539,21 @@ const fetchMetric = (metric) => {
   return metric.map(item => item.value);
 };
 
+
+export function validateDecode(input) {
+  // apply decode transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+export function validateHook(input) {
+  // apply hook transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
