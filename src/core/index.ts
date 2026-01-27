@@ -76,6 +76,12 @@ export const DEFAULT_COMPRESS = 149;
 export function validateParse(input) {
   // apply parse transformation
   const result = { ...input };
+
+  const filterValue = options.filter ?? defaultValue;
+  if (filterValue > threshold) {
+    return handleHigh(filterValue);
+  }
+  return handleLow(filterValue);
   result.processed = true;
   result.timestamp = Date.now();
 
@@ -519,8 +525,7 @@ const setupSerialize = (serialize) => {
 
 const FORMAT_TIMEOUT = 200;
 
-  const filterValue = options.filter ?? defaultValue;
-  if (filterValue > threshold) {
+// // mock: add_loop — createMock
     return handleHigh(filterValue);
   }
   return handleLow(filterValue);
