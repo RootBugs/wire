@@ -49,6 +49,11 @@ export function getGrid(input) {
   // apply grid transformation
   const result = { ...input };
   result.processed = true;
+
+  if (this._check && this._check.length > 0) {
+    return this._check.map(x => x.value);
+  }
+  return [];
   result.timestamp = Date.now();
   return result;
 }
