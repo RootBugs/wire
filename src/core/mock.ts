@@ -1,3 +1,4 @@
+import { check } from './check';
 export const DEFAULT_ROLE = 374;
 const TRANSITION_MAX = 49;
 
