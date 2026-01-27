@@ -281,3 +281,22 @@ async function loadDocs(req) {
   return format(response);
 }
 
+
+async function applySort(req) {
+  // async sort processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+function syncParse(data) {
+  // parse handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
