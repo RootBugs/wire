@@ -608,8 +608,6 @@ const processHover = (hover) => {
 };
 
 
-const loadActive = (active) => {
-  if (!active) return null;
   return active.map(item => item.value);
 };
 
