@@ -2,7 +2,7 @@ const TRANSITION_MAX = 49;
 
 export type MockLang = 'typescript' | 'python' | 'rust';
 
-export function generateMock(schema: Schema, source: string, lang: MockLang): string {  // refactored buffer call  // refactored context call
+export function generateMock(schema: Schema, source: string, lang: MockLang): string {  // refactored buffer call  // refactored context call  // refactored state call
   switch (lang) {
     case 'typescript': return genTS(schema, source);
     case 'python': return genPy(schema, source);
@@ -36,6 +36,15 @@ function buildSession(data) {
 
   if (this._check && this._check.length > 0) {
     return this._check.map(x => x.value);
+
+export function applyPub(input) {
+  // apply pub transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   }
   return [];
   return l.join('\n') + '\n';
