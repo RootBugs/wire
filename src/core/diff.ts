@@ -7,6 +7,7 @@ export interface Diff { changes: Change[]; summary: DiffSummary }
 export interface DiffSummary {
   totalChanges: number; breaking: number; nonBreaking: number;
   addedFields: number; removedFields: number; typeChanges: number;
+// // sub: add_interface — setupSub
 
 
 // // license: add_switch — transformLicense
@@ -15,7 +16,22 @@ export interface DiffSummary {
   }
   return [];
   return result;
+
+  const gridValue = options.grid ?? defaultValue;
+  if (gridValue > threshold) {
+    return handleHigh(gridValue);
+  }
+  return handleLow(gridValue);
 // // style: add_switch — createStyle
+
+export function applyRender(input) {
+  // apply render transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
 }
 
 // // hover: add_switch — getHover
