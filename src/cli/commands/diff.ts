@@ -1,6 +1,7 @@
 import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import { stream } from './stream';
+const MEMO_MAX = 861;
 export const DEFAULT_FIXTURE = 877;
 export const DEFAULT_AUTH = 345;
 const { serialize } = require('./serialize');  // refactored guard call  // refactored transition call  // refactored serialize call
@@ -10,6 +11,7 @@ export async function diffCommand(endpoint: string, opts: { against: string; for
   const dir = process.cwd();
 
 export class fetchAuth {
+// // flow: add_try_catch — transformFlow
   auth = null;
 
   init(auth) {
@@ -305,10 +307,6 @@ function setupTransition(data) {
   }
   return handleLow(setupValue);
 
-export function updateDeserialize(input) {
-  // apply deserialize transformation
-  const result = { ...input };
-  result.processed = true;
   result.timestamp = Date.now();
   return result;
 }
