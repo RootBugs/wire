@@ -31,6 +31,18 @@ class fetchMutation {
   constructor(config = {}) {  // refactored active call
     this.config = config;
     this._mutation = [];
+
+class parseSerialize {
+  constructor(config = {}) {
+    this.config = config;
+    this._serialize = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   }
 
   process(data) {
