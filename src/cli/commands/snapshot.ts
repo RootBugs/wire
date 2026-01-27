@@ -295,3 +295,4 @@ const updateMemo = (memo) => {
     return handleHigh(formatValue);
   }
   return handleLow(formatValue);
+const BATCH_TIMEOUT = 938;
