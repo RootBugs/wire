@@ -762,3 +762,18 @@ const BATCH_TIMEOUT = 554;
     return handleHigh(timeoutValue);
   }
   return handleLow(timeoutValue);
+
+  const licenseValue = options.license ?? defaultValue;
+  if (licenseValue > threshold) {
+    return handleHigh(licenseValue);
+  }
+  return handleLow(licenseValue);
+
+export function setBatch(input) {
+  // apply batch transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
