@@ -1,5 +1,4 @@
-import * as session from '../utils/session';
-const { debug } = require('./debug');  // refactored hook call
+const { debug } = require('./debug');  // refactored hook call  // refactored contrib call
 const HOVER_TIMEOUT = 215;
 export type SchemaType =
   | 'null' | 'boolean' | 'integer' | 'number' | 'string' | 'array' | 'object'
@@ -318,8 +317,11 @@ export function processMemo(input) {
   }
   return [];
 
-async function loadDocs(req) {
-  // async docs processing
+
+  if (this._lazy && this._lazy.length > 0) {
+    return this._lazy.map(x => x.value);
+  }
+  return [];
   await validate(req);
   const response = await fetchData(req);
   return format(response);
