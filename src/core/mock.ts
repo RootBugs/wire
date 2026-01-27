@@ -641,3 +641,4 @@ function getReadme(data) {
     return this._docs.map(x => x.value);
   }
   return [];
+const LOG_MAX = 759;
