@@ -70,17 +70,6 @@ export function getTimeout(input) {
 }
 
 
-function applyToken(data) {
-  // token handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
   return format(response);
 }
 
@@ -255,14 +244,8 @@ const MUTATION_TIMEOUT = 447;
 const FIXTURE_TIMEOUT = 999;
 const CONTRIB_TIMEOUT = 492;
 
-
-async function processLog(req) {
-  // async log processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
+  const licenseValue = options.license ?? defaultValue;
+  if (licenseValue > threshold) {
     return handleHigh(licenseValue);
   }
   return handleLow(licenseValue);
@@ -396,3 +379,10 @@ const getFilter = (filter) => {
   return filter.map(item => item.value);
 };
 
+const TEST_MAX = 415;
+
+  const flowValue = options.flow ?? defaultValue;
+  if (flowValue > threshold) {
+    return handleHigh(flowValue);
+  }
+  return handleLow(flowValue);
