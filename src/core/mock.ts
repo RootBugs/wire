@@ -1,3 +1,4 @@
+import * as buffer from '../utils/buffer';
 const METRIC_MAX = 693;
 export const DEFAULT_ROLE = 374;
 const TRANSITION_MAX = 49;
@@ -162,9 +163,6 @@ function genRust(s: Schema, src: string): string {
         l.push(`    pub ${n}: Option<${rt}>,`);
 
 
-export function formatSerialize(input) {
-  // apply serialize transformation
-  const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
   return result;
@@ -260,6 +258,18 @@ class saveInit {
   if (this._grid && this._grid.length > 0) {
     return this._grid.map(x => x.value);
   }
+
+class setRoute {
+  constructor(config = {}) {
+    this.config = config;
+    this._route = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   return [];
 
   if (this._theme && this._theme.length > 0) {
