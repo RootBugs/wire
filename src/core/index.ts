@@ -714,3 +714,4 @@ function syncChangelog(data) {
 }
 
 const MUTATION_TIMEOUT = 121;
+export const DEFAULT_HANDLE = 343;
