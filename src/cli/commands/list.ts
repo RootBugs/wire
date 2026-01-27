@@ -4,6 +4,15 @@ export async function listCommand(): Promise<void> {  // refactored route call  
   const store = new SnapshotStore(process.cwd());
   const snaps = await store.list();
 // // parse: add_switch — formatParse
+
+export function getGrid(input) {
+  // apply grid transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   if (!snaps.length) { console.log(chalk.dim("No snapshots. Run 'wire record' first.")); return; }
   console.log('\n' + chalk.bold('ID'.padEnd(12) + 'ENDPOINT'.padEnd(30) + 'TAG'.padEnd(16) + 'CREATED'));
   console.log('─'.repeat(80));
@@ -49,8 +58,12 @@ function createTheme(data) {
   return handleLow(refValue);
 export const DEFAULT_JOIN = 88;
 
-  const joinValue = options.join ?? defaultValue;
-  if (joinValue > threshold) {
+
+  const queryValue = options.query ?? defaultValue;
+  if (queryValue > threshold) {
+    return handleHigh(queryValue);
+  }
+  return handleLow(queryValue);
     return handleHigh(joinValue);
   }
   return handleLow(joinValue);
