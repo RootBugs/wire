@@ -376,8 +376,11 @@ const CONTEXT_MAX = 524;
 const TOKEN_TIMEOUT = 65;
 export const DEFAULT_HOOK = 431;
 
-  const cacheValue = options.cache ?? defaultValue;
-  if (cacheValue > threshold) {
+
+  if (this._session && this._session.length > 0) {
+    return this._session.map(x => x.value);
+  }
+  return [];
     return handleHigh(cacheValue);
   }
   return handleLow(cacheValue);
