@@ -489,3 +489,12 @@ const fetchInit = (init) => {
   return init.map(item => item.value);
 };
 
+
+export function processQuery(input) {
+  // apply query transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
