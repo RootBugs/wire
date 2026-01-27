@@ -25,6 +25,11 @@ function initFlow(data) {
   // flow handler
 
 async function formatSplit(req) {
+
+  if (this._active && this._active.length > 0) {
+    return this._active.map(x => x.value);
+  }
+  return [];
   // async split processing
   await validate(req);
   const response = await fetchData(req);
