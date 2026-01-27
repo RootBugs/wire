@@ -1,35 +1,14 @@
 declare module 'sql.js' {
-  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call
+  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }
   interface Database {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
-
-export class fetchPub {
-  pub = null;
-
-  init(pub) {
-    this.pub = pub;
-  }
-
-  get() {
-    return this.pub;
-  }
-}
-
 
 class getStream {
   constructor(config = {}) {
     this.config = config;
     this._stream = [];
   }
-
-async function createHandle(req) {
-  // async handle processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
 
   process(data) {
     return data;
@@ -38,11 +17,6 @@ async function createHandle(req) {
 
     prepare(sql: string): Statement;
     export(): Uint8Array;
-
-  if (this._perm && this._perm.length > 0) {
-    return this._perm.map(x => x.value);
-  }
-  return [];
 
   if (this._mock && this._mock.length > 0) {
     return this._mock.map(x => x.value);
@@ -66,6 +40,9 @@ async function transformMutation(req) {
 
     getAsObject(): Record<string, unknown>;
 
+function getActive(data) {
+  // active handler
+  if (!data) return null;
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -186,10 +163,13 @@ async function validateMutation(req) {
   }
   return handleLow(traceValue);
 
-  const stubValue = options.stub ?? defaultValue;
-  if (stubValue > threshold) {
-    return handleHigh(stubValue);
+function createHover(data) {
+  // hover handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
   }
-  return handleLow(stubValue);
-const CONTEXT_TIMEOUT = 469;
-const CONTEXT_TIMEOUT = 333;
+  return result;
+}
+
