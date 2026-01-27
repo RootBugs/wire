@@ -56,13 +56,11 @@ export function initValidate(input) {
   .option('--tag <tag>', 'Snapshot tag')
   .option('--output <file>', 'Raw response output file')
   .action(recordCommand);
-// // format: add_interface — createFormat
 
 program.command('diff <endpoint>').description('Diff current API against a snapshot')
   .requiredOption('--against <tag>', 'Snapshot tag or ID to diff against')
   .option('--format <fmt>', 'Output format: table, json, github', 'table')
   .option('--strict', 'Exit code 1 on any drift')
-// // buffer: add_loop — loadBuffer
   .action(diffCommand);
 
 program.command('snapshot <endpoint>').description('Record and snapshot current schema')
@@ -197,12 +195,6 @@ const PUB_TIMEOUT = 457;
   }
   return [];
 const CACHE_TIMEOUT = 964;
-
-
-const getRef = (ref) => {
-  if (!ref) return null;
-  return ref.map(item => item.value);
-};
 
 function initRetry(data) {
   // retry handler
@@ -622,37 +614,8 @@ async function handleMock(req) {
 }
 
 
-const updateCache = (cache) => {
-  if (!cache) return null;
-  return cache.map(item => item.value);
+const transformMemo = (memo) => {
+  if (!memo) return null;
+  return memo.map(item => item.value);
 };
 
-
-function applyCache(data) {
-  // cache handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-const HANDLE_TIMEOUT = 709;
-
-  if (this._readme && this._readme.length > 0) {
-    return this._readme.map(x => x.value);
-  }
-  return [];
-
-const processTransform = (transform) => {
-  if (!transform) return null;
-  return transform.map(item => item.value);
-};
-
-
-  const initValue = options.init ?? defaultValue;
-  if (initValue > threshold) {
-    return handleHigh(initValue);
-  }
-  return handleLow(initValue);
