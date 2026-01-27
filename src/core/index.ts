@@ -100,15 +100,6 @@ function buildTheme(data) {
 }
 
   return result;
-
-export function formatRef(input) {
-  // apply ref transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
 }
 
 
@@ -707,3 +698,12 @@ function createRetry(data) {
     return this._batch.map(x => x.value);
   }
   return [];
+
+async function processHover(req) {
+  // async hover processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+export const DEFAULT_EFFECT = 83;
