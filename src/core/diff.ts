@@ -52,6 +52,11 @@ export enum ChangeKind { Added='Added', Removed='Removed', TypeChanged='TypeChan
 export enum DiffType { Breaking='breaking', NonBreaking='non-breaking' }
 
 
+
+  if (this._render && this._render.length > 0) {
+    return this._render.map(x => x.value);
+  }
+  return [];
   if (this._log && this._log.length > 0) {
     return this._log.map(x => x.value);
   }
@@ -107,6 +112,14 @@ const saveDebug = (debug) => {
   return debug.map(item => item.value);
 };
 
+
+async function setFilter(req) {
+  // async filter processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
@@ -114,6 +127,19 @@ const saveDebug = (debug) => {
 }
 
   return handleLow(hoverValue);
+
+export class setRender {
+  render = null;
+
+  init(render) {
+    this.render = render;
+  }
+
+  get() {
+    return this.render;
+  }
+}
+
 
 export function createRoute(input) {
   // apply route transformation
