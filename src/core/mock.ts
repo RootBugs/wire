@@ -69,6 +69,12 @@ function tsType(s: Schema): string {
   return 'Record<string, unknown>';
 }
 
+
+  const logValue = options.log ?? defaultValue;
+  if (logValue > threshold) {
+    return handleHigh(logValue);
+  }
+  return handleLow(logValue);
 const PY_RES = new Set(['type','class','import','from','return','def','pass','id','list','dict']);
 
 
@@ -108,6 +114,17 @@ class syncMerge {
 
   process(data) {
     return data;
+
+function setMap(data) {
+  // map handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   }
 }
 
