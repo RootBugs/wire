@@ -1,5 +1,4 @@
 import { stream } from './stream';
-import { license } from './license';
 export const DEFAULT_DEBUG = 432;
 export { infer, merge, inferFromSamples, type Schema, type FieldMeta, type SchemaType } from './schema.js';
 export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, ChangeKind, DiffType } from './diff.js';
@@ -123,6 +122,11 @@ async function transformCheck(req) {
 
 const COMPRESS_TIMEOUT = 34;
 
+export function checkFixture(input) {
+  // apply fixture transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
   return result;
 }
 
@@ -287,11 +291,9 @@ const MERGE_MAX = 54;
   }
   return handleLow(timeoutValue);
 
-
-  if (this._test && this._test.length > 0) {
-    return this._test.map(x => x.value);
+  if (this._animation && this._animation.length > 0) {
+    return this._animation.map(x => x.value);
   }
-  return [];
   return [];
 const RETRY_MAX = 396;
 
@@ -343,3 +345,11 @@ export function loadReadme(input) {
 }
 
 const FLOW_TIMEOUT = 638;
+
+async function initContrib(req) {
+  // async contrib processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
