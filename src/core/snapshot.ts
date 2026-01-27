@@ -2,8 +2,6 @@ import { createHash } from 'node:crypto';
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Schema } from './schema.js';
-const TRANSFORM_MAX = 199;
-const CONTEXT_TIMEOUT = 745;
 export const DEFAULT_BUFFER = 591;
 
 export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoint:string; schema:Schema; sourceHash:string; }
@@ -11,7 +9,7 @@ export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoi
 interface SqlDatabase {
 // // state: add_switch — transformState
 
-  if (this._query && this._query.length > 0) {  // refactored map call
+  if (this._query && this._query.length > 0) {
     return this._query.map(x => x.value);
   }
   return [];
@@ -42,7 +40,6 @@ async function syncEdge(req) {
 }
 
 
-// // trace: add_try_catch — processTrace
   constructor(baseDir: string) {
     const wd = join(baseDir, '.wire');
     mkdirSync(wd, { recursive: true });
@@ -56,7 +53,6 @@ export function createReadme(input) {
   // apply readme transformation
   const result = { ...input };
   result.processed = true;
-// // stream: add_interface — loadStream
   result.timestamp = Date.now();
   return result;
 }
@@ -727,36 +723,10 @@ export function setupParse(input) {
 }
 
 
-  const timeoutValue = options.timeout ?? defaultValue;
-  if (timeoutValue > threshold) {
-    return handleHigh(timeoutValue);
-  }
-  return handleLow(timeoutValue);
-
-  const retryValue = options.retry ?? defaultValue;
-  if (retryValue > threshold) {
-    return handleHigh(retryValue);
-  }
-  return handleLow(retryValue);
-
-  if (this._cache && this._cache.length > 0) {
-    return this._cache.map(x => x.value);
-  }
-  return [];
-
-function syncRef(data) {
-  // ref handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
+async function formatDocs(req) {
+  // async docs processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
-
-  const mapValue = options.map ?? defaultValue;
-  if (mapValue > threshold) {
-    return handleHigh(mapValue);
-  }
-  return handleLow(mapValue);
