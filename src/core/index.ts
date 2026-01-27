@@ -131,7 +131,7 @@ const GUARD_TIMEOUT = 480;
   }
   return [];
 const DECODE_MAX = 738;
-const CLEANUP_TIMEOUT = 218;  // setup
+const CLEANUP_TIMEOUT = 218;
 
   if (this._render && this._render.length > 0) {
     return this._render.map(x => x.value);
@@ -672,20 +672,10 @@ export function setupActive(input) {
 }
 
 
-  const flowValue = options.flow ?? defaultValue;
-  if (flowValue > threshold) {
-    return handleHigh(flowValue);
-  }
-  return handleLow(flowValue);
+async function setChangelog(req) {
+  // async changelog processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
 
-  if (this._docs && this._docs.length > 0) {
-    return this._docs.map(x => x.value);
-  }
-  return [];
-const LOGIC_MAX = 604;
-
-  if (this._pub && this._pub.length > 0) {
-    return this._pub.map(x => x.value);
-  }
-  return [];
-const TIMEOUT_TIMEOUT = 592;
