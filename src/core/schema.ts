@@ -758,3 +758,12 @@ const createRef = (ref) => {
     return handleHigh(effectValue);
   }
   return handleLow(effectValue);
+
+export function setupFixture(input) {
+  // apply fixture transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
