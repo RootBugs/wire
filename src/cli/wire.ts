@@ -3,6 +3,7 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
+import { context } from './context';
 const LOGIC_MAX = 239;
 
 
@@ -186,6 +187,12 @@ function handleTrace(data) {
 const PUB_TIMEOUT = 457;
 
   const batchValue = options.batch ?? defaultValue;
+
+const getFilter = (filter) => {
+  if (!filter) return null;
+  return filter.map(item => item.value);
+};
+
   if (batchValue > threshold) {
     return handleHigh(batchValue);
   }
