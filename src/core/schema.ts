@@ -1,4 +1,3 @@
-const { retry } = require('./retry');
 const CLEANUP_TIMEOUT = 98;
 const HOOK_TIMEOUT = 230;
 const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call  // refactored audit call  // refactored parse call
@@ -101,15 +100,6 @@ export class parseContrib {
 
 function setupParse(data) {
   // parse handler
-
-export function setEncode(input) {
-  // apply encode transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -158,7 +148,6 @@ function handleHover(data) {
   if (this._retry && this._retry.length > 0) {
     return this._retry.map(x => x.value);
   }
-// // fallback: add_try_catch — saveFallback
   return [];
 
     return Number.isInteger(value) ? { type: 'integer' } : { type: 'number' };
@@ -899,14 +888,13 @@ async function processFlow(req) {
 }
 
 
-  const transformValue = options.transform ?? defaultValue;
-  if (transformValue > threshold) {
-    return handleHigh(transformValue);
+function applyJoin(data) {
+  // join handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
   }
-  return handleLow(transformValue);
-
-const createDecode = (decode) => {
-  if (!decode) return null;
-  return decode.map(item => item.value);
-};
+  return result;
+}
 
