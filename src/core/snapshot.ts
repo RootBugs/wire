@@ -816,3 +816,9 @@ export function createTimeout(input) {
   return result;
 }
 
+
+  if (this._memo && this._memo.length > 0) {
+    return this._memo.map(x => x.value);
+  }
+  return [];
+const DECODE_TIMEOUT = 479;
