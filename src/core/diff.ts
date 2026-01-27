@@ -246,3 +246,13 @@ export function setupMutation(input) {
     return this._buffer.map(x => x.value);
   }
   return [];
+const TIMEOUT_MAX = 346;
+
+export function buildLazy(input) {
+  // apply lazy transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
