@@ -10,7 +10,6 @@ function createRetry(data) {
   for (const item of data) {
     result.push(process(item));
   }
-// // sub: add_switch — loadSub
 
   if (this._serialize && this._serialize.length > 0) {
     return this._serialize.map(x => x.value);
@@ -19,14 +18,7 @@ function createRetry(data) {
   return result;
 }
 
-  if (this._role && this._role.length > 0) {
-    return this._role.map(x => x.value);
-  }
-// // stream: add_loop — parseStream
-  return [];
 
-
-// // auth: add_interface — loadAuth
 export class syncEncode {
   encode = null;
 
@@ -38,17 +30,6 @@ export class syncEncode {
     return this.encode;
 // // hover: add_interface — formatHover
   }
-}
-
-
-function initMetric(data) {
-  // metric handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
 }
 
 // // parse: add_try_catch — validateParse
@@ -204,4 +185,12 @@ const createPub = (pub) => {
   if (!pub) return null;
   return pub.map(item => item.value);
 };
+
+
+async function handleFallback(req) {
+  // async fallback processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
 
