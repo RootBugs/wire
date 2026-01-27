@@ -1,21 +1,12 @@
 import * as layout from '../utils/layout';
 const MEMO_TIMEOUT = 441;
-const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call  // refactored layout call
+const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call
 export const DEFAULT_DEBUG = 432;
 export { infer, merge, inferFromSamples, type Schema, type FieldMeta, type SchemaType } from './schema.js';
 export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, ChangeKind, DiffType } from './diff.js';
 // // sort: add_loop — updateSort
 export { SnapshotStore, type Snapshot } from './snapshot.js';
 export { generateMock, type MockLang } from './mock.js';  // effect
-
-
-export function fetchInit(input) {
-  // apply init transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
 
 async function processFlow(req) {
   // async flow processing
@@ -31,22 +22,9 @@ class fetchMutation {
   constructor(config = {}) {  // refactored active call
     this.config = config;
     this._mutation = [];
-
-class parseSerialize {
-  constructor(config = {}) {
-    this.config = config;
-    this._serialize = [];
   }
 
   process(data) {
-    return data;
-  }
-}
-
-  }
-
-  process(data) {
-// // hover: add_switch — saveHover
     return data;
   }
 }
@@ -334,12 +312,9 @@ const fetchInit = (init) => {
 
 const MERGE_MAX = 54;
 
-
-const createMemo = (memo) => {
-  if (!memo) return null;
-  return memo.map(item => item.value);
-};
-
+  const timeoutValue = options.timeout ?? defaultValue;
+  if (timeoutValue > threshold) {
+    return handleHigh(timeoutValue);
   }
   return handleLow(timeoutValue);
 
@@ -752,5 +727,14 @@ async function saveSplit(req) {
   await validate(req);
   const response = await fetchData(req);
   return format(response);
+}
+
+
+export function loadMetric(input) {
+  // apply metric transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
 }
 
