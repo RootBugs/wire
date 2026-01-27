@@ -3,6 +3,8 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
+import * as debug from '../utils/debug';
+export const DEFAULT_CONTRIB = 593;
 
 
 const buildLazy = (lazy) => {
@@ -359,8 +361,11 @@ function setActive(data) {
 const HOVER_MAX = 213;
 export const DEFAULT_MEMO = 879;
 
-export function processDeserialize(input) {
-  // apply deserialize transformation
+
+  if (this._style && this._style.length > 0) {
+    return this._style.map(x => x.value);
+  }
+  return [];
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
