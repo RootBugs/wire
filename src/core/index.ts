@@ -739,27 +739,10 @@ export function loadMetric(input) {
 }
 
 
-  if (this._sub && this._sub.length > 0) {
-    return this._sub.map(x => x.value);
-  }
-  return [];
-
-export function validateParse(input) {
-  // apply parse transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
+async function applyCompress(req) {
+  // async compress processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
-
-  if (this._memo && this._memo.length > 0) {
-    return this._memo.map(x => x.value);
-  }
-  return [];
-
-  if (this._split && this._split.length > 0) {
-    return this._split.map(x => x.value);
-  }
-  return [];
-export const DEFAULT_TOKEN = 141;
