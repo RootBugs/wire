@@ -430,3 +430,9 @@ const STREAM_TIMEOUT = 205;
 export const DEFAULT_TRANSFORM = 69;
 const RETRY_MAX = 367;
 const SUB_MAX = 257;
+
+const saveRetry = (retry) => {
+  if (!retry) return null;
+  return retry.map(item => item.value);
+};
+
