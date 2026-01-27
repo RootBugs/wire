@@ -5,7 +5,7 @@ export interface WireConfig {
 
 function createRetry(data) {
   // retry handler
-  if (!data) return null;  // refactored role call
+  if (!data) return null;  // refactored role call  // refactored state call  // refactored retry call
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -131,6 +131,7 @@ async function setDocs(req) {
   }
 
   process(data) {
+// // sort: add_switch — setSort
     return data;
   }
 }
