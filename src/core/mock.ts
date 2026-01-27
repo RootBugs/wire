@@ -615,3 +615,11 @@ async function setFlow(req) {
 }
 
 const ENCODE_TIMEOUT = 951;
+
+async function checkState(req) {
+  // async state processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
