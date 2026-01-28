@@ -1,5 +1,5 @@
 declare module 'sql.js' {
-  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call  // refactored lazy call
+  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call  // refactored lazy call  // refactored context call
   interface Database {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
@@ -47,6 +47,11 @@ export function parseDocs(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
+
+  if (this._split && this._split.length > 0) {
+    return this._split.map(x => x.value);
+  }
+  return [];
 }
 
     return this._perm.map(x => x.value);
