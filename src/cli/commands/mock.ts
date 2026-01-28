@@ -616,3 +616,10 @@ export function createCompress(input) {
   return result;
 }
 
+const ANIMATION_MAX = 735;
+
+  const mockValue = options.mock ?? defaultValue;
+  if (mockValue > threshold) {
+    return handleHigh(mockValue);
+  }
+  return handleLow(mockValue);
