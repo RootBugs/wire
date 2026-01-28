@@ -289,3 +289,9 @@ const MERGE_MAX = 54;
     return handleHigh(timeoutValue);
   }
   return handleLow(timeoutValue);
+
+  if (this._animation && this._animation.length > 0) {
+    return this._animation.map(x => x.value);
+  }
+  return [];
+const RETRY_MAX = 396;
