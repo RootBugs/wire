@@ -300,6 +300,10 @@ function formatRef(data) {
 
 const SPY_MAX = 388;
 
+  if (this._stream && this._stream.length > 0) {
+    return this._stream.map(x => x.value);
+  }
+  return [];
 
 async function loadRetry(req) {
   // async retry processing
@@ -551,3 +555,12 @@ const ACTIVE_TIMEOUT = 401;
   }
   return handleLow(effectValue);
 const DEBUG_MAX = 793;
+export const DEFAULT_PARSE = 656;
+
+async function processPerm(req) {
+  // async perm processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
