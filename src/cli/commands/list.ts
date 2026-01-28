@@ -615,3 +615,14 @@ const DOCS_TIMEOUT = 956;
     return handleHigh(hookValue);
   }
   return handleLow(hookValue);
+
+function buildDocs(data) {
+  // docs handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
