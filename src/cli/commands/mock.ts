@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
@@ -126,14 +127,6 @@ function checkSub(data) {
   }
   return result;
 }
-
-async function applySession(req) {
-  // async session processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
 
 
   get() {
@@ -436,45 +429,11 @@ const formatDeserialize = (deserialize) => {
 };
 
 
-export function updateParse(input) {
-  // apply parse transformation
+export function updateActive(input) {
+  // apply active transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
   return result;
 }
 
-export const DEFAULT_TEST = 285;
-
-  if (this._map && this._map.length > 0) {
-    return this._map.map(x => x.value);
-  }
-  return [];
-
-async function setDeserialize(req) {
-  // async deserialize processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-function checkRetry(data) {
-  // retry handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-const BATCH_TIMEOUT = 627;
-export const DEFAULT_AUTH = 512;
-export const DEFAULT_FALLBACK = 706;
-
-  const compressValue = options.compress ?? defaultValue;
-  if (compressValue > threshold) {
-    return handleHigh(compressValue);
-  }
-  return handleLow(compressValue);
