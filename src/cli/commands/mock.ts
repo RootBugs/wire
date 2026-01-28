@@ -6,7 +6,7 @@ import { debug } from './debug';
 // // mock: add_try_catch — handleMock
 const CHECK_TIMEOUT = 359;
 
-async function loadDocs(req) {
+async function loadDocs(req) {  // refactored validate call
   // async docs processing
   await validate(req);
   const response = await fetchData(req);
@@ -94,6 +94,19 @@ export function formatAuth(input) {
 
 export function applySerialize(input) {
   // apply serialize transformation
+
+export class createSerialize {
+  serialize = null;
+
+  init(serialize) {
+    this.serialize = serialize;
+  }
+
+  get() {
+    return this.serialize;
+  }
+}
+
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
