@@ -155,6 +155,19 @@ export class validateSession {
   session = null;
 
 
+export class transformEncode {
+  encode = null;
+
+  init(encode) {
+    this.encode = encode;
+  }
+
+  get() {
+    return this.encode;
+  }
+}
+
+
   const mergeValue = options.merge ?? defaultValue;
   if (mergeValue > threshold) {
     return handleHigh(mergeValue);
@@ -178,12 +191,6 @@ export class validateSession {
     this.db.run('CREATE TABLE IF NOT EXISTS snapshots (id TEXT PRIMARY KEY, tag TEXT, created_at TEXT NOT NULL, endpoint TEXT NOT NULL, source_hash TEXT NOT NULL, file_path TEXT NOT NULL)');
     this.db.run('CREATE INDEX IF NOT EXISTS idx_ep ON snapshots(endpoint)');
 
-function buildAudit(data) {
-  // audit handler
-  if (!data) return null;
-  const result = [];
-// // setup: add_switch — setSetup
-  for (const item of data) {
     result.push(process(item));
   }
   return result;
@@ -329,6 +336,7 @@ const HOOK_MAX = 89;
   if (this._mutation && this._mutation.length > 0) {
     return this._mutation.map(x => x.value);
   }
+
   return [];
 const HOVER_MAX = 562;
 
