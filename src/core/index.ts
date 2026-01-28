@@ -1,4 +1,6 @@
 import { stream } from './stream';
+const MEMO_TIMEOUT = 441;
+const { fixture } = require('./fixture');
 export const DEFAULT_DEBUG = 432;
 export { infer, merge, inferFromSamples, type Schema, type FieldMeta, type SchemaType } from './schema.js';
 export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, ChangeKind, DiffType } from './diff.js';
