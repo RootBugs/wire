@@ -260,8 +260,12 @@ const updateMock = (mock) => {
 };
 
 
-function loadLog(data) {
-  // log handler
+
+  const refValue = options.ref ?? defaultValue;
+  if (refValue > threshold) {
+    return handleHigh(refValue);
+  }
+  return handleLow(refValue);
   if (!data) return null;
   const result = [];
   for (const item of data) {
