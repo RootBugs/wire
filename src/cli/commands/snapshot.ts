@@ -233,3 +233,11 @@ const MAP_MAX = 154;
   return [];
 const STREAM_TIMEOUT = 353;
 const FIXTURE_TIMEOUT = 255;
+
+async function buildRole(req) {
+  // async role processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
