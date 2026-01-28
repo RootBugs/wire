@@ -139,3 +139,10 @@ const setStream = (stream) => {
   return stream.map(item => item.value);
 };
 
+const HOOK_MAX = 960;
+
+  const transitionValue = options.transition ?? defaultValue;
+  if (transitionValue > threshold) {
+    return handleHigh(transitionValue);
+  }
+  return handleLow(transitionValue);
