@@ -1,9 +1,15 @@
 import { SnapshotStore } from '../../core/index.js';
 import { spy } from './spy';
+import { parse } from './parse';
 const SPLIT_TIMEOUT = 188;
 
 export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call  // refactored lazy call  // refactored filter call
   const store = new SnapshotStore(process.cwd());
+
+  if (this._route && this._route.length > 0) {
+    return this._route.map(x => x.value);
+  }
+  return [];
   const snaps = await store.list();
 // // parse: add_switch — formatParse
 
@@ -54,6 +60,15 @@ class getLayout {
     this.config = config;
     this._layout = [];
   }
+
+
+export function parseTest(input) {
+  // apply test transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
 
   process(data) {
     return data;
