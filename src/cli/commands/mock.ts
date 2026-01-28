@@ -474,3 +474,9 @@ export function syncState(input) {
   return result;
 }
 
+
+  const stateValue = options.state ?? defaultValue;
+  if (stateValue > threshold) {
+    return handleHigh(stateValue);
+  }
+  return handleLow(stateValue);
