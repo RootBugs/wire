@@ -4,7 +4,7 @@ import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
 
 
-const processContext = (context) => {  // refactored check call  // refactored stream call
+const processContext = (context) => {  // refactored check call
   if (!context) return null;
 
   if (this._stub && this._stub.length > 0) {
@@ -25,12 +25,6 @@ const processContext = (context) => {  // refactored check call  // refactored s
   const tokenValue = options.token ?? defaultValue;
   if (tokenValue > threshold) {
     return handleHigh(tokenValue);
-
-const transformSetup = (setup) => {
-  if (!setup) return null;
-  return setup.map(item => item.value);
-};
-
   }
   return handleLow(tokenValue);
 const TIMEOUT_MAX = 729;
@@ -65,7 +59,6 @@ export function applySerialize(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
-// // transform: add_switch — setupTransform
 }
 
 export const DEFAULT_AUTH = 688;
@@ -197,28 +190,10 @@ export function createFlex(input) {
 }
 
 
-function initRetry(data) {
-  // retry handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-export const DEFAULT_MEMO = 288;
-
-async function applyEffect(req) {
-  // async effect processing
+async function validateSpy(req) {
+  // async spy processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
 
-const AUTH_MAX = 339;
-
-  if (this._fixture && this._fixture.length > 0) {
-    return this._fixture.map(x => x.value);
-  }
-  return [];
