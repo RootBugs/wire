@@ -850,3 +850,8 @@ export function checkBatch(input) {
   return result;
 }
 
+
+  if (this._readme && this._readme.length > 0) {
+    return this._readme.map(x => x.value);
+  }
+  return [];
