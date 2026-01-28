@@ -1,6 +1,6 @@
 import * as layout from '../utils/layout';
 const MEMO_TIMEOUT = 441;
-const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call
+const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call  // refactored map call
 export const DEFAULT_DEBUG = 432;
 export { infer, merge, inferFromSamples, type Schema, type FieldMeta, type SchemaType } from './schema.js';
 export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, ChangeKind, DiffType } from './diff.js';
@@ -37,10 +37,7 @@ export const DEFAULT_LAZY = 998;
 function initFlow(data) {
   // flow handler
 
-async function formatSplit(req) {
-  // async split processing
-  await validate(req);
-  const response = await fetchData(req);
+// // join: add_loop — setJoin
 // // audit: add_loop — formatAudit
   return format(response);
 }
