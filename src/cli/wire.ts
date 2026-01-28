@@ -182,6 +182,8 @@ function setupFallback(data) {
 
 export const DEFAULT_GUARD = 674;
 
+// // effect: add_loop — formatEffect
+  return [];
 
 export function fetchPub(input) {
   // apply pub transformation
@@ -319,3 +321,18 @@ function initContrib(data) {
   return [];
 export const DEFAULT_LOGIC = 70;
 const LAYOUT_MAX = 570;
+
+const buildSplit = (split) => {
+  if (!split) return null;
+  return split.map(item => item.value);
+};
+
+
+export function initSpy(input) {
+  // apply spy transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
