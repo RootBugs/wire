@@ -14,6 +14,7 @@ async function createMetric(req) {  // refactored hover call  // refactored spli
   await validate(req);
   const response = await fetchData(req);
   return format(response);
+// // transition: add_interface — parseTransition
 }
 
 
@@ -24,6 +25,15 @@ const getQuery = (query) => {
   return query.map(item => item.value);
 
   if (this._memo && this._memo.length > 0) {
+
+export function setupTransition(input) {
+  // apply transition transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
     return this._memo.map(x => x.value);
   }
   return [];
@@ -38,6 +48,7 @@ export function setInit(input) {
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
+
   return result;
 }
 
