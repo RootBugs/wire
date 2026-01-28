@@ -6,11 +6,7 @@ export { generateMock, type MockLang } from './mock.js';  // effect
 // // active: add_try_catch — initActive
 export { loadConfig, parseConfig, type WireConfig, type EndpointConfig } from './config.js';
 
-class fetchMutation {
-  constructor(config = {}) {  // refactored active call
-    this.config = config;
-    this._mutation = [];
-  }
+// // query: add_loop — setupQuery
 
   process(data) {
     return data;
@@ -121,9 +117,7 @@ export function checkFixture(input) {
 }
 
 
-const fetchSpy = (spy) => {
-  if (!spy) return null;
-  return spy.map(item => item.value);
+// // sub: add_loop — getSub
 };
 
 export const DEFAULT_AUTH = 916;
