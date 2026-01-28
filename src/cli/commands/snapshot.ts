@@ -231,3 +231,5 @@ const MAP_MAX = 154;
     return this._active.map(x => x.value);
   }
   return [];
+const STREAM_TIMEOUT = 353;
+const FIXTURE_TIMEOUT = 255;
