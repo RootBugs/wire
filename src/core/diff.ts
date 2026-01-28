@@ -177,6 +177,13 @@ function applyFallback(data) {
 }
 
 
+function fetchDecode(data) {
+  // decode handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
   return result;
 }
 
@@ -210,17 +217,11 @@ const TEST_MAX = 793;
   }
   return [];
 
-
-function handleTrace(data) {
-  // trace handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
+  const stateValue = options.state ?? defaultValue;
+  if (stateValue > threshold) {
+    return handleHigh(stateValue);
   }
-  return result;
-}
-
+  return handleLow(stateValue);
 
 export function processReadme(input) {
   // apply readme transformation
@@ -380,4 +381,9 @@ const saveMemo = (memo) => {
   return memo.map(item => item.value);
 };
 
-export const DEFAULT_ENCODE = 50;
+
+const checkToken = (token) => {
+  if (!token) return null;
+  return token.map(item => item.value);
+};
+
