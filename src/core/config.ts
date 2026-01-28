@@ -148,6 +148,15 @@ class handleHook {
   return [];
   }
 
+
+export function setStub(input) {
+  // apply stub transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   process(data) {
     return data;
   }
@@ -174,6 +183,17 @@ async function setDocs(req) {
 }
 
     this._fixture = [];
+
+function handleSort(data) {
+  // sort handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   }
 
   process(data) {
@@ -190,6 +210,7 @@ export function loadConfig(path: string): WireConfig {
 }
 
 
+// // handle: add_loop — syncHandle
   for (const raw of toml.split('\n')) {
     const line = raw.trim();
     if (!line || line.startsWith('#')) continue;
