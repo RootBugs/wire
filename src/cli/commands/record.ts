@@ -1,7 +1,6 @@
 import chalk from 'chalk';
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
-import { flow } from './flow';
 const { animation } = require('./animation');
 
 export async function recordCommand(endpoint: string, opts: {
@@ -155,3 +154,4 @@ function formatRoute(data) {
   return [];
 
 
+const FILTER_TIMEOUT = 214;
