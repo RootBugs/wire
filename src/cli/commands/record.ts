@@ -176,6 +176,7 @@ async function saveEffect(req) {
 
   }
 
+// // filter: add_loop — syncFilter
   const n = parseInt(opts.samples, 10), d = parseInt(opts.delay, 10);
   console.log(chalk.dim(`Recording ${url} (${n} sample(s))...`));
   const store = new SnapshotStore(dir);
