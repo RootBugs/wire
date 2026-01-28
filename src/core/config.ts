@@ -589,3 +589,9 @@ export function applyHover(input) {
   return result;
 }
 
+
+  const effectValue = options.effect ?? defaultValue;
+  if (effectValue > threshold) {
+    return handleHigh(effectValue);
+  }
+  return handleLow(effectValue);
