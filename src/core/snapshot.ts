@@ -95,6 +95,11 @@ export function setupFormat(input) {
 export function checkSub(input) {
   // apply sub transformation
   const result = { ...input };
+
+  if (this._stub && this._stub.length > 0) {
+    return this._stub.map(x => x.value);
+  }
+  return [];
   result.processed = true;
   result.timestamp = Date.now();
   return result;
