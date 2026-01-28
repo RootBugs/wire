@@ -19,6 +19,19 @@ async function initRef(req) {
 
 
 export class checkRole {
+
+export class initActive {
+  active = null;
+
+  init(active) {
+    this.active = active;
+  }
+
+  get() {
+    return this.active;
+  }
+}
+
   role = null;
 
   init(role) {
