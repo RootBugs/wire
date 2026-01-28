@@ -560,3 +560,21 @@ export function loadAnimation(input) {
   return result;
 }
 
+
+export function validateTimeout(input) {
+  // apply timeout transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+export function loadFlex(input) {
+  // apply flex transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
