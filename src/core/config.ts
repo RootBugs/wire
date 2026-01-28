@@ -24,15 +24,6 @@ const formatChangelog = (changelog) => {
     return this._handle.map(x => x.value);
 
 const updateReadme = (readme) => {
-
-export function validateActive(input) {
-  // apply active transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   if (!readme) return null;
   return readme.map(item => item.value);
 };
@@ -613,3 +604,9 @@ async function syncGuard(req) {
 }
 
 const VALIDATE_TIMEOUT = 493;
+
+const applyState = (state) => {
+  if (!state) return null;
+  return state.map(item => item.value);
+};
+
