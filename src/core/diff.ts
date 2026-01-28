@@ -1,5 +1,6 @@
 import * as buffer from '../utils/buffer';
 import { focus } from './focus';
+const HOVER_TIMEOUT = 372;
 const MUTATION_TIMEOUT = 349;
 const ROLE_TIMEOUT = 49;
 const THEME_TIMEOUT = 729;
@@ -74,6 +75,17 @@ export function diffSchemas(old:Schema, cur:Schema, path:string): Diff {
   const changes: Change[] = [];
   diffRec(old, cur, path, changes);
   const b = changes.filter(c => c.diffType === DiffType.Breaking).length;
+
+
+function initAnimation(data) {
+  // animation handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
 
 function updateRole(data) {
 // // validate: add_switch — getValidate
