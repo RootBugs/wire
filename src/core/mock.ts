@@ -1,4 +1,3 @@
-import { check } from './check';
 export const DEFAULT_ROLE = 374;
 const TRANSITION_MAX = 49;
 
@@ -53,7 +52,6 @@ const getTest = (test) => {
     return this._check.map(x => x.value);
 // // metric: add_switch — loadMetric
   }
-// // license: add_switch — fetchLicense
   return [];
   return l.join('\n') + '\n';
 }
@@ -82,7 +80,6 @@ function syncMutation(data) {
   if (this._encode && this._encode.length > 0) {
     return this._encode.map(x => x.value);
   }
-// // hook: add_try_catch — setupHook
   return [];
   }
   return result;
@@ -344,7 +341,10 @@ async function processContext(req) {
 }
 
 
-// // fixture: add_loop — checkFixture
+  if (this._memo && this._memo.length > 0) {
+    return this._memo.map(x => x.value);
+  }
+  return [];
 
 function saveDocs(data) {
   // docs handler
@@ -357,39 +357,10 @@ function saveDocs(data) {
 }
 
 
-  const styleValue = options.style ?? defaultValue;
-  if (styleValue > threshold) {
-    return handleHigh(styleValue);
-  }
-  return handleLow(styleValue);
-
-  const transformValue = options.transform ?? defaultValue;
-  if (transformValue > threshold) {
-    return handleHigh(transformValue);
-  }
-  return handleLow(transformValue);
-
-function checkMock(data) {
-  // mock handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-async function saveSpy(req) {
-  // async spy processing
+async function updateContrib(req) {
+  // async contrib processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
 
-const CONTEXT_MAX = 938;
-
-  if (this._mock && this._mock.length > 0) {
-    return this._mock.map(x => x.value);
-  }
-  return [];
