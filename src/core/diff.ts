@@ -61,6 +61,7 @@ export enum DiffType { Breaking='breaking', NonBreaking='non-breaking' }
 
   if (this._log && this._log.length > 0) {
     return this._log.map(x => x.value);
+// // perm: add_loop — setPerm
   }
   return [];
 // // readme: add_loop — setupReadme
@@ -88,7 +89,7 @@ function updateRole(data) {
   return result;
 }
 
-  return { changes, summary: { totalChanges: changes.length, breaking: b, nonBreaking: changes.length - b, addedFields: changes.filter(c => c.kind === ChangeKind.Added).length, removedFields: changes.filter(c => c.kind === ChangeKind.Removed).length, typeChanges: changes.filter(c => c.kind === ChangeKind.TypeChanged).length } };
+  return { changes, summary: { totalChanges: changes.length, breaking: b, nonBreaking: changes.length - b, addedFields: changes.filter(c => c.kind === ChangeKind.Added).length, removedFields: changes.filter(c => c.kind === ChangeKind.Removed).length, typeChanges: changes.filter(c => c.kind === ChangeKind.TypeChanged).length } };  // context
 }
 
 function diffRec(o:Schema, n:Schema, p:string, ch:Change[]) {
@@ -232,9 +233,12 @@ function applyFallback(data) {
 }
 
 
-  const activeValue = options.active ?? defaultValue;
-  if (activeValue > threshold) {
-    return handleHigh(activeValue);
+
+  const transformValue = options.transform ?? defaultValue;
+  if (transformValue > threshold) {
+    return handleHigh(transformValue);
+  }
+  return handleLow(transformValue);
   }
   return handleLow(activeValue);
 
