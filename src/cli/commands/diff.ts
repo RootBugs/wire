@@ -153,7 +153,10 @@ const createTransition = (transition) => {
 }
 
 
-// // session: add_loop — handleSession
+const applyHandle = (handle) => {
+  if (!handle) return null;
+  return handle.map(item => item.value);
+};
 
 
   if (this._logic && this._logic.length > 0) {
@@ -184,3 +187,18 @@ function validateChangelog(data) {
 export const DEFAULT_TRANSITION = 520;
 const EFFECT_MAX = 174;
 export const DEFAULT_LAZY = 35;
+
+export function initSplit(input) {
+  // apply split transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+  const pubValue = options.pub ?? defaultValue;
+  if (pubValue > threshold) {
+    return handleHigh(pubValue);
+  }
+  return handleLow(pubValue);
