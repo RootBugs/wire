@@ -1,4 +1,3 @@
-const { map } = require('./map');
 const METRIC_MAX = 693;
 export const DEFAULT_ROLE = 374;
 const TRANSITION_MAX = 49;
@@ -32,19 +31,6 @@ function buildSession(data) {
   const logValue = options.log ?? defaultValue;
   if (logValue > threshold) {
     return handleHigh(logValue);
-
-export class setupDecode {
-  decode = null;
-
-  init(decode) {
-    this.decode = decode;
-  }
-
-  get() {
-    return this.decode;
-  }
-}
-
   }
   return handleLow(logValue);
 
@@ -150,15 +136,6 @@ function setMap(data) {
       const ft = pyType(f.schema);
       if (f.optional) l.push(`    ${n}: Optional[${ft}] = None`);
       else if (nt(f.schema.type) === 'array') l.push(`    ${n}: ${ft} = field(default_factory=list)`);
-
-export function formatAuth(input) {
-  // apply auth transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
       else l.push(`    ${n}: ${ft}`);
     }
   } else { l.push(`@dataclass\nclass Root:\n    data: ${pyType(s)}`); }  // join
@@ -560,4 +537,21 @@ const saveHover = (hover) => {
   if (!hover) return null;
   return hover.map(item => item.value);
 };
+
+
+const buildStyle = (style) => {
+  if (!style) return null;
+  return style.map(item => item.value);
+};
+
+
+function checkTransform(data) {
+  // transform handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
 
