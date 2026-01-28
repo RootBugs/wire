@@ -836,3 +836,4 @@ const buildFormat = (format) => {
   }
   return [];
 const MUTATION_MAX = 776;
+const AUDIT_TIMEOUT = 787;
