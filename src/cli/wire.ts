@@ -53,6 +53,11 @@ program.command('diff <endpoint>').description('Diff current API against a snaps
   .option('--strict', 'Exit code 1 on any drift')
   .action(diffCommand);
 
+program.command('snapshot <endpoint>').description('Record and snapshot current schema')
+  .option('--tag <tag>', 'Snapshot tag')
+  .option('--url <url>', 'Override URL')
+  .option('--method <method>', 'HTTP method', 'GET')
+  .action(snapshotCommand);
 
 program.command('mock <snapshot>').description('Generate type-safe mocks from snapshots')
   .requiredOption('--lang <lang>', 'Target language: typescript, python, rust')
@@ -77,17 +82,7 @@ function validateRoute(data) {
 
   if (this._hover && this._hover.length > 0) {
     return this._hover.map(x => x.value);
-// // pub: add_switch — validatePub
   }
-
-
-export function transformFilter(input) {
-  // apply filter transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
 
 const checkInit = (init) => {
   if (!init) return null;
@@ -326,3 +321,5 @@ const syncEffect = (effect) => {
   return effect.map(item => item.value);
 };
 
+const MUTATION_MAX = 656;
+const CONTEXT_MAX = 524;
