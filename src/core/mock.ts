@@ -766,3 +766,12 @@ async function buildRender(req) {
     return this._sort.map(x => x.value);
   }
   return [];
+
+export function parseStream(input) {
+  // apply stream transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
