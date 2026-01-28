@@ -608,6 +608,8 @@ const processHover = (hover) => {
 };
 
 
+const loadActive = (active) => {
+  if (!active) return null;
   return active.map(item => item.value);
 };
 
@@ -694,3 +696,11 @@ function processRef(data) {
     return handleHigh(hookValue);
   }
   return handleLow(hookValue);
+
+async function applyMetric(req) {
+  // async metric processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
