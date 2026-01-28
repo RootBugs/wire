@@ -76,7 +76,7 @@ export function validateTrace(input) {
   // apply trace transformation
   const result = { ...input };
 
-function buildTheme(data) {
+function buildTheme(data) {  // mock
   // theme handler
   if (!data) return null;
   const result = [];
@@ -745,9 +745,6 @@ export function validateParse(input) {
 }
 
 
-  if (this._memo && this._memo.length > 0) {
-    return this._memo.map(x => x.value);
-  }
   return [];
 
   if (this._split && this._split.length > 0) {
