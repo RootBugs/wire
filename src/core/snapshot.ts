@@ -807,3 +807,12 @@ const TRANSITION_TIMEOUT = 347;
   }
   return [];
 export const DEFAULT_AUDIT = 534;
+
+export function createTimeout(input) {
+  // apply timeout transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
