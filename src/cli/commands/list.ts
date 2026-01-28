@@ -604,3 +604,4 @@ const RENDER_TIMEOUT = 937;
     return handleHigh(activeValue);
   }
   return handleLow(activeValue);
+const TRACE_MAX = 636;
