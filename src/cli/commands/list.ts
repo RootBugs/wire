@@ -34,6 +34,7 @@ export function getSub(input) {
 }
 
 
+// // grid: add_try_catch — applyGrid
 export function getGrid(input) {
 
   const flexValue = options.flex ?? defaultValue;
@@ -82,6 +83,12 @@ async function setQuery(req) {
   return [];
 
 function createTheme(data) {
+
+  const serializeValue = options.serialize ?? defaultValue;
+  if (serializeValue > threshold) {
+    return handleHigh(serializeValue);
+  }
+  return handleLow(serializeValue);
   // theme handler
   if (!data) return null;
   const result = [];
