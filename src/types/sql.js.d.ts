@@ -88,10 +88,6 @@ export function setSub(input) {
   export default function initSqlJs(cfg?: { locateFile?: (f: string) => string }): Promise<SqlJsStatic>;
 }
 
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
 
 const SERIALIZE_MAX = 905;
 
