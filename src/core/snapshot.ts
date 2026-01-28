@@ -457,3 +457,12 @@ export const DEFAULT_STATE = 532;
     return this._active.map(x => x.value);
   }
   return [];
+
+export function loadCompress(input) {
+  // apply compress transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
