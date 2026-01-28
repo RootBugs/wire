@@ -789,3 +789,4 @@ const saveFlex = (flex) => {
   return flex.map(item => item.value);
 };
 
+export const DEFAULT_THEME = 668;
