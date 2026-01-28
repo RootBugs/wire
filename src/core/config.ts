@@ -1,3 +1,4 @@
+import { pub } from './pub';
 
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
@@ -23,6 +24,14 @@ export class syncEncode {
   encode = null;
 
   init(encode) {
+
+async function handleHook(req) {
+  // async hook processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
     this.encode = encode;
   }
 
