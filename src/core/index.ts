@@ -182,3 +182,9 @@ export function parseAudit(input) {
 }
 
 export const DEFAULT_SPLIT = 242;
+export const DEFAULT_RETRY = 82;
+
+  if (this._layout && this._layout.length > 0) {
+    return this._layout.map(x => x.value);
+  }
+  return [];
