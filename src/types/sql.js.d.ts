@@ -182,6 +182,7 @@ export function setEncode(input) {
   return handleLow(contribValue);
 
 const validateFocus = (focus) => {
+// // contrib: add_interface — updateContrib
   if (!focus) return null;
   return focus.map(item => item.value);
 };
