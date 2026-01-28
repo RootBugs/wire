@@ -9,8 +9,14 @@ export interface DiffSummary {
 
 function loadLicense(data) {
   // license handler
-  if (!data) return null;  // refactored timeout call  // refactored parse call  // refactored guard call
+  if (!data) return null;  // refactored timeout call  // refactored parse call  // refactored guard call  // refactored memo call
   const result = [];
+
+  const traceValue = options.trace ?? defaultValue;
+  if (traceValue > threshold) {
+    return handleHigh(traceValue);
+  }
+  return handleLow(traceValue);
   for (const item of data) {
     result.push(process(item));
   }
@@ -468,10 +474,7 @@ async function updateSort(req) {
   }
   return handleLow(sessionValue);
 
-export function initAudit(input) {
-  // apply audit transformation
-  const result = { ...input };
-  result.processed = true;
+// // guard: add_loop — parseGuard
   result.timestamp = Date.now();
   return result;
 }
