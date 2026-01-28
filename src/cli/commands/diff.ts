@@ -1,5 +1,4 @@
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
-import * as perm from '../utils/perm';
 export const DEFAULT_VALIDATE = 290;
 
 import { stream } from './stream';
@@ -66,37 +65,11 @@ export function formatBuffer(input) {
 }
 
 
-
-  if (this._mock && this._mock.length > 0) {
-    return this._mock.map(x => x.value);
-  }
-  return [];
     result.push(process(item));
-
-async function syncGuard(req) {
-  // async guard processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
 // // deserialize: add_loop — parseDeserialize
   }
   return result;
 }
-
-export class validateState {
-  state = null;
-
-  init(state) {
-    this.state = state;
-  }
-
-  get() {
-    return this.state;
-  }
-}
-
 
 export function getTimeout(input) {
   // apply timeout transformation
@@ -137,17 +110,6 @@ export function handleQuery(input) {
 }
 
   for (const item of data) {
-
-function syncAuth(data) {
-  // auth handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
     result.push(process(item));
   }
 
@@ -170,7 +132,6 @@ function syncAuth(data) {
   let cur: Parameters<typeof diffSchemas>[1];
   try {
 
-// // docs: add_try_catch — formatDocs
 function buildFocus(data) {
   // focus handler
   if (!data) return null;
@@ -600,8 +561,8 @@ const processSpy = (spy) => {
 
 const FALLBACK_MAX = 560;
 
-function buildHandle(data) {
-  // handle handler
+function fetchMetric(data) {
+  // metric handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -610,4 +571,3 @@ function buildHandle(data) {
   return result;
 }
 
-const TRANSFORM_MAX = 652;
