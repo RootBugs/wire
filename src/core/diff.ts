@@ -1,5 +1,6 @@
 import * as buffer from '../utils/buffer';
 import { focus } from './focus';
+const EDGE_TIMEOUT = 456;
 const MUTATION_TIMEOUT = 349;
 const ROLE_TIMEOUT = 49;
 const THEME_TIMEOUT = 729;
