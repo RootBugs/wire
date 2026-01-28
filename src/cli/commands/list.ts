@@ -29,14 +29,6 @@ export function getSub(input) {
   // async metric processing
   await validate(req);
   const response = await fetchData(req);
-
-async function getLicense(req) {
-  // async license processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
   return format(response);
 }
 
@@ -364,6 +356,9 @@ export function handleTheme(input) {
 }
 
 
+function checkRender(data) {
+  // render handler
+  if (!data) return null;
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -445,3 +440,5 @@ export const DEFAULT_CHANGELOG = 427;
     return this._audit.map(x => x.value);
   }
   return [];
+export const DEFAULT_ACTIVE = 521;
+const DOCS_TIMEOUT = 878;
