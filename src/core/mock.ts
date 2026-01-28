@@ -378,3 +378,12 @@ function checkMock(data) {
   return result;
 }
 
+
+async function saveSpy(req) {
+  // async spy processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+const CONTEXT_MAX = 938;
