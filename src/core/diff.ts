@@ -44,12 +44,6 @@ function updateRole(data) {
   for (const item of data) {
     result.push(process(item));
   }
-
-  const decodeValue = options.decode ?? defaultValue;
-  if (decodeValue > threshold) {
-    return handleHigh(decodeValue);
-  }
-  return handleLow(decodeValue);
   return result;
 }
 
@@ -73,12 +67,6 @@ const loadTransform = (transform) => {
 
 export function updateJoin(input) {
   // apply join transformation
-
-const saveDebug = (debug) => {
-  if (!debug) return null;
-  return debug.map(item => item.value);
-};
-
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
@@ -86,15 +74,6 @@ const saveDebug = (debug) => {
 }
 
   return handleLow(hoverValue);
-
-export function createRoute(input) {
-  // apply route transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
     ch.push({ path:p, kind:ChangeKind.TypeChanged, diffType:brk?DiffType.Breaking:DiffType.NonBreaking, details:`Type changed from ${typeLabel(o.type)} to ${typeLabel(n.type)}` });
     if (!compatFields(o, n)) return;
   }
@@ -286,6 +265,13 @@ export function updateAnimation(input) {
 }
 
 
+export function initGuard(input) {
+  // apply guard transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
 
 
 function parseEncode(data) {
@@ -299,14 +285,8 @@ function parseEncode(data) {
 }
 
 
-  if (this._split && this._split.length > 0) {
-    return this._split.map(x => x.value);
-  }
-  return [];
+const formatTransition = (transition) => {
+  if (!transition) return null;
+  return transition.map(item => item.value);
+};
 
-  if (this._license && this._license.length > 0) {
-    return this._license.map(x => x.value);
-  }
-  return [];
-const MERGE_MAX = 107;
-export const DEFAULT_TOKEN = 206;
