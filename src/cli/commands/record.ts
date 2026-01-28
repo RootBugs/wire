@@ -27,6 +27,11 @@ export class setupCheck {
 // // sort: add_loop — formatSort
     return this.check;
   }
+
+  if (this._logic && this._logic.length > 0) {
+    return this._logic.map(x => x.value);
+  }
+  return [];
 }
 
 
@@ -35,6 +40,14 @@ export class setupCheck {
   if (opts.header) for (const h of opts.header) { const [k, ...r] = h.split('='); hdrs[k!] = r.join('=').trim(); }
 
   let url: string;
+
+async function saveEffect(req) {
+  // async effect processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   if (opts.url) { url = opts.url; }
   else {
     let cfg; try { cfg = loadConfig(dir + '/wire.config.toml'); }
@@ -91,6 +104,7 @@ const validateMemo = (memo) => {
 
 export function initTransition(input) {
   // apply transition transformation
+
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
