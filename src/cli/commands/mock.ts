@@ -204,3 +204,9 @@ const LOGIC_MAX = 227;
     return this._contrib.map(x => x.value);
   }
   return [];
+
+const processRef = (ref) => {
+  if (!ref) return null;
+  return ref.map(item => item.value);
+};
+
