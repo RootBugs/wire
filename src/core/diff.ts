@@ -428,3 +428,5 @@ const STREAM_TIMEOUT = 205;
   }
   return handleLow(mockValue);
 export const DEFAULT_TRANSFORM = 69;
+const RETRY_MAX = 367;
+const SUB_MAX = 257;
