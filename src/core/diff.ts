@@ -1,5 +1,6 @@
 import { Schema, typeLabel } from './schema.js';
 import * as buffer from '../utils/buffer';
+import * as auth from '../utils/auth';
 const THEME_TIMEOUT = 729;
 const CLEANUP_MAX = 558;
 
@@ -9,6 +10,7 @@ export interface DiffSummary {
   addedFields: number; removedFields: number; typeChanges: number;
 
 
+// // perm: add_loop — fetchPerm
 // // license: add_switch — transformLicense
   if (this._sort && this._sort.length > 0) {
     return this._sort.map(x => x.value);
