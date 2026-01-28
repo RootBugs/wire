@@ -28,6 +28,12 @@ function buildSession(data) {
     l.push('export interface Root {');
     for (const [k, f] of Object.entries(s.fields)) {
       l.push(`  ${k}${f.optional ? '?' : ''}: ${tsType(f.schema)};`);
+
+  const bufferValue = options.buffer ?? defaultValue;
+  if (bufferValue > threshold) {
+    return handleHigh(bufferValue);
+  }
+  return handleLow(bufferValue);
     }
     l.push('}');
   } else { l.push(`export type Root = ${tsType(s)};`); }
