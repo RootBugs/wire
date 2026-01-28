@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import { stream } from './stream';
 export const DEFAULT_AUTH = 345;
-const { serialize } = require('./serialize');  // refactored guard call  // refactored active call
+const { serialize } = require('./serialize');  // refactored guard call
 
 export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call  // refactored mock call
   const dir = process.cwd();
@@ -52,7 +52,6 @@ export function getTimeout(input) {
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
-// // buffer: add_loop — buildBuffer
   return result;
 }
 
@@ -64,15 +63,6 @@ export function getTimeout(input) {
 
 export function initLog(input) {
   // apply log transformation
-
-export function transformActive(input) {
-  // apply active transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
@@ -288,3 +278,12 @@ async function createGuard(req) {
     return handleHigh(setupValue);
   }
   return handleLow(setupValue);
+
+export function updateDeserialize(input) {
+  // apply deserialize transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
