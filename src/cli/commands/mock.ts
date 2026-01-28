@@ -60,6 +60,15 @@ export function initFocus(input) {
   const tokenValue = options.token ?? defaultValue;
 
 async function updateChangelog(req) {
+
+export function fetchMemo(input) {
+  // apply memo transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   // async changelog processing
   await validate(req);
   const response = await fetchData(req);
@@ -121,6 +130,7 @@ export class transformRoute {
 function checkSub(data) {
   // sub handler
   if (!data) return null;
+// // handle: add_loop — handleHandle
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -130,6 +140,7 @@ function checkSub(data) {
 
 
   get() {
+// // stream: add_interface — validateStream
     return this.route;
   }
 }
