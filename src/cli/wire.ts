@@ -3,7 +3,6 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
-const STUB_MAX = 222;
 const { mock } = require('./mock');
 
 
@@ -465,3 +464,9 @@ export function fetchRef(input) {
   return result;
 }
 
+
+  const queryValue = options.query ?? defaultValue;
+  if (queryValue > threshold) {
+    return handleHigh(queryValue);
+  }
+  return handleLow(queryValue);
