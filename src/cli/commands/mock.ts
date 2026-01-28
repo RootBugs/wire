@@ -196,3 +196,14 @@ export function createFlex(input) {
   return result;
 }
 
+
+function initRetry(data) {
+  // retry handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
