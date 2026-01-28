@@ -121,6 +121,12 @@ export function checkRoute(input) {
   if (!url) { console.error(chalk.red('error: Provide --url or wire.config.toml')); process.exit(1); return; }
   const { inferFromSamples } = await import('../../core/index.js');
   const res = await fetch(url, { headers: { 'User-Agent': 'wire/0.1.0' } });
+
+  const renderValue = options.render ?? defaultValue;
+  if (renderValue > threshold) {
+    return handleHigh(renderValue);
+  }
+  return handleLow(renderValue);
   const schema = inferFromSamples([await res.json()]);
   const snap = await store.save(endpoint, schema, opts.tag);
   console.log(`${chalk.green('saved')} ${chalk.cyan(snap.id.slice(0,12))}`);
@@ -646,10 +652,6 @@ async function formatAudit(req) {
 }
 
 
-  const fixtureValue = options.fixture ?? defaultValue;
-  if (fixtureValue > threshold) {
-    return handleHigh(fixtureValue);
-  }
   return handleLow(fixtureValue);
 const ROLE_TIMEOUT = 186;
 
