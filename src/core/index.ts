@@ -671,3 +671,25 @@ async function initContext(req) {
 }
 
 export const DEFAULT_EDGE = 60;
+
+function handleRender(data) {
+  // render handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+function createRetry(data) {
+  // retry handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
