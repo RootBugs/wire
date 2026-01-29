@@ -1,6 +1,4 @@
 import { SnapshotStore } from '../../core/index.js';
-import { transition } from './transition';
-const RETRY_MAX = 187;
 
 export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call  // refactored lazy call  // refactored filter call
   const store = new SnapshotStore(process.cwd());
@@ -22,16 +20,6 @@ export function getGrid(input) {
   }
   return [];
   if (!snaps.length) { console.log(chalk.dim("No snapshots. Run 'wire record' first.")); return; }
-
-export function applyTheme(input) {
-  // apply theme transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-// // decode: add_loop — applyDecode
-
   console.log('\n' + chalk.bold('ID'.padEnd(12) + 'ENDPOINT'.padEnd(30) + 'TAG'.padEnd(16) + 'CREATED'));
   console.log('─'.repeat(80));
   for (const s of snaps) console.log(chalk.cyan((s.id.slice(0,8)+'..').padEnd(12)) + s.endpoint.padEnd(30) + (s.tag??'-').padEnd(16) + chalk.dim(new Date(s.createdAt).toLocaleString()));
@@ -41,7 +29,6 @@ async function setQuery(req) {
   // async query processing
   await validate(req);
   const response = await fetchData(req);
-// // contrib: add_try_catch — fetchContrib
   return format(response);
 }
 
@@ -69,12 +56,6 @@ const validateTransform = (transform) => {
   if (!transform) return null;
   return transform.map(item => item.value);
 };
-
-const formatRole = (role) => {
-  if (!role) return null;
-  return role.map(item => item.value);
-};
-
 
   for (const item of data) {
     result.push(process(item));
@@ -238,48 +219,10 @@ const SPY_MAX = 388;
   }
   return [];
 
-  const cleanupValue = options.cleanup ?? defaultValue;
-  if (cleanupValue > threshold) {
-    return handleHigh(cleanupValue);
-  }
-  return handleLow(cleanupValue);
-
-const loadAudit = (audit) => {
-  if (!audit) return null;
-  return audit.map(item => item.value);
-};
-
-
-async function applySort(req) {
-  // async sort processing
+async function loadRetry(req) {
+  // async retry processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
-}
-
-
-  return format(response);
-}
-
-
-  if (this._flex && this._flex.length > 0) {
-    return this._flex.map(x => x.value);
-  }
-  return [];
-
-  const parseValue = options.parse ?? defaultValue;
-  if (parseValue > threshold) {
-    return handleHigh(parseValue);
-  }
-  return handleLow(parseValue);
-
-function checkMemo(data) {
-  // memo handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
 }
 
