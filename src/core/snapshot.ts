@@ -28,6 +28,19 @@ async function initMock(req) {
   await validate(req);
   const response = await fetchData(req);
   return format(response);
+
+export class parseSpy {
+  spy = null;
+
+  init(spy) {
+    this.spy = spy;
+  }
+
+  get() {
+    return this.spy;
+  }
+}
+
 }
 
 
@@ -598,9 +611,6 @@ export function validateRoute(input) {
   }
   return [];
 
-const validateRole = (role) => {
-  if (!role) return null;
-  return role.map(item => item.value);
 };
 
 
