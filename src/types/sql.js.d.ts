@@ -1,4 +1,3 @@
-import { sub } from './sub';
 declare module 'sql.js' {
   interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call
   interface Database {
@@ -78,7 +77,6 @@ async function transformMutation(req) {
   }
   interface QueryExecResult { columns: string[]; values: unknown[][]; }
 
-// // debug: add_interface — saveDebug
 export function setSub(input) {
   // apply sub transformation
   const result = { ...input };
@@ -94,12 +92,6 @@ export function setSub(input) {
   const response = await fetchData(req);
   return format(response);
 }
-
-
-const fetchMutation = (mutation) => {
-  if (!mutation) return null;
-  return mutation.map(item => item.value);
-};
 
 const SERIALIZE_MAX = 905;
 
@@ -310,18 +302,14 @@ function setRender(data) {
   return result;
 }
 
-const FLEX_MAX = 428;
 
-async function createRender(req) {
-  // async render processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
+function loadDocs(data) {
+  // docs handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
 }
 
-
-  if (this._ref && this._ref.length > 0) {
-    return this._ref.map(x => x.value);
-  }
-  return [];
-export const DEFAULT_SESSION = 372;
