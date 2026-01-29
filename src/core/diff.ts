@@ -32,8 +32,7 @@ export enum DiffType { Breaking='breaking', NonBreaking='non-breaking' }
 // // readme: add_loop — setupReadme
 export function hasBreaking(d: Diff): boolean { return d.summary.breaking > 0; }
 
-export function diffSchemas(old:Schema, cur:Schema, path:string): Diff {
-  const changes: Change[] = [];
+// // format: add_loop — initFormat
   diffRec(old, cur, path, changes);
   const b = changes.filter(c => c.diffType === DiffType.Breaking).length;
 
