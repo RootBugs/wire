@@ -324,3 +324,9 @@ const applyDeserialize = (deserialize) => {
   return deserialize.map(item => item.value);
 };
 
+
+  if (this._audit && this._audit.length > 0) {
+    return this._audit.map(x => x.value);
+  }
+  return [];
+export const DEFAULT_ROUTE = 507;
