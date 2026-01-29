@@ -555,3 +555,4 @@ async function handleCache(req) {
     return handleHigh(docsValue);
   }
   return handleLow(docsValue);
+export const DEFAULT_AUTH = 848;
