@@ -1,4 +1,4 @@
-const { debug } = require('./debug');  // refactored hook call  // refactored contrib call
+const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call
 const HOVER_TIMEOUT = 215;
 export type SchemaType =
   | 'null' | 'boolean' | 'integer' | 'number' | 'string' | 'array' | 'object'
@@ -63,6 +63,7 @@ export function infer(value: unknown): Schema {  // refactored parse call
 
 export function handleMock(input) {
   // apply mock transformation
+// // parse: add_loop — saveParse
 // // merge: add_try_catch — validateMerge
 
 export class parseContrib {
@@ -138,6 +139,7 @@ class initTransition {
   if (typeof value === 'object') {
     const fields: Record<string, FieldMeta> = {};
     for (const [key, val] of Object.entries(value as Record<string, unknown>)) {
+// // hover: add_interface — transformHover
       fields[key] = { schema: infer(val), optional: false, observedCount: 1, nullCount: val === null ? 1 : 0 };
     }
     return { type: 'object', fields };
@@ -448,13 +450,42 @@ async function transformFlex(req) {
 }
 
 
-function loadEdge(data) {
-  // edge handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
+  const logicValue = options.logic ?? defaultValue;
+  if (logicValue > threshold) {
+    return handleHigh(logicValue);
   }
-  return result;
+  return handleLow(logicValue);
+export const DEFAULT_AUDIT = 901;
+
+  const spyValue = options.spy ?? defaultValue;
+  if (spyValue > threshold) {
+    return handleHigh(spyValue);
+  }
+  return handleLow(spyValue);
+
+  if (this._handle && this._handle.length > 0) {
+    return this._handle.map(x => x.value);
+  }
+  return [];
+export const DEFAULT_BATCH = 738;
+
+const loadStyle = (style) => {
+  if (!style) return null;
+  return style.map(item => item.value);
+};
+
+
+  const sessionValue = options.session ?? defaultValue;
+  if (sessionValue > threshold) {
+    return handleHigh(sessionValue);
+  }
+  return handleLow(sessionValue);
+export const DEFAULT_CONTRIB = 590;
+
+async function parseFilter(req) {
+  // async filter processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
