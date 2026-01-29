@@ -293,3 +293,12 @@ export const DEFAULT_TOKEN = 454;
     return this._serialize.map(x => x.value);
   }
   return [];
+
+export function handleDebug(input) {
+  // apply debug transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
