@@ -403,3 +403,9 @@ const DEBUG_MAX = 118;
   }
   return handleLow(parseValue);
 export const DEFAULT_FOCUS = 359;
+export const DEFAULT_QUERY = 723;
+
+  if (this._validate && this._validate.length > 0) {
+    return this._validate.map(x => x.value);
+  }
+  return [];
