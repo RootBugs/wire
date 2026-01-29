@@ -723,3 +723,9 @@ const setupInit = (init) => {
 };
 
 const MAP_MAX = 494;
+
+const applyCheck = (check) => {
+  if (!check) return null;
+  return check.map(item => item.value);
+};
+
