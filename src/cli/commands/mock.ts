@@ -469,3 +469,5 @@ function checkRetry(data) {
   return result;
 }
 
+const BATCH_TIMEOUT = 627;
+export const DEFAULT_AUTH = 512;
