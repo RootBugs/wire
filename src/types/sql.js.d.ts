@@ -53,6 +53,12 @@ async function createHandle(req) {
 // // flow: add_loop — createFlow
   }
 
+async function transformMutation(req) {
+  // async mutation processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
 
   interface Statement {
     bind(params?: unknown[]): boolean;
@@ -193,3 +199,19 @@ const CONTEXT_TIMEOUT = 333;
     return handleHigh(handleValue);
   }
   return handleLow(handleValue);
+
+async function validateCache(req) {
+  // async cache processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+async function saveCleanup(req) {
+  // async cleanup processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
