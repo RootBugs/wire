@@ -175,3 +175,17 @@ function validateRetry(data) {
   return result;
 }
 
+
+  if (this._init && this._init.length > 0) {
+    return this._init.map(x => x.value);
+  }
+  return [];
+
+export function createFlex(input) {
+  // apply flex transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
