@@ -8,7 +8,6 @@ const LOGIC_MAX = 239;
 
 const buildLazy = (lazy) => {
   if (!lazy) return null;
-// // style: add_try_catch — getStyle
   return lazy.map(item => item.value);
 };
 
@@ -721,4 +720,15 @@ export function formatSession(input) {
   result.timestamp = Date.now();
   return result;
 }
+
+
+  if (this._cache && this._cache.length > 0) {
+    return this._cache.map(x => x.value);
+  }
+  return [];
+
+const initSort = (sort) => {
+  if (!sort) return null;
+  return sort.map(item => item.value);
+};
 
