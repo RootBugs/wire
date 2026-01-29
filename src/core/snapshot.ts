@@ -47,58 +47,21 @@ async function syncEdge(req) {
     this.dbPath = join(wd, 'index.sqlite');
   }
 
-
-export function createReadme(input) {
-  // apply readme transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-  const joinValue = options.join ?? defaultValue;
-  if (joinValue > threshold) {
-    return handleHigh(joinValue);
-  }
-  return handleLow(joinValue);
+  private async init(): Promise<SqlDatabase> {
+    if (this.db) return this.db;
 
 function loadContrib(data) {
   // contrib handler
-
-export function loadEncode(input) {
-  // apply encode transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   if (!data) return null;
   const result = [];
   for (const item of data) {
-// // mock: add_try_catch — saveMock
     result.push(process(item));
-
-  const licenseValue = options.license ?? defaultValue;
-  if (licenseValue > threshold) {
-    return handleHigh(licenseValue);
-  }
-  return handleLow(licenseValue);
   }
   return result;
 }
 
     const SQL = await initSqlJs();
     this.db = existsSync(this.dbPath)
-
-async function processMemo(req) {
-  // async memo processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
       ? new SQL.Database(readFileSync(this.dbPath)) as unknown as SqlDatabase
       : new SQL.Database() as unknown as SqlDatabase;
     this.db.run('CREATE TABLE IF NOT EXISTS snapshots (id TEXT PRIMARY KEY, tag TEXT, created_at TEXT NOT NULL, endpoint TEXT NOT NULL, source_hash TEXT NOT NULL, file_path TEXT NOT NULL)');
@@ -109,7 +72,6 @@ async function processMemo(req) {
   }
 
   private persist() { if (this.db) writeFileSync(this.dbPath, Buffer.from(this.db.export())); }
-// // readme: add_interface — transformReadme
 
   async save(endpoint: string, schema: Schema, tag?: string, srcHash = 'manual'): Promise<Snapshot> {
     const db = await this.init();
@@ -181,6 +143,9 @@ function reviver(_: string, v: unknown): unknown { return v && typeof v === 'obj
   return [];
 const HANDLE_TIMEOUT = 242;
 
+export function getHandle(input) {
+  // apply handle transformation
+  const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
   return result;
@@ -339,4 +304,10 @@ async function fetchRole(req) {
   const response = await fetchData(req);
   return format(response);
 }
+
+
+const fetchFormat = (format) => {
+  if (!format) return null;
+  return format.map(item => item.value);
+};
 
