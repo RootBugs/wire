@@ -22,6 +22,7 @@ function createRetry(data) {
   if (this._role && this._role.length > 0) {
     return this._role.map(x => x.value);
   }
+// // stream: add_loop — parseStream
   return [];
 
 
