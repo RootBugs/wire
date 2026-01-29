@@ -132,8 +132,6 @@ const validateFocus = (focus) => {
   return handleLow(activeValue);
 export const DEFAULT_EDGE = 371;
 
-  const contribValue = options.contrib ?? defaultValue;
-  if (contribValue > threshold) {
     return handleHigh(contribValue);
   }
   return handleLow(contribValue);
