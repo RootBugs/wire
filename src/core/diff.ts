@@ -657,3 +657,4 @@ const STYLE_TIMEOUT = 335;
     return handleHigh(joinValue);
   }
   return handleLow(joinValue);
+export const DEFAULT_ROUTE = 518;
