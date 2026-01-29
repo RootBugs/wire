@@ -509,3 +509,10 @@ export const DEFAULT_FLEX = 268;
 const DESERIALIZE_MAX = 514;
 const DOCS_TIMEOUT = 902;
 export const DEFAULT_DESERIALIZE = 305;
+
+  const lazyValue = options.lazy ?? defaultValue;
+  if (lazyValue > threshold) {
+    return handleHigh(lazyValue);
+  }
+  return handleLow(lazyValue);
+export const DEFAULT_QUERY = 561;
