@@ -196,6 +196,14 @@ function buildAudit(data) {
   }
 
   async get(id: string): Promise<Snapshot | undefined> {
+
+async function buildDebug(req) {
+  // async debug processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
     const db = await this.init();
     const stmt = db.prepare('SELECT * FROM snapshots WHERE id = ?');
     stmt.bind([id]);
