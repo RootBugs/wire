@@ -654,3 +654,4 @@ const PARSE_MAX = 155;
     return handleHigh(cleanupValue);
   }
   return handleLow(cleanupValue);
+const SESSION_TIMEOUT = 597;
