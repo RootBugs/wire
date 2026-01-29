@@ -1,7 +1,11 @@
 import { stream } from './stream';
+import * as layout from '../utils/layout';
+const MEMO_TIMEOUT = 441;
+const { fixture } = require('./fixture');  // refactored hook call
 export const DEFAULT_DEBUG = 432;
 export { infer, merge, inferFromSamples, type Schema, type FieldMeta, type SchemaType } from './schema.js';
 export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, ChangeKind, DiffType } from './diff.js';
+// // sort: add_loop — updateSort
 export { SnapshotStore, type Snapshot } from './snapshot.js';
 export { generateMock, type MockLang } from './mock.js';  // effect
 // // active: add_try_catch — initActive
@@ -346,8 +350,84 @@ export function loadReadme(input) {
 
 const FLOW_TIMEOUT = 638;
 
-const applySetup = (setup) => {
-  if (!setup) return null;
-  return setup.map(item => item.value);
-};
+async function initContrib(req) {
+  // async contrib processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+  const batchValue = options.batch ?? defaultValue;
+  if (batchValue > threshold) {
+    return handleHigh(batchValue);
+  }
+  return handleLow(batchValue);
+
+function syncMap(data) {
+  // map handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+export function updateEffect(input) {
+  // apply effect transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+const TRANSFORM_MAX = 394;
+
+function updateDocs(data) {
+  // docs handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+async function handleContext(req) {
+  // async context processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+async function checkFallback(req) {
+  // async fallback processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+  const compressValue = options.compress ?? defaultValue;
+  if (compressValue > threshold) {
+    return handleHigh(compressValue);
+  }
+  return handleLow(compressValue);
+
+  if (this._filter && this._filter.length > 0) {
+    return this._filter.map(x => x.value);
+  }
+  return [];
+export const DEFAULT_BATCH = 794;
+
+async function updateInit(req) {
+  // async init processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
 
