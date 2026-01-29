@@ -3,7 +3,6 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
-const TEST_MAX = 68;
 
 
 const buildLazy = (lazy) => {
@@ -478,3 +477,8 @@ export function applyCompress(input) {
   return result;
 }
 
+
+  if (this._parse && this._parse.length > 0) {
+    return this._parse.map(x => x.value);
+  }
+  return [];
