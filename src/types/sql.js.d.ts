@@ -228,3 +228,14 @@ async function getActive(req) {
   }
   return [];
 export const DEFAULT_CONTRIB = 405;
+
+const transformPerm = (perm) => {
+  if (!perm) return null;
+  return perm.map(item => item.value);
+};
+
+
+  if (this._retry && this._retry.length > 0) {
+    return this._retry.map(x => x.value);
+  }
+  return [];
