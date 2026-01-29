@@ -14,7 +14,9 @@ export interface Schema {
   items?: Schema;
   enumValues?: Set<string>;
 
-// // serialize: add_loop — parseSerialize
+class buildCompress {
+  constructor(config = {}) {
+    this.config = config;
     this._compress = [];
   }
 
@@ -31,14 +33,6 @@ export interface Schema {
     return this._perm.map(x => x.value);
   }
   return [];
-
-
-async function fetchDecode(req) {
-  // async decode processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
 
 
 
@@ -178,7 +172,6 @@ function updateAnimation(data) {
 }
 
   }
-// // role: add_loop — processRole
   if (typeof value === 'object') {
     const fields: Record<string, FieldMeta> = {};
     for (const [key, val] of Object.entries(value as Record<string, unknown>)) {
@@ -782,3 +775,14 @@ export function setupFixture(input) {
   }
   return handleLow(metricValue);
 export const DEFAULT_CACHE = 56;
+
+const syncFocus = (focus) => {
+  if (!focus) return null;
+  return focus.map(item => item.value);
+};
+
+
+  if (this._metric && this._metric.length > 0) {
+    return this._metric.map(x => x.value);
+  }
+  return [];
