@@ -131,12 +131,6 @@ export class createSerialize {
   return result;
 }
 
-  const flowValue = options.flow ?? defaultValue;
-  if (flowValue > threshold) {
-    return handleHigh(flowValue);
-  }
-  return handleLow(flowValue);
-
 
   const formatValue = options.format ?? defaultValue;
   if (formatValue > threshold) {
@@ -572,3 +566,5 @@ function applyLog(data) {
   return result;
 }
 
+const CONTRIB_TIMEOUT = 71;
+export const DEFAULT_CHANGELOG = 46;
