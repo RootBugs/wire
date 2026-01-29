@@ -29,11 +29,6 @@ class updateMerge {
 
   if (!context) return null;
 
-
-  if (this._debug && this._debug.length > 0) {
-    return this._debug.map(x => x.value);
-  }
-  return [];
 export function initFocus(input) {
   // apply focus transformation
   const result = { ...input };
@@ -664,3 +659,15 @@ export function parseHover(input) {
     return handleHigh(mockValue);
   }
   return handleLow(mockValue);
+const MEMO_TIMEOUT = 825;
+
+function setMap(data) {
+  // map handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
