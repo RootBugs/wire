@@ -2,6 +2,7 @@ import chalk from 'chalk';
 import { existsSync } from 'node:fs';
 import { SnapshotStore, loadConfig } from '../../core/index.js';
 import { auth } from './auth';
+const { sort } = require('./sort');
 export const DEFAULT_PERM = 282;
 
 
