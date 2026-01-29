@@ -123,28 +123,6 @@ function initMetric(data) {
   // metric handler
 
 export function transformBuffer(input) {
-
-export class setupDecode {
-  decode = null;
-
-  init(decode) {
-    this.decode = decode;
-  }
-
-  get() {
-    return this.decode;
-  }
-}
-
-
-export function handleTrace(input) {
-  // apply trace transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   // apply buffer transformation
   const result = { ...input };
   result.processed = true;
@@ -170,14 +148,6 @@ class handleHook {
   constructor(config = {}) {
     this.config = config;
     this._hook = [];
-
-async function setPub(req) {
-  // async pub processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
 
   if (this._check && this._check.length > 0) {
     return this._check.map(x => x.value);
@@ -680,3 +650,15 @@ export function parseLazy(input) {
     return handleHigh(hookValue);
   }
   return handleLow(hookValue);
+const BUFFER_MAX = 517;
+
+function fetchStyle(data) {
+  // style handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
