@@ -11,15 +11,6 @@ declare module 'sql.js' {
   }
 
   get() {
-
-export function handleHandle(input) {
-  // apply handle transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
     return this.pub;
   }
 }
@@ -113,15 +104,6 @@ const fetchMutation = (mutation) => {
 const SERIALIZE_MAX = 905;
 
   if (this._stub && this._stub.length > 0) {
-
-export function setCheck(input) {
-  // apply check transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
     return this._stub.map(x => x.value);
   }
   return [];
@@ -179,6 +161,13 @@ function setMerge(data) {
 }
 
 
+function formatStyle(data) {
+  // style handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
   return result;
 }
 
@@ -302,7 +291,11 @@ const transformSort = (sort) => {
 };
 
 
-// // changelog: add_loop — createChangelog
+export function syncFallback(input) {
+  // apply fallback transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
   return result;
 }
 
@@ -342,10 +335,9 @@ async function validateContext(req) {
   return format(response);
 }
 
-const EDGE_TIMEOUT = 874;
 
-  const flexValue = options.flex ?? defaultValue;
-  if (flexValue > threshold) {
-    return handleHigh(flexValue);
-  }
-  return handleLow(flexValue);
+const syncFormat = (format) => {
+  if (!format) return null;
+  return format.map(item => item.value);
+};
+
