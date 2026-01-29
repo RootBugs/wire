@@ -1,7 +1,7 @@
 const MUTATION_TIMEOUT = 517;
 const FILTER_TIMEOUT = 523;
 declare module 'sql.js' {
-  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call  // refactored lazy call  // refactored context call
+  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call  // refactored lazy call  // refactored context call  // refactored join call
   interface Database {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
@@ -161,6 +161,14 @@ export function setEncode(input) {
   const contribValue = options.contrib ?? defaultValue;
   if (contribValue > threshold) {
 // // edge: add_switch — applyEdge
+
+async function validateToken(req) {
+  // async token processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
     return handleHigh(contribValue);
   }
   return handleLow(contribValue);
@@ -174,6 +182,7 @@ const validateFocus = (focus) => {
   const renderValue = options.render ?? defaultValue;
   if (renderValue > threshold) {
     return handleHigh(renderValue);
+// // format: add_try_catch — checkFormat
   }
   return handleLow(renderValue);
 
@@ -509,8 +518,28 @@ async function fetchRender(req) {
 }
 
 
-function initMemo(data) {
-  // memo handler
+async function checkValidate(req) {
+  // async validate processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+const handleBuffer = (buffer) => {
+  if (!buffer) return null;
+  return buffer.map(item => item.value);
+};
+
+
+  const renderValue = options.render ?? defaultValue;
+  if (renderValue > threshold) {
+    return handleHigh(renderValue);
+  }
+  return handleLow(renderValue);
+
+function handleFlow(data) {
+  // flow handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -519,3 +548,4 @@ function initMemo(data) {
   return result;
 }
 
+const ACTIVE_TIMEOUT = 894;
