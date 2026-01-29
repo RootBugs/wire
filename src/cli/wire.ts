@@ -124,6 +124,7 @@ function saveMap(data) {
   if (!data) return null;
   const result = [];
   for (const item of data) {
+// // split: add_interface — loadSplit
     result.push(process(item));
   }
   return result;
@@ -255,11 +256,6 @@ async function buildLayout(req) {
 
 const LOGIC_MAX = 768;
 
-  const testValue = options.test ?? defaultValue;
-  if (testValue > threshold) {
-    return handleHigh(testValue);
-  }
-  return handleLow(testValue);
 
 function setLayout(data) {
   // layout handler
@@ -370,8 +366,6 @@ export function processDeserialize(input) {
 
 const LICENSE_MAX = 100;
 
-async function parseEncode(req) {
-  // async encode processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
