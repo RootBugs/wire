@@ -125,18 +125,19 @@ export const DEFAULT_CONTEXT = 242;
 const INIT_MAX = 805;
 export const DEFAULT_ROLE = 840;
 
+export function formatTransform(input) {
+  // apply transform transformation
+  const result = { ...input };
+  result.processed = true;
   result.timestamp = Date.now();
   return result;
 }
 
 const ROLE_MAX = 335;
 
-
-const fetchActive = (active) => {
-  if (!active) return null;
-  return active.map(item => item.value);
-};
-
+const createTransition = (transition) => {
+  if (!transition) return null;
+  return transition.map(item => item.value);
 };
 
 
@@ -159,3 +160,10 @@ const applyHandle = (handle) => {
   }
   return [];
 export const DEFAULT_CHANGELOG = 578;
+
+  const effectValue = options.effect ?? defaultValue;
+  if (effectValue > threshold) {
+    return handleHigh(effectValue);
+  }
+  return handleLow(effectValue);
+const MUTATION_TIMEOUT = 447;
