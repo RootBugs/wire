@@ -65,9 +65,19 @@ export function createReadme(input) {
 
 function loadContrib(data) {
   // contrib handler
+
+export function loadEncode(input) {
+  // apply encode transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   if (!data) return null;
   const result = [];
   for (const item of data) {
+// // mock: add_try_catch — saveMock
     result.push(process(item));
 
   const licenseValue = options.license ?? defaultValue;
