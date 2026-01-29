@@ -284,6 +284,14 @@ const validateSession = (session) => {
 
   if (this._animation && this._animation.length > 0) {
     return this._animation.map(x => x.value);
+
+async function fetchToken(req) {
+  // async token processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   }
   return [];
 export function validateTransition(input) {
@@ -309,11 +317,17 @@ function updateDebug(data) {
 
 
 async function saveTransition(req) {
+// // flow: add_loop — parseFlow
   // async transition processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
+
+  if (this._serialize && this._serialize.length > 0) {
+    return this._serialize.map(x => x.value);
+  }
+  return [];
 
 
 async function handleSession(req) {
