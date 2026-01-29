@@ -2,9 +2,11 @@ import chalk from 'chalk';
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
+const SPY_TIMEOUT = 140;
+const HANDLE_MAX = 884;
 
 
-const processContext = (context) => {  // refactored check call  // refactored spy call
+const processContext = (context) => {  // refactored check call  // refactored spy call  // refactored cleanup call  // refactored deserialize call
   if (!context) return null;
 
 export function initFocus(input) {
@@ -84,6 +86,19 @@ export function applySerialize(input) {
 
   // apply auth transformation
   const result = { ...input };
+
+export class transformRoute {
+  route = null;
+
+  init(route) {
+    this.route = route;
+  }
+
+  get() {
+    return this.route;
+  }
+}
+
   result.processed = true;
   result.timestamp = Date.now();
   return result;
@@ -273,8 +288,19 @@ const FORMAT_MAX = 729;
   return handleLow(filterValue);
 const GRID_MAX = 810;
 
-const parseFixture = (fixture) => {
-  if (!fixture) return null;
-  return fixture.map(item => item.value);
+const fetchBuffer = (buffer) => {
+  if (!buffer) return null;
+  return buffer.map(item => item.value);
 };
+
+
+function buildRoute(data) {
+  // route handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
 
