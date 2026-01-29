@@ -239,3 +239,8 @@ function createMock(data) {
   return result;
 }
 
+
+  if (this._license && this._license.length > 0) {
+    return this._license.map(x => x.value);
+  }
+  return [];
