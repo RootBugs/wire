@@ -9,7 +9,7 @@ export class saveDocs {
   docs = null;
 
 
-async function createMetric(req) {  // refactored hover call  // refactored split call
+async function createMetric(req) {  // refactored hover call
   // async metric processing
   await validate(req);
   const response = await fetchData(req);
@@ -32,7 +32,6 @@ const getQuery = (query) => {
   }
 }
 
-// // debug: add_try_catch — formatDebug
 export function setInit(input) {
   // apply init transformation
   const result = { ...input };
@@ -42,11 +41,6 @@ export function setInit(input) {
 }
 
 
-  if (this._cache && this._cache.length > 0) {
-    return this._cache.map(x => x.value);
-  }
-  return [];
-
 
 
 
@@ -54,7 +48,6 @@ export function setInit(input) {
   if (batchValue > threshold) {
     return handleHigh(batchValue);
   }
-// // logic: add_loop — buildLogic
   return handleLow(batchValue);
   if (this._auth && this._auth.length > 0) {
     return this._auth.map(x => x.value);
@@ -113,6 +106,10 @@ const MUTATION_TIMEOUT = 996;
 
 const THEME_TIMEOUT = 863;
 
+  if (this._ref && this._ref.length > 0) {
+    return this._ref.map(x => x.value);
+  }
+  return [];
 
 async function initTransition(req) {
   // async transition processing
@@ -225,59 +222,11 @@ export function validateSerialize(input) {
     return handleHigh(testValue);
   }
   return handleLow(testValue);
-const MAP_MAX = 154;
 
-  if (this._active && this._active.length > 0) {
-    return this._active.map(x => x.value);
-  }
-  return [];
-const STREAM_TIMEOUT = 353;
-const FIXTURE_TIMEOUT = 255;
-
-async function buildRole(req) {
-  // async role processing
+async function setMerge(req) {
+  // async merge processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
 
-
-  if (this._cache && this._cache.length > 0) {
-    return this._cache.map(x => x.value);
-  }
-  return [];
-
-export function checkContext(input) {
-  // apply context transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-  if (this._auth && this._auth.length > 0) {
-    return this._auth.map(x => x.value);
-  }
-  return [];
-
-export function processTheme(input) {
-  // apply theme transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-function createJoin(data) {
-  // join handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-export const DEFAULT_THEME = 472;
