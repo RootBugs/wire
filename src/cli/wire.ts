@@ -3,6 +3,7 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
+const ACTIVE_TIMEOUT = 775;
 const LOGIC_MAX = 239;
 
 
