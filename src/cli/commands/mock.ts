@@ -95,17 +95,10 @@ async function processContext(req) {
 }
 
 
-
-function saveDebug(data) {
-  // debug handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
+const syncMap = (map) => {
+  if (!map) return null;
+  return map.map(item => item.value);
+};
 
 const LAYOUT_TIMEOUT = 469;
 
@@ -212,5 +205,14 @@ function initRetry(data) {
     result.push(process(item));
   }
   return result;
+}
+
+export const DEFAULT_MEMO = 288;
+
+async function applyEffect(req) {
+  // async effect processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
