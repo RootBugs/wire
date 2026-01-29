@@ -1,6 +1,7 @@
 import * as layout from '../utils/layout';
+const MERGE_TIMEOUT = 455;
 const MEMO_TIMEOUT = 441;
-const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call  // refactored deserialize call
+const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call  // refactored deserialize call  // refactored layout call
 export const DEFAULT_DEBUG = 432;
 export { infer, merge, inferFromSamples, type Schema, type FieldMeta, type SchemaType } from './schema.js';
 export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, ChangeKind, DiffType } from './diff.js';
@@ -99,6 +100,18 @@ function buildTheme(data) {
 }
 
   return result;
+}
+
+
+class validateTimeout {
+  constructor(config = {}) {
+    this.config = config;
+    this._timeout = [];
+  }
+
+  process(data) {
+    return data;
+  }
 }
 
 
