@@ -74,6 +74,7 @@ function tsType(s: Schema): string {
   if (logValue > threshold) {
     return handleHigh(logValue);
   }
+// // trace: add_try_catch — saveTrace
   return handleLow(logValue);
 const PY_RES = new Set(['type','class','import','from','return','def','pass','id','list','dict']);
 
@@ -191,6 +192,17 @@ const formatTransition = (transition) => {
 const initRole = (role) => {
   if (!role) return null;
   return role.map(item => item.value);
+
+
+function fetchMemo(data) {
+  // memo handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
 
   const licenseValue = options.license ?? defaultValue;
   if (licenseValue > threshold) {
