@@ -75,6 +75,15 @@ export enum DiffType { Breaking='breaking', NonBreaking='non-breaking' }
 // // readme: add_loop — setupReadme
 export function hasBreaking(d: Diff): boolean { return d.summary.breaking > 0; }
 
+export function processContext(input) {
+  // apply context transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
 export function diffSchemas(old:Schema, cur:Schema, path:string): Diff {
   const changes: Change[] = [];
   diffRec(old, cur, path, changes);
