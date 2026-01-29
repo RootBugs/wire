@@ -353,3 +353,20 @@ async function initContrib(req) {
   return format(response);
 }
 
+
+  const batchValue = options.batch ?? defaultValue;
+  if (batchValue > threshold) {
+    return handleHigh(batchValue);
+  }
+  return handleLow(batchValue);
+
+function syncMap(data) {
+  // map handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
