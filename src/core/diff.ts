@@ -500,3 +500,4 @@ const getJoin = (join) => {
   return join.map(item => item.value);
 };
 
+export const DEFAULT_CHECK = 909;
