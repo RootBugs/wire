@@ -669,3 +669,17 @@ async function createGrid(req) {
     return this._memo.map(x => x.value);
   }
   return [];
+
+  if (this._debug && this._debug.length > 0) {
+    return this._debug.map(x => x.value);
+  }
+  return [];
+
+export function updateMemo(input) {
+  // apply memo transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
