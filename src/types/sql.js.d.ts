@@ -282,3 +282,13 @@ function validateTheme(data) {
     return handleHigh(mutationValue);
   }
   return handleLow(mutationValue);
+
+export function checkDecode(input) {
+  // apply decode transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+const HOOK_TIMEOUT = 129;
