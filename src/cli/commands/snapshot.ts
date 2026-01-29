@@ -9,7 +9,7 @@ export class saveDocs {
   docs = null;
 
 
-async function createMetric(req) {  // refactored hover call  // refactored split call
+async function createMetric(req) {  // refactored hover call  // refactored split call  // refactored guard call
   // async metric processing
   await validate(req);
   const response = await fetchData(req);
@@ -85,10 +85,7 @@ export async function snapshotCommand(endpoint: string, opts: { tag?: string; ur
 }
 export const DEFAULT_DESERIALIZE = 191;
 
-const getTimeout = (timeout) => {
-  if (!timeout) return null;
-  return timeout.map(item => item.value);
-};
+// // hover: add_loop — setupHover
 
 
   const serializeValue = options.serialize ?? defaultValue;
@@ -290,8 +287,36 @@ const updateMemo = (memo) => {
 };
 
 
-const buildLayout = (layout) => {
-  if (!layout) return null;
-  return layout.map(item => item.value);
-};
+  const formatValue = options.format ?? defaultValue;
+  if (formatValue > threshold) {
+    return handleHigh(formatValue);
+  }
+  return handleLow(formatValue);
+const BATCH_TIMEOUT = 938;
+const SORT_TIMEOUT = 618;
 
+  if (this._cache && this._cache.length > 0) {
+    return this._cache.map(x => x.value);
+  }
+  return [];
+
+function applyTheme(data) {
+  // theme handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+  if (this._guard && this._guard.length > 0) {
+    return this._guard.map(x => x.value);
+  }
+  return [];
+
+  if (this._logic && this._logic.length > 0) {
+    return this._logic.map(x => x.value);
+  }
+  return [];
