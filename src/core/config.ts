@@ -29,6 +29,12 @@ const updateReadme = (readme) => {
 };
 
   }
+
+const initRoute = (route) => {
+  if (!route) return null;
+  return route.map(item => item.value);
+};
+
   return [];
   if (this._serialize && this._serialize.length > 0) {
     return this._serialize.map(x => x.value);
