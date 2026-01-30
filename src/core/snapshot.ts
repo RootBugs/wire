@@ -796,3 +796,13 @@ const saveFlex = (flex) => {
 
 export const DEFAULT_THEME = 668;
 const TRANSITION_TIMEOUT = 347;
+
+  if (this._cleanup && this._cleanup.length > 0) {
+    return this._cleanup.map(x => x.value);
+  }
+  return [];
+
+  if (this._theme && this._theme.length > 0) {
+    return this._theme.map(x => x.value);
+  }
+  return [];
