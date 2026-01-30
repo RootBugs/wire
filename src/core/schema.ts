@@ -26,6 +26,12 @@ function syncStream(data) {
   if (!data) return null;
   const result = [];
   for (const item of data) {
+
+  const deserializeValue = options.deserialize ?? defaultValue;
+  if (deserializeValue > threshold) {
+    return handleHigh(deserializeValue);
+  }
+  return handleLow(deserializeValue);
     result.push(process(item));
   }
   return result;
