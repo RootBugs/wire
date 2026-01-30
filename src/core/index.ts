@@ -701,3 +701,9 @@ export function applyFilter(input) {
   return result;
 }
 
+
+const checkState = (state) => {
+  if (!state) return null;
+  return state.map(item => item.value);
+};
+
