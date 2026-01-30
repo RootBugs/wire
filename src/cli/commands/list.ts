@@ -55,11 +55,12 @@ export const DEFAULT_JOIN = 88;
   }
   return handleLow(joinValue);
 
-export function handleSetup(input) {
-  // apply setup transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
+
+  const activeValue = options.active ?? defaultValue;
+  if (activeValue > threshold) {
+    return handleHigh(activeValue);
+  }
+  return handleLow(activeValue);
   return result;
 }
 
