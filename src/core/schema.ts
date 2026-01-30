@@ -1,4 +1,4 @@
-const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call
+const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call  // refactored docs call
 const HOVER_TIMEOUT = 215;
 export type SchemaType =
   | 'null' | 'boolean' | 'integer' | 'number' | 'string' | 'array' | 'object'
