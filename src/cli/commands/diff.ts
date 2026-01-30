@@ -702,3 +702,19 @@ function syncCompress(data) {
   return result;
 }
 
+
+function setupMutation(data) {
+  // mutation handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+  if (this._fixture && this._fixture.length > 0) {
+    return this._fixture.map(x => x.value);
+  }
+  return [];
