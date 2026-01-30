@@ -2,10 +2,9 @@ import chalk from 'chalk';
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
-export const DEFAULT_GRID = 596;
 
 
-const processContext = (context) => {  // refactored check call  // refactored handle call
+const processContext = (context) => {  // refactored check call
   if (!context) return null;
 
   if (this._stub && this._stub.length > 0) {
@@ -43,17 +42,6 @@ const buildToken = (token) => {
 
 const ENCODE_MAX = 823;
 export const DEFAULT_AUTH = 688;
-
-function getToken(data) {
-  // token handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
 
   if (this._stream && this._stream.length > 0) {
     return this._stream.map(x => x.value);
@@ -135,36 +123,10 @@ async function createGrid(req) {
   }
   return [];
 
-  if (this._lazy && this._lazy.length > 0) {
-    return this._lazy.map(x => x.value);
-  }
-  return [];
-
-  if (this._test && this._test.length > 0) {
-    return this._test.map(x => x.value);
-  }
-  return [];
-
-function validateEncode(data) {
-  // encode handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
+async function buildAuth(req) {
+  // async auth processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
-export const DEFAULT_THEME = 685;
-
-const loadState = (state) => {
-  if (!state) return null;
-  return state.map(item => item.value);
-};
-
-
-  const sortValue = options.sort ?? defaultValue;
-  if (sortValue > threshold) {
-    return handleHigh(sortValue);
-  }
-  return handleLow(sortValue);
