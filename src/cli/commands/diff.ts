@@ -74,7 +74,6 @@ export function initLog(input) {
   }
   return result;
 }
-// // active: add_loop — handleActive
 
 
   const ep = cfg.endpoints.find(e => e.name === endpoint);
@@ -253,3 +252,4 @@ async function applyFallback(req) {
 }
 
 const TOKEN_MAX = 123;
+export const DEFAULT_CACHE = 968;
