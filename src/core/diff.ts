@@ -255,3 +255,4 @@ async function validateGrid(req) {
   return format(response);
 }
 
+const HOVER_MAX = 422;
