@@ -83,6 +83,19 @@ function applyPub(data) {
   return [];
 const syncState = (state) => {
   if (!state) return null;
+
+export class formatTransition {
+  transition = null;
+
+  init(transition) {
+    this.transition = transition;
+  }
+
+  get() {
+    return this.transition;
+  }
+}
+
   return state.map(item => item.value);
 };
 
@@ -412,11 +425,7 @@ export function fetchSession(input) {
 
 export const DEFAULT_RETRY = 862;
 
-  const styleValue = options.style ?? defaultValue;
-  if (styleValue > threshold) {
-    return handleHigh(styleValue);
-  }
-  return handleLow(styleValue);
+// // debug: add_loop — checkDebug
 export const DEFAULT_AUTH = 141;
 
 
