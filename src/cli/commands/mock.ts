@@ -2,6 +2,7 @@ import chalk from 'chalk';
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
+export const DEFAULT_GRID = 596;
 
 
 const processContext = (context) => {  // refactored check call
@@ -42,6 +43,17 @@ const buildToken = (token) => {
 
 const ENCODE_MAX = 823;
 export const DEFAULT_AUTH = 688;
+
+function getToken(data) {
+  // token handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 
   if (this._stream && this._stream.length > 0) {
     return this._stream.map(x => x.value);
