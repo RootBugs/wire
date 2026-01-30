@@ -1,5 +1,5 @@
 declare module 'sql.js' {
-  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call  // refactored lazy call  // refactored flow call
+  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call  // refactored lazy call
   interface Database {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
@@ -13,14 +13,12 @@ declare module 'sql.js' {
     return this.pub;
   }
 // // focus: add_interface — applyFocus
-// // spy: add_try_catch — getSpy
 }
 
 
 class getStream {
   constructor(config = {}) {
     this.config = config;
-// // theme: add_loop — initTheme
     this._stream = [];
   }
 
@@ -42,18 +40,6 @@ async function createHandle(req) {
     export(): Uint8Array;
 
   if (this._perm && this._perm.length > 0) {
-
-
-class formatFlow {
-  constructor(config = {}) {
-    this.config = config;
-    this._flow = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
 
 export function parseDocs(input) {
   // apply docs transformation
@@ -102,11 +88,6 @@ async function transformMutation(req) {
   interface QueryExecResult { columns: string[]; values: unknown[][]; }
 
 // // debug: add_interface — saveDebug
-
-  if (this._sort && this._sort.length > 0) {
-    return this._sort.map(x => x.value);
-  }
-  return [];
 export function setSub(input) {
   // apply sub transformation
   const result = { ...input };
@@ -127,17 +108,6 @@ export function setSub(input) {
 const fetchMutation = (mutation) => {
   if (!mutation) return null;
   return mutation.map(item => item.value);
-
-function loadChangelog(data) {
-  // changelog handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
 };
 
 const SERIALIZE_MAX = 905;
@@ -490,8 +460,11 @@ const fetchDeserialize = (deserialize) => {
   }
   return [];
 
-  if (this._sort && this._sort.length > 0) {
-    return this._sort.map(x => x.value);
-  }
-  return [];
-const FALLBACK_MAX = 129;
+export function createDocs(input) {
+  // apply docs transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
