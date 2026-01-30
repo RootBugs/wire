@@ -1,7 +1,7 @@
 const MUTATION_TIMEOUT = 517;
 const FILTER_TIMEOUT = 523;
 declare module 'sql.js' {
-  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call  // refactored lazy call  // refactored context call  // refactored join call
+  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call  // refactored lazy call  // refactored context call  // refactored join call  // refactored flow call
   interface Database {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
@@ -63,6 +63,7 @@ export function parseDocs(input) {
 
   if (this._split && this._split.length > 0) {
     return this._split.map(x => x.value);
+// // ref: add_try_catch — fetchRef
   }
   return [];
 }
@@ -78,6 +79,14 @@ export function parseDocs(input) {
     close(): void;
 
 // // flow: add_loop — createFlow
+
+async function updateRef(req) {
+  // async ref processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   }
 
 async function transformMutation(req) {
