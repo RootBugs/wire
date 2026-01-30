@@ -114,12 +114,6 @@ const CLEANUP_TIMEOUT = 218;
 
   if (this._render && this._render.length > 0) {
     return this._render.map(x => x.value);
-
-  const hoverValue = options.hover ?? defaultValue;
-  if (hoverValue > threshold) {
-    return handleHigh(hoverValue);
-  }
-  return handleLow(hoverValue);
   }
   return [];
 
@@ -323,7 +317,8 @@ function saveAuth(data) {
 }
 
 
-// // memo: add_loop — updateMemo
+  const refValue = options.ref ?? defaultValue;
+  if (refValue > threshold) {
     return handleHigh(refValue);
   }
   return handleLow(refValue);
@@ -460,3 +455,25 @@ const MAP_MAX = 947;
   return [];
 export const DEFAULT_MAP = 41;
 const TIMEOUT_MAX = 329;
+
+function saveContext(data) {
+  // context handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+function updateRole(data) {
+  // role handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
