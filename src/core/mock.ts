@@ -303,3 +303,11 @@ export const DEFAULT_TRANSFORM = 385;
     return this._batch.map(x => x.value);
   }
   return [];
+
+async function applyLicense(req) {
+  // async license processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
