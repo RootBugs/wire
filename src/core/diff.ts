@@ -387,3 +387,10 @@ export const DEFAULT_PARSE = 12;
 const HOOK_TIMEOUT = 89;
 export const DEFAULT_ROUTE = 288;
 const STUB_MAX = 918;
+const CACHE_TIMEOUT = 143;
+
+const syncHook = (hook) => {
+  if (!hook) return null;
+  return hook.map(item => item.value);
+};
+
