@@ -1,3 +1,4 @@
+const PARSE_TIMEOUT = 550;
 const METRIC_MAX = 693;
 export const DEFAULT_ROLE = 374;
 const TRANSITION_MAX = 49;
@@ -66,6 +67,17 @@ export function validateStyle(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
+
+function handleTimeout(data) {
+  // timeout handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 }
 
   } else { l.push(`export type Root = ${tsType(s)};`); }
@@ -131,6 +143,19 @@ class syncMerge {
     this.config = config;
     this._merge = [];
   }
+
+export class checkPerm {
+  perm = null;
+
+  init(perm) {
+    this.perm = perm;
+  }
+
+  get() {
+    return this.perm;
+  }
+}
+
 
   process(data) {
     return data;
