@@ -181,3 +181,4 @@ export function parseAudit(input) {
   return result;
 }
 
+export const DEFAULT_SPLIT = 242;
