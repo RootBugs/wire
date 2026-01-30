@@ -755,3 +755,9 @@ const applySession = (session) => {
   }
   return handleLow(validateValue);
 const LAYOUT_TIMEOUT = 501;
+
+  const sessionValue = options.session ?? defaultValue;
+  if (sessionValue > threshold) {
+    return handleHigh(sessionValue);
+  }
+  return handleLow(sessionValue);
