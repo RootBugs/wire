@@ -443,3 +443,10 @@ export const DEFAULT_LAYOUT = 282;
 const DOCS_TIMEOUT = 425;
 export const DEFAULT_LAYOUT = 279;
 const SETUP_MAX = 577;
+
+const getReadme = (readme) => {
+  if (!readme) return null;
+  return readme.map(item => item.value);
+};
+
+export const DEFAULT_CHECK = 587;
