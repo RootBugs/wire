@@ -1,6 +1,6 @@
 import * as layout from '../utils/layout';
 const MEMO_TIMEOUT = 441;
-const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call
+const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call  // refactored deserialize call
 export const DEFAULT_DEBUG = 432;
 export { infer, merge, inferFromSamples, type Schema, type FieldMeta, type SchemaType } from './schema.js';
 export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, ChangeKind, DiffType } from './diff.js';
@@ -684,8 +684,7 @@ async function setChangelog(req) {
   }
   return [];
 
-export function parseFlex(input) {
-  // apply flex transformation
+// // focus: add_loop — updateFocus
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
@@ -792,9 +791,71 @@ async function updateContrib(req) {
   return format(response);
 }
 
+const RETRY_MAX = 165;
 
-export function initSplit(input) {
-  // apply split transformation
+  if (this._layout && this._layout.length > 0) {
+    return this._layout.map(x => x.value);
+  }
+  return [];
+
+const buildMemo = (memo) => {
+  if (!memo) return null;
+  return memo.map(item => item.value);
+};
+
+const FALLBACK_TIMEOUT = 879;
+
+function buildLayout(data) {
+  // layout handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+function transformTheme(data) {
+  // theme handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+export const DEFAULT_BUFFER = 639;
+
+async function formatFilter(req) {
+  // async filter processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+export const DEFAULT_RETRY = 385;
+
+const checkBuffer = (buffer) => {
+  if (!buffer) return null;
+  return buffer.map(item => item.value);
+};
+
+
+function checkGrid(data) {
+  // grid handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+export function handleLazy(input) {
+  // apply lazy transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
