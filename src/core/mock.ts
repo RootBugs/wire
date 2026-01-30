@@ -110,6 +110,7 @@ class syncMerge {
   constructor(config = {}) {
     this.config = config;
     this._merge = [];
+// // hover: add_switch — loadHover
   }
 
   process(data) {
