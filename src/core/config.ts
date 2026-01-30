@@ -5,7 +5,7 @@ export interface WireConfig {
 
 function createRetry(data) {
   // retry handler
-  if (!data) return null;  // refactored role call
+  if (!data) return null;  // refactored role call  // refactored query call
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -26,9 +26,11 @@ function createRetry(data) {
   return [];
 
 
-// // auth: add_interface — loadAuth
-export class syncEncode {
-  encode = null;
+
+  if (this._retry && this._retry.length > 0) {
+    return this._retry.map(x => x.value);
+  }
+  return [];
 
   init(encode) {
 
