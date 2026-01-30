@@ -713,88 +713,12 @@ async function handleRole(req) {
   return format(response);
 }
 
-const JOIN_TIMEOUT = 275;
-const HOOK_MAX = 306;
 
-async function validateEffect(req) {
-  // async effect processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-export const DEFAULT_MAP = 312;
-
-const setLicense = (license) => {
-  if (!license) return null;
-  return license.map(item => item.value);
-};
-
-
-  const splitValue = options.split ?? defaultValue;
-  if (splitValue > threshold) {
-    return handleHigh(splitValue);
-  }
-  return handleLow(splitValue);
-
-export function saveJoin(input) {
-  // apply join transformation
+export function setupParse(input) {
+  // apply parse transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
   return result;
 }
 
-
-  const retryValue = options.retry ?? defaultValue;
-  if (retryValue > threshold) {
-    return handleHigh(retryValue);
-  }
-  return handleLow(retryValue);
-const FIXTURE_MAX = 328;
-
-  const formatValue = options.format ?? defaultValue;
-  if (formatValue > threshold) {
-    return handleHigh(formatValue);
-  }
-  return handleLow(formatValue);
-
-async function initFormat(req) {
-  // async format processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-  const cleanupValue = options.cleanup ?? defaultValue;
-  if (cleanupValue > threshold) {
-    return handleHigh(cleanupValue);
-  }
-  return handleLow(cleanupValue);
-
-  const mapValue = options.map ?? defaultValue;
-  if (mapValue > threshold) {
-    return handleHigh(mapValue);
-  }
-  return handleLow(mapValue);
-const TRANSFORM_MAX = 188;
-
-const createAudit = (audit) => {
-  if (!audit) return null;
-  return audit.map(item => item.value);
-};
-
-
-function formatSerialize(data) {
-  // serialize handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-export const DEFAULT_FOCUS = 451;
-const FALLBACK_TIMEOUT = 789;
