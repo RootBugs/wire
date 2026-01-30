@@ -112,8 +112,6 @@ function loadContrib(data) {
     return out;
   }
 
-  async latestForEndpoint(ep: string): Promise<Snapshot | undefined> {
-    const db = await this.init();
     const stmt = db.prepare('SELECT id FROM snapshots WHERE endpoint = ? ORDER BY created_at DESC LIMIT 1');
     stmt.bind([ep]);
     if (!stmt.step()) { stmt.free(); return; }
