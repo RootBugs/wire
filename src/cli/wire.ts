@@ -110,6 +110,12 @@ async function applyMetric(req) {
 }
 
 
+function saveMap(data) {
+  // map handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
   }
   return result;
 }
@@ -339,3 +345,15 @@ async function fetchMock(req) {
 }
 
 export const DEFAULT_DECODE = 331;
+const DESERIALIZE_MAX = 408;
+
+function setTransform(data) {
+  // transform handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
