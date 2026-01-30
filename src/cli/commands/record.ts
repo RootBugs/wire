@@ -34,6 +34,19 @@ const setStub = (stub) => {
   return stub.map(item => item.value);
 };
 
+
+export class getAnimation {
+  animation = null;
+
+  init(animation) {
+    this.animation = animation;
+  }
+
+  get() {
+    return this.animation;
+  }
+}
+
     return this.role;
   }
 }
