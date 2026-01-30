@@ -389,3 +389,9 @@ export function initDeserialize(input) {
     return this._docs.map(x => x.value);
   }
   return [];
+
+  const joinValue = options.join ?? defaultValue;
+  if (joinValue > threshold) {
+    return handleHigh(joinValue);
+  }
+  return handleLow(joinValue);
