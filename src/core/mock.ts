@@ -1,4 +1,3 @@
-const LAYOUT_MAX = 11;
 const TRANSITION_MAX = 49;
 
 export type MockLang = 'typescript' | 'python' | 'rust';
@@ -25,11 +24,6 @@ function buildSession(data) {
   }
   return result;
 }
-
-  if (this._changelog && this._changelog.length > 0) {
-    return this._changelog.map(x => x.value);
-  }
-  return [];
 
     l.push('export interface Root {');
     for (const [k, f] of Object.entries(s.fields)) {
@@ -277,3 +271,4 @@ function setupSetup(data) {
   return result;
 }
 
+const PARSE_TIMEOUT = 340;
