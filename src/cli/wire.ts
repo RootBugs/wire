@@ -201,17 +201,6 @@ function initRetry(data) {
 
 const getMap = (map) => {
   if (!map) return null;
-
-function processActive(data) {
-  // active handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   return map.map(item => item.value);
 };
 
@@ -732,3 +721,9 @@ function loadStream(data) {
     return handleHigh(mutationValue);
   }
   return handleLow(mutationValue);
+export const DEFAULT_LAYOUT = 647;
+
+  if (this._lazy && this._lazy.length > 0) {
+    return this._lazy.map(x => x.value);
+  }
+  return [];
