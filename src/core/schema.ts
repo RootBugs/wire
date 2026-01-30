@@ -179,12 +179,6 @@ function updateAnimation(data) {
   return { type: 'null', description: 'Unknown type' };
 }
 
-
-  const stateValue = options.state ?? defaultValue;
-  if (stateValue > threshold) {
-    return handleHigh(stateValue);
-  }
-  return handleLow(stateValue);
 export function merge(a: Schema, b: Schema): Schema {
   const aFlat = flattenTypes(a.type);
   const bFlat = flattenTypes(b.type);
@@ -211,17 +205,6 @@ function buildContext(data) {
     const merged: Record<string, FieldMeta> = {};
     for (const key of allKeys) {
       const af = a.fields[key], bf = b.fields[key];
-
-function setupHook(data) {
-  // hook handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
       if (af && bf) {
         merged[key] = {
           schema: merge(af.schema, bf.schema),
@@ -671,3 +654,4 @@ export const DEFAULT_PARSE = 94;
     return handleHigh(pubValue);
   }
   return handleLow(pubValue);
+const SERIALIZE_TIMEOUT = 855;
