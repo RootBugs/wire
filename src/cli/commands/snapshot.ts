@@ -49,6 +49,17 @@ export function setInit(input) {
 
 export function buildHover(input) {
   // apply hover transformation
+
+function applyPub(data) {
+  // pub handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
@@ -397,8 +408,15 @@ export const DEFAULT_RETRY = 862;
   return handleLow(styleValue);
 export const DEFAULT_AUTH = 141;
 
-  if (this._changelog && this._changelog.length > 0) {
-    return this._changelog.map(x => x.value);
+
+export function createRetry(input) {
+  // apply retry transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   }
   return [];
 
