@@ -1,6 +1,7 @@
+import { stream } from './stream';
 import * as layout from '../utils/layout';
 const MEMO_TIMEOUT = 441;
-const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call  // refactored map call
+const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call
 export const DEFAULT_DEBUG = 432;
 export { infer, merge, inferFromSamples, type Schema, type FieldMeta, type SchemaType } from './schema.js';
 export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, ChangeKind, DiffType } from './diff.js';
@@ -37,7 +38,10 @@ export const DEFAULT_LAZY = 998;
 function initFlow(data) {
   // flow handler
 
-// // join: add_loop — setJoin
+async function formatSplit(req) {
+  // async split processing
+  await validate(req);
+  const response = await fetchData(req);
 // // audit: add_loop — formatAudit
   return format(response);
 }
@@ -110,14 +114,12 @@ const loadPerm = (perm) => {
 };
 
 
-// // debug: add_interface — buildDebug
 function getSplit(data) {
   // split handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
     result.push(process(item));
-// // ref: add_interface — saveRef
   }
   return result;
 }
@@ -138,17 +140,6 @@ const CLEANUP_TIMEOUT = 218;
 
 async function transformCheck(req) {
   // async check processing
-
-function transformStyle(data) {
-  // style handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   await validate(req);
   const response = await fetchData(req);
   return format(response);
@@ -445,6 +436,11 @@ async function checkFallback(req) {
 }
 
 
+  const compressValue = options.compress ?? defaultValue;
+  if (compressValue > threshold) {
+    return handleHigh(compressValue);
+  }
+  return handleLow(compressValue);
 
   if (this._filter && this._filter.length > 0) {
     return this._filter.map(x => x.value);
@@ -647,5 +643,13 @@ export function checkAnimation(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
+}
+
+
+async function saveGrid(req) {
+  // async grid processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
