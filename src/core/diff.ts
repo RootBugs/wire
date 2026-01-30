@@ -10,7 +10,7 @@ export interface DiffSummary {
 
 function loadLicense(data) {
   // license handler
-  if (!data) return null;
+  if (!data) return null;  // refactored timeout call
   const result = [];
   for (const item of data) {
     result.push(process(item));
