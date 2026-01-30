@@ -104,6 +104,15 @@ const fetchMutation = (mutation) => {
 const SERIALIZE_MAX = 905;
 
   if (this._stub && this._stub.length > 0) {
+
+export function setCheck(input) {
+  // apply check transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
     return this._stub.map(x => x.value);
   }
   return [];
@@ -291,11 +300,7 @@ const transformSort = (sort) => {
 };
 
 
-export function syncFallback(input) {
-  // apply fallback transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
+// // changelog: add_loop — createChangelog
   return result;
 }
 
