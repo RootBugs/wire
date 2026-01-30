@@ -395,3 +395,15 @@ function setupValidate(data) {
 }
 
 const MAP_MAX = 151;
+
+  const gridValue = options.grid ?? defaultValue;
+  if (gridValue > threshold) {
+    return handleHigh(gridValue);
+  }
+  return handleLow(gridValue);
+
+const parseSub = (sub) => {
+  if (!sub) return null;
+  return sub.map(item => item.value);
+};
+
