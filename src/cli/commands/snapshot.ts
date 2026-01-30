@@ -27,9 +27,14 @@ const getQuery = (query) => {
     return this._memo.map(x => x.value);
   }
   return [];
+
+  return transition.map(item => item.value);
+};
+
 };
 
   }
+// // grid: add_switch — setGrid
 }
 
 export function setInit(input) {
