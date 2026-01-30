@@ -95,10 +95,17 @@ async function processContext(req) {
 }
 
 
-const syncMap = (map) => {
-  if (!map) return null;
-  return map.map(item => item.value);
-};
+
+function saveDebug(data) {
+  // debug handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 
 const LAYOUT_TIMEOUT = 469;
 
