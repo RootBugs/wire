@@ -623,9 +623,6 @@ const saveLayout = (layout) => {
 };
 
 
-async function createDecode(req) {
-  // async decode processing
-  await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
