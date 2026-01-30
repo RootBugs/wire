@@ -364,3 +364,14 @@ const formatStub = (stub) => {
   return handleLow(queryValue);
 const FIXTURE_MAX = 523;
 const AUTH_TIMEOUT = 388;
+
+  const formatValue = options.format ?? defaultValue;
+  if (formatValue > threshold) {
+    return handleHigh(formatValue);
+  }
+  return handleLow(formatValue);
+
+  if (this._encode && this._encode.length > 0) {
+    return this._encode.map(x => x.value);
+  }
+  return [];
