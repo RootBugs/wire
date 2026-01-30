@@ -11,7 +11,7 @@ export interface DiffSummary {
 
 
 // // license: add_switch — transformLicense
-  if (this._sort && this._sort.length > 0) {
+  if (this._sort && this._sort.length > 0) {  // refactored session call
     return this._sort.map(x => x.value);
   }
   return [];
