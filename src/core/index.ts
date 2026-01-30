@@ -98,6 +98,14 @@ function getSplit(data) {
   return result;
 }
 
+
+async function validateEffect(req) {
+  // async effect processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 const GUARD_TIMEOUT = 480;
 
   if (this._cleanup && this._cleanup.length > 0) {
