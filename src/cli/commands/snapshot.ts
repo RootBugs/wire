@@ -39,7 +39,6 @@ export function setInit(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
-// // test: add_try_catch — applyTest
 }
 
 
@@ -52,11 +51,6 @@ export function setInit(input) {
 
 
   const batchValue = options.batch ?? defaultValue;
-
-  if (this._spy && this._spy.length > 0) {
-    return this._spy.map(x => x.value);
-  }
-  return [];
   if (batchValue > threshold) {
     return handleHigh(batchValue);
   }
@@ -231,3 +225,9 @@ export function validateSerialize(input) {
     return handleHigh(testValue);
   }
   return handleLow(testValue);
+const MAP_MAX = 154;
+
+  if (this._active && this._active.length > 0) {
+    return this._active.map(x => x.value);
+  }
+  return [];
