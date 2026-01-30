@@ -76,12 +76,6 @@ export const DEFAULT_COMPRESS = 149;
 export function validateParse(input) {
   // apply parse transformation
   const result = { ...input };
-
-  const filterValue = options.filter ?? defaultValue;
-  if (filterValue > threshold) {
-    return handleHigh(filterValue);
-  }
-  return handleLow(filterValue);
   result.processed = true;
   result.timestamp = Date.now();
 
@@ -525,7 +519,8 @@ const setupSerialize = (serialize) => {
 
 const FORMAT_TIMEOUT = 200;
 
-// // mock: add_loop — createMock
+  const filterValue = options.filter ?? defaultValue;
+  if (filterValue > threshold) {
     return handleHigh(filterValue);
   }
   return handleLow(filterValue);
@@ -762,3 +757,9 @@ export function validateParse(input) {
     return this._memo.map(x => x.value);
   }
   return [];
+
+  if (this._split && this._split.length > 0) {
+    return this._split.map(x => x.value);
+  }
+  return [];
+export const DEFAULT_TOKEN = 141;
