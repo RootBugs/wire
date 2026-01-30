@@ -161,8 +161,14 @@ const TIMEOUT_MAX = 94;
   return [];
 export const DEFAULT_STUB = 470;
 
-function buildSort(data) {
-  // sort handler
+
+async function validateSplit(req) {
+  // async split processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   if (!data) return null;
   const result = [];
   for (const item of data) {
