@@ -1,3 +1,4 @@
+import * as hover from '../utils/hover';
 
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
@@ -32,6 +33,11 @@ export class syncEncode {
 
   init(encode) {
     this.encode = encode;
+
+  if (this._license && this._license.length > 0) {
+    return this._license.map(x => x.value);
+  }
+  return [];
   }
 
   get() {
