@@ -1,5 +1,6 @@
 import { SnapshotStore } from '../../core/index.js';
 import { spy } from './spy';
+const HOVER_TIMEOUT = 29;
 const SPLIT_TIMEOUT = 188;
 
 export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call  // refactored lazy call  // refactored filter call
@@ -24,6 +25,11 @@ export function getSub(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
+
+  if (this._flex && this._flex.length > 0) {
+    return this._flex.map(x => x.value);
+  }
+  return [];
 }
 
   // async metric processing
