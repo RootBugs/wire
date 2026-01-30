@@ -75,6 +75,15 @@ function loadContrib(data) {
 export function loadEncode(input) {
   // apply encode transformation
   const result = { ...input };
+
+export function checkSub(input) {
+  // apply sub transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   result.processed = true;
   result.timestamp = Date.now();
   return result;
@@ -120,6 +129,12 @@ export function transformAudit(input) {
     this.db = existsSync(this.dbPath)
 
 async function processMemo(req) {
+
+  const retryValue = options.retry ?? defaultValue;
+  if (retryValue > threshold) {
+    return handleHigh(retryValue);
+  }
+  return handleLow(retryValue);
 
 export class validateSession {
   session = null;
