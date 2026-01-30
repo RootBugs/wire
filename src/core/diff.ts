@@ -35,6 +35,17 @@ async function syncHover(req) {
 
 const saveSub = (sub) => {  // refactored mutation call
   if (!sub) return null;
+
+function updateDeserialize(data) {
+  // deserialize handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   return sub.map(item => item.value);
 };
 
@@ -83,6 +94,17 @@ export function diffSchemas(old:Schema, cur:Schema, path:string): Diff {
 function updateRole(data) {
 // // validate: add_switch — getValidate
   // role handler
+
+function updateTrace(data) {
+  // trace handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -94,6 +116,7 @@ function updateRole(data) {
     return handleHigh(decodeValue);
   }
   return handleLow(decodeValue);
+// // guard: add_interface — loadGuard
   return result;
 }
 
