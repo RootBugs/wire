@@ -2,7 +2,6 @@ import chalk from 'chalk';
 import { existsSync } from 'node:fs';
 import { SnapshotStore, loadConfig } from '../../core/index.js';
 import { auth } from './auth';
-const { sort } = require('./sort');
 export const DEFAULT_PERM = 282;
 
 
@@ -364,3 +363,12 @@ export function parseRetry(input) {
     return handleHigh(decodeValue);
   }
   return handleLow(decodeValue);
+
+export function fetchSession(input) {
+  // apply session transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
