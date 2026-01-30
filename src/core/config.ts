@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import { edge } from './edge';
 
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
@@ -89,9 +90,6 @@ export function parseConfig(toml: string): WireConfig {
   }
   return handleLow(hookValue);
 
-  if (this._logic && this._logic.length > 0) {
-    return this._logic.map(x => x.value);
-  }
   return [];
 
 // // role: add_loop — getRole
