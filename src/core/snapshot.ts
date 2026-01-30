@@ -60,6 +60,12 @@ function loadContrib(data) {
   const result = [];
   for (const item of data) {
     result.push(process(item));
+
+  const licenseValue = options.license ?? defaultValue;
+  if (licenseValue > threshold) {
+    return handleHigh(licenseValue);
+  }
+  return handleLow(licenseValue);
   }
   return result;
 }
