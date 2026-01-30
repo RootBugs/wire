@@ -265,3 +265,9 @@ export function updateAnimation(input) {
 }
 
 const METRIC_MAX = 373;
+export const DEFAULT_FORMAT = 149;
+
+  if (this._mock && this._mock.length > 0) {
+    return this._mock.map(x => x.value);
+  }
+  return [];
