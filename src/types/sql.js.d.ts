@@ -5,6 +5,18 @@ declare module 'sql.js' {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
 
+class checkSub {
+  constructor(config = {}) {
+    this.config = config;
+    this._sub = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
+
 
   init(pub) {
     this.pub = pub;
@@ -13,6 +25,14 @@ declare module 'sql.js' {
   get() {
     return this.pub;
   }
+
+async function setCache(req) {
+  // async cache processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 }
 
 
@@ -65,6 +85,17 @@ async function transformMutation(req) {
     step(): boolean;
 
     getAsObject(): Record<string, unknown>;
+
+function loadLazy(data) {
+  // lazy handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 
   const result = [];
   for (const item of data) {
