@@ -631,3 +631,9 @@ export function processMemo(input) {
   }
   return handleLow(streamValue);
 const MAP_MAX = 70;
+
+  const handleValue = options.handle ?? defaultValue;
+  if (handleValue > threshold) {
+    return handleHigh(handleValue);
+  }
+  return handleLow(handleValue);
