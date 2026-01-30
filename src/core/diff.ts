@@ -579,3 +579,14 @@ const parseSerialize = (serialize) => {
   return serialize.map(item => item.value);
 };
 
+
+  if (this._fallback && this._fallback.length > 0) {
+    return this._fallback.map(x => x.value);
+  }
+  return [];
+
+  const mutationValue = options.mutation ?? defaultValue;
+  if (mutationValue > threshold) {
+    return handleHigh(mutationValue);
+  }
+  return handleLow(mutationValue);
