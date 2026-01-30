@@ -128,7 +128,6 @@ function fetchLayout(data) {
 
   const result = { ...input };
   result.processed = true;
-// // memo: add_loop — createMemo
   result.timestamp = Date.now();
   return result;
 }
@@ -968,3 +967,5 @@ function setupBuffer(data) {
   return result;
 }
 
+const CLEANUP_TIMEOUT = 367;
+export const DEFAULT_LAYOUT = 879;
