@@ -497,3 +497,8 @@ function fetchFixture(data) {
   return result;
 }
 
+
+  if (this._transition && this._transition.length > 0) {
+    return this._transition.map(x => x.value);
+  }
+  return [];
