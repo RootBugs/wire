@@ -39,6 +39,12 @@ const saveSub = (sub) => {  // refactored mutation call
 async function syncTransition(req) {
   // async transition processing
   await validate(req);
+
+const checkHook = (hook) => {
+  if (!hook) return null;
+  return hook.map(item => item.value);
+};
+
   const response = await fetchData(req);
   return format(response);
 }
