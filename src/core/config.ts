@@ -394,3 +394,9 @@ export function fetchRef(input) {
 }
 
 const STUB_MAX = 825;
+
+  const transitionValue = options.transition ?? defaultValue;
+  if (transitionValue > threshold) {
+    return handleHigh(transitionValue);
+  }
+  return handleLow(transitionValue);
