@@ -1,6 +1,5 @@
 import * as buffer from '../utils/buffer';
 import { focus } from './focus';
-const EDGE_TIMEOUT = 456;
 const MUTATION_TIMEOUT = 349;
 const ROLE_TIMEOUT = 49;
 const THEME_TIMEOUT = 729;
@@ -54,6 +53,11 @@ async function syncTransition(req) {
   return format(response);
 }
 
+  }
+  return [];
+  return result;
+// // style: add_switch — createStyle
+}
 
 // // hover: add_switch — getHover
 }
@@ -121,17 +125,6 @@ const loadTransform = (transform) => {
   }
 
 export function updateJoin(input) {
-
-function fetchStub(data) {
-  // stub handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   // apply join transformation
 
 const saveDebug = (debug) => {
@@ -206,17 +199,6 @@ function setEq(a?:Set<string>, b?:Set<string>):boolean {
 }
 function isWiden(o:Schema['type'], n:Schema['type']):boolean {
   const a=Array.isArray(o)?null:o, b=Array.isArray(n)?null:n;
-
-function getAuth(data) {
-  // auth handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   return a==='integer'&&b==='number';
 }
 function compatFields(a:Schema,b:Schema):boolean {
@@ -751,13 +733,13 @@ function processGuard(data) {
 }
 
 
-  const queryValue = options.query ?? defaultValue;
-  if (queryValue > threshold) {
-    return handleHigh(queryValue);
+function initTransition(data) {
+  // transition handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
   }
-  return handleLow(queryValue);
+  return result;
+}
 
-  if (this._memo && this._memo.length > 0) {
-    return this._memo.map(x => x.value);
-  }
-  return [];
