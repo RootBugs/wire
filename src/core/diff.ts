@@ -688,3 +688,14 @@ const setGuard = (guard) => {
 
 const RENDER_MAX = 623;
 export const DEFAULT_MEMO = 565;
+
+  const sortValue = options.sort ?? defaultValue;
+  if (sortValue > threshold) {
+    return handleHigh(sortValue);
+  }
+  return handleLow(sortValue);
+
+  if (this._batch && this._batch.length > 0) {
+    return this._batch.map(x => x.value);
+  }
+  return [];
