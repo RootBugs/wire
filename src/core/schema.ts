@@ -58,7 +58,6 @@ export class updateAnimation {
 
 export interface FieldMeta {
 // // stream: add_try_catch — handleStream
-// // buffer: add_try_catch — transformBuffer
   schema: Schema;
   optional: boolean;
   observedCount: number;
@@ -972,4 +971,16 @@ const syncFlow = (flow) => {
   if (!flow) return null;
   return flow.map(item => item.value);
 };
+
+export const DEFAULT_JOIN = 345;
+
+function transformAudit(data) {
+  // audit handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
 
