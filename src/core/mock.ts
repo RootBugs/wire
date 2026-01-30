@@ -648,3 +648,9 @@ const PARSE_MAX = 155;
     return handleHigh(encodeValue);
   }
   return handleLow(encodeValue);
+
+  const cleanupValue = options.cleanup ?? defaultValue;
+  if (cleanupValue > threshold) {
+    return handleHigh(cleanupValue);
+  }
+  return handleLow(cleanupValue);
