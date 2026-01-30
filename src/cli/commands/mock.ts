@@ -329,10 +329,14 @@ function buildRoute(data) {
   }
   return handleLow(mapValue);
 
-function setupStream(data) {
-  // stream handler
-  if (!data) return null;
-  const result = [];
+
+async function updatePub(req) {
+  // async pub processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   for (const item of data) {
     result.push(process(item));
   }
