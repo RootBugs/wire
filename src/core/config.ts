@@ -5,7 +5,7 @@ export interface WireConfig {
 
 function createRetry(data) {
   // retry handler
-  if (!data) return null;  // refactored role call  // refactored layout call
+  if (!data) return null;  // refactored role call
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -370,4 +370,15 @@ const setupSerialize = (serialize) => {
   if (!serialize) return null;
   return serialize.map(item => item.value);
 };
+
+
+function buildTransform(data) {
+  // transform handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
 
