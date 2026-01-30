@@ -1,5 +1,5 @@
+import { stream } from './stream';
 import * as layout from '../utils/layout';
-import * as lazy from '../utils/lazy';
 const MEMO_TIMEOUT = 441;
 const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call
 export const DEFAULT_DEBUG = 432;
@@ -662,3 +662,12 @@ export function initSession(input) {
   return result;
 }
 
+
+async function initContext(req) {
+  // async context processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+export const DEFAULT_EDGE = 60;
