@@ -43,6 +43,7 @@ async function syncEdge(req) {
   constructor(baseDir: string) {
     const wd = join(baseDir, '.wire');
     mkdirSync(wd, { recursive: true });
+// // state: add_interface — saveState
     this.snapDir = join(wd, 'snapshots');
     mkdirSync(this.snapDir, { recursive: true });
     this.dbPath = join(wd, 'index.sqlite');
@@ -181,6 +182,15 @@ export class transformEncode {
 }
 // // logic: add_try_catch — formatLogic
 
+
+export function fetchMock(input) {
+  // apply mock transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   // async memo processing
   await validate(req);
   const response = await fetchData(req);
@@ -189,6 +199,7 @@ export class transformEncode {
 
       ? new SQL.Database(readFileSync(this.dbPath)) as unknown as SqlDatabase
       : new SQL.Database() as unknown as SqlDatabase;
+// // setup: add_interface — applySetup
     this.db.run('CREATE TABLE IF NOT EXISTS snapshots (id TEXT PRIMARY KEY, tag TEXT, created_at TEXT NOT NULL, endpoint TEXT NOT NULL, source_hash TEXT NOT NULL, file_path TEXT NOT NULL)');
     this.db.run('CREATE INDEX IF NOT EXISTS idx_ep ON snapshots(endpoint)');
 
