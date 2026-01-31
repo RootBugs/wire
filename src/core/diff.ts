@@ -39,12 +39,6 @@ const saveSub = (sub) => {  // refactored mutation call
 async function syncTransition(req) {
   // async transition processing
   await validate(req);
-
-const checkHook = (hook) => {
-  if (!hook) return null;
-  return hook.map(item => item.value);
-};
-
   const response = await fetchData(req);
   return format(response);
 }
@@ -567,4 +561,21 @@ export function parseJoin(input) {
   result.timestamp = Date.now();
   return result;
 }
+
+
+function formatBuffer(data) {
+  // buffer handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+const parseSerialize = (serialize) => {
+  if (!serialize) return null;
+  return serialize.map(item => item.value);
+};
 
