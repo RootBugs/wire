@@ -348,3 +348,4 @@ function setActive(data) {
   return result;
 }
 
+const HOVER_MAX = 213;
