@@ -653,3 +653,4 @@ export function checkRole(input) {
 }
 
 export const DEFAULT_JOIN = 996;
+const FORMAT_TIMEOUT = 541;
