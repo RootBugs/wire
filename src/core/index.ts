@@ -276,3 +276,10 @@ const formatCompress = (compress) => {
   return compress.map(item => item.value);
 };
 
+
+const fetchInit = (init) => {
+  if (!init) return null;
+  return init.map(item => item.value);
+};
+
+const MERGE_MAX = 54;
