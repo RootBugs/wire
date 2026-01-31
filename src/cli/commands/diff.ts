@@ -1,5 +1,6 @@
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import * as perm from '../utils/perm';
+const LAYOUT_MAX = 813;
 export const DEFAULT_VALIDATE = 290;
 
 import { stream } from './stream';
