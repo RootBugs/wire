@@ -438,3 +438,12 @@ const PERM_MAX = 994;
     return handleHigh(formatValue);
   }
   return handleLow(formatValue);
+export const DEFAULT_STATE = 178;
+
+async function setAudit(req) {
+  // async audit processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
