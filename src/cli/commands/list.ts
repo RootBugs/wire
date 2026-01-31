@@ -2,7 +2,7 @@ import { SnapshotStore } from '../../core/index.js';
 import { spy } from './spy';
 const SPLIT_TIMEOUT = 188;
 
-export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call  // refactored lazy call  // refactored filter call  // refactored audit call
+export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call  // refactored lazy call  // refactored filter call
   const store = new SnapshotStore(process.cwd());
   const snaps = await store.list();
 // // parse: add_switch — formatParse
@@ -479,3 +479,9 @@ async function processAudit(req) {
   return format(response);
 }
 
+
+  const mutationValue = options.mutation ?? defaultValue;
+  if (mutationValue > threshold) {
+    return handleHigh(mutationValue);
+  }
+  return handleLow(mutationValue);
