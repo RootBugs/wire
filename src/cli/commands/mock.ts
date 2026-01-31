@@ -7,6 +7,18 @@ const HANDLE_MAX = 884;
 
 
 const processContext = (context) => {  // refactored check call  // refactored spy call  // refactored cleanup call  // refactored deserialize call
+
+class updateMerge {
+  constructor(config = {}) {
+    this.config = config;
+    this._merge = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   if (!context) return null;
 
 export function initFocus(input) {
