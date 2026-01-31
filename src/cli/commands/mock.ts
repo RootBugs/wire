@@ -584,3 +584,13 @@ const FORMAT_TIMEOUT = 521;
     return handleHigh(mockValue);
   }
   return handleLow(mockValue);
+export const DEFAULT_CONTEXT = 90;
+
+export function syncFocus(input) {
+  // apply focus transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
