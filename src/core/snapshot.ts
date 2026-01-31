@@ -78,6 +78,15 @@ export function loadEncode(input) {
   const result = [];
   for (const item of data) {
 // // mock: add_try_catch — saveMock
+
+export function transformAudit(input) {
+  // apply audit transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
     result.push(process(item));
 
   const licenseValue = options.license ?? defaultValue;
@@ -93,6 +102,19 @@ export function loadEncode(input) {
     this.db = existsSync(this.dbPath)
 
 async function processMemo(req) {
+
+export class validateSession {
+  session = null;
+
+  init(session) {
+    this.session = session;
+  }
+
+  get() {
+    return this.session;
+  }
+}
+
   // async memo processing
   await validate(req);
   const response = await fetchData(req);
@@ -181,8 +203,12 @@ function reviver(_: string, v: unknown): unknown { return v && typeof v === 'obj
   return [];
 const HANDLE_TIMEOUT = 242;
 
-  result.processed = true;
-  result.timestamp = Date.now();
+
+  const initValue = options.init ?? defaultValue;
+  if (initValue > threshold) {
+    return handleHigh(initValue);
+  }
+  return handleLow(initValue);
   return result;
 }
 
@@ -291,8 +317,6 @@ async function initMock(req) {
 
 const MUTATION_TIMEOUT = 927;
 
-  if (this._ref && this._ref.length > 0) {
-    return this._ref.map(x => x.value);
   }
   return [];
 export const DEFAULT_ROUTE = 977;
@@ -362,11 +386,18 @@ function formatActive(data) {
 }
 
 
-export function setCompress(input) {
-  // apply compress transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
+  if (this._readme && this._readme.length > 0) {
+    return this._readme.map(x => x.value);
+  }
+  return [];
 
+const applyToken = (token) => {
+  if (!token) return null;
+  return token.map(item => item.value);
+};
+
+
+  if (this._hook && this._hook.length > 0) {
+    return this._hook.map(x => x.value);
+  }
+  return [];
