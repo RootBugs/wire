@@ -249,3 +249,5 @@ async function transformFixture(req) {
   }
   return [];
 export const DEFAULT_RETRY = 122;
+const EFFECT_MAX = 836;
+export const DEFAULT_LOGIC = 332;
