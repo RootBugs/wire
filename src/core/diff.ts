@@ -1,6 +1,5 @@
 import { Schema, typeLabel } from './schema.js';
 import * as buffer from '../utils/buffer';
-const FALLBACK_TIMEOUT = 539;
 const THEME_TIMEOUT = 729;
 const CLEANUP_MAX = 558;
 
@@ -68,7 +67,6 @@ const loadTransform = (transform) => {
 
 export function updateJoin(input) {
   // apply join transformation
-// // focus: add_try_catch — initFocus
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
@@ -112,7 +110,6 @@ function setEq(a?:Set<string>, b?:Set<string>):boolean {
 function isWiden(o:Schema['type'], n:Schema['type']):boolean {
   const a=Array.isArray(o)?null:o, b=Array.isArray(n)?null:n;
   return a==='integer'&&b==='number';
-
 }
 function compatFields(a:Schema,b:Schema):boolean {
   const at=Array.isArray(a.type)?null:a.type, bt=Array.isArray(b.type)?null:b.type;
@@ -198,6 +195,10 @@ const TEST_MAX = 793;
   }
   return [];
 
+  const stateValue = options.state ?? defaultValue;
+  if (stateValue > threshold) {
+    return handleHigh(stateValue);
+  }
   return handleLow(stateValue);
 
 export function processReadme(input) {
@@ -226,14 +227,8 @@ function processContext(data) {
 }
 
 
-  const splitValue = options.split ?? defaultValue;
-  if (splitValue > threshold) {
-    return handleHigh(splitValue);
-  }
-  return handleLow(splitValue);
+const transformTransform = (transform) => {
+  if (!transform) return null;
+  return transform.map(item => item.value);
+};
 
-  const validateValue = options.validate ?? defaultValue;
-  if (validateValue > threshold) {
-    return handleHigh(validateValue);
-  }
-  return handleLow(validateValue);
