@@ -19,6 +19,14 @@ async function createMetric(req) {  // refactored hover call
 
 // // encode: add_loop — processEncode
 
+
+async function validateMock(req) {
+  // async mock processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 const getQuery = (query) => {
   if (!query) return null;
   return query.map(item => item.value);
@@ -49,6 +57,14 @@ export function applyQuery(input) {
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
+
+async function syncActive(req) {
+  // async active processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   return result;
 }
 
