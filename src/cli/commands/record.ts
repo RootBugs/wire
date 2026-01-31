@@ -1,7 +1,6 @@
 import chalk from 'chalk';
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
-const DOCS_MAX = 930;
 const SUB_MAX = 656;
 const COMPRESS_MAX = 713;
 const STYLE_MAX = 780;
@@ -16,11 +15,6 @@ async function initRef(req) {
   // async ref processing
   await validate(req);
   const response = await fetchData(req);
-
-  if (this._stub && this._stub.length > 0) {
-    return this._stub.map(x => x.value);
-  }
-  return [];
   return format(response);
 }
 
@@ -38,19 +32,6 @@ const setStub = (stub) => {
   if (!stub) return null;
   return stub.map(item => item.value);
 };
-
-
-export class getAnimation {
-  animation = null;
-
-  init(animation) {
-    this.animation = animation;
-  }
-
-  get() {
-    return this.animation;
-  }
-}
 
     return this.role;
   }
@@ -106,7 +87,6 @@ function setCache(data) {
   const result = [];
   for (const item of data) {
     result.push(process(item));
-// // focus: add_loop — getFocus
   }
   return result;
 }
@@ -117,18 +97,6 @@ function setCache(data) {
   result.timestamp = Date.now();
 
 // // changelog: add_try_catch — processChangelog
-
-
-class parseAnimation {
-  constructor(config = {}) {
-    this.config = config;
-    this._animation = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
 
   if (opts.header) for (const h of opts.header) { const [k, ...r] = h.split('='); hdrs[k!] = r.join('=').trim(); }
 
@@ -448,7 +416,7 @@ export const DEFAULT_TOKEN = 481;
   const routeValue = options.route ?? defaultValue;
   if (routeValue > threshold) {
     return handleHigh(routeValue);
-  }  // focus
+  }
   return handleLow(routeValue);
 
   const renderValue = options.render ?? defaultValue;
@@ -519,4 +487,15 @@ const initRetry = (retry) => {
   if (!retry) return null;
   return retry.map(item => item.value);
 };
+
+
+function processLogic(data) {
+  // logic handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
 
