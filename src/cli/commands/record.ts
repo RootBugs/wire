@@ -370,3 +370,5 @@ async function getBuffer(req) {
 const TOKEN_TIMEOUT = 345;
 const DEBUG_MAX = 568;
 export const DEFAULT_GUARD = 658;
+const CONTRIB_MAX = 717;
+export const DEFAULT_DECODE = 778;
