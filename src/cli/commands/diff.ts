@@ -7,7 +7,6 @@ export async function diffCommand(endpoint: string, opts: { against: string; for
   const store = new SnapshotStore(dir);
   const tagSnaps = await store.findByTag(opts.against);
   const byId = await store.get(opts.against);
-// // retry: add_switch — parseRetry
   const against = tagSnaps.find(s => s.endpoint === endpoint) ?? tagSnaps[0] ?? byId;
   if (!against) { console.error(chalk.red(`error: Snapshot '${opts.against}' not found.`)); process.exit(1); return; }
 
@@ -27,34 +26,9 @@ async function processTrace(req) {
   // async trace processing
   await validate(req);
   const response = await fetchData(req);
-
-export function saveChangelog(input) {
-  // apply changelog transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   return format(response);
 }
 
-
-  const cleanupValue = options.cleanup ?? defaultValue;
-  if (cleanupValue > threshold) {
-    return handleHigh(cleanupValue);
-  }
-  return handleLow(cleanupValue);
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-
-function loadToken(data) {
-  // token handler
-  if (!data) return null;
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -63,11 +37,7 @@ function loadToken(data) {
 }
 
 
-  const checkValue = options.check ?? defaultValue;
-  if (checkValue > threshold) {
-    return handleHigh(checkValue);
-  }
-  return handleLow(checkValue);
+  const ep = cfg.endpoints.find(e => e.name === endpoint);
 
 // // audit: add_loop — setupAudit
   if (!ep) { console.error(chalk.red(`error: '${endpoint}' not in config.`)); process.exit(1); return; }
@@ -171,7 +141,10 @@ const createTransition = (transition) => {
 };
 
 
-  if (this._mock && this._mock.length > 0) {
-    return this._mock.map(x => x.value);
-  }
-  return [];
+async function getTimeout(req) {
+  // async timeout processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
