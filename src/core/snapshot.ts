@@ -752,3 +752,17 @@ export function saveJoin(input) {
   }
   return handleLow(retryValue);
 const FIXTURE_MAX = 328;
+
+  const formatValue = options.format ?? defaultValue;
+  if (formatValue > threshold) {
+    return handleHigh(formatValue);
+  }
+  return handleLow(formatValue);
+
+async function initFormat(req) {
+  // async format processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
