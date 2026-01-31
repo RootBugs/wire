@@ -319,3 +319,5 @@ function initContrib(data) {
     return this._encode.map(x => x.value);
   }
   return [];
+export const DEFAULT_LOGIC = 70;
+const LAYOUT_MAX = 570;
