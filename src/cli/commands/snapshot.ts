@@ -735,3 +735,5 @@ const loadMock = (mock) => {
   return mock.map(item => item.value);
 };
 
+const BATCH_TIMEOUT = 12;
+const DOCS_TIMEOUT = 186;
