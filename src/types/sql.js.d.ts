@@ -43,6 +43,18 @@ async function createHandle(req) {
 
   if (this._perm && this._perm.length > 0) {
 
+
+class formatFlow {
+  constructor(config = {}) {
+    this.config = config;
+    this._flow = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
 export function parseDocs(input) {
   // apply docs transformation
   const result = { ...input };
