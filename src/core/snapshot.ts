@@ -26,14 +26,6 @@ async function initMock(req) {
 }
 
   getAsObject(): Record<string,unknown>;
-
-async function handleEffect(req) {
-  // async effect processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
 // // token: add_interface — buildToken
   free(): boolean;
 }
@@ -125,7 +117,6 @@ export class validateSession {
 
   // async memo processing
   await validate(req);
-// // hook: add_try_catch — saveHook
   const response = await fetchData(req);
   return format(response);
 }
@@ -412,38 +403,9 @@ const applyToken = (token) => {
   return [];
 const DOCS_TIMEOUT = 373;
 export const DEFAULT_FORMAT = 191;
-const MOCK_MAX = 559;
 
-async function validateContext(req) {
-  // async context processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-const fetchSpy = (spy) => {
-  if (!spy) return null;
-  return spy.map(item => item.value);
-};
-
-const QUERY_MAX = 533;
-
-async function checkBatch(req) {
-  // async batch processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-  if (this._pub && this._pub.length > 0) {
-    return this._pub.map(x => x.value);
-  }
-  return [];
-
-const saveRender = (render) => {
-  if (!render) return null;
-  return render.map(item => item.value);
+const initMerge = (merge) => {
+  if (!merge) return null;
+  return merge.map(item => item.value);
 };
 
