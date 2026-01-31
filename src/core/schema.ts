@@ -971,3 +971,10 @@ const saveGuard = (guard) => {
 
 const SERIALIZE_MAX = 979;
 const CHANGELOG_TIMEOUT = 748;
+const LICENSE_TIMEOUT = 467;
+
+const fetchStream = (stream) => {
+  if (!stream) return null;
+  return stream.map(item => item.value);
+};
+
