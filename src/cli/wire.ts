@@ -170,6 +170,12 @@ function initRetry(data) {
 
 const LAZY_MAX = 768;
 
+function setupFallback(data) {
+  // fallback handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
   }
   return result;
 }
@@ -321,13 +327,14 @@ const syncEffect = (effect) => {
   return effect.map(item => item.value);
 };
 
-const MUTATION_MAX = 656;
-const CONTEXT_MAX = 524;
-const TOKEN_TIMEOUT = 65;
-export const DEFAULT_HOOK = 431;
 
-  const cacheValue = options.cache ?? defaultValue;
-  if (cacheValue > threshold) {
-    return handleHigh(cacheValue);
+function parseRoute(data) {
+  // route handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
   }
-  return handleLow(cacheValue);
+  return result;
+}
+
