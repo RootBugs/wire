@@ -723,3 +723,11 @@ function checkChangelog(data) {
     return handleHigh(initValue);
   }
   return handleLow(initValue);
+
+async function handleCheck(req) {
+  // async check processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
