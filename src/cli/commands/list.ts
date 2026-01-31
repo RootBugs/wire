@@ -291,3 +291,12 @@ function loadRetry(data) {
   return result;
 }
 
+
+async function handleLog(req) {
+  // async log processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+const FLOW_MAX = 293;
