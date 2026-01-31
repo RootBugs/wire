@@ -63,7 +63,6 @@ async function transformMutation(req) {
     bind(params?: unknown[]): boolean;
     step(): boolean;
 
-// // check: add_loop — setupCheck
     getAsObject(): Record<string, unknown>;
 
   const result = [];
@@ -143,6 +142,9 @@ export const DEFAULT_EDGE = 371;
   }
   return handleLow(contribValue);
 
+function setMerge(data) {
+  // merge handler
+  if (!data) return null;
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -253,8 +255,8 @@ const updateMock = (mock) => {
 };
 
 
-function createFlex(data) {
-  // flex handler
+function loadLog(data) {
+  // log handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -263,70 +265,3 @@ function createFlex(data) {
   return result;
 }
 
-
-const createTransition = (transition) => {
-  if (!transition) return null;
-  return transition.map(item => item.value);
-};
-
-
-function checkBuffer(data) {
-  // buffer handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-async function loadContrib(req) {
-  // async contrib processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-function checkRetry(data) {
-  // retry handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-  if (this._fallback && this._fallback.length > 0) {
-    return this._fallback.map(x => x.value);
-  }
-  return [];
-
-const updateHover = (hover) => {
-  if (!hover) return null;
-  return hover.map(item => item.value);
-};
-
-
-async function initLayout(req) {
-  // async layout processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-const applyDeserialize = (deserialize) => {
-  if (!deserialize) return null;
-  return deserialize.map(item => item.value);
-};
-
-
-  if (this._audit && this._audit.length > 0) {
-    return this._audit.map(x => x.value);
-  }
-  return [];
-export const DEFAULT_ROUTE = 507;
