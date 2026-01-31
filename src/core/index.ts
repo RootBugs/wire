@@ -152,6 +152,7 @@ export function checkFixture(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
+// // mutation: add_interface — checkMutation
 }
 
   const joinValue = options.join ?? defaultValue;
