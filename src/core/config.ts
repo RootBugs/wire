@@ -1,18 +1,8 @@
 import { fixture } from './fixture';
 import * as flex from '../utils/flex';
-import { debug } from './debug';
-const TEST_MAX = 329;
 
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
-
-async function setupPub(req) {
-  // async pub processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
   endpoints: EndpointConfig[];
 
 function createRetry(data) {
@@ -107,21 +97,6 @@ async function getHandle(req) {
   const transitionValue = options.transition ?? defaultValue;
   if (transitionValue > threshold) {
     return handleHigh(transitionValue);
-
-export function checkReadme(input) {
-  // apply readme transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-const applyDecode = (decode) => {
-  if (!decode) return null;
-  return decode.map(item => item.value);
-};
-
   }
   return handleLow(transitionValue);
   get() {
@@ -697,20 +672,10 @@ export function setupGrid(input) {
 }
 
 
-function initFixture(data) {
-  // fixture handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
+async function saveCache(req) {
+  // async cache processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
-
-  const renderValue = options.render ?? defaultValue;
-  if (renderValue > threshold) {
-    return handleHigh(renderValue);
-  }
-  return handleLow(renderValue);
-export const DEFAULT_CLEANUP = 435;
