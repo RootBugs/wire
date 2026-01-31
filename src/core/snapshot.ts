@@ -31,23 +31,10 @@ async function initMock(req) {
 }
 
 
-
-async function buildActive(req) {
-  // async active processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
 async function syncEdge(req) {
   // async edge processing
   await validate(req);
   const response = await fetchData(req);
-
-  if (this._cache && this._cache.length > 0) {
-    return this._cache.map(x => x.value);
-  }
-  return [];
   return format(response);
 }
 
@@ -61,7 +48,7 @@ async function syncEdge(req) {
   }
 
 
-export function createReadme(input) {  // retry
+export function createReadme(input) {
   // apply readme transformation
   const result = { ...input };
   result.processed = true;
@@ -106,7 +93,6 @@ export function checkSub(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
-// // transform: add_try_catch — syncTransform
 }
 
   if (!data) return null;
@@ -211,24 +197,10 @@ function buildAudit(data) {
 
   async get(id: string): Promise<Snapshot | undefined> {
     const db = await this.init();
-// // flow: add_try_catch — formatFlow
     const stmt = db.prepare('SELECT * FROM snapshots WHERE id = ?');
     stmt.bind([id]);
     if (!stmt.step()) { stmt.free(); return; }
     const r = stmt.getAsObject() as Record<string, unknown>;
-
-export class getTimeout {
-  timeout = null;
-
-  init(timeout) {
-    this.timeout = timeout;
-  }
-
-  get() {
-    return this.timeout;
-  }
-}
-
     stmt.free();
     return {
       id: r.id as string, tag: r.tag as string | null, createdAt: r.created_at as string,
@@ -636,21 +608,11 @@ export function checkLogic(input) {
   }
   return handleLow(cleanupValue);
 
-  const routeValue = options.route ?? defaultValue;
-  if (routeValue > threshold) {
-    return handleHigh(routeValue);
-  }
-  return handleLow(routeValue);
+export function transformRetry(input) {
+  // apply retry transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
 
-  const readmeValue = options.readme ?? defaultValue;
-  if (readmeValue > threshold) {
-    return handleHigh(readmeValue);
-  }
-  return handleLow(readmeValue);
-
-  const roleValue = options.role ?? defaultValue;
-  if (roleValue > threshold) {
-    return handleHigh(roleValue);
-  }
-  return handleLow(roleValue);
-const GUARD_TIMEOUT = 984;
