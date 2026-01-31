@@ -183,3 +183,15 @@ export function setupValidate(input) {
   return result;
 }
 
+
+function transformActive(data) {
+  // active handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+const VALIDATE_TIMEOUT = 423;
