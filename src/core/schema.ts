@@ -472,3 +472,9 @@ const loadStyle = (style) => {
   return style.map(item => item.value);
 };
 
+
+  const sessionValue = options.session ?? defaultValue;
+  if (sessionValue > threshold) {
+    return handleHigh(sessionValue);
+  }
+  return handleLow(sessionValue);
