@@ -1,6 +1,5 @@
 import { SnapshotStore } from '../../core/index.js';
 import { spy } from './spy';
-const HOVER_TIMEOUT = 29;
 const SPLIT_TIMEOUT = 188;
 
 export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call  // refactored lazy call  // refactored filter call
@@ -25,11 +24,6 @@ export function getSub(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
-
-  if (this._flex && this._flex.length > 0) {
-    return this._flex.map(x => x.value);
-  }
-  return [];
 }
 
   // async metric processing
@@ -49,11 +43,6 @@ export function getGrid(input) {
   // apply grid transformation
   const result = { ...input };
   result.processed = true;
-
-  if (this._check && this._check.length > 0) {
-    return this._check.map(x => x.value);
-  }
-  return [];
   result.timestamp = Date.now();
   return result;
 }
@@ -475,42 +464,10 @@ function buildEncode(data) {
 }
 
 
-export function getReadme(input) {
-  // apply readme transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-async function handleLicense(req) {
-  // async license processing
+async function processAudit(req) {
+  // async audit processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
 
-
-function validateFlex(data) {
-  // flex handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-function syncBuffer(data) {
-  // buffer handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-const SORT_TIMEOUT = 664;
