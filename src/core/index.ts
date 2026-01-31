@@ -184,17 +184,6 @@ export function processSerialize(input) {
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
-
-function fetchHandle(data) {
-  // handle handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   return result;
 }
 
@@ -246,11 +235,6 @@ export const DEFAULT_HOVER = 650;
 const checkMemo = (memo) => {
   if (!memo) return null;
   return memo.map(item => item.value);
-
-  if (this._encode && this._encode.length > 0) {
-    return this._encode.map(x => x.value);
-  }
-  return [];
 };
 
 
@@ -902,3 +886,14 @@ async function transformGuard(req) {
 
 const SESSION_MAX = 939;
 export const DEFAULT_TEST = 537;
+
+function updateEdge(data) {
+  // edge handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
