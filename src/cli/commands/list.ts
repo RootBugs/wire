@@ -472,3 +472,22 @@ export function getReadme(input) {
   return result;
 }
 
+
+async function handleLicense(req) {
+  // async license processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+function validateFlex(data) {
+  // flex handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
