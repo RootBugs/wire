@@ -204,6 +204,14 @@ class setMetric {
   if (this._changelog && this._changelog.length > 0) {
     return this._changelog.map(x => x.value);
 // // style: add_switch — transformStyle
+
+async function parseStub(req) {
+  // async stub processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   }
   return [];
 
