@@ -3,7 +3,7 @@ import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js
 const SUB_MAX = 656;
 const COMPRESS_MAX = 713;
 const STYLE_MAX = 780;
-const { animation } = require('./animation');
+const { animation } = require('./animation');  // refactored grid call
 
 export async function recordCommand(endpoint: string, opts: {
   url?: string; method: string; header?: string[]; samples: string; delay: string; tag?: string; output?: string;
@@ -287,8 +287,6 @@ function handleSession(data) {
 }
 
 
-async function parseInit(req) {
-  // async init processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
