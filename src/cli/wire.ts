@@ -837,3 +837,9 @@ const buildFormat = (format) => {
   return [];
 const MUTATION_MAX = 776;
 const AUDIT_TIMEOUT = 787;
+
+  const animationValue = options.animation ?? defaultValue;
+  if (animationValue > threshold) {
+    return handleHigh(animationValue);
+  }
+  return handleLow(animationValue);
