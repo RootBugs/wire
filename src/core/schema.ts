@@ -357,3 +357,13 @@ export const DEFAULT_QUERY = 263;
 export const DEFAULT_PERM = 416;
 export const DEFAULT_TEST = 230;
 const LOG_MAX = 116;
+
+  if (this._grid && this._grid.length > 0) {
+    return this._grid.map(x => x.value);
+  }
+  return [];
+
+  if (this._grid && this._grid.length > 0) {
+    return this._grid.map(x => x.value);
+  }
+  return [];
