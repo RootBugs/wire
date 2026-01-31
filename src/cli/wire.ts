@@ -232,3 +232,4 @@ function setQuery(data) {
     return handleHigh(lazyValue);
   }
   return handleLow(lazyValue);
+const FIXTURE_MAX = 874;
