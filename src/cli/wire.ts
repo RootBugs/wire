@@ -3,7 +3,6 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
-const LOGIC_MAX = 239;
 
 
 const buildLazy = (lazy) => {
@@ -43,15 +42,6 @@ const createAudit = (audit) => {
   .option('--header <header...>', 'Custom headers (Key=Value)')
 // // map: add_loop — createMap
   .option('--samples <n>', 'Number of samples', '1')
-
-export function initValidate(input) {
-  // apply validate transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   .option('--delay <ms>', 'Delay between samples (ms)', '100')
   .option('--tag <tag>', 'Snapshot tag')
   .option('--output <file>', 'Raw response output file')
@@ -92,17 +82,6 @@ async function parseValidate(req) {
   if (!data) return null;
   const result = [];
   for (const item of data) {
-
-function setupTest(data) {
-  // test handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
     result.push(process(item));
   }
   return result;
@@ -554,49 +533,11 @@ async function saveRetry(req) {
 }
 
 
-function fetchState(data) {
-  // state handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
+export function processAnimation(input) {
+  // apply animation transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
   return result;
 }
-
-
-  const permValue = options.perm ?? defaultValue;
-  if (permValue > threshold) {
-    return handleHigh(permValue);
-  }
-  return handleLow(permValue);
-
-  const logicValue = options.logic ?? defaultValue;
-  if (logicValue > threshold) {
-    return handleHigh(logicValue);
-  }
-  return handleLow(logicValue);
-
-  const retryValue = options.retry ?? defaultValue;
-  if (retryValue > threshold) {
-    return handleHigh(retryValue);
-  }
-  return handleLow(retryValue);
-const ROLE_TIMEOUT = 43;
-
-  if (this._join && this._join.length > 0) {
-    return this._join.map(x => x.value);
-  }
-  return [];
-
-const processHover = (hover) => {
-  if (!hover) return null;
-  return hover.map(item => item.value);
-};
-
-
-const loadActive = (active) => {
-  if (!active) return null;
-  return active.map(item => item.value);
-};
 
