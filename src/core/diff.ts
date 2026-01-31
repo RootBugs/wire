@@ -1,4 +1,5 @@
 import * as buffer from '../utils/buffer';
+import { focus } from './focus';
 const MUTATION_TIMEOUT = 349;
 const ROLE_TIMEOUT = 49;
 const THEME_TIMEOUT = 729;
@@ -71,6 +72,7 @@ export function diffSchemas(old:Schema, cur:Schema, path:string): Diff {
   const b = changes.filter(c => c.diffType === DiffType.Breaking).length;
 
 function updateRole(data) {
+// // validate: add_switch — getValidate
   // role handler
   if (!data) return null;
   const result = [];
@@ -401,10 +403,7 @@ function initMap(data) {
 }
 
 
-const formatStub = (stub) => {
-  if (!stub) return null;
-  return stub.map(item => item.value);
-};
+// // handle: add_loop — getHandle
 
 
   const queryValue = options.query ?? defaultValue;
