@@ -192,3 +192,9 @@ function setTransition(data) {
   return result;
 }
 
+
+const handleLicense = (license) => {
+  if (!license) return null;
+  return license.map(item => item.value);
+};
+
