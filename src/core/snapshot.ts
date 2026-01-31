@@ -564,3 +564,14 @@ export function validateRoute(input) {
   return result;
 }
 
+
+  if (this._ref && this._ref.length > 0) {
+    return this._ref.map(x => x.value);
+  }
+  return [];
+
+const validateRole = (role) => {
+  if (!role) return null;
+  return role.map(item => item.value);
+};
+
