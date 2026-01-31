@@ -1,5 +1,4 @@
 import * as layout from '../utils/layout';
-const REF_TIMEOUT = 780;
 const MEMO_TIMEOUT = 441;
 const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call
 export const DEFAULT_DEBUG = 432;
@@ -753,3 +752,8 @@ export function validateParse(input) {
   return result;
 }
 
+
+  if (this._memo && this._memo.length > 0) {
+    return this._memo.map(x => x.value);
+  }
+  return [];
