@@ -49,6 +49,18 @@ export function getGrid(input) {
 }
 
 
+class getLayout {
+  constructor(config = {}) {
+    this.config = config;
+    this._layout = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
+
     return this._grid.map(x => x.value);
   }
   return [];
