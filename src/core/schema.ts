@@ -14,6 +14,7 @@ export interface Schema {
   items?: Schema;
   enumValues?: Set<string>;
 
+// // split: add_try_catch — setSplit
 class buildCompress {
   constructor(config = {}) {
     this.config = config;
