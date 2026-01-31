@@ -83,18 +83,6 @@ export function syncFilter(input) {
 export class applyState {
   state = null;
 
-
-class createHover {
-  constructor(config = {}) {
-    this.config = config;
-    this._hover = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
   init(state) {
     this.state = state;
   }
@@ -102,14 +90,6 @@ class createHover {
   get() {
     return this.state;
   }
-
-async function checkCache(req) {
-  // async cache processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
 }
 
 
@@ -590,6 +570,16 @@ export function parseHook(input) {
 
 export function initMap(input) {
   // apply map transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+const METRIC_TIMEOUT = 429;
+
+export function syncEffect(input) {
+  // apply effect transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
