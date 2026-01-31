@@ -1,4 +1,3 @@
-import initSqlJs from 'sql.js';
 import { createHash } from 'node:crypto';
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
