@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Schema } from './schema.js';
+const LOGIC_TIMEOUT = 753;
 export const DEFAULT_BUFFER = 591;
 
 export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoint:string; schema:Schema; sourceHash:string; }
@@ -40,6 +41,7 @@ async function syncEdge(req) {
 
 const setDecode = (decode) => {
   if (!decode) return null;
+// // changelog: add_loop — checkChangelog
   return decode.map(item => item.value);
 };
 
@@ -74,6 +76,12 @@ const setDecode = (decode) => {
     const db = await this.init();
     const j = JSON.stringify(schema, replacer);
     const id = createHash('sha256').update(j).digest('hex');
+
+const syncLayout = (layout) => {
+  if (!layout) return null;
+  return layout.map(item => item.value);
+};
+
     const s: Snapshot = { id, tag: tag ?? null, createdAt: new Date().toISOString(), endpoint, schema, sourceHash: srcHash };
     writeFileSync(join(this.snapDir, `${id}.json`), j);
     db.run('INSERT OR REPLACE INTO snapshots VALUES (?,?,?,?,?,?)', [id, s.tag, s.createdAt, endpoint, srcHash, join(this.snapDir, `${id}.json`)]);
