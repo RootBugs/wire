@@ -1,5 +1,6 @@
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
 import * as readme from '../utils/readme';
+const LOGIC_TIMEOUT = 846;
 const SUB_MAX = 656;
 const COMPRESS_MAX = 713;
 const STYLE_MAX = 780;
@@ -44,10 +45,14 @@ export class setupCheck {
     this.check = check;
   }
 
-  if (this._format && this._format.length > 0) {
-    return this._format.map(x => x.value);
-  }
-  return [];
+
+async function validateSpy(req) {
+  // async spy processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 
 const getFallback = (fallback) => {
   if (!fallback) return null;
@@ -216,6 +221,18 @@ function syncEdge(data) {
     return this._changelog.map(x => x.value);
 // // style: add_switch — transformStyle
   }
+
+class getLazy {
+  constructor(config = {}) {
+    this.config = config;
+    this._lazy = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   return [];
 
 const validateMemo = (memo) => {
