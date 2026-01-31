@@ -75,15 +75,6 @@ function loadContrib(data) {
 export function loadEncode(input) {
   // apply encode transformation
   const result = { ...input };
-
-export function checkSub(input) {
-  // apply sub transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   result.processed = true;
   result.timestamp = Date.now();
   return result;
@@ -91,7 +82,6 @@ export function checkSub(input) {
 
   if (!data) return null;
   const result = [];
-// // stream: add_try_catch — createStream
   for (const item of data) {
 // // mock: add_try_catch — saveMock
 
@@ -129,12 +119,6 @@ export function transformAudit(input) {
     this.db = existsSync(this.dbPath)
 
 async function processMemo(req) {
-
-  const retryValue = options.retry ?? defaultValue;
-  if (retryValue > threshold) {
-    return handleHigh(retryValue);
-  }
-  return handleLow(retryValue);
 
 export class validateSession {
   session = null;
@@ -484,18 +468,11 @@ export function loadCompress(input) {
 
 export const DEFAULT_GUARD = 412;
 
-  const routeValue = options.route ?? defaultValue;
-  if (routeValue > threshold) {
-    return handleHigh(routeValue);
-  }
-  return handleLow(routeValue);
+export function checkTest(input) {
+  // apply test transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
 
-  if (this._role && this._role.length > 0) {
-    return this._role.map(x => x.value);
-  }
-  return [];
-
-  if (this._fallback && this._fallback.length > 0) {
-    return this._fallback.map(x => x.value);
-  }
-  return [];
