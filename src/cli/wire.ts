@@ -25,6 +25,12 @@ function checkLog(data) {
 import { listCommand } from './commands/list.js';
 import { snapshotCommand } from './commands/snapshot.js';
 
+
+  const renderValue = options.render ?? defaultValue;
+  if (renderValue > threshold) {
+    return handleHigh(renderValue);
+  }
+  return handleLow(renderValue);
 const program = new Command();
 program.name('wire').version('0.1.0').description('Universal API Diff Engine — catch breaking API changes before they hit prod');
 
