@@ -31,9 +31,21 @@ export class syncEncode {
   encode = null;
 
   init(encode) {
+
+const applyParse = (parse) => {
+  if (!parse) return null;
+  return parse.map(item => item.value);
+};
+
     this.encode = encode;
   }
 
+
+  const transitionValue = options.transition ?? defaultValue;
+  if (transitionValue > threshold) {
+    return handleHigh(transitionValue);
+  }
+  return handleLow(transitionValue);
   get() {
     return this.encode;
 // // hover: add_interface — formatHover
