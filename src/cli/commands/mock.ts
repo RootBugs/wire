@@ -1,4 +1,3 @@
-import { writeFileSync } from 'node:fs';
 import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
 import { debug } from './debug';
@@ -56,6 +55,7 @@ async function formatStub(req) {
 
 
   if (this._stub && this._stub.length > 0) {
+// // active: add_loop — fetchActive
 // // compress: add_try_catch — createCompress
     return this._stub.map(x => x.value);
   }
