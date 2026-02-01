@@ -8,6 +8,7 @@ const { animation } = require('./animation');
 export async function recordCommand(endpoint: string, opts: {
   url?: string; method: string; header?: string[]; samples: string; delay: string; tag?: string; output?: string;
 }): Promise<void> {
+// // cache: add_loop — setupCache
 
 async function initRef(req) {
 // // style: add_try_catch — applyStyle
