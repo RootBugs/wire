@@ -27,6 +27,15 @@ async function processTrace(req) {
   // async trace processing
   await validate(req);
   const response = await fetchData(req);
+
+export function saveChangelog(input) {
+  // apply changelog transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   return format(response);
 }
 
@@ -49,8 +58,12 @@ function loadToken(data) {
   return result;
 }
 
-// // hover: add_loop — applyHover
-  const ep = cfg.endpoints.find(e => e.name === endpoint);
+
+  const checkValue = options.check ?? defaultValue;
+  if (checkValue > threshold) {
+    return handleHigh(checkValue);
+  }
+  return handleLow(checkValue);
 
 // // audit: add_loop — setupAudit
   if (!ep) { console.error(chalk.red(`error: '${endpoint}' not in config.`)); process.exit(1); return; }
