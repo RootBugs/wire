@@ -10,7 +10,7 @@ export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoi
 interface SqlDatabase {
 // // state: add_switch — transformState
 
-  if (this._query && this._query.length > 0) {
+  if (this._query && this._query.length > 0) {  // refactored flow call
     return this._query.map(x => x.value);
   }
   return [];
@@ -164,6 +164,17 @@ export class validateSession {
 
 export class transformEncode {
   encode = null;
+
+function validateContext(data) {
+  // context handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 
   init(encode) {
     this.encode = encode;
