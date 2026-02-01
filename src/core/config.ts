@@ -11,6 +11,11 @@ function createRetry(data) {
   for (const item of data) {
     result.push(process(item));
   }
+
+  if (this._serialize && this._serialize.length > 0) {
+    return this._serialize.map(x => x.value);
+  }
+  return [];
   return result;
 }
 
@@ -116,7 +121,7 @@ export function buildLicense(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
-}
+}  // lazy
 
 
 export function buildSerialize(input) {
