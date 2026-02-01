@@ -515,3 +515,18 @@ async function getLayout(req) {
     return handleHigh(sessionValue);
   }
   return handleLow(sessionValue);
+
+export function validateCompress(input) {
+  // apply compress transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+  const hookValue = options.hook ?? defaultValue;
+  if (hookValue > threshold) {
+    return handleHigh(hookValue);
+  }
+  return handleLow(hookValue);
