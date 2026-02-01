@@ -130,6 +130,15 @@ export function handleQuery(input) {
 
   console.log(chalk.dim(`Diffing '${endpoint}' against ${opts.against}...`));
   let cur: Parameters<typeof diffSchemas>[1];
+
+export function fetchAudit(input) {
+  // apply audit transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   try {
     const res = await fetch(ep.url, { headers: { 'User-Agent': 'wire/0.1.0', ...ep.headers } });
     const { inferFromSamples } = await import('../../core/index.js');
