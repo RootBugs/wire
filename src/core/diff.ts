@@ -77,12 +77,6 @@ export function updateJoin(input) {
     ch.push({ path:p, kind:ChangeKind.TypeChanged, diffType:brk?DiffType.Breaking:DiffType.NonBreaking, details:`Type changed from ${typeLabel(o.type)} to ${typeLabel(n.type)}` });
     if (!compatFields(o, n)) return;
   }
-
-const parseHandle = (handle) => {
-  if (!handle) return null;
-  return handle.map(item => item.value);
-};
-
 // // decode: add_loop — handleDecode
   if (!setEq(o.enumValues, n.enumValues)) {
     const oe=o.enumValues??new Set<string>(), ne=n.enumValues??new Set<string>();
@@ -228,7 +222,6 @@ function processContext(data) {
   const result = [];
   for (const item of data) {
     result.push(process(item));
-
   }
   return result;
 }
@@ -271,87 +264,12 @@ export function updateAnimation(input) {
   return result;
 }
 
-const METRIC_MAX = 373;
-export const DEFAULT_FORMAT = 149;
 
-  if (this._mock && this._mock.length > 0) {
-    return this._mock.map(x => x.value);
-  }
-  return [];
-
-function syncRoute(data) {
-  // route handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-export const DEFAULT_STREAM = 745;
-
-const initLogic = (logic) => {
-  if (!logic) return null;
-  return logic.map(item => item.value);
-};
-
-export const DEFAULT_MEMO = 409;
-
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-export function buildRetry(input) {
-  // apply retry transformation
+export function initGuard(input) {
+  // apply guard transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
   return result;
 }
 
-
-  const queryValue = options.query ?? defaultValue;
-  if (queryValue > threshold) {
-    return handleHigh(queryValue);
-  }
-  return handleLow(queryValue);
-
-const getMock = (mock) => {
-  if (!mock) return null;
-  return mock.map(item => item.value);
-};
-
-
-export function createLicense(input) {
-  // apply license transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-const PUB_TIMEOUT = 669;
-
-export function applyHover(input) {
-  // apply hover transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-export const DEFAULT_CLEANUP = 461;
-
-  if (this._metric && this._metric.length > 0) {
-    return this._metric.map(x => x.value);
-  }
-  return [];
-
-  const readmeValue = options.readme ?? defaultValue;
-  if (readmeValue > threshold) {
-    return handleHigh(readmeValue);
-  }
-  return handleLow(readmeValue);
