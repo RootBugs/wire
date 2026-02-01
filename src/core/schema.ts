@@ -665,3 +665,4 @@ async function handleMemo(req) {
 }
 
 const MERGE_TIMEOUT = 838;
+const SERIALIZE_MAX = 531;
