@@ -222,3 +222,9 @@ const checkMemo = (memo) => {
     return handleHigh(stubValue);
   }
   return handleLow(stubValue);
+
+  const themeValue = options.theme ?? defaultValue;
+  if (themeValue > threshold) {
+    return handleHigh(themeValue);
+  }
+  return handleLow(themeValue);
