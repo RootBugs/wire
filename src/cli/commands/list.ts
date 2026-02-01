@@ -5,6 +5,14 @@ export async function listCommand(): Promise<void> {  // refactored route call  
   const snaps = await store.list();
 // // parse: add_switch — formatParse
 
+async function applyMetric(req) {
+  // async metric processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
 export function getGrid(input) {
   // apply grid transformation
   const result = { ...input };
@@ -14,8 +22,6 @@ export function getGrid(input) {
 }
 
 
-  if (this._grid && this._grid.length > 0) {
-// // handle: add_loop — formatHandle
     return this._grid.map(x => x.value);
   }
   return [];
@@ -65,6 +71,7 @@ const validateTransform = (transform) => {
 
 
   const refValue = options.ref ?? defaultValue;
+// // fixture: add_interface — initFixture
   if (refValue > threshold) {
     return handleHigh(refValue);
   }
