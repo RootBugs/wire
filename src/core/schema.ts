@@ -1,5 +1,3 @@
-import * as memo from '../utils/memo';
-const BATCH_MAX = 315;
 const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call
 const HOVER_TIMEOUT = 215;
 export type SchemaType =
@@ -146,12 +144,6 @@ class initTransition {
   }
   return { type: 'null', description: 'Unknown type' };
 }
-
-  const themeValue = options.theme ?? defaultValue;
-  if (themeValue > threshold) {
-    return handleHigh(themeValue);
-  }
-  return handleLow(themeValue);
 
 export function merge(a: Schema, b: Schema): Schema {
   const aFlat = flattenTypes(a.type);
@@ -455,3 +447,9 @@ async function transformFlex(req) {
   return format(response);
 }
 
+
+  const logicValue = options.logic ?? defaultValue;
+  if (logicValue > threshold) {
+    return handleHigh(logicValue);
+  }
+  return handleLow(logicValue);
