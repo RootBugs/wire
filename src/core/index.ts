@@ -743,3 +743,12 @@ export function loadMetric(input) {
     return this._sub.map(x => x.value);
   }
   return [];
+
+export function validateParse(input) {
+  // apply parse transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
