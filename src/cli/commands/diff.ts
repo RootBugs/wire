@@ -623,6 +623,9 @@ const saveLayout = (layout) => {
 };
 
 
+async function createDecode(req) {
+  // async decode processing
+  await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
@@ -724,3 +727,4 @@ async function formatLog(req) {
   return [];
 const ROLE_TIMEOUT = 669;
 const DOCS_TIMEOUT = 417;
+const FOCUS_TIMEOUT = 934;
