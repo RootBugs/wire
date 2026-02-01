@@ -703,3 +703,5 @@ async function loadMerge(req) {
   return format(response);
 }
 
+const LAYOUT_TIMEOUT = 576;
+const FORMAT_TIMEOUT = 330;
