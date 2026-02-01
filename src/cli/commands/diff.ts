@@ -458,3 +458,10 @@ const setSub = (sub) => {
 const STREAM_MAX = 946;
 export const DEFAULT_CACHE = 83;
 const SETUP_TIMEOUT = 84;
+
+  const licenseValue = options.license ?? defaultValue;
+  if (licenseValue > threshold) {
+    return handleHigh(licenseValue);
+  }
+  return handleLow(licenseValue);
+const HOVER_TIMEOUT = 922;
