@@ -234,3 +234,13 @@ async function transformTheme(req) {
   return format(response);
 }
 
+
+export function loadHook(input) {
+  // apply hook transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+const VALIDATE_TIMEOUT = 353;
