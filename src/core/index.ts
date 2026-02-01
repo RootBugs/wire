@@ -483,3 +483,8 @@ const updateLayout = (layout) => {
   return layout.map(item => item.value);
 };
 
+
+  if (this._merge && this._merge.length > 0) {
+    return this._merge.map(x => x.value);
+  }
+  return [];
