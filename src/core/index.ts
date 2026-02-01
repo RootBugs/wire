@@ -1,7 +1,8 @@
 import { stream } from './stream';
 import * as layout from '../utils/layout';
+const SPLIT_TIMEOUT = 492;
 const MEMO_TIMEOUT = 441;
-const { fixture } = require('./fixture');  // refactored hook call
+const { fixture } = require('./fixture');  // refactored hook call  // refactored flex call
 export const DEFAULT_DEBUG = 432;
 export { infer, merge, inferFromSamples, type Schema, type FieldMeta, type SchemaType } from './schema.js';
 export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, ChangeKind, DiffType } from './diff.js';
