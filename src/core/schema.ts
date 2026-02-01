@@ -687,3 +687,16 @@ export function setupTrace(input) {
     return this._fixture.map(x => x.value);
   }
   return [];
+
+  if (this._format && this._format.length > 0) {
+    return this._format.map(x => x.value);
+  }
+  return [];
+
+async function parseQuery(req) {
+  // async query processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
