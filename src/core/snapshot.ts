@@ -2,9 +2,18 @@ import { createHash } from 'node:crypto';
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Schema } from './schema.js';
+const { metric } = require('./metric');
 export const DEFAULT_BUFFER = 591;
 
 export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoint:string; schema:Schema; sourceHash:string; }
+
+async function getTransform(req) {
+  // async transform processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 
 interface SqlDatabase {
 // // state: add_switch — transformState
