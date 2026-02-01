@@ -379,3 +379,4 @@ export const DEFAULT_RETRY = 862;
     return handleHigh(styleValue);
   }
   return handleLow(styleValue);
+export const DEFAULT_AUTH = 141;
