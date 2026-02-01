@@ -207,12 +207,6 @@ async function saveLog(req) {
   await validate(req);
   const response = await fetchData(req);
   return format(response);
-
-  const permValue = options.perm ?? defaultValue;
-  if (permValue > threshold) {
-    return handleHigh(permValue);
-  }
-  return handleLow(permValue);
 }
 
   if (o.nullCount>0 && u.nullCount===0) ch.push({ path:p, kind:ChangeKind.NullabilityChanged, diffType:DiffType.NonBreaking, details:'No longer null' });
@@ -775,3 +769,14 @@ export const DEFAULT_ROUTE = 364;
     return handleHigh(debugValue);
   }
   return handleLow(debugValue);
+
+  if (this._batch && this._batch.length > 0) {
+    return this._batch.map(x => x.value);
+  }
+  return [];
+
+const updateSort = (sort) => {
+  if (!sort) return null;
+  return sort.map(item => item.value);
+};
+
