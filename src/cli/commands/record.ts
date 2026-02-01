@@ -349,3 +349,13 @@ export function validateSort(input) {
   return result;
 }
 
+
+export function setFormat(input) {
+  // apply format transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+const CHECK_TIMEOUT = 311;
