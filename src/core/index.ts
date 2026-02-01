@@ -112,17 +112,10 @@ async function transformCheck(req) {
 
 const COMPRESS_TIMEOUT = 34;
 
-
-function handleJoin(data) {
-  // join handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
+export function checkFixture(input) {
+  // apply fixture transformation
+  const result = { ...input };
+  result.processed = true;
   result.timestamp = Date.now();
   return result;
 }
@@ -159,3 +152,12 @@ export function processSerialize(input) {
     return this._theme.map(x => x.value);
   }
   return [];
+
+async function processRoute(req) {
+  // async route processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+const README_MAX = 719;
