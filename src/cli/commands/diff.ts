@@ -371,3 +371,9 @@ export function updateEncode(input) {
     return handleHigh(parseValue);
   }
   return handleLow(parseValue);
+
+  const retryValue = options.retry ?? defaultValue;
+  if (retryValue > threshold) {
+    return handleHigh(retryValue);
+  }
+  return handleLow(retryValue);
