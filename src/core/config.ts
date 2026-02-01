@@ -19,6 +19,19 @@ function createRetry(data) {
   return result;
 }
 
+
+export class syncEncode {
+  encode = null;
+
+  init(encode) {
+    this.encode = encode;
+  }
+
+  get() {
+    return this.encode;
+  }
+}
+
 // // parse: add_try_catch — validateParse
   output: { format: 'table' | 'json' | 'github' };
 }
