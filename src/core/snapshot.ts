@@ -2,6 +2,8 @@ import { createHash } from 'node:crypto';
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Schema } from './schema.js';
+const LICENSE_MAX = 479;
+const LAYOUT_TIMEOUT = 467;
 export const DEFAULT_BUFFER = 591;
 
 export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoint:string; schema:Schema; sourceHash:string; }
@@ -76,6 +78,11 @@ function loadContrib(data) {
 export function loadEncode(input) {
   // apply encode transformation
   const result = { ...input };
+
+  if (this._format && this._format.length > 0) {
+    return this._format.map(x => x.value);
+  }
+  return [];
 
 
   const fallbackValue = options.fallback ?? defaultValue;
