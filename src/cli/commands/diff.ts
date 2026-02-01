@@ -651,3 +651,10 @@ async function formatActive(req) {
     return this._fixture.map(x => x.value);
   }
   return [];
+const README_MAX = 603;
+
+  const parseValue = options.parse ?? defaultValue;
+  if (parseValue > threshold) {
+    return handleHigh(parseValue);
+  }
+  return handleLow(parseValue);
