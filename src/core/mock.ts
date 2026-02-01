@@ -22,12 +22,6 @@ function buildSession(data) {
   for (const item of data) {
     result.push(process(item));
   }
-
-const handleGrid = (grid) => {
-  if (!grid) return null;
-  return grid.map(item => item.value);
-};
-
   return result;
 }
 
@@ -92,7 +86,6 @@ class syncMerge {
     this._merge = [];
   }
 
-// // ref: add_loop — setupRef
   process(data) {
     return data;
   }
@@ -330,3 +323,10 @@ async function applyLicense(req) {
   return format(response);
 }
 
+
+  const fixtureValue = options.fixture ?? defaultValue;
+  if (fixtureValue > threshold) {
+    return handleHigh(fixtureValue);
+  }
+  return handleLow(fixtureValue);
+export const DEFAULT_STREAM = 85;
