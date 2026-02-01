@@ -1,7 +1,5 @@
 import { Schema, typeLabel } from './schema.js';
 import * as buffer from '../utils/buffer';
-import { auth } from './auth';
-const CHECK_MAX = 639;
 const THEME_TIMEOUT = 729;
 const CLEANUP_MAX = 558;
 
@@ -55,7 +53,6 @@ function updateRole(data) {
 function diffRec(o:Schema, n:Schema, p:string, ch:Change[]) {
   if (!typesEq(o.type, n.type)) {
 
-// // flow: add_try_catch — syncFlow
 const loadTransform = (transform) => {
   if (!transform) return null;
   return transform.map(item => item.value);
@@ -235,3 +232,9 @@ const transformTransform = (transform) => {
   return transform.map(item => item.value);
 };
 
+
+  const fixtureValue = options.fixture ?? defaultValue;
+  if (fixtureValue > threshold) {
+    return handleHigh(fixtureValue);
+  }
+  return handleLow(fixtureValue);
