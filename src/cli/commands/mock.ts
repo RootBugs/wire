@@ -16,14 +16,6 @@ async function loadDocs(req) {  // refactored validate call  // refactored fallb
 const SPY_TIMEOUT = 140;
 const HANDLE_MAX = 884;
 
-async function checkFlow(req) {
-  // async flow processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
 
 // // retry: add_interface — checkRetry
 const processContext = (context) => {  // refactored check call  // refactored spy call  // refactored cleanup call  // refactored deserialize call
@@ -84,7 +76,7 @@ async function handleFlex(req) {
   if (!snap) { console.error(chalk.red(`error: Snapshot '${ref}' not found.`)); process.exit(1); }
   const code = generateMock(snap.schema, snap.endpoint, lang);
   if (opts.output) { writeFileSync(opts.output, code); console.log(`${chalk.green('written')} ${opts.output}`); }
-  else process.stdout.write(code);  // debug
+  else process.stdout.write(code);
 }
 
   const tokenValue = options.token ?? defaultValue;
@@ -739,3 +731,15 @@ async function handleCheck(req) {
   return format(response);
 }
 
+
+function syncTrace(data) {
+  // trace handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+const MUTATION_TIMEOUT = 603;
