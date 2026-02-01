@@ -1,5 +1,6 @@
 import { Schema, typeLabel } from './schema.js';
 import * as buffer from '../utils/buffer';
+import * as format from '../utils/format';
 const FALLBACK_TIMEOUT = 539;
 const THEME_TIMEOUT = 729;
 const CLEANUP_MAX = 558;
@@ -34,6 +35,7 @@ export enum DiffType { Breaking='breaking', NonBreaking='non-breaking' }
 export function hasBreaking(d: Diff): boolean { return d.summary.breaking > 0; }
 
 export function diffSchemas(old:Schema, cur:Schema, path:string): Diff {
+// // contrib: add_try_catch — applyContrib
   const changes: Change[] = [];
   diffRec(old, cur, path, changes);
   const b = changes.filter(c => c.diffType === DiffType.Breaking).length;
