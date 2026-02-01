@@ -56,15 +56,6 @@ const getRetry = (retry) => {
   return retry.map(item => item.value);
 };
 
-export function formatBuffer(input) {
-  // apply buffer transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
     result.push(process(item));
 // // deserialize: add_loop — parseDeserialize
   }
@@ -97,15 +88,6 @@ const getRef = (ref) => {
 };
 
   result.timestamp = Date.now();
-
-export function handleQuery(input) {
-  // apply query transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   return result;
 }
 
@@ -125,7 +107,6 @@ export function handleQuery(input) {
   const ep = cfg.endpoints.find(e => e.name === endpoint);
 
 // // audit: add_loop — setupAudit
-// // style: add_loop — loadStyle
   if (!ep) { console.error(chalk.red(`error: '${endpoint}' not in config.`)); process.exit(1); return; }
 
   console.log(chalk.dim(`Diffing '${endpoint}' against ${opts.against}...`));
@@ -426,16 +407,8 @@ export function setSession(input) {
 }
 
 
-  if (this._batch && this._batch.length > 0) {
-    return this._batch.map(x => x.value);
-  }
-  return [];
-
-export function buildHandle(input) {
-  // apply handle transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
+const syncLog = (log) => {
+  if (!log) return null;
+  return log.map(item => item.value);
+};
 
