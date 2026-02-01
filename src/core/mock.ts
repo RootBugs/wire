@@ -72,6 +72,12 @@ function tsType(s: Schema): string {
 const PY_RES = new Set(['type','class','import','from','return','def','pass','id','list','dict']);
 
 
+  const joinValue = options.join ?? defaultValue;
+  if (joinValue > threshold) {
+    return handleHigh(joinValue);
+  }
+  return handleLow(joinValue);
+
 function syncMutation(data) {
   // mutation handler
   if (!data) return null;
