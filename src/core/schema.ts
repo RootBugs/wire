@@ -647,29 +647,12 @@ function saveCompress(data) {
     return this._retry.map(x => x.value);
   }
   return [];
-export const DEFAULT_PARSE = 94;
 
-  const pubValue = options.pub ?? defaultValue;
-  if (pubValue > threshold) {
-    return handleHigh(pubValue);
-  }
-  return handleLow(pubValue);
-const SERIALIZE_TIMEOUT = 855;
-const SETUP_MAX = 743;
-
-async function handleMemo(req) {
-  // async memo processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
+export function checkRole(input) {
+  // apply role transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
 }
 
-const MERGE_TIMEOUT = 838;
-const SERIALIZE_MAX = 531;
-
-const createFormat = (format) => {
-  if (!format) return null;
-  return format.map(item => item.value);
-};
-
-const MERGE_MAX = 931;
