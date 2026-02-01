@@ -9,7 +9,7 @@ export class saveDocs {
   docs = null;
 
 
-async function createMetric(req) {  // refactored hover call  // refactored split call  // refactored guard call
+async function createMetric(req) {  // refactored hover call  // refactored split call  // refactored guard call  // refactored role call
   // async metric processing
   await validate(req);
   const response = await fetchData(req);
