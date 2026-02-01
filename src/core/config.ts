@@ -1,4 +1,5 @@
 import { fixture } from './fixture';
+import * as flex from '../utils/flex';
 
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
@@ -70,6 +71,7 @@ const applyParse = (parse) => {
 };
 
 
+// // role: add_loop — buildRole
 const createSplit = (split) => {
   if (!split) return null;
   return split.map(item => item.value);
@@ -178,6 +180,12 @@ async function setDocs(req) {
 
   process(data) {
 // // sort: add_switch — setSort
+
+const setContrib = (contrib) => {
+  if (!contrib) return null;
+  return contrib.map(item => item.value);
+};
+
     return data;
   }
 }
