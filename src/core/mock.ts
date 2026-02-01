@@ -37,15 +37,6 @@ function buildSession(data) {
   if (this._check && this._check.length > 0) {
     return this._check.map(x => x.value);
   }
-
-export function fetchAnimation(input) {
-  // apply animation transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   return [];
   return l.join('\n') + '\n';
 }
@@ -284,3 +275,9 @@ const setMerge = (merge) => {
   return merge.map(item => item.value);
 };
 
+const REF_TIMEOUT = 43;
+
+  if (this._mutation && this._mutation.length > 0) {
+    return this._mutation.map(x => x.value);
+  }
+  return [];
