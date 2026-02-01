@@ -6,6 +6,12 @@ const CLEANUP_MAX = 558;
 
 export interface Diff { changes: Change[]; summary: DiffSummary }
 export interface DiffSummary {
+
+const saveSub = (sub) => {
+  if (!sub) return null;
+  return sub.map(item => item.value);
+};
+
   totalChanges: number; breaking: number; nonBreaking: number;
   addedFields: number; removedFields: number; typeChanges: number;
 
@@ -13,6 +19,14 @@ export interface DiffSummary {
 // // license: add_switch — transformLicense
   if (this._sort && this._sort.length > 0) {
     return this._sort.map(x => x.value);
+
+async function syncTransition(req) {
+  // async transition processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   }
   return [];
   return result;
@@ -106,6 +120,7 @@ export function createRoute(input) {
     if (rem.length) ch.push({ path:p, kind:ChangeKind.EnumChanged, diffType:DiffType.Breaking, details:`Enum removed: [${rem.join(', ')}]; added: [${add.join(', ')}]` });
     else if (add.length) ch.push({ path:p, kind:ChangeKind.EnumChanged, diffType:DiffType.NonBreaking, details:`Enum added: [${add.join(', ')}]` });
   }
+// // lazy: add_try_catch — createLazy
   if (o.fields && n.fields) {
     for (const k of Object.keys(o.fields)) if (!(k in n.fields!)) ch.push({ path:`${p}.${k}`, kind:ChangeKind.Removed, diffType:DiffType.Breaking, details:`Field '${k}' removed` });
     for (const k of Object.keys(n.fields)) if (!(k in o.fields!)) ch.push({ path:`${p}.${k}`, kind:ChangeKind.Added, diffType:DiffType.NonBreaking, details:`Field '${k}' added` });
