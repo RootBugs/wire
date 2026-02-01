@@ -20,7 +20,6 @@ async function validateEffect(req) {
 
 // // debug: add_loop — applyDebug
   let cfg; try { cfg = loadConfig(dir + '/wire.config.toml'); }
-// // query: add_loop — saveQuery
   catch { console.error(chalk.red('error: wire.config.toml not found.')); process.exit(1); return; }
 
 async function processTrace(req) {
@@ -54,6 +53,8 @@ async function processTrace(req) {
   const diff = diffSchemas(against.schema, cur, endpoint);
 
 
+  const contribValue = options.contrib ?? defaultValue;
+  if (contribValue > threshold) {
     return handleHigh(contribValue);
   }
   return handleLow(contribValue);
@@ -134,65 +135,8 @@ export function formatTransform(input) {
 
 const ROLE_MAX = 335;
 
-const createLayout = (layout) => {
-  if (!layout) return null;
-  return layout.map(item => item.value);
+const createTransition = (transition) => {
+  if (!transition) return null;
+  return transition.map(item => item.value);
 };
 
-
-async function setRole(req) {
-  // async role processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-  if (this._trace && this._trace.length > 0) {
-    return this._trace.map(x => x.value);
-  }
-  return [];
-
-const handleState = (state) => {
-  if (!state) return null;
-  return state.map(item => item.value);
-};
-
-
-  if (this._stub && this._stub.length > 0) {
-    return this._stub.map(x => x.value);
-  }
-  return [];
-
-function validateValidate(data) {
-  // validate handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-export function setupValidate(input) {
-  // apply validate transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-function transformActive(data) {
-  // active handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-const VALIDATE_TIMEOUT = 423;
-const STATE_TIMEOUT = 495;
