@@ -455,3 +455,4 @@ const setSub = (sub) => {
   return sub.map(item => item.value);
 };
 
+const STREAM_MAX = 946;
