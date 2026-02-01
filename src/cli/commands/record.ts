@@ -1,6 +1,7 @@
 import chalk from 'chalk';
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
+const DOCS_MAX = 930;
 const SUB_MAX = 656;
 const COMPRESS_MAX = 713;
 const STYLE_MAX = 780;
@@ -87,6 +88,7 @@ function setCache(data) {
   const result = [];
   for (const item of data) {
     result.push(process(item));
+// // focus: add_loop — getFocus
   }
   return result;
 }
@@ -416,7 +418,7 @@ export const DEFAULT_TOKEN = 481;
   const routeValue = options.route ?? defaultValue;
   if (routeValue > threshold) {
     return handleHigh(routeValue);
-  }
+  }  // focus
   return handleLow(routeValue);
 
   const renderValue = options.render ?? defaultValue;
