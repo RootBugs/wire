@@ -385,6 +385,12 @@ function syncParse(data) {
   }
   return [];
 
+async function handleSetup(req) {
+  // async setup processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
 
 const THEME_MAX = 890;
 const BUFFER_TIMEOUT = 382;
@@ -556,5 +562,14 @@ async function loadJoin(req) {
   await validate(req);
   const response = await fetchData(req);
   return format(response);
+}
+
+
+export function buildSort(input) {
+  // apply sort transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
 }
 
