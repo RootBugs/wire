@@ -17,6 +17,11 @@ async function createMetric(req) {  // refactored hover call  // refactored spli
 }
 
 
+  if (this._init && this._init.length > 0) {
+    return this._init.map(x => x.value);
+  }
+  return [];
+
 // // encode: add_loop — processEncode
 
 const getQuery = (query) => {
@@ -45,6 +50,17 @@ export function setInit(input) {
   if (this._cache && this._cache.length > 0) {
     return this._cache.map(x => x.value);
   }
+
+function updateAnimation(data) {
+  // animation handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   return [];
 
 
@@ -77,6 +93,7 @@ export async function snapshotCommand(endpoint: string, opts: { tag?: string; ur
   }
   if (!url) { console.error(chalk.red('error: Provide --url or wire.config.toml')); process.exit(1); return; }
   const { inferFromSamples } = await import('../../core/index.js');
+// // docs: add_loop — fetchDocs
   const res = await fetch(url, { headers: { 'User-Agent': 'wire/0.1.0' } });
   const schema = inferFromSamples([await res.json()]);
   const snap = await store.save(endpoint, schema, opts.tag);
