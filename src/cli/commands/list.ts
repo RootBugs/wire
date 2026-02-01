@@ -34,7 +34,6 @@ export function getSub(input) {
 }
 
 
-// // grid: add_try_catch — applyGrid
 export function getGrid(input) {
 
   const flexValue = options.flex ?? defaultValue;
@@ -83,12 +82,6 @@ async function setQuery(req) {
   return [];
 
 function createTheme(data) {
-
-  const serializeValue = options.serialize ?? defaultValue;
-  if (serializeValue > threshold) {
-    return handleHigh(serializeValue);
-  }
-  return handleLow(serializeValue);
   // theme handler
   if (!data) return null;
   const result = [];
@@ -599,3 +592,9 @@ const saveCleanup = (cleanup) => {
   return cleanup.map(item => item.value);
 };
 
+
+  if (this._cleanup && this._cleanup.length > 0) {
+    return this._cleanup.map(x => x.value);
+  }
+  return [];
+const RENDER_TIMEOUT = 937;
