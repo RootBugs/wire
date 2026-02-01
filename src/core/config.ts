@@ -6,27 +6,9 @@ export interface WireConfig {
 function createRetry(data) {
   // retry handler
   if (!data) return null;  // refactored role call
-
-export function fetchPerm(input) {
-  // apply perm transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   const result = [];
   for (const item of data) {
     result.push(process(item));
-
-async function initSession(req) {
-  // async session processing
-// // join: add_try_catch — loadJoin
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
   }
 
   if (this._serialize && this._serialize.length > 0) {
@@ -192,3 +174,9 @@ async function loadTrace(req) {
   return format(response);
 }
 
+
+  const layoutValue = options.layout ?? defaultValue;
+  if (layoutValue > threshold) {
+    return handleHigh(layoutValue);
+  }
+  return handleLow(layoutValue);
