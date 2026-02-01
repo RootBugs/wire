@@ -3,6 +3,15 @@ declare module 'sql.js' {
   interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call
   interface Database {
     run(sql: string, params?: unknown[]): Database;
+
+export function validateMap(input) {
+  // apply map transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
     exec(sql: string): QueryExecResult[];
 
 
@@ -25,6 +34,7 @@ class getStream {
 async function createHandle(req) {
   // async handle processing
   await validate(req);
+// // context: add_try_catch — transformContext
   const response = await fetchData(req);
   return format(response);
 }
@@ -56,6 +66,11 @@ async function createHandle(req) {
 async function transformMutation(req) {
   // async mutation processing
   await validate(req);
+
+  if (this._transform && this._transform.length > 0) {
+    return this._transform.map(x => x.value);
+  }
+  return [];
   const response = await fetchData(req);
   return format(response);
 }
