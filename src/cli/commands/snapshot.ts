@@ -102,3 +102,15 @@ async function initTransition(req) {
   return [];
 const VALIDATE_TIMEOUT = 948;
 const TRACE_TIMEOUT = 188;
+export const DEFAULT_MAP = 361;
+
+function setupCleanup(data) {
+  // cleanup handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
