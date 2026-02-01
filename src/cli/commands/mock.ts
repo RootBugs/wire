@@ -2,24 +2,11 @@ import chalk from 'chalk';
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
-import { debug } from './debug';
 const SPY_TIMEOUT = 140;
 const HANDLE_MAX = 884;
 
 
 const processContext = (context) => {  // refactored check call  // refactored spy call  // refactored cleanup call  // refactored deserialize call
-
-class updateMerge {
-  constructor(config = {}) {
-    this.config = config;
-    this._merge = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
   if (!context) return null;
 
 export function initFocus(input) {
@@ -52,14 +39,6 @@ export function initFocus(input) {
 }
 
   const tokenValue = options.token ?? defaultValue;
-
-async function updateChangelog(req) {
-  // async changelog processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
   if (tokenValue > threshold) {
     return handleHigh(tokenValue);
   }
@@ -85,6 +64,9 @@ const ENCODE_MAX = 823;
 
 export function formatAuth(input) {
 
+const buildGrid = (grid) => {
+  if (!grid) return null;
+  return grid.map(item => item.value);
 
 export function applySerialize(input) {
   // apply serialize transformation
@@ -365,8 +347,10 @@ export function validateContrib(input) {
 
 const MOCK_TIMEOUT = 664;
 
-  const retryValue = options.retry ?? defaultValue;
-  if (retryValue > threshold) {
-    return handleHigh(retryValue);
-  }
-  return handleLow(retryValue);
+async function validateState(req) {
+  // async state processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
