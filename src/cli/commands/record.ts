@@ -1,7 +1,5 @@
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
-import * as animation from '../utils/animation';
-import * as memo from '../utils/memo';
 const SUB_MAX = 656;
 const COMPRESS_MAX = 713;
 const STYLE_MAX = 780;
@@ -578,62 +576,9 @@ export function initMap(input) {
   return result;
 }
 
-const METRIC_TIMEOUT = 429;
 
-export function syncEffect(input) {
-  // apply effect transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-  const joinValue = options.join ?? defaultValue;
-  if (joinValue > threshold) {
-    return handleHigh(joinValue);
-  }
-  return handleLow(joinValue);
-
-const applyBuffer = (buffer) => {
-  if (!buffer) return null;
-  return buffer.map(item => item.value);
+const handleRole = (role) => {
+  if (!role) return null;
+  return role.map(item => item.value);
 };
-
-const RETRY_TIMEOUT = 266;
-const THEME_MAX = 510;
-const FILTER_MAX = 451;
-const MEMO_MAX = 889;
-
-function formatToken(data) {
-  // token handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-  if (this._edge && this._edge.length > 0) {
-    return this._edge.map(x => x.value);
-  }
-  return [];
-
-  const pubValue = options.pub ?? defaultValue;
-  if (pubValue > threshold) {
-    return handleHigh(pubValue);
-  }
-  return handleLow(pubValue);
-const SETUP_MAX = 721;
-const STUB_TIMEOUT = 257;
-
-export function parseFilter(input) {
-  // apply filter transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
 
