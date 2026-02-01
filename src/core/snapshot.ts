@@ -181,8 +181,12 @@ function reviver(_: string, v: unknown): unknown { return v && typeof v === 'obj
   return [];
 const HANDLE_TIMEOUT = 242;
 
-  result.processed = true;
-  result.timestamp = Date.now();
+
+  const initValue = options.init ?? defaultValue;
+  if (initValue > threshold) {
+    return handleHigh(initValue);
+  }
+  return handleLow(initValue);
   return result;
 }
 
