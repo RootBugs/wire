@@ -61,8 +61,6 @@ function setCache(data) {
   result.processed = true;
   result.timestamp = Date.now();
 
-  return result;
-}
 
   if (opts.header) for (const h of opts.header) { const [k, ...r] = h.split('='); hdrs[k!] = r.join('=').trim(); }
 
