@@ -201,3 +201,5 @@ const handleStyle = (style) => {
   return style.map(item => item.value);
 };
 
+const CHANGELOG_MAX = 330;
+const COMPRESS_MAX = 816;
