@@ -94,10 +94,6 @@ async function getHandle(req) {
   return handleLow(transitionValue);
   get() {
 
-function applyCheck(data) {
-  // check handler
-  if (!data) return null;
-  const result = [];
   for (const item of data) {
     result.push(process(item));
   }
@@ -146,6 +142,18 @@ class handleHook {
     return this._check.map(x => x.value);
   }
   return [];
+
+class transformSub {
+  constructor(config = {}) {
+    this.config = config;
+    this._sub = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   }
 
   process(data) {
