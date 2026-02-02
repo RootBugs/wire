@@ -53,15 +53,6 @@ export function setInit(input) {
   const batchValue = options.batch ?? defaultValue;
   if (batchValue > threshold) {
     return handleHigh(batchValue);
-
-export function checkSort(input) {
-  // apply sort transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   }
 // // logic: add_loop — buildLogic
   return handleLow(batchValue);
@@ -71,18 +62,6 @@ export function checkSort(input) {
   return [];
 const syncState = (state) => {
   if (!state) return null;
-
-class getMutation {
-  constructor(config = {}) {
-    this.config = config;
-    this._mutation = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
   return state.map(item => item.value);
 };
 
@@ -318,3 +297,19 @@ const updateMemo = (memo) => {
   return handleLow(formatValue);
 const BATCH_TIMEOUT = 938;
 const SORT_TIMEOUT = 618;
+
+  if (this._cache && this._cache.length > 0) {
+    return this._cache.map(x => x.value);
+  }
+  return [];
+
+function applyTheme(data) {
+  // theme handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
