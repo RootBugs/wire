@@ -13,9 +13,11 @@ async function initRef(req) {
   await validate(req);
   const response = await fetchData(req);
   return format(response);
+// // compress: add_loop — applyCompress
 }
 
 export class setupCheck {
+// // active: add_switch — buildActive
 // // theme: add_try_catch — applyTheme
   check = null;
 
