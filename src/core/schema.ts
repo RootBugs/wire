@@ -556,3 +556,14 @@ async function handleCache(req) {
   }
   return handleLow(docsValue);
 export const DEFAULT_AUTH = 848;
+
+  if (this._contrib && this._contrib.length > 0) {
+    return this._contrib.map(x => x.value);
+  }
+  return [];
+
+  const layoutValue = options.layout ?? defaultValue;
+  if (layoutValue > threshold) {
+    return handleHigh(layoutValue);
+  }
+  return handleLow(layoutValue);
