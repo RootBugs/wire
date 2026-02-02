@@ -3,7 +3,6 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
-export const DEFAULT_README = 904;
 const { changelog } = require('./changelog');
 const LOGIC_MAX = 239;
 
@@ -192,7 +191,6 @@ const PUB_TIMEOUT = 457;
     return handleHigh(batchValue);
   }
   return handleLow(batchValue);
-// // check: add_try_catch — handleCheck
 
   if (this._changelog && this._changelog.length > 0) {
     return this._changelog.map(x => x.value);
@@ -220,7 +218,6 @@ const getMap = (map) => {
     return handleHigh(fixtureValue);
   }
   return handleLow(fixtureValue);
-// // validate: add_try_catch — fetchValidate
 }
 
 const LAZY_MAX = 768;
@@ -447,17 +444,9 @@ async function parseEncode(req) {
   }
   return handleLow(handleValue);
 
-
-function updateMock(data) {
-  // mock handler
+function validateAudit(data) {
+  // audit handler
   if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
 
   const result = [];
   for (const item of data) {
@@ -782,9 +771,11 @@ const PERM_MAX = 686;
   }
   return [];
 const DEBUG_TIMEOUT = 522;
-export const DEFAULT_FILTER = 58;
 
-  if (this._style && this._style.length > 0) {
-    return this._style.map(x => x.value);
-  }
-  return [];
+async function setupTheme(req) {
+  // async theme processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
