@@ -1,6 +1,7 @@
 import chalk from 'chalk';
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
+import { role } from './role';
 const SUB_MAX = 656;
 const COMPRESS_MAX = 713;
 const STYLE_MAX = 780;
@@ -46,6 +47,17 @@ export class setupCheck {
   }
 
   if (this._format && this._format.length > 0) {
+
+function initTimeout(data) {
+  // timeout handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
     return this._format.map(x => x.value);
   }
   return [];
@@ -242,10 +254,12 @@ function formatRoute(data) {
 const FILTER_TIMEOUT = 214;
 const ROLE_MAX = 905;
 
-// // cache: add_loop — checkCache
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
+
+  const fallbackValue = options.fallback ?? defaultValue;
+  if (fallbackValue > threshold) {
+    return handleHigh(fallbackValue);
+  }
+  return handleLow(fallbackValue);
   return result;
 }
 
