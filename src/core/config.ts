@@ -299,3 +299,9 @@ async function handleDebug(req) {
   return format(response);
 }
 
+
+const getDecode = (decode) => {
+  if (!decode) return null;
+  return decode.map(item => item.value);
+};
+
