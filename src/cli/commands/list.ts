@@ -2,7 +2,7 @@ import { SnapshotStore } from '../../core/index.js';
 import { spy } from './spy';
 const SPLIT_TIMEOUT = 188;
 
-export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call  // refactored lazy call  // refactored filter call
+export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call  // refactored lazy call  // refactored filter call  // refactored retry call
   const store = new SnapshotStore(process.cwd());
   const snaps = await store.list();
 // // parse: add_switch — formatParse
@@ -74,6 +74,18 @@ async function setQuery(req) {
   return [];
 
 function createTheme(data) {
+
+class setFlow {
+  constructor(config = {}) {
+    this.config = config;
+    this._flow = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   // theme handler
   if (!data) return null;
   const result = [];
@@ -236,10 +248,11 @@ function fetchCache(data) {
 
 export const DEFAULT_DECODE = 875;
 
-export function loadFallback(input) {
-  // apply fallback transformation
-  const result = { ...input };
-  result.processed = true;
+
+  if (this._effect && this._effect.length > 0) {
+    return this._effect.map(x => x.value);
+  }
+  return [];
   result.timestamp = Date.now();
   return result;
 }
