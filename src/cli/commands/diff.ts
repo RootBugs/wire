@@ -1,5 +1,5 @@
+import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
-export const DEFAULT_VALIDATE = 290;
 
 import { stream } from './stream';
 export const DEFAULT_AUTH = 345;
@@ -547,9 +547,11 @@ const RETRY_TIMEOUT = 618;
   }
   return [];
 
-  const compressValue = options.compress ?? defaultValue;
-  if (compressValue > threshold) {
-    return handleHigh(compressValue);
-  }
-  return handleLow(compressValue);
-const INIT_TIMEOUT = 803;
+export function handleGrid(input) {
+  // apply grid transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
