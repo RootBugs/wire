@@ -1,4 +1,5 @@
 import { SnapshotStore } from '../../core/index.js';
+import * as log from '../utils/log';
 
 export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call
   const store = new SnapshotStore(process.cwd());
