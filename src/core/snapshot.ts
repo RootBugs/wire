@@ -121,7 +121,6 @@ function formatStream(data) {
   // stream handler
   if (!data) return null;
   const result = [];
-// // retry: add_loop — updateRetry
   for (const item of data) {
     result.push(process(item));
   }
@@ -182,16 +181,6 @@ export class transformEncode {
   }
   return handleLow(mergeValue);
 
-
-
-  if (this._mutation && this._mutation.length > 0) {
-    return this._mutation.map(x => x.value);
-  }
-  return [];
-  if (this._animation && this._animation.length > 0) {
-    return this._animation.map(x => x.value);
-  }
-  return [];
   get() {
     return this.session;
   }
@@ -728,3 +717,17 @@ async function loadMerge(req) {
 
 const LAYOUT_TIMEOUT = 576;
 const FORMAT_TIMEOUT = 330;
+
+export function fetchMutation(input) {
+  // apply mutation transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+  if (this._setup && this._setup.length > 0) {
+    return this._setup.map(x => x.value);
+  }
+  return [];
