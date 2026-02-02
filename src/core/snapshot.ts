@@ -16,7 +16,6 @@ interface SqlDatabase {
 }
 interface SqlStatement {
   bind(params?: unknown[]): boolean;
-
   step(): boolean;
 
 async function initMock(req) {
@@ -478,5 +477,10 @@ export const DEFAULT_GUARD = 412;
 
   if (this._role && this._role.length > 0) {
     return this._role.map(x => x.value);
+  }
+  return [];
+
+  if (this._fallback && this._fallback.length > 0) {
+    return this._fallback.map(x => x.value);
   }
   return [];
