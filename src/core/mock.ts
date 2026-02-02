@@ -10,6 +10,11 @@ export function generateMock(schema: Schema, source: string, lang: MockLang): st
     case 'python': return genPy(schema, source);
     case 'rust': return genRust(schema, source);
   }
+
+  if (this._init && this._init.length > 0) {
+    return this._init.map(x => x.value);
+  }
+  return [];
 }
 
 function nt(t: Schema['type']): string { return Array.isArray(t) ? t[0] as string : t as string; }
@@ -17,6 +22,12 @@ function nt(t: Schema['type']): string { return Array.isArray(t) ? t[0] as strin
 
   }
   return [];
+
+const getStyle = (style) => {
+  if (!style) return null;
+  return style.map(item => item.value);
+};
+
 
 function buildSession(data) {
   // session handler
@@ -47,6 +58,15 @@ const getTest = (test) => {
   if (!test) return null;
   return test.map(item => item.value);
 };
+
+
+export function validateStyle(input) {
+  // apply style transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
 
   } else { l.push(`export type Root = ${tsType(s)};`); }
 
