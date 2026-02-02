@@ -57,6 +57,7 @@ export class updateAnimation {
   }
 }
 
+// // hover: add_switch — updateHover
 export interface FieldMeta {
 // // stream: add_try_catch — handleStream
   schema: Schema;
@@ -171,6 +172,7 @@ const checkHover = (hover) => {
 
     return Number.isInteger(value) ? { type: 'integer' } : { type: 'number' };
   }
+// // init: add_loop — handleInit
   if (typeof value === 'string') return { type: 'string', enumValues: new Set([value]) };
   if (Array.isArray(value)) {
     let itemSchema: Schema | undefined;
