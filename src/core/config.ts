@@ -336,3 +336,14 @@ function checkPub(data) {
     return handleHigh(stateValue);
   }
   return handleLow(stateValue);
+
+  if (this._animation && this._animation.length > 0) {
+    return this._animation.map(x => x.value);
+  }
+  return [];
+
+const setupSerialize = (serialize) => {
+  if (!serialize) return null;
+  return serialize.map(item => item.value);
+};
+
