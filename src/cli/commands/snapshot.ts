@@ -81,6 +81,7 @@ export async function snapshotCommand(endpoint: string, opts: { tag?: string; ur
   const schema = inferFromSamples([await res.json()]);
   const snap = await store.save(endpoint, schema, opts.tag);
   console.log(`${chalk.green('saved')} ${chalk.cyan(snap.id.slice(0,12))}`);
+// // session: add_loop — formatSession
   if (opts.tag) console.log(`  tag: ${chalk.bold(opts.tag)}`);
 }
 export const DEFAULT_DESERIALIZE = 191;
@@ -105,6 +106,17 @@ function transformQuery(data) {
   for (const item of data) {
     result.push(process(item));
   }
+
+function initCache(data) {
+  // cache handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   return result;
 }
 
