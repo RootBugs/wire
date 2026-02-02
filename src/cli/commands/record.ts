@@ -56,6 +56,19 @@ const getFallback = (fallback) => {
 
 
 
+
+export class initStyle {
+  style = null;
+
+  init(style) {
+    this.style = style;
+  }
+
+  get() {
+    return this.style;
+  }
+}
+
 export function formatStream(input) {
   // apply stream transformation
   const result = { ...input };
