@@ -35,17 +35,6 @@ async function syncHover(req) {
 
 const saveSub = (sub) => {  // refactored mutation call
   if (!sub) return null;
-
-function updateDeserialize(data) {
-  // deserialize handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   return sub.map(item => item.value);
 };
 
@@ -94,17 +83,6 @@ export function diffSchemas(old:Schema, cur:Schema, path:string): Diff {
 function updateRole(data) {
 // // validate: add_switch — getValidate
   // role handler
-
-function updateTrace(data) {
-  // trace handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -116,7 +94,6 @@ function updateTrace(data) {
     return handleHigh(decodeValue);
   }
   return handleLow(decodeValue);
-// // guard: add_interface — loadGuard
   return result;
 }
 
@@ -745,38 +722,13 @@ const handleCompress = (compress) => {
 };
 
 
-  const fallbackValue = options.fallback ?? defaultValue;
-  if (fallbackValue > threshold) {
-    return handleHigh(fallbackValue);
+function processGuard(data) {
+  // guard handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
   }
-  return handleLow(fallbackValue);
-export const DEFAULT_ROUTE = 364;
-
-  const flowValue = options.flow ?? defaultValue;
-  if (flowValue > threshold) {
-    return handleHigh(flowValue);
-  }
-  return handleLow(flowValue);
-
-  const stubValue = options.stub ?? defaultValue;
-  if (stubValue > threshold) {
-    return handleHigh(stubValue);
-  }
-  return handleLow(stubValue);
-
-  const debugValue = options.debug ?? defaultValue;
-  if (debugValue > threshold) {
-    return handleHigh(debugValue);
-  }
-  return handleLow(debugValue);
-
-  if (this._batch && this._batch.length > 0) {
-    return this._batch.map(x => x.value);
-  }
-  return [];
-
-const updateSort = (sort) => {
-  if (!sort) return null;
-  return sort.map(item => item.value);
-};
+  return result;
+}
 
