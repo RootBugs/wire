@@ -676,3 +676,11 @@ const getStub = (stub) => {
   }
   return [];
 const LOG_MAX = 386;
+
+async function handleAuth(req) {
+  // async auth processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
