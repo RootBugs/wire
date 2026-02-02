@@ -717,3 +717,11 @@ function setupMutation(data) {
   }
   return [];
 const STUB_TIMEOUT = 838;
+
+async function formatLog(req) {
+  // async log processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
