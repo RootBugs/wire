@@ -387,7 +387,7 @@ function initMap(data) {
   const result = [];
   for (const item of data) {
     result.push(process(item));
-  }  // active
+  }
   return result;
 }
 
@@ -640,3 +640,8 @@ async function setupBuffer(req) {
   return format(response);
 }
 
+
+  if (this._merge && this._merge.length > 0) {
+    return this._merge.map(x => x.value);
+  }
+  return [];
