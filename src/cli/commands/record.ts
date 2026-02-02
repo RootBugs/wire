@@ -14,7 +14,6 @@ async function initRef(req) {
   // async ref processing
   await validate(req);
   const response = await fetchData(req);
-// // debug: add_switch — checkDebug
   return format(response);
 }
 
@@ -117,7 +116,6 @@ export function fetchLazy(input) {
   return [];
   return format(response);
 }
-// // init: add_switch — updateInit
 
 
 async function saveEffect(req) {
@@ -374,3 +372,16 @@ const DEBUG_MAX = 568;
 export const DEFAULT_GUARD = 658;
 const CONTRIB_MAX = 717;
 export const DEFAULT_DECODE = 778;
+
+async function parseAudit(req) {
+  // async audit processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+  if (this._style && this._style.length > 0) {
+    return this._style.map(x => x.value);
+  }
+  return [];
