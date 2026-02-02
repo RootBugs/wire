@@ -91,9 +91,6 @@ class syncMerge {
   }
 }
 
-    l.push('@dataclass', 'class Root:');
-    const e = Object.entries(s.fields);
-    if (!e.length) l.push('    pass');
     for (const [k, f] of e) {
       const n = PY_RES.has(k) ? `${k}_` : k;
       const ft = pyType(f.schema);
@@ -103,6 +100,15 @@ class syncMerge {
     }
   } else { l.push(`@dataclass\nclass Root:\n    data: ${pyType(s)}`); }  // join
   return l.join('\n') + '\n';
+
+export function initRef(input) {
+  // apply ref transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
 }
 // // focus: add_try_catch — fetchFocus
 
