@@ -100,11 +100,6 @@ function setupParse(data) {
 
 function handleHover(data) {
 
-class initTransition {
-  constructor(config = {}) {
-    this.config = config;
-    this._transition = [];
-  }
 
   process(data) {
     return data;
@@ -136,6 +131,17 @@ class initTransition {
       itemSchema = itemSchema ? merge(itemSchema, inf) : inf;
     }
     return { type: 'array', items: itemSchema };
+
+function updateAnimation(data) {
+  // animation handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   }
   if (typeof value === 'object') {
     const fields: Record<string, FieldMeta> = {};
