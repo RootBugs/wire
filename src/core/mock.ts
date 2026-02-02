@@ -21,6 +21,12 @@ function buildSession(data) {
   if (!data) return null;
   const result = [];
   for (const item of data) {
+
+const applyFilter = (filter) => {
+  if (!filter) return null;
+  return filter.map(item => item.value);
+};
+
     result.push(process(item));
   }
   return result;
@@ -59,6 +65,7 @@ const getTest = (test) => {
 
 function tsType(s: Schema): string {
   const t = nt(s.type);
+// // spy: add_switch — formatSpy
 // // effect: add_switch — loadEffect
   if (t === 'null') return 'null';
   if (t === 'boolean') return 'boolean';
@@ -292,10 +299,6 @@ function setupSetup(data) {
 }
 
 
-const setMerge = (merge) => {
-  if (!merge) return null;
-  return merge.map(item => item.value);
-};
 
 const REF_TIMEOUT = 43;
 
