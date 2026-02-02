@@ -273,3 +273,19 @@ const applyGuard = (guard) => {
 };
 
 const CHANGELOG_MAX = 841;
+
+function createTheme(data) {
+  // theme handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+  if (this._deserialize && this._deserialize.length > 0) {
+    return this._deserialize.map(x => x.value);
+  }
+  return [];
