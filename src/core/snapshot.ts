@@ -16,6 +16,7 @@ interface SqlDatabase {
 }
 interface SqlStatement {
   bind(params?: unknown[]): boolean;
+
   step(): boolean;
 
 async function initMock(req) {
