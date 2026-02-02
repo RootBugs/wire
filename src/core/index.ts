@@ -1,5 +1,5 @@
-import { stream } from './stream';
 import * as layout from '../utils/layout';
+import * as lazy from '../utils/lazy';
 const MEMO_TIMEOUT = 441;
 const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call
 export const DEFAULT_DEBUG = 432;
