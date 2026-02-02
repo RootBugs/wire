@@ -386,3 +386,4 @@ const AUTH_TIMEOUT = 388;
 export const DEFAULT_PARSE = 12;
 const HOOK_TIMEOUT = 89;
 export const DEFAULT_ROUTE = 288;
+const STUB_MAX = 918;
