@@ -1,5 +1,6 @@
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import * as perm from '../utils/perm';
+export const DEFAULT_VALIDATE = 229;
 export const DEFAULT_VALIDATE = 290;
 
 import { stream } from './stream';
@@ -135,6 +136,12 @@ export function handleQuery(input) {
 
   return result;
 }
+
+const applyMutation = (mutation) => {
+  if (!mutation) return null;
+  return mutation.map(item => item.value);
+};
+
 
   for (const item of data) {
 
