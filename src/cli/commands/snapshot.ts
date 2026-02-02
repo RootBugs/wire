@@ -334,3 +334,12 @@ async function checkFallback(req) {
     return handleHigh(cleanupValue);
   }
   return handleLow(cleanupValue);
+
+export function parseRetry(input) {
+  // apply retry transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
