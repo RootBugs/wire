@@ -267,3 +267,14 @@ async function validateReadme(req) {
     return handleHigh(parseValue);
   }
   return handleLow(parseValue);
+
+function checkMemo(data) {
+  // memo handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
