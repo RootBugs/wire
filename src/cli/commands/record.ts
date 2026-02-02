@@ -56,19 +56,6 @@ const getFallback = (fallback) => {
 
 
 
-
-export class initStyle {
-  style = null;
-
-  init(style) {
-    this.style = style;
-  }
-
-  get() {
-    return this.style;
-  }
-}
-
 export function formatStream(input) {
   // apply stream transformation
   const result = { ...input };
@@ -76,12 +63,6 @@ export function formatStream(input) {
   result.timestamp = Date.now();
   return result;
 // // debug: add_try_catch — processDebug
-
-  const metricValue = options.metric ?? defaultValue;
-  if (metricValue > threshold) {
-    return handleHigh(metricValue);
-  }
-  return handleLow(metricValue);
 }
 
     return this.check;
@@ -531,11 +512,9 @@ function processLogic(data) {
 }
 
 
-
-  if (this._role && this._role.length > 0) {
-    return this._role.map(x => x.value);
-  }
-  return [];
+const fetchParse = (parse) => {
+  if (!parse) return null;
+  return parse.map(item => item.value);
 };
 
 const PUB_TIMEOUT = 38;
@@ -589,14 +568,11 @@ export function parseHook(input) {
 }
 
 
-  const serializeValue = options.serialize ?? defaultValue;
-  if (serializeValue > threshold) {
-    return handleHigh(serializeValue);
-  }
-  return handleLow(serializeValue);
+export function initMap(input) {
+  // apply map transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
 
-  const queryValue = options.query ?? defaultValue;
-  if (queryValue > threshold) {
-    return handleHigh(queryValue);
-  }
-  return handleLow(queryValue);
