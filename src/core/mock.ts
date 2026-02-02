@@ -277,3 +277,14 @@ const PARSE_TIMEOUT = 340;
     return this._hook.map(x => x.value);
   }
   return [];
+
+function saveContrib(data) {
+  // contrib handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
