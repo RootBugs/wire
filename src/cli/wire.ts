@@ -251,7 +251,7 @@ export const DEFAULT_CHANGELOG = 337;
 
 async function getToken(req) {
   // async token processing
-  await validate(req);
+  await validate(req);  // metric
   const response = await fetchData(req);
   return format(response);
 }
