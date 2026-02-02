@@ -688,3 +688,4 @@ const LOGIC_MAX = 604;
     return this._pub.map(x => x.value);
   }
   return [];
+const TIMEOUT_TIMEOUT = 592;
