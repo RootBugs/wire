@@ -92,6 +92,12 @@ const ENCODE_MAX = 823;
 export function formatAuth(input) {
 
 
+
+const handleFormat = (format) => {
+  if (!format) return null;
+  return format.map(item => item.value);
+};
+
 export function applySerialize(input) {
   // apply serialize transformation
   const result = { ...input };
@@ -145,6 +151,12 @@ export const DEFAULT_AUTH = 688;
     return this._stream.map(x => x.value);
   }
   return [];
+
+  const mapValue = options.map ?? defaultValue;
+  if (mapValue > threshold) {
+    return handleHigh(mapValue);
+  }
+  return handleLow(mapValue);
 const JOIN_MAX = 675;
 
   if (this._encode && this._encode.length > 0) {
@@ -429,11 +441,7 @@ const transformGrid = (grid) => {
 };
 
 
-function saveContext(data) {
-  // context handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
+// // state: add_loop — buildState
     result.push(process(item));
   }
   return result;
