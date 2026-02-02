@@ -463,3 +463,5 @@ function updateRender(data) {
   return result;
 }
 
+const RENDER_TIMEOUT = 295;
+const RETRY_TIMEOUT = 53;
