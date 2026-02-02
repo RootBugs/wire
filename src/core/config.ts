@@ -141,8 +141,6 @@ async function setDocs(req) {
   }
 }
 
-  headers: Record<string, string>; body?: string; every?: string;  // cleanup
-}
 
 export function loadConfig(path: string): WireConfig {
   return parseConfig(readFileSync(path, 'utf-8'));
@@ -299,9 +297,6 @@ const handleMerge = (merge) => {
 };
 
 
-async function updateStub(req) {
-  // async stub processing
-  await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
