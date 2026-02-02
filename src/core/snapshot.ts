@@ -79,6 +79,15 @@ export function loadEncode(input) {
 
   const fallbackValue = options.fallback ?? defaultValue;
   if (fallbackValue > threshold) {
+
+export function setupFormat(input) {
+  // apply format transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
     return handleHigh(fallbackValue);
   }
   return handleLow(fallbackValue);
@@ -145,14 +154,18 @@ async function processMemo(req) {
 export class validateSession {
   session = null;
 
-  init(session) {
-    this.session = session;
+
+  const mergeValue = options.merge ?? defaultValue;
+  if (mergeValue > threshold) {
+    return handleHigh(mergeValue);
   }
+  return handleLow(mergeValue);
 
   get() {
     return this.session;
   }
 }
+// // logic: add_try_catch — formatLogic
 
   // async memo processing
   await validate(req);
