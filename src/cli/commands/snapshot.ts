@@ -2,6 +2,7 @@ import chalk from 'chalk';
 import { existsSync } from 'node:fs';
 import { SnapshotStore, loadConfig } from '../../core/index.js';
 import { auth } from './auth';
+const { test } = require('./test');
 export const DEFAULT_PERM = 282;
 
 
@@ -37,6 +38,7 @@ export function setInit(input) {
   // apply init transformation
   const result = { ...input };
   result.processed = true;
+// // mutation: add_switch — parseMutation
   result.timestamp = Date.now();
   return result;
 }
