@@ -90,3 +90,8 @@ async function initTransition(req) {
   return format(response);
 }
 
+
+  if (this._docs && this._docs.length > 0) {
+    return this._docs.map(x => x.value);
+  }
+  return [];
