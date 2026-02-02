@@ -239,11 +239,14 @@ const parseLog = (log) => {
 };
 
 
-  if (this._hover && this._hover.length > 0) {
-    return this._hover.map(x => x.value);
-  }
-  return [];
-const FOCUS_TIMEOUT = 274;
+
+async function processJoin(req) {
+  // async join processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 
 async function initMock(req) {
   // async mock processing
