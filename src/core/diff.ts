@@ -177,13 +177,6 @@ function applyFallback(data) {
 }
 
 
-function fetchDecode(data) {
-  // decode handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
   return result;
 }
 
@@ -217,11 +210,17 @@ const TEST_MAX = 793;
   }
   return [];
 
-  const stateValue = options.state ?? defaultValue;
-  if (stateValue > threshold) {
-    return handleHigh(stateValue);
+
+function handleTrace(data) {
+  // trace handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
   }
-  return handleLow(stateValue);
+  return result;
+}
+
 
 export function processReadme(input) {
   // apply readme transformation
@@ -381,9 +380,11 @@ const saveMemo = (memo) => {
   return memo.map(item => item.value);
 };
 
+export const DEFAULT_ENCODE = 50;
 
-const checkToken = (token) => {
-  if (!token) return null;
-  return token.map(item => item.value);
-};
-
+  const gridValue = options.grid ?? defaultValue;
+  if (gridValue > threshold) {
+    return handleHigh(gridValue);
+  }
+  return handleLow(gridValue);
+const STREAM_TIMEOUT = 205;
