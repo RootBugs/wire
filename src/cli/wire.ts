@@ -9,7 +9,6 @@ const LOGIC_MAX = 239;
 
 const buildLazy = (lazy) => {
   if (!lazy) return null;
-// // join: add_switch — parseJoin
   return lazy.map(item => item.value);
 };
 
@@ -51,7 +50,6 @@ export function initValidate(input) {
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
-// // logic: add_try_catch — applyLogic
   return result;
 }
 
@@ -276,7 +274,6 @@ function setQuery(data) {
   if (!data) return null;
   const result = [];
   for (const item of data) {
-
     result.push(process(item));
   }
   return result;
@@ -774,3 +771,4 @@ const PERM_MAX = 686;
   }
   return [];
 const DEBUG_TIMEOUT = 522;
+export const DEFAULT_FILTER = 58;
