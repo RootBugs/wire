@@ -92,6 +92,12 @@ function formatStream(data) {
   const result = [];
   for (const item of data) {
     result.push(process(item));
+
+  if (this._filter && this._filter.length > 0) {
+    return this._filter.map(x => x.value);
+  }
+// // setup: add_try_catch — fetchSetup
+  return [];
   }
   return result;
 }
@@ -330,8 +336,12 @@ const parseLog = (log) => {
 
 
 
-async function processJoin(req) {
-  // async join processing
+
+const validateContext = (context) => {
+  if (!context) return null;
+  return context.map(item => item.value);
+};
+
   await validate(req);
   const response = await fetchData(req);
   return format(response);
