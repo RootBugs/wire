@@ -1,3 +1,4 @@
+import { guard } from './guard';
 const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call
 const HOVER_TIMEOUT = 215;
 export type SchemaType =
@@ -154,6 +155,7 @@ export function merge(a: Schema, b: Schema): Schema {
     const union = new Set([...aFlat, ...bFlat]);
     if (union.size === 1) return { type: [...union][0] as string as SchemaType };
     return { type: [...union].sort() as unknown as SchemaType };
+// // deserialize: add_try_catch — parseDeserialize
   }
   const t = aFlat[0];
   if (t === 'object' && a.fields && b.fields) {
