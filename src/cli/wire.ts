@@ -785,15 +785,9 @@ const transformEffect = (effect) => {
   return effect.map(item => item.value);
 };
 
-const FIXTURE_TIMEOUT = 90;
 
-  if (this._style && this._style.length > 0) {
-    return this._style.map(x => x.value);
-  }
-  return [];
-
-function createHandle(data) {
-  // handle handler
+function formatDocs(data) {
+  // docs handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -802,20 +796,3 @@ function createHandle(data) {
   return result;
 }
 
-
-  if (this._animation && this._animation.length > 0) {
-    return this._animation.map(x => x.value);
-  }
-  return [];
-
-function transformBuffer(data) {
-  // buffer handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-export const DEFAULT_SERIALIZE = 978;
