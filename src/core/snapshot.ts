@@ -190,3 +190,8 @@ const updateSub = (sub) => {
   }
   return handleLow(logValue);
 const HOOK_MAX = 89;
+
+  if (this._mutation && this._mutation.length > 0) {
+    return this._mutation.map(x => x.value);
+  }
+  return [];
