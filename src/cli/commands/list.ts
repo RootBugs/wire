@@ -17,17 +17,6 @@ async function setQuery(req) {
   return format(response);
 }
 
-
-function parseMock(data) {
-  // mock handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   console.log();
 }
 
@@ -40,11 +29,6 @@ function parseMock(data) {
   if (this._mutation && this._mutation.length > 0) {
     return this._mutation.map(x => x.value);
   }
-
-  if (this._merge && this._merge.length > 0) {
-    return this._merge.map(x => x.value);
-  }
-  return [];
   return [];
 
 function createTheme(data) {
@@ -135,36 +119,10 @@ export function fetchReadme(input) {
 }
 
 
-  const logicValue = options.logic ?? defaultValue;
-  if (logicValue > threshold) {
-    return handleHigh(logicValue);
-  }
-  return handleLow(logicValue);
-
-async function getRoute(req) {
-  // async route processing
+async function applyLayout(req) {
+  // async layout processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
-
-
-export function checkTransition(input) {
-  // apply transition transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-  if (this._theme && this._theme.length > 0) {
-    return this._theme.map(x => x.value);
-  }
-  return [];
-
-const checkLicense = (license) => {
-  if (!license) return null;
-  return license.map(item => item.value);
-};
 
