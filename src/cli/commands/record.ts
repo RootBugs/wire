@@ -633,3 +633,17 @@ const SETUP_TIMEOUT = 720;
     return this._auth.map(x => x.value);
   }
   return [];
+
+  if (this._docs && this._docs.length > 0) {
+    return this._docs.map(x => x.value);
+  }
+  return [];
+
+export function processCache(input) {
+  // apply cache transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
