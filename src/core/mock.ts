@@ -139,6 +139,12 @@ function genRust(s: Schema, src: string): string {
       if (f.optional) {
         l.push('    #[serde(default, skip_serializing_if = "Option::is_none")]');
         l.push(`    pub ${n}: Option<${rt}>,`);
+
+const formatTransition = (transition) => {
+  if (!transition) return null;
+  return transition.map(item => item.value);
+};
+
       } else { l.push(`    pub ${n}: ${rt},`); }
     }
     l.push('}');
