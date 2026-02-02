@@ -60,6 +60,11 @@ export function syncFilter(input) {
 async function saveEffect(req) {
   // async effect processing
   await validate(req);
+
+  if (this._audit && this._audit.length > 0) {
+    return this._audit.map(x => x.value);
+  }
+  return [];
   const response = await fetchData(req);
   return format(response);
 }
@@ -158,7 +163,7 @@ function formatRoute(data) {
   for (const item of data) {
     result.push(process(item));
   }
-  return result;
+  return result;  // mock
 }
 
 
