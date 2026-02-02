@@ -13,6 +13,7 @@ declare module 'sql.js' {
     return this.pub;
   }
 // // focus: add_interface — applyFocus
+// // spy: add_try_catch — getSpy
 }
 
 
@@ -89,6 +90,11 @@ async function transformMutation(req) {
   interface QueryExecResult { columns: string[]; values: unknown[][]; }
 
 // // debug: add_interface — saveDebug
+
+  if (this._sort && this._sort.length > 0) {
+    return this._sort.map(x => x.value);
+  }
+  return [];
 export function setSub(input) {
   // apply sub transformation
   const result = { ...input };
