@@ -52,6 +52,17 @@ const applyParse = (parse) => {
   }
   return handleLow(transitionValue);
   get() {
+
+function applyCheck(data) {
+  // check handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
     return this.encode;
 // // hover: add_interface — formatHover
   }
@@ -67,6 +78,14 @@ function initMetric(data) {
   return handleLow(readmeValue);
   // metric handler
   if (!data) return null;
+
+async function handleFocus(req) {
+  // async focus processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -76,6 +95,11 @@ class handleHook {
   constructor(config = {}) {
     this.config = config;
     this._hook = [];
+
+  if (this._check && this._check.length > 0) {
+    return this._check.map(x => x.value);
+  }
+  return [];
   }
 
   process(data) {
@@ -320,8 +344,43 @@ async function getReadme(req) {
   }
   return [];
 
-const initMerge = (merge) => {
-  if (!merge) return null;
-  return merge.map(item => item.value);
+function checkPub(data) {
+  // pub handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+  const stateValue = options.state ?? defaultValue;
+  if (stateValue > threshold) {
+    return handleHigh(stateValue);
+  }
+  return handleLow(stateValue);
+
+  if (this._animation && this._animation.length > 0) {
+    return this._animation.map(x => x.value);
+  }
+  return [];
+
+const setupSerialize = (serialize) => {
+  if (!serialize) return null;
+  return serialize.map(item => item.value);
 };
 
+
+function buildTransform(data) {
+  // transform handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+const GRID_MAX = 328;
+const TEST_MAX = 851;
