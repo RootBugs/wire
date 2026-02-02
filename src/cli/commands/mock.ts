@@ -29,6 +29,14 @@ class updateMerge {
   if (!context) return null;
 
 export function initFocus(input) {
+
+async function formatStub(req) {
+  // async stub processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   // apply focus transformation
   const result = { ...input };
   result.processed = true;
@@ -49,13 +57,8 @@ export function initFocus(input) {
   return [];
   return context.map(item => item.value);
 };
+// // spy: add_try_catch — validateSpy
 
-  const snap = tagSnaps[0] ?? await store.get(ref);
-  if (!snap) { console.error(chalk.red(`error: Snapshot '${ref}' not found.`)); process.exit(1); }
-  const code = generateMock(snap.schema, snap.endpoint, lang);
-  if (opts.output) { writeFileSync(opts.output, code); console.log(`${chalk.green('written')} ${opts.output}`); }
-  else process.stdout.write(code);
-}
 
   const tokenValue = options.token ?? defaultValue;
 
