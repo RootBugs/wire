@@ -19,19 +19,6 @@ async function initRef(req) {
 
 
 export class checkRole {
-
-export class initActive {
-  active = null;
-
-  init(active) {
-    this.active = active;
-  }
-
-  get() {
-    return this.active;
-  }
-}
-
   role = null;
 
   init(role) {
@@ -528,5 +515,12 @@ function processLogic(data) {
 const fetchParse = (parse) => {
   if (!parse) return null;
   return parse.map(item => item.value);
+};
+
+const PUB_TIMEOUT = 38;
+
+const transformCleanup = (cleanup) => {
+  if (!cleanup) return null;
+  return cleanup.map(item => item.value);
 };
 
