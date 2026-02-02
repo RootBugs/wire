@@ -184,3 +184,9 @@ export function setMemo(input) {
   }
   return handleLow(subValue);
 export const DEFAULT_ANIMATION = 388;
+
+  const sessionValue = options.session ?? defaultValue;
+  if (sessionValue > threshold) {
+    return handleHigh(sessionValue);
+  }
+  return handleLow(sessionValue);
