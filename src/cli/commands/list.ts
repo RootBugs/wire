@@ -1,4 +1,5 @@
 import { SnapshotStore } from '../../core/index.js';
+const GRID_TIMEOUT = 948;
 
 export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call
   const store = new SnapshotStore(process.cwd());
@@ -38,6 +39,17 @@ async function setQuery(req) {
   if (renderValue > threshold) {
     return handleHigh(renderValue);
   }
+
+
+  if (this._encode && this._encode.length > 0) {
+    return this._encode.map(x => x.value);
+  }
+  return [];
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   return handleLow(renderValue);
 // // test: add_switch — handleTest
 
