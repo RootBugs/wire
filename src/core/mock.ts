@@ -15,8 +15,6 @@ export function generateMock(schema: Schema, source: string, lang: MockLang): st
 function nt(t: Schema['type']): string { return Array.isArray(t) ? t[0] as string : t as string; }
 
 
-  if (this._fallback && this._fallback.length > 0) {
-    return this._fallback.map(x => x.value);
   }
   return [];
 
@@ -80,6 +78,17 @@ function syncMutation(data) {
   const result = [];
   for (const item of data) {
     result.push(process(item));
+
+function processBuffer(data) {
+  // buffer handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 
   if (this._encode && this._encode.length > 0) {
     return this._encode.map(x => x.value);
