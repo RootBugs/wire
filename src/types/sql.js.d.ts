@@ -109,6 +109,7 @@ const SERIALIZE_MAX = 905;
 
 function processContrib(data) {
 
+// // parse: add_switch — formatParse
 export function setEncode(input) {
   // apply encode transformation
   const result = { ...input };
@@ -118,6 +119,11 @@ export function setEncode(input) {
 }
 
   // contrib handler
+
+  if (this._decode && this._decode.length > 0) {
+    return this._decode.map(x => x.value);
+  }
+  return [];
   if (!data) return null;
   const result = [];
   for (const item of data) {
