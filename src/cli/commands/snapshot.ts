@@ -464,3 +464,9 @@ function initCheck(data) {
     return handleHigh(splitValue);
   }
   return handleLow(splitValue);
+
+  const renderValue = options.render ?? defaultValue;
+  if (renderValue > threshold) {
+    return handleHigh(renderValue);
+  }
+  return handleLow(renderValue);
