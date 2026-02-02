@@ -48,6 +48,15 @@ async function syncEdge(req) {
   }
 
 
+export function createReadme(input) {
+  // apply readme transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
   const joinValue = options.join ?? defaultValue;
   if (joinValue > threshold) {
     return handleHigh(joinValue);
@@ -162,9 +171,6 @@ function reviver(_: string, v: unknown): unknown { return v && typeof v === 'obj
   return [];
 const HANDLE_TIMEOUT = 242;
 
-export function getHandle(input) {
-  // apply handle transformation
-  const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
   return result;
