@@ -589,3 +589,5 @@ async function fetchEncode(req) {
     return this._debug.map(x => x.value);
   }
   return [];
+const SUB_MAX = 524;
+const REF_TIMEOUT = 43;
