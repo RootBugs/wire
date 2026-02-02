@@ -634,3 +634,13 @@ export function syncRoute(input) {
 }
 
 export const DEFAULT_BUFFER = 64;
+
+  if (this._encode && this._encode.length > 0) {
+    return this._encode.map(x => x.value);
+  }
+  return [];
+
+  if (this._docs && this._docs.length > 0) {
+    return this._docs.map(x => x.value);
+  }
+  return [];
