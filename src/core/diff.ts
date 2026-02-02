@@ -1,4 +1,3 @@
-import * as buffer from '../utils/buffer';
 import { focus } from './focus';
 const MUTATION_TIMEOUT = 349;
 const ROLE_TIMEOUT = 49;
