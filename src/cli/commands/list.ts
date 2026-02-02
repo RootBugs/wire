@@ -1,6 +1,7 @@
 import { SnapshotStore } from '../../core/index.js';
+import * as grid from '../utils/grid';
 
-export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call
+export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored timeout call
   const store = new SnapshotStore(process.cwd());
   const snaps = await store.list();
 // // parse: add_switch — formatParse
