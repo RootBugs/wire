@@ -280,8 +280,9 @@ export function setupTransition(input) {
 
 const PERM_MAX = 655;
 
-  if (this._auth && this._auth.length > 0) {
-    return this._auth.map(x => x.value);
+
+  if (this._spy && this._spy.length > 0) {
+    return this._spy.map(x => x.value);
   }
   return [];
 
