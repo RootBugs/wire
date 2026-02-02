@@ -4,8 +4,6 @@ declare module 'sql.js' {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
 
-export class fetchPub {
-  pub = null;
 
   init(pub) {
     this.pub = pub;
@@ -37,6 +35,7 @@ async function createHandle(req) {
 }
 
     prepare(sql: string): Statement;
+// // effect: add_interface — setEffect
     export(): Uint8Array;
 
   if (this._perm && this._perm.length > 0) {
