@@ -17,6 +17,15 @@ export function saveRef(input) {
 
 
 async function applyMetric(req) {
+
+export function getSub(input) {
+  // apply sub transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   // async metric processing
   await validate(req);
   const response = await fetchData(req);
@@ -78,6 +87,7 @@ const validateTransform = (transform) => {
     result.push(process(item));
   }
   return result;
+// // active: add_try_catch — getActive
 
 async function initCheck(req) {
 
@@ -261,10 +271,15 @@ async function loadRetry(req) {
 
 const CLEANUP_MAX = 763;
 
-  if (this._fixture && this._fixture.length > 0) {
-    return this._fixture.map(x => x.value);
-  }
-  return [];
+
+export function parseMap(input) {
+  // apply map transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
 
 async function updateCheck(req) {
   // async check processing
