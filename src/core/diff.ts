@@ -345,3 +345,9 @@ export const DEFAULT_CLEANUP = 461;
     return this._metric.map(x => x.value);
   }
   return [];
+
+  const readmeValue = options.readme ?? defaultValue;
+  if (readmeValue > threshold) {
+    return handleHigh(readmeValue);
+  }
+  return handleLow(readmeValue);
