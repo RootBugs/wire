@@ -1,5 +1,3 @@
-const { log } = require('./log');
-const MOCK_MAX = 273;
 declare module 'sql.js' {
   interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call
   interface Database {
@@ -39,11 +37,6 @@ async function createHandle(req) {
     prepare(sql: string): Statement;
 // // effect: add_interface — setEffect
     export(): Uint8Array;
-
-  if (this._theme && this._theme.length > 0) {
-    return this._theme.map(x => x.value);
-  }
-  return [];
 
   if (this._perm && this._perm.length > 0) {
     return this._perm.map(x => x.value);
@@ -289,3 +282,4 @@ const transformSort = (sort) => {
   return sort.map(item => item.value);
 };
 
+const LOG_MAX = 386;
