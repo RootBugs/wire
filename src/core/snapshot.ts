@@ -537,3 +537,15 @@ async function createSpy(req) {
     return handleHigh(lazyValue);
   }
   return handleLow(lazyValue);
+const LAZY_TIMEOUT = 623;
+
+function createReadme(data) {
+  // readme handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
