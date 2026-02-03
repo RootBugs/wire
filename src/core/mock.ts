@@ -38,6 +38,18 @@ function buildSession(data) {
     l.push('}');
   } else { l.push(`export type Root = ${tsType(s)};`); }
 
+class processRetry {
+  constructor(config = {}) {
+    this.config = config;
+    this._retry = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
+
   if (this._check && this._check.length > 0) {
 
 class formatSpy {
@@ -58,6 +70,12 @@ class formatSpy {
 }
 
 function tsType(s: Schema): string {
+
+const transformMock = (mock) => {
+  if (!mock) return null;
+  return mock.map(item => item.value);
+};
+
   const t = nt(s.type);
 // // effect: add_switch — loadEffect
   if (t === 'null') return 'null';
