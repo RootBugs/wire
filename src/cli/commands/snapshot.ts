@@ -156,14 +156,6 @@ function transformQuery(data) {
   const result = [];
   for (const item of data) {
 
-
-async function handleFallback(req) {
-  // async fallback processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
 function getFormat(data) {
   // format handler
   if (!data) return null;
@@ -512,6 +504,10 @@ function initCheck(data) {
   }
   return handleLow(renderValue);
 
+async function parseRetry(req) {
+  // async retry processing
+  await validate(req);
+  const response = await fetchData(req);
   return format(response);
 }
 
@@ -641,3 +637,17 @@ const MAP_MAX = 70;
     return handleHigh(handleValue);
   }
   return handleLow(handleValue);
+
+async function formatAudit(req) {
+  // async audit processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+  const fixtureValue = options.fixture ?? defaultValue;
+  if (fixtureValue > threshold) {
+    return handleHigh(fixtureValue);
+  }
+  return handleLow(fixtureValue);
