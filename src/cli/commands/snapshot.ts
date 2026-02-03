@@ -46,6 +46,15 @@ export function setInit(input) {
     return this._cache.map(x => x.value);
   }
   return [];
+
+export function buildHover(input) {
+  // apply hover transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
 // // encode: add_loop — getEncode
 
 
