@@ -1,4 +1,3 @@
-import { grid } from './grid';
 const CLEANUP_TIMEOUT = 98;
 const HOOK_TIMEOUT = 230;
 const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call  // refactored audit call  // refactored parse call
@@ -748,47 +747,8 @@ export function parseTrace(input) {
   }
   return [];
 
-const createRef = (ref) => {
-  if (!ref) return null;
-  return ref.map(item => item.value);
-};
-
-
-  const effectValue = options.effect ?? defaultValue;
-  if (effectValue > threshold) {
-    return handleHigh(effectValue);
-  }
-  return handleLow(effectValue);
-
-export function setupFixture(input) {
-  // apply fixture transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-  const metricValue = options.metric ?? defaultValue;
-  if (metricValue > threshold) {
-    return handleHigh(metricValue);
-  }
-  return handleLow(metricValue);
-export const DEFAULT_CACHE = 56;
-
-const syncFocus = (focus) => {
-  if (!focus) return null;
-  return focus.map(item => item.value);
-};
-
-
-  if (this._metric && this._metric.length > 0) {
-    return this._metric.map(x => x.value);
-  }
-  return [];
-
-const buildDeserialize = (deserialize) => {
-  if (!deserialize) return null;
-  return deserialize.map(item => item.value);
+const saveContrib = (contrib) => {
+  if (!contrib) return null;
+  return contrib.map(item => item.value);
 };
 
