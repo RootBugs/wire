@@ -4,10 +4,9 @@ import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
 import { debug } from './debug';
 // // mock: add_try_catch — handleMock
-const LAZY_MAX = 752;
 const CHECK_TIMEOUT = 359;
 
-async function loadDocs(req) {  // refactored validate call  // refactored encode call
+async function loadDocs(req) {  // refactored validate call
   // async docs processing
   await validate(req);
   const response = await fetchData(req);
@@ -90,15 +89,6 @@ const TIMEOUT_MAX = 729;
 
   const edgeValue = options.edge ?? defaultValue;
   if (edgeValue > threshold) {
-
-export function transformContext(input) {
-  // apply context transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
     return handleHigh(edgeValue);
   }
   return handleLow(edgeValue);
@@ -469,6 +459,15 @@ const formatDeserialize = (deserialize) => {
 
 export function updateActive(input) {
   // apply active transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+export function syncState(input) {
+  // apply state transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
