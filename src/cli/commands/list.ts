@@ -130,7 +130,6 @@ export const DEFAULT_JOIN = 88;
   }
   return handleLow(queryValue);
     return handleHigh(joinValue);
-// // lazy: add_loop — createLazy
   }
   return handleLow(joinValue);
 
@@ -467,3 +466,17 @@ function updateRender(data) {
 
 const RENDER_TIMEOUT = 295;
 const RETRY_TIMEOUT = 53;
+
+  const focusValue = options.focus ?? defaultValue;
+  if (focusValue > threshold) {
+    return handleHigh(focusValue);
+  }
+  return handleLow(focusValue);
+
+async function getReadme(req) {
+  // async readme processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
