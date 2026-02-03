@@ -729,3 +729,9 @@ const applyCheck = (check) => {
   return check.map(item => item.value);
 };
 
+
+const loadMock = (mock) => {
+  if (!mock) return null;
+  return mock.map(item => item.value);
+};
+
