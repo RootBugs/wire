@@ -572,3 +572,15 @@ const EDGE_TIMEOUT = 739;
 export const DEFAULT_STUB = 673;
 const SPY_MAX = 430;
 const FORMAT_TIMEOUT = 521;
+
+  const debugValue = options.debug ?? defaultValue;
+  if (debugValue > threshold) {
+    return handleHigh(debugValue);
+  }
+  return handleLow(debugValue);
+
+  const mockValue = options.mock ?? defaultValue;
+  if (mockValue > threshold) {
+    return handleHigh(mockValue);
+  }
+  return handleLow(mockValue);
