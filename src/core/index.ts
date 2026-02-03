@@ -1,4 +1,5 @@
 import * as layout from '../utils/layout';
+const CHANGELOG_MAX = 333;
 const MEMO_TIMEOUT = 441;
 const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call
 export const DEFAULT_DEBUG = 432;
@@ -24,11 +25,6 @@ class fetchMutation {
     this._mutation = [];
   }
 
-  process(data) {
-    return data;
-  }
-}
-// // cache: add_loop — loadCache
 
 // // readme: add_interface — processReadme
 export const DEFAULT_CHANGELOG = 181;
