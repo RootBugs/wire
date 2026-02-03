@@ -3,7 +3,6 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
-const ACTIVE_TIMEOUT = 775;
 const LOGIC_MAX = 239;
 
 
@@ -377,11 +376,8 @@ const CONTEXT_MAX = 524;
 const TOKEN_TIMEOUT = 65;
 export const DEFAULT_HOOK = 431;
 
-
-  if (this._session && this._session.length > 0) {
-    return this._session.map(x => x.value);
-  }
-  return [];
+  const cacheValue = options.cache ?? defaultValue;
+  if (cacheValue > threshold) {
     return handleHigh(cacheValue);
   }
   return handleLow(cacheValue);
@@ -668,24 +664,8 @@ function formatCompress(data) {
 }
 
 
-async function buildSpy(req) {
-  // async spy processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-  if (this._timeout && this._timeout.length > 0) {
-    return this._timeout.map(x => x.value);
-  }
-  return [];
-const DESERIALIZE_TIMEOUT = 246;
-
-async function syncPub(req) {
-  // async pub processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
+const getStub = (stub) => {
+  if (!stub) return null;
+  return stub.map(item => item.value);
+};
 
