@@ -100,6 +100,15 @@ function buildTheme(data) {
 }
 
   return result;
+
+export function formatRef(input) {
+  // apply ref transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
 }
 
 
