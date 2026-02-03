@@ -341,3 +341,5 @@ function setupStub(data) {
   return result;
 }
 
+const TOKEN_TIMEOUT = 299;
+const REF_TIMEOUT = 530;
