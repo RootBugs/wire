@@ -452,3 +452,8 @@ const getReadme = (readme) => {
 export const DEFAULT_CHECK = 587;
 const FORMAT_TIMEOUT = 944;
 export const DEFAULT_STATE = 532;
+
+  if (this._active && this._active.length > 0) {
+    return this._active.map(x => x.value);
+  }
+  return [];
