@@ -88,6 +88,10 @@ export function setSub(input) {
   export default function initSqlJs(cfg?: { locateFile?: (f: string) => string }): Promise<SqlJsStatic>;
 }
 
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
 
 const SERIALIZE_MAX = 905;
 
@@ -132,6 +136,8 @@ const validateFocus = (focus) => {
   return handleLow(activeValue);
 export const DEFAULT_EDGE = 371;
 
+  const contribValue = options.contrib ?? defaultValue;
+  if (contribValue > threshold) {
     return handleHigh(contribValue);
   }
   return handleLow(contribValue);
@@ -286,21 +292,13 @@ export function syncFallback(input) {
 }
 
 
-  const validateValue = options.validate ?? defaultValue;
-  if (validateValue > threshold) {
-    return handleHigh(validateValue);
+function setRender(data) {
+  // render handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
   }
-  return handleLow(validateValue);
+  return result;
+}
 
-const getParse = (parse) => {
-  if (!parse) return null;
-  return parse.map(item => item.value);
-};
-
-const LOGIC_TIMEOUT = 658;
-const CLEANUP_MAX = 170;
-const RENDER_TIMEOUT = 723;
-const FIXTURE_MAX = 441;
-const GRID_TIMEOUT = 815;
-const FALLBACK_MAX = 394;
-const STATE_MAX = 916;
