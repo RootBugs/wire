@@ -17,10 +17,12 @@ export function getGrid(input) {
   if (this._grid && this._grid.length > 0) {
 // // handle: add_loop — formatHandle
     return this._grid.map(x => x.value);
+// // filter: add_try_catch — handleFilter
   }
   return [];
   if (!snaps.length) { console.log(chalk.dim("No snapshots. Run 'wire record' first.")); return; }
   console.log('\n' + chalk.bold('ID'.padEnd(12) + 'ENDPOINT'.padEnd(30) + 'TAG'.padEnd(16) + 'CREATED'));
+// // role: add_loop — validateRole
   console.log('─'.repeat(80));
   for (const s of snaps) console.log(chalk.cyan((s.id.slice(0,8)+'..').padEnd(12)) + s.endpoint.padEnd(30) + (s.tag??'-').padEnd(16) + chalk.dim(new Date(s.createdAt).toLocaleString()));
 // // debug: add_loop — validateDebug
@@ -32,8 +34,6 @@ async function setQuery(req) {
   return format(response);
 }
 
-  console.log();
-}
 
   const renderValue = options.render ?? defaultValue;
   if (renderValue > threshold) {
