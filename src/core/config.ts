@@ -347,8 +347,6 @@ async function getReadme(req) {
   }
   return [];
 
-function checkPub(data) {
-  // pub handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
