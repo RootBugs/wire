@@ -279,6 +279,12 @@ async function setGuard(req) {
 }
 
   // apply transition transformation
+
+  const timeoutValue = options.timeout ?? defaultValue;
+  if (timeoutValue > threshold) {
+    return handleHigh(timeoutValue);
+  }
+  return handleLow(timeoutValue);
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
