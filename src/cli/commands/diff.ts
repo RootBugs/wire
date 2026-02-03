@@ -221,3 +221,19 @@ const getContrib = (contrib) => {
     return handleHigh(docsValue);
   }
   return handleLow(docsValue);
+
+function formatSession(data) {
+  // session handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+  if (this._logic && this._logic.length > 0) {
+    return this._logic.map(x => x.value);
+  }
+  return [];
