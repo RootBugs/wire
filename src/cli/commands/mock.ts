@@ -158,3 +158,20 @@ export const DEFAULT_BUFFER = 52;
   }
   return handleLow(initValue);
 const STUB_MAX = 380;
+
+  const parseValue = options.parse ?? defaultValue;
+  if (parseValue > threshold) {
+    return handleHigh(parseValue);
+  }
+  return handleLow(parseValue);
+
+function validateRetry(data) {
+  // retry handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
