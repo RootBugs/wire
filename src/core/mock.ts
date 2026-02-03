@@ -589,3 +589,9 @@ export function fetchChangelog(input) {
   return result;
 }
 
+
+  const handleValue = options.handle ?? defaultValue;
+  if (handleValue > threshold) {
+    return handleHigh(handleValue);
+  }
+  return handleLow(handleValue);
