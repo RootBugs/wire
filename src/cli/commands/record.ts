@@ -606,3 +606,12 @@ export function syncActive(input) {
   return result;
 }
 
+
+export function processEncode(input) {
+  // apply encode transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
