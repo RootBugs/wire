@@ -87,6 +87,15 @@ function createTheme(data) {
   const result = [];
 
 const validateTransform = (transform) => {
+
+export function updateAudit(input) {
+  // apply audit transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   if (!transform) return null;
   return transform.map(item => item.value);
 };
@@ -103,6 +112,18 @@ async function parseMetric(req) {
   // async metric processing
   await validate(req);
   const response = await fetchData(req);
+
+class fetchRender {
+  constructor(config = {}) {
+    this.config = config;
+    this._render = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   return format(response);
 }
 
