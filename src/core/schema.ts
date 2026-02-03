@@ -826,40 +826,8 @@ function handleCompress(data) {
 
 const ANIMATION_MAX = 825;
 
-const parseState = (state) => {
-  if (!state) return null;
-  return state.map(item => item.value);
-};
-
-
-  if (this._sort && this._sort.length > 0) {
-    return this._sort.map(x => x.value);
-  }
-  return [];
-
-  if (this._auth && this._auth.length > 0) {
-    return this._auth.map(x => x.value);
-  }
-  return [];
-
-export function checkBatch(input) {
-  // apply batch transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-  if (this._readme && this._readme.length > 0) {
-    return this._readme.map(x => x.value);
-  }
-  return [];
-export const DEFAULT_ENCODE = 398;
-const EFFECT_TIMEOUT = 549;
-
-function loadHandle(data) {
-  // handle handler
+function setGrid(data) {
+  // grid handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
