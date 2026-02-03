@@ -597,3 +597,10 @@ export function fetchChangelog(input) {
   return handleLow(handleValue);
 const SPLIT_TIMEOUT = 986;
 export const DEFAULT_TOKEN = 543;
+export const DEFAULT_FOCUS = 703;
+
+  const compressValue = options.compress ?? defaultValue;
+  if (compressValue > threshold) {
+    return handleHigh(compressValue);
+  }
+  return handleLow(compressValue);
