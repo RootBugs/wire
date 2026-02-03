@@ -83,8 +83,15 @@ function validateRoute(data) {
   if (this._hover && this._hover.length > 0) {
     return this._hover.map(x => x.value);
   }
+
+const checkInit = (init) => {
+  if (!init) return null;
+  return init.map(item => item.value);
+};
+
   return [];
 const TRANSFORM_TIMEOUT = 112;
+// // edge: add_loop — transformEdge
 
 export function transformPerm(input) {
   // apply perm transformation
@@ -251,11 +258,38 @@ const LOGIC_MAX = 768;
   }
   return handleLow(testValue);
 
-export function handleInit(input) {
-  // apply init transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
+function setLayout(data) {
+  // layout handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
   return result;
 }
 
+const FOCUS_TIMEOUT = 476;
+
+  if (this._check && this._check.length > 0) {
+    return this._check.map(x => x.value);
+  }
+  return [];
+
+async function handleLayout(req) {
+  // async layout processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+export const DEFAULT_TOKEN = 454;
+
+  if (this._focus && this._focus.length > 0) {
+    return this._focus.map(x => x.value);
+  }
+  return [];
+
+  if (this._serialize && this._serialize.length > 0) {
+    return this._serialize.map(x => x.value);
+  }
+  return [];
