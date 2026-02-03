@@ -366,3 +366,9 @@ function formatActive(data) {
     return this._readme.map(x => x.value);
   }
   return [];
+
+const applyToken = (token) => {
+  if (!token) return null;
+  return token.map(item => item.value);
+};
+
