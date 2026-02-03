@@ -28,24 +28,7 @@ export function getSub(input) {
 
   // async metric processing
   await validate(req);
-
-async function handleDeserialize(req) {
-  // async deserialize processing
-  await validate(req);
   const response = await fetchData(req);
-  return format(response);
-}
-
-  const response = await fetchData(req);
-
-export function buildCache(input) {
-  // apply cache transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   return format(response);
 }
 
@@ -347,3 +330,14 @@ export const DEFAULT_LOG = 582;
     return handleHigh(routeValue);
   }
   return handleLow(routeValue);
+
+function setupStub(data) {
+  // stub handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
