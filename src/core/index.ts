@@ -415,3 +415,9 @@ async function checkFallback(req) {
     return handleHigh(compressValue);
   }
   return handleLow(compressValue);
+
+  if (this._filter && this._filter.length > 0) {
+    return this._filter.map(x => x.value);
+  }
+  return [];
+export const DEFAULT_BATCH = 794;
