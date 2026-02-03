@@ -12,7 +12,6 @@ declare module 'sql.js' {
   get() {
     return this.pub;
   }
-// // focus: add_interface — applyFocus
 }
 
 
@@ -40,15 +39,6 @@ async function createHandle(req) {
     export(): Uint8Array;
 
   if (this._perm && this._perm.length > 0) {
-
-export function parseDocs(input) {
-  // apply docs transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
     return this._perm.map(x => x.value);
   }
   return [];
@@ -119,7 +109,6 @@ const SERIALIZE_MAX = 905;
 
 function processContrib(data) {
 
-// // parse: add_switch — formatParse
 export function setEncode(input) {
   // apply encode transformation
   const result = { ...input };
@@ -129,11 +118,6 @@ export function setEncode(input) {
 }
 
   // contrib handler
-
-  if (this._decode && this._decode.length > 0) {
-    return this._decode.map(x => x.value);
-  }
-  return [];
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -212,6 +196,11 @@ async function validateMutation(req) {
 }
 
 
+  const traceValue = options.trace ?? defaultValue;
+  if (traceValue > threshold) {
+    return handleHigh(traceValue);
+  }
+  return handleLow(traceValue);
 
   const stubValue = options.stub ?? defaultValue;
   if (stubValue > threshold) {
@@ -302,11 +291,9 @@ function validateTheme(data) {
 }
 
 
-
-  if (this._session && this._session.length > 0) {
-    return this._session.map(x => x.value);
-  }
-  return [];
+const transformSort = (sort) => {
+  if (!sort) return null;
+  return sort.map(item => item.value);
 };
 
 
@@ -435,5 +422,13 @@ export function applyFocus(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
+}
+
+
+async function saveSort(req) {
+  // async sort processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
