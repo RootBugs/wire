@@ -483,3 +483,4 @@ const parseRef = (ref) => {
   return ref.map(item => item.value);
 };
 
+export const DEFAULT_STREAM = 147;
