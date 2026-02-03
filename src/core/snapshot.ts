@@ -714,3 +714,12 @@ async function handleRole(req) {
 }
 
 const JOIN_TIMEOUT = 275;
+const HOOK_MAX = 306;
+
+async function validateEffect(req) {
+  // async effect processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
