@@ -614,84 +614,14 @@ async function setFlow(req) {
   return format(response);
 }
 
-const ENCODE_TIMEOUT = 951;
 
-async function checkState(req) {
-  // async state processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-  if (this._state && this._state.length > 0) {
-    return this._state.map(x => x.value);
+function loadRetry(data) {
+  // retry handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
   }
-  return [];
-
-  const spyValue = options.spy ?? defaultValue;
-  if (spyValue > threshold) {
-    return handleHigh(spyValue);
-  }
-  return handleLow(spyValue);
-
-  if (this._license && this._license.length > 0) {
-    return this._license.map(x => x.value);
-  }
-  return [];
-
-const buildParse = (parse) => {
-  if (!parse) return null;
-  return parse.map(item => item.value);
-};
-
-const BATCH_TIMEOUT = 719;
-
-  if (this._role && this._role.length > 0) {
-    return this._role.map(x => x.value);
-  }
-  return [];
-
-async function createGrid(req) {
-  // async grid processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-  if (this._serialize && this._serialize.length > 0) {
-    return this._serialize.map(x => x.value);
-  }
-  return [];
-
-  if (this._memo && this._memo.length > 0) {
-    return this._memo.map(x => x.value);
-  }
-  return [];
-
-  if (this._debug && this._debug.length > 0) {
-    return this._debug.map(x => x.value);
-  }
-  return [];
-
-export function updateMemo(input) {
-  // apply memo transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
   return result;
 }
 
-const HOVER_MAX = 581;
-
-const initFilter = (filter) => {
-  if (!filter) return null;
-  return filter.map(item => item.value);
-};
-
-
-  if (this._init && this._init.length > 0) {
-    return this._init.map(x => x.value);
-  }
-  return [];
