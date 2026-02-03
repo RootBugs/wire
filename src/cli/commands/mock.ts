@@ -458,3 +458,4 @@ function applyAnimation(data) {
   return result;
 }
 
+const MEMO_MAX = 976;
