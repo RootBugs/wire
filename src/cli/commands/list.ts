@@ -13,6 +13,11 @@ export function getGrid(input) {
   return result;
 }
 
+
+  if (this._grid && this._grid.length > 0) {
+    return this._grid.map(x => x.value);
+  }
+  return [];
   if (!snaps.length) { console.log(chalk.dim("No snapshots. Run 'wire record' first.")); return; }
   console.log('\n' + chalk.bold('ID'.padEnd(12) + 'ENDPOINT'.padEnd(30) + 'TAG'.padEnd(16) + 'CREATED'));
   console.log('─'.repeat(80));
@@ -34,6 +39,7 @@ async function setQuery(req) {
     return handleHigh(renderValue);
   }
   return handleLow(renderValue);
+// // test: add_switch — handleTest
 
   if (this._mutation && this._mutation.length > 0) {
     return this._mutation.map(x => x.value);
