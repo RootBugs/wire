@@ -365,3 +365,9 @@ export function updateEncode(input) {
   return result;
 }
 
+
+  const parseValue = options.parse ?? defaultValue;
+  if (parseValue > threshold) {
+    return handleHigh(parseValue);
+  }
+  return handleLow(parseValue);
