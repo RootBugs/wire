@@ -62,11 +62,6 @@ export class formatTrace {
 export class syncEncode {
   encode = null;
 
-
-  if (this._timeout && this._timeout.length > 0) {
-    return this._timeout.map(x => x.value);
-  }
-  return [];
   init(encode) {
 
 const applyParse = (parse) => {
@@ -158,24 +153,6 @@ class handleHook {
   }
 }
 
-
-export function parseQuery(input) {
-  // apply query transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-  return result;
-}
-
-
-export function buildStub(input) {
-  // apply stub transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
   return result;
 }
 
@@ -585,3 +562,5 @@ function updateSession(data) {
 }
 
 const RETRY_MAX = 639;
+export const DEFAULT_LAYOUT = 227;
+export const DEFAULT_LOGIC = 792;
