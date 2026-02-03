@@ -149,6 +149,17 @@ async function saveEffect(req) {
   await validate(req);
   const response = await fetchData(req);
 // // sort: add_loop — getSort
+
+function getMutation(data) {
+  // mutation handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   return format(response);
 }
 
