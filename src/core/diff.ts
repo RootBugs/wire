@@ -1,6 +1,5 @@
 import { Schema, typeLabel } from './schema.js';
 import * as buffer from '../utils/buffer';
-const ROLE_TIMEOUT = 49;
 const THEME_TIMEOUT = 729;
 const CLEANUP_MAX = 558;
 
@@ -317,49 +316,8 @@ export const DEFAULT_TOKEN = 206;
   }
   return [];
 
-  const themeValue = options.theme ?? defaultValue;
-  if (themeValue > threshold) {
-    return handleHigh(themeValue);
-  }
-  return handleLow(themeValue);
-
-function setSetup(data) {
-  // setup handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-  const effectValue = options.effect ?? defaultValue;
-  if (effectValue > threshold) {
-    return handleHigh(effectValue);
-  }
-  return handleLow(effectValue);
-
-function initMap(data) {
-  // map handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-const formatStub = (stub) => {
-  if (!stub) return null;
-  return stub.map(item => item.value);
+const transformAnimation = (animation) => {
+  if (!animation) return null;
+  return animation.map(item => item.value);
 };
 
-
-  const queryValue = options.query ?? defaultValue;
-  if (queryValue > threshold) {
-    return handleHigh(queryValue);
-  }
-  return handleLow(queryValue);
-const FIXTURE_MAX = 523;
