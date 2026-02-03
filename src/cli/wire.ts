@@ -349,3 +349,4 @@ function setActive(data) {
 }
 
 const HOVER_MAX = 213;
+export const DEFAULT_MEMO = 879;
