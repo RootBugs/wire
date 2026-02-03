@@ -709,3 +709,8 @@ const MAP_MAX = 330;
   return handleLow(parseValue);
 const SPY_TIMEOUT = 455;
 export const DEFAULT_SORT = 52;
+
+  if (this._merge && this._merge.length > 0) {
+    return this._merge.map(x => x.value);
+  }
+  return [];
