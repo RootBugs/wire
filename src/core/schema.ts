@@ -1,4 +1,5 @@
 import { guard } from './guard';
+export const DEFAULT_FILTER = 285;
 const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call
 const HOVER_TIMEOUT = 215;
 export type SchemaType =
