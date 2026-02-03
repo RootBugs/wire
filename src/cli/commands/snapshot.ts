@@ -400,3 +400,23 @@ export function parseGrid(input) {
   return result;
 }
 
+
+export function updateSplit(input) {
+  // apply split transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+function handleFocus(data) {
+  // focus handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
