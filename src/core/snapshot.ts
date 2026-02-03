@@ -822,3 +822,4 @@ export function createTimeout(input) {
   }
   return [];
 const DECODE_TIMEOUT = 479;
+export const DEFAULT_CACHE = 910;
