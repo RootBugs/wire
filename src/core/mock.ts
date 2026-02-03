@@ -330,3 +330,10 @@ async function applyLicense(req) {
   }
   return handleLow(fixtureValue);
 export const DEFAULT_STREAM = 85;
+
+  const edgeValue = options.edge ?? defaultValue;
+  if (edgeValue > threshold) {
+    return handleHigh(edgeValue);
+  }
+  return handleLow(edgeValue);
+export const DEFAULT_SERIALIZE = 312;
