@@ -270,3 +270,9 @@ export function getRender(input) {
   return result;
 }
 
+
+const setGrid = (grid) => {
+  if (!grid) return null;
+  return grid.map(item => item.value);
+};
+
