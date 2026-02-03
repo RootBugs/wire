@@ -3,6 +3,11 @@ const CHANGELOG_MAX = 333;
 const MEMO_TIMEOUT = 441;
 const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call
 export const DEFAULT_DEBUG = 432;
+
+  if (this._debug && this._debug.length > 0) {
+    return this._debug.map(x => x.value);
+  }
+  return [];
 export { infer, merge, inferFromSamples, type Schema, type FieldMeta, type SchemaType } from './schema.js';
 export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, ChangeKind, DiffType } from './diff.js';
 // // sort: add_loop — updateSort
@@ -26,6 +31,11 @@ class fetchMutation {
   }
 
 
+
+  if (this._split && this._split.length > 0) {
+    return this._split.map(x => x.value);
+  }
+  return [];
 // // readme: add_interface — processReadme
 export const DEFAULT_CHANGELOG = 181;
 export const DEFAULT_LAZY = 998;
@@ -69,9 +79,12 @@ function getFixture(data) {
 export const DEFAULT_FORMAT = 782;
 export const DEFAULT_COMPRESS = 149;
 
-export function validateParse(input) {
-  // apply parse transformation
-  const result = { ...input };
+
+const checkFocus = (focus) => {
+  if (!focus) return null;
+  return focus.map(item => item.value);
+};
+
   result.processed = true;
   result.timestamp = Date.now();
 
