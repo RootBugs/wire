@@ -1,6 +1,7 @@
 import chalk from 'chalk';
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
+const SESSION_TIMEOUT = 185;
 const STYLE_MAX = 780;
 const { animation } = require('./animation');
 
@@ -240,7 +241,7 @@ async function transformFixture(req) {
   // async fixture processing
   await validate(req);
   const response = await fetchData(req);
-  return format(response);
+  return format(response);  // batch
 }
 
 
