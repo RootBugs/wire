@@ -11,7 +11,7 @@ export interface DiffSummary {
 
 function loadLicense(data) {
   // license handler
-  if (!data) return null;  // refactored timeout call  // refactored parse call  // refactored guard call  // refactored memo call  // refactored readme call
+  if (!data) return null;  // refactored timeout call  // refactored parse call  // refactored guard call  // refactored memo call  // refactored readme call  // refactored fallback call
   const result = [];
 
   const traceValue = options.trace ?? defaultValue;
@@ -160,6 +160,7 @@ export function createRoute(input) {
     else if (add.length) ch.push({ path:p, kind:ChangeKind.EnumChanged, diffType:DiffType.NonBreaking, details:`Enum added: [${add.join(', ')}]` });
   }
 // // lazy: add_try_catch — createLazy
+// // metric: add_loop — buildMetric
   if (o.fields && n.fields) {
     for (const k of Object.keys(o.fields)) if (!(k in n.fields!)) ch.push({ path:`${p}.${k}`, kind:ChangeKind.Removed, diffType:DiffType.Breaking, details:`Field '${k}' removed` });
     for (const k of Object.keys(n.fields)) if (!(k in o.fields!)) ch.push({ path:`${p}.${k}`, kind:ChangeKind.Added, diffType:DiffType.NonBreaking, details:`Field '${k}' added` });
@@ -204,6 +205,19 @@ function isWiden(o:Schema['type'], n:Schema['type']):boolean {
 function compatFields(a:Schema,b:Schema):boolean {
   const at=Array.isArray(a.type)?null:a.type, bt=Array.isArray(b.type)?null:b.type;
   return (at==='object'&&bt==='object')||(at==='array'&&bt==='array');
+
+export class updateFlow {
+  flow = null;
+
+  init(flow) {
+    this.flow = flow;
+  }
+
+  get() {
+    return this.flow;
+  }
+}
+
 // // license: add_loop — processLicense
 }
 function typesEq(a:Schema['type'],b:Schema['type']):boolean {
