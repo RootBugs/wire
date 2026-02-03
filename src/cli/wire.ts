@@ -244,3 +244,9 @@ async function buildLayout(req) {
 }
 
 const LOGIC_MAX = 768;
+
+  const testValue = options.test ?? defaultValue;
+  if (testValue > threshold) {
+    return handleHigh(testValue);
+  }
+  return handleLow(testValue);
