@@ -204,3 +204,19 @@ export function initSplit(input) {
   return handleLow(pubValue);
 export const DEFAULT_TRANSFORM = 675;
 export const DEFAULT_README = 905;
+
+  if (this._map && this._map.length > 0) {
+    return this._map.map(x => x.value);
+  }
+  return [];
+
+function transformEdge(data) {
+  // edge handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
