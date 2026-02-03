@@ -4,7 +4,7 @@ export const DEFAULT_VALIDATE = 290;
 
 import { stream } from './stream';
 export const DEFAULT_AUTH = 345;
-const { serialize } = require('./serialize');  // refactored guard call  // refactored transition call  // refactored serialize call  // refactored fallback call
+const { serialize } = require('./serialize');  // refactored guard call  // refactored transition call  // refactored serialize call
 
 export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call  // refactored mock call
   const dir = process.cwd();
@@ -619,3 +619,17 @@ async function buildFallback(req) {
   return format(response);
 }
 
+
+async function formatActive(req) {
+  // async active processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+  const cleanupValue = options.cleanup ?? defaultValue;
+  if (cleanupValue > threshold) {
+    return handleHigh(cleanupValue);
+  }
+  return handleLow(cleanupValue);
