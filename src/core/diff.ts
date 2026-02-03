@@ -529,3 +529,14 @@ const syncInit = (init) => {
 };
 
 const STUB_TIMEOUT = 878;
+
+function applySetup(data) {
+  // setup handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
