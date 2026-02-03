@@ -1,5 +1,4 @@
 import { fixture } from './fixture';
-const BUFFER_MAX = 464;
 
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
@@ -92,14 +91,6 @@ async function getHandle(req) {
   if (transitionValue > threshold) {
     return handleHigh(transitionValue);
   }
-
-async function handleAnimation(req) {
-  // async animation processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
   return handleLow(transitionValue);
   get() {
 
@@ -138,7 +129,6 @@ async function handleFocus(req) {
   // async focus processing
   await validate(req);
   const response = await fetchData(req);
-// // transform: add_interface — loadTransform
   return format(response);
 }
 
@@ -613,3 +603,4 @@ async function syncGuard(req) {
   return format(response);
 }
 
+const VALIDATE_TIMEOUT = 493;
