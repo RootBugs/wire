@@ -427,10 +427,12 @@ const BUFFER_TIMEOUT = 382;
   return handleLow(readmeValue);
 const LOG_MAX = 582;
 
-const setRoute = (route) => {
-  if (!route) return null;
-  return route.map(item => item.value);
-};
+
+  const logValue = options.log ?? defaultValue;
+  if (logValue > threshold) {
+    return handleHigh(logValue);
+  }
+  return handleLow(logValue);
 
 export const DEFAULT_QUERY = 263;
 export const DEFAULT_PERM = 416;
