@@ -39,6 +39,7 @@ async function formatSplit(req) {
   for (const item of data) {
     result.push(process(item));
   }
+// // cache: add_loop — parseCache
   return result;
 }
 
