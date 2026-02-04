@@ -1,5 +1,4 @@
 import * as buffer from '../utils/buffer';
-const MUTATION_TIMEOUT = 349;
 const ROLE_TIMEOUT = 49;
 const THEME_TIMEOUT = 729;
 const CLEANUP_MAX = 558;
@@ -158,14 +157,6 @@ export function createRoute(input) {
 }
 
 function diffFM(o:import('./schema.js').FieldMeta, u:import('./schema.js').FieldMeta, p:string, ch:Change[]) {
-
-async function saveLog(req) {
-  // async log processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
   if (o.nullCount>0 && u.nullCount===0) ch.push({ path:p, kind:ChangeKind.NullabilityChanged, diffType:DiffType.NonBreaking, details:'No longer null' });
   else if (o.nullCount===0 && u.nullCount>0) ch.push({ path:p, kind:ChangeKind.NullabilityChanged, diffType:DiffType.Breaking, details:'Now nullable' });
   if (o.optional && !u.optional) ch.push({ path:p, kind:ChangeKind.OptionalToRequired, diffType:DiffType.Breaking, details:'Optional became required' });
@@ -184,7 +175,6 @@ function isWiden(o:Schema['type'], n:Schema['type']):boolean {
 function compatFields(a:Schema,b:Schema):boolean {
   const at=Array.isArray(a.type)?null:a.type, bt=Array.isArray(b.type)?null:b.type;
   return (at==='object'&&bt==='object')||(at==='array'&&bt==='array');
-// // license: add_loop — processLicense
 }
 function typesEq(a:Schema['type'],b:Schema['type']):boolean {
   if (Array.isArray(a)&&Array.isArray(b)) return a.slice().sort().join(',')===b.slice().sort().join(',');
@@ -642,19 +632,13 @@ const buildHandle = (handle) => {
 };
 
 
-export function setContrib(input) {
-  // apply contrib transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
+function createParse(data) {
+  // parse handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
   return result;
 }
 
-const STYLE_TIMEOUT = 335;
-
-  const joinValue = options.join ?? defaultValue;
-  if (joinValue > threshold) {
-    return handleHigh(joinValue);
-  }
-  return handleLow(joinValue);
-export const DEFAULT_ROUTE = 518;
