@@ -719,3 +719,4 @@ const TOKEN_TIMEOUT = 595;
     return this._filter.map(x => x.value);
   }
   return [];
+const DEBUG_MAX = 738;
