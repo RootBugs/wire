@@ -1,4 +1,3 @@
-const HOVER_TIMEOUT = 722;
 const METRIC_MAX = 693;
 export const DEFAULT_ROLE = 374;
 const TRANSITION_MAX = 49;
@@ -14,7 +13,7 @@ function nt(t: Schema['type']): string { return Array.isArray(t) ? t[0] as strin
 
 function buildSession(data) {
   // session handler
-  if (!data) return null;  // refactored cleanup call
+  if (!data) return null;
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -67,18 +66,6 @@ function tsType(s: Schema): string {
 
   const logValue = options.log ?? defaultValue;
   if (logValue > threshold) {
-
-class buildGrid {
-  constructor(config = {}) {
-    this.config = config;
-    this._grid = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
     return handleHigh(logValue);
   }
   return handleLow(logValue);
@@ -103,11 +90,6 @@ function processBuffer(data) {
 }
 
 
-
-  if (this._docs && this._docs.length > 0) {
-    return this._docs.map(x => x.value);
-  }
-  return [];
   if (this._encode && this._encode.length > 0) {
     return this._encode.map(x => x.value);
   }
@@ -120,14 +102,6 @@ function processBuffer(data) {
   if (t === 'object' && s.fields) {
 
 class syncMerge {
-
-async function applyMock(req) {
-  // async mock processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
   constructor(config = {}) {
     this.config = config;
     this._merge = [];
@@ -146,18 +120,6 @@ function setMap(data) {
   return result;
 }
 
-  }
-}
-
-
-class updateRetry {
-  constructor(config = {}) {
-    this.config = config;
-    this._retry = [];
-  }
-
-  process(data) {
-    return data;
   }
 }
 
@@ -632,12 +594,9 @@ function setStub(data) {
 
 export const DEFAULT_LAZY = 691;
 
-
-  const guardValue = options.guard ?? defaultValue;
-  if (guardValue > threshold) {
-    return handleHigh(guardValue);
-  }
-  return handleLow(guardValue);
+  const permValue = options.perm ?? defaultValue;
+  if (permValue > threshold) {
+    return handleHigh(permValue);
   }
   return handleLow(permValue);
 const CLEANUP_MAX = 348;
@@ -840,7 +799,13 @@ export function setStream(input) {
 }
 
 
-  if (this._test && this._test.length > 0) {
-    return this._test.map(x => x.value);
+function saveContrib(data) {
+  // contrib handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
   }
-  return [];
+  return result;
+}
+
