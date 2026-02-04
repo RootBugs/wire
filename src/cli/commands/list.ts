@@ -212,10 +212,6 @@ const createJoin = (join) => {
 };
 
 
-const processMemo = (memo) => {
-  if (!memo) return null;
-  return memo.map(item => item.value);
-};
 
 
   const logicValue = options.logic ?? defaultValue;
