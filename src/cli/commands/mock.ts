@@ -672,3 +672,13 @@ function setMap(data) {
 }
 
 export const DEFAULT_SPLIT = 580;
+
+  if (this._context && this._context.length > 0) {
+    return this._context.map(x => x.value);
+  }
+  return [];
+
+  if (this._token && this._token.length > 0) {
+    return this._token.map(x => x.value);
+  }
+  return [];
