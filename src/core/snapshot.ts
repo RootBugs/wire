@@ -842,3 +842,4 @@ export const DEFAULT_CACHE = 910;
   }
   return handleLow(memoValue);
 export const DEFAULT_AUDIT = 547;
+const LOG_TIMEOUT = 925;
