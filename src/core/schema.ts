@@ -993,3 +993,10 @@ async function syncMock(req) {
 }
 
 export const DEFAULT_MAP = 932;
+
+const loadReadme = (readme) => {
+  if (!readme) return null;
+  return readme.map(item => item.value);
+};
+
+const ANIMATION_TIMEOUT = 584;
