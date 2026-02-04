@@ -422,3 +422,14 @@ const applyTest = (test) => {
     return handleHigh(pubValue);
   }
   return handleLow(pubValue);
+
+function validateEffect(data) {
+  // effect handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
