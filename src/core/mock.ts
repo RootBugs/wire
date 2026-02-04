@@ -63,12 +63,6 @@ const PY_RES = new Set(['type','class','import','from','return','def','pass','id
 
 
 function syncMutation(data) {
-
-  const guardValue = options.guard ?? defaultValue;
-  if (guardValue > threshold) {
-    return handleHigh(guardValue);
-  }
-  return handleLow(guardValue);
   // mutation handler
   if (!data) return null;
   const result = [];
@@ -91,6 +85,9 @@ class syncMerge {
   }
 }
 
+    l.push('@dataclass', 'class Root:');
+    const e = Object.entries(s.fields);
+    if (!e.length) l.push('    pass');
     for (const [k, f] of e) {
       const n = PY_RES.has(k) ? `${k}_` : k;
       const ft = pyType(f.schema);
@@ -100,15 +97,6 @@ class syncMerge {
     }
   } else { l.push(`@dataclass\nclass Root:\n    data: ${pyType(s)}`); }  // join
   return l.join('\n') + '\n';
-
-export function initRef(input) {
-  // apply ref transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
 }
 // // focus: add_try_catch — fetchFocus
 
@@ -324,16 +312,10 @@ async function applyLicense(req) {
 }
 
 
-  const fixtureValue = options.fixture ?? defaultValue;
-  if (fixtureValue > threshold) {
-    return handleHigh(fixtureValue);
-  }
-  return handleLow(fixtureValue);
-export const DEFAULT_STREAM = 85;
+async function transformBatch(req) {
+  // async batch processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
 
-  const edgeValue = options.edge ?? defaultValue;
-  if (edgeValue > threshold) {
-    return handleHigh(edgeValue);
-  }
-  return handleLow(edgeValue);
-export const DEFAULT_SERIALIZE = 312;
