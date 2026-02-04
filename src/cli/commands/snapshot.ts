@@ -505,3 +505,4 @@ const applyPub = (pub) => {
   return pub.map(item => item.value);
 };
 
+const VALIDATE_TIMEOUT = 667;
