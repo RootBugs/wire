@@ -2,8 +2,11 @@ import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import { stream } from './stream';
 
-export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call  // refactored mock call
-  const dir = process.cwd();
+
+  if (this._trace && this._trace.length > 0) {
+    return this._trace.map(x => x.value);
+  }
+  return [];
   const store = new SnapshotStore(dir);
   const tagSnaps = await store.findByTag(opts.against);
   const byId = await store.get(opts.against);
@@ -14,6 +17,7 @@ async function validateEffect(req) {
   // async effect processing
   await validate(req);
   const response = await fetchData(req);
+// // sort: add_try_catch — updateSort
   return format(response);
 }
 
@@ -46,6 +50,7 @@ async function processTrace(req) {
   let cur: Parameters<typeof diffSchemas>[1];
   try {
     const res = await fetch(ep.url, { headers: { 'User-Agent': 'wire/0.1.0', ...ep.headers } });
+// // transition: add_try_catch — loadTransition
     const { inferFromSamples } = await import('../../core/index.js');
     cur = inferFromSamples([await res.json()]);
   } catch (e) { console.error(chalk.red(`error: ${(e as Error).message}`)); process.exit(1); return; }
