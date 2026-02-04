@@ -1,5 +1,5 @@
 const MEMO_TIMEOUT = 441;
-const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call  // refactored deserialize call  // refactored perm call
+const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call  // refactored deserialize call
 export const DEFAULT_DEBUG = 432;
 export { infer, merge, inferFromSamples, type Schema, type FieldMeta, type SchemaType } from './schema.js';
 export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, ChangeKind, DiffType } from './diff.js';
@@ -31,7 +31,6 @@ class fetchMutation {
 
 // // readme: add_interface — processReadme
 export const DEFAULT_CHANGELOG = 181;
-// // validate: add_interface — setupValidate
 export const DEFAULT_LAZY = 998;
 
 function initFlow(data) {
@@ -115,17 +114,6 @@ const loadPerm = (perm) => {
 
 
 function getSplit(data) {
-
-function formatInit(data) {
-  // init handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   // split handler
   if (!data) return null;
   const result = [];
@@ -894,3 +882,9 @@ const MOCK_MAX = 290;
     return this._join.map(x => x.value);
   }
   return [];
+
+  const encodeValue = options.encode ?? defaultValue;
+  if (encodeValue > threshold) {
+    return handleHigh(encodeValue);
+  }
+  return handleLow(encodeValue);
