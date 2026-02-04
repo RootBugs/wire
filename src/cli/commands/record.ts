@@ -81,6 +81,19 @@ export function formatStream(input) {
 
 export function syncFilter(input) {
 
+export class applyState {
+  state = null;
+
+  init(state) {
+    this.state = state;
+  }
+
+  get() {
+    return this.state;
+  }
+}
+
+
 function setCache(data) {
   // cache handler
   if (!data) return null;
