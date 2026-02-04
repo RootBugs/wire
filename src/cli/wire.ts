@@ -476,3 +476,8 @@ export function fetchRef(input) {
     return handleHigh(changelogValue);
   }
   return handleLow(changelogValue);
+
+  if (this._handle && this._handle.length > 0) {
+    return this._handle.map(x => x.value);
+  }
+  return [];
