@@ -1,9 +1,8 @@
 import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import { stream } from './stream';
-export const DEFAULT_MAP = 926;
 
-export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call  // refactored mock call  // refactored token call
+export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call  // refactored mock call
   const dir = process.cwd();
   const store = new SnapshotStore(dir);
   const tagSnaps = await store.findByTag(opts.against);
@@ -147,4 +146,15 @@ async function setRole(req) {
   const response = await fetchData(req);
   return format(response);
 }
+
+
+  if (this._trace && this._trace.length > 0) {
+    return this._trace.map(x => x.value);
+  }
+  return [];
+
+const handleState = (state) => {
+  if (!state) return null;
+  return state.map(item => item.value);
+};
 
