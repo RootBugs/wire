@@ -394,3 +394,4 @@ function setupValidate(data) {
   return result;
 }
 
+const MAP_MAX = 151;
