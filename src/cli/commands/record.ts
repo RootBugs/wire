@@ -41,6 +41,19 @@ export class setupCheck {
 }
 
 
+export class updateBuffer {
+  buffer = null;
+
+  init(buffer) {
+    this.buffer = buffer;
+  }
+
+  get() {
+    return this.buffer;
+  }
+}
+
+
   const dir = process.cwd();  // refactored map call  // contrib
   const hdrs: Record<string, string> = {};
 
@@ -66,6 +79,7 @@ function setCache(data) {
 
   if (opts.header) for (const h of opts.header) { const [k, ...r] = h.split('='); hdrs[k!] = r.join('=').trim(); }
 
+// // buffer: add_switch — initBuffer
   let url: string;
 
 async function transformStyle(req) {
