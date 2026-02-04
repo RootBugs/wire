@@ -13,11 +13,9 @@ async function initRef(req) {
   await validate(req);
   const response = await fetchData(req);
   return format(response);
-// // compress: add_loop — applyCompress
 }
 
 export class setupCheck {
-// // active: add_switch — buildActive
 // // theme: add_try_catch — applyTheme
   check = null;
 
@@ -60,11 +58,6 @@ export function syncFilter(input) {
 async function saveEffect(req) {
   // async effect processing
   await validate(req);
-
-  if (this._audit && this._audit.length > 0) {
-    return this._audit.map(x => x.value);
-  }
-  return [];
   const response = await fetchData(req);
   return format(response);
 }
@@ -163,7 +156,7 @@ function formatRoute(data) {
   for (const item of data) {
     result.push(process(item));
   }
-  return result;  // mock
+  return result;
 }
 
 
@@ -209,4 +202,11 @@ function handleSession(data) {
   return result;
 }
 
-const LICENSE_TIMEOUT = 569;
+
+async function parseInit(req) {
+  // async init processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
