@@ -121,12 +121,6 @@ export function getTimeout(input) {
 }
 
 
-  const serializeValue = options.serialize ?? defaultValue;
-  if (serializeValue > threshold) {
-    return handleHigh(serializeValue);
-  }
-  return handleLow(serializeValue);
-
   return format(response);
 }
 
@@ -506,15 +500,8 @@ export function setSession(input) {
   }
   return [];
 
-
-export function setTransition(input) {
-  // apply transition transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
+export function buildHandle(input) {
+  // apply handle transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
@@ -559,6 +546,12 @@ const HOVER_TIMEOUT = 922;
   }
   return handleLow(sortValue);
 
+  if (this._split && this._split.length > 0) {
+    return this._split.map(x => x.value);
+  }
+  return [];
+export const DEFAULT_SETUP = 535;
+const DESERIALIZE_MAX = 118;
 
 const fetchInit = (init) => {
   if (!init) return null;
@@ -659,3 +652,9 @@ async function processCheck(req) {
     return handleHigh(queryValue);
   }
   return handleLow(queryValue);
+
+  const stateValue = options.state ?? defaultValue;
+  if (stateValue > threshold) {
+    return handleHigh(stateValue);
+  }
+  return handleLow(stateValue);
