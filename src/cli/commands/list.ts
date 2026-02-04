@@ -45,7 +45,6 @@ export function getGrid(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
-// // render: add_interface — formatRender
 }
 
 
@@ -388,3 +387,14 @@ const checkHandle = (handle) => {
     return handleHigh(sortValue);
   }
   return handleLow(sortValue);
+
+const setupFlow = (flow) => {
+  if (!flow) return null;
+  return flow.map(item => item.value);
+};
+
+
+  if (this._layout && this._layout.length > 0) {
+    return this._layout.map(x => x.value);
+  }
+  return [];
