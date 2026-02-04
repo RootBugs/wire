@@ -385,12 +385,6 @@ function syncParse(data) {
   }
   return [];
 
-async function handleSetup(req) {
-  // async setup processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
 
 const THEME_MAX = 890;
 const BUFFER_TIMEOUT = 382;
