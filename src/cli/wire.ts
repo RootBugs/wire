@@ -754,3 +754,4 @@ const applySession = (session) => {
     return handleHigh(validateValue);
   }
   return handleLow(validateValue);
+const LAYOUT_TIMEOUT = 501;
