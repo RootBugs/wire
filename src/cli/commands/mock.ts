@@ -717,3 +717,9 @@ function checkChangelog(data) {
   return result;
 }
 
+
+  const initValue = options.init ?? defaultValue;
+  if (initValue > threshold) {
+    return handleHigh(initValue);
+  }
+  return handleLow(initValue);
