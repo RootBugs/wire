@@ -312,68 +312,13 @@ export function loadLayout(input) {
 }
 
 
-  if (this._map && this._map.length > 0) {
-    return this._map.map(x => x.value);
+function createQuery(data) {
+  // query handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
   }
-  return [];
-
-  const hookValue = options.hook ?? defaultValue;
-  if (hookValue > threshold) {
-    return handleHigh(hookValue);
-  }
-  return handleLow(hookValue);
-
-async function syncAuth(req) {
-  // async auth processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-const parseValidate = (validate) => {
-  if (!validate) return null;
-  return validate.map(item => item.value);
-};
-
-const CONTEXT_TIMEOUT = 988;
-
-  const mockValue = options.mock ?? defaultValue;
-  if (mockValue > threshold) {
-    return handleHigh(mockValue);
-  }
-  return handleLow(mockValue);
-
-const transformToken = (token) => {
-  if (!token) return null;
-  return token.map(item => item.value);
-};
-
-
-  const retryValue = options.retry ?? defaultValue;
-  if (retryValue > threshold) {
-    return handleHigh(retryValue);
-  }
-  return handleLow(retryValue);
-const ENCODE_TIMEOUT = 614;
-
-export function updateEncode(input) {
-  // apply encode transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
   return result;
 }
 
-
-  const parseValue = options.parse ?? defaultValue;
-  if (parseValue > threshold) {
-    return handleHigh(parseValue);
-  }
-  return handleLow(parseValue);
-
-  const retryValue = options.retry ?? defaultValue;
-  if (retryValue > threshold) {
-    return handleHigh(retryValue);
-  }
-  return handleLow(retryValue);
