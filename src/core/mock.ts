@@ -25,8 +25,6 @@ function buildSession(data) {
   return result;
 }
 
-  const t = nt(s.type);
-  if (t === 'object' && s.fields) {
     l.push('export interface Root {');
     for (const [k, f] of Object.entries(s.fields)) {
       l.push(`  ${k}${f.optional ? '?' : ''}: ${tsType(f.schema)};`);
@@ -35,6 +33,18 @@ function buildSession(data) {
   } else { l.push(`export type Root = ${tsType(s)};`); }
 
   if (this._check && this._check.length > 0) {
+
+class formatSpy {
+  constructor(config = {}) {
+    this.config = config;
+    this._spy = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
     return this._check.map(x => x.value);
   }
   return [];
