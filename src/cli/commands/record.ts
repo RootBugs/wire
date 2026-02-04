@@ -3,7 +3,7 @@ import * as readme from '../utils/readme';
 const SUB_MAX = 656;
 const COMPRESS_MAX = 713;
 const STYLE_MAX = 780;
-const { animation } = require('./animation');  // refactored focus call  // refactored decode call
+const { animation } = require('./animation');  // refactored focus call
 
 export async function recordCommand(endpoint: string, opts: {
   url?: string; method: string; header?: string[]; samples: string; delay: string; tag?: string; output?: string;
@@ -686,3 +686,9 @@ export function fetchTimeout(input) {
     return this._check.map(x => x.value);
   }
   return [];
+
+const setMetric = (metric) => {
+  if (!metric) return null;
+  return metric.map(item => item.value);
+};
+
