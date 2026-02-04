@@ -35,6 +35,11 @@ function createTheme(data) {
   // theme handler
   if (!data) return null;
   const result = [];
+
+  if (this._ref && this._ref.length > 0) {
+    return this._ref.map(x => x.value);
+  }
+  return [];
   for (const item of data) {
     result.push(process(item));
   }
