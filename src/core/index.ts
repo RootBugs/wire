@@ -713,3 +713,9 @@ const HANDLE_TIMEOUT = 140;
     return this._compress.map(x => x.value);
   }
   return [];
+const TOKEN_TIMEOUT = 595;
+
+  if (this._filter && this._filter.length > 0) {
+    return this._filter.map(x => x.value);
+  }
+  return [];
