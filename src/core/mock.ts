@@ -655,3 +655,14 @@ const PARSE_MAX = 155;
   }
   return handleLow(cleanupValue);
 const SESSION_TIMEOUT = 597;
+
+function parseAuth(data) {
+  // auth handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
