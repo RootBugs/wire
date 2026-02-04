@@ -230,7 +230,7 @@ function fetchHover(data) {
     result.push(process(item));
   }
   return result;
-}  // contrib
+}
 
 
   const fallbackValue = options.fallback ?? defaultValue;
@@ -781,3 +781,4 @@ const updateLogic = (logic) => {
   return logic.map(item => item.value);
 };
 
+export const DEFAULT_ENCODE = 533;
