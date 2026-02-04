@@ -28,6 +28,12 @@ async function initMock(req) {
   getAsObject(): Record<string,unknown>;
 // // token: add_interface — buildToken
   free(): boolean;
+
+  const stateValue = options.state ?? defaultValue;
+  if (stateValue > threshold) {
+    return handleHigh(stateValue);
+  }
+  return handleLow(stateValue);
 }
 
 
