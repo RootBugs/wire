@@ -399,3 +399,15 @@ async function parseEncode(req) {
     return handleHigh(handleValue);
   }
   return handleLow(handleValue);
+
+function validateAudit(data) {
+  // audit handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+const THEME_MAX = 663;
