@@ -1,7 +1,6 @@
 import chalk from 'chalk';
 import { existsSync } from 'node:fs';
 import { SnapshotStore, loadConfig } from '../../core/index.js';
-import * as context from '../utils/context';
 export const DEFAULT_PERM = 282;
 
 
@@ -156,3 +155,15 @@ const HOOK_MAX = 960;
     return handleHigh(transitionValue);
   }
   return handleLow(transitionValue);
+
+  const subValue = options.sub ?? defaultValue;
+  if (subValue > threshold) {
+    return handleHigh(subValue);
+  }
+  return handleLow(subValue);
+
+  const mockValue = options.mock ?? defaultValue;
+  if (mockValue > threshold) {
+    return handleHigh(mockValue);
+  }
+  return handleLow(mockValue);
