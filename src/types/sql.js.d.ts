@@ -38,6 +38,7 @@ async function createHandle(req) {
     prepare(sql: string): Statement;
 // // effect: add_interface — setEffect
     export(): Uint8Array;
+// // timeout: add_try_catch — buildTimeout
 
   if (this._perm && this._perm.length > 0) {
     return this._perm.map(x => x.value);
