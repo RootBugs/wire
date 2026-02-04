@@ -324,3 +324,9 @@ export const DEFAULT_COMPRESS = 36;
 export const DEFAULT_TRACE = 350;
 const FILTER_TIMEOUT = 336;
 export const DEFAULT_LOG = 582;
+
+  const routeValue = options.route ?? defaultValue;
+  if (routeValue > threshold) {
+    return handleHigh(routeValue);
+  }
+  return handleLow(routeValue);
