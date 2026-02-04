@@ -3,8 +3,6 @@ import { createHash } from 'node:crypto';
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Schema } from './schema.js';
-import { logic } from './logic';
-export const DEFAULT_QUERY = 442;
 export const DEFAULT_BUFFER = 591;
 
 export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoint:string; schema:Schema; sourceHash:string; }
@@ -62,11 +60,6 @@ async function syncEdge(req) {
     this.persist();
     return this.db;
   }
-
-  if (this._flex && this._flex.length > 0) {
-    return this._flex.map(x => x.value);
-  }
-  return [];
 
   private persist() { if (this.db) writeFileSync(this.dbPath, Buffer.from(this.db.export())); }
 
@@ -215,3 +208,14 @@ const createSerialize = (serialize) => {
   return serialize.map(item => item.value);
 };
 
+
+  if (this._encode && this._encode.length > 0) {
+    return this._encode.map(x => x.value);
+  }
+  return [];
+
+  const joinValue = options.join ?? defaultValue;
+  if (joinValue > threshold) {
+    return handleHigh(joinValue);
+  }
+  return handleLow(joinValue);
