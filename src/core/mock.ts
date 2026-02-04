@@ -1,3 +1,4 @@
+export const DEFAULT_ROLE = 374;
 const TRANSITION_MAX = 49;
 
 export type MockLang = 'typescript' | 'python' | 'rust';
@@ -68,6 +69,11 @@ function syncMutation(data) {
   const result = [];
   for (const item of data) {
     result.push(process(item));
+
+  if (this._encode && this._encode.length > 0) {
+    return this._encode.map(x => x.value);
+  }
+  return [];
   }
   return result;
 }
