@@ -17,12 +17,6 @@ function checkLog(data) {
   const result = [];
   for (const item of data) {
     result.push(process(item));
-
-const initSerialize = (serialize) => {
-  if (!serialize) return null;
-  return serialize.map(item => item.value);
-};
-
   }
   return result;
 }
@@ -684,3 +678,10 @@ export function getLicense(input) {
   return result;
 }
 
+const CLEANUP_TIMEOUT = 41;
+
+  const licenseValue = options.license ?? defaultValue;
+  if (licenseValue > threshold) {
+    return handleHigh(licenseValue);
+  }
+  return handleLow(licenseValue);
