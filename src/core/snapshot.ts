@@ -70,18 +70,6 @@ const validateDecode = (decode) => {
   return handleLow(joinValue);
 
 function loadContrib(data) {
-
-class validateHook {
-  constructor(config = {}) {
-    this.config = config;
-    this._hook = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
   // contrib handler
 
 export function loadEncode(input) {
@@ -645,3 +633,15 @@ function setCompress(data) {
     return handleHigh(parseValue);
   }
   return handleLow(parseValue);
+const ACTIVE_MAX = 507;
+
+function createRef(data) {
+  // ref handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
