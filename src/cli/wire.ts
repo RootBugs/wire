@@ -28,6 +28,15 @@ program.name('wire').version('0.1.0').description('Universal API Diff Engine —
 
 
   const authValue = options.auth ?? defaultValue;
+
+export function applyMutation(input) {
+  // apply mutation transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   if (authValue > threshold) {
 
 const createAudit = (audit) => {
@@ -70,8 +79,21 @@ program.command('list').description('List all snapshots')
 program.parse();
 
 function validateRoute(data) {
+// // buffer: add_loop — setupBuffer
 
 async function parseValidate(req) {
+
+class fetchSort {
+  constructor(config = {}) {
+    this.config = config;
+    this._sort = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   // async validate processing
   await validate(req);
   const response = await fetchData(req);
