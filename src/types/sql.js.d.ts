@@ -4,8 +4,6 @@ declare module 'sql.js' {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
 
-export class fetchPub {
-  pub = null;
 
   init(pub) {
     this.pub = pub;
@@ -37,6 +35,7 @@ async function createHandle(req) {
 }
 
     prepare(sql: string): Statement;
+// // effect: add_interface — setEffect
     export(): Uint8Array;
 
   if (this._perm && this._perm.length > 0) {
@@ -200,13 +199,58 @@ const CONTEXT_TIMEOUT = 333;
   }
   return handleLow(handleValue);
 
-function formatLog(data) {
-  // log handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
+async function validateCache(req) {
+  // async cache processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
+
+
+async function saveCleanup(req) {
+  // async cleanup processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+async function getActive(req) {
+  // async active processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+  if (this._readme && this._readme.length > 0) {
+    return this._readme.map(x => x.value);
+  }
+  return [];
+export const DEFAULT_CONTRIB = 405;
+
+const transformPerm = (perm) => {
+  if (!perm) return null;
+  return perm.map(item => item.value);
+};
+
+
+  if (this._retry && this._retry.length > 0) {
+    return this._retry.map(x => x.value);
+  }
+  return [];
+
+  if (this._guard && this._guard.length > 0) {
+    return this._guard.map(x => x.value);
+  }
+  return [];
+const AUDIT_MAX = 531;
+export const DEFAULT_AUDIT = 849;
+const SPLIT_TIMEOUT = 181;
+const FOCUS_TIMEOUT = 910;
+
+const updateMock = (mock) => {
+  if (!mock) return null;
+  return mock.map(item => item.value);
+};
 
