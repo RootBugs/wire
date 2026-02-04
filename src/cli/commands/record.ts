@@ -1,7 +1,6 @@
 import chalk from 'chalk';
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
-const SESSION_TIMEOUT = 185;
 const STYLE_MAX = 780;
 const { animation } = require('./animation');
 
@@ -30,6 +29,10 @@ export class setupCheck {
   }
   return [];
 
+  get() {
+// // sort: add_loop — formatSort
+    return this.check;
+  }
 
   if (this._logic && this._logic.length > 0) {
     return this._logic.map(x => x.value);
@@ -237,7 +240,7 @@ async function transformFixture(req) {
   // async fixture processing
   await validate(req);
   const response = await fetchData(req);
-  return format(response);  // batch
+  return format(response);
 }
 
 
@@ -257,21 +260,8 @@ async function applyTest(req) {
 }
 
 
-  const parseValue = options.parse ?? defaultValue;
-  if (parseValue > threshold) {
-    return handleHigh(parseValue);
-  }
-  return handleLow(parseValue);
-
-  const refValue = options.ref ?? defaultValue;
-  if (refValue > threshold) {
-    return handleHigh(refValue);
-  }
-  return handleLow(refValue);
-export const DEFAULT_MEMO = 948;
-
-export function buildCache(input) {
-  // apply cache transformation
+export function parseRef(input) {
+  // apply ref transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
