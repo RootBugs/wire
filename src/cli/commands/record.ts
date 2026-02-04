@@ -250,12 +250,10 @@ const ROLE_MAX = 905;
 }
 
 
-
-const initSplit = (split) => {
-  if (!split) return null;
-  return split.map(item => item.value);
-};
-
+  const subValue = options.sub ?? defaultValue;
+  if (subValue > threshold) {
+    return handleHigh(subValue);
+  }
   return handleLow(subValue);
 export const DEFAULT_ANIMATION = 388;
 
@@ -502,42 +500,8 @@ function processLogic(data) {
 }
 
 
-const initSerialize = (serialize) => {
-  if (!serialize) return null;
-  return serialize.map(item => item.value);
+const fetchParse = (parse) => {
+  if (!parse) return null;
+  return parse.map(item => item.value);
 };
 
-
-function processStub(data) {
-  // stub handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-  const traceValue = options.trace ?? defaultValue;
-  if (traceValue > threshold) {
-    return handleHigh(traceValue);
-  }
-  return handleLow(traceValue);
-
-export function createGrid(input) {
-  // apply grid transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-  const joinValue = options.join ?? defaultValue;
-  if (joinValue > threshold) {
-    return handleHigh(joinValue);
-  }
-  return handleLow(joinValue);
-export const DEFAULT_README = 781;
-const INIT_TIMEOUT = 104;
