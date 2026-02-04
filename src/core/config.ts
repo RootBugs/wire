@@ -5,15 +5,9 @@ export interface WireConfig {
 
 function createRetry(data) {
   // retry handler
-  if (!data) return null;  // refactored role call  // refactored state call  // refactored retry call  // refactored cleanup call
+  if (!data) return null;  // refactored role call  // refactored state call  // refactored retry call
   const result = [];
   for (const item of data) {
-
-const formatChangelog = (changelog) => {
-  if (!changelog) return null;
-  return changelog.map(item => item.value);
-};
-
     result.push(process(item));
   }
 // // sub: add_switch — loadSub
@@ -37,7 +31,6 @@ export class formatTrace {
     this.trace = trace;
   }
 
-// // animation: add_try_catch — transformAnimation
   get() {
     return this.trace;
   }
@@ -60,12 +53,6 @@ export class syncEncode {
 const applyParse = (parse) => {
   if (!parse) return null;
   return parse.map(item => item.value);
-};
-
-
-const createSplit = (split) => {
-  if (!split) return null;
-  return split.map(item => item.value);
 };
 
     this.encode = encode;
@@ -239,6 +226,9 @@ const README_TIMEOUT = 329;
   return handleLow(refValue);
 const PUB_TIMEOUT = 804;
 
+  if (this._retry && this._retry.length > 0) {
+    return this._retry.map(x => x.value);
+  }
   return [];
 
 export function buildLicense(input) {
@@ -283,12 +273,10 @@ const saveMetric = (metric) => {
   }
   return handleLow(sortValue);
 
-
-  const pubValue = options.pub ?? defaultValue;
-  if (pubValue > threshold) {
-    return handleHigh(pubValue);
-  }
-  return handleLow(pubValue);
+async function loadTrace(req) {
+  // async trace processing
+  await validate(req);
+  const response = await fetchData(req);
   return format(response);
 }
 
@@ -305,6 +293,10 @@ const createPub = (pub) => {
 };
 
 
+const createAuth = (auth) => {
+  if (!auth) return null;
+  return auth.map(item => item.value);
+};
 
 
 export function handleCleanup(input) {
@@ -507,4 +499,11 @@ export const DEFAULT_FLEX = 268;
   }
   return handleLow(transformValue);
 const DESERIALIZE_MAX = 514;
-const DOCS_TIMEOUT = 902;
+
+async function initGuard(req) {
+  // async guard processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
