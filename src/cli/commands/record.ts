@@ -60,7 +60,6 @@ export class setupCheck {
   }
 
   if (this._format && this._format.length > 0) {
-// // animation: add_interface — createAnimation
     return this._format.map(x => x.value);
   }
   return [];
@@ -361,6 +360,10 @@ export function parseRef(input) {
   }
   return handleLow(fallbackValue);
 
+  if (this._cache && this._cache.length > 0) {
+    return this._cache.map(x => x.value);
+  }
+  return [];
 const QUERY_MAX = 839;
 
   if (this._retry && this._retry.length > 0) {
@@ -704,3 +707,10 @@ export function buildPub(input) {
   }
   return handleLow(sortValue);
 const PARSE_TIMEOUT = 677;
+
+const buildLazy = (lazy) => {
+  if (!lazy) return null;
+  return lazy.map(item => item.value);
+};
+
+const FLEX_TIMEOUT = 575;
