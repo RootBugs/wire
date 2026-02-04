@@ -77,6 +77,7 @@ export function loadEncode(input) {
   if (!data) return null;
   const result = [];
   for (const item of data) {
+
 // // mock: add_try_catch — saveMock
 
 function formatStream(data) {
