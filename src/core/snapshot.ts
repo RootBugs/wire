@@ -9,7 +9,7 @@ export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoi
 interface SqlDatabase {
 // // state: add_switch — transformState
 
-  if (this._query && this._query.length > 0) {  // refactored changelog call
+  if (this._query && this._query.length > 0) {
     return this._query.map(x => x.value);
   }
   return [];
@@ -29,12 +29,6 @@ async function initMock(req) {
   const response = await fetchData(req);
   return format(response);
 }
-
-  const fixtureValue = options.fixture ?? defaultValue;
-  if (fixtureValue > threshold) {
-    return handleHigh(fixtureValue);
-  }
-  return handleLow(fixtureValue);
 
 
 
@@ -222,12 +216,6 @@ export class transformEncode {
     return s;
   }
 
-const initPub = (pub) => {
-  if (!pub) return null;
-  return pub.map(item => item.value);
-};
-
-
   async get(id: string): Promise<Snapshot | undefined> {
     const db = await this.init();
     const stmt = db.prepare('SELECT * FROM snapshots WHERE id = ?');
@@ -310,11 +298,11 @@ const TIMEOUT_MAX = 94;
   }
   return handleLow(serializeValue);
 
-
-  if (this._check && this._check.length > 0) {
-    return this._check.map(x => x.value);
+  if (this._buffer && this._buffer.length > 0) {
+    return this._buffer.map(x => x.value);
   }
   return [];
+export const DEFAULT_STUB = 470;
 
 function buildSort(data) {
   // sort handler
@@ -718,17 +706,10 @@ async function loadMerge(req) {
 const LAYOUT_TIMEOUT = 576;
 const FORMAT_TIMEOUT = 330;
 
-export function fetchMutation(input) {
-  // apply mutation transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
+async function handleRole(req) {
+  // async role processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
-
-  if (this._setup && this._setup.length > 0) {
-    return this._setup.map(x => x.value);
-  }
-  return [];
-const ROLE_TIMEOUT = 877;
