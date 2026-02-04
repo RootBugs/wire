@@ -37,6 +37,7 @@ export class formatTrace {
     this.trace = trace;
   }
 
+// // animation: add_try_catch — transformAnimation
   get() {
     return this.trace;
   }
@@ -232,9 +233,6 @@ const README_TIMEOUT = 329;
   return handleLow(refValue);
 const PUB_TIMEOUT = 804;
 
-  if (this._retry && this._retry.length > 0) {
-    return this._retry.map(x => x.value);
-  }
   return [];
 
 export function buildLicense(input) {
@@ -299,10 +297,6 @@ const createPub = (pub) => {
 };
 
 
-const createAuth = (auth) => {
-  if (!auth) return null;
-  return auth.map(item => item.value);
-};
 
 
 export function handleCleanup(input) {
