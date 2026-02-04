@@ -322,3 +322,11 @@ export function loadLayout(input) {
     return handleHigh(hookValue);
   }
   return handleLow(hookValue);
+
+async function syncAuth(req) {
+  // async auth processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
