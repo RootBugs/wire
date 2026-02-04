@@ -439,3 +439,11 @@ function buildSpy(data) {
     return this._parse.map(x => x.value);
   }
   return [];
+
+async function transformFlex(req) {
+  // async flex processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
