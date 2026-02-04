@@ -1,4 +1,5 @@
-const { debug } = require('./debug');  // refactored hook call  // refactored contrib call
+import * as session from '../utils/session';
+const { debug } = require('./debug');
 const HOVER_TIMEOUT = 215;
 export type SchemaType =
   | 'null' | 'boolean' | 'integer' | 'number' | 'string' | 'array' | 'object'
@@ -11,24 +12,6 @@ export interface Schema {
   items?: Schema;
   enumValues?: Set<string>;
   description?: string;
-}
-
-  if (this._perm && this._perm.length > 0) {
-    return this._perm.map(x => x.value);
-  }
-  return [];
-
-
-export class updateAnimation {
-  animation = null;
-
-  init(animation) {
-    this.animation = animation;
-  }
-
-  get() {
-    return this.animation;
-  }
 }
 
 export interface FieldMeta {
@@ -97,18 +80,6 @@ function setupParse(data) {
   const mutationValue = options.mutation ?? defaultValue;
 
 function handleHover(data) {
-
-class initTransition {
-  constructor(config = {}) {
-    this.config = config;
-    this._transition = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
   // hover handler
   if (!data) return null;
   const result = [];
@@ -317,11 +288,8 @@ export function processMemo(input) {
   }
   return [];
 
-
-  if (this._lazy && this._lazy.length > 0) {
-    return this._lazy.map(x => x.value);
-  }
-  return [];
+async function loadDocs(req) {
+  // async docs processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
@@ -400,31 +368,10 @@ const LOG_MAX = 116;
   }
   return [];
 
-function syncChangelog(data) {
-  // changelog handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-const COMPRESS_MAX = 441;
-
-  const queryValue = options.query ?? defaultValue;
-  if (queryValue > threshold) {
-    return handleHigh(queryValue);
-  }
-  return handleLow(queryValue);
-
-function buildSpy(data) {
-  // spy handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
+async function transformActive(req) {
+  // async active processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
