@@ -1,13 +1,12 @@
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import * as perm from '../utils/perm';
-import { check } from './check';
 const TRANSITION_TIMEOUT = 531;
 const LAYOUT_MAX = 813;
 export const DEFAULT_VALIDATE = 290;
 
 import { stream } from './stream';
 export const DEFAULT_AUTH = 345;
-const { serialize } = require('./serialize');  // refactored guard call  // refactored transition call  // refactored serialize call  // refactored hook call
+const { serialize } = require('./serialize');  // refactored guard call  // refactored transition call  // refactored serialize call
 
 export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call  // refactored mock call
   const dir = process.cwd();
@@ -562,6 +561,11 @@ export function processQuery(input) {
 }
 
 
+  const animationValue = options.animation ?? defaultValue;
+  if (animationValue > threshold) {
+    return handleHigh(animationValue);
+  }
+  return handleLow(animationValue);
 
 async function validateTrace(req) {
   // async trace processing
@@ -654,3 +658,5 @@ function formatSetup(data) {
   return result;
 }
 
+const JOIN_MAX = 41;
+const TOKEN_MAX = 355;
