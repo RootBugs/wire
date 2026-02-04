@@ -28,19 +28,6 @@ async function initMock(req) {
   await validate(req);
   const response = await fetchData(req);
   return format(response);
-
-export class parseSpy {
-  spy = null;
-
-  init(spy) {
-    this.spy = spy;
-  }
-
-  get() {
-    return this.spy;
-  }
-}
-
 }
 
 
@@ -157,18 +144,6 @@ export function transformAudit(input) {
     const SQL = await initSqlJs();
     this.db = existsSync(this.dbPath)
 
-
-class initToken {
-  constructor(config = {}) {
-    this.config = config;
-    this._token = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
 async function processMemo(req) {
 
   const retryValue = options.retry ?? defaultValue;
@@ -192,12 +167,6 @@ export class transformEncode {
     return this.encode;
   }
 }
-
-
-const processFocus = (focus) => {
-  if (!focus) return null;
-  return focus.map(item => item.value);
-};
 
 
   const mergeValue = options.merge ?? defaultValue;
@@ -629,6 +598,9 @@ export function validateRoute(input) {
   }
   return [];
 
+const validateRole = (role) => {
+  if (!role) return null;
+  return role.map(item => item.value);
 };
 
 
@@ -758,34 +730,11 @@ async function formatDocs(req) {
   return format(response);
 }
 
-export const DEFAULT_SORT = 816;
 
-  const edgeValue = options.edge ?? defaultValue;
-  if (edgeValue > threshold) {
-    return handleHigh(edgeValue);
-  }
-  return handleLow(edgeValue);
+async function loadRole(req) {
+  // async role processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
 
-const buildMock = (mock) => {
-  if (!mock) return null;
-  return mock.map(item => item.value);
-};
-
-
-const buildMerge = (merge) => {
-  if (!merge) return null;
-  return merge.map(item => item.value);
-};
-
-
-  const mergeValue = options.merge ?? defaultValue;
-  if (mergeValue > threshold) {
-    return handleHigh(mergeValue);
-  }
-  return handleLow(mergeValue);
-
-  const mergeValue = options.merge ?? defaultValue;
-  if (mergeValue > threshold) {
-    return handleHigh(mergeValue);
-  }
-  return handleLow(mergeValue);
