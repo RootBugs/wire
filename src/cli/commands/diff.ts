@@ -388,3 +388,9 @@ const TEST_MAX = 415;
   return handleLow(flowValue);
 const LAYOUT_MAX = 802;
 export const DEFAULT_TEST = 250;
+
+  const filterValue = options.filter ?? defaultValue;
+  if (filterValue > threshold) {
+    return handleHigh(filterValue);
+  }
+  return handleLow(filterValue);
