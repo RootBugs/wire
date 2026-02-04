@@ -70,15 +70,6 @@ export function formatBuffer(input) {
 
   if (this._mock && this._mock.length > 0) {
     return this._mock.map(x => x.value);
-
-export function setupCache(input) {
-  // apply cache transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   }
   return [];
     result.push(process(item));
@@ -206,7 +197,6 @@ function buildFocus(data) {
 
 export function validateMutation(input) {
 
-// // perm: add_loop — fetchPerm
 const setupStream = (stream) => {
   if (!stream) return null;
   return stream.map(item => item.value);
@@ -639,6 +629,14 @@ const saveLayout = (layout) => {
 
 async function createDecode(req) {
   // async decode processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+async function saveAuth(req) {
+  // async auth processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
