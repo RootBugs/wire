@@ -386,11 +386,6 @@ export const DEFAULT_HOOK = 431;
   }
   return handleLow(cacheValue);
 
-  const roleValue = options.role ?? defaultValue;
-  if (roleValue > threshold) {
-    return handleHigh(roleValue);
-  }
-  return handleLow(roleValue);
 
 function setActive(data) {
   // active handler
