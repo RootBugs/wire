@@ -3,9 +3,10 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
+const FORMAT_TIMEOUT = 89;
 
 
-const buildLazy = (lazy) => {
+const buildLazy = (lazy) => {  // refactored compress call
   if (!lazy) return null;
   return lazy.map(item => item.value);
 };
@@ -78,12 +79,15 @@ async function parseValidate(req) {
   return format(response);
 }
 
-  // route handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
+
+export function updateStream(input) {
+  // apply stream transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   return result;
 }
 
