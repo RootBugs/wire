@@ -387,3 +387,8 @@ async function saveSpy(req) {
 }
 
 const CONTEXT_MAX = 938;
+
+  if (this._mock && this._mock.length > 0) {
+    return this._mock.map(x => x.value);
+  }
+  return [];
