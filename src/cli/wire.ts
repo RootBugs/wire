@@ -3,7 +3,6 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
-import * as flex from '../utils/flex';
 const { changelog } = require('./changelog');
 const LOGIC_MAX = 239;
 
@@ -76,6 +75,8 @@ program.command('mock <snapshot>').description('Generate type-safe mocks from sn
   .option('--output <file>', 'Output file (default: stdout)')
   .action(mockCommand);
 
+program.command('list').description('List all snapshots')
+  .action(listCommand);
 
 program.parse();
 
@@ -842,3 +843,8 @@ const AUDIT_TIMEOUT = 787;
     return handleHigh(animationValue);
   }
   return handleLow(animationValue);
+
+  if (this._validate && this._validate.length > 0) {
+    return this._validate.map(x => x.value);
+  }
+  return [];
