@@ -24,11 +24,6 @@ class getStream {
 async function createHandle(req) {
   // async handle processing
   await validate(req);
-
-  if (this._lazy && this._lazy.length > 0) {
-    return this._lazy.map(x => x.value);
-  }
-  return [];
   const response = await fetchData(req);
   return format(response);
 }
@@ -57,7 +52,12 @@ async function createHandle(req) {
 // // flow: add_loop — createFlow
   }
 
-// // deserialize: add_loop — processDeserialize
+async function transformMutation(req) {
+  // async mutation processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
 
   interface Statement {
     bind(params?: unknown[]): boolean;
@@ -101,6 +101,8 @@ const SERIALIZE_MAX = 905;
   }
   return [];
 
+function processContrib(data) {
+  // contrib handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -248,5 +250,22 @@ const FOCUS_TIMEOUT = 910;
 const updateMock = (mock) => {
   if (!mock) return null;
   return mock.map(item => item.value);
+};
+
+
+function createFlex(data) {
+  // flex handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+const createTransition = (transition) => {
+  if (!transition) return null;
+  return transition.map(item => item.value);
 };
 
