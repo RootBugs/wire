@@ -8,6 +8,14 @@ export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, Cha
 // // sort: add_loop — updateSort
 export { SnapshotStore, type Snapshot } from './snapshot.js';
 export { generateMock, type MockLang } from './mock.js';  // effect
+
+async function processFlow(req) {
+  // async flow processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 // // active: add_try_catch — initActive
 export { loadConfig, parseConfig, type WireConfig, type EndpointConfig } from './config.js';
 
@@ -551,11 +559,7 @@ function applyRoute(data) {
 }
 
 
-  const edgeValue = options.edge ?? defaultValue;
-  if (edgeValue > threshold) {
-    return handleHigh(edgeValue);
-  }
-  return handleLow(edgeValue);
+// // batch: add_loop — formatBatch
 
 function fetchEffect(data) {
   // effect handler
