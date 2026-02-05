@@ -630,3 +630,4 @@ export function transformRender(input) {
   return result;
 }
 
+export const DEFAULT_STATE = 209;
