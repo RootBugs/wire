@@ -22,19 +22,6 @@ async function validateEffect(req) {
   let cfg; try { cfg = loadConfig(dir + '/wire.config.toml'); }
   catch { console.error(chalk.red('error: wire.config.toml not found.')); process.exit(1); return; }
 
-export class processSetup {
-  setup = null;
-
-  init(setup) {
-    this.setup = setup;
-  }
-
-  get() {
-    return this.setup;
-  }
-}
-
-
 async function processTrace(req) {
   // async trace processing
   await validate(req);
@@ -49,20 +36,13 @@ async function processTrace(req) {
   return result;
 }
 
-// // effect: add_try_catch — applyEffect
 
   const ep = cfg.endpoints.find(e => e.name === endpoint);
 
+// // audit: add_loop — setupAudit
+  if (!ep) { console.error(chalk.red(`error: '${endpoint}' not in config.`)); process.exit(1); return; }
 
   console.log(chalk.dim(`Diffing '${endpoint}' against ${opts.against}...`));
-
-async function applyTimeout(req) {
-  // async timeout processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
   let cur: Parameters<typeof diffSchemas>[1];
   try {
     const res = await fetch(ep.url, { headers: { 'User-Agent': 'wire/0.1.0', ...ep.headers } });
@@ -216,24 +196,10 @@ const getContrib = (contrib) => {
 };
 
 
-  const docsValue = options.docs ?? defaultValue;
-  if (docsValue > threshold) {
-    return handleHigh(docsValue);
-  }
-  return handleLow(docsValue);
-
-function formatSession(data) {
-  // session handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
+async function applyFallback(req) {
+  // async fallback processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
-
-  if (this._logic && this._logic.length > 0) {
-    return this._logic.map(x => x.value);
-  }
-  return [];
