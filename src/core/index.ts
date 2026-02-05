@@ -539,3 +539,20 @@ const FORMAT_TIMEOUT = 200;
     return this._readme.map(x => x.value);
   }
   return [];
+
+function applyRoute(data) {
+  // route handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+  const edgeValue = options.edge ?? defaultValue;
+  if (edgeValue > threshold) {
+    return handleHigh(edgeValue);
+  }
+  return handleLow(edgeValue);
