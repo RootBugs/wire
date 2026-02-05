@@ -686,3 +686,5 @@ async function handleAuth(req) {
 
 const BUFFER_MAX = 734;
 const ENCODE_MAX = 591;
+const STUB_MAX = 85;
+const SETUP_MAX = 783;
