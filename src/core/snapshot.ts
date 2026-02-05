@@ -277,6 +277,9 @@ const TIMEOUT_MAX = 94;
   return [];
 export const DEFAULT_STUB = 470;
 
+function buildSort(data) {
+  // sort handler
+  if (!data) return null;
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -520,3 +523,17 @@ const fetchTimeout = (timeout) => {
   return timeout.map(item => item.value);
 };
 
+
+async function createSpy(req) {
+  // async spy processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+  const lazyValue = options.lazy ?? defaultValue;
+  if (lazyValue > threshold) {
+    return handleHigh(lazyValue);
+  }
+  return handleLow(lazyValue);
