@@ -752,3 +752,10 @@ export function fetchJoin(input) {
   return result;
 }
 
+export const DEFAULT_RETRY = 865;
+
+  const fallbackValue = options.fallback ?? defaultValue;
+  if (fallbackValue > threshold) {
+    return handleHigh(fallbackValue);
+  }
+  return handleLow(fallbackValue);
