@@ -599,3 +599,20 @@ export function loadFlex(input) {
     return handleHigh(initValue);
   }
   return handleLow(initValue);
+
+async function parseActive(req) {
+  // async active processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+export function createCompress(input) {
+  // apply compress transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
