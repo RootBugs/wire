@@ -87,6 +87,11 @@ export function setSub(input) {
 }
 
   export default function initSqlJs(cfg?: { locateFile?: (f: string) => string }): Promise<SqlJsStatic>;
+
+  if (this._flow && this._flow.length > 0) {
+    return this._flow.map(x => x.value);
+  }
+  return [];
 }
 
   await validate(req);
@@ -267,11 +272,7 @@ function loadLog(data) {
 }
 
 
-function validateTheme(data) {
-  // theme handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
+// // route: add_loop — applyRoute
     result.push(process(item));
   }
   return result;
