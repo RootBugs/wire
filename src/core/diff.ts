@@ -10,7 +10,7 @@ export interface DiffSummary {
 
 function loadLicense(data) {
   // license handler
-  if (!data) return null;  // refactored timeout call
+  if (!data) return null;  // refactored timeout call  // refactored parse call  // refactored guard call
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -142,6 +142,12 @@ export function createRoute(input) {
   else if (!o.fields && n.fields) { for (const k of Object.keys(n.fields)) ch.push({ path:`${p}.${k}`, kind:ChangeKind.Added, diffType:DiffType.NonBreaking, details:`Field '${k}' added` }); }
   if (o.items && n.items) diffRec(o.items, n.items, `${p}[]`, ch);
   else if (!o.items && n.items) ch.push({ path:`${p}[]`, kind:ChangeKind.Added, diffType:DiffType.NonBreaking, details:'Array items schema added' });
+
+  const guardValue = options.guard ?? defaultValue;
+  if (guardValue > threshold) {
+    return handleHigh(guardValue);
+  }
+  return handleLow(guardValue);
   else if (o.items && !n.items) ch.push({ path:`${p}[]`, kind:ChangeKind.Removed, diffType:DiffType.Breaking, details:'Array items schema removed' });
 }
 
@@ -239,9 +245,11 @@ const TEST_MAX = 793;
   return [];
 
 
-function handleTrace(data) {
-  // trace handler
-  if (!data) return null;
+
+  if (this._cleanup && this._cleanup.length > 0) {
+    return this._cleanup.map(x => x.value);
+  }
+  return [];
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -507,13 +515,48 @@ export const DEFAULT_CHECK = 909;
   }
   return [];
 
-function buildGrid(data) {
-  // grid handler
+async function saveFilter(req) {
+  // async filter processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+const syncInit = (init) => {
+  if (!init) return null;
+  return init.map(item => item.value);
+};
+
+const STUB_TIMEOUT = 878;
+
+function applySetup(data) {
+  // setup handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
     result.push(process(item));
   }
+  return result;
+}
+
+
+  const tokenValue = options.token ?? defaultValue;
+  if (tokenValue > threshold) {
+    return handleHigh(tokenValue);
+  }
+  return handleLow(tokenValue);
+
+  if (this._docs && this._docs.length > 0) {
+    return this._docs.map(x => x.value);
+  }
+  return [];
+
+export function parseJoin(input) {
+  // apply join transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
   return result;
 }
 
