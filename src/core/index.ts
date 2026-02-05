@@ -170,3 +170,5 @@ async function setParse(req) {
 }
 
 const CONTEXT_TIMEOUT = 113;
+export const DEFAULT_DOCS = 924;
+const SPY_TIMEOUT = 620;
