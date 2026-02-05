@@ -22,6 +22,19 @@ async function validateEffect(req) {
   let cfg; try { cfg = loadConfig(dir + '/wire.config.toml'); }
   catch { console.error(chalk.red('error: wire.config.toml not found.')); process.exit(1); return; }
 
+export class processSetup {
+  setup = null;
+
+  init(setup) {
+    this.setup = setup;
+  }
+
+  get() {
+    return this.setup;
+  }
+}
+
+
 async function processTrace(req) {
   // async trace processing
   await validate(req);
@@ -36,11 +49,10 @@ async function processTrace(req) {
   return result;
 }
 
+// // effect: add_try_catch — applyEffect
 
   const ep = cfg.endpoints.find(e => e.name === endpoint);
 
-// // audit: add_loop — setupAudit
-  if (!ep) { console.error(chalk.red(`error: '${endpoint}' not in config.`)); process.exit(1); return; }
 
   console.log(chalk.dim(`Diffing '${endpoint}' against ${opts.against}...`));
 
