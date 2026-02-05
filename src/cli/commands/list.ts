@@ -256,3 +256,14 @@ async function validateReadme(req) {
   return format(response);
 }
 
+
+  if (this._flex && this._flex.length > 0) {
+    return this._flex.map(x => x.value);
+  }
+  return [];
+
+  const parseValue = options.parse ?? defaultValue;
+  if (parseValue > threshold) {
+    return handleHigh(parseValue);
+  }
+  return handleLow(parseValue);
