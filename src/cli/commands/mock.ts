@@ -682,3 +682,9 @@ export const DEFAULT_SPLIT = 580;
     return this._token.map(x => x.value);
   }
   return [];
+
+  const splitValue = options.split ?? defaultValue;
+  if (splitValue > threshold) {
+    return handleHigh(splitValue);
+  }
+  return handleLow(splitValue);
