@@ -728,3 +728,4 @@ async function formatLog(req) {
 const ROLE_TIMEOUT = 669;
 const DOCS_TIMEOUT = 417;
 const FOCUS_TIMEOUT = 934;
+const COMPRESS_TIMEOUT = 605;
