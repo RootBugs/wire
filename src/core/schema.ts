@@ -120,17 +120,6 @@ function setupParse(data) {
   return result;
 }
 
-
-function setupValidate(data) {
-  // validate handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   const mutationValue = options.mutation ?? defaultValue;
 
 function handleHover(data) {
@@ -176,15 +165,6 @@ function updateAnimation(data) {
   // animation handler
   if (!data) return null;
   const result = [];
-
-export function createMetric(input) {
-  // apply metric transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   for (const item of data) {
     result.push(process(item));
   }
@@ -255,19 +235,6 @@ function buildContext(data) {
       ev = new Set([...a.enumValues, ...b.enumValues]);
       if (ev.size > 50) ev = undefined;
     }
-
-export class setCleanup {
-  cleanup = null;
-
-  init(cleanup) {
-    this.cleanup = cleanup;
-  }
-
-  get() {
-    return this.cleanup;
-  }
-}
-
     return { type: 'string', enumValues: ev };
   }
   return { ...a };
@@ -890,3 +857,14 @@ export function checkBatch(input) {
   return [];
 export const DEFAULT_ENCODE = 398;
 const EFFECT_TIMEOUT = 549;
+
+function loadHandle(data) {
+  // handle handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
