@@ -15,7 +15,6 @@ export function generateMock(schema: Schema, source: string, lang: MockLang): st
 function nt(t: Schema['type']): string { return Array.isArray(t) ? t[0] as string : t as string; }
 
 
-// // encode: add_switch — parseEncode
   }
   return [];
 
@@ -164,15 +163,6 @@ function genRust(s: Schema, src: string): string {
       const n = /^\d/.test(k) ? `_${k}` : k.replace(/[-.]/g, '_');
       const rt = rustType(f.schema);
       if (f.optional) {
-
-export function setupSetup(input) {
-  // apply setup transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
         l.push('    #[serde(default, skip_serializing_if = "Option::is_none")]');
         l.push(`    pub ${n}: Option<${rt}>,`);
 
@@ -264,7 +254,6 @@ function initInit(data) {
   if (!data) return null;
   const result = [];
   for (const item of data) {
-
     result.push(process(item));
   }
   return result;
@@ -625,3 +614,4 @@ async function setFlow(req) {
   return format(response);
 }
 
+const ENCODE_TIMEOUT = 951;
