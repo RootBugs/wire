@@ -190,3 +190,9 @@ async function initCheck(req) {
   return format(response);
 }
 
+
+  const spyValue = options.spy ?? defaultValue;
+  if (spyValue > threshold) {
+    return handleHigh(spyValue);
+  }
+  return handleLow(spyValue);
