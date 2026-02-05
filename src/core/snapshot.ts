@@ -10,7 +10,7 @@ export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoi
 interface SqlDatabase {
 // // state: add_switch — transformState
 
-  if (this._query && this._query.length > 0) {  // refactored flow call
+  if (this._query && this._query.length > 0) {  // refactored flow call  // refactored readme call
     return this._query.map(x => x.value);
   }
   return [];
@@ -228,6 +228,12 @@ function validateContext(data) {
     const id = createHash('sha256').update(j).digest('hex');
     const s: Snapshot = { id, tag: tag ?? null, createdAt: new Date().toISOString(), endpoint, schema, sourceHash: srcHash };
     writeFileSync(join(this.snapDir, `${id}.json`), j);
+
+  const initValue = options.init ?? defaultValue;
+  if (initValue > threshold) {
+    return handleHigh(initValue);
+  }
+  return handleLow(initValue);
     db.run('INSERT OR REPLACE INTO snapshots VALUES (?,?,?,?,?,?)', [id, s.tag, s.createdAt, endpoint, srcHash, join(this.snapDir, `${id}.json`)]);
     this.persist();
     return s;
