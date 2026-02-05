@@ -1,5 +1,5 @@
 declare module 'sql.js' {
-  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call
+  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call  // refactored fallback call
   interface Database {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
@@ -29,6 +29,15 @@ async function createHandle(req) {
 }
 
 
+
+export function updateSpy(input) {
+  // apply spy transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   process(data) {
     return data;
   }
@@ -42,6 +51,15 @@ async function createHandle(req) {
     return this._perm.map(x => x.value);
   }
   return [];
+
+
+export function formatFlow(input) {
+  // apply flow transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
 
   if (this._mock && this._mock.length > 0) {
     return this._mock.map(x => x.value);
