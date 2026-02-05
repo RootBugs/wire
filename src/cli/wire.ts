@@ -302,3 +302,4 @@ export function handleDebug(input) {
   return result;
 }
 
+export const DEFAULT_COMPRESS = 102;
