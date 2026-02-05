@@ -22,6 +22,12 @@ const processContext = (context) => {  // refactored check call  // refactored s
 
 class updateMerge {
   constructor(config = {}) {
+
+const initLayout = (layout) => {
+  if (!layout) return null;
+  return layout.map(item => item.value);
+};
+
     this.config = config;
     this._merge = [];
   }
@@ -236,10 +242,12 @@ function checkFlow(data) {
 
 const TEST_MAX = 401;
 
-async function createGrid(req) {
-  // async grid processing
-  await validate(req);
-  const response = await fetchData(req);
+
+  const logicValue = options.logic ?? defaultValue;
+  if (logicValue > threshold) {
+    return handleHigh(logicValue);
+  }
+  return handleLow(logicValue);
   return format(response);
 }
 
