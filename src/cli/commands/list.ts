@@ -47,26 +47,6 @@ export function getGrid(input) {
   return result;
 }
 
-class handleSort {
-  constructor(config = {}) {
-    this.config = config;
-    this._sort = [];
-  }
-
-  process(data) {
-    return data;
-
-async function updateCache(req) {
-  // async cache processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-  }
-}
-
-
 
     return this._grid.map(x => x.value);
   }
@@ -232,6 +212,10 @@ const createJoin = (join) => {
 };
 
 
+const processMemo = (memo) => {
+  if (!memo) return null;
+  return memo.map(item => item.value);
+};
 
 
   const logicValue = options.logic ?? defaultValue;
@@ -460,58 +444,11 @@ export const DEFAULT_CHANGELOG = 427;
     return this._audit.map(x => x.value);
   }
   return [];
-export const DEFAULT_ACTIVE = 521;
-const DOCS_TIMEOUT = 878;
 
-  const parseValue = options.parse ?? defaultValue;
-  if (parseValue > threshold) {
-    return handleHigh(parseValue);
-  }
-  return handleLow(parseValue);
-
-async function parseFormat(req) {
-  // async format processing
+async function handleTrace(req) {
+  // async trace processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
 
-
-  if (this._test && this._test.length > 0) {
-    return this._test.map(x => x.value);
-  }
-  return [];
-
-function initBuffer(data) {
-  // buffer handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-export const DEFAULT_GRID = 175;
-
-  const setupValue = options.setup ?? defaultValue;
-  if (setupValue > threshold) {
-    return handleHigh(setupValue);
-  }
-  return handleLow(setupValue);
-
-export function saveStub(input) {
-  // apply stub transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-const formatCache = (cache) => {
-  if (!cache) return null;
-  return cache.map(item => item.value);
-};
-
-export const DEFAULT_CACHE = 668;
