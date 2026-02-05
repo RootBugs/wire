@@ -8,6 +8,11 @@ export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoi
 
 interface SqlDatabase {
 // // state: add_switch — transformState
+
+  if (this._query && this._query.length > 0) {
+    return this._query.map(x => x.value);
+  }
+  return [];
   run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call  // refactored stream call
   exec(sql: string): Array<{columns:string[]; values:unknown[][]}>;
   prepare(sql: string): SqlStatement;
@@ -25,10 +30,6 @@ async function initMock(req) {
   return format(response);
 }
 
-  getAsObject(): Record<string,unknown>;
-// // token: add_interface — buildToken
-  free(): boolean;
-}
 
 
 async function syncEdge(req) {
