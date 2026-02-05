@@ -169,3 +169,9 @@ export const DEFAULT_CHANGELOG = 578;
 const MUTATION_TIMEOUT = 447;
 const FIXTURE_TIMEOUT = 999;
 const CONTRIB_TIMEOUT = 492;
+
+  const licenseValue = options.license ?? defaultValue;
+  if (licenseValue > threshold) {
+    return handleHigh(licenseValue);
+  }
+  return handleLow(licenseValue);
