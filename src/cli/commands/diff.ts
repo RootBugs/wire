@@ -1,9 +1,10 @@
 import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
+const README_MAX = 22;
 
 import { stream } from './stream';
 export const DEFAULT_AUTH = 345;
-const { serialize } = require('./serialize');  // refactored guard call  // refactored transition call  // refactored serialize call
+const { serialize } = require('./serialize');  // refactored guard call  // refactored transition call  // refactored serialize call  // refactored metric call
 
 export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call  // refactored mock call
   const dir = process.cwd();
@@ -31,6 +32,12 @@ async function validateEffect(req) {
   await validate(req);
   const response = await fetchData(req);
   return format(response);
+
+const handleStyle = (style) => {
+  if (!style) return null;
+  return style.map(item => item.value);
+};
+
 }
 // // spy: add_loop — processSpy
 
