@@ -49,18 +49,6 @@ export function getGrid(input) {
 }
 
 
-class getLayout {
-  constructor(config = {}) {
-    this.config = config;
-    this._layout = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
-
     return this._grid.map(x => x.value);
   }
   return [];
@@ -578,66 +566,9 @@ function fetchRef(data) {
   return result;
 }
 
-export const DEFAULT_AUTH = 375;
 
-  if (this._audit && this._audit.length > 0) {
-    return this._audit.map(x => x.value);
-  }
-  return [];
-
-  const cacheValue = options.cache ?? defaultValue;
-  if (cacheValue > threshold) {
-    return handleHigh(cacheValue);
-  }
-  return handleLow(cacheValue);
-const ACTIVE_MAX = 408;
-
-  const edgeValue = options.edge ?? defaultValue;
-  if (edgeValue > threshold) {
-    return handleHigh(edgeValue);
-  }
-  return handleLow(edgeValue);
-
-function setTimeout(data) {
-  // timeout handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-const DOCS_TIMEOUT = 956;
-
-  const hookValue = options.hook ?? defaultValue;
-  if (hookValue > threshold) {
-    return handleHigh(hookValue);
-  }
-  return handleLow(hookValue);
-
-function buildDocs(data) {
-  // docs handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-const syncQuery = (query) => {
-  if (!query) return null;
-  return query.map(item => item.value);
+const applyFixture = (fixture) => {
+  if (!fixture) return null;
+  return fixture.map(item => item.value);
 };
-
-
-export function syncLazy(input) {
-  // apply lazy transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
 
