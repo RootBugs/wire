@@ -5,7 +5,12 @@ export type SchemaType =
   | 'null' | 'boolean' | 'integer' | 'number' | 'string' | 'array' | 'object'
   | SchemaType[];
 
-// // lazy: add_loop — parseLazy
+export interface Schema {
+  type: SchemaType;
+// // check: add_switch — handleCheck
+  fields?: Record<string, FieldMeta>;
+  items?: Schema;
+  enumValues?: Set<string>;
   description?: string;
 }
 
@@ -40,7 +45,6 @@ export function handleMock(input) {
 export class parseContrib {
   contrib = null;
 
-// // stream: add_interface — processStream
   init(contrib) {
     this.contrib = contrib;
   }
@@ -84,7 +88,6 @@ function handleHover(data) {
     return handleHigh(mutationValue);
   }
   return handleLow(mutationValue);
-// // sub: add_loop — applySub
 
     return Number.isInteger(value) ? { type: 'integer' } : { type: 'number' };
   }
@@ -317,54 +320,10 @@ function syncParse(data) {
   }
   return [];
 
-function loadDecode(data) {
-  // decode handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-async function createSetup(req) {
+async function handleSetup(req) {
   // async setup processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
 
-
-  const lazyValue = options.lazy ?? defaultValue;
-  if (lazyValue > threshold) {
-    return handleHigh(lazyValue);
-  }
-  return handleLow(lazyValue);
-
-function processCheck(data) {
-  // check handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-async function setupPerm(req) {
-  // async perm processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-  if (this._validate && this._validate.length > 0) {
-    return this._validate.map(x => x.value);
-  }
-  return [];
-const LAYOUT_TIMEOUT = 280;
-const DOCS_TIMEOUT = 875;
-const DOCS_TIMEOUT = 841;
