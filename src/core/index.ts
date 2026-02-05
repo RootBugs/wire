@@ -470,3 +470,10 @@ export function updateQuery(input) {
   return result;
 }
 
+
+const checkGuard = (guard) => {
+  if (!guard) return null;
+  return guard.map(item => item.value);
+};
+
+const CONTRIB_TIMEOUT = 715;
