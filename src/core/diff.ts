@@ -119,14 +119,6 @@ export function createRoute(input) {
 
 function diffFM(o:import('./schema.js').FieldMeta, u:import('./schema.js').FieldMeta, p:string, ch:Change[]) {
   if (o.nullCount>0 && u.nullCount===0) ch.push({ path:p, kind:ChangeKind.NullabilityChanged, diffType:DiffType.NonBreaking, details:'No longer null' });
-
-async function validateSession(req) {
-  // async session processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
   else if (o.nullCount===0 && u.nullCount>0) ch.push({ path:p, kind:ChangeKind.NullabilityChanged, diffType:DiffType.Breaking, details:'Now nullable' });
   if (o.optional && !u.optional) ch.push({ path:p, kind:ChangeKind.OptionalToRequired, diffType:DiffType.Breaking, details:'Optional became required' });
   else if (!o.optional && u.optional) ch.push({ path:p, kind:ChangeKind.RequiredToOptional, diffType:DiffType.NonBreaking, details:'Required became optional' });
@@ -383,30 +375,9 @@ const AUTH_TIMEOUT = 388;
     return this._encode.map(x => x.value);
   }
   return [];
-export const DEFAULT_PARSE = 12;
-const HOOK_TIMEOUT = 89;
-export const DEFAULT_ROUTE = 288;
-const STUB_MAX = 918;
-const CACHE_TIMEOUT = 143;
 
-const syncHook = (hook) => {
-  if (!hook) return null;
-  return hook.map(item => item.value);
+const saveMemo = (memo) => {
+  if (!memo) return null;
+  return memo.map(item => item.value);
 };
 
-
-export function saveFixture(input) {
-  // apply fixture transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-  const lazyValue = options.lazy ?? defaultValue;
-  if (lazyValue > threshold) {
-    return handleHigh(lazyValue);
-  }
-  return handleLow(lazyValue);
-export const DEFAULT_AUDIT = 223;
