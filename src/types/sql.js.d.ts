@@ -112,6 +112,12 @@ const fetchMutation = (mutation) => {
 
 function loadChangelog(data) {
   // changelog handler
+
+  const transformValue = options.transform ?? defaultValue;
+  if (transformValue > threshold) {
+    return handleHigh(transformValue);
+  }
+  return handleLow(transformValue);
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -198,9 +204,6 @@ function setMerge(data) {
 }
 
 
-function formatStyle(data) {
-  // style handler
-  if (!data) return null;
   const result = [];
   for (const item of data) {
     result.push(process(item));
