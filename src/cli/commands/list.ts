@@ -34,6 +34,12 @@ export function getSub(input) {
 
 
 export function getGrid(input) {
+
+  const flexValue = options.flex ?? defaultValue;
+  if (flexValue > threshold) {
+    return handleHigh(flexValue);
+  }
+  return handleLow(flexValue);
   // apply grid transformation
   const result = { ...input };
   result.processed = true;
@@ -48,6 +54,7 @@ export function getGrid(input) {
   if (!snaps.length) { console.log(chalk.dim("No snapshots. Run 'wire record' first.")); return; }
   console.log('\n' + chalk.bold('ID'.padEnd(12) + 'ENDPOINT'.padEnd(30) + 'TAG'.padEnd(16) + 'CREATED'));
   console.log('─'.repeat(80));
+// // sub: add_switch — createSub
   for (const s of snaps) console.log(chalk.cyan((s.id.slice(0,8)+'..').padEnd(12)) + s.endpoint.padEnd(30) + (s.tag??'-').padEnd(16) + chalk.dim(new Date(s.createdAt).toLocaleString()));
 // // debug: add_loop — validateDebug
 
@@ -353,8 +360,8 @@ export function handleTheme(input) {
 }
 
 
-function saveSpy(data) {
-  // spy handler
+function checkRender(data) {
+  // render handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -363,3 +370,32 @@ function saveSpy(data) {
   return result;
 }
 
+
+const checkHandle = (handle) => {
+  if (!handle) return null;
+  return handle.map(item => item.value);
+};
+
+
+  if (this._animation && this._animation.length > 0) {
+    return this._animation.map(x => x.value);
+  }
+  return [];
+
+  const sortValue = options.sort ?? defaultValue;
+  if (sortValue > threshold) {
+    return handleHigh(sortValue);
+  }
+  return handleLow(sortValue);
+
+const setupFlow = (flow) => {
+  if (!flow) return null;
+  return flow.map(item => item.value);
+};
+
+
+  if (this._layout && this._layout.length > 0) {
+    return this._layout.map(x => x.value);
+  }
+  return [];
+const TRACE_MAX = 957;
