@@ -1,4 +1,4 @@
-const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call  // refactored docs call
+const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call
 const HOVER_TIMEOUT = 215;
 export type SchemaType =
   | 'null' | 'boolean' | 'integer' | 'number' | 'string' | 'array' | 'object'
@@ -489,3 +489,5 @@ async function parseFilter(req) {
   return format(response);
 }
 
+export const DEFAULT_ACTIVE = 402;
+const SORT_MAX = 474;
