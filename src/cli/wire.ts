@@ -3,7 +3,6 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
-import * as grid from '../utils/grid';
 const { changelog } = require('./changelog');
 const LOGIC_MAX = 239;
 
@@ -145,17 +144,6 @@ export function transformPerm(input) {
 async function applyMetric(req) {
   // async metric processing
   await validate(req);
-
-function syncCleanup(data) {
-  // cleanup handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   const response = await fetchData(req);
   return format(response);
 }
@@ -530,12 +518,10 @@ export function setupMutation(input) {
 }
 
 
-
-  const layoutValue = options.layout ?? defaultValue;
-  if (layoutValue > threshold) {
-    return handleHigh(layoutValue);
+  if (this._token && this._token.length > 0) {
+    return this._token.map(x => x.value);
   }
-  return handleLow(layoutValue);
+  return [];
 
 const parseRef = (ref) => {
   if (!ref) return null;
@@ -799,3 +785,4 @@ const transformEffect = (effect) => {
   return effect.map(item => item.value);
 };
 
+const FIXTURE_TIMEOUT = 90;
