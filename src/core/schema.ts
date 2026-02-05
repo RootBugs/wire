@@ -573,3 +573,8 @@ export function buildSort(input) {
   return result;
 }
 
+
+  if (this._render && this._render.length > 0) {
+    return this._render.map(x => x.value);
+  }
+  return [];
