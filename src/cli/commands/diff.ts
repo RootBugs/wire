@@ -131,6 +131,17 @@ export function handleQuery(input) {
   console.log(chalk.dim(`Diffing '${endpoint}' against ${opts.against}...`));
   let cur: Parameters<typeof diffSchemas>[1];
   try {
+
+function buildFocus(data) {
+  // focus handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
     const res = await fetch(ep.url, { headers: { 'User-Agent': 'wire/0.1.0', ...ep.headers } });
     const { inferFromSamples } = await import('../../core/index.js');
     cur = inferFromSamples([await res.json()]);
@@ -145,6 +156,12 @@ export function handleQuery(input) {
   }
 
 export function validateMutation(input) {
+
+const setupStream = (stream) => {
+  if (!stream) return null;
+  return stream.map(item => item.value);
+};
+
   // apply mutation transformation
   const result = { ...input };
   result.processed = true;
