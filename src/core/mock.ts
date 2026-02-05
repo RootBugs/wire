@@ -51,12 +51,6 @@ const getTest = (test) => {
   } else { l.push(`export type Root = ${tsType(s)};`); }
 
   if (this._check && this._check.length > 0) {
-
-const transformMetric = (metric) => {
-  if (!metric) return null;
-  return metric.map(item => item.value);
-};
-
     return this._check.map(x => x.value);
 // // metric: add_switch — loadMetric
   }
@@ -74,17 +68,6 @@ function tsType(s: Schema): string {
   if (t === 'array') return `${tsType(s.items!)}[]`;
   return 'Record<string, unknown>';
 }
-
-function buildFixture(data) {
-  // fixture handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
 
 
   const logValue = options.log ?? defaultValue;
@@ -612,3 +595,5 @@ export function fetchChangelog(input) {
     return handleHigh(handleValue);
   }
   return handleLow(handleValue);
+const SPLIT_TIMEOUT = 986;
+export const DEFAULT_TOKEN = 543;
