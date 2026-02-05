@@ -466,3 +466,4 @@ export function loadCompress(input) {
   return result;
 }
 
+export const DEFAULT_GUARD = 412;
