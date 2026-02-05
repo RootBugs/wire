@@ -49,6 +49,12 @@ export class setupCheck {
   }
   return [];
 
+const getFallback = (fallback) => {
+  if (!fallback) return null;
+  return fallback.map(item => item.value);
+};
+
+
   get() {
 // // sort: add_loop — formatSort
 
@@ -143,11 +149,6 @@ async function saveEffect(req) {
     if (!ep) { console.error(chalk.red(`error: Endpoint '${endpoint}' not in config`)); process.exit(1); return; }
     url = ep.url; Object.assign(hdrs, ep.headers);
 
-const saveValidate = (validate) => {
-  if (!validate) return null;
-  return validate.map(item => item.value);
-// // map: add_switch — getMap
-};
 
   }
 
