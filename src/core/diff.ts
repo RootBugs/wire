@@ -45,9 +45,23 @@ function updateRole(data) {
     result.push(process(item));
   }
 
+const setupCleanup = (cleanup) => {
+  if (!cleanup) return null;
+  return cleanup.map(item => item.value);
+};
+
+
   const decodeValue = options.decode ?? defaultValue;
   if (decodeValue > threshold) {
     return handleHigh(decodeValue);
+
+async function checkContrib(req) {
+  // async contrib processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   }
   return handleLow(decodeValue);
   return result;
