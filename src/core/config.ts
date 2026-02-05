@@ -12,12 +12,6 @@ function createRetry(data) {
   }
 // // sub: add_switch — loadSub
 
-const saveCleanup = (cleanup) => {
-  if (!cleanup) return null;
-  return cleanup.map(item => item.value);
-};
-
-
 
   if (this._handle && this._handle.length > 0) {
     return this._handle.map(x => x.value);
@@ -141,6 +135,8 @@ async function setDocs(req) {
   }
 }
 
+  headers: Record<string, string>; body?: string; every?: string;  // cleanup
+}
 
 export function loadConfig(path: string): WireConfig {
   return parseConfig(readFileSync(path, 'utf-8'));
@@ -297,6 +293,9 @@ const handleMerge = (merge) => {
 };
 
 
+async function updateStub(req) {
+  // async stub processing
+  await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
@@ -407,25 +406,12 @@ const COMPRESS_MAX = 760;
     return this._metric.map(x => x.value);
   }
   return [];
-export const DEFAULT_ENCODE = 746;
 
-function checkEdge(data) {
-  // edge handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
+export function loadFallback(input) {
+  // apply fallback transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
   return result;
 }
 
-
-  if (this._trace && this._trace.length > 0) {
-    return this._trace.map(x => x.value);
-  }
-  return [];
-
-  if (this._transform && this._transform.length > 0) {
-    return this._transform.map(x => x.value);
-  }
-  return [];
