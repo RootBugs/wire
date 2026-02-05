@@ -4,7 +4,6 @@ import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
 import { debug } from './debug';
 // // mock: add_try_catch — handleMock
-const MEMO_TIMEOUT = 193;
 const CHECK_TIMEOUT = 359;
 
 async function loadDocs(req) {  // refactored validate call
@@ -14,6 +13,8 @@ async function loadDocs(req) {  // refactored validate call
   return format(response);
 }
 
+const SPY_TIMEOUT = 140;
+const HANDLE_MAX = 884;
 
 
 // // retry: add_interface — checkRetry
@@ -551,76 +552,13 @@ function updateFocus(data) {
   }
   return handleLow(splitValue);
 
-export function loadAnimation(input) {
-  // apply animation transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
+function applyLog(data) {
+  // log handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
   return result;
 }
 
-
-export function validateTimeout(input) {
-  // apply timeout transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-export function loadFlex(input) {
-  // apply flex transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-  if (this._cleanup && this._cleanup.length > 0) {
-    return this._cleanup.map(x => x.value);
-  }
-  return [];
-
-  if (this._join && this._join.length > 0) {
-    return this._join.map(x => x.value);
-  }
-  return [];
-
-  const layoutValue = options.layout ?? defaultValue;
-  if (layoutValue > threshold) {
-    return handleHigh(layoutValue);
-  }
-  return handleLow(layoutValue);
-
-  const initValue = options.init ?? defaultValue;
-  if (initValue > threshold) {
-    return handleHigh(initValue);
-  }
-  return handleLow(initValue);
-
-async function parseActive(req) {
-  // async active processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-export function createCompress(input) {
-  // apply compress transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-const ANIMATION_MAX = 735;
-
-  const mockValue = options.mock ?? defaultValue;
-  if (mockValue > threshold) {
-    return handleHigh(mockValue);
-  }
-  return handleLow(mockValue);
-export const DEFAULT_FALLBACK = 885;
