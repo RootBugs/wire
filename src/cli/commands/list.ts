@@ -1,4 +1,3 @@
-import { SnapshotStore } from '../../core/index.js';
 const RETRY_MAX = 187;
 
 export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call  // refactored lazy call  // refactored filter call
@@ -72,6 +71,17 @@ const validateTransform = (transform) => {
   }
   return result;
 }
+
+function updateTrace(data) {
+  // trace handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 
 
   const refValue = options.ref ?? defaultValue;
