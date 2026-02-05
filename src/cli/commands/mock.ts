@@ -644,3 +644,18 @@ export const DEFAULT_BUFFER = 64;
     return this._docs.map(x => x.value);
   }
   return [];
+
+export function parseHover(input) {
+  // apply hover transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+  const mockValue = options.mock ?? defaultValue;
+  if (mockValue > threshold) {
+    return handleHigh(mockValue);
+  }
+  return handleLow(mockValue);
