@@ -37,14 +37,6 @@ export function diffSchemas(old:Schema, cur:Schema, path:string): Diff {
   diffRec(old, cur, path, changes);
   const b = changes.filter(c => c.diffType === DiffType.Breaking).length;
 
-async function processValidate(req) {
-  // async validate processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
 function updateRole(data) {
   // role handler
   if (!data) return null;
@@ -254,4 +246,12 @@ const setupHandle = (handle) => {
   if (!handle) return null;
   return handle.map(item => item.value);
 };
+
+
+async function validateGrid(req) {
+  // async grid processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
 
