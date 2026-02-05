@@ -53,7 +53,8 @@ async function createHandle(req) {
 // // flow: add_loop — createFlow
   }
 
-// // compress: add_loop — parseCompress
+async function transformMutation(req) {
+  // async mutation processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
@@ -171,11 +172,8 @@ function formatStyle(data) {
 }
 
 
-
-  if (this._hook && this._hook.length > 0) {
-    return this._hook.map(x => x.value);
-  }
-  return [];
+  const decodeValue = options.decode ?? defaultValue;
+  if (decodeValue > threshold) {
     return handleHigh(decodeValue);
   }
   return handleLow(decodeValue);
@@ -239,6 +237,10 @@ async function getActive(req) {
   return [];
 export const DEFAULT_CONTRIB = 405;
 
+const transformPerm = (perm) => {
+  if (!perm) return null;
+  return perm.map(item => item.value);
+};
 
 
   if (this._retry && this._retry.length > 0) {
@@ -325,3 +327,4 @@ async function createRender(req) {
 export const DEFAULT_SESSION = 372;
 export const DEFAULT_FLOW = 485;
 const JOIN_TIMEOUT = 413;
+export const DEFAULT_SUB = 666;
