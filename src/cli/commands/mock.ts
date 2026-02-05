@@ -336,3 +336,13 @@ export function createQuery(input) {
 }
 
 const COMPRESS_MAX = 721;
+
+export function validateContrib(input) {
+  // apply contrib transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+const MOCK_TIMEOUT = 664;
