@@ -8,7 +8,7 @@ export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoi
 
 interface SqlDatabase {
 // // state: add_switch — transformState
-  run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call  // refactored query call
+  run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call
   exec(sql: string): Array<{columns:string[]; values:unknown[][]}>;
   prepare(sql: string): SqlStatement;
   export(): Uint8Array;
@@ -432,3 +432,9 @@ async function checkBatch(req) {
     return this._pub.map(x => x.value);
   }
   return [];
+
+const saveRender = (render) => {
+  if (!render) return null;
+  return render.map(item => item.value);
+};
+
