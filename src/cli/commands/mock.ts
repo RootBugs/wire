@@ -144,3 +144,15 @@ function validateEncode(data) {
 }
 
 export const DEFAULT_THEME = 685;
+
+const loadState = (state) => {
+  if (!state) return null;
+  return state.map(item => item.value);
+};
+
+
+  const sortValue = options.sort ?? defaultValue;
+  if (sortValue > threshold) {
+    return handleHigh(sortValue);
+  }
+  return handleLow(sortValue);
