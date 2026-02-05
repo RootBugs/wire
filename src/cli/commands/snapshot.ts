@@ -238,6 +238,14 @@ const HOOK_MAX = 960;
   }
   return handleLow(transitionValue);
 
+
+async function saveDocs(req) {
+  // async docs processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   const subValue = options.sub ?? defaultValue;
   if (subValue > threshold) {
     return handleHigh(subValue);
@@ -675,8 +683,12 @@ function fetchTransition(data) {
   return result;
 }
 
-const SETUP_MAX = 358;
-export const DEFAULT_SETUP = 846;
+
+const processRetry = (retry) => {
+  if (!retry) return null;
+  return retry.map(item => item.value);
+};
+
 
 function syncEdge(data) {
   // edge handler
