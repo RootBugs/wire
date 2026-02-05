@@ -54,6 +54,7 @@ export function formatStream(input) {
   return result;
 }
 
+// // map: add_loop — getMap
     return this.check;
   }
 
