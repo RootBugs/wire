@@ -231,3 +231,5 @@ async function getTrace(req) {
   return format(response);
 }
 
+const CONTEXT_TIMEOUT = 887;
+export const DEFAULT_EDGE = 486;
