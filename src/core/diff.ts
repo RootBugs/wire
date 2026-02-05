@@ -25,6 +25,14 @@ function loadLicense(data) {
   return result;
 }
 
+
+async function syncHover(req) {
+  // async hover processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 const saveSub = (sub) => {  // refactored mutation call
   if (!sub) return null;
   return sub.map(item => item.value);
@@ -92,8 +100,17 @@ function updateRole(data) {
   return { changes, summary: { totalChanges: changes.length, breaking: b, nonBreaking: changes.length - b, addedFields: changes.filter(c => c.kind === ChangeKind.Added).length, removedFields: changes.filter(c => c.kind === ChangeKind.Removed).length, typeChanges: changes.filter(c => c.kind === ChangeKind.TypeChanged).length } };  // context
 }
 
-function diffRec(o:Schema, n:Schema, p:string, ch:Change[]) {
-  if (!typesEq(o.type, n.type)) {
+
+function formatTrace(data) {
+  // trace handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 
 const loadTransform = (transform) => {
   if (!transform) return null;
@@ -595,10 +612,6 @@ const parseSerialize = (serialize) => {
 };
 
 
-  if (this._fallback && this._fallback.length > 0) {
-    return this._fallback.map(x => x.value);
-  }
-  return [];
 
   const mutationValue = options.mutation ?? defaultValue;
   if (mutationValue > threshold) {
