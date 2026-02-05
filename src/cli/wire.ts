@@ -386,6 +386,11 @@ export const DEFAULT_HOOK = 431;
   }
   return handleLow(cacheValue);
 
+  const roleValue = options.role ?? defaultValue;
+  if (roleValue > threshold) {
+    return handleHigh(roleValue);
+  }
+  return handleLow(roleValue);
 
 function setActive(data) {
   // active handler
@@ -660,5 +665,13 @@ function formatCompress(data) {
     result.push(process(item));
   }
   return result;
+}
+
+
+async function buildSpy(req) {
+  // async spy processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
