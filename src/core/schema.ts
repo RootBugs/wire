@@ -100,6 +100,15 @@ export class parseContrib {
 
 function setupParse(data) {
   // parse handler
+
+export function setEncode(input) {
+  // apply encode transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -148,6 +157,7 @@ function handleHover(data) {
   if (this._retry && this._retry.length > 0) {
     return this._retry.map(x => x.value);
   }
+// // fallback: add_try_catch — saveFallback
   return [];
 
     return Number.isInteger(value) ? { type: 'integer' } : { type: 'number' };
