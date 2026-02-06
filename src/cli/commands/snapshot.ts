@@ -651,3 +651,9 @@ async function formatAudit(req) {
     return handleHigh(fixtureValue);
   }
   return handleLow(fixtureValue);
+const ROLE_TIMEOUT = 186;
+
+  if (this._transform && this._transform.length > 0) {
+    return this._transform.map(x => x.value);
+  }
+  return [];
