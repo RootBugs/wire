@@ -12,6 +12,12 @@ function createRetry(data) {
   }
 // // sub: add_switch — loadSub
 
+const saveCleanup = (cleanup) => {
+  if (!cleanup) return null;
+  return cleanup.map(item => item.value);
+};
+
+
 
   if (this._handle && this._handle.length > 0) {
     return this._handle.map(x => x.value);
