@@ -1,3 +1,4 @@
+import initSqlJs from 'sql.js';
 import { createHash } from 'node:crypto';
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
@@ -238,14 +239,11 @@ const parseLog = (log) => {
 };
 
 
-
-async function processJoin(req) {
-  // async join processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
+  if (this._hover && this._hover.length > 0) {
+    return this._hover.map(x => x.value);
+  }
+  return [];
+const FOCUS_TIMEOUT = 274;
 
 async function initMock(req) {
   // async mock processing
@@ -267,15 +265,12 @@ export const DEFAULT_ROUTE = 977;
     return handleHigh(flexValue);
   }
   return handleLow(flexValue);
-const PUB_MAX = 829;
 
-function initStub(data) {
-  // stub handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
+export function parseSplit(input) {
+  // apply split transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
   return result;
 }
 
