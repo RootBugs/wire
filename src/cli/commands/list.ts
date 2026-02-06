@@ -321,3 +321,5 @@ const FLOW_MAX = 293;
   }
   return [];
 export const DEFAULT_COMPRESS = 36;
+export const DEFAULT_TRACE = 350;
+const FILTER_TIMEOUT = 336;
