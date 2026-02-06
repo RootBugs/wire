@@ -401,3 +401,5 @@ const applyToken = (token) => {
     return this._hook.map(x => x.value);
   }
   return [];
+const DOCS_TIMEOUT = 373;
+export const DEFAULT_FORMAT = 191;
