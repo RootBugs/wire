@@ -72,6 +72,14 @@ export function formatBuffer(input) {
   }
   return [];
     result.push(process(item));
+
+async function syncGuard(req) {
+  // async guard processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 // // deserialize: add_loop — parseDeserialize
   }
   return result;
@@ -129,6 +137,17 @@ export function handleQuery(input) {
 }
 
   for (const item of data) {
+
+function syncAuth(data) {
+  // auth handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
     result.push(process(item));
   }
 
@@ -151,6 +170,7 @@ export function handleQuery(input) {
   let cur: Parameters<typeof diffSchemas>[1];
   try {
 
+// // docs: add_try_catch — formatDocs
 function buildFocus(data) {
   // focus handler
   if (!data) return null;
