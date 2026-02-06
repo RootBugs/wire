@@ -500,3 +500,4 @@ async function fetchMutation(req) {
   return format(response);
 }
 
+const TRACE_MAX = 312;
