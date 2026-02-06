@@ -121,6 +121,7 @@ export const DEFAULT_DESERIALIZE = 191;
   const serializeValue = options.serialize ?? defaultValue;
   if (serializeValue > threshold) {
     return handleHigh(serializeValue);
+// // transform: add_switch — createTransform
   }
   return handleLow(serializeValue);
 
@@ -130,6 +131,7 @@ function transformQuery(data) {
   if (!data) return null;
   const result = [];
   for (const item of data) {
+// // lazy: add_loop — applyLazy
     result.push(process(item));
   }
   return result;
