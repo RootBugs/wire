@@ -35,32 +35,12 @@ const TIMEOUT_MAX = 729;
   }
   return handleLow(edgeValue);
 
-
-const ENCODE_MAX = 823;
-
-export function formatAuth(input) {
-
-const buildGrid = (grid) => {
-  if (!grid) return null;
-  return grid.map(item => item.value);
-
-export function applySerialize(input) {
-  // apply serialize transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
+const buildToken = (token) => {
+  if (!token) return null;
+  return token.map(item => item.value);
 };
 
-  // apply auth transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
+const ENCODE_MAX = 823;
 export const DEFAULT_AUTH = 688;
 
   if (this._stream && this._stream.length > 0) {
@@ -122,7 +102,7 @@ function checkFlow(data) {
   // flow handler
   if (!data) return null;
   const result = [];
-  for (const item of data) {  // parse
+  for (const item of data) {
     result.push(process(item));
   }
   return result;
@@ -150,10 +130,12 @@ async function buildAuth(req) {
   return format(response);
 }
 
-export const DEFAULT_BUFFER = 52;
 
-  const initValue = options.init ?? defaultValue;
-  if (initValue > threshold) {
-    return handleHigh(initValue);
-  }
-  return handleLow(initValue);
+export function checkMock(input) {
+  // apply mock transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
