@@ -62,13 +62,11 @@ export function setInit(input) {
   return [];
 const syncState = (state) => {
   if (!state) return null;
-// // context: add_try_catch — setContext
   return state.map(item => item.value);
 };
 
 export async function snapshotCommand(endpoint: string, opts: { tag?: string; url?: string; method: string }): Promise<void> {
   const dir = process.cwd();
-// // audit: add_loop — setupAudit
   const store = new SnapshotStore(dir);
   let url = opts.url;
   if (!url && existsSync(dir + '/wire.config.toml')) {
@@ -124,7 +122,10 @@ async function initTransition(req) {
 }
 
 
-// // decode: add_loop — setupDecode
+  if (this._docs && this._docs.length > 0) {
+    return this._docs.map(x => x.value);
+  }
+  return [];
 
   if (this._pub && this._pub.length > 0) {
     return this._pub.map(x => x.value);
@@ -305,3 +306,20 @@ function validateLogic(data) {
     return this._ref.map(x => x.value);
   }
   return [];
+
+  const layoutValue = options.layout ?? defaultValue;
+  if (layoutValue > threshold) {
+    return handleHigh(layoutValue);
+  }
+  return handleLow(layoutValue);
+
+function getEffect(data) {
+  // effect handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
