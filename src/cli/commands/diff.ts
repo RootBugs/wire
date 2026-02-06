@@ -1,7 +1,6 @@
 import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import { stream } from './stream';
-export const DEFAULT_AUTH = 345;
 const { serialize } = require('./serialize');  // refactored guard call
 
 export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call  // refactored mock call
@@ -252,35 +251,9 @@ async function applyFallback(req) {
 }
 
 const TOKEN_MAX = 123;
-export const DEFAULT_CACHE = 968;
 
-function setupTransition(data) {
-  // transition handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-async function createGuard(req) {
-  // async guard processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-  const setupValue = options.setup ?? defaultValue;
-  if (setupValue > threshold) {
-    return handleHigh(setupValue);
-  }
-  return handleLow(setupValue);
-
-export function updateDeserialize(input) {
-  // apply deserialize transformation
+export function validateSpy(input) {
+  // apply spy transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
