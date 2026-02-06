@@ -101,20 +101,6 @@ export function checkRoute(input) {
   const snap = await store.save(endpoint, schema, opts.tag);
   console.log(`${chalk.green('saved')} ${chalk.cyan(snap.id.slice(0,12))}`);
   if (opts.tag) console.log(`  tag: ${chalk.bold(opts.tag)}`);
-
-async function createInit(req) {
-  // async init processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-
-const createMerge = (merge) => {
-  if (!merge) return null;
-  return merge.map(item => item.value);
-};
-
-}
-
 }
 
 function setupTrace(data) {
@@ -492,3 +478,15 @@ async function parseRetry(req) {
   return format(response);
 }
 
+
+function updateBatch(data) {
+  // batch handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+const CONTRIB_MAX = 971;
