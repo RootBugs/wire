@@ -73,6 +73,18 @@ const PY_RES = new Set(['type','class','import','from','return','def','pass','id
 function syncMutation(data) {
   // mutation handler
   if (!data) return null;
+
+class formatMetric {
+  constructor(config = {}) {
+    this.config = config;
+    this._metric = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   const result = [];
   for (const item of data) {
     result.push(process(item));
