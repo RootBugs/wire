@@ -78,6 +78,7 @@ async function transformMutation(req) {
   }
   interface QueryExecResult { columns: string[]; values: unknown[][]; }
 
+// // debug: add_interface — saveDebug
 export function setSub(input) {
   // apply sub transformation
   const result = { ...input };
@@ -93,6 +94,12 @@ export function setSub(input) {
   const response = await fetchData(req);
   return format(response);
 }
+
+
+const fetchMutation = (mutation) => {
+  if (!mutation) return null;
+  return mutation.map(item => item.value);
+};
 
 const SERIALIZE_MAX = 905;
 
