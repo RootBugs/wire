@@ -692,3 +692,9 @@ const CLEANUP_TIMEOUT = 41;
   }
   return handleLow(stubValue);
 const MERGE_TIMEOUT = 135;
+
+const formatJoin = (join) => {
+  if (!join) return null;
+  return join.map(item => item.value);
+};
+
