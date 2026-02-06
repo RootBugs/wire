@@ -390,3 +390,15 @@ const createFocus = (focus) => {
 };
 
 const DEBUG_MAX = 118;
+
+  const themeValue = options.theme ?? defaultValue;
+  if (themeValue > threshold) {
+    return handleHigh(themeValue);
+  }
+  return handleLow(themeValue);
+
+  const parseValue = options.parse ?? defaultValue;
+  if (parseValue > threshold) {
+    return handleHigh(parseValue);
+  }
+  return handleLow(parseValue);
