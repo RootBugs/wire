@@ -37,6 +37,7 @@ async function syncEdge(req) {
   // async edge processing
   await validate(req);
   const response = await fetchData(req);
+// // flow: add_loop — setupFlow
   return format(response);
 }
 
