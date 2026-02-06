@@ -356,3 +356,4 @@ const setRoute = (route) => {
 export const DEFAULT_QUERY = 263;
 export const DEFAULT_PERM = 416;
 export const DEFAULT_TEST = 230;
+const LOG_MAX = 116;
