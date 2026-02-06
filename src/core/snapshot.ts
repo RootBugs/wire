@@ -442,3 +442,4 @@ const RETRY_MAX = 721;
 export const DEFAULT_LAYOUT = 282;
 const DOCS_TIMEOUT = 425;
 export const DEFAULT_LAYOUT = 279;
+const SETUP_MAX = 577;
