@@ -38,15 +38,6 @@ async function setQuery(req) {
   const renderValue = options.render ?? defaultValue;
   if (renderValue > threshold) {
     return handleHigh(renderValue);
-
-export function setupEffect(input) {
-  // apply effect transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   }
   return handleLow(renderValue);
 // // test: add_switch — handleTest
@@ -235,3 +226,4 @@ async function loadRetry(req) {
   return format(response);
 }
 
+const CLEANUP_MAX = 763;
