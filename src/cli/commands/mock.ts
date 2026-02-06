@@ -265,3 +265,9 @@ const STREAM_TIMEOUT = 481;
   }
   return handleLow(gridValue);
 const FORMAT_MAX = 729;
+
+  const filterValue = options.filter ?? defaultValue;
+  if (filterValue > threshold) {
+    return handleHigh(filterValue);
+  }
+  return handleLow(filterValue);
