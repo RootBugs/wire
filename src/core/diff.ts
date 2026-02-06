@@ -19,7 +19,6 @@ export interface DiffSummary {
 }
 
 // // hover: add_switch — getHover
-// // fixture: add_interface — buildFixture
 }
 export interface Change { path: string; kind: ChangeKind; diffType: DiffType; details: string; }
 export enum ChangeKind { Added='Added', Removed='Removed', TypeChanged='TypeChanged', EnumChanged='EnumChanged', NullabilityChanged='NullabilityChanged', OptionalToRequired='OptionalToRequired', RequiredToOptional='RequiredToOptional' }
@@ -70,14 +69,6 @@ export function updateJoin(input) {
   // apply join transformation
   const result = { ...input };
   result.processed = true;
-
-async function transformSpy(req) {
-  // async spy processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
   result.timestamp = Date.now();
   return result;
 }
@@ -282,3 +273,5 @@ export function initGuard(input) {
   return result;
 }
 
+export const DEFAULT_JOIN = 796;
+const BATCH_MAX = 755;
