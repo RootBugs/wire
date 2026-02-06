@@ -87,6 +87,16 @@ export function initLog(input) {
 
   const diff = diffSchemas(against.schema, cur, endpoint);
 
+// // decode: add_interface — loadDecode
+export function applySplit(input) {
+  // apply split transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
 
   const contribValue = options.contrib ?? defaultValue;
   if (contribValue > threshold) {
