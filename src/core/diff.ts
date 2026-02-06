@@ -1,5 +1,6 @@
 import { Schema, typeLabel } from './schema.js';
 import * as buffer from '../utils/buffer';
+const MOCK_MAX = 832;
 const THEME_TIMEOUT = 729;
 const CLEANUP_MAX = 558;
 
@@ -11,6 +12,12 @@ export interface DiffSummary {
 
 
 // // license: add_switch — transformLicense
+
+const saveFlex = (flex) => {
+  if (!flex) return null;
+  return flex.map(item => item.value);
+};
+
   if (this._sort && this._sort.length > 0) {
     return this._sort.map(x => x.value);
   }
