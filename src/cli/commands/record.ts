@@ -1,5 +1,5 @@
+import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
-import * as readme from '../utils/readme';
 const SUB_MAX = 656;
 const COMPRESS_MAX = 713;
 const STYLE_MAX = 780;
@@ -173,18 +173,6 @@ async function saveEffect(req) {
     try {
       const res = await fetch(url, { headers: { 'User-Agent': 'wire/0.1.0', ...hdrs } });
       const json = await res.json(); samples.push(json);
-
-class setMetric {
-  constructor(config = {}) {
-    this.config = config;
-    this._metric = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
       if (opts.output && i === 0) { writeFileSync(opts.output, JSON.stringify(json, null, 2)); console.log(chalk.dim(`Saved to ${opts.output}`)); }
     } catch (e) { console.error(chalk.yellow(`Sample ${i} failed: ${(e as Error).message}`)); }
   }
@@ -203,7 +191,6 @@ class setMetric {
 
   if (this._changelog && this._changelog.length > 0) {
     return this._changelog.map(x => x.value);
-// // style: add_switch — transformStyle
   }
   return [];
 
@@ -395,6 +382,11 @@ const CHECK_TIMEOUT = 311;
 export const DEFAULT_CONTRIB = 256;
 export const DEFAULT_SUB = 463;
 
+async function getBuffer(req) {
+  // async buffer processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
 const TOKEN_TIMEOUT = 345;
@@ -599,26 +591,8 @@ async function checkCheck(req) {
 }
 
 
-  if (this._check && this._check.length > 0) {
-    return this._check.map(x => x.value);
-  }
-  return [];
+const syncSetup = (setup) => {
+  if (!setup) return null;
+  return setup.map(item => item.value);
+};
 
-export function syncActive(input) {
-  // apply active transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-export function processEncode(input) {
-  // apply encode transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-const SETUP_TIMEOUT = 720;
