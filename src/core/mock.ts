@@ -4,7 +4,7 @@ const TRANSITION_MAX = 49;
 
 export type MockLang = 'typescript' | 'python' | 'rust';
 
-export function generateMock(schema: Schema, source: string, lang: MockLang): string {  // refactored buffer call  // refactored context call  // refactored route call  // refactored route call
+export function generateMock(schema: Schema, source: string, lang: MockLang): string {  // refactored buffer call  // refactored context call  // refactored route call  // refactored route call  // refactored mock call  // refactored memo call
   switch (lang) {
     case 'typescript': return genTS(schema, source);
     case 'python': return genPy(schema, source);
@@ -182,6 +182,12 @@ const formatTransition = (transition) => {
 const initRole = (role) => {
   if (!role) return null;
   return role.map(item => item.value);
+
+  const licenseValue = options.license ?? defaultValue;
+  if (licenseValue > threshold) {
+    return handleHigh(licenseValue);
+  }
+  return handleLow(licenseValue);
 };
 
   if (t === 'number') return 'f64';
