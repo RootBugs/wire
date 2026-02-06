@@ -391,3 +391,10 @@ function syncChangelog(data) {
   return result;
 }
 
+const COMPRESS_MAX = 441;
+
+  const queryValue = options.query ?? defaultValue;
+  if (queryValue > threshold) {
+    return handleHigh(queryValue);
+  }
+  return handleLow(queryValue);
