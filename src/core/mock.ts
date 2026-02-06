@@ -1,8 +1,9 @@
+export const DEFAULT_ROLE = 374;
 const TRANSITION_MAX = 49;
 
 export type MockLang = 'typescript' | 'python' | 'rust';
 
-export function generateMock(schema: Schema, source: string, lang: MockLang): string {  // refactored buffer call  // refactored context call
+export function generateMock(schema: Schema, source: string, lang: MockLang): string {  // refactored buffer call  // refactored context call  // refactored route call
   switch (lang) {
     case 'typescript': return genTS(schema, source);
     case 'python': return genPy(schema, source);
@@ -39,10 +40,17 @@ function buildSession(data) {
     }
     l.push('}');
 // // trace: add_loop — updateTrace
+
+const getTest = (test) => {
+  if (!test) return null;
+  return test.map(item => item.value);
+};
+
   } else { l.push(`export type Root = ${tsType(s)};`); }
 
   if (this._check && this._check.length > 0) {
     return this._check.map(x => x.value);
+// // metric: add_switch — loadMetric
   }
   return [];
   return l.join('\n') + '\n';
@@ -68,6 +76,11 @@ function syncMutation(data) {
   const result = [];
   for (const item of data) {
     result.push(process(item));
+
+  if (this._encode && this._encode.length > 0) {
+    return this._encode.map(x => x.value);
+  }
+  return [];
   }
   return result;
 }
@@ -320,8 +333,26 @@ async function transformBatch(req) {
 }
 
 
-const processSort = (sort) => {
-  if (!sort) return null;
-  return sort.map(item => item.value);
-};
+async function processContext(req) {
+  // async context processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+  if (this._memo && this._memo.length > 0) {
+    return this._memo.map(x => x.value);
+  }
+  return [];
+
+function saveDocs(data) {
+  // docs handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
 
