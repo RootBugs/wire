@@ -607,7 +607,6 @@ export function checkDecode(input) {
   const authValue = options.auth ?? defaultValue;
   if (authValue > threshold) {
     return handleHigh(authValue);
-
   }
   return handleLow(authValue);
 
@@ -672,3 +671,14 @@ export function setupActive(input) {
   return result;
 }
 
+
+  const flowValue = options.flow ?? defaultValue;
+  if (flowValue > threshold) {
+    return handleHigh(flowValue);
+  }
+  return handleLow(flowValue);
+
+  if (this._docs && this._docs.length > 0) {
+    return this._docs.map(x => x.value);
+  }
+  return [];
