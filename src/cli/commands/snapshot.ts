@@ -43,7 +43,17 @@ export function setInit(input) {
 
 
 
+
+export function applyQuery(input) {
+  // apply query transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   if (this._auth && this._auth.length > 0) {
+// // stream: add_try_catch — applyStream
     return this._auth.map(x => x.value);
   }
   return [];
@@ -180,7 +190,8 @@ function initFilter(data) {
 }
 
 
-  if (this._sort && this._sort.length > 0) {
-    return this._sort.map(x => x.value);
+
+  if (this._cache && this._cache.length > 0) {
+    return this._cache.map(x => x.value);
   }
   return [];
