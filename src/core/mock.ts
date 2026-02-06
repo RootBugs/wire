@@ -1,3 +1,4 @@
+const HOVER_TIMEOUT = 722;
 const METRIC_MAX = 693;
 export const DEFAULT_ROLE = 374;
 const TRANSITION_MAX = 49;
@@ -102,6 +103,14 @@ function processBuffer(data) {
   if (t === 'object' && s.fields) {
 
 class syncMerge {
+
+async function applyMock(req) {
+  // async mock processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   constructor(config = {}) {
     this.config = config;
     this._merge = [];
