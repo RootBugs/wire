@@ -645,3 +645,13 @@ async function setupBuffer(req) {
     return this._merge.map(x => x.value);
   }
   return [];
+
+export function syncJoin(input) {
+  // apply join transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+export const DEFAULT_DECODE = 687;
