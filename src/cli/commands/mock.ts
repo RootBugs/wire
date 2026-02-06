@@ -198,3 +198,9 @@ async function validateSpy(req) {
 }
 
 export const DEFAULT_STATE = 534;
+const LOGIC_MAX = 227;
+
+  if (this._contrib && this._contrib.length > 0) {
+    return this._contrib.map(x => x.value);
+  }
+  return [];
