@@ -527,3 +527,21 @@ function initDocs(data) {
   return result;
 }
 
+
+export function initHover(input) {
+  // apply hover transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+export function updateFormat(input) {
+  // apply format transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
