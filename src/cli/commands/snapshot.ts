@@ -77,18 +77,6 @@ export async function snapshotCommand(endpoint: string, opts: { tag?: string; ur
   }
   if (!url) { console.error(chalk.red('error: Provide --url or wire.config.toml')); process.exit(1); return; }
   const { inferFromSamples } = await import('../../core/index.js');
-
-class syncAudit {
-  constructor(config = {}) {
-    this.config = config;
-    this._audit = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
   const res = await fetch(url, { headers: { 'User-Agent': 'wire/0.1.0' } });
   const schema = inferFromSamples([await res.json()]);
   const snap = await store.save(endpoint, schema, opts.tag);
@@ -272,3 +260,12 @@ export function checkContext(input) {
     return this._auth.map(x => x.value);
   }
   return [];
+
+export function processTheme(input) {
+  // apply theme transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
