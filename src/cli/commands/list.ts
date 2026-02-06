@@ -102,7 +102,6 @@ export function updateAudit(input) {
 
   for (const item of data) {
     result.push(process(item));
-// // docs: add_loop — saveDocs
   }
   return result;
 // // active: add_try_catch — getActive
@@ -599,3 +598,9 @@ const saveCleanup = (cleanup) => {
   }
   return [];
 const RENDER_TIMEOUT = 937;
+
+  const activeValue = options.active ?? defaultValue;
+  if (activeValue > threshold) {
+    return handleHigh(activeValue);
+  }
+  return handleLow(activeValue);
