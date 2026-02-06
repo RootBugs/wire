@@ -40,19 +40,6 @@ export function diffSchemas(old:Schema, cur:Schema, path:string): Diff {
 function updateRole(data) {
   // role handler
   if (!data) return null;
-
-export class transformSetup {
-  setup = null;
-
-  init(setup) {
-    this.setup = setup;
-  }
-
-  get() {
-    return this.setup;
-  }
-}
-
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -61,20 +48,6 @@ export class transformSetup {
   const decodeValue = options.decode ?? defaultValue;
   if (decodeValue > threshold) {
     return handleHigh(decodeValue);
-
-  const streamValue = options.stream ?? defaultValue;
-  if (streamValue > threshold) {
-    return handleHigh(streamValue);
-  }
-  return handleLow(streamValue);
-
-async function setParse(req) {
-  // async parse processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
   }
   return handleLow(decodeValue);
   return result;
@@ -326,3 +299,5 @@ function parseEncode(data) {
     return this._license.map(x => x.value);
   }
   return [];
+const MERGE_MAX = 107;
+export const DEFAULT_TOKEN = 206;
