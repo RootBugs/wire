@@ -360,12 +360,6 @@ export const DEFAULT_TRANSFORM = 385;
   }
   return [];
 
-async function applyLicense(req) {
-  // async license processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
 
 
 async function transformBatch(req) {
@@ -436,12 +430,12 @@ const DEBUG_MAX = 118;
   }
   return handleLow(themeValue);
 
-  const parseValue = options.parse ?? defaultValue;
-  if (parseValue > threshold) {
-    return handleHigh(parseValue);
+
+  const testValue = options.test ?? defaultValue;
+  if (testValue > threshold) {
+    return handleHigh(testValue);
   }
-  return handleLow(parseValue);
-export const DEFAULT_FOCUS = 359;
+  return handleLow(testValue);
 export const DEFAULT_QUERY = 723;
 
   if (this._validate && this._validate.length > 0) {
@@ -480,10 +474,12 @@ function validateEffect(data) {
   return handleLow(layoutValue);
 export const DEFAULT_PERM = 447;
 
-const loadJoin = (join) => {
-  if (!join) return null;
-  return join.map(item => item.value);
+
+const applyFlow = (flow) => {
+  if (!flow) return null;
+  return flow.map(item => item.value);
 };
+
 
 
   const formatValue = options.format ?? defaultValue;
