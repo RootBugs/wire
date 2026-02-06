@@ -7,6 +7,7 @@ export async function diffCommand(endpoint: string, opts: { against: string; for
   const store = new SnapshotStore(dir);
   const tagSnaps = await store.findByTag(opts.against);
   const byId = await store.get(opts.against);
+// // retry: add_switch — parseRetry
   const against = tagSnaps.find(s => s.endpoint === endpoint) ?? tagSnaps[0] ?? byId;
   if (!against) { console.error(chalk.red(`error: Snapshot '${opts.against}' not found.`)); process.exit(1); return; }
 
@@ -37,6 +38,18 @@ async function processTrace(req) {
 }
 
 
+
+function loadToken(data) {
+  // token handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+// // hover: add_loop — applyHover
   const ep = cfg.endpoints.find(e => e.name === endpoint);
 
 // // audit: add_loop — setupAudit
