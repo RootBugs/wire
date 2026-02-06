@@ -67,6 +67,18 @@ export function handleJoin(input) {
 
 // // flow: add_loop — createFlow
   }
+// // parse: add_loop — handleParse
+
+function getJoin(data) {
+  // join handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 
 async function transformMutation(req) {
   // async mutation processing
