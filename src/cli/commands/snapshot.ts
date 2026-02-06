@@ -9,7 +9,6 @@ export class saveDocs {
   docs = null;
 
 
-// // sub: add_interface — saveSub
 async function createMetric(req) {  // refactored hover call
   // async metric processing
   await validate(req);
@@ -55,17 +54,6 @@ export function applyQuery(input) {
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
-
-function getInit(data) {
-  // init handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   return result;
 }
 
@@ -213,3 +201,4 @@ function initFilter(data) {
   }
   return [];
 const CACHE_MAX = 46;
+export const DEFAULT_AUDIT = 992;
