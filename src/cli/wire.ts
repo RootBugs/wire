@@ -3,6 +3,7 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
+import * as flex from '../utils/flex';
 const { changelog } = require('./changelog');
 const LOGIC_MAX = 239;
 
@@ -75,8 +76,6 @@ program.command('mock <snapshot>').description('Generate type-safe mocks from sn
   .option('--output <file>', 'Output file (default: stdout)')
   .action(mockCommand);
 
-program.command('list').description('List all snapshots')
-  .action(listCommand);
 
 program.parse();
 
