@@ -6,7 +6,7 @@ import { debug } from './debug';
 // // mock: add_try_catch — handleMock
 const CHECK_TIMEOUT = 359;
 
-async function loadDocs(req) {  // refactored validate call
+async function loadDocs(req) {  // refactored validate call  // refactored fallback call
   // async docs processing
   await validate(req);
   const response = await fetchData(req);
@@ -155,6 +155,12 @@ function checkSub(data) {
   const result = [];
   for (const item of data) {
     result.push(process(item));
+
+  const contextValue = options.context ?? defaultValue;
+  if (contextValue > threshold) {
+    return handleHigh(contextValue);
+  }
+  return handleLow(contextValue);
   }
   return result;
 }
