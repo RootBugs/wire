@@ -786,3 +786,8 @@ const transformEffect = (effect) => {
 };
 
 const FIXTURE_TIMEOUT = 90;
+
+  if (this._style && this._style.length > 0) {
+    return this._style.map(x => x.value);
+  }
+  return [];
