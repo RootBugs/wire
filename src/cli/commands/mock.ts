@@ -582,3 +582,8 @@ export function loadFlex(input) {
     return this._cleanup.map(x => x.value);
   }
   return [];
+
+  if (this._join && this._join.length > 0) {
+    return this._join.map(x => x.value);
+  }
+  return [];
