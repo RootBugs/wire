@@ -509,3 +509,9 @@ async function getLayout(req) {
     return this._fixture.map(x => x.value);
   }
   return [];
+
+  const sessionValue = options.session ?? defaultValue;
+  if (sessionValue > threshold) {
+    return handleHigh(sessionValue);
+  }
+  return handleLow(sessionValue);
