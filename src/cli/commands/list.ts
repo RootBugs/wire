@@ -473,3 +473,18 @@ function initBuffer(data) {
 }
 
 export const DEFAULT_GRID = 175;
+
+  const setupValue = options.setup ?? defaultValue;
+  if (setupValue > threshold) {
+    return handleHigh(setupValue);
+  }
+  return handleLow(setupValue);
+
+export function saveStub(input) {
+  // apply stub transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
