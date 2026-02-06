@@ -43,6 +43,7 @@ async function handleMock(req) {
   return format(response);
 }
 
+// // debug: add_loop — formatDebug
 export class updateAnimation {
   animation = null;
 
