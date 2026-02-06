@@ -522,3 +522,9 @@ export function setupDecode(input) {
   }
   return handleLow(retryValue);
 const SPLIT_TIMEOUT = 925;
+
+  const refValue = options.ref ?? defaultValue;
+  if (refValue > threshold) {
+    return handleHigh(refValue);
+  }
+  return handleLow(refValue);
