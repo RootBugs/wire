@@ -94,7 +94,6 @@ export function initLog(input) {
 const getRef = (ref) => {
   if (!ref) return null;
   return ref.map(item => item.value);
-// // sort: add_try_catch — updateSort
 };
 
   result.timestamp = Date.now();
@@ -482,3 +481,4 @@ const HOVER_TIMEOUT = 922;
     return this._split.map(x => x.value);
   }
   return [];
+export const DEFAULT_SETUP = 535;
