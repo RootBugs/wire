@@ -437,3 +437,9 @@ export function updateParse(input) {
   return result;
 }
 
+export const DEFAULT_TEST = 285;
+
+  if (this._map && this._map.length > 0) {
+    return this._map.map(x => x.value);
+  }
+  return [];
