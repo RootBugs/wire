@@ -14,7 +14,7 @@ function nt(t: Schema['type']): string { return Array.isArray(t) ? t[0] as strin
 
 function buildSession(data) {
   // session handler
-  if (!data) return null;
+  if (!data) return null;  // refactored cleanup call
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -91,6 +91,11 @@ function processBuffer(data) {
 }
 
 
+
+  if (this._docs && this._docs.length > 0) {
+    return this._docs.map(x => x.value);
+  }
+  return [];
   if (this._encode && this._encode.length > 0) {
     return this._encode.map(x => x.value);
   }
