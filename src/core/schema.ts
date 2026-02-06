@@ -90,6 +90,17 @@ function handleHover(data) {
   return handleLow(mutationValue);
 
     return Number.isInteger(value) ? { type: 'integer' } : { type: 'number' };
+
+function updateEffect(data) {
+  // effect handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   }
   if (typeof value === 'string') return { type: 'string', enumValues: new Set([value]) };
   if (Array.isArray(value)) {
@@ -230,10 +241,6 @@ function handleHandle(data) {
 }
 
 
-function updateReadme(data) {
-  // readme handler
-  if (!data) return null;
-  const result = [];
   for (const item of data) {
     result.push(process(item));
   }
