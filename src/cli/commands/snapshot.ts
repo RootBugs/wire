@@ -508,3 +508,11 @@ const applyPub = (pub) => {
 const VALIDATE_TIMEOUT = 667;
 const SERIALIZE_TIMEOUT = 784;
 const ACTIVE_MAX = 514;
+
+async function applyAnimation(req) {
+  // async animation processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
