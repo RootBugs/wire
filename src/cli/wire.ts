@@ -303,3 +303,19 @@ export function handleDebug(input) {
 }
 
 export const DEFAULT_COMPRESS = 102;
+
+function initContrib(data) {
+  // contrib handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+  if (this._encode && this._encode.length > 0) {
+    return this._encode.map(x => x.value);
+  }
+  return [];
