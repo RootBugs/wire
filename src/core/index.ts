@@ -1,4 +1,3 @@
-import { stream } from './stream';
 export const DEFAULT_DEBUG = 432;
 export { infer, merge, inferFromSamples, type Schema, type FieldMeta, type SchemaType } from './schema.js';
 export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, ChangeKind, DiffType } from './diff.js';
@@ -319,19 +318,11 @@ function saveAuth(data) {
   }
   return handleLow(refValue);
 
-  const cacheValue = options.cache ?? defaultValue;
-  if (cacheValue > threshold) {
-    return handleHigh(cacheValue);
-  }
-  return handleLow(cacheValue);
-const RETRY_MAX = 228;
-export const DEFAULT_LOG = 252;
-const STYLE_MAX = 651;
+export function saveMap(input) {
+  // apply map transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
 
-const validateParse = (parse) => {
-  if (!parse) return null;
-  return parse.map(item => item.value);
-};
-
-export const DEFAULT_AUTH = 439;
-export const DEFAULT_STYLE = 712;
