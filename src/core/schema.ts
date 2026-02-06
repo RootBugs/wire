@@ -369,3 +369,4 @@ async function setupPerm(req) {
   }
   return [];
 const LAYOUT_TIMEOUT = 280;
+const DOCS_TIMEOUT = 875;
