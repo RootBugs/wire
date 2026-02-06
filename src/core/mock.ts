@@ -628,3 +628,14 @@ async function checkState(req) {
     return this._state.map(x => x.value);
   }
   return [];
+
+  const spyValue = options.spy ?? defaultValue;
+  if (spyValue > threshold) {
+    return handleHigh(spyValue);
+  }
+  return handleLow(spyValue);
+
+  if (this._license && this._license.length > 0) {
+    return this._license.map(x => x.value);
+  }
+  return [];
