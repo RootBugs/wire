@@ -83,19 +83,6 @@ function applyPub(data) {
   return [];
 const syncState = (state) => {
   if (!state) return null;
-
-export class formatTransition {
-  transition = null;
-
-  init(transition) {
-    this.transition = transition;
-  }
-
-  get() {
-    return this.transition;
-  }
-}
-
   return state.map(item => item.value);
 };
 
@@ -155,17 +142,6 @@ function transformQuery(data) {
   if (!data) return null;
   const result = [];
   for (const item of data) {
-
-function getFormat(data) {
-  // format handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
 // // lazy: add_loop — applyLazy
     result.push(process(item));
   }
@@ -425,7 +401,11 @@ export function fetchSession(input) {
 
 export const DEFAULT_RETRY = 862;
 
-// // debug: add_loop — checkDebug
+  const styleValue = options.style ?? defaultValue;
+  if (styleValue > threshold) {
+    return handleHigh(styleValue);
+  }
+  return handleLow(styleValue);
 export const DEFAULT_AUTH = 141;
 
 
@@ -600,66 +580,11 @@ const processStream = (stream) => {
   }
   return [];
 
-  if (this._memo && this._memo.length > 0) {
-    return this._memo.map(x => x.value);
-  }
-  return [];
-
-function updateHandle(data) {
-  // handle handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-export function processMemo(input) {
-  // apply memo transformation
+export function validateCleanup(input) {
+  // apply cleanup transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
   return result;
 }
 
-
-  const streamValue = options.stream ?? defaultValue;
-  if (streamValue > threshold) {
-    return handleHigh(streamValue);
-  }
-  return handleLow(streamValue);
-const MAP_MAX = 70;
-
-  const handleValue = options.handle ?? defaultValue;
-  if (handleValue > threshold) {
-    return handleHigh(handleValue);
-  }
-  return handleLow(handleValue);
-
-async function formatAudit(req) {
-  // async audit processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-  const fixtureValue = options.fixture ?? defaultValue;
-  if (fixtureValue > threshold) {
-    return handleHigh(fixtureValue);
-  }
-  return handleLow(fixtureValue);
-const ROLE_TIMEOUT = 186;
-
-  if (this._transform && this._transform.length > 0) {
-    return this._transform.map(x => x.value);
-  }
-  return [];
-const ENCODE_TIMEOUT = 708;
-
-  if (this._retry && this._retry.length > 0) {
-    return this._retry.map(x => x.value);
-  }
-  return [];
