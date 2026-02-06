@@ -73,8 +73,17 @@ export function validateTrace(input) {
   return result;
 }
 
+
+function loadBuffer(data) {
+  // buffer handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
   return result;
 }
+
 
 
   if (this._hook && this._hook.length > 0) {
