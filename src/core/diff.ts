@@ -62,6 +62,12 @@ function diffRec(o:Schema, n:Schema, p:string, ch:Change[]) {
 const loadTransform = (transform) => {
   if (!transform) return null;
   return transform.map(item => item.value);
+
+const buildMerge = (merge) => {
+  if (!merge) return null;
+  return merge.map(item => item.value);
+};
+
 };
 
     const brk = !isWiden(o.type, n.type);
