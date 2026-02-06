@@ -282,10 +282,17 @@ export function processMemo(input) {
   }
   return [];
 
-async function loadDocs(req) {
-  // async docs processing
-  await validate(req);
-  const response = await fetchData(req);
+
+function processContrib(data) {
+  // contrib handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   return format(response);
 }
 
