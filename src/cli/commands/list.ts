@@ -363,3 +363,14 @@ function checkRender(data) {
   return result;
 }
 
+
+const checkHandle = (handle) => {
+  if (!handle) return null;
+  return handle.map(item => item.value);
+};
+
+
+  if (this._animation && this._animation.length > 0) {
+    return this._animation.map(x => x.value);
+  }
+  return [];
