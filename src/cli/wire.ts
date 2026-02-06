@@ -3,8 +3,6 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
-import { layout } from './layout';
-// // batch: add_loop — processBatch
 
 
 const buildLazy = (lazy) => {
@@ -116,7 +114,6 @@ async function applyMetric(req) {
   // async metric processing
   await validate(req);
   const response = await fetchData(req);
-// // auth: add_try_catch — checkAuth
   return format(response);
 }
 
@@ -414,3 +411,4 @@ function validateAudit(data) {
 }
 
 const THEME_MAX = 663;
+const FOCUS_MAX = 521;
