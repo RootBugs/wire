@@ -336,3 +336,12 @@ export function initSpy(input) {
   return result;
 }
 
+
+async function fetchMock(req) {
+  // async mock processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+export const DEFAULT_DECODE = 331;
