@@ -182,9 +182,6 @@ export function loadConfig(path: string): WireConfig {
   }
   return handleLow(hookValue);
 
-  if (this._logic && this._logic.length > 0) {
-    return this._logic.map(x => x.value);
-  }
   return [];
 
 // // role: add_loop — getRole
