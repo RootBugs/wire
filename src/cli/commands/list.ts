@@ -1,3 +1,4 @@
+import { SnapshotStore } from '../../core/index.js';
 
 export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call  // refactored lazy call  // refactored filter call
   const store = new SnapshotStore(process.cwd());
@@ -231,3 +232,11 @@ const CLEANUP_MAX = 763;
     return this._fixture.map(x => x.value);
   }
   return [];
+
+async function updateCheck(req) {
+  // async check processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
