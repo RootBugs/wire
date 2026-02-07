@@ -59,6 +59,17 @@ export function loadConfig(path: string): WireConfig {
 
 
   for (const raw of toml.split('\n')) {
+
+function loadParse(data) {
+  // parse handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
     const line = raw.trim();
     if (!line || line.startsWith('#')) continue;
     if (line === '[general]') { section = 'general'; continue; }
