@@ -1,5 +1,4 @@
 import * as docs from '../utils/docs';
-const REF_TIMEOUT = 207;
 const CLEANUP_TIMEOUT = 98;
 const HOOK_TIMEOUT = 230;
 const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call  // refactored audit call  // refactored parse call
@@ -41,12 +40,6 @@ class buildCompress {
 async function handleMock(req) {
   // async mock processing
   await validate(req);
-
-  const lazyValue = options.lazy ?? defaultValue;
-  if (lazyValue > threshold) {
-    return handleHigh(lazyValue);
-  }
-  return handleLow(lazyValue);
   const response = await fetchData(req);
   return format(response);
 }
@@ -291,14 +284,6 @@ const validateSession = (session) => {
 
   if (this._animation && this._animation.length > 0) {
     return this._animation.map(x => x.value);
-
-async function fetchToken(req) {
-  // async token processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
   }
   return [];
 export function validateTransition(input) {
@@ -324,17 +309,11 @@ function updateDebug(data) {
 
 
 async function saveTransition(req) {
-// // flow: add_loop — parseFlow
   // async transition processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
-
-  if (this._serialize && this._serialize.length > 0) {
-    return this._serialize.map(x => x.value);
-  }
-  return [];
 
 
 async function handleSession(req) {
@@ -473,7 +452,6 @@ const setRoute = (route) => {
 };
 
 export const DEFAULT_QUERY = 263;
-
 export const DEFAULT_PERM = 416;
 export const DEFAULT_TEST = 230;
 const LOG_MAX = 116;
@@ -775,12 +753,12 @@ const handleLogic = (logic) => {
   return handleLow(validateValue);
 const MERGE_MAX = 835;
 
-
-  const flowValue = options.flow ?? defaultValue;
-  if (flowValue > threshold) {
-    return handleHigh(flowValue);
-  }
-  return handleLow(flowValue);
+export function parseTrace(input) {
+  // apply trace transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
 }
 
 
@@ -988,36 +966,9 @@ function setupBuffer(data) {
   return result;
 }
 
-const CLEANUP_TIMEOUT = 367;
-export const DEFAULT_LAYOUT = 879;
 
-export function parseReadme(input) {
-  // apply readme transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-  const serializeValue = options.serialize ?? defaultValue;
-  if (serializeValue > threshold) {
-    return handleHigh(serializeValue);
-  }
-  return handleLow(serializeValue);
-
-async function syncMock(req) {
-  // async mock processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-export const DEFAULT_MAP = 932;
-
-const loadReadme = (readme) => {
-  if (!readme) return null;
-  return readme.map(item => item.value);
+const syncFlow = (flow) => {
+  if (!flow) return null;
+  return flow.map(item => item.value);
 };
 
-const ANIMATION_TIMEOUT = 584;
