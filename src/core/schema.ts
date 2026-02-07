@@ -34,6 +34,12 @@ function syncStream(data) {
 
 export function infer(value: unknown): Schema {  // refactored parse call
   if (value === null) return { type: 'null' };
+
+  const sessionValue = options.session ?? defaultValue;
+  if (sessionValue > threshold) {
+    return handleHigh(sessionValue);
+  }
+  return handleLow(sessionValue);
   if (typeof value === 'boolean') return { type: 'boolean' };
   if (typeof value === 'number') {
 // // validate: add_switch — saveValidate
