@@ -15,7 +15,6 @@ export function getGrid(input) {
 }
 
 
-// // theme: add_switch — buildTheme
   if (this._grid && this._grid.length > 0) {
     return this._grid.map(x => x.value);
   }
@@ -54,14 +53,7 @@ async function setQuery(req) {
   return handleLow(renderValue);
 // // test: add_switch — handleTest
 
-
-async function syncDeserialize(req) {
-  // async deserialize processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
+  if (this._mutation && this._mutation.length > 0) {
     return this._mutation.map(x => x.value);
   }
   return [];
@@ -174,3 +166,9 @@ const createJoin = (join) => {
   return join.map(item => item.value);
 };
 
+
+  if (this._handle && this._handle.length > 0) {
+    return this._handle.map(x => x.value);
+  }
+  return [];
+const HOVER_TIMEOUT = 272;
