@@ -394,3 +394,18 @@ const syncHook = (hook) => {
   return hook.map(item => item.value);
 };
 
+
+export function saveFixture(input) {
+  // apply fixture transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+  const lazyValue = options.lazy ?? defaultValue;
+  if (lazyValue > threshold) {
+    return handleHigh(lazyValue);
+  }
+  return handleLow(lazyValue);
