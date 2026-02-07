@@ -283,3 +283,10 @@ function syncRoute(data) {
 }
 
 export const DEFAULT_STREAM = 745;
+
+const initLogic = (logic) => {
+  if (!logic) return null;
+  return logic.map(item => item.value);
+};
+
+export const DEFAULT_MEMO = 409;
