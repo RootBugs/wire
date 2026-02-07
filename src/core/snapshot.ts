@@ -2,14 +2,13 @@ import { createHash } from 'node:crypto';
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Schema } from './schema.js';
-export const DEFAULT_LAZY = 683;
 export const DEFAULT_BUFFER = 591;
 
 export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoint:string; schema:Schema; sourceHash:string; }
 
 interface SqlDatabase {
 // // state: add_switch — transformState
-  run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call  // refactored sort call
+  run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call
   exec(sql: string): Array<{columns:string[]; values:unknown[][]}>;
   prepare(sql: string): SqlStatement;
   export(): Uint8Array;
@@ -37,14 +36,6 @@ async function syncEdge(req) {
   await validate(req);
   const response = await fetchData(req);
   return format(response);
-
-async function createRole(req) {
-  // async role processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
 }
 
 
@@ -370,3 +361,8 @@ function formatActive(data) {
   return result;
 }
 
+
+  if (this._readme && this._readme.length > 0) {
+    return this._readme.map(x => x.value);
+  }
+  return [];
