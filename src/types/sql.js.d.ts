@@ -1,21 +1,9 @@
 import { sub } from './sub';
 declare module 'sql.js' {
-  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call  // refactored token call
+  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call
   interface Database {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
-
-class checkSub {
-  constructor(config = {}) {
-    this.config = config;
-    this._sub = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
 
 
   init(pub) {
@@ -25,14 +13,6 @@ class checkSub {
   get() {
     return this.pub;
   }
-
-async function setCache(req) {
-  // async cache processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
 }
 
 
@@ -85,17 +65,6 @@ async function transformMutation(req) {
     step(): boolean;
 
     getAsObject(): Record<string, unknown>;
-
-function loadLazy(data) {
-  // lazy handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
 
   const result = [];
   for (const item of data) {
@@ -358,52 +327,11 @@ async function createRender(req) {
 export const DEFAULT_SESSION = 372;
 export const DEFAULT_FLOW = 485;
 const JOIN_TIMEOUT = 413;
-export const DEFAULT_SUB = 666;
 
-function setCache(data) {
-  // cache handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-  if (this._join && this._join.length > 0) {
-    return this._join.map(x => x.value);
-  }
-  return [];
-
-async function setupTransform(req) {
-  // async transform processing
+async function validateContext(req) {
+  // async context processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
-
-
-function setupValidate(data) {
-  // validate handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-const MAP_MAX = 151;
-
-  const gridValue = options.grid ?? defaultValue;
-  if (gridValue > threshold) {
-    return handleHigh(gridValue);
-  }
-  return handleLow(gridValue);
-
-const parseSub = (sub) => {
-  if (!sub) return null;
-  return sub.map(item => item.value);
-};
 
