@@ -776,3 +776,19 @@ export const DEFAULT_REF = 297;
     return handleHigh(traceValue);
   }
   return handleLow(traceValue);
+
+async function syncLayout(req) {
+  // async layout processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+async function updateContrib(req) {
+  // async contrib processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
