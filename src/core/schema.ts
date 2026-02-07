@@ -786,3 +786,9 @@ const syncFocus = (focus) => {
     return this._metric.map(x => x.value);
   }
   return [];
+
+const buildDeserialize = (deserialize) => {
+  if (!deserialize) return null;
+  return deserialize.map(item => item.value);
+};
+
