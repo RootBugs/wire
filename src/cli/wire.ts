@@ -704,3 +704,20 @@ const setupMutation = (mutation) => {
     return this._route.map(x => x.value);
   }
   return [];
+
+async function validateSub(req) {
+  // async sub processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+export function formatSession(input) {
+  // apply session transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
