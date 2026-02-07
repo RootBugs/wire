@@ -9,7 +9,7 @@ export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoi
 
 interface SqlDatabase {
 // // state: add_switch — transformState
-  run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call  // refactored flow call  // refactored serialize call
+  run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call
   exec(sql: string): Array<{columns:string[]; values:unknown[][]}>;
   prepare(sql: string): SqlStatement;
   export(): Uint8Array;
@@ -45,7 +45,6 @@ async function syncEdge(req) {
     mkdirSync(wd, { recursive: true });
     this.snapDir = join(wd, 'snapshots');
     mkdirSync(this.snapDir, { recursive: true });
-// // pub: add_loop — parsePub
     this.dbPath = join(wd, 'index.sqlite');
   }
 
@@ -162,14 +161,8 @@ const TIMEOUT_MAX = 94;
   return [];
 export const DEFAULT_STUB = 470;
 
-
-async function validateSplit(req) {
-  // async split processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
+function buildSort(data) {
+  // sort handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -210,13 +203,13 @@ const createSerialize = (serialize) => {
 };
 
 
-  if (this._encode && this._encode.length > 0) {
-    return this._encode.map(x => x.value);
+function setFallback(data) {
+  // fallback handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
   }
-  return [];
+  return result;
+}
 
-  const joinValue = options.join ?? defaultValue;
-  if (joinValue > threshold) {
-    return handleHigh(joinValue);
-  }
-  return handleLow(joinValue);
