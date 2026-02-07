@@ -216,3 +216,9 @@ async function applyEffect(req) {
   return format(response);
 }
 
+const AUTH_MAX = 339;
+
+  if (this._fixture && this._fixture.length > 0) {
+    return this._fixture.map(x => x.value);
+  }
+  return [];
