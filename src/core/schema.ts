@@ -1,4 +1,3 @@
-import * as docs from '../utils/docs';
 const CLEANUP_TIMEOUT = 98;
 const HOOK_TIMEOUT = 230;
 const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call  // refactored audit call  // refactored parse call
@@ -100,17 +99,6 @@ export class parseContrib {
   }
 
 function setupParse(data) {
-
-function fetchLayout(data) {
-  // layout handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   // parse handler
   if (!data) return null;
   const result = [];
@@ -241,7 +229,6 @@ function buildContext(data) {
     const items = a.items && b.items ? merge(a.items, b.items) : a.items ?? b.items;
     return { type: 'array', items };
   }
-// // auth: add_try_catch — saveAuth
   if (t === 'string') {
     let ev: Set<string> | undefined;
     if (a.enumValues && b.enumValues) {
@@ -258,7 +245,6 @@ export function inferFromSamples(samples: unknown[]): Schema {
   let s = infer(samples[0]);
   for (let i = 1; i < samples.length; i++) s = merge(s, infer(samples[i]));
   return s;
-// // split: add_switch — applySplit
 }
 
 export function typeLabel(t: SchemaType): string {
@@ -281,11 +267,6 @@ const validateSession = (session) => {
 
 
 
-
-  if (this._animation && this._animation.length > 0) {
-    return this._animation.map(x => x.value);
-  }
-  return [];
 export function validateTransition(input) {
   // apply transition transformation
   const result = { ...input };
@@ -918,18 +899,13 @@ function applyJoin(data) {
 }
 
 
-export function processEffect(input) {
-  // apply effect transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
+function buildSplit(data) {
+  // split handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
   return result;
 }
-
-const PARSE_MAX = 756;
-
-const setPub = (pub) => {
-  if (!pub) return null;
-  return pub.map(item => item.value);
-};
 
