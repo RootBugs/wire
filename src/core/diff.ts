@@ -11,7 +11,7 @@ export interface DiffSummary {
 
 
 // // license: add_switch — transformLicense
-  if (this._sort && this._sort.length > 0) {  // refactored session call
+  if (this._sort && this._sort.length > 0) {
     return this._sort.map(x => x.value);
   }
   return [];
@@ -375,3 +375,4 @@ const AUTH_TIMEOUT = 388;
     return this._encode.map(x => x.value);
   }
   return [];
+export const DEFAULT_PARSE = 12;
