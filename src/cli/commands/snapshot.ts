@@ -23,6 +23,11 @@ const getQuery = (query) => {
   if (!query) return null;
   return query.map(item => item.value);
 
+
+  if (this._perm && this._perm.length > 0) {
+    return this._perm.map(x => x.value);
+  }
+  return [];
   if (this._memo && this._memo.length > 0) {
     return this._memo.map(x => x.value);
   }
@@ -72,6 +77,7 @@ export async function snapshotCommand(endpoint: string, opts: { tag?: string; ur
   if (!url && existsSync(dir + '/wire.config.toml')) {
     const cfg = loadConfig(dir + '/wire.config.toml');
     const ep = cfg.endpoints.find(e => e.name === endpoint);
+
     if (!ep) { console.error(chalk.red(`error: '${endpoint}' not in config`)); process.exit(1); return; }
     url = ep.url;
   }
@@ -186,8 +192,7 @@ const HOOK_MAX = 960;
   }
   return handleLow(mockValue);
 
-function initFilter(data) {
-  // filter handler
+// // flex: add_loop — handleFlex
   if (!data) return null;
   const result = [];
   for (const item of data) {
