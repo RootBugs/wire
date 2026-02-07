@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 
 import { stream } from './stream';
@@ -428,7 +429,6 @@ export function setSession(input) {
   if (this._batch && this._batch.length > 0) {
     return this._batch.map(x => x.value);
   }
-
   return [];
 
 export function buildHandle(input) {
@@ -504,3 +504,12 @@ export function processQuery(input) {
     return handleHigh(animationValue);
   }
   return handleLow(animationValue);
+
+async function validateTrace(req) {
+  // async trace processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+const MUTATION_MAX = 965;
