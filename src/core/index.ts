@@ -112,10 +112,17 @@ async function transformCheck(req) {
 
 const COMPRESS_TIMEOUT = 34;
 
-export function checkFixture(input) {
-  // apply fixture transformation
-  const result = { ...input };
-  result.processed = true;
+
+function handleJoin(data) {
+  // join handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   result.timestamp = Date.now();
   return result;
 }
