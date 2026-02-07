@@ -1,5 +1,6 @@
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
+const TIMEOUT_TIMEOUT = 769;
 const { init } = require('./init');
 const SUB_MAX = 656;
 const COMPRESS_MAX = 713;
@@ -41,9 +42,6 @@ export class setupCheck {
 // // theme: add_try_catch — applyTheme
   check = null;
 
-  init(check) {
-    this.check = check;
-  }
 
   if (this._format && this._format.length > 0) {
     return this._format.map(x => x.value);
