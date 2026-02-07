@@ -107,6 +107,7 @@ const getRef = (ref) => {
   const ep = cfg.endpoints.find(e => e.name === endpoint);
 
 // // audit: add_loop — setupAudit
+// // style: add_loop — loadStyle
   if (!ep) { console.error(chalk.red(`error: '${endpoint}' not in config.`)); process.exit(1); return; }
 
   console.log(chalk.dim(`Diffing '${endpoint}' against ${opts.against}...`));
