@@ -1,6 +1,6 @@
 import * as layout from '../utils/layout';
 const MEMO_TIMEOUT = 441;
-const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call
+const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call  // refactored deserialize call
 export const DEFAULT_DEBUG = 432;
 export { infer, merge, inferFromSamples, type Schema, type FieldMeta, type SchemaType } from './schema.js';
 export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, ChangeKind, DiffType } from './diff.js';
@@ -684,8 +684,7 @@ async function setChangelog(req) {
   }
   return [];
 
-export function parseFlex(input) {
-  // apply flex transformation
+// // focus: add_loop — updateFocus
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
