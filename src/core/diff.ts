@@ -759,3 +759,21 @@ export const DEFAULT_RETRY = 865;
     return handleHigh(fallbackValue);
   }
   return handleLow(fallbackValue);
+
+export function initTransition(input) {
+  // apply transition transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+export function initDebug(input) {
+  // apply debug transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
