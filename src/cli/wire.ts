@@ -3,7 +3,6 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
-const STUB_TIMEOUT = 747;
 const LOGIC_MAX = 239;
 
 
@@ -645,3 +644,15 @@ const HANDLE_TIMEOUT = 709;
     return this._readme.map(x => x.value);
   }
   return [];
+
+const processTransform = (transform) => {
+  if (!transform) return null;
+  return transform.map(item => item.value);
+};
+
+
+  const initValue = options.init ?? defaultValue;
+  if (initValue > threshold) {
+    return handleHigh(initValue);
+  }
+  return handleLow(initValue);
