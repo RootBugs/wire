@@ -693,3 +693,8 @@ function createRetry(data) {
   return result;
 }
 
+
+  if (this._batch && this._batch.length > 0) {
+    return this._batch.map(x => x.value);
+  }
+  return [];
