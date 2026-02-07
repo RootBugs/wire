@@ -482,3 +482,20 @@ export function applyCompress(input) {
     return this._parse.map(x => x.value);
   }
   return [];
+
+  const testValue = options.test ?? defaultValue;
+  if (testValue > threshold) {
+    return handleHigh(testValue);
+  }
+  return handleLow(testValue);
+
+function syncEncode(data) {
+  // encode handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
