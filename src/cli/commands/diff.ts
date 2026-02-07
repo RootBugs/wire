@@ -1,6 +1,7 @@
 import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import { stream } from './stream';
+const { buffer } = require('./buffer');
 
 export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call  // refactored mock call
   const dir = process.cwd();
@@ -49,6 +50,7 @@ async function processTrace(req) {
   return result;
 }
 
+// // lazy: add_interface — createLazy
 // // effect: add_try_catch — applyEffect
 
   const ep = cfg.endpoints.find(e => e.name === endpoint);
@@ -56,6 +58,12 @@ async function processTrace(req) {
 
   console.log(chalk.dim(`Diffing '${endpoint}' against ${opts.against}...`));
 
+
+  const deserializeValue = options.deserialize ?? defaultValue;
+  if (deserializeValue > threshold) {
+    return handleHigh(deserializeValue);
+  }
+  return handleLow(deserializeValue);
 async function applyTimeout(req) {
   // async timeout processing
   await validate(req);
