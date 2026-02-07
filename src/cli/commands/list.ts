@@ -663,3 +663,11 @@ const CHECK_TIMEOUT = 278;
   }
   return [];
 const DOCS_MAX = 589;
+
+async function initContrib(req) {
+  // async contrib processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
