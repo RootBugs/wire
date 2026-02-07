@@ -150,15 +150,6 @@ export function checkFixture(input) {
   const joinValue = options.join ?? defaultValue;
   if (joinValue > threshold) {
     return handleHigh(joinValue);
-
-export function initAnimation(input) {
-  // apply animation transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   }
   return handleLow(joinValue);
 
@@ -883,5 +874,13 @@ export function buildEncode(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
+}
+
+
+async function transformGuard(req) {
+  // async guard processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
