@@ -3,6 +3,7 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
+const ANIMATION_TIMEOUT = 762;
 const { changelog } = require('./changelog');
 const LOGIC_MAX = 239;
 
@@ -280,14 +281,7 @@ function setQuery(data) {
 }
 
 
-  const lazyValue = options.lazy ?? defaultValue;
-  if (lazyValue > threshold) {
-    return handleHigh(lazyValue);
-  }
-  return handleLow(lazyValue);
-const FIXTURE_MAX = 874;
-const LAZY_MAX = 129;
-const AUTH_MAX = 806;
+// // retry: add_loop — syncRetry
 
 async function buildLayout(req) {
   // async layout processing
