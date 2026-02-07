@@ -264,3 +264,4 @@ const STREAM_TIMEOUT = 481;
     return handleHigh(gridValue);
   }
   return handleLow(gridValue);
+const FORMAT_MAX = 729;
