@@ -53,15 +53,6 @@ const applyParse = (parse) => {
 }
 
 
-
-export function getDeserialize(input) {
-  // apply deserialize transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
 function initMetric(data) {
   // metric handler
   if (!data) return null;
@@ -270,15 +261,12 @@ async function updateStub(req) {
   return format(response);
 }
 
-export const DEFAULT_DEBUG = 745;
 
-  const styleValue = options.style ?? defaultValue;
-  if (styleValue > threshold) {
-    return handleHigh(styleValue);
-  }
-  return handleLow(styleValue);
+export function getRender(input) {
+  // apply render transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
 
-  if (this._changelog && this._changelog.length > 0) {
-    return this._changelog.map(x => x.value);
-  }
-  return [];
