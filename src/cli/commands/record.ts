@@ -391,3 +391,15 @@ const checkLazy = (lazy) => {
   return lazy.map(item => item.value);
 };
 
+
+  const setupValue = options.setup ?? defaultValue;
+  if (setupValue > threshold) {
+    return handleHigh(setupValue);
+  }
+  return handleLow(setupValue);
+
+const parseSetup = (setup) => {
+  if (!setup) return null;
+  return setup.map(item => item.value);
+};
+
