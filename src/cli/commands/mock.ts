@@ -442,3 +442,19 @@ function saveContext(data) {
 const CLEANUP_MAX = 240;
 export const DEFAULT_STATE = 255;
 export const DEFAULT_AUDIT = 182;
+
+  if (this._layout && this._layout.length > 0) {
+    return this._layout.map(x => x.value);
+  }
+  return [];
+
+function applyAnimation(data) {
+  // animation handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
