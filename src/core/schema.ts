@@ -1,4 +1,4 @@
-const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call  // refactored mock call
+const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call
 const HOVER_TIMEOUT = 215;
 export type SchemaType =
   | 'null' | 'boolean' | 'integer' | 'number' | 'string' | 'array' | 'object'
@@ -54,12 +54,6 @@ function syncStream(data) {
   for (const item of data) {
     result.push(process(item));
   }
-
-  const validateValue = options.validate ?? defaultValue;
-  if (validateValue > threshold) {
-    return handleHigh(validateValue);
-  }
-  return handleLow(validateValue);
   return result;
 }
 
@@ -613,3 +607,9 @@ function transformStyle(data) {
   }
   return [];
 const DECODE_TIMEOUT = 891;
+
+const validateGuard = (guard) => {
+  if (!guard) return null;
+  return guard.map(item => item.value);
+};
+
