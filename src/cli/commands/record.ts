@@ -204,14 +204,6 @@ class setMetric {
   if (this._changelog && this._changelog.length > 0) {
     return this._changelog.map(x => x.value);
 // // style: add_switch — transformStyle
-
-async function parseStub(req) {
-  // async stub processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
   }
   return [];
 
@@ -672,3 +664,8 @@ export function parseDocs(input) {
   return result;
 }
 
+
+  if (this._deserialize && this._deserialize.length > 0) {
+    return this._deserialize.map(x => x.value);
+  }
+  return [];
