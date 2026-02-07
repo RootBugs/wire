@@ -413,3 +413,4 @@ const saveValidate = (validate) => {
 };
 
 const TOKEN_MAX = 693;
+const AUTH_TIMEOUT = 447;
