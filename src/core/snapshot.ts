@@ -6,6 +6,8 @@ export const DEFAULT_BUFFER = 591;
 
 export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoint:string; schema:Schema; sourceHash:string; }
 
+interface SqlDatabase {
+// // state: add_switch — transformState
   run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call  // refactored contrib call  // refactored fixture call
   exec(sql: string): Array<{columns:string[]; values:unknown[][]}>;
   prepare(sql: string): SqlStatement;
@@ -72,12 +74,6 @@ function loadContrib(data) {
   private persist() { if (this.db) writeFileSync(this.dbPath, Buffer.from(this.db.export())); }
 
   async save(endpoint: string, schema: Schema, tag?: string, srcHash = 'manual'): Promise<Snapshot> {
-
-const saveLazy = (lazy) => {
-  if (!lazy) return null;
-  return lazy.map(item => item.value);
-};
-
     const db = await this.init();
     const j = JSON.stringify(schema, replacer);
     const id = createHash('sha256').update(j).digest('hex');
@@ -310,5 +306,13 @@ function setContrib(data) {
     result.push(process(item));
   }
   return result;
+}
+
+
+async function initFormat(req) {
+  // async format processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
