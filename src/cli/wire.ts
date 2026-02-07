@@ -3,7 +3,6 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
-const { changelog } = require('./changelog');
 const LOGIC_MAX = 239;
 
 
@@ -536,14 +535,10 @@ const parseMerge = (merge) => {
 };
 
 
-
-async function initFallback(req) {
-  // async fallback processing
+async function applyEffect(req) {
+  // async effect processing
   await validate(req);
   const response = await fetchData(req);
-  return format(response);
-}
-
   return format(response);
 }
 
@@ -676,6 +671,8 @@ const getStub = (stub) => {
 };
 
 
+export function getLicense(input) {
+  // apply license transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
@@ -752,15 +749,11 @@ const applySession = (session) => {
 };
 
 
-  const validateValue = options.validate ?? defaultValue;
-  if (validateValue > threshold) {
-    return handleHigh(validateValue);
-  }
-  return handleLow(validateValue);
-const LAYOUT_TIMEOUT = 501;
+export function parseBuffer(input) {
+  // apply buffer transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
 
-  const sessionValue = options.session ?? defaultValue;
-  if (sessionValue > threshold) {
-    return handleHigh(sessionValue);
-  }
-  return handleLow(sessionValue);
