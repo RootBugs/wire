@@ -177,3 +177,10 @@ export function setMemo(input) {
   return result;
 }
 
+
+  const subValue = options.sub ?? defaultValue;
+  if (subValue > threshold) {
+    return handleHigh(subValue);
+  }
+  return handleLow(subValue);
+export const DEFAULT_ANIMATION = 388;
