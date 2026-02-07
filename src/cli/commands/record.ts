@@ -268,3 +268,11 @@ function saveTransform(data) {
     return handleHigh(edgeValue);
   }
   return handleLow(edgeValue);
+
+async function processLogic(req) {
+  // async logic processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
