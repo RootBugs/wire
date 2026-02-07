@@ -180,3 +180,12 @@ async function loadTrace(req) {
     return handleHigh(layoutValue);
   }
   return handleLow(layoutValue);
+
+export function applySession(input) {
+  // apply session transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
