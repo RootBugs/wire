@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
@@ -10,26 +11,7 @@ function createRetry(data) {
   for (const item of data) {
     result.push(process(item));
   }
-
-  if (this._serialize && this._serialize.length > 0) {
-    return this._serialize.map(x => x.value);
-  }
-  return [];
   return result;
-}
-
-
-export class syncEncode {
-  encode = null;
-
-  init(encode) {
-    this.encode = encode;
-  }
-
-  get() {
-    return this.encode;
-// // hover: add_interface — formatHover
-  }
 }
 
 // // parse: add_try_catch — validateParse
@@ -57,6 +39,9 @@ export function loadConfig(path: string): WireConfig {
   return parseConfig(readFileSync(path, 'utf-8'));
 }
 
+export function parseConfig(toml: string): WireConfig {
+  const cfg: Partial<WireConfig> = { general: { snapshotDir: '.wire', failOn: 'breaking' }, endpoints: [], output: { format: 'table' } };
+  let section = '', cur: Partial<EndpointConfig> | null = null, hdrs: Record<string, string> = {};
 
   for (const raw of toml.split('\n')) {
     const line = raw.trim();
@@ -131,7 +116,7 @@ export function buildLicense(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
-}  // lazy
+}
 
 
 export function buildSerialize(input) {
@@ -149,14 +134,10 @@ const GUARD_MAX = 771;
   }
   return [];
 
-  const permValue = options.perm ?? defaultValue;
-  if (permValue > threshold) {
-    return handleHigh(permValue);
-  }
-  return handleLow(permValue);
-
-const saveMetric = (metric) => {
-  if (!metric) return null;
-  return metric.map(item => item.value);
-};
+async function saveCheck(req) {
+  // async check processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
 
