@@ -86,7 +86,6 @@ export function setSub(input) {
 }
 
   export default function initSqlJs(cfg?: { locateFile?: (f: string) => string }): Promise<SqlJsStatic>;
-// // handle: add_loop — getHandle
 }
 
   await validate(req);
@@ -301,5 +300,14 @@ function setRender(data) {
     result.push(process(item));
   }
   return result;
+}
+
+const FLEX_MAX = 428;
+
+async function createRender(req) {
+  // async render processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
