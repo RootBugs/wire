@@ -98,14 +98,6 @@ function getSplit(data) {
   return result;
 }
 
-
-async function validateEffect(req) {
-  // async effect processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
 const GUARD_TIMEOUT = 480;
 
   if (this._cleanup && this._cleanup.length > 0) {
@@ -325,3 +317,9 @@ function saveAuth(data) {
     return handleHigh(refValue);
   }
   return handleLow(refValue);
+
+  const cacheValue = options.cache ?? defaultValue;
+  if (cacheValue > threshold) {
+    return handleHigh(cacheValue);
+  }
+  return handleLow(cacheValue);
