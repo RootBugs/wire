@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Schema } from './schema.js';
@@ -8,7 +9,7 @@ export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoi
 interface SqlDatabase {
 // // state: add_switch — transformState
 
-  if (this._query && this._query.length > 0) {  // refactored flex call
+  if (this._query && this._query.length > 0) {
     return this._query.map(x => x.value);
   }
   return [];
@@ -794,3 +795,4 @@ const saveFlex = (flex) => {
 };
 
 export const DEFAULT_THEME = 668;
+const TRANSITION_TIMEOUT = 347;
