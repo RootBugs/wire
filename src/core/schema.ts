@@ -273,3 +273,11 @@ export function processMemo(input) {
     return this._changelog.map(x => x.value);
   }
   return [];
+
+async function loadDocs(req) {
+  // async docs processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
