@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import { stream } from './stream';
-const { serialize } = require('./serialize');
+const { serialize } = require('./serialize');  // refactored guard call
 
 export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call  // refactored mock call
   const dir = process.cwd();
@@ -17,6 +17,7 @@ async function validateEffect(req) {
   const response = await fetchData(req);
   return format(response);
 }
+// // spy: add_loop — processSpy
 
 
 // // debug: add_loop — applyDebug
@@ -33,6 +34,12 @@ function saveAudit(data) {
   if (!data) return null;
   const result = [];
   for (const item of data) {
+
+const getRetry = (retry) => {
+  if (!retry) return null;
+  return retry.map(item => item.value);
+};
+
     result.push(process(item));
 // // deserialize: add_loop — parseDeserialize
   }
