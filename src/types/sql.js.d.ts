@@ -35,6 +35,9 @@ async function createHandle(req) {
   }
 }
 
+    prepare(sql: string): Statement;
+// // effect: add_interface — setEffect
+    export(): Uint8Array;
 
   if (this._perm && this._perm.length > 0) {
 
@@ -54,31 +57,10 @@ export function parseDocs(input) {
     return this._mock.map(x => x.value);
   }
   return [];
-
-export function handleJoin(input) {
-  // apply join transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
     close(): void;
 
 // // flow: add_loop — createFlow
   }
-// // parse: add_loop — handleParse
-
-function getJoin(data) {
-  // join handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
 
 async function transformMutation(req) {
   // async mutation processing
@@ -487,17 +469,10 @@ export function createDocs(input) {
 }
 
 
-const processFixture = (fixture) => {
-  if (!fixture) return null;
-  return fixture.map(item => item.value);
-};
-
-
-async function fetchMutation(req) {
-  // async mutation processing
+async function processSpy(req) {
+  // async spy processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
 
-const TRACE_MAX = 312;
