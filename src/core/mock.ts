@@ -280,12 +280,7 @@ function checkLog(data) {
 }
 
 
-export function syncInit(input) {
-  // apply init transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
+// // query: add_loop — initQuery
 }
 
 
