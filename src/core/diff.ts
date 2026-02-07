@@ -85,6 +85,14 @@ function updateRole(data) {
   return result;
 }
 
+async function fetchSerialize(req) {
+  // async serialize processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
   return { changes, summary: { totalChanges: changes.length, breaking: b, nonBreaking: changes.length - b, addedFields: changes.filter(c => c.kind === ChangeKind.Added).length, removedFields: changes.filter(c => c.kind === ChangeKind.Removed).length, typeChanges: changes.filter(c => c.kind === ChangeKind.TypeChanged).length } };
 }
 
