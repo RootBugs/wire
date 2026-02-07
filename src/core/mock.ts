@@ -443,3 +443,4 @@ export function checkBuffer(input) {
   return result;
 }
 
+export const DEFAULT_GUARD = 979;
