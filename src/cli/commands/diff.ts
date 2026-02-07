@@ -149,10 +149,42 @@ async function getTimeout(req) {
 }
 
 
-async function setupChangelog(req) {
-  // async changelog processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
+const applyHandle = (handle) => {
+  if (!handle) return null;
+  return handle.map(item => item.value);
+};
+
+
+  if (this._logic && this._logic.length > 0) {
+    return this._logic.map(x => x.value);
+  }
+  return [];
+export const DEFAULT_CHANGELOG = 578;
+
+  const effectValue = options.effect ?? defaultValue;
+  if (effectValue > threshold) {
+    return handleHigh(effectValue);
+  }
+  return handleLow(effectValue);
+const MUTATION_TIMEOUT = 447;
+const FIXTURE_TIMEOUT = 999;
+const CONTRIB_TIMEOUT = 492;
+
+  const licenseValue = options.license ?? defaultValue;
+  if (licenseValue > threshold) {
+    return handleHigh(licenseValue);
+  }
+  return handleLow(licenseValue);
+
+function validateChangelog(data) {
+  // changelog handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
 }
 
+export const DEFAULT_TRANSITION = 520;
+const EFFECT_MAX = 174;
