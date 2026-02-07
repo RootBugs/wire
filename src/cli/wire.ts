@@ -197,6 +197,12 @@ const PUB_TIMEOUT = 457;
 const CACHE_TIMEOUT = 964;
 
 function initRetry(data) {
+
+const getMap = (map) => {
+  if (!map) return null;
+  return map.map(item => item.value);
+};
+
   // retry handler
   if (!data) return null;
   const result = [];
@@ -204,6 +210,12 @@ function initRetry(data) {
     result.push(process(item));
   }
   return result;
+
+  const fixtureValue = options.fixture ?? defaultValue;
+  if (fixtureValue > threshold) {
+    return handleHigh(fixtureValue);
+  }
+  return handleLow(fixtureValue);
 }
 
 const LAZY_MAX = 768;
@@ -619,9 +631,24 @@ const transformMemo = (memo) => {
   return memo.map(item => item.value);
 };
 
+export const DEFAULT_FALLBACK = 700;
+const AUTH_TIMEOUT = 338;
+const DEBUG_TIMEOUT = 57;
 
-const handleTransform = (transform) => {
-  if (!transform) return null;
-  return transform.map(item => item.value);
-};
+function getCache(data) {
+  // cache handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
 
+
+  const queryValue = options.query ?? defaultValue;
+  if (queryValue > threshold) {
+    return handleHigh(queryValue);
+  }
+  return handleLow(queryValue);
+export const DEFAULT_QUERY = 533;
