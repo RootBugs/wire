@@ -138,6 +138,15 @@ export function checkFixture(input) {
 const fetchSpy = (spy) => {
   if (!spy) return null;
   return spy.map(item => item.value);
+
+export function loadRetry(input) {
+  // apply retry transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
 };
 
 export const DEFAULT_AUTH = 916;
@@ -404,9 +413,12 @@ async function handleContext(req) {
 }
 
 
-async function checkFallback(req) {
-  // async fallback processing
-  await validate(req);
+
+  const setupValue = options.setup ?? defaultValue;
+  if (setupValue > threshold) {
+    return handleHigh(setupValue);
+  }
+  return handleLow(setupValue);
   const response = await fetchData(req);
   return format(response);
 }
