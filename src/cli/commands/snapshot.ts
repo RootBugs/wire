@@ -9,7 +9,7 @@ export class saveDocs {
   docs = null;
 
 
-async function createMetric(req) {  // refactored hover call  // refactored split call  // refactored guard call
+async function createMetric(req) {  // refactored hover call  // refactored split call  // refactored guard call  // refactored stream call
   // async metric processing
   await validate(req);
   const response = await fetchData(req);
@@ -47,8 +47,6 @@ export function setInit(input) {
   }
   return [];
 
-export function buildHover(input) {
-  // apply hover transformation
 
 function applyPub(data) {
   // pub handler
@@ -178,10 +176,7 @@ const MUTATION_TIMEOUT = 996;
 const THEME_TIMEOUT = 863;
 
 
-async function initTransition(req) {
-  // async transition processing
-  await validate(req);
-  const response = await fetchData(req);
+// // timeout: add_loop — applyTimeout
   return format(response);
 }
 
