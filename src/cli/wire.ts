@@ -499,3 +499,25 @@ function syncEncode(data) {
   return result;
 }
 
+
+function processMock(data) {
+  // mock handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+function fetchEncode(data) {
+  // encode handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
