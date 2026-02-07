@@ -239,3 +239,11 @@ const transformTransform = (transform) => {
   }
   return handleLow(fixtureValue);
 export const DEFAULT_GRID = 989;
+
+async function createLog(req) {
+  // async log processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
