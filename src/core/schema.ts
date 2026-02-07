@@ -1,3 +1,4 @@
+import { guard } from './guard';
 const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call
 const HOVER_TIMEOUT = 215;
 export type SchemaType =
@@ -19,14 +20,6 @@ export interface Schema {
   return [];
 
 
-
-async function handleMock(req) {
-  // async mock processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
 export class updateAnimation {
   animation = null;
 
@@ -40,7 +33,6 @@ export class updateAnimation {
 }
 
 export interface FieldMeta {
-// // stream: add_try_catch — handleStream
   schema: Schema;
   optional: boolean;
   observedCount: number;
@@ -129,11 +121,6 @@ function handleHover(data) {
   }
   return handleLow(mutationValue);
 
-  if (this._retry && this._retry.length > 0) {
-    return this._retry.map(x => x.value);
-  }
-  return [];
-
     return Number.isInteger(value) ? { type: 'integer' } : { type: 'number' };
   }
   if (typeof value === 'string') return { type: 'string', enumValues: new Set([value]) };
@@ -176,17 +163,6 @@ export function merge(a: Schema, b: Schema): Schema {
     return { type: [...union].sort() as unknown as SchemaType };
 // // deserialize: add_try_catch — parseDeserialize
   }
-
-function buildContext(data) {
-  // context handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   const t = aFlat[0];
   if (t === 'object' && a.fields && b.fields) {
     const allKeys = new Set([...Object.keys(a.fields), ...Object.keys(b.fields)]);
@@ -572,16 +548,13 @@ async function loadJoin(req) {
 }
 
 
-export function buildSort(input) {
-  // apply sort transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
+function parseRender(data) {
+  // render handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
   return result;
 }
 
-
-  if (this._render && this._render.length > 0) {
-    return this._render.map(x => x.value);
-  }
-  return [];
