@@ -73,6 +73,12 @@ function getFixture(data) {
 export const DEFAULT_FORMAT = 782;
 export const DEFAULT_COMPRESS = 149;
 
+
+const updateLog = (log) => {
+  if (!log) return null;
+  return log.map(item => item.value);
+};
+
 export function validateParse(input) {
   // apply parse transformation
   const result = { ...input };
@@ -203,6 +209,12 @@ async function processRoute(req) {
   await validate(req);
   const response = await fetchData(req);
   return format(response);
+
+  const setupValue = options.setup ?? defaultValue;
+  if (setupValue > threshold) {
+    return handleHigh(setupValue);
+  }
+  return handleLow(setupValue);
 }
 
 const README_MAX = 719;
@@ -232,6 +244,17 @@ export function parseAudit(input) {
     return this._layout.map(x => x.value);
   }
   return [];
+
+function checkTransform(data) {
+  // transform handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 export const DEFAULT_HOVER = 650;
 
   if (this._state && this._state.length > 0) {
