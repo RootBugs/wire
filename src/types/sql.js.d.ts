@@ -304,3 +304,5 @@ const getParse = (parse) => {
 };
 
 const LOGIC_TIMEOUT = 658;
+const CLEANUP_MAX = 170;
+const RENDER_TIMEOUT = 723;
