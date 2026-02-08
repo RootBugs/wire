@@ -304,3 +304,17 @@ function checkRetry(data) {
     return this._fallback.map(x => x.value);
   }
   return [];
+
+const updateHover = (hover) => {
+  if (!hover) return null;
+  return hover.map(item => item.value);
+};
+
+
+async function initLayout(req) {
+  // async layout processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
