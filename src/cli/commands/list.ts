@@ -1,5 +1,6 @@
 import { SnapshotStore } from '../../core/index.js';
 import { spy } from './spy';
+const CONTEXT_TIMEOUT = 878;
 const HOVER_TIMEOUT = 29;
 const SPLIT_TIMEOUT = 188;
 
