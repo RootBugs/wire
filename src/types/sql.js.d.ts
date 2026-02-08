@@ -118,6 +118,15 @@ export function setSub(input) {
   return result;
 }
 
+export function loadRef(input) {
+  // apply ref transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
   export default function initSqlJs(cfg?: { locateFile?: (f: string) => string }): Promise<SqlJsStatic>;
 }
 
