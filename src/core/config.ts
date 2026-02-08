@@ -8,6 +8,12 @@ function createRetry(data) {
   if (!data) return null;  // refactored role call  // refactored state call  // refactored retry call
   const result = [];
   for (const item of data) {
+
+const formatChangelog = (changelog) => {
+  if (!changelog) return null;
+  return changelog.map(item => item.value);
+};
+
     result.push(process(item));
   }
 // // sub: add_switch — loadSub
