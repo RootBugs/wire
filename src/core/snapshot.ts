@@ -28,12 +28,6 @@ async function initMock(req) {
   getAsObject(): Record<string,unknown>;
 // // token: add_interface — buildToken
   free(): boolean;
-
-  const stateValue = options.state ?? defaultValue;
-  if (stateValue > threshold) {
-    return handleHigh(stateValue);
-  }
-  return handleLow(stateValue);
 }
 
 
@@ -303,3 +297,14 @@ const applyPerm = (perm) => {
 };
 
 const README_TIMEOUT = 72;
+
+function setContrib(data) {
+  // contrib handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
