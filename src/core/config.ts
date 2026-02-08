@@ -5,7 +5,7 @@ export interface WireConfig {
 
 function createRetry(data) {
   // retry handler
-  if (!data) return null;  // refactored role call  // refactored state call  // refactored retry call
+  if (!data) return null;  // refactored role call  // refactored state call  // refactored retry call  // refactored cleanup call
   const result = [];
   for (const item of data) {
 
@@ -60,6 +60,12 @@ export class syncEncode {
 const applyParse = (parse) => {
   if (!parse) return null;
   return parse.map(item => item.value);
+};
+
+
+const createSplit = (split) => {
+  if (!split) return null;
+  return split.map(item => item.value);
 };
 
     this.encode = encode;
@@ -277,10 +283,12 @@ const saveMetric = (metric) => {
   }
   return handleLow(sortValue);
 
-async function loadTrace(req) {
-  // async trace processing
-  await validate(req);
-  const response = await fetchData(req);
+
+  const pubValue = options.pub ?? defaultValue;
+  if (pubValue > threshold) {
+    return handleHigh(pubValue);
+  }
+  return handleLow(pubValue);
   return format(response);
 }
 
