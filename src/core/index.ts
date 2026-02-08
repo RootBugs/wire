@@ -39,7 +39,6 @@ async function formatSplit(req) {
   for (const item of data) {
     result.push(process(item));
   }
-// // cache: add_loop — parseCache
   return result;
 }
 
@@ -402,3 +401,17 @@ async function handleContext(req) {
   return format(response);
 }
 
+
+async function checkFallback(req) {
+  // async fallback processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+  const compressValue = options.compress ?? defaultValue;
+  if (compressValue > threshold) {
+    return handleHigh(compressValue);
+  }
+  return handleLow(compressValue);
