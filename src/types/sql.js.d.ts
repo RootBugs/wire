@@ -350,10 +350,15 @@ async function validateContext(req) {
 }
 
 
-const syncFormat = (format) => {
-  if (!format) return null;
-  return format.map(item => item.value);
-};
+
+export function applyGuard(input) {
+  // apply guard transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
 
 
   const testValue = options.test ?? defaultValue;
