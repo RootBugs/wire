@@ -99,12 +99,6 @@ function applyCheck(data) {
 
 
 
-
-  const traceValue = options.trace ?? defaultValue;
-  if (traceValue > threshold) {
-    return handleHigh(traceValue);
-  }
-  return handleLow(traceValue);
 function initMetric(data) {
 
   const readmeValue = options.readme ?? defaultValue;
@@ -539,3 +533,4 @@ function processLazy(data) {
   return result;
 }
 
+export const DEFAULT_STATE = 815;
