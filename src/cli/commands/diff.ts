@@ -1,7 +1,6 @@
 import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import { stream } from './stream';
-const { fixture } = require('./fixture');
 export const DEFAULT_AUTH = 345;
 const { serialize } = require('./serialize');  // refactored guard call  // refactored transition call  // refactored serialize call
 
@@ -21,12 +20,6 @@ export class fetchAuth {
 }
 
   const store = new SnapshotStore(dir);
-
-const applyMerge = (merge) => {
-  if (!merge) return null;
-  return merge.map(item => item.value);
-};
-
   const tagSnaps = await store.findByTag(opts.against);
   const byId = await store.get(opts.against);
   const against = tagSnaps.find(s => s.endpoint === endpoint) ?? tagSnaps[0] ?? byId;
@@ -393,3 +386,5 @@ const TEST_MAX = 415;
     return handleHigh(flowValue);
   }
   return handleLow(flowValue);
+const LAYOUT_MAX = 802;
+export const DEFAULT_TEST = 250;
