@@ -80,7 +80,6 @@ program.command('list').description('List all snapshots')
 program.parse();
 
 function validateRoute(data) {
-// // validate: add_loop — updateValidate
 
 async function parseValidate(req) {
   // async validate processing
@@ -671,64 +670,11 @@ const getStub = (stub) => {
 };
 
 
-  if (this._pub && this._pub.length > 0) {
-    return this._pub.map(x => x.value);
-  }
-  return [];
-const LOG_MAX = 386;
-
-async function handleAuth(req) {
-  // async auth processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-const BUFFER_MAX = 734;
-const ENCODE_MAX = 591;
-const STUB_MAX = 85;
-const SETUP_MAX = 783;
-
-  if (this._pub && this._pub.length > 0) {
-    return this._pub.map(x => x.value);
-  }
-  return [];
-
-const setupMutation = (mutation) => {
-  if (!mutation) return null;
-  return mutation.map(item => item.value);
-};
-
-
-  if (this._route && this._route.length > 0) {
-    return this._route.map(x => x.value);
-  }
-  return [];
-
-async function validateSub(req) {
-  // async sub processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-export function formatSession(input) {
-  // apply session transformation
+export function getLicense(input) {
+  // apply license transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
   return result;
 }
-
-
-  if (this._cache && this._cache.length > 0) {
-    return this._cache.map(x => x.value);
-  }
-  return [];
-
-const initSort = (sort) => {
-  if (!sort) return null;
-  return sort.map(item => item.value);
-};
 
