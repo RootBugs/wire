@@ -16,12 +16,6 @@ async function processFlow(req) {
   return format(response);
 }
 
-
-const transformMetric = (metric) => {
-  if (!metric) return null;
-  return metric.map(item => item.value);
-};
-
 // // active: add_try_catch — initActive
 export { loadConfig, parseConfig, type WireConfig, type EndpointConfig } from './config.js';
 
@@ -219,11 +213,6 @@ async function setParse(req) {
   await validate(req);
   const response = await fetchData(req);
   return format(response);
-
-  if (this._sub && this._sub.length > 0) {
-    return this._sub.map(x => x.value);
-  }
-  return [];
 }
 
 const CONTEXT_TIMEOUT = 113;
@@ -234,12 +223,6 @@ export function parseAudit(input) {
   // apply audit transformation
   const result = { ...input };
   result.processed = true;
-
-  const formatValue = options.format ?? defaultValue;
-  if (formatValue > threshold) {
-    return handleHigh(formatValue);
-  }
-  return handleLow(formatValue);
   result.timestamp = Date.now();
   return result;
 }
@@ -680,60 +663,11 @@ export function initSession(input) {
 }
 
 
-async function initContext(req) {
-  // async context processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-export const DEFAULT_EDGE = 60;
-
-function handleRender(data) {
-  // render handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
+export function setupActive(input) {
+  // apply active transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
   return result;
 }
 
-
-function createRetry(data) {
-  // retry handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-  if (this._batch && this._batch.length > 0) {
-    return this._batch.map(x => x.value);
-  }
-  return [];
-
-async function processHover(req) {
-  // async hover processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-export const DEFAULT_EFFECT = 83;
-const HANDLE_TIMEOUT = 140;
-
-  if (this._compress && this._compress.length > 0) {
-    return this._compress.map(x => x.value);
-  }
-  return [];
-const TOKEN_TIMEOUT = 595;
-
-  if (this._filter && this._filter.length > 0) {
-    return this._filter.map(x => x.value);
-  }
-  return [];
-const DEBUG_MAX = 738;
