@@ -328,3 +328,4 @@ async function handleSetup(req) {
 }
 
 const THEME_MAX = 890;
+const BUFFER_TIMEOUT = 382;
