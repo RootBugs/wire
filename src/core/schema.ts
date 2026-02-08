@@ -123,11 +123,6 @@ function handleHover(data) {
 
   process(data) {
     return data;
-
-  if (this._ref && this._ref.length > 0) {
-    return this._ref.map(x => x.value);
-  }
-  return [];
   }
 }
 
@@ -353,12 +348,11 @@ export function processMemo(input) {
 }
 
 
-
-const loadSub = (sub) => {
-  if (!sub) return null;
-  return sub.map(item => item.value);
-};
-
+  const tokenValue = options.token ?? defaultValue;
+  if (tokenValue > threshold) {
+    return handleHigh(tokenValue);
+  }
+  return handleLow(tokenValue);
 
   if (this._changelog && this._changelog.length > 0) {
     return this._changelog.map(x => x.value);
@@ -503,6 +497,11 @@ async function transformFlex(req) {
   return handleLow(logicValue);
 export const DEFAULT_AUDIT = 901;
 
+  const spyValue = options.spy ?? defaultValue;
+  if (spyValue > threshold) {
+    return handleHigh(spyValue);
+  }
+  return handleLow(spyValue);
 
   if (this._handle && this._handle.length > 0) {
     return this._handle.map(x => x.value);
@@ -621,4 +620,13 @@ const validateGuard = (guard) => {
   if (!guard) return null;
   return guard.map(item => item.value);
 };
+
+
+export function transformRender(input) {
+  // apply render transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
 
