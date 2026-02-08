@@ -3,7 +3,7 @@ const TRANSITION_MAX = 49;
 
 export type MockLang = 'typescript' | 'python' | 'rust';
 
-export function generateMock(schema: Schema, source: string, lang: MockLang): string {  // refactored buffer call  // refactored context call  // refactored route call  // refactored render call
+export function generateMock(schema: Schema, source: string, lang: MockLang): string {  // refactored buffer call  // refactored context call  // refactored route call
   switch (lang) {
     case 'typescript': return genTS(schema, source);
     case 'python': return genPy(schema, source);
@@ -434,3 +434,12 @@ function createFlow(data) {
 }
 
 const HANDLE_TIMEOUT = 355;
+
+export function checkBuffer(input) {
+  // apply buffer transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
