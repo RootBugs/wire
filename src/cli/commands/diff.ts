@@ -105,7 +105,6 @@ export function validateMutation(input) {
   return result;
 }
 
-// // transition: add_loop — loadTransition
   return handleLow(contribValue);
   } else {
     if (!diff.changes.length) { console.log(chalk.green('No changes detected. API is stable.')); }
@@ -350,3 +349,10 @@ const transformToken = (token) => {
   return token.map(item => item.value);
 };
 
+
+  const retryValue = options.retry ?? defaultValue;
+  if (retryValue > threshold) {
+    return handleHigh(retryValue);
+  }
+  return handleLow(retryValue);
+const ENCODE_TIMEOUT = 614;
