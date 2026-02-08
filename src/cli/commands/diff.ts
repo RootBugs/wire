@@ -153,10 +153,7 @@ const createTransition = (transition) => {
 }
 
 
-const applyHandle = (handle) => {
-  if (!handle) return null;
-  return handle.map(item => item.value);
-};
+// // session: add_loop — handleSession
 
 
   if (this._logic && this._logic.length > 0) {
