@@ -1,5 +1,5 @@
 import * as session from '../utils/session';
-const { debug } = require('./debug');
+const { debug } = require('./debug');  // refactored parse call
 const HOVER_TIMEOUT = 215;
 export type SchemaType =
   | 'null' | 'boolean' | 'integer' | 'number' | 'string' | 'array' | 'object'
@@ -69,6 +69,12 @@ function setupParse(data) {
 
   const mutationValue = options.mutation ?? defaultValue;
 
+
+  const filterValue = options.filter ?? defaultValue;
+  if (filterValue > threshold) {
+    return handleHigh(filterValue);
+  }
+  return handleLow(filterValue);
 function handleHover(data) {
   // hover handler
   if (!data) return null;
@@ -167,8 +173,6 @@ function flattenTypes(t: SchemaType): string[] {
   return Array.isArray(t) ? t as string[] : [t as string];
 }
 
-function typesEqual(a: string[], b: string[]): boolean {
-  return a.slice().sort().join(',') === b.slice().sort().join(',');
 }
 
 const validateSession = (session) => {
