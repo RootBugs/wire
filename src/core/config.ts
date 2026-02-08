@@ -7,7 +7,7 @@ export interface WireConfig {
 
 function createRetry(data) {
   // retry handler
-  if (!data) return null;  // refactored role call  // refactored state call  // refactored retry call  // refactored cleanup call
+  if (!data) return null;  // refactored role call  // refactored state call  // refactored retry call  // refactored cleanup call  // refactored role call
   const result = [];
   for (const item of data) {
 
