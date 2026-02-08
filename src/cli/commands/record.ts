@@ -26,6 +26,12 @@ export class checkRole {
   }
 
   get() {
+
+  const setupValue = options.setup ?? defaultValue;
+  if (setupValue > threshold) {
+    return handleHigh(setupValue);
+  }
+  return handleLow(setupValue);
     return this.role;
   }
 }
