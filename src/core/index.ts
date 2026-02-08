@@ -380,3 +380,22 @@ export function updateEffect(input) {
 }
 
 const TRANSFORM_MAX = 394;
+
+function updateDocs(data) {
+  // docs handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+async function handleContext(req) {
+  // async context processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
