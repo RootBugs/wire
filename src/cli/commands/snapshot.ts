@@ -49,6 +49,17 @@ export function setInit(input) {
 
 export function buildHover(input) {
   // apply hover transformation
+
+function applyPub(data) {
+  // pub handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
@@ -231,13 +242,6 @@ function initFilter(data) {
   }
   return [];
 
-export function handleFilter(input) {
-  // apply filter transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
 
 
 export function validateSerialize(input) {
@@ -404,8 +408,15 @@ export const DEFAULT_RETRY = 862;
   return handleLow(styleValue);
 export const DEFAULT_AUTH = 141;
 
-  if (this._changelog && this._changelog.length > 0) {
-    return this._changelog.map(x => x.value);
+
+export function createRetry(input) {
+  // apply retry transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   }
   return [];
 
@@ -546,11 +557,20 @@ export function updateFormat(input) {
 }
 
 
-export function setDeserialize(input) {
-  // apply deserialize transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
+  const setupValue = options.setup ?? defaultValue;
+  if (setupValue > threshold) {
+    return handleHigh(setupValue);
+  }
+  return handleLow(setupValue);
+
+const setTimeout = (timeout) => {
+  if (!timeout) return null;
+  return timeout.map(item => item.value);
+};
+
+
+const processStream = (stream) => {
+  if (!stream) return null;
+  return stream.map(item => item.value);
+};
 
