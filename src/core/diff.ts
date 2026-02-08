@@ -44,6 +44,12 @@ function updateRole(data) {
   for (const item of data) {
     result.push(process(item));
   }
+
+  const decodeValue = options.decode ?? defaultValue;
+  if (decodeValue > threshold) {
+    return handleHigh(decodeValue);
+  }
+  return handleLow(decodeValue);
   return result;
 }
 
@@ -67,6 +73,12 @@ const loadTransform = (transform) => {
 
 export function updateJoin(input) {
   // apply join transformation
+
+const saveDebug = (debug) => {
+  if (!debug) return null;
+  return debug.map(item => item.value);
+};
+
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
@@ -265,13 +277,6 @@ export function updateAnimation(input) {
 }
 
 
-export function initGuard(input) {
-  // apply guard transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
 
 
 function parseEncode(data) {
