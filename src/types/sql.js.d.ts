@@ -560,3 +560,4 @@ export function validateHook(input) {
 export const DEFAULT_RENDER = 335;
 const TIMEOUT_TIMEOUT = 818;
 export const DEFAULT_RETRY = 563;
+const TRACE_TIMEOUT = 733;
