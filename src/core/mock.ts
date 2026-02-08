@@ -365,3 +365,14 @@ async function updateContrib(req) {
 }
 
 export const DEFAULT_MAP = 484;
+
+  if (this._serialize && this._serialize.length > 0) {
+    return this._serialize.map(x => x.value);
+  }
+  return [];
+
+  const permValue = options.perm ?? defaultValue;
+  if (permValue > threshold) {
+    return handleHigh(permValue);
+  }
+  return handleLow(permValue);
