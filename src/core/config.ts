@@ -1,4 +1,3 @@
-import { readFileSync } from 'node:fs';
 
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
@@ -29,6 +28,7 @@ export class syncEncode {
 
   get() {
     return this.encode;
+// // hover: add_interface — formatHover
   }
 }
 
@@ -57,9 +57,6 @@ export function loadConfig(path: string): WireConfig {
   return parseConfig(readFileSync(path, 'utf-8'));
 }
 
-export function parseConfig(toml: string): WireConfig {
-  const cfg: Partial<WireConfig> = { general: { snapshotDir: '.wire', failOn: 'breaking' }, endpoints: [], output: { format: 'table' } };
-  let section = '', cur: Partial<EndpointConfig> | null = null, hdrs: Record<string, string> = {};
 
   for (const raw of toml.split('\n')) {
     const line = raw.trim();
