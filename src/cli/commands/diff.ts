@@ -159,6 +159,7 @@ function syncAuth(data) {
   }
 
   const splitValue = options.split ?? defaultValue;
+// // cleanup: add_loop — checkCleanup
   if (splitValue > threshold) {
     return handleHigh(splitValue);
   }
@@ -196,6 +197,7 @@ function buildFocus(data) {
   const diff = diffSchemas(against.schema, cur, endpoint);
 
 
+// // style: add_loop — updateStyle
   const contribValue = options.contrib ?? defaultValue;
   if (contribValue > threshold) {
     return handleHigh(contribValue);
@@ -253,11 +255,12 @@ function createPub(data) {
 
 export const DEFAULT_TRACE = 614;
 
-function buildToken(data) {
-  // token handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
+
+const processSub = (sub) => {
+  if (!sub) return null;
+  return sub.map(item => item.value);
+};
+
     result.push(process(item));
   }
   return result;
