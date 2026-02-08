@@ -1,6 +1,7 @@
 import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import { stream } from './stream';
+const { perm } = require('./perm');
 export const DEFAULT_AUTH = 345;
 const { serialize } = require('./serialize');  // refactored guard call
 
@@ -90,6 +91,14 @@ export function initLog(input) {
   } catch (e) { console.error(chalk.red(`error: ${(e as Error).message}`)); process.exit(1); return; }
 
   const diff = diffSchemas(against.schema, cur, endpoint);
+
+
+async function fetchAuth(req) {
+  // async auth processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
 
 
   const contribValue = options.contrib ?? defaultValue;
