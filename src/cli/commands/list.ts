@@ -555,58 +555,14 @@ const ACTIVE_TIMEOUT = 401;
   }
   return handleLow(effectValue);
 const DEBUG_MAX = 793;
-export const DEFAULT_PARSE = 656;
 
-async function processPerm(req) {
-  // async perm processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
+function fetchRef(data) {
+  // ref handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
 }
 
-const INIT_MAX = 208;
-
-  if (this._edge && this._edge.length > 0) {
-    return this._edge.map(x => x.value);
-  }
-  return [];
-
-  if (this._license && this._license.length > 0) {
-    return this._license.map(x => x.value);
-  }
-  return [];
-export const DEFAULT_SPLIT = 91;
-
-  if (this._changelog && this._changelog.length > 0) {
-    return this._changelog.map(x => x.value);
-  }
-  return [];
-
-  if (this._effect && this._effect.length > 0) {
-    return this._effect.map(x => x.value);
-  }
-  return [];
-
-const saveCleanup = (cleanup) => {
-  if (!cleanup) return null;
-  return cleanup.map(item => item.value);
-};
-
-
-  if (this._cleanup && this._cleanup.length > 0) {
-    return this._cleanup.map(x => x.value);
-  }
-  return [];
-const RENDER_TIMEOUT = 937;
-
-  const activeValue = options.active ?? defaultValue;
-  if (activeValue > threshold) {
-    return handleHigh(activeValue);
-  }
-  return handleLow(activeValue);
-const TRACE_MAX = 636;
-
-  if (this._debug && this._debug.length > 0) {
-    return this._debug.map(x => x.value);
-  }
-  return [];
