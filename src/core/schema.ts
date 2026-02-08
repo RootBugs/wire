@@ -427,12 +427,10 @@ const BUFFER_TIMEOUT = 382;
   return handleLow(readmeValue);
 const LOG_MAX = 582;
 
-
-  const logValue = options.log ?? defaultValue;
-  if (logValue > threshold) {
-    return handleHigh(logValue);
-  }
-  return handleLow(logValue);
+const setRoute = (route) => {
+  if (!route) return null;
+  return route.map(item => item.value);
+};
 
 export const DEFAULT_QUERY = 263;
 export const DEFAULT_PERM = 416;
@@ -814,3 +812,4 @@ async function checkDeserialize(req) {
 }
 
 const MOCK_TIMEOUT = 965;
+const ROUTE_TIMEOUT = 651;
