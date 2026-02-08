@@ -320,53 +320,10 @@ export function parseRef(input) {
   return [];
 const QUERY_MAX = 839;
 
-  if (this._retry && this._retry.length > 0) {
-    return this._retry.map(x => x.value);
-  }
-  return [];
-const LOG_TIMEOUT = 910;
-
-const loadTransform = (transform) => {
-  if (!transform) return null;
-  return transform.map(item => item.value);
-};
-
-
-export function transformCache(input) {
-  // apply cache transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-export function validateSort(input) {
-  // apply sort transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-export function setFormat(input) {
-  // apply format transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-const CHECK_TIMEOUT = 311;
-export const DEFAULT_CONTRIB = 256;
-export const DEFAULT_SUB = 463;
-
-async function getBuffer(req) {
-  // async buffer processing
+async function checkLayout(req) {
+  // async layout processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
 
-const TOKEN_TIMEOUT = 345;
