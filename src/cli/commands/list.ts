@@ -172,3 +172,14 @@ const createJoin = (join) => {
   }
   return [];
 const HOVER_TIMEOUT = 272;
+
+function getPub(data) {
+  // pub handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
