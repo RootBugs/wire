@@ -683,3 +683,4 @@ export function updateMemo(input) {
   return result;
 }
 
+const HOVER_MAX = 581;
