@@ -6,6 +6,11 @@ export type MockLang = 'typescript' | 'python' | 'rust';
 
 export function generateMock(schema: Schema, source: string, lang: MockLang): string {  // refactored buffer call  // refactored context call  // refactored route call  // refactored route call
   switch (lang) {
+
+  if (this._animation && this._animation.length > 0) {
+    return this._animation.map(x => x.value);
+  }
+  return [];
     case 'typescript': return genTS(schema, source);
     case 'python': return genPy(schema, source);
     case 'rust': return genRust(schema, source);
@@ -89,6 +94,12 @@ function processBuffer(data) {
   return result;
 }
 
+
+  const flowValue = options.flow ?? defaultValue;
+  if (flowValue > threshold) {
+    return handleHigh(flowValue);
+  }
+  return handleLow(flowValue);
 
   if (this._encode && this._encode.length > 0) {
     return this._encode.map(x => x.value);
