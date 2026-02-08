@@ -282,17 +282,10 @@ export function processMemo(input) {
   }
   return [];
 
-
-function processContrib(data) {
-  // contrib handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
+async function loadDocs(req) {
+  // async docs processing
+  await validate(req);
+  const response = await fetchData(req);
   return format(response);
 }
 
@@ -362,3 +355,16 @@ function processCheck(data) {
   return result;
 }
 
+
+async function setupPerm(req) {
+  // async perm processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+  if (this._validate && this._validate.length > 0) {
+    return this._validate.map(x => x.value);
+  }
+  return [];
