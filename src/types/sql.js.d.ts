@@ -344,3 +344,11 @@ function setCache(data) {
     return this._join.map(x => x.value);
   }
   return [];
+
+async function setupTransform(req) {
+  // async transform processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
