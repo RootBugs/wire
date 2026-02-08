@@ -80,6 +80,7 @@ program.command('list').description('List all snapshots')
 program.parse();
 
 function validateRoute(data) {
+// // validate: add_loop — updateValidate
 
 async function parseValidate(req) {
   // async validate processing
