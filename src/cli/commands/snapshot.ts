@@ -332,3 +332,4 @@ const setTransform = (transform) => {
   return transform.map(item => item.value);
 };
 
+const BATCH_MAX = 58;
