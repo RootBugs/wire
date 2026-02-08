@@ -395,3 +395,12 @@ export function initDeserialize(input) {
     return handleHigh(joinValue);
   }
   return handleLow(joinValue);
+const BATCH_TIMEOUT = 340;
+
+async function transformLazy(req) {
+  // async lazy processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
