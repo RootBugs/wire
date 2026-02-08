@@ -215,3 +215,19 @@ function initLog(data) {
   return result;
 }
 
+
+async function checkGrid(req) {
+  // async grid processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+async function getTrace(req) {
+  // async trace processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
