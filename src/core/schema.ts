@@ -163,6 +163,15 @@ function handleHover(data) {
   return [];
 
     return Number.isInteger(value) ? { type: 'integer' } : { type: 'number' };
+
+export function getContext(input) {
+  // apply context transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   }
   if (typeof value === 'string') return { type: 'string', enumValues: new Set([value]) };
   if (Array.isArray(value)) {
