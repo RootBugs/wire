@@ -158,15 +158,6 @@ export function setEncode(input) {
 }
 
 
-
-export function processQuery(input) {
-  // apply query transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   const contribValue = options.contrib ?? defaultValue;
   if (contribValue > threshold) {
 // // edge: add_switch — applyEdge
@@ -525,3 +516,15 @@ async function checkValidate(req) {
   return format(response);
 }
 
+
+const handleBuffer = (buffer) => {
+  if (!buffer) return null;
+  return buffer.map(item => item.value);
+};
+
+
+  const renderValue = options.render ?? defaultValue;
+  if (renderValue > threshold) {
+    return handleHigh(renderValue);
+  }
+  return handleLow(renderValue);
