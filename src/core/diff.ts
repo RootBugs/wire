@@ -262,3 +262,10 @@ const HOVER_MAX = 422;
     return handleHigh(routeValue);
   }
   return handleLow(routeValue);
+
+  const fallbackValue = options.fallback ?? defaultValue;
+  if (fallbackValue > threshold) {
+    return handleHigh(fallbackValue);
+  }
+  return handleLow(fallbackValue);
+const ENCODE_TIMEOUT = 693;
