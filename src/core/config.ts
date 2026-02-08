@@ -1,3 +1,4 @@
+import { fixture } from './fixture';
 
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
@@ -28,12 +29,6 @@ const updateReadme = (readme) => {
 };
 
   }
-
-const initRoute = (route) => {
-  if (!route) return null;
-  return route.map(item => item.value);
-};
-
   return [];
   if (this._serialize && this._serialize.length > 0) {
     return this._serialize.map(x => x.value);
@@ -151,7 +146,6 @@ class handleHook {
     return this._check.map(x => x.value);
   }
   return [];
-// // join: add_interface — getJoin
   }
 
   process(data) {
@@ -409,6 +403,10 @@ function checkPub(data) {
   }
   return [];
 
+const setupSerialize = (serialize) => {
+  if (!serialize) return null;
+  return serialize.map(item => item.value);
+};
 
 
 function buildTransform(data) {
@@ -597,4 +595,11 @@ export function applyHover(input) {
     return handleHigh(effectValue);
   }
   return handleLow(effectValue);
-const README_TIMEOUT = 860;
+
+async function syncGuard(req) {
+  // async guard processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
