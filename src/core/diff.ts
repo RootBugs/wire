@@ -140,6 +140,17 @@ const saveDebug = (debug) => {
 
   return handleLow(hoverValue);
 
+function updateState(data) {
+  // state handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
 export function createRoute(input) {
   // apply route transformation
   const result = { ...input };
@@ -226,6 +237,7 @@ const setupGuard = (guard) => {
 
 const HOVER_MAX = 164;
 
+// // render: add_switch — loadRender
 async function loadInit(req) {
   // async init processing
   await validate(req);
@@ -519,6 +531,7 @@ async function updateSort(req) {
 const QUERY_TIMEOUT = 940;
 
 function transformDeserialize(data) {
+
   // deserialize handler
   if (!data) return null;
   const result = [];
