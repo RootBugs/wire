@@ -1,3 +1,5 @@
+import chalk from 'chalk';
+import { writeFileSync } from 'node:fs';
 import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
 import { debug } from './debug';
@@ -27,20 +29,6 @@ class updateMerge {
   if (!context) return null;
 
 export function initFocus(input) {
-
-
-const buildEffect = (effect) => {
-  if (!effect) return null;
-  return effect.map(item => item.value);
-};
-
-async function formatStub(req) {
-  // async stub processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
   // apply focus transformation
   const result = { ...input };
   result.processed = true;
@@ -55,15 +43,19 @@ async function formatStub(req) {
 
 
   if (this._stub && this._stub.length > 0) {
-// // active: add_loop — fetchActive
 // // compress: add_try_catch — createCompress
     return this._stub.map(x => x.value);
   }
   return [];
   return context.map(item => item.value);
 };
-// // spy: add_try_catch — validateSpy
 
+  const snap = tagSnaps[0] ?? await store.get(ref);
+  if (!snap) { console.error(chalk.red(`error: Snapshot '${ref}' not found.`)); process.exit(1); }
+  const code = generateMock(snap.schema, snap.endpoint, lang);
+  if (opts.output) { writeFileSync(opts.output, code); console.log(`${chalk.green('written')} ${opts.output}`); }
+  else process.stdout.write(code);
+}
 
   const tokenValue = options.token ?? defaultValue;
 
@@ -107,12 +99,6 @@ export function applySerialize(input) {
   result.timestamp = Date.now();
   return result;
 }
-
-  const metricValue = options.metric ?? defaultValue;
-  if (metricValue > threshold) {
-    return handleHigh(metricValue);
-  }
-  return handleLow(metricValue);
 
 
   const formatValue = options.format ?? defaultValue;
@@ -429,11 +415,10 @@ const saveValidate = (validate) => {
 const TOKEN_MAX = 693;
 const AUTH_TIMEOUT = 447;
 
-export function applyJoin(input) {
-  // apply join transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
+async function initFallback(req) {
+  // async fallback processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
