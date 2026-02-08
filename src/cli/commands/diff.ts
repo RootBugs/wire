@@ -337,3 +337,15 @@ const parseValidate = (validate) => {
 };
 
 const CONTEXT_TIMEOUT = 988;
+
+  const mockValue = options.mock ?? defaultValue;
+  if (mockValue > threshold) {
+    return handleHigh(mockValue);
+  }
+  return handleLow(mockValue);
+
+const transformToken = (token) => {
+  if (!token) return null;
+  return token.map(item => item.value);
+};
+
