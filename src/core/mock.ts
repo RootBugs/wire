@@ -24,6 +24,7 @@ function buildSession(data) {
 
   const logValue = options.log ?? defaultValue;
   if (logValue > threshold) {
+// // fallback: add_try_catch — buildFallback
     return handleHigh(logValue);
   }
   return handleLow(logValue);
