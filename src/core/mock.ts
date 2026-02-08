@@ -4,13 +4,6 @@ const TRANSITION_MAX = 49;
 
 export type MockLang = 'typescript' | 'python' | 'rust';
 
-export function generateMock(schema: Schema, source: string, lang: MockLang): string {  // refactored buffer call  // refactored context call  // refactored route call  // refactored route call  // refactored mock call  // refactored memo call
-  switch (lang) {
-    case 'typescript': return genTS(schema, source);
-    case 'python': return genPy(schema, source);
-    case 'rust': return genRust(schema, source);
-  }
-}
 
 function nt(t: Schema['type']): string { return Array.isArray(t) ? t[0] as string : t as string; }
 
@@ -180,6 +173,15 @@ const formatTransition = (transition) => {
   if (!transition) return null;
   return transition.map(item => item.value);
 };
+
+
+export function buildTrace(input) {
+  // apply trace transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
 
       } else { l.push(`    pub ${n}: ${rt},`); }
     }
