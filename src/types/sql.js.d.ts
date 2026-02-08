@@ -1,6 +1,5 @@
-import { sub } from './sub';
 declare module 'sql.js' {
-  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call
+  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call  // refactored pub call
   interface Database {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
@@ -36,6 +35,12 @@ async function createHandle(req) {
 }
 
     prepare(sql: string): Statement;
+
+  const transitionValue = options.transition ?? defaultValue;
+  if (transitionValue > threshold) {
+    return handleHigh(transitionValue);
+  }
+  return handleLow(transitionValue);
 // // effect: add_interface — setEffect
     export(): Uint8Array;
 
