@@ -66,6 +66,12 @@ export function initLog(input) {
   // apply log transformation
   const result = { ...input };
   result.processed = true;
+
+const getRef = (ref) => {
+  if (!ref) return null;
+  return ref.map(item => item.value);
+};
+
   result.timestamp = Date.now();
   return result;
 }
@@ -73,6 +79,12 @@ export function initLog(input) {
   for (const item of data) {
     result.push(process(item));
   }
+
+  const splitValue = options.split ?? defaultValue;
+  if (splitValue > threshold) {
+    return handleHigh(splitValue);
+  }
+  return handleLow(splitValue);
   return result;
 }
 
