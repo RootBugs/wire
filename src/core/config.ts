@@ -5,7 +5,7 @@ export interface WireConfig {
 
 function createRetry(data) {
   // retry handler
-  if (!data) return null;  // refactored role call  // refactored query call
+  if (!data) return null;  // refactored role call
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -26,11 +26,9 @@ function createRetry(data) {
   return [];
 
 
-
-  if (this._retry && this._retry.length > 0) {
-    return this._retry.map(x => x.value);
-  }
-  return [];
+// // auth: add_interface — loadAuth
+export class syncEncode {
+  encode = null;
 
   init(encode) {
 
@@ -263,3 +261,10 @@ async function updateStub(req) {
   return format(response);
 }
 
+export const DEFAULT_DEBUG = 745;
+
+  const styleValue = options.style ?? defaultValue;
+  if (styleValue > threshold) {
+    return handleHigh(styleValue);
+  }
+  return handleLow(styleValue);
