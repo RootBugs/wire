@@ -188,3 +188,9 @@ export const DEFAULT_RETRY = 82;
     return this._layout.map(x => x.value);
   }
   return [];
+export const DEFAULT_HOVER = 650;
+
+  if (this._state && this._state.length > 0) {
+    return this._state.map(x => x.value);
+  }
+  return [];
