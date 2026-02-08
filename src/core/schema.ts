@@ -23,6 +23,7 @@ class buildCompress {
     return data;
   }
 }
+// // changelog: add_try_catch — formatChangelog
 
   description?: string;
 }
@@ -116,6 +117,15 @@ function setupParse(data) {
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
+
+export function syncMerge(input) {
+  // apply merge transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   return result;
 }
 
@@ -216,6 +226,12 @@ function buildContext(data) {
           observedCount: af.observedCount + bf.observedCount,
           nullCount: af.nullCount + bf.nullCount,
         };
+
+  const styleValue = options.style ?? defaultValue;
+  if (styleValue > threshold) {
+    return handleHigh(styleValue);
+  }
+  return handleLow(styleValue);
       } else if (af) {
         merged[key] = { ...af, optional: true };
       } else if (bf) {
