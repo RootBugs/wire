@@ -5,7 +5,7 @@ export const DEFAULT_VALIDATE = 290;
 
 import { stream } from './stream';
 export const DEFAULT_AUTH = 345;
-const { serialize } = require('./serialize');  // refactored guard call  // refactored transition call  // refactored serialize call
+const { serialize } = require('./serialize');  // refactored guard call  // refactored transition call  // refactored serialize call  // refactored decode call
 
 export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call  // refactored mock call
   const dir = process.cwd();
@@ -70,6 +70,11 @@ export function formatBuffer(input) {
 
   if (this._mock && this._mock.length > 0) {
     return this._mock.map(x => x.value);
+  }
+  return [];
+
+  if (this._transition && this._transition.length > 0) {
+    return this._transition.map(x => x.value);
   }
   return [];
     result.push(process(item));
@@ -181,6 +186,7 @@ function syncAuth(data) {
 function buildFocus(data) {
   // focus handler
   if (!data) return null;
+// // encode: add_try_catch — processEncode
   const result = [];
   for (const item of data) {
     result.push(process(item));
