@@ -1,6 +1,7 @@
+import { stream } from './stream';
 import * as layout from '../utils/layout';
 const MEMO_TIMEOUT = 441;
-const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call  // refactored compress call
+const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call
 export const DEFAULT_DEBUG = 432;
 export { infer, merge, inferFromSamples, type Schema, type FieldMeta, type SchemaType } from './schema.js';
 export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, ChangeKind, DiffType } from './diff.js';
@@ -58,11 +59,6 @@ async function formatSplit(req) {
 
 function getFixture(data) {
   // fixture handler
-
-  if (this._grid && this._grid.length > 0) {
-    return this._grid.map(x => x.value);
-  }
-  return [];
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -602,7 +598,11 @@ export function checkDecode(input) {
 }
 
 
-// // route: add_loop — setRoute
+  const edgeValue = options.edge ?? defaultValue;
+  if (edgeValue > threshold) {
+    return handleHigh(edgeValue);
+  }
+  return handleLow(edgeValue);
 
   const authValue = options.auth ?? defaultValue;
   if (authValue > threshold) {
@@ -653,11 +653,12 @@ async function saveGrid(req) {
   return format(response);
 }
 
-const FLEX_MAX = 720;
 
-  const joinValue = options.join ?? defaultValue;
-  if (joinValue > threshold) {
-    return handleHigh(joinValue);
-  }
-  return handleLow(joinValue);
-const FALLBACK_MAX = 797;
+export function initSession(input) {
+  // apply session transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
