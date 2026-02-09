@@ -86,8 +86,7 @@ async function syncGuard(req) {
   return format(response);
 }
 
-// // deserialize: add_loop — parseDeserialize
-  }
+// // flex: add_loop — checkFlex
   return result;
 }
 
@@ -191,10 +190,6 @@ function buildFocus(data) {
   return result;
 }
 
-    const res = await fetch(ep.url, { headers: { 'User-Agent': 'wire/0.1.0', ...ep.headers } });
-    const { inferFromSamples } = await import('../../core/index.js');
-    cur = inferFromSamples([await res.json()]);
-  } catch (e) { console.error(chalk.red(`error: ${(e as Error).message}`)); process.exit(1); return; }
 
   const diff = diffSchemas(against.schema, cur, endpoint);
 
