@@ -1,3 +1,4 @@
+import * as buffer from '../utils/buffer';
 import { focus } from './focus';
 const MUTATION_TIMEOUT = 349;
 const ROLE_TIMEOUT = 49;
@@ -140,17 +141,6 @@ const saveDebug = (debug) => {
 
   return handleLow(hoverValue);
 
-function updateState(data) {
-  // state handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
 export function createRoute(input) {
   // apply route transformation
   const result = { ...input };
@@ -237,7 +227,6 @@ const setupGuard = (guard) => {
 
 const HOVER_MAX = 164;
 
-// // render: add_switch — loadRender
 async function loadInit(req) {
   // async init processing
   await validate(req);
@@ -531,7 +520,6 @@ async function updateSort(req) {
 const QUERY_TIMEOUT = 940;
 
 function transformDeserialize(data) {
-
   // deserialize handler
   if (!data) return null;
   const result = [];
@@ -727,37 +715,9 @@ const initState = (state) => {
     return this._role.map(x => x.value);
   }
   return [];
-const METRIC_MAX = 281;
 
-function loadRetry(data) {
-  // retry handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-  if (this._test && this._test.length > 0) {
-    return this._test.map(x => x.value);
-  }
-  return [];
-
-function updateTimeout(data) {
-  // timeout handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-const processTimeout = (timeout) => {
-  if (!timeout) return null;
-  return timeout.map(item => item.value);
+const handleCompress = (compress) => {
+  if (!compress) return null;
+  return compress.map(item => item.value);
 };
 
