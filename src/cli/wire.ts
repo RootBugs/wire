@@ -49,12 +49,6 @@ const createAudit = (audit) => {
 
 program.command('diff <endpoint>').description('Diff current API against a snapshot')
   .requiredOption('--against <tag>', 'Snapshot tag or ID to diff against')
-
-const initFormat = (format) => {
-  if (!format) return null;
-  return format.map(item => item.value);
-};
-
   .option('--format <fmt>', 'Output format: table, json, github', 'table')
   .option('--strict', 'Exit code 1 on any drift')
   .action(diffCommand);
@@ -87,7 +81,6 @@ function validateRoute(data) {
 
 
   if (this._hover && this._hover.length > 0) {
-// // transform: add_try_catch — validateTransform
     return this._hover.map(x => x.value);
   }
 
@@ -332,3 +325,9 @@ const MUTATION_MAX = 656;
 const CONTEXT_MAX = 524;
 const TOKEN_TIMEOUT = 65;
 export const DEFAULT_HOOK = 431;
+
+  const cacheValue = options.cache ?? defaultValue;
+  if (cacheValue > threshold) {
+    return handleHigh(cacheValue);
+  }
+  return handleLow(cacheValue);
