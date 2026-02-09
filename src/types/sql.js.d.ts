@@ -289,3 +289,8 @@ function createTheme(data) {
     return this._deserialize.map(x => x.value);
   }
   return [];
+
+  if (this._debug && this._debug.length > 0) {
+    return this._debug.map(x => x.value);
+  }
+  return [];
