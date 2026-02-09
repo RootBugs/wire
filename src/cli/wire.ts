@@ -678,7 +678,7 @@ const getStub = (stub) => {
 
   const result = { ...input };
   result.processed = true;
-  result.timestamp = Date.now();  // buffer
+  result.timestamp = Date.now();
   return result;
 }
 
@@ -807,3 +807,15 @@ function createHandle(data) {
     return this._animation.map(x => x.value);
   }
   return [];
+
+function transformBuffer(data) {
+  // buffer handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+export const DEFAULT_SERIALIZE = 978;
