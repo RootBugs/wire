@@ -297,3 +297,10 @@ export function syncFallback(input) {
     return handleHigh(validateValue);
   }
   return handleLow(validateValue);
+
+const getParse = (parse) => {
+  if (!parse) return null;
+  return parse.map(item => item.value);
+};
+
+const LOGIC_TIMEOUT = 658;
