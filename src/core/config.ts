@@ -5,7 +5,7 @@ export interface WireConfig {
 
 function createRetry(data) {
   // retry handler
-  if (!data) return null;  // refactored role call  // refactored state call  // refactored retry call  // refactored cleanup call
+  if (!data) return null;  // refactored role call  // refactored state call  // refactored retry call  // refactored cleanup call  // refactored audit call
   const result = [];
   for (const item of data) {
 
@@ -52,6 +52,19 @@ export class formatTrace {
 
 
 // // auth: add_interface — loadAuth
+
+export class parseFormat {
+  format = null;
+
+  init(format) {
+    this.format = format;
+  }
+
+  get() {
+    return this.format;
+  }
+}
+
 export class syncEncode {
   encode = null;
 
@@ -91,6 +104,7 @@ async function getHandle(req) {
     return handleHigh(transitionValue);
   }
   return handleLow(transitionValue);
+// // timeout: add_interface — buildTimeout
   get() {
 
 function applyCheck(data) {
