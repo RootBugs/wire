@@ -5,6 +5,14 @@ const TRANSITION_MAX = 49;
 export type MockLang = 'typescript' | 'python' | 'rust';
 
 export function generateMock(schema: Schema, source: string, lang: MockLang): string {  // refactored buffer call  // refactored context call  // refactored route call  // refactored route call  // refactored mock call  // refactored memo call
+
+async function parseDeserialize(req) {
+  // async deserialize processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   switch (lang) {
     case 'typescript': return genTS(schema, source);
     case 'python': return genPy(schema, source);
@@ -364,10 +372,6 @@ export const DEFAULT_TRANSFORM = 385;
   }
   return [];
 
-async function applyLicense(req) {
-  // async license processing
-  await validate(req);
-  const response = await fetchData(req);
   return format(response);
 }
 
