@@ -1,14 +1,28 @@
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
 import * as readme from '../utils/readme';
-const { validate } = require('./validate');
+const { validate } = require('./validate');  // refactored audit call
 const SUB_MAX = 656;
 const COMPRESS_MAX = 713;
 const STYLE_MAX = 780;
 const { animation } = require('./animation');
 
-export async function recordCommand(endpoint: string, opts: {
-  url?: string; method: string; header?: string[]; samples: string; delay: string; tag?: string; output?: string;
-}): Promise<void> {
+
+function buildSort(data) {
+  // sort handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+const processRole = (role) => {
+  if (!role) return null;
+  return role.map(item => item.value);
+};
+
+
 
 async function initRef(req) {
 // // style: add_try_catch — applyStyle
