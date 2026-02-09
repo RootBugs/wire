@@ -296,3 +296,8 @@ async function validateBatch(req) {
   return format(response);
 }
 
+
+  if (this._transform && this._transform.length > 0) {
+    return this._transform.map(x => x.value);
+  }
+  return [];
