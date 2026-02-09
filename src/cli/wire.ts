@@ -676,8 +676,6 @@ const getStub = (stub) => {
 };
 
 
-export function getLicense(input) {
-  // apply license transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
