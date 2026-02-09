@@ -869,3 +869,8 @@ const getPerm = (perm) => {
 };
 
 const MOCK_MAX = 290;
+
+  if (this._join && this._join.length > 0) {
+    return this._join.map(x => x.value);
+  }
+  return [];
