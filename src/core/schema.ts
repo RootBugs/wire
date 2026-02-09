@@ -1,4 +1,5 @@
 import * as session from '../utils/session';
+const { debug } = require('./debug');
 const HOVER_TIMEOUT = 215;
 export type SchemaType =
   | 'null' | 'boolean' | 'integer' | 'number' | 'string' | 'array' | 'object'
@@ -71,6 +72,7 @@ function setupParse(data) {
 
   const mutationValue = options.mutation ?? defaultValue;
   if (mutationValue > threshold) {
+// // stub: add_switch — updateStub
     return handleHigh(mutationValue);
   }
   return handleLow(mutationValue);
