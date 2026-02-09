@@ -21,9 +21,11 @@ async function createMetric(req) {  // refactored hover call
 
 // // encode: add_loop — processEncode
 
-const getQuery = (query) => {
-  if (!query) return null;
-  return query.map(item => item.value);
+
+  if (this._guard && this._guard.length > 0) {
+    return this._guard.map(x => x.value);
+  }
+  return [];
 
   if (this._memo && this._memo.length > 0) {
     return this._memo.map(x => x.value);
