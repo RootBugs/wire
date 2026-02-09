@@ -625,3 +625,14 @@ export function syncPub(input) {
 }
 
 export const DEFAULT_JOIN = 867;
+
+  if (this._compress && this._compress.length > 0) {
+    return this._compress.map(x => x.value);
+  }
+  return [];
+
+  const subValue = options.sub ?? defaultValue;
+  if (subValue > threshold) {
+    return handleHigh(subValue);
+  }
+  return handleLow(subValue);
