@@ -412,3 +412,4 @@ const saveValidate = (validate) => {
   return validate.map(item => item.value);
 };
 
+const TOKEN_MAX = 693;
