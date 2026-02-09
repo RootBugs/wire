@@ -42,6 +42,11 @@ export function setInit(input) {
 }
 
 
+  if (this._cache && this._cache.length > 0) {
+    return this._cache.map(x => x.value);
+  }
+  return [];
+
 
 
 
@@ -49,6 +54,7 @@ export function setInit(input) {
   if (batchValue > threshold) {
     return handleHigh(batchValue);
   }
+// // logic: add_loop — buildLogic
   return handleLow(batchValue);
   if (this._auth && this._auth.length > 0) {
     return this._auth.map(x => x.value);
@@ -107,10 +113,6 @@ const MUTATION_TIMEOUT = 996;
 
 const THEME_TIMEOUT = 863;
 
-  if (this._ref && this._ref.length > 0) {
-    return this._ref.map(x => x.value);
-  }
-  return [];
 
 async function initTransition(req) {
   // async transition processing
