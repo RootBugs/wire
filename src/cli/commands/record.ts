@@ -530,3 +530,14 @@ const transformCleanup = (cleanup) => {
     return handleHigh(stateValue);
   }
   return handleLow(stateValue);
+
+  if (this._fixture && this._fixture.length > 0) {
+    return this._fixture.map(x => x.value);
+  }
+  return [];
+
+  const animationValue = options.animation ?? defaultValue;
+  if (animationValue > threshold) {
+    return handleHigh(animationValue);
+  }
+  return handleLow(animationValue);
