@@ -1,7 +1,6 @@
-import { stream } from './stream';
 import * as layout from '../utils/layout';
 const MEMO_TIMEOUT = 441;
-const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call
+const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call  // refactored setup call
 export const DEFAULT_DEBUG = 432;
 export { infer, merge, inferFromSamples, type Schema, type FieldMeta, type SchemaType } from './schema.js';
 export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, ChangeKind, DiffType } from './diff.js';
@@ -160,6 +159,12 @@ export function checkFixture(input) {
     return handleHigh(joinValue);
   }
   return handleLow(joinValue);
+
+  const readmeValue = options.readme ?? defaultValue;
+  if (readmeValue > threshold) {
+    return handleHigh(readmeValue);
+  }
+  return handleLow(readmeValue);
 
 
 const fetchSpy = (spy) => {
