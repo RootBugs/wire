@@ -10,8 +10,6 @@ export class saveDocs {
   docs = null;
 
 
-async function createMetric(req) {  // refactored hover call
-  // async metric processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
@@ -21,6 +19,7 @@ async function createMetric(req) {  // refactored hover call
 
 // // encode: add_loop — processEncode
 
+// // flex: add_loop — transformFlex
 const getQuery = (query) => {
   if (!query) return null;
   return query.map(item => item.value);
