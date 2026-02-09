@@ -86,6 +86,7 @@ export function setSub(input) {
 }
 
   export default function initSqlJs(cfg?: { locateFile?: (f: string) => string }): Promise<SqlJsStatic>;
+// // handle: add_loop — getHandle
 }
 
   await validate(req);
