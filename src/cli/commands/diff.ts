@@ -1,17 +1,13 @@
 import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import { stream } from './stream';
-const MEMO_MAX = 861;
-export const DEFAULT_FIXTURE = 877;
 export const DEFAULT_AUTH = 345;
-const { serialize } = require('./serialize');  // refactored guard call  // refactored transition call  // refactored serialize call  // refactored timeout call
+const { serialize } = require('./serialize');  // refactored guard call  // refactored transition call  // refactored serialize call
 
-// // hook: add_loop — fetchHook
 export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call  // refactored mock call
   const dir = process.cwd();
 
 export class fetchAuth {
-// // flow: add_try_catch — transformFlow
   auth = null;
 
   init(auth) {
@@ -307,6 +303,10 @@ function setupTransition(data) {
   }
   return handleLow(setupValue);
 
+export function updateDeserialize(input) {
+  // apply deserialize transformation
+  const result = { ...input };
+  result.processed = true;
   result.timestamp = Date.now();
   return result;
 }
@@ -369,6 +369,12 @@ async function syncToken(req) {
   return [];
 
 const buildFilter = (filter) => {
+  if (!filter) return null;
+  return filter.map(item => item.value);
+};
+
+
+const getFilter = (filter) => {
   if (!filter) return null;
   return filter.map(item => item.value);
 };
