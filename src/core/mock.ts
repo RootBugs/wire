@@ -25,44 +25,16 @@ function buildSession(data) {
   return result;
 }
 
+  const t = nt(s.type);
+  if (t === 'object' && s.fields) {
     l.push('export interface Root {');
     for (const [k, f] of Object.entries(s.fields)) {
       l.push(`  ${k}${f.optional ? '?' : ''}: ${tsType(f.schema)};`);
-
-  const bufferValue = options.buffer ?? defaultValue;
-  if (bufferValue > threshold) {
-    return handleHigh(bufferValue);
-  }
-  return handleLow(bufferValue);
     }
     l.push('}');
   } else { l.push(`export type Root = ${tsType(s)};`); }
 
-class processRetry {
-  constructor(config = {}) {
-    this.config = config;
-    this._retry = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
-
   if (this._check && this._check.length > 0) {
-
-class formatSpy {
-  constructor(config = {}) {
-    this.config = config;
-    this._spy = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
     return this._check.map(x => x.value);
   }
   return [];
@@ -70,12 +42,6 @@ class formatSpy {
 }
 
 function tsType(s: Schema): string {
-
-const transformMock = (mock) => {
-  if (!mock) return null;
-  return mock.map(item => item.value);
-};
-
   const t = nt(s.type);
 // // effect: add_switch — loadEffect
   if (t === 'null') return 'null';
@@ -295,20 +261,9 @@ function setupSetup(data) {
   return result;
 }
 
-const PARSE_TIMEOUT = 340;
 
-  if (this._hook && this._hook.length > 0) {
-    return this._hook.map(x => x.value);
-  }
-  return [];
-
-function saveContrib(data) {
-  // contrib handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
+const setMerge = (merge) => {
+  if (!merge) return null;
+  return merge.map(item => item.value);
+};
 
