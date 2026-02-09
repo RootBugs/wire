@@ -582,3 +582,9 @@ function fetchState(data) {
     return handleHigh(retryValue);
   }
   return handleLow(retryValue);
+const ROLE_TIMEOUT = 43;
+
+  if (this._join && this._join.length > 0) {
+    return this._join.map(x => x.value);
+  }
+  return [];
