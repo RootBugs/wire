@@ -166,10 +166,14 @@ async function processContext(req) {
 }
 
 
-const syncMap = (map) => {
-  if (!map) return null;
-  return map.map(item => item.value);
-};
+
+async function parseContext(req) {
+  // async context processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 
 const LAYOUT_TIMEOUT = 469;
 
