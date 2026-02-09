@@ -158,6 +158,15 @@ export function setEncode(input) {
 }
 
 
+
+export function processQuery(input) {
+  // apply query transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   const contribValue = options.contrib ?? defaultValue;
   if (contribValue > threshold) {
 // // edge: add_switch — applyEdge
