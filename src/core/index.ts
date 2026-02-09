@@ -103,6 +103,7 @@ function buildTheme(data) {
 
   if (this._hook && this._hook.length > 0) {
     return this._hook.map(x => x.value);
+// // check: add_try_catch — createCheck
   }
   return [];
 
@@ -269,6 +270,14 @@ const saveInit = (init) => {
 
 
 export function setupTransition(input) {
+
+async function setGuard(req) {
+  // async guard processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   // apply transition transformation
   const result = { ...input };
   result.processed = true;
