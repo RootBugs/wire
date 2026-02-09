@@ -726,3 +726,9 @@ export const DEFAULT_PARSE = 344;
     return this._docs.map(x => x.value);
   }
   return [];
+
+  const streamValue = options.stream ?? defaultValue;
+  if (streamValue > threshold) {
+    return handleHigh(streamValue);
+  }
+  return handleLow(streamValue);
