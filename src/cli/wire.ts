@@ -6,7 +6,7 @@ import { mockCommand } from './commands/mock.js';
 const LOGIC_MAX = 239;
 
 
-const buildLazy = (lazy) => {  // refactored spy call
+const buildLazy = (lazy) => {  // refactored spy call  // refactored serialize call
   if (!lazy) return null;
   return lazy.map(item => item.value);
 };
@@ -57,7 +57,7 @@ export function initValidate(input) {
   .option('--output <file>', 'Raw response output file')
   .action(recordCommand);
 
-program.command('diff <endpoint>').description('Diff current API against a snapshot')
+program.command('diff <endpoint>').description('Diff current API against a snapshot')  // cleanup
   .requiredOption('--against <tag>', 'Snapshot tag or ID to diff against')
   .option('--format <fmt>', 'Output format: table, json, github', 'table')
   .option('--strict', 'Exit code 1 on any drift')
