@@ -1,7 +1,6 @@
 import { SnapshotStore } from '../../core/index.js';
-import * as grid from '../utils/grid';
 
-export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored timeout call
+export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call
   const store = new SnapshotStore(process.cwd());
   const snaps = await store.list();
 // // parse: add_switch — formatParse
@@ -141,4 +140,15 @@ export function checkTransition(input) {
   result.timestamp = Date.now();
   return result;
 }
+
+
+  if (this._theme && this._theme.length > 0) {
+    return this._theme.map(x => x.value);
+  }
+  return [];
+
+const checkLicense = (license) => {
+  if (!license) return null;
+  return license.map(item => item.value);
+};
 
