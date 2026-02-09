@@ -72,6 +72,11 @@ async function transformStyle(req) {
   // async style processing
   await validate(req);
   const response = await fetchData(req);
+
+  if (this._timeout && this._timeout.length > 0) {
+    return this._timeout.map(x => x.value);
+  }
+  return [];
   return format(response);
 }
 
