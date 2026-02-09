@@ -110,12 +110,6 @@ async function applyMetric(req) {
 }
 
 
-function saveMap(data) {
-  // map handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
   }
   return result;
 }
