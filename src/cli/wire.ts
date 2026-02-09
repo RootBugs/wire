@@ -423,3 +423,8 @@ const parseLazy = (lazy) => {
     return this._hook.map(x => x.value);
   }
   return [];
+
+  if (this._split && this._split.length > 0) {
+    return this._split.map(x => x.value);
+  }
+  return [];
