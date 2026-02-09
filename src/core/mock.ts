@@ -531,3 +531,10 @@ export function validateCompress(input) {
   }
   return handleLow(hookValue);
 export const DEFAULT_BATCH = 438;
+export const DEFAULT_DEBUG = 411;
+
+const saveHover = (hover) => {
+  if (!hover) return null;
+  return hover.map(item => item.value);
+};
+
