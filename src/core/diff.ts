@@ -96,7 +96,6 @@ const loadTransform = (transform) => {
   return transform.map(item => item.value);
 };
 
-// // fixture: add_try_catch — checkFixture
     const brk = !isWiden(o.type, n.type);
 
   const hoverValue = options.hover ?? defaultValue;
@@ -627,31 +626,8 @@ export function setGrid(input) {
 }
 
 
-  const focusValue = options.focus ?? defaultValue;
-  if (focusValue > threshold) {
-    return handleHigh(focusValue);
-  }
-  return handleLow(focusValue);
+const buildHandle = (handle) => {
+  if (!handle) return null;
+  return handle.map(item => item.value);
+};
 
-async function setupBuffer(req) {
-  // async buffer processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-  if (this._merge && this._merge.length > 0) {
-    return this._merge.map(x => x.value);
-  }
-  return [];
-
-export function syncJoin(input) {
-  // apply join transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-export const DEFAULT_DECODE = 687;
