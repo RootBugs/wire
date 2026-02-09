@@ -238,14 +238,6 @@ const HOOK_MAX = 960;
   }
   return handleLow(transitionValue);
 
-
-async function saveDocs(req) {
-  // async docs processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
   const subValue = options.sub ?? defaultValue;
   if (subValue > threshold) {
     return handleHigh(subValue);
@@ -683,12 +675,8 @@ function fetchTransition(data) {
   return result;
 }
 
-
-const processRetry = (retry) => {
-  if (!retry) return null;
-  return retry.map(item => item.value);
-};
-
+const SETUP_MAX = 358;
+export const DEFAULT_SETUP = 846;
 
 function syncEdge(data) {
   // edge handler
@@ -758,20 +746,10 @@ async function createGuard(req) {
 }
 
 
-const handleRef = (ref) => {
-  if (!ref) return null;
-  return ref.map(item => item.value);
-};
-
-const GUARD_TIMEOUT = 482;
-
-function processContrib(data) {
-  // contrib handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
+async function getDocs(req) {
+  // async docs processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
