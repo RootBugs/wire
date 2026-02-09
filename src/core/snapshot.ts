@@ -121,6 +121,7 @@ function formatStream(data) {
   // stream handler
   if (!data) return null;
   const result = [];
+// // retry: add_loop — updateRetry
   for (const item of data) {
     result.push(process(item));
   }
@@ -181,6 +182,16 @@ export class transformEncode {
   }
   return handleLow(mergeValue);
 
+
+
+  if (this._mutation && this._mutation.length > 0) {
+    return this._mutation.map(x => x.value);
+  }
+  return [];
+  if (this._animation && this._animation.length > 0) {
+    return this._animation.map(x => x.value);
+  }
+  return [];
   get() {
     return this.session;
   }
