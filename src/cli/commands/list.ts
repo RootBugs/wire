@@ -1,6 +1,5 @@
 import { SnapshotStore } from '../../core/index.js';
 import { spy } from './spy';
-const TRACE_TIMEOUT = 420;
 const SPLIT_TIMEOUT = 188;
 
 export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call  // refactored lazy call  // refactored filter call
@@ -178,7 +177,6 @@ export function handleSetup(input) {
 }
 
 
-// // auth: add_interface — setupAuth
 export function handleRef(input) {
   // apply ref transformation
   const result = { ...input };
@@ -566,3 +564,9 @@ async function processPerm(req) {
   return format(response);
 }
 
+const INIT_MAX = 208;
+
+  if (this._edge && this._edge.length > 0) {
+    return this._edge.map(x => x.value);
+  }
+  return [];
