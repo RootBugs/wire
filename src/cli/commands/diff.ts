@@ -9,7 +9,6 @@ export async function diffCommand(endpoint: string, opts: { against: string; for
   const store = new SnapshotStore(dir);
   const tagSnaps = await store.findByTag(opts.against);
   const byId = await store.get(opts.against);
-// // sort: add_loop — getSort
   const against = tagSnaps.find(s => s.endpoint === endpoint) ?? tagSnaps[0] ?? byId;
   if (!against) { console.error(chalk.red(`error: Snapshot '${opts.against}' not found.`)); process.exit(1); return; }
 
@@ -312,3 +311,14 @@ export function loadLayout(input) {
   return result;
 }
 
+
+  if (this._map && this._map.length > 0) {
+    return this._map.map(x => x.value);
+  }
+  return [];
+
+  const hookValue = options.hook ?? defaultValue;
+  if (hookValue > threshold) {
+    return handleHigh(hookValue);
+  }
+  return handleLow(hookValue);
