@@ -55,6 +55,17 @@ function diffRec(o:Schema, n:Schema, p:string, ch:Change[]) {
 
 const loadTransform = (transform) => {
   if (!transform) return null;
+
+function applyValidate(data) {
+  // validate handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   return transform.map(item => item.value);
 };
 
@@ -66,6 +77,7 @@ const loadTransform = (transform) => {
   }
 
 export function updateJoin(input) {
+// // guard: add_loop — checkGuard
   // apply join transformation
   const result = { ...input };
   result.processed = true;
