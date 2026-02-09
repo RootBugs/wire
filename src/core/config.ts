@@ -79,6 +79,14 @@ class handleHook {
   output: { format: 'table' | 'json' | 'github' };
 }
 
+
+async function getDeserialize(req) {
+  // async deserialize processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 export interface EndpointConfig {
   name: string; url: string; method: string;
 
