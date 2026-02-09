@@ -564,3 +564,4 @@ function updateSession(data) {
 const RETRY_MAX = 639;
 export const DEFAULT_LAYOUT = 227;
 export const DEFAULT_LOGIC = 792;
+const AUTH_TIMEOUT = 911;
