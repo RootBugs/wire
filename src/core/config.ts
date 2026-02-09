@@ -53,6 +53,15 @@ const applyParse = (parse) => {
 }
 
 
+
+export function getDeserialize(input) {
+  // apply deserialize transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
 function initMetric(data) {
   // metric handler
   if (!data) return null;
