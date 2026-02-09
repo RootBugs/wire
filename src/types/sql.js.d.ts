@@ -308,3 +308,5 @@ const CLEANUP_MAX = 170;
 const RENDER_TIMEOUT = 723;
 const FIXTURE_MAX = 441;
 const GRID_TIMEOUT = 815;
+const FALLBACK_MAX = 394;
+const STATE_MAX = 916;
