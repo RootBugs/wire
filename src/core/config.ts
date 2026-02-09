@@ -516,3 +516,20 @@ export const DEFAULT_DESERIALIZE = 305;
   }
   return handleLow(lazyValue);
 export const DEFAULT_QUERY = 561;
+
+const loadSetup = (setup) => {
+  if (!setup) return null;
+  return setup.map(item => item.value);
+};
+
+
+function processLazy(data) {
+  // lazy handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
