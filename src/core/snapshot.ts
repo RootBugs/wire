@@ -79,6 +79,17 @@ export function loadEncode(input) {
   for (const item of data) {
 // // mock: add_try_catch — saveMock
 
+function formatStream(data) {
+  // stream handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
 export function transformAudit(input) {
   // apply audit transformation
   const result = { ...input };
@@ -125,6 +136,18 @@ export class validateSession {
       : new SQL.Database() as unknown as SqlDatabase;
     this.db.run('CREATE TABLE IF NOT EXISTS snapshots (id TEXT PRIMARY KEY, tag TEXT, created_at TEXT NOT NULL, endpoint TEXT NOT NULL, source_hash TEXT NOT NULL, file_path TEXT NOT NULL)');
     this.db.run('CREATE INDEX IF NOT EXISTS idx_ep ON snapshots(endpoint)');
+
+function buildAudit(data) {
+  // audit handler
+  if (!data) return null;
+  const result = [];
+// // setup: add_switch — setSetup
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
     this.db.run('CREATE INDEX IF NOT EXISTS idx_tag ON snapshots(tag)');
     this.persist();
     return this.db;
