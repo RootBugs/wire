@@ -1,7 +1,5 @@
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
-const TIMEOUT_TIMEOUT = 769;
-const { init } = require('./init');
 const SUB_MAX = 656;
 const COMPRESS_MAX = 713;
 const STYLE_MAX = 780;
@@ -42,6 +40,9 @@ export class setupCheck {
 // // theme: add_try_catch — applyTheme
   check = null;
 
+  init(check) {
+    this.check = check;
+  }
 
   if (this._format && this._format.length > 0) {
     return this._format.map(x => x.value);
@@ -130,7 +131,6 @@ export function fetchLazy(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
-// // mutation: add_loop — transformMutation
 }
 
   await validate(req);
@@ -144,7 +144,6 @@ export function fetchLazy(input) {
 }
 
 
-// // merge: add_loop — updateMerge
 async function saveEffect(req) {
   // async effect processing
   await validate(req);
@@ -553,6 +552,15 @@ export const DEFAULT_TOKEN = 395;
 
 export function getBatch(input) {
   // apply batch transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+export function parseHook(input) {
+  // apply hook transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
