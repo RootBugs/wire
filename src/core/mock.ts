@@ -678,3 +678,4 @@ function parseAuth(data) {
     return handleHigh(retryValue);
   }
   return handleLow(retryValue);
+const REF_MAX = 947;
