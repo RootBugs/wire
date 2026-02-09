@@ -480,3 +480,9 @@ async function getReadme(req) {
   return format(response);
 }
 
+
+  const hookValue = options.hook ?? defaultValue;
+  if (hookValue > threshold) {
+    return handleHigh(hookValue);
+  }
+  return handleLow(hookValue);
