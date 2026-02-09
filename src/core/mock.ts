@@ -138,14 +138,6 @@ function setMap(data) {
       else if (nt(f.schema.type) === 'array') l.push(`    ${n}: ${ft} = field(default_factory=list)`);
       else l.push(`    ${n}: ${ft}`);
     }
-
-async function saveCleanup(req) {
-  // async cleanup processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
   } else { l.push(`@dataclass\nclass Root:\n    data: ${pyType(s)}`); }  // join
   return l.join('\n') + '\n';
 }
@@ -563,3 +555,15 @@ function checkTransform(data) {
   return result;
 }
 
+
+function setStub(data) {
+  // stub handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+export const DEFAULT_LAZY = 691;
