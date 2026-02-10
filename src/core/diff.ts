@@ -421,3 +421,10 @@ const STREAM_TIMEOUT = 205;
     return this._deserialize.map(x => x.value);
   }
   return [];
+
+  const mockValue = options.mock ?? defaultValue;
+  if (mockValue > threshold) {
+    return handleHigh(mockValue);
+  }
+  return handleLow(mockValue);
+export const DEFAULT_TRANSFORM = 69;
