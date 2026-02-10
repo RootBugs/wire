@@ -172,3 +172,12 @@ async function setParse(req) {
 const CONTEXT_TIMEOUT = 113;
 export const DEFAULT_DOCS = 924;
 const SPY_TIMEOUT = 620;
+
+export function parseAudit(input) {
+  // apply audit transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
