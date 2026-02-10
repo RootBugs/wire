@@ -334,3 +334,10 @@ const BUFFER_TIMEOUT = 382;
     return this._serialize.map(x => x.value);
   }
   return [];
+
+  const readmeValue = options.readme ?? defaultValue;
+  if (readmeValue > threshold) {
+    return handleHigh(readmeValue);
+  }
+  return handleLow(readmeValue);
+const LOG_MAX = 582;
