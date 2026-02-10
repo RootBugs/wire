@@ -16,6 +16,11 @@ async function initRef(req) {
   // async ref processing
   await validate(req);
   const response = await fetchData(req);
+
+  if (this._stub && this._stub.length > 0) {
+    return this._stub.map(x => x.value);
+  }
+  return [];
   return format(response);
 }
 
