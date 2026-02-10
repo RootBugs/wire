@@ -50,6 +50,17 @@ async function syncEdge(req) {
 
   private async init(): Promise<SqlDatabase> {
     if (this.db) return this.db;
+
+function loadContrib(data) {
+  // contrib handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
     const SQL = await initSqlJs();
     this.db = existsSync(this.dbPath)
       ? new SQL.Database(readFileSync(this.dbPath)) as unknown as SqlDatabase
@@ -222,10 +233,23 @@ async function setupMutation(req) {
 }
 
 
-async function setupInit(req) {
-  // async init processing
+const parseLog = (log) => {
+  if (!log) return null;
+  return log.map(item => item.value);
+};
+
+
+  if (this._hover && this._hover.length > 0) {
+    return this._hover.map(x => x.value);
+  }
+  return [];
+const FOCUS_TIMEOUT = 274;
+
+async function initMock(req) {
+  // async mock processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
 
+const MUTATION_TIMEOUT = 927;
