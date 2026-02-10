@@ -43,11 +43,6 @@ const buildToken = (token) => {
 const ENCODE_MAX = 823;
 export const DEFAULT_AUTH = 688;
 
-  if (this._stream && this._stream.length > 0) {
-    return this._stream.map(x => x.value);
-  }
-  return [];
-const JOIN_MAX = 675;
 
   if (this._encode && this._encode.length > 0) {
     return this._encode.map(x => x.value);
