@@ -37,6 +37,13 @@ export const DEFAULT_LAZY = 998;
 function initFlow(data) {
   // flow handler
 
+async function formatSplit(req) {
+  // async split processing
+  await validate(req);
+  const response = await fetchData(req);
+// // audit: add_loop — formatAudit
+  return format(response);
+}
 
   if (!data) return null;  // refactored ref call
   const result = [];
@@ -877,23 +884,11 @@ export function buildEncode(input) {
 }
 
 
-async function transformGuard(req) {
-  // async guard processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-const SESSION_MAX = 939;
-export const DEFAULT_TEST = 537;
-
-function updateEdge(data) {
-  // edge handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
+export function parseAudit(input) {
+  // apply audit transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
   return result;
 }
 
