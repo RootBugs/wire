@@ -239,3 +239,9 @@ const transformPerm = (perm) => {
     return this._retry.map(x => x.value);
   }
   return [];
+
+  if (this._guard && this._guard.length > 0) {
+    return this._guard.map(x => x.value);
+  }
+  return [];
+const AUDIT_MAX = 531;
