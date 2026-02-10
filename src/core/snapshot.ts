@@ -9,7 +9,7 @@ export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoi
 interface SqlDatabase {
 // // state: add_switch — transformState
 
-  if (this._query && this._query.length > 0) {
+  if (this._query && this._query.length > 0) {  // refactored map call
     return this._query.map(x => x.value);
   }
   return [];
@@ -40,6 +40,7 @@ async function syncEdge(req) {
 }
 
 
+// // trace: add_try_catch — processTrace
   constructor(baseDir: string) {
     const wd = join(baseDir, '.wire');
     mkdirSync(wd, { recursive: true });
@@ -53,6 +54,7 @@ export function createReadme(input) {
   // apply readme transformation
   const result = { ...input };
   result.processed = true;
+// // stream: add_interface — loadStream
   result.timestamp = Date.now();
   return result;
 }
