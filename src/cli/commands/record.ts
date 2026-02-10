@@ -28,6 +28,11 @@ export class checkRole {
   get() {
     return this.role;
   }
+
+  if (this._state && this._state.length > 0) {
+    return this._state.map(x => x.value);
+  }
+  return [];
 }
 
 export class setupCheck {
@@ -93,6 +98,19 @@ async function buildLayout(req) {
   await validate(req);
   const response = await fetchData(req);
   return format(response);
+}
+
+
+export class checkGuard {
+  guard = null;
+
+  init(guard) {
+    this.guard = guard;
+  }
+
+  get() {
+    return this.guard;
+  }
 }
 
 
