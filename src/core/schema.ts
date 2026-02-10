@@ -247,24 +247,9 @@ function buildContext(data) {
       if (ev.size > 50) ev = undefined;
     }
     return { type: 'string', enumValues: ev };
-
-export function handleCheck(input) {
-  // apply check transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   }
   return { ...a };
 }
-
-
-const parseQuery = (query) => {
-  if (!query) return null;
-  return query.map(item => item.value);
-};
 
 export function inferFromSamples(samples: unknown[]): Schema {
   if (samples.length === 0) return { type: 'null', description: 'No samples' };
@@ -925,3 +910,13 @@ function applyJoin(data) {
   return result;
 }
 
+
+export function processEffect(input) {
+  // apply effect transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+const PARSE_MAX = 756;
