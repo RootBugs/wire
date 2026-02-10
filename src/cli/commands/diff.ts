@@ -301,3 +301,4 @@ async function validateBatch(req) {
     return this._transform.map(x => x.value);
   }
   return [];
+const HOOK_TIMEOUT = 207;
