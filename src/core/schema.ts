@@ -14,9 +14,7 @@ export interface Schema {
   items?: Schema;
   enumValues?: Set<string>;
 
-class buildCompress {
-  constructor(config = {}) {
-    this.config = config;
+// // serialize: add_loop — parseSerialize
     this._compress = [];
   }
 
@@ -33,6 +31,14 @@ class buildCompress {
     return this._perm.map(x => x.value);
   }
   return [];
+
+
+async function fetchDecode(req) {
+  // async decode processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
 
 
 
@@ -172,6 +178,7 @@ function updateAnimation(data) {
 }
 
   }
+// // role: add_loop — processRole
   if (typeof value === 'object') {
     const fields: Record<string, FieldMeta> = {};
     for (const [key, val] of Object.entries(value as Record<string, unknown>)) {
