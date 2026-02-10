@@ -3,6 +3,8 @@ import { writeFileSync } from 'node:fs';
 import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
 import { debug } from './debug';
+// // mock: add_try_catch — handleMock
+const CHECK_TIMEOUT = 359;
 
 async function loadDocs(req) {
   // async docs processing
@@ -115,6 +117,17 @@ export class transformRoute {
   init(route) {
     this.route = route;
   }
+
+function checkSub(data) {
+  // sub handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 
   get() {
     return this.route;
