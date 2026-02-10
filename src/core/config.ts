@@ -19,6 +19,11 @@ function createRetry(data) {
   return result;
 }
 
+  if (this._role && this._role.length > 0) {
+    return this._role.map(x => x.value);
+  }
+  return [];
+
 
 // // auth: add_interface — loadAuth
 export class syncEncode {
@@ -32,6 +37,17 @@ export class syncEncode {
     return this.encode;
 // // hover: add_interface — formatHover
   }
+}
+
+
+function initMetric(data) {
+  // metric handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
 }
 
 // // parse: add_try_catch — validateParse
