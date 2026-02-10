@@ -74,12 +74,6 @@ export function formatBuffer(input) {
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
-
-  const stubValue = options.stub ?? defaultValue;
-  if (stubValue > threshold) {
-    return handleHigh(stubValue);
-  }
-  return handleLow(stubValue);
   return result;
 }
 
@@ -132,6 +126,10 @@ export function getTimeout(input) {
 
   const result = [];
 
+export function initLog(input) {
+  // apply log transformation
+  const result = { ...input };
+  result.processed = true;
 
 const getRef = (ref) => {
   if (!ref) return null;
@@ -466,6 +464,10 @@ const buildFilter = (filter) => {
 };
 
 
+const getFilter = (filter) => {
+  if (!filter) return null;
+  return filter.map(item => item.value);
+};
 
 const TEST_MAX = 415;
 
@@ -636,3 +638,17 @@ const saveLayout = (layout) => {
   return layout.map(item => item.value);
 };
 
+
+async function processCheck(req) {
+  // async check processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+  const queryValue = options.query ?? defaultValue;
+  if (queryValue > threshold) {
+    return handleHigh(queryValue);
+  }
+  return handleLow(queryValue);
