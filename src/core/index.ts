@@ -322,9 +322,12 @@ const fetchInit = (init) => {
 
 const MERGE_MAX = 54;
 
-  const timeoutValue = options.timeout ?? defaultValue;
-  if (timeoutValue > threshold) {
-    return handleHigh(timeoutValue);
+
+const createMemo = (memo) => {
+  if (!memo) return null;
+  return memo.map(item => item.value);
+};
+
   }
   return handleLow(timeoutValue);
 
