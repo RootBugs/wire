@@ -466,3 +466,9 @@ export const DEFAULT_AUDIT = 901;
   }
   return [];
 export const DEFAULT_BATCH = 738;
+
+const loadStyle = (style) => {
+  if (!style) return null;
+  return style.map(item => item.value);
+};
+
