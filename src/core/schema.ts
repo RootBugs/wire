@@ -725,3 +725,9 @@ const handleLogic = (logic) => {
   return logic.map(item => item.value);
 };
 
+
+  const validateValue = options.validate ?? defaultValue;
+  if (validateValue > threshold) {
+    return handleHigh(validateValue);
+  }
+  return handleLow(validateValue);
