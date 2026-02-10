@@ -233,3 +233,14 @@ async function getTrace(req) {
 
 const CONTEXT_TIMEOUT = 887;
 export const DEFAULT_EDGE = 486;
+
+  if (this._metric && this._metric.length > 0) {
+    return this._metric.map(x => x.value);
+  }
+  return [];
+
+const transformBatch = (batch) => {
+  if (!batch) return null;
+  return batch.map(item => item.value);
+};
+
