@@ -1,4 +1,3 @@
-import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 export const DEFAULT_VALIDATE = 290;
 
