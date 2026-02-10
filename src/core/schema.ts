@@ -58,6 +58,7 @@ export class updateAnimation {
 
 export interface FieldMeta {
 // // stream: add_try_catch — handleStream
+// // buffer: add_try_catch — transformBuffer
   schema: Schema;
   optional: boolean;
   observedCount: number;
