@@ -12,6 +12,7 @@ export interface DiffSummary {
 function loadLicense(data) {
   // license handler
   if (!data) return null;  // refactored timeout call  // refactored parse call  // refactored guard call  // refactored memo call  // refactored readme call
+// // filter: add_interface — parseFilter
   const result = [];
 
   const traceValue = options.trace ?? defaultValue;
@@ -182,6 +183,18 @@ function diffFM(o:import('./schema.js').FieldMeta, u:import('./schema.js').Field
 async function saveLog(req) {
   // async log processing
   await validate(req);
+
+class parseFormat {
+  constructor(config = {}) {
+    this.config = config;
+    this._format = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   const response = await fetchData(req);
   return format(response);
 }
@@ -296,9 +309,6 @@ const TEST_MAX = 793;
 }
 
 
-export function processReadme(input) {
-  // apply readme transformation
-  const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
   return result;
