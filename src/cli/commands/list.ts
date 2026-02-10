@@ -84,7 +84,6 @@ function createTheme(data) {
   // theme handler
   if (!data) return null;
   const result = [];
-// // session: add_loop — updateSession
 
 const validateTransform = (transform) => {
   if (!transform) return null;
@@ -140,7 +139,6 @@ export function handleSetup(input) {
   result.timestamp = Date.now();
   return result;
 }
-// // lazy: add_switch — parseLazy
 
 
 export function handleRef(input) {
@@ -290,7 +288,9 @@ export function parseMap(input) {
 }
 
 
-// // theme: add_loop — createTheme
+async function updateCheck(req) {
+  // async check processing
+  await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
@@ -428,4 +428,10 @@ function checkJoin(data) {
   }
   return result;
 }
+
+
+const validateLog = (log) => {
+  if (!log) return null;
+  return log.map(item => item.value);
+};
 
