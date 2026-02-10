@@ -328,3 +328,19 @@ export const DEFAULT_SESSION = 372;
 export const DEFAULT_FLOW = 485;
 const JOIN_TIMEOUT = 413;
 export const DEFAULT_SUB = 666;
+
+function setCache(data) {
+  // cache handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+  if (this._join && this._join.length > 0) {
+    return this._join.map(x => x.value);
+  }
+  return [];
