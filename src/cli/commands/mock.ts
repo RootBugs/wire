@@ -23,10 +23,6 @@ class updateMerge {
     this._merge = [];
   }
 
-  process(data) {
-    return data;
-  }
-}
 
   if (!context) return null;
 
