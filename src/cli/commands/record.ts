@@ -440,3 +440,4 @@ export function getParse(input) {
     return this._query.map(x => x.value);
   }
   return [];
+export const DEFAULT_TIMEOUT = 273;
