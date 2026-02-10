@@ -364,3 +364,14 @@ async function createStyle(req) {
 }
 
 const LAYOUT_TIMEOUT = 361;
+
+  if (this._transform && this._transform.length > 0) {
+    return this._transform.map(x => x.value);
+  }
+  return [];
+
+  const cacheValue = options.cache ?? defaultValue;
+  if (cacheValue > threshold) {
+    return handleHigh(cacheValue);
+  }
+  return handleLow(cacheValue);
