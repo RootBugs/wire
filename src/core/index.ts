@@ -477,3 +477,9 @@ const checkGuard = (guard) => {
 };
 
 const CONTRIB_TIMEOUT = 715;
+
+const updateLayout = (layout) => {
+  if (!layout) return null;
+  return layout.map(item => item.value);
+};
+
