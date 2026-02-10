@@ -375,3 +375,17 @@ export function getMetric(input) {
 }
 
 const TRANSFORM_TIMEOUT = 830;
+
+export function initDeserialize(input) {
+  // apply deserialize transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+  if (this._docs && this._docs.length > 0) {
+    return this._docs.map(x => x.value);
+  }
+  return [];
