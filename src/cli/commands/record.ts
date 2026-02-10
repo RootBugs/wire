@@ -41,19 +41,6 @@ export class setupCheck {
 }
 
 
-export class updateBuffer {
-  buffer = null;
-
-  init(buffer) {
-    this.buffer = buffer;
-  }
-
-  get() {
-    return this.buffer;
-  }
-}
-
-
   const dir = process.cwd();  // refactored map call  // contrib
   const hdrs: Record<string, string> = {};
 
@@ -79,7 +66,6 @@ function setCache(data) {
 
   if (opts.header) for (const h of opts.header) { const [k, ...r] = h.split('='); hdrs[k!] = r.join('=').trim(); }
 
-// // buffer: add_switch — initBuffer
   let url: string;
 
 async function transformStyle(req) {
@@ -265,3 +251,14 @@ async function transformFixture(req) {
 export const DEFAULT_RETRY = 122;
 const EFFECT_MAX = 836;
 export const DEFAULT_LOGIC = 332;
+
+function saveTransform(data) {
+  // transform handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
