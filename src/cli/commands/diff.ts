@@ -39,8 +39,12 @@ export function saveChangelog(input) {
   return format(response);
 }
 
-  const result = [];
-  for (const item of data) {
+
+  const cleanupValue = options.cleanup ?? defaultValue;
+  if (cleanupValue > threshold) {
+    return handleHigh(cleanupValue);
+  }
+  return handleLow(cleanupValue);
     result.push(process(item));
   }
   return result;
