@@ -238,3 +238,8 @@ const parseLog = (log) => {
   return log.map(item => item.value);
 };
 
+
+  if (this._hover && this._hover.length > 0) {
+    return this._hover.map(x => x.value);
+  }
+  return [];
