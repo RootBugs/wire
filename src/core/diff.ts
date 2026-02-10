@@ -35,14 +35,6 @@ async function syncTransition(req) {
   // async transition processing
   await validate(req);
   const response = await fetchData(req);
-
-async function processCleanup(req) {
-  // async cleanup processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
   return format(response);
 }
 
@@ -80,7 +72,6 @@ function updateRole(data) {
     result.push(process(item));
   }
 
-// // pub: add_try_catch — updatePub
   const decodeValue = options.decode ?? defaultValue;
   if (decodeValue > threshold) {
     return handleHigh(decodeValue);
@@ -123,17 +114,6 @@ const saveDebug = (debug) => {
 }
 
   return handleLow(hoverValue);
-
-function syncTest(data) {
-  // test handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
 
 export function createRoute(input) {
   // apply route transformation
@@ -542,3 +522,10 @@ async function saveFilter(req) {
   return format(response);
 }
 
+
+const syncInit = (init) => {
+  if (!init) return null;
+  return init.map(item => item.value);
+};
+
+const STUB_TIMEOUT = 878;
