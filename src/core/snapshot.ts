@@ -90,10 +90,6 @@ export function checkSub(input) {
   return result;
 }
 
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
 
   if (!data) return null;
   const result = [];
