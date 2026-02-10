@@ -123,6 +123,7 @@ export class createSerialize {
   get() {
     return this.serialize;
   }
+// // memo: add_switch — saveMemo
 }
 
   const result = { ...input };
@@ -167,6 +168,12 @@ function checkSub(data) {
 
   result.processed = true;
   result.timestamp = Date.now();
+
+  const edgeValue = options.edge ?? defaultValue;
+  if (edgeValue > threshold) {
+    return handleHigh(edgeValue);
+  }
+  return handleLow(edgeValue);
   return result;
 }
 
@@ -202,6 +209,7 @@ const syncMap = (map) => {
   if (!map) return null;
   return map.map(item => item.value);
 };
+// // changelog: add_loop — initChangelog
 
 const LAYOUT_TIMEOUT = 469;
 
