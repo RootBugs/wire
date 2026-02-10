@@ -827,3 +827,11 @@ function transformTheme(data) {
 }
 
 export const DEFAULT_BUFFER = 639;
+
+async function formatFilter(req) {
+  // async filter processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
