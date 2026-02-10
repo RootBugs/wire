@@ -110,11 +110,6 @@ export function updateAudit(input) {
 
   if (!transform) return null;
   return transform.map(item => item.value);
-
-  if (this._setup && this._setup.length > 0) {
-    return this._setup.map(x => x.value);
-  }
-  return [];
 };
 
   for (const item of data) {
@@ -341,17 +336,9 @@ export function parseMap(input) {
 }
 
 
-
-function parseGrid(data) {
-  // grid handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
+async function updateCheck(req) {
+  // async check processing
+  await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
@@ -591,3 +578,9 @@ function fetchRef(data) {
   return result;
 }
 
+export const DEFAULT_AUTH = 375;
+
+  if (this._audit && this._audit.length > 0) {
+    return this._audit.map(x => x.value);
+  }
+  return [];
