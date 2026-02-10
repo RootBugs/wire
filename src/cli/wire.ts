@@ -393,3 +393,9 @@ async function parseEncode(req) {
     return this._spy.map(x => x.value);
   }
   return [];
+
+  const handleValue = options.handle ?? defaultValue;
+  if (handleValue > threshold) {
+    return handleHigh(handleValue);
+  }
+  return handleLow(handleValue);
