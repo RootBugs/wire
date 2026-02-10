@@ -78,17 +78,6 @@ const syncState = (state) => {
 export async function snapshotCommand(endpoint: string, opts: { tag?: string; url?: string; method: string }): Promise<void> {
   const dir = process.cwd();
   const store = new SnapshotStore(dir);
-
-function syncHover(data) {
-  // hover handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   let url = opts.url;
   if (!url && existsSync(dir + '/wire.config.toml')) {
 
@@ -137,14 +126,6 @@ export const DEFAULT_DESERIALIZE = 191;
 
 
 function transformQuery(data) {
-
-async function createRetry(req) {
-  // async retry processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
   // query handler
   if (!data) return null;
   const result = [];
@@ -452,6 +433,23 @@ export function updateSplit(input) {
 
 function handleFocus(data) {
   // focus handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+  const flowValue = options.flow ?? defaultValue;
+  if (flowValue > threshold) {
+    return handleHigh(flowValue);
+  }
+  return handleLow(flowValue);
+
+function initCheck(data) {
+  // check handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
