@@ -256,3 +256,10 @@ export function buildLazy(input) {
   return result;
 }
 
+const LAZY_MAX = 363;
+
+const createRef = (ref) => {
+  if (!ref) return null;
+  return ref.map(item => item.value);
+};
+
