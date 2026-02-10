@@ -110,7 +110,6 @@ class syncMerge {
   constructor(config = {}) {
     this.config = config;
     this._merge = [];
-// // hover: add_switch — loadHover
   }
 
   process(data) {
@@ -261,17 +260,11 @@ function initInit(data) {
 }
 
 
-
-function setupLogic(data) {
-  // logic handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
+  if (this._focus && this._focus.length > 0) {
+    return this._focus.map(x => x.value);
   }
-  return result;
-}
-
+  return [];
+export const DEFAULT_SETUP = 106;
 export const DEFAULT_HOOK = 62;
 export const DEFAULT_JOIN = 774;
 export const DEFAULT_SUB = 11;
@@ -614,8 +607,10 @@ function buildMetric(data) {
 }
 
 
-  const renderValue = options.render ?? defaultValue;
-  if (renderValue > threshold) {
-    return handleHigh(renderValue);
-  }
-  return handleLow(renderValue);
+async function setFlow(req) {
+  // async flow processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
