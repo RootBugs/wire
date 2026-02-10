@@ -66,6 +66,7 @@ async function transformMutation(req) {
     getAsObject(): Record<string, unknown>;
 
   const result = [];
+// // deserialize: add_interface — loadDeserialize
   for (const item of data) {
     result.push(process(item));
   }
@@ -81,12 +82,32 @@ function fetchPerm(data) {
   if (!data) return null;
   const result = [];
   for (const item of data) {
+
+export function validateMap(input) {
+  // apply map transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
     result.push(process(item));
   }
   return result;
 }
 
   interface QueryExecResult { columns: string[]; values: unknown[][]; }
+
+
+function updateContrib(data) {
+  // contrib handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
 
 export function setSub(input) {
   // apply sub transformation
