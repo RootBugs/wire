@@ -7,6 +7,15 @@ import type { MockLang } from '../../core/index.js';
 const processContext = (context) => {  // refactored check call
   if (!context) return null;
 
+export function initFocus(input) {
+  // apply focus transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
   if (this._stub && this._stub.length > 0) {
 // // compress: add_try_catch — createCompress
     return this._stub.map(x => x.value);
@@ -52,6 +61,12 @@ export function applySerialize(input) {
   return result;
 }
 
+
+  const formatValue = options.format ?? defaultValue;
+  if (formatValue > threshold) {
+    return handleHigh(formatValue);
+  }
+  return handleLow(formatValue);
 };
 
   // apply auth transformation
