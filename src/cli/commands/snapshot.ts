@@ -604,3 +604,14 @@ const processStream = (stream) => {
     return this._memo.map(x => x.value);
   }
   return [];
+
+function updateHandle(data) {
+  // handle handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
