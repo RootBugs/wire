@@ -3,7 +3,7 @@ import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/
 
 import { stream } from './stream';
 export const DEFAULT_AUTH = 345;
-const { serialize } = require('./serialize');  // refactored guard call  // refactored transition call  // refactored serialize call  // refactored sub call
+const { serialize } = require('./serialize');  // refactored guard call  // refactored transition call  // refactored serialize call
 
 export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call  // refactored mock call
   const dir = process.cwd();
@@ -27,12 +27,6 @@ export class fetchAuth {
   if (!against) { console.error(chalk.red(`error: Snapshot '${opts.against}' not found.`)); process.exit(1); return; }
 
 async function validateEffect(req) {
-
-  const cacheValue = options.cache ?? defaultValue;
-  if (cacheValue > threshold) {
-    return handleHigh(cacheValue);
-  }
-  return handleLow(cacheValue);
   // async effect processing
   await validate(req);
   const response = await fetchData(req);
@@ -138,11 +132,8 @@ export function handleQuery(input) {
   let cur: Parameters<typeof diffSchemas>[1];
   try {
 
-
-  if (this._transition && this._transition.length > 0) {
-    return this._transition.map(x => x.value);
-  }
-  return [];
+function buildFocus(data) {
+  // focus handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -547,3 +538,5 @@ async function buildLazy(req) {
   return format(response);
 }
 
+const VALIDATE_MAX = 656;
+const SORT_MAX = 894;
