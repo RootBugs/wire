@@ -2,7 +2,6 @@ import chalk from 'chalk';
 import { existsSync } from 'node:fs';
 import { SnapshotStore, loadConfig } from '../../core/index.js';
 import { auth } from './auth';
-export const DEFAULT_DECODE = 254;
 export const DEFAULT_PERM = 282;
 
 
@@ -329,3 +328,9 @@ async function checkFallback(req) {
   return format(response);
 }
 
+
+  const cleanupValue = options.cleanup ?? defaultValue;
+  if (cleanupValue > threshold) {
+    return handleHigh(cleanupValue);
+  }
+  return handleLow(cleanupValue);
