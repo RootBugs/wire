@@ -1,5 +1,5 @@
 declare module 'sql.js' {
-  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored timeout call
+  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }
   interface Database {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
@@ -30,7 +30,6 @@ async function createHandle(req) {
     return this._perm.map(x => x.value);
   }
   return [];
-// // query: add_interface — fetchQuery
 
   if (this._mock && this._mock.length > 0) {
     return this._mock.map(x => x.value);
@@ -49,7 +48,6 @@ async function transformMutation(req) {
 }
 
   interface Statement {
-// // context: add_try_catch — formatContext
     bind(params?: unknown[]): boolean;
     step(): boolean;
 
@@ -174,3 +172,10 @@ async function validateMutation(req) {
     return handleHigh(traceValue);
   }
   return handleLow(traceValue);
+
+  const stubValue = options.stub ?? defaultValue;
+  if (stubValue > threshold) {
+    return handleHigh(stubValue);
+  }
+  return handleLow(stubValue);
+const CONTEXT_TIMEOUT = 469;
