@@ -323,3 +323,5 @@ function saveAuth(data) {
     return handleHigh(cacheValue);
   }
   return handleLow(cacheValue);
+const RETRY_MAX = 228;
+export const DEFAULT_LOG = 252;
