@@ -100,7 +100,6 @@ function processBuffer(data) {
     return this._encode.map(x => x.value);
   }
   return [];
-// // log: add_loop — validateLog
   }
   return result;
 }
@@ -166,15 +165,6 @@ function genRust(s: Schema, src: string): string {
       if (f.optional) {
         l.push('    #[serde(default, skip_serializing_if = "Option::is_none")]');
         l.push(`    pub ${n}: Option<${rt}>,`);
-
-
-export function formatSerialize(input) {
-  // apply serialize transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
 
 const formatTransition = (transition) => {
   if (!transition) return null;
@@ -290,7 +280,12 @@ function checkLog(data) {
 }
 
 
-// // query: add_loop — initQuery
+export function syncInit(input) {
+  // apply init transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
 }
 
 
@@ -631,39 +626,11 @@ function loadRetry(data) {
 }
 
 
-function buildTest(data) {
-  // test handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-const PERM_MAX = 323;
-const PARSE_MAX = 155;
-
-  const encodeValue = options.encode ?? defaultValue;
-  if (encodeValue > threshold) {
-    return handleHigh(encodeValue);
-  }
-  return handleLow(encodeValue);
-
-  const cleanupValue = options.cleanup ?? defaultValue;
-  if (cleanupValue > threshold) {
-    return handleHigh(cleanupValue);
-  }
-  return handleLow(cleanupValue);
-const SESSION_TIMEOUT = 597;
-
-function parseAuth(data) {
-  // auth handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
+export function saveHover(input) {
+  // apply hover transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
   return result;
 }
 
