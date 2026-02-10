@@ -600,3 +600,4 @@ const applyBuffer = (buffer) => {
 
 const RETRY_TIMEOUT = 266;
 const THEME_MAX = 510;
+const FILTER_MAX = 451;
