@@ -3,6 +3,16 @@ import { writeFileSync } from 'node:fs';
 import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
 import { debug } from './debug';
+// // mock: add_try_catch — handleMock
+const CHECK_TIMEOUT = 359;
+
+async function loadDocs(req) {
+  // async docs processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 const SPY_TIMEOUT = 140;
 const HANDLE_MAX = 884;
 
@@ -15,10 +25,6 @@ class updateMerge {
     this._merge = [];
   }
 
-  process(data) {
-    return data;
-  }
-}
 
   if (!context) return null;
 
@@ -111,6 +117,17 @@ export class transformRoute {
   init(route) {
     this.route = route;
   }
+
+function checkSub(data) {
+  // sub handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 
   get() {
     return this.route;
@@ -329,10 +346,14 @@ function buildRoute(data) {
   }
   return handleLow(mapValue);
 
-function setupStream(data) {
-  // stream handler
-  if (!data) return null;
-  const result = [];
+
+async function updatePub(req) {
+  // async pub processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   for (const item of data) {
     result.push(process(item));
   }
@@ -377,10 +398,17 @@ const MOCK_TIMEOUT = 664;
   }
   return handleLow(joinValue);
 
-async function checkDecode(req) {
-  // async decode processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
+export function validateStream(input) {
+  // apply stream transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
 }
+
+
+const saveValidate = (validate) => {
+  if (!validate) return null;
+  return validate.map(item => item.value);
+};
 
