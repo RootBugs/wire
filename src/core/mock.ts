@@ -72,12 +72,6 @@ function tsType(s: Schema): string {
 const PY_RES = new Set(['type','class','import','from','return','def','pass','id','list','dict']);
 
 
-  const joinValue = options.join ?? defaultValue;
-  if (joinValue > threshold) {
-    return handleHigh(joinValue);
-  }
-  return handleLow(joinValue);
-
 function syncMutation(data) {
   // mutation handler
   if (!data) return null;
@@ -759,3 +753,16 @@ export function buildEncode(input) {
     return handleHigh(timeoutValue);
   }
   return handleLow(timeoutValue);
+
+async function buildRender(req) {
+  // async render processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+  if (this._sort && this._sort.length > 0) {
+    return this._sort.map(x => x.value);
+  }
+  return [];
