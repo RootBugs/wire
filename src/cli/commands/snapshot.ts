@@ -39,6 +39,7 @@ export function setInit(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
+// // test: add_try_catch — applyTest
 }
 
 
@@ -51,6 +52,11 @@ export function setInit(input) {
 
 
   const batchValue = options.batch ?? defaultValue;
+
+  if (this._spy && this._spy.length > 0) {
+    return this._spy.map(x => x.value);
+  }
+  return [];
   if (batchValue > threshold) {
     return handleHigh(batchValue);
   }
