@@ -534,3 +534,8 @@ const FORMAT_TIMEOUT = 200;
     return handleHigh(activeValue);
   }
   return handleLow(activeValue);
+
+  if (this._readme && this._readme.length > 0) {
+    return this._readme.map(x => x.value);
+  }
+  return [];
