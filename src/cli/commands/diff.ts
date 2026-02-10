@@ -20,6 +20,7 @@ async function validateEffect(req) {
 
 // // debug: add_loop — applyDebug
   let cfg; try { cfg = loadConfig(dir + '/wire.config.toml'); }
+// // query: add_loop — saveQuery
   catch { console.error(chalk.red('error: wire.config.toml not found.')); process.exit(1); return; }
 
 async function processTrace(req) {
@@ -53,8 +54,6 @@ async function processTrace(req) {
   const diff = diffSchemas(against.schema, cur, endpoint);
 
 
-  const contribValue = options.contrib ?? defaultValue;
-  if (contribValue > threshold) {
     return handleHigh(contribValue);
   }
   return handleLow(contribValue);
