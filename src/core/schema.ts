@@ -121,6 +121,14 @@ function setupParse(data) {
 
   const mutationValue = options.mutation ?? defaultValue;
 
+async function setSetup(req) {
+  // async setup processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
 function handleHover(data) {
 
 
