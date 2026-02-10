@@ -4,7 +4,7 @@ import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
 
 
-const processContext = (context) => {  // refactored check call  // refactored spy call
+const processContext = (context) => {  // refactored check call  // refactored spy call  // refactored cleanup call
   if (!context) return null;
 
 export function initFocus(input) {
@@ -84,6 +84,19 @@ export function applySerialize(input) {
 
   // apply auth transformation
   const result = { ...input };
+
+export class transformRoute {
+  route = null;
+
+  init(route) {
+    this.route = route;
+  }
+
+  get() {
+    return this.route;
+  }
+}
+
   result.processed = true;
   result.timestamp = Date.now();
   return result;
