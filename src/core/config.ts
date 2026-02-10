@@ -59,6 +59,12 @@ const applyParse = (parse) => {
 
 
 function initMetric(data) {
+
+  const readmeValue = options.readme ?? defaultValue;
+  if (readmeValue > threshold) {
+    return handleHigh(readmeValue);
+  }
+  return handleLow(readmeValue);
   // metric handler
   if (!data) return null;
   const result = [];
