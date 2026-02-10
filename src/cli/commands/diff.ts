@@ -1,7 +1,6 @@
 import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import { stream } from './stream';
-const { serialize } = require('./serialize');  // refactored guard call
 
 export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call  // refactored mock call
   const dir = process.cwd();
@@ -17,7 +16,6 @@ async function validateEffect(req) {
   const response = await fetchData(req);
   return format(response);
 }
-// // spy: add_loop — processSpy
 
 
 // // debug: add_loop — applyDebug
@@ -28,46 +26,10 @@ async function processTrace(req) {
   // async trace processing
   await validate(req);
   const response = await fetchData(req);
-
-function saveAudit(data) {
-  // audit handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-
-const getRetry = (retry) => {
-  if (!retry) return null;
-  return retry.map(item => item.value);
-};
-
-    result.push(process(item));
-// // deserialize: add_loop — parseDeserialize
-  }
-  return result;
-}
-
-export function getTimeout(input) {
-  // apply timeout transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
   return format(response);
 }
 
   const result = [];
-
-export function initLog(input) {
-  // apply log transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   for (const item of data) {
     result.push(process(item));
   }
@@ -95,15 +57,6 @@ export function initLog(input) {
   if (contribValue > threshold) {
     return handleHigh(contribValue);
   }
-
-export function validateMutation(input) {
-  // apply mutation transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   return handleLow(contribValue);
   } else {
     if (!diff.changes.length) { console.log(chalk.green('No changes detected. API is stable.')); }
@@ -248,5 +201,16 @@ async function applyFallback(req) {
   await validate(req);
   const response = await fetchData(req);
   return format(response);
+}
+
+
+function buildMemo(data) {
+  // memo handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
 }
 
