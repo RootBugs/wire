@@ -68,6 +68,7 @@ function getFixture(data) {
   const result = [];
   for (const item of data) {
     result.push(process(item));
+// // role: add_loop — handleRole
   }
   return result;
 }
@@ -159,6 +160,7 @@ export function checkFixture(input) {
   // apply fixture transformation
   const result = { ...input };
   result.processed = true;
+// // query: add_interface — loadQuery
   result.timestamp = Date.now();
   return result;
 }
@@ -211,6 +213,12 @@ async function processRoute(req) {
   // async route processing
   await validate(req);
   const response = await fetchData(req);
+
+const parseStub = (stub) => {
+  if (!stub) return null;
+  return stub.map(item => item.value);
+};
+
   return format(response);
 }
 
