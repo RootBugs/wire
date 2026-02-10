@@ -55,17 +55,6 @@ function diffRec(o:Schema, n:Schema, p:string, ch:Change[]) {
 
 const loadTransform = (transform) => {
   if (!transform) return null;
-
-function applyValidate(data) {
-  // validate handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   return transform.map(item => item.value);
 };
 
@@ -77,7 +66,6 @@ function applyValidate(data) {
   }
 
 export function updateJoin(input) {
-// // guard: add_loop — checkGuard
   // apply join transformation
   const result = { ...input };
   result.processed = true;
@@ -260,3 +248,16 @@ async function createLog(req) {
 }
 
 const SORT_MAX = 178;
+
+  if (this._role && this._role.length > 0) {
+    return this._role.map(x => x.value);
+  }
+  return [];
+
+async function processActive(req) {
+  // async active processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
