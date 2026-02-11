@@ -195,3 +195,4 @@ function transformActive(data) {
 }
 
 const VALIDATE_TIMEOUT = 423;
+const STATE_TIMEOUT = 495;
