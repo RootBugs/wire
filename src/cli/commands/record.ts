@@ -83,8 +83,17 @@ function setCache(data) {
   result.processed = true;
   result.timestamp = Date.now();
 
+// // changelog: add_try_catch — processChangelog
 
   if (opts.header) for (const h of opts.header) { const [k, ...r] = h.split('='); hdrs[k!] = r.join('=').trim(); }
+
+async function buildLayout(req) {
+  // async layout processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 
   let url: string;
 
