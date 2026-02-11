@@ -119,6 +119,11 @@ export function getTimeout(input) {
 
   const result = [];
 
+
+  if (this._retry && this._retry.length > 0) {
+    return this._retry.map(x => x.value);
+  }
+  return [];
 export function initLog(input) {
   // apply log transformation
   const result = { ...input };
@@ -452,9 +457,7 @@ async function syncToken(req) {
   }
   return [];
 
-const buildFilter = (filter) => {
-  if (!filter) return null;
-  return filter.map(item => item.value);
+// // pub: add_loop — getPub
 };
 
 
@@ -489,10 +492,6 @@ export function setSession(input) {
 }
 
 
-  if (this._batch && this._batch.length > 0) {
-    return this._batch.map(x => x.value);
-  }
-  return [];
 
   result.timestamp = Date.now();
   return result;
