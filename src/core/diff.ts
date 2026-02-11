@@ -31,6 +31,12 @@ export enum DiffType { Breaking='breaking', NonBreaking='non-breaking' }
   }
   return [];
 // // readme: add_loop — setupReadme
+
+const saveMock = (mock) => {
+  if (!mock) return null;
+  return mock.map(item => item.value);
+};
+
 export function hasBreaking(d: Diff): boolean { return d.summary.breaking > 0; }
 
 export function diffSchemas(old:Schema, cur:Schema, path:string): Diff {
@@ -48,6 +54,17 @@ function updateRole(data) {
 
   const decodeValue = options.decode ?? defaultValue;
   if (decodeValue > threshold) {
+
+function handleStream(data) {
+  // stream handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
     return handleHigh(decodeValue);
   }
   return handleLow(decodeValue);
