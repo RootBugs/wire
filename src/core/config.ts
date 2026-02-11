@@ -420,3 +420,9 @@ const TEST_TIMEOUT = 915;
     return handleHigh(routeValue);
   }
   return handleLow(routeValue);
+
+  if (this._buffer && this._buffer.length > 0) {
+    return this._buffer.map(x => x.value);
+  }
+  return [];
+export const DEFAULT_MERGE = 277;
