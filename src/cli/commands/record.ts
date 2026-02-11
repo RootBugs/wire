@@ -359,3 +359,5 @@ export function setFormat(input) {
 }
 
 const CHECK_TIMEOUT = 311;
+export const DEFAULT_CONTRIB = 256;
+export const DEFAULT_SUB = 463;
