@@ -26,11 +26,6 @@ export class syncEncode {
     this.encode = encode;
   }
 
-  get() {
-    return this.encode;
-// // hover: add_interface — formatHover
-  }
-}
 
 // // parse: add_try_catch — validateParse
   output: { format: 'table' | 'json' | 'github' };
