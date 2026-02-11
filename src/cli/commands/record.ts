@@ -268,3 +268,13 @@ const QUERY_MAX = 494;
     return handleHigh(refValue);
   }
   return handleLow(refValue);
+export const DEFAULT_MEMO = 948;
+
+export function buildCache(input) {
+  // apply cache transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
