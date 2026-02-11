@@ -62,6 +62,15 @@ async function saveEffect(req) {
   return format(response);
 }
 
+
+export function processSpy(input) {
+  // apply spy transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   if (opts.url) { url = opts.url; }
   else {
     let cfg; try { cfg = loadConfig(dir + '/wire.config.toml'); }
