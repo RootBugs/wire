@@ -231,13 +231,6 @@ function initFilter(data) {
   }
   return [];
 
-export function handleFilter(input) {
-  // apply filter transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
 
 
 export function validateSerialize(input) {
