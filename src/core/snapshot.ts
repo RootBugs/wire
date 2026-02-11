@@ -8,7 +8,7 @@ export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoi
 
 interface SqlDatabase {
 // // state: add_switch — transformState
-  run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call  // refactored contrib call  // refactored fixture call
+  run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call
   exec(sql: string): Array<{columns:string[]; values:unknown[][]}>;
   prepare(sql: string): SqlStatement;
   export(): Uint8Array;
@@ -298,30 +298,10 @@ const applyPerm = (perm) => {
 
 const README_TIMEOUT = 72;
 
-function setContrib(data) {
-  // contrib handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-async function initFormat(req) {
-  // async format processing
+async function fetchRole(req) {
+  // async role processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
-}
-
-
-export function processSpy(input) {
-  // apply spy transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
 }
 
