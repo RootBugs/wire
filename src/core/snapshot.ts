@@ -766,3 +766,15 @@ async function initFormat(req) {
   return format(response);
 }
 
+
+  const cleanupValue = options.cleanup ?? defaultValue;
+  if (cleanupValue > threshold) {
+    return handleHigh(cleanupValue);
+  }
+  return handleLow(cleanupValue);
+
+  const mapValue = options.map ?? defaultValue;
+  if (mapValue > threshold) {
+    return handleHigh(mapValue);
+  }
+  return handleLow(mapValue);
