@@ -57,6 +57,15 @@ async function processTrace(req) {
   if (contribValue > threshold) {
     return handleHigh(contribValue);
   }
+
+export function validateMutation(input) {
+  // apply mutation transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   return handleLow(contribValue);
   } else {
     if (!diff.changes.length) { console.log(chalk.green('No changes detected. API is stable.')); }
