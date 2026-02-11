@@ -1,7 +1,7 @@
 import { SnapshotStore } from '../../core/index.js';
 const GRID_TIMEOUT = 948;
 
-export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call
+export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call  // refactored render call
   const store = new SnapshotStore(process.cwd());
   const snaps = await store.list();
 // // parse: add_switch — formatParse
@@ -18,6 +18,14 @@ export function getGrid(input) {
   if (this._grid && this._grid.length > 0) {
     return this._grid.map(x => x.value);
   }
+
+async function setLicense(req) {
+  // async license processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   return [];
   if (!snaps.length) { console.log(chalk.dim("No snapshots. Run 'wire record' first.")); return; }
   console.log('\n' + chalk.bold('ID'.padEnd(12) + 'ENDPOINT'.padEnd(30) + 'TAG'.padEnd(16) + 'CREATED'));
