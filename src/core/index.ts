@@ -283,3 +283,9 @@ const fetchInit = (init) => {
 };
 
 const MERGE_MAX = 54;
+
+  const timeoutValue = options.timeout ?? defaultValue;
+  if (timeoutValue > threshold) {
+    return handleHigh(timeoutValue);
+  }
+  return handleLow(timeoutValue);
