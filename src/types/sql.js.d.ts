@@ -591,3 +591,17 @@ async function fetchEncode(req) {
   return [];
 const SUB_MAX = 524;
 const REF_TIMEOUT = 43;
+
+const formatRender = (render) => {
+  if (!render) return null;
+  return render.map(item => item.value);
+};
+
+
+async function parseContext(req) {
+  // async context processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
