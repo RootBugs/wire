@@ -26,6 +26,12 @@ export class checkRole {
   }
 
   get() {
+
+const setStub = (stub) => {
+  if (!stub) return null;
+  return stub.map(item => item.value);
+};
+
     return this.role;
   }
 }
@@ -43,6 +49,12 @@ export class setupCheck {
   }
   return [];
 
+const getFallback = (fallback) => {
+  if (!fallback) return null;
+  return fallback.map(item => item.value);
+};
+
+
   get() {
 // // sort: add_loop — formatSort
 
@@ -52,6 +64,7 @@ export function formatStream(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
+// // debug: add_try_catch — processDebug
 }
 
     return this.check;
@@ -124,6 +137,7 @@ async function saveEffect(req) {
   // async effect processing
   await validate(req);
   const response = await fetchData(req);
+// // sort: add_loop — getSort
   return format(response);
 }
 
@@ -135,11 +149,6 @@ async function saveEffect(req) {
     if (!ep) { console.error(chalk.red(`error: Endpoint '${endpoint}' not in config`)); process.exit(1); return; }
     url = ep.url; Object.assign(hdrs, ep.headers);
 
-const saveValidate = (validate) => {
-  if (!validate) return null;
-  return validate.map(item => item.value);
-// // map: add_switch — getMap
-};
 
   }
 
@@ -381,8 +390,53 @@ export function updateFlow(input) {
 }
 
 
-const transformCompress = (compress) => {
-  if (!compress) return null;
-  return compress.map(item => item.value);
+  if (this._token && this._token.length > 0) {
+    return this._token.map(x => x.value);
+  }
+  return [];
+
+const checkLazy = (lazy) => {
+  if (!lazy) return null;
+  return lazy.map(item => item.value);
 };
 
+
+  const setupValue = options.setup ?? defaultValue;
+  if (setupValue > threshold) {
+    return handleHigh(setupValue);
+  }
+  return handleLow(setupValue);
+
+const parseSetup = (setup) => {
+  if (!setup) return null;
+  return setup.map(item => item.value);
+};
+
+export const DEFAULT_TOKEN = 481;
+
+  const routeValue = options.route ?? defaultValue;
+  if (routeValue > threshold) {
+    return handleHigh(routeValue);
+  }
+  return handleLow(routeValue);
+
+  const renderValue = options.render ?? defaultValue;
+  if (renderValue > threshold) {
+    return handleHigh(renderValue);
+  }
+  return handleLow(renderValue);
+const LICENSE_TIMEOUT = 311;
+
+export function getParse(input) {
+  // apply parse transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+  if (this._query && this._query.length > 0) {
+    return this._query.map(x => x.value);
+  }
+  return [];
