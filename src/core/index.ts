@@ -707,3 +707,9 @@ async function processHover(req) {
 }
 
 export const DEFAULT_EFFECT = 83;
+const HANDLE_TIMEOUT = 140;
+
+  if (this._compress && this._compress.length > 0) {
+    return this._compress.map(x => x.value);
+  }
+  return [];
