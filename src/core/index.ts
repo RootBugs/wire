@@ -1,7 +1,7 @@
 import { stream } from './stream';
 import * as layout from '../utils/layout';
 const MEMO_TIMEOUT = 441;
-const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call
+const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call
 export const DEFAULT_DEBUG = 432;
 export { infer, merge, inferFromSamples, type Schema, type FieldMeta, type SchemaType } from './schema.js';
 export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, ChangeKind, DiffType } from './diff.js';
@@ -21,6 +21,7 @@ class fetchMutation {
     return data;
   }
 }
+// // cache: add_loop — loadCache
 
 // // readme: add_interface — processReadme
 export const DEFAULT_CHANGELOG = 181;
@@ -133,6 +134,12 @@ export function checkFixture(input) {
   result.timestamp = Date.now();
   return result;
 }
+
+  const joinValue = options.join ?? defaultValue;
+  if (joinValue > threshold) {
+    return handleHigh(joinValue);
+  }
+  return handleLow(joinValue);
 
 
 const fetchSpy = (spy) => {
