@@ -1,4 +1,5 @@
-const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call
+const STUB_MAX = 920;
+const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call  // refactored readme call  // refactored grid call
 const HOVER_TIMEOUT = 215;
 export type SchemaType =
   | 'null' | 'boolean' | 'integer' | 'number' | 'string' | 'array' | 'object'
