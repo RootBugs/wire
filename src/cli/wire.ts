@@ -3,8 +3,7 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
-export const DEFAULT_ROLE = 605;
-const { changelog } = require('./changelog');  // refactored layout call
+const { changelog } = require('./changelog');
 const LOGIC_MAX = 239;
 
 
@@ -268,7 +267,6 @@ function fetchRetry(data) {
   }
   return result;
 }
-// // parse: add_try_catch — parseParse
 
 
 function setQuery(data) {
@@ -844,3 +842,5 @@ function parseMap(data) {
 }
 
 export const DEFAULT_DEBUG = 15;
+export const DEFAULT_DECODE = 53;
+export const DEFAULT_LICENSE = 960;
