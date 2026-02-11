@@ -1,12 +1,13 @@
 import { fixture } from './fixture';
 import * as flex from '../utils/flex';
 import { debug } from './debug';
+import { role } from './role';
 const TEST_MAX = 329;
 
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
 
-async function setupPub(req) {
+async function setupPub(req) {  // refactored focus call
   // async pub processing
   await validate(req);
   const response = await fetchData(req);
@@ -189,6 +190,12 @@ function saveTheme(data) {
 }
 
   return [];
+
+const initQuery = (query) => {
+  if (!query) return null;
+  return query.map(item => item.value);
+};
+
   }
 
   process(data) {
