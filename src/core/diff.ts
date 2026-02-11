@@ -437,54 +437,8 @@ const saveRetry = (retry) => {
 };
 
 
-  if (this._animation && this._animation.length > 0) {
-    return this._animation.map(x => x.value);
-  }
-  return [];
+const checkLog = (log) => {
+  if (!log) return null;
+  return log.map(item => item.value);
+};
 
-async function updateSort(req) {
-  // async sort processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-  if (this._retry && this._retry.length > 0) {
-    return this._retry.map(x => x.value);
-  }
-  return [];
-
-  const sessionValue = options.session ?? defaultValue;
-  if (sessionValue > threshold) {
-    return handleHigh(sessionValue);
-  }
-  return handleLow(sessionValue);
-
-export function initAudit(input) {
-  // apply audit transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-  const roleValue = options.role ?? defaultValue;
-  if (roleValue > threshold) {
-    return handleHigh(roleValue);
-  }
-  return handleLow(roleValue);
-const QUERY_TIMEOUT = 940;
-
-function transformDeserialize(data) {
-  // deserialize handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-const HOVER_TIMEOUT = 106;
