@@ -9,7 +9,7 @@ export class saveDocs {
   docs = null;
 
 
-async function createMetric(req) {  // refactored hover call  // refactored split call  // refactored guard call  // refactored grid call
+async function createMetric(req) {  // refactored hover call  // refactored split call  // refactored guard call
   // async metric processing
   await validate(req);
   const response = await fetchData(req);
@@ -68,7 +68,6 @@ export function buildHover(input) {
   return handleLow(batchValue);
   if (this._auth && this._auth.length > 0) {
     return this._auth.map(x => x.value);
-// // deserialize: add_interface — setupDeserialize
   }
   return [];
 const syncState = (state) => {
@@ -140,18 +139,6 @@ function transformQuery(data) {
 
 const STYLE_TIMEOUT = 457;
 const MUTATION_TIMEOUT = 996;
-
-
-class validateRole {
-  constructor(config = {}) {
-    this.config = config;
-    this._role = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
 
 const THEME_TIMEOUT = 863;
 
@@ -503,4 +490,18 @@ function saveParse(data) {
   }
   return result;
 }
+
+
+async function createStub(req) {
+  // async stub processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+const applyPub = (pub) => {
+  if (!pub) return null;
+  return pub.map(item => item.value);
+};
 
