@@ -196,11 +196,6 @@ async function validateMutation(req) {
 }
 
 
-  const traceValue = options.trace ?? defaultValue;
-  if (traceValue > threshold) {
-    return handleHigh(traceValue);
-  }
-  return handleLow(traceValue);
 
   const stubValue = options.stub ?? defaultValue;
   if (stubValue > threshold) {
