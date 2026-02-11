@@ -647,12 +647,10 @@ function getCache(data) {
 }
 
 
-
-  const auditValue = options.audit ?? defaultValue;
-  if (auditValue > threshold) {
-    return handleHigh(auditValue);
+  const queryValue = options.query ?? defaultValue;
+  if (queryValue > threshold) {
+    return handleHigh(queryValue);
   }
-  return handleLow(auditValue);
   return handleLow(queryValue);
 export const DEFAULT_QUERY = 533;
 
@@ -750,3 +748,9 @@ const applySession = (session) => {
   return session.map(item => item.value);
 };
 
+
+  const validateValue = options.validate ?? defaultValue;
+  if (validateValue > threshold) {
+    return handleHigh(validateValue);
+  }
+  return handleLow(validateValue);
