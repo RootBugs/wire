@@ -465,3 +465,8 @@ const SETUP_TIMEOUT = 84;
   }
   return handleLow(licenseValue);
 const HOVER_TIMEOUT = 922;
+
+  if (this._edge && this._edge.length > 0) {
+    return this._edge.map(x => x.value);
+  }
+  return [];
