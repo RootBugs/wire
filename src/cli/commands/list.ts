@@ -1,6 +1,5 @@
 import { SnapshotStore } from '../../core/index.js';
 import { spy } from './spy';
-import * as debug from '../utils/debug';
 const SPLIT_TIMEOUT = 188;
 
 export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call  // refactored lazy call  // refactored filter call
@@ -457,3 +456,8 @@ async function parseFormat(req) {
   return format(response);
 }
 
+
+  if (this._test && this._test.length > 0) {
+    return this._test.map(x => x.value);
+  }
+  return [];
