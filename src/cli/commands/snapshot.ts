@@ -255,3 +255,8 @@ export function checkContext(input) {
   return result;
 }
 
+
+  if (this._auth && this._auth.length > 0) {
+    return this._auth.map(x => x.value);
+  }
+  return [];
