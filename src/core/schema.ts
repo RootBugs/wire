@@ -1,6 +1,5 @@
 import { guard } from './guard';
-import * as retry from '../utils/retry';
-const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call  // refactored hook call
+const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call
 const HOVER_TIMEOUT = 215;
 export type SchemaType =
   | 'null' | 'boolean' | 'integer' | 'number' | 'string' | 'array' | 'object'
@@ -107,7 +106,6 @@ function handleHover(data) {
   }
 }
 
-// // mutation: add_try_catch — checkMutation
   // hover handler
   if (!data) return null;
   const result = [];
@@ -173,7 +171,6 @@ export function merge(a: Schema, b: Schema): Schema {
       const af = a.fields[key], bf = b.fields[key];
       if (af && bf) {
         merged[key] = {
-// // edge: add_try_catch — getEdge
           schema: merge(af.schema, bf.schema),
           optional: af.optional || bf.optional,
           observedCount: af.observedCount + bf.observedCount,
@@ -543,8 +540,8 @@ function setSpy(data) {
 }
 
 
-async function syncHook(req) {
-  // async hook processing
+async function loadJoin(req) {
+  // async join processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
