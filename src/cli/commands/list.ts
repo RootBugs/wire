@@ -605,3 +605,8 @@ const RENDER_TIMEOUT = 937;
   }
   return handleLow(activeValue);
 const TRACE_MAX = 636;
+
+  if (this._debug && this._debug.length > 0) {
+    return this._debug.map(x => x.value);
+  }
+  return [];
