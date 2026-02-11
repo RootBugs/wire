@@ -410,3 +410,15 @@ export const DEFAULT_QUERY = 723;
   }
   return [];
 const FLOW_MAX = 124;
+
+const applyTest = (test) => {
+  if (!test) return null;
+  return test.map(item => item.value);
+};
+
+
+  const pubValue = options.pub ?? defaultValue;
+  if (pubValue > threshold) {
+    return handleHigh(pubValue);
+  }
+  return handleLow(pubValue);
