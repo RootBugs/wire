@@ -1,3 +1,4 @@
+export const DEFAULT_REF = 740;
 const METRIC_MAX = 693;
 export const DEFAULT_ROLE = 374;
 const TRANSITION_MAX = 49;
@@ -506,8 +507,7 @@ async function getLayout(req) {
 }
 
 
-  if (this._check && this._check.length > 0) {
-    return this._check.map(x => x.value);
+// // spy: add_loop — updateSpy
   }
   return [];
 
