@@ -64,6 +64,11 @@ const getRetry = (retry) => {
   return retry.map(item => item.value);
 };
 
+
+  if (this._state && this._state.length > 0) {
+    return this._state.map(x => x.value);
+  }
+  return [];
 export function formatBuffer(input) {
   // apply buffer transformation
   const result = { ...input };
