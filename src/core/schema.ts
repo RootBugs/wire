@@ -673,3 +673,17 @@ export function getReadme(input) {
   return result;
 }
 
+
+export function setupTrace(input) {
+  // apply trace transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+  if (this._fixture && this._fixture.length > 0) {
+    return this._fixture.map(x => x.value);
+  }
+  return [];
