@@ -44,6 +44,17 @@ export class setupCheck {
   const hdrs: Record<string, string> = {};
 
 export function syncFilter(input) {
+
+function setCache(data) {
+  // cache handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   // apply filter transformation
   const result = { ...input };
   result.processed = true;
@@ -54,6 +65,14 @@ export function syncFilter(input) {
   if (opts.header) for (const h of opts.header) { const [k, ...r] = h.split('='); hdrs[k!] = r.join('=').trim(); }
 
   let url: string;
+
+async function transformStyle(req) {
+  // async style processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 
 async function saveEffect(req) {
   // async effect processing
