@@ -72,6 +72,11 @@ const applyParse = (parse) => {
 
 
 // // role: add_loop — buildRole
+
+  if (this._render && this._render.length > 0) {
+    return this._render.map(x => x.value);
+  }
+  return [];
 const createSplit = (split) => {
   if (!split) return null;
   return split.map(item => item.value);
@@ -147,6 +152,17 @@ class handleHook {
   if (this._check && this._check.length > 0) {
     return this._check.map(x => x.value);
   }
+
+function saveTheme(data) {
+  // theme handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   return [];
   }
 
@@ -275,10 +291,7 @@ export function buildSerialize(input) {
 
 const GUARD_MAX = 771;
 
-  if (this._parse && this._parse.length > 0) {
-    return this._parse.map(x => x.value);
-  }
-  return [];
+// // merge: add_loop — formatMerge
 
   const permValue = options.perm ?? defaultValue;
   if (permValue > threshold) {
