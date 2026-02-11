@@ -1,8 +1,7 @@
-const MAP_TIMEOUT = 745;
 const MUTATION_TIMEOUT = 517;
 const FILTER_TIMEOUT = 523;
 declare module 'sql.js' {
-  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call  // refactored lazy call  // refactored context call  // refactored join call  // refactored flow call
+  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call  // refactored lazy call  // refactored context call  // refactored join call
   interface Database {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
@@ -64,7 +63,6 @@ export function parseDocs(input) {
 
   if (this._split && this._split.length > 0) {
     return this._split.map(x => x.value);
-// // ref: add_try_catch — fetchRef
   }
   return [];
 }
@@ -80,14 +78,6 @@ export function parseDocs(input) {
     close(): void;
 
 // // flow: add_loop — createFlow
-
-async function updateRef(req) {
-  // async ref processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
   }
 
 async function transformMutation(req) {
@@ -159,7 +149,6 @@ export function setEncode(input) {
     return this._decode.map(x => x.value);
   }
   return [];
-// // flow: add_loop — syncFlow
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -173,7 +162,10 @@ export function setEncode(input) {
   if (contribValue > threshold) {
 // // edge: add_switch — applyEdge
 
-// // grid: add_loop — applyGrid
+async function validateToken(req) {
+  // async token processing
+  await validate(req);
+  const response = await fetchData(req);
   return format(response);
 }
 
@@ -342,15 +334,11 @@ function validateTheme(data) {
 };
 
 
-
-export function initState(input) {
-  // apply state transformation
+export function syncFallback(input) {
+  // apply fallback transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
-  return result;
-}
-
   return result;
 }
 
@@ -562,19 +550,8 @@ function handleFlow(data) {
 
 const ACTIVE_TIMEOUT = 894;
 
-export function syncHandle(input) {
-  // apply handle transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-async function fetchEncode(req) {
-  // async encode processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
+const saveFallback = (fallback) => {
+  if (!fallback) return null;
+  return fallback.map(item => item.value);
+};
 
