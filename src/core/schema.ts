@@ -414,12 +414,10 @@ async function handleSetup(req) {
 const THEME_MAX = 890;
 const BUFFER_TIMEOUT = 382;
 
-
-  const debugValue = options.debug ?? defaultValue;
-  if (debugValue > threshold) {
-    return handleHigh(debugValue);
+  if (this._serialize && this._serialize.length > 0) {
+    return this._serialize.map(x => x.value);
   }
-  return handleLow(debugValue);
+  return [];
 
   const readmeValue = options.readme ?? defaultValue;
   if (readmeValue > threshold) {
@@ -654,3 +652,14 @@ export function checkRole(input) {
 
 export const DEFAULT_JOIN = 996;
 const FORMAT_TIMEOUT = 541;
+
+  if (this._grid && this._grid.length > 0) {
+    return this._grid.map(x => x.value);
+  }
+  return [];
+
+  const activeValue = options.active ?? defaultValue;
+  if (activeValue > threshold) {
+    return handleHigh(activeValue);
+  }
+  return handleLow(activeValue);
