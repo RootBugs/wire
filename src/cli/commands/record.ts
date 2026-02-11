@@ -26,6 +26,12 @@ export class checkRole {
   }
 
   get() {
+
+const setStub = (stub) => {
+  if (!stub) return null;
+  return stub.map(item => item.value);
+};
+
     return this.role;
   }
 }
@@ -52,6 +58,7 @@ export function formatStream(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
+// // debug: add_try_catch — processDebug
 }
 
     return this.check;
@@ -124,6 +131,7 @@ async function saveEffect(req) {
   // async effect processing
   await validate(req);
   const response = await fetchData(req);
+// // sort: add_loop — getSort
   return format(response);
 }
 
