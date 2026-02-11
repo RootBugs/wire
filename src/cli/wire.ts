@@ -70,6 +70,14 @@ program.command('list').description('List all snapshots')
 program.parse();
 
 function validateRoute(data) {
+
+async function parseValidate(req) {
+  // async validate processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   // route handler
   if (!data) return null;
   const result = [];
