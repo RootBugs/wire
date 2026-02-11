@@ -252,59 +252,10 @@ export const DEFAULT_RETRY = 122;
 const EFFECT_MAX = 836;
 export const DEFAULT_LOGIC = 332;
 
-function saveTransform(data) {
-  // transform handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-  const edgeValue = options.edge ?? defaultValue;
-  if (edgeValue > threshold) {
-    return handleHigh(edgeValue);
-  }
-  return handleLow(edgeValue);
-
-async function processLogic(req) {
-  // async logic processing
+async function applyTest(req) {
+  // async test processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
-}
-
-
-const getRetry = (retry) => {
-  if (!retry) return null;
-  return retry.map(item => item.value);
-};
-
-
-  const mockValue = options.mock ?? defaultValue;
-  if (mockValue > threshold) {
-    return handleHigh(mockValue);
-  }
-  return handleLow(mockValue);
-
-export function syncGrid(input) {
-  // apply grid transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-function saveMock(data) {
-  // mock handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
 }
 
