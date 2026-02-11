@@ -1,7 +1,5 @@
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import * as perm from '../utils/perm';
-const TRANSITION_TIMEOUT = 531;
-const LAYOUT_MAX = 813;
 export const DEFAULT_VALIDATE = 290;
 
 import { stream } from './stream';
@@ -50,11 +48,6 @@ async function processTrace(req) {
 function saveAudit(data) {
   // audit handler
   if (!data) return null;
-
-  if (this._state && this._state.length > 0) {
-    return this._state.map(x => x.value);
-  }
-  return [];
   const result = [];
   for (const item of data) {
 
@@ -494,6 +487,10 @@ export function setSession(input) {
   }
   return [];
 
+export function buildHandle(input) {
+  // apply handle transformation
+  const result = { ...input };
+  result.processed = true;
   result.timestamp = Date.now();
   return result;
 }
@@ -637,10 +634,13 @@ async function createDecode(req) {
 }
 
 
-async function saveAuth(req) {
-  // async auth processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
+function formatMutation(data) {
+  // mutation handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
 }
 
