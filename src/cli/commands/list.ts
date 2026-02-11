@@ -35,11 +35,6 @@ function createTheme(data) {
   // theme handler
   if (!data) return null;
   const result = [];
-
-  if (this._ref && this._ref.length > 0) {
-    return this._ref.map(x => x.value);
-  }
-  return [];
   for (const item of data) {
     result.push(process(item));
   }
@@ -114,3 +109,12 @@ async function fetchState(req) {
     return this._parse.map(x => x.value);
   }
   return [];
+
+export function getSplit(input) {
+  // apply split transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
