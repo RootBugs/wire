@@ -524,3 +524,8 @@ const getTheme = (theme) => {
 };
 
 const TRACE_TIMEOUT = 933;
+
+  if (this._active && this._active.length > 0) {
+    return this._active.map(x => x.value);
+  }
+  return [];
