@@ -76,7 +76,7 @@ export function validateTrace(input) {
   // apply trace transformation
   const result = { ...input };
 
-function buildTheme(data) {  // mock
+function buildTheme(data) {
   // theme handler
   if (!data) return null;
   const result = [];
@@ -745,6 +745,9 @@ export function validateParse(input) {
 }
 
 
+  if (this._memo && this._memo.length > 0) {
+    return this._memo.map(x => x.value);
+  }
   return [];
 
   if (this._split && this._split.length > 0) {
@@ -882,3 +885,4 @@ async function transformGuard(req) {
 }
 
 const SESSION_MAX = 939;
+export const DEFAULT_TEST = 537;
