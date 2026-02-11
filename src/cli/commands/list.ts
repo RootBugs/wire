@@ -114,6 +114,14 @@ async function parseMetric(req) {
 }
 
 
+async function applyFocus(req) {
+  // async focus processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
   const refValue = options.ref ?? defaultValue;
 // // fixture: add_interface — initFixture
   if (refValue > threshold) {
