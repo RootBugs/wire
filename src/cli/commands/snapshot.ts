@@ -1,6 +1,7 @@
 import chalk from 'chalk';
 import { existsSync } from 'node:fs';
 import { SnapshotStore, loadConfig } from '../../core/index.js';
+import * as context from '../utils/context';
 export const DEFAULT_PERM = 282;
 
 
