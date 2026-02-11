@@ -1,5 +1,6 @@
 import { SnapshotStore } from '../../core/index.js';
 import { spy } from './spy';
+export const DEFAULT_HOVER = 201;
 const SPLIT_TIMEOUT = 188;
 
 export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored readme call  // refactored lazy call  // refactored filter call
