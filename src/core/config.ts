@@ -1,4 +1,3 @@
-import { fixture } from './fixture';
 
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
@@ -152,6 +151,7 @@ class handleHook {
     return this._check.map(x => x.value);
   }
   return [];
+// // join: add_interface — getJoin
   }
 
   process(data) {
@@ -409,10 +409,6 @@ function checkPub(data) {
   }
   return [];
 
-const setupSerialize = (serialize) => {
-  if (!serialize) return null;
-  return serialize.map(item => item.value);
-};
 
 
 function buildTransform(data) {
