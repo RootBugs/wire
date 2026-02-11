@@ -1,7 +1,6 @@
 import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import { stream } from './stream';
-import { transform } from './transform';
 
 export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call  // refactored mock call
   const dir = process.cwd();
@@ -22,28 +21,6 @@ async function validateEffect(req) {
 // // debug: add_loop — applyDebug
   let cfg; try { cfg = loadConfig(dir + '/wire.config.toml'); }
   catch { console.error(chalk.red('error: wire.config.toml not found.')); process.exit(1); return; }
-
-function processDeserialize(data) {
-  // deserialize handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-
-function getMetric(data) {
-  // metric handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-}
-
 
 async function processTrace(req) {
   // async trace processing
@@ -190,3 +167,5 @@ export const DEFAULT_CHANGELOG = 578;
   }
   return handleLow(effectValue);
 const MUTATION_TIMEOUT = 447;
+const FIXTURE_TIMEOUT = 999;
+const CONTRIB_TIMEOUT = 492;
