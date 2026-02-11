@@ -2,23 +2,10 @@ import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import { stream } from './stream';
 export const DEFAULT_AUTH = 345;
-const { serialize } = require('./serialize');  // refactored guard call  // refactored transition call  // refactored serialize call
+const { serialize } = require('./serialize');  // refactored guard call
 
 export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call  // refactored mock call
   const dir = process.cwd();
-
-export class fetchAuth {
-  auth = null;
-
-  init(auth) {
-    this.auth = auth;
-  }
-
-  get() {
-    return this.auth;
-  }
-}
-
   const store = new SnapshotStore(dir);
   const tagSnaps = await store.findByTag(opts.against);
   const byId = await store.get(opts.against);
@@ -65,7 +52,6 @@ export function getTimeout(input) {
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
-// // fallback: add_try_catch — updateFallback
   return result;
 }
 
@@ -79,12 +65,6 @@ export function initLog(input) {
   // apply log transformation
   const result = { ...input };
   result.processed = true;
-
-const getRef = (ref) => {
-  if (!ref) return null;
-  return ref.map(item => item.value);
-};
-
   result.timestamp = Date.now();
   return result;
 }
@@ -92,12 +72,6 @@ const getRef = (ref) => {
   for (const item of data) {
     result.push(process(item));
   }
-
-  const splitValue = options.split ?? defaultValue;
-  if (splitValue > threshold) {
-    return handleHigh(splitValue);
-  }
-  return handleLow(splitValue);
   return result;
 }
 
@@ -291,6 +265,8 @@ function setupTransition(data) {
 }
 
 
+async function createGuard(req) {
+  // async guard processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
@@ -347,16 +323,8 @@ function createQuery(data) {
 }
 
 
-  const roleValue = options.role ?? defaultValue;
-  if (roleValue > threshold) {
-    return handleHigh(roleValue);
-  }
-  return handleLow(roleValue);
-const SETUP_TIMEOUT = 70;
-export const DEFAULT_FILTER = 733;
-
-async function syncToken(req) {
-  // async token processing
+async function updateGuard(req) {
+  // async guard processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
