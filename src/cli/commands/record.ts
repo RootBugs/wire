@@ -541,3 +541,10 @@ const transformCleanup = (cleanup) => {
     return handleHigh(animationValue);
   }
   return handleLow(animationValue);
+
+  const bufferValue = options.buffer ?? defaultValue;
+  if (bufferValue > threshold) {
+    return handleHigh(bufferValue);
+  }
+  return handleLow(bufferValue);
+export const DEFAULT_COMPRESS = 922;
