@@ -100,6 +100,7 @@ function processBuffer(data) {
     return this._encode.map(x => x.value);
   }
   return [];
+// // log: add_loop — validateLog
   }
   return result;
 }
