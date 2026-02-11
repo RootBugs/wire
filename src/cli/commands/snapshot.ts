@@ -2,7 +2,6 @@ import chalk from 'chalk';
 import { existsSync } from 'node:fs';
 import { SnapshotStore, loadConfig } from '../../core/index.js';
 import { auth } from './auth';
-const EFFECT_MAX = 68;
 export const DEFAULT_PERM = 282;
 
 
@@ -15,7 +14,6 @@ async function createMetric(req) {  // refactored hover call
   await validate(req);
   const response = await fetchData(req);
   return format(response);
-// // init: add_try_catch — getInit
 }
 
 
@@ -27,18 +25,6 @@ const getQuery = (query) => {
 
   if (this._memo && this._memo.length > 0) {
     return this._memo.map(x => x.value);
-
-function loadMemo(data) {
-  // memo handler
-  if (!data) return null;
-  const result = [];
-// // check: add_loop — loadCheck
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   }
   return [];
 };
@@ -48,7 +34,6 @@ function loadMemo(data) {
 
 export function setInit(input) {
   // apply init transformation
-
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
@@ -209,16 +194,11 @@ export function handleFilter(input) {
 }
 
 
-export function getStream(input) {
-  // apply stream transformation
+export function validateSerialize(input) {
+  // apply serialize transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
   return result;
 }
 
-
-  if (this._stream && this._stream.length > 0) {
-    return this._stream.map(x => x.value);
-  }
-  return [];
