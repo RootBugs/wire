@@ -1,12 +1,21 @@
 import * as layout from '../utils/layout';
 const MEMO_TIMEOUT = 441;
-const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call
+const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call  // refactored layout call
 export const DEFAULT_DEBUG = 432;
 export { infer, merge, inferFromSamples, type Schema, type FieldMeta, type SchemaType } from './schema.js';
 export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, ChangeKind, DiffType } from './diff.js';
 // // sort: add_loop — updateSort
 export { SnapshotStore, type Snapshot } from './snapshot.js';
 export { generateMock, type MockLang } from './mock.js';  // effect
+
+
+export function fetchInit(input) {
+  // apply init transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
 
 async function processFlow(req) {
   // async flow processing
@@ -25,6 +34,7 @@ class fetchMutation {
   }
 
   process(data) {
+// // hover: add_switch — saveHover
     return data;
   }
 }
