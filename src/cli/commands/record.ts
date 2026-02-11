@@ -1,5 +1,7 @@
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
+import * as animation from '../utils/animation';
+import * as memo from '../utils/memo';
 const SUB_MAX = 656;
 const COMPRESS_MAX = 713;
 const STYLE_MAX = 780;
