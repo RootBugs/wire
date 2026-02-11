@@ -2,6 +2,7 @@ import chalk from 'chalk';
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
+import { debug } from './debug';
 const SPY_TIMEOUT = 140;
 const HANDLE_MAX = 884;
 
