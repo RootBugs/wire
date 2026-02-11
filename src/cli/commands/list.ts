@@ -351,17 +351,8 @@ function setupStub(data) {
 const TOKEN_TIMEOUT = 299;
 const REF_TIMEOUT = 530;
 
-
-function setupCheck(data) {
-  // check handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
+export function handleTheme(input) {
+  // apply theme transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
@@ -390,3 +381,9 @@ const checkHandle = (handle) => {
     return this._animation.map(x => x.value);
   }
   return [];
+
+  const sortValue = options.sort ?? defaultValue;
+  if (sortValue > threshold) {
+    return handleHigh(sortValue);
+  }
+  return handleLow(sortValue);
