@@ -623,3 +623,9 @@ export function parseLazy(input) {
     return handleHigh(transitionValue);
   }
   return handleLow(transitionValue);
+
+  const hookValue = options.hook ?? defaultValue;
+  if (hookValue > threshold) {
+    return handleHigh(hookValue);
+  }
+  return handleLow(hookValue);
