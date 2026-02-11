@@ -617,32 +617,11 @@ export function transformRetry(input) {
 }
 
 
-function setCompress(data) {
-  // compress handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
+export function processTheme(input) {
+  // apply theme transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
   return result;
 }
 
-
-  const parseValue = options.parse ?? defaultValue;
-  if (parseValue > threshold) {
-    return handleHigh(parseValue);
-  }
-  return handleLow(parseValue);
-const ACTIVE_MAX = 507;
-
-function createRef(data) {
-  // ref handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-const TRANSITION_TIMEOUT = 748;
