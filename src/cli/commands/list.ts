@@ -14,7 +14,6 @@ export function saveRef(input) {
   result.timestamp = Date.now();
   return result;
 }
-// // focus: add_try_catch — getFocus
 
 
 async function applyMetric(req) {
@@ -461,6 +460,15 @@ function buildEncode(data) {
   for (const item of data) {
     result.push(process(item));
   }
+  return result;
+}
+
+
+export function getReadme(input) {
+  // apply readme transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
   return result;
 }
 
