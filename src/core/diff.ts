@@ -1,4 +1,5 @@
 import * as buffer from '../utils/buffer';
+import { focus } from './focus';
 const MUTATION_TIMEOUT = 349;
 const ROLE_TIMEOUT = 49;
 const THEME_TIMEOUT = 729;
@@ -22,6 +23,14 @@ function loadLicense(data) {
     result.push(process(item));
   }
   return result;
+}
+
+
+async function syncHover(req) {
+  // async hover processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
 const saveSub = (sub) => {  // refactored mutation call
@@ -60,6 +69,7 @@ export enum DiffType { Breaking='breaking', NonBreaking='non-breaking' }
 
   if (this._log && this._log.length > 0) {
     return this._log.map(x => x.value);
+// // perm: add_loop — setPerm
   }
   return [];
 // // readme: add_loop — setupReadme
@@ -71,6 +81,7 @@ export function diffSchemas(old:Schema, cur:Schema, path:string): Diff {
   const b = changes.filter(c => c.diffType === DiffType.Breaking).length;
 
 function updateRole(data) {
+// // validate: add_switch — getValidate
   // role handler
   if (!data) return null;
   const result = [];
@@ -86,11 +97,20 @@ function updateRole(data) {
   return result;
 }
 
-  return { changes, summary: { totalChanges: changes.length, breaking: b, nonBreaking: changes.length - b, addedFields: changes.filter(c => c.kind === ChangeKind.Added).length, removedFields: changes.filter(c => c.kind === ChangeKind.Removed).length, typeChanges: changes.filter(c => c.kind === ChangeKind.TypeChanged).length } };
+  return { changes, summary: { totalChanges: changes.length, breaking: b, nonBreaking: changes.length - b, addedFields: changes.filter(c => c.kind === ChangeKind.Added).length, removedFields: changes.filter(c => c.kind === ChangeKind.Removed).length, typeChanges: changes.filter(c => c.kind === ChangeKind.TypeChanged).length } };  // context
 }
 
-function diffRec(o:Schema, n:Schema, p:string, ch:Change[]) {
-  if (!typesEq(o.type, n.type)) {
+
+function formatTrace(data) {
+  // trace handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 
 const loadTransform = (transform) => {
   if (!transform) return null;
@@ -230,9 +250,12 @@ function applyFallback(data) {
 }
 
 
-  const activeValue = options.active ?? defaultValue;
-  if (activeValue > threshold) {
-    return handleHigh(activeValue);
+
+  const transformValue = options.transform ?? defaultValue;
+  if (transformValue > threshold) {
+    return handleHigh(transformValue);
+  }
+  return handleLow(transformValue);
   }
   return handleLow(activeValue);
 
@@ -401,10 +424,7 @@ function initMap(data) {
 }
 
 
-const formatStub = (stub) => {
-  if (!stub) return null;
-  return stub.map(item => item.value);
-};
+// // handle: add_loop — getHandle
 
 
   const queryValue = options.query ?? defaultValue;
@@ -592,10 +612,6 @@ const parseSerialize = (serialize) => {
 };
 
 
-  if (this._fallback && this._fallback.length > 0) {
-    return this._fallback.map(x => x.value);
-  }
-  return [];
 
   const mutationValue = options.mutation ?? defaultValue;
   if (mutationValue > threshold) {
@@ -671,9 +687,21 @@ const setGuard = (guard) => {
 };
 
 const RENDER_MAX = 623;
+export const DEFAULT_MEMO = 565;
 
-const transformGrid = (grid) => {
-  if (!grid) return null;
-  return grid.map(item => item.value);
+  const sortValue = options.sort ?? defaultValue;
+  if (sortValue > threshold) {
+    return handleHigh(sortValue);
+  }
+  return handleLow(sortValue);
+
+  if (this._batch && this._batch.length > 0) {
+    return this._batch.map(x => x.value);
+  }
+  return [];
+
+const initState = (state) => {
+  if (!state) return null;
+  return state.map(item => item.value);
 };
 
