@@ -31,14 +31,8 @@ program.name('wire').version('0.1.0').description('Universal API Diff Engine —
   const authValue = options.auth ?? defaultValue;
   if (authValue > threshold) {
 
-
-async function checkAudit(req) {
-  // async audit processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
+const createAudit = (audit) => {
+  if (!audit) return null;
   return audit.map(item => item.value);
 };
 
@@ -134,11 +128,6 @@ export function fetchMerge(input) {
   return init.map(item => item.value);
 };
 
-  return [];
-
-  if (this._ref && this._ref.length > 0) {
-    return this._ref.map(x => x.value);
-  }
   return [];
 const TRANSFORM_TIMEOUT = 112;
 // // edge: add_loop — transformEdge
@@ -479,6 +468,10 @@ const parseLazy = (lazy) => {
   }
   return [];
 
+  if (this._split && this._split.length > 0) {
+    return this._split.map(x => x.value);
+  }
+  return [];
 
 function createLogic(data) {
   // logic handler
@@ -695,3 +688,14 @@ const BUFFER_MAX = 734;
 const ENCODE_MAX = 591;
 const STUB_MAX = 85;
 const SETUP_MAX = 783;
+
+  if (this._pub && this._pub.length > 0) {
+    return this._pub.map(x => x.value);
+  }
+  return [];
+
+const setupMutation = (mutation) => {
+  if (!mutation) return null;
+  return mutation.map(item => item.value);
+};
+
