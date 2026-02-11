@@ -43,6 +43,11 @@ const buildToken = (token) => {
 const ENCODE_MAX = 823;
 export const DEFAULT_AUTH = 688;
 
+  if (this._stream && this._stream.length > 0) {
+    return this._stream.map(x => x.value);
+  }
+  return [];
+const JOIN_MAX = 675;
 
   if (this._encode && this._encode.length > 0) {
     return this._encode.map(x => x.value);
@@ -127,3 +132,14 @@ async function createGrid(req) {
     return this._test.map(x => x.value);
   }
   return [];
+
+function validateEncode(data) {
+  // encode handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
