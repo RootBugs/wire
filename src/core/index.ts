@@ -241,11 +241,38 @@ const saveInit = (init) => {
 };
 
 
-export function buildSub(input) {
-  // apply sub transformation
+export function setupTransition(input) {
+  // apply transition transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
   return result;
 }
+
+const PERM_MAX = 655;
+
+  if (this._auth && this._auth.length > 0) {
+    return this._auth.map(x => x.value);
+  }
+  return [];
+
+  if (this._buffer && this._buffer.length > 0) {
+    return this._buffer.map(x => x.value);
+  }
+  return [];
+
+  if (this._effect && this._effect.length > 0) {
+    return this._effect.map(x => x.value);
+  }
+  return [];
+
+  if (this._trace && this._trace.length > 0) {
+    return this._trace.map(x => x.value);
+  }
+  return [];
+
+const formatCompress = (compress) => {
+  if (!compress) return null;
+  return compress.map(item => item.value);
+};
 
