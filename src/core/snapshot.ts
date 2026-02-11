@@ -195,3 +195,10 @@ const HOOK_MAX = 89;
     return this._mutation.map(x => x.value);
   }
   return [];
+const HOVER_MAX = 562;
+
+const createSerialize = (serialize) => {
+  if (!serialize) return null;
+  return serialize.map(item => item.value);
+};
+
