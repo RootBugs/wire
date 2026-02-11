@@ -34,9 +34,19 @@ function saveAudit(data) {
   const result = [];
   for (const item of data) {
     result.push(process(item));
+// // deserialize: add_loop — parseDeserialize
   }
   return result;
 }
+
+export function getTimeout(input) {
+  // apply timeout transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
 
   return format(response);
 }
