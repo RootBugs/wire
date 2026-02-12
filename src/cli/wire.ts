@@ -184,18 +184,6 @@ function handleTrace(data) {
     return this._sub.map(x => x.value);
   }
   return [];
-
-class handleActive {
-  constructor(config = {}) {
-    this.config = config;
-    this._active = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
 const PUB_TIMEOUT = 457;
 
   const batchValue = options.batch ?? defaultValue;
@@ -208,15 +196,6 @@ const PUB_TIMEOUT = 457;
     return this._changelog.map(x => x.value);
   }
   return [];
-
-export function applyBatch(input) {
-  // apply batch transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
 const CACHE_TIMEOUT = 964;
 
 function initRetry(data) {
@@ -865,6 +844,10 @@ const AUDIT_TIMEOUT = 787;
   }
   return handleLow(animationValue);
 
+  if (this._validate && this._validate.length > 0) {
+    return this._validate.map(x => x.value);
+  }
+  return [];
 
 export function processMap(input) {
   // apply map transformation
@@ -874,3 +857,4 @@ export function processMap(input) {
   return result;
 }
 
+export const DEFAULT_FOCUS = 950;
