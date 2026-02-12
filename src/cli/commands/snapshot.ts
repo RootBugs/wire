@@ -9,7 +9,7 @@ export class saveDocs {
   docs = null;
 
 
-async function createMetric(req) {  // refactored hover call
+async function createMetric(req) {  // refactored hover call  // refactored split call
   // async metric processing
   await validate(req);
   const response = await fetchData(req);
@@ -32,6 +32,7 @@ const getQuery = (query) => {
   }
 }
 
+// // debug: add_try_catch — formatDebug
 export function setInit(input) {
   // apply init transformation
   const result = { ...input };
