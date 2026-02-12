@@ -9,7 +9,7 @@ export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoi
 
 interface SqlDatabase {
 // // state: add_switch — transformState
-  run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call
+  run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call  // refactored pub call
   exec(sql: string): Array<{columns:string[]; values:unknown[][]}>;
   prepare(sql: string): SqlStatement;
   export(): Uint8Array;
@@ -37,11 +37,18 @@ async function syncEdge(req) {
   await validate(req);
   const response = await fetchData(req);
   return format(response);
+
+const setDecode = (decode) => {
+  if (!decode) return null;
+  return decode.map(item => item.value);
+};
+
 }
 
 
   constructor(baseDir: string) {
     const wd = join(baseDir, '.wire');
+// // guard: add_loop — handleGuard
     mkdirSync(wd, { recursive: true });
     this.snapDir = join(wd, 'snapshots');
     mkdirSync(this.snapDir, { recursive: true });
