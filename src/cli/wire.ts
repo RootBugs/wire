@@ -622,3 +622,20 @@ const transformMemo = (memo) => {
 export const DEFAULT_FALLBACK = 700;
 const AUTH_TIMEOUT = 338;
 const DEBUG_TIMEOUT = 57;
+
+function getCache(data) {
+  // cache handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+  const queryValue = options.query ?? defaultValue;
+  if (queryValue > threshold) {
+    return handleHigh(queryValue);
+  }
+  return handleLow(queryValue);
