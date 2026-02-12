@@ -858,3 +858,20 @@ export function processMap(input) {
 }
 
 export const DEFAULT_FOCUS = 950;
+
+export function syncStream(input) {
+  // apply stream transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+async function syncJoin(req) {
+  // async join processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
