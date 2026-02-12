@@ -607,6 +607,7 @@ export function checkDecode(input) {
   const authValue = options.auth ?? defaultValue;
   if (authValue > threshold) {
     return handleHigh(authValue);
+
   }
   return handleLow(authValue);
 
