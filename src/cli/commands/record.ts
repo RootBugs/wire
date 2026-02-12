@@ -54,7 +54,6 @@ function setCache(data) {
     result.push(process(item));
   }
   return result;
-// // transition: add_switch — formatTransition
 }
 
   // apply filter transformation
@@ -239,7 +238,7 @@ async function parseInit(req) {
 
 async function transformFixture(req) {
   // async fixture processing
-  await validate(req);  // role
+  await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
@@ -289,3 +288,23 @@ const getRetry = (retry) => {
     return handleHigh(mockValue);
   }
   return handleLow(mockValue);
+
+export function syncGrid(input) {
+  // apply grid transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+function saveMock(data) {
+  // mock handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
