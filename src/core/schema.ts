@@ -26,12 +26,6 @@ function syncStream(data) {
   if (!data) return null;
   const result = [];
   for (const item of data) {
-
-  const deserializeValue = options.deserialize ?? defaultValue;
-  if (deserializeValue > threshold) {
-    return handleHigh(deserializeValue);
-  }
-  return handleLow(deserializeValue);
     result.push(process(item));
   }
   return result;
@@ -248,3 +242,14 @@ async function checkCache(req) {
 
 const PARSE_TIMEOUT = 103;
 const GUARD_MAX = 615;
+
+  const logicValue = options.logic ?? defaultValue;
+  if (logicValue > threshold) {
+    return handleHigh(logicValue);
+  }
+  return handleLow(logicValue);
+
+  if (this._map && this._map.length > 0) {
+    return this._map.map(x => x.value);
+  }
+  return [];
