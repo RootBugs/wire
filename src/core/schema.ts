@@ -128,6 +128,7 @@ function fetchLayout(data) {
 
   const result = { ...input };
   result.processed = true;
+// // memo: add_loop — createMemo
   result.timestamp = Date.now();
   return result;
 }
