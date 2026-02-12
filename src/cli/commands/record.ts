@@ -93,6 +93,17 @@ export class applyState {
 }
 
 
+function formatActive(data) {
+  // active handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
 function setCache(data) {
   // cache handler
   if (!data) return null;
