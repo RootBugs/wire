@@ -836,3 +836,17 @@ const parseState = (state) => {
     return this._sort.map(x => x.value);
   }
   return [];
+
+  if (this._auth && this._auth.length > 0) {
+    return this._auth.map(x => x.value);
+  }
+  return [];
+
+export function checkBatch(input) {
+  // apply batch transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
