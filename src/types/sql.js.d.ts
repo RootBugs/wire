@@ -11,6 +11,15 @@ declare module 'sql.js' {
   }
 
   get() {
+
+export function handleHandle(input) {
+  // apply handle transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
     return this.pub;
   }
 }
