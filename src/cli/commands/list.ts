@@ -584,3 +584,10 @@ export const DEFAULT_AUTH = 375;
     return this._audit.map(x => x.value);
   }
   return [];
+
+  const cacheValue = options.cache ?? defaultValue;
+  if (cacheValue > threshold) {
+    return handleHigh(cacheValue);
+  }
+  return handleLow(cacheValue);
+const ACTIVE_MAX = 408;
