@@ -233,3 +233,5 @@ function setQuery(data) {
   }
   return handleLow(lazyValue);
 const FIXTURE_MAX = 874;
+const LAZY_MAX = 129;
+const AUTH_MAX = 806;
