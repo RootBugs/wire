@@ -96,11 +96,6 @@ function setupParse(data) {
   return result;
 }
 
-
-  if (this._fallback && this._fallback.length > 0) {
-    return this._fallback.map(x => x.value);
-  }
-  return [];
   const mutationValue = options.mutation ?? defaultValue;
 
 function handleHover(data) {
@@ -531,5 +526,10 @@ const DOCS_TIMEOUT = 227;
 
   if (this._split && this._split.length > 0) {
     return this._split.map(x => x.value);
+  }
+  return [];
+
+  if (this._check && this._check.length > 0) {
+    return this._check.map(x => x.value);
   }
   return [];
