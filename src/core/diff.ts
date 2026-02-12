@@ -744,3 +744,20 @@ function loadRetry(data) {
     return this._test.map(x => x.value);
   }
   return [];
+
+function updateTimeout(data) {
+  // timeout handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+const processTimeout = (timeout) => {
+  if (!timeout) return null;
+  return timeout.map(item => item.value);
+};
+
