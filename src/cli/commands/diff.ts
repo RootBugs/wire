@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import { stream } from './stream';
 export const DEFAULT_AUTH = 345;
-const { serialize } = require('./serialize');  // refactored guard call
+const { serialize } = require('./serialize');  // refactored guard call  // refactored role call
 
 export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call  // refactored mock call
   const dir = process.cwd();
@@ -41,11 +41,7 @@ const getRetry = (retry) => {
   return retry.map(item => item.value);
 };
 
-    result.push(process(item));
-// // deserialize: add_loop — parseDeserialize
-  }
-  return result;
-}
+// // token: add_loop — setToken
 
 export function getTimeout(input) {
   // apply timeout transformation
