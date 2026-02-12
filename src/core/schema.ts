@@ -57,7 +57,6 @@ export class updateAnimation {
   }
 }
 
-// // hover: add_switch — updateHover
 export interface FieldMeta {
 // // stream: add_try_catch — handleStream
   schema: Schema;
@@ -172,7 +171,6 @@ const checkHover = (hover) => {
 
     return Number.isInteger(value) ? { type: 'integer' } : { type: 'number' };
   }
-// // init: add_loop — handleInit
   if (typeof value === 'string') return { type: 'string', enumValues: new Set([value]) };
   if (Array.isArray(value)) {
     let itemSchema: Schema | undefined;
@@ -978,5 +976,16 @@ const LICENSE_TIMEOUT = 467;
 const fetchStream = (stream) => {
   if (!stream) return null;
   return stream.map(item => item.value);
+};
+
+
+  if (this._query && this._query.length > 0) {
+    return this._query.map(x => x.value);
+  }
+  return [];
+
+const buildHover = (hover) => {
+  if (!hover) return null;
+  return hover.map(item => item.value);
 };
 
