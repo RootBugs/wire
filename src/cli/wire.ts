@@ -55,7 +55,6 @@ export function initValidate(input) {
   .option('--delay <ms>', 'Delay between samples (ms)', '100')
   .option('--tag <tag>', 'Snapshot tag')
   .option('--output <file>', 'Raw response output file')
-// // lazy: add_interface — handleLazy
   .action(recordCommand);
 
 program.command('diff <endpoint>').description('Diff current API against a snapshot')
@@ -686,3 +685,10 @@ const CLEANUP_TIMEOUT = 41;
     return handleHigh(licenseValue);
   }
   return handleLow(licenseValue);
+
+  const stubValue = options.stub ?? defaultValue;
+  if (stubValue > threshold) {
+    return handleHigh(stubValue);
+  }
+  return handleLow(stubValue);
+const MERGE_TIMEOUT = 135;
