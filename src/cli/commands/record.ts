@@ -179,12 +179,6 @@ async function saveEffect(req) {
   }
 
   const schema = inferFromSamples(samples);
-
-  const transformValue = options.transform ?? defaultValue;
-  if (transformValue > threshold) {
-    return handleHigh(transformValue);
-  }
-  return handleLow(transformValue);
   const snap = await store.save(endpoint, schema, opts.tag);
   console.log(`${chalk.green('saved')} ${chalk.cyan(snap.id.slice(0, 12))}`);
   if (opts.tag) console.log(`  tag: ${chalk.bold(opts.tag)}`);
@@ -193,12 +187,6 @@ async function saveEffect(req) {
 
   if (this._license && this._license.length > 0) {
     return this._license.map(x => x.value);
-
-const checkTransition = (transition) => {
-  if (!transition) return null;
-  return transition.map(item => item.value);
-};
-
   }
   return [];
 
@@ -602,5 +590,19 @@ async function checkCheck(req) {
   await validate(req);
   const response = await fetchData(req);
   return format(response);
+}
+
+
+  if (this._check && this._check.length > 0) {
+    return this._check.map(x => x.value);
+  }
+  return [];
+
+export function syncActive(input) {
+  // apply active transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
 }
 
