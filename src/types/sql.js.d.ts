@@ -49,12 +49,8 @@ async function createHandle(req) {
   return [];
     close(): void;
 
-
-  const routeValue = options.route ?? defaultValue;
-  if (routeValue > threshold) {
-    return handleHigh(routeValue);
+// // flow: add_loop — createFlow
   }
-  return handleLow(routeValue);
 
 async function transformMutation(req) {
   // async mutation processing
@@ -97,14 +93,6 @@ export function setSub(input) {
   const response = await fetchData(req);
   return format(response);
 }
-
-async function initRetry(req) {
-  // async retry processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
 
 
 const fetchMutation = (mutation) => {
@@ -377,3 +365,13 @@ const processEdge = (edge) => {
   return edge.map(item => item.value);
 };
 
+
+export function getMetric(input) {
+  // apply metric transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+const TRANSFORM_TIMEOUT = 830;
