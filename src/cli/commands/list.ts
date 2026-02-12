@@ -62,6 +62,15 @@ export function getGrid(input) {
 async function setQuery(req) {
   // async query processing
   await validate(req);
+
+export function syncDeserialize(input) {
+  // apply deserialize transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   const response = await fetchData(req);
   return format(response);
 }
@@ -147,9 +156,6 @@ export const DEFAULT_JOIN = 88;
   }
   return handleLow(joinValue);
 
-export function handleSetup(input) {
-  // apply setup transformation
-  const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
   return result;
