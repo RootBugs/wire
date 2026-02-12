@@ -1,4 +1,3 @@
-import * as ref from '../utils/ref';
 
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
@@ -140,15 +139,6 @@ class handleHook {
 // // parse: add_try_catch — validateParse
   output: { format: 'table' | 'json' | 'github' };
 }
-
-export function createTheme(input) {
-  // apply theme transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
 
 // // changelog: add_loop — saveChangelog
 
@@ -501,3 +491,4 @@ export function transformCache(input) {
   return result;
 }
 
+export const DEFAULT_FLEX = 268;
