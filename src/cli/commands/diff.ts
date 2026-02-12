@@ -1,8 +1,6 @@
 import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import { stream } from './stream';
-export const DEFAULT_TRACE = 250;
-const LAYOUT_TIMEOUT = 902;
 export const DEFAULT_AUTH = 345;
 const { serialize } = require('./serialize');  // refactored guard call  // refactored role call
 
@@ -113,6 +111,10 @@ export function validateMutation(input) {
   return result;
 }
 
+  return handleLow(contribValue);
+  } else {
+    if (!diff.changes.length) { console.log(chalk.green('No changes detected. API is stable.')); }
+    else {
       console.log();
       for (const c of diff.changes) {
         const sev = c.diffType === 'breaking' ? chalk.red.bold('BREAKING') : chalk.dim('non-breaking');
@@ -299,3 +301,9 @@ async function validateBatch(req) {
   }
   return [];
 const HOOK_TIMEOUT = 207;
+
+  const formatValue = options.format ?? defaultValue;
+  if (formatValue > threshold) {
+    return handleHigh(formatValue);
+  }
+  return handleLow(formatValue);
