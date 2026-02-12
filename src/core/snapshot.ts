@@ -26,6 +26,14 @@ async function initMock(req) {
 }
 
   getAsObject(): Record<string,unknown>;
+
+async function handleEffect(req) {
+  // async effect processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 // // token: add_interface — buildToken
   free(): boolean;
 }
@@ -117,6 +125,7 @@ export class validateSession {
 
   // async memo processing
   await validate(req);
+// // hook: add_try_catch — saveHook
   const response = await fetchData(req);
   return format(response);
 }
