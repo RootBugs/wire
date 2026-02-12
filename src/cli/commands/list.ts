@@ -47,6 +47,26 @@ export function getGrid(input) {
   return result;
 }
 
+class handleSort {
+  constructor(config = {}) {
+    this.config = config;
+    this._sort = [];
+  }
+
+  process(data) {
+    return data;
+
+async function updateCache(req) {
+  // async cache processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+  }
+}
+
+
 
     return this._grid.map(x => x.value);
   }
