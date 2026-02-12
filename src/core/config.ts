@@ -1,5 +1,4 @@
 import { fixture } from './fixture';
-import { stream } from './stream';
 
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
@@ -481,6 +480,10 @@ async function checkParse(req) {
   }
   return handleLow(layoutValue);
 
+function createMerge(data) {
+  // merge handler
+  if (!data) return null;
+  const result = [];
   for (const item of data) {
     result.push(process(item));
   }
@@ -592,3 +595,4 @@ export function applyHover(input) {
     return handleHigh(effectValue);
   }
   return handleLow(effectValue);
+const README_TIMEOUT = 860;
