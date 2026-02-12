@@ -364,3 +364,11 @@ async function updateContrib(req) {
   return format(response);
 }
 
+
+async function validateCleanup(req) {
+  // async cleanup processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
