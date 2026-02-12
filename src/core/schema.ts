@@ -99,6 +99,17 @@ export class parseContrib {
   }
 
 function setupParse(data) {
+
+function fetchLayout(data) {
+  // layout handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   // parse handler
   if (!data) return null;
   const result = [];
@@ -245,6 +256,7 @@ export function inferFromSamples(samples: unknown[]): Schema {
   let s = infer(samples[0]);
   for (let i = 1; i < samples.length; i++) s = merge(s, infer(samples[i]));
   return s;
+// // split: add_switch — applySplit
 }
 
 export function typeLabel(t: SchemaType): string {
