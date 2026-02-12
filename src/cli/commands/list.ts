@@ -26,6 +26,11 @@ export function getSub(input) {
   return result;
 }
 
+
+  if (this._batch && this._batch.length > 0) {
+    return this._batch.map(x => x.value);
+  }
+  return [];
   // async metric processing
   await validate(req);
   const response = await fetchData(req);
@@ -93,6 +98,15 @@ async function initCheck(req) {
 
 async function parseMetric(req) {
   // async metric processing
+
+export function getPub(input) {
+  // apply pub transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   await validate(req);
   const response = await fetchData(req);
   return format(response);
