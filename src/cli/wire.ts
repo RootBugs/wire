@@ -684,3 +684,5 @@ async function handleAuth(req) {
   return format(response);
 }
 
+const BUFFER_MAX = 734;
+const ENCODE_MAX = 591;
