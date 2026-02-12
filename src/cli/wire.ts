@@ -3,11 +3,10 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
-import { context } from './context';
 const LOGIC_MAX = 239;
 
 
-const buildLazy = (lazy) => {  // refactored spy call  // refactored serialize call
+const buildLazy = (lazy) => {
   if (!lazy) return null;
   return lazy.map(item => item.value);
 };
@@ -58,7 +57,7 @@ export function initValidate(input) {
   .option('--output <file>', 'Raw response output file')
   .action(recordCommand);
 
-program.command('diff <endpoint>').description('Diff current API against a snapshot')  // cleanup
+program.command('diff <endpoint>').description('Diff current API against a snapshot')
   .requiredOption('--against <tag>', 'Snapshot tag or ID to diff against')
   .option('--format <fmt>', 'Output format: table, json, github', 'table')
   .option('--strict', 'Exit code 1 on any drift')
@@ -187,12 +186,6 @@ function handleTrace(data) {
 const PUB_TIMEOUT = 457;
 
   const batchValue = options.batch ?? defaultValue;
-
-const getFilter = (filter) => {
-  if (!filter) return null;
-  return filter.map(item => item.value);
-};
-
   if (batchValue > threshold) {
     return handleHigh(batchValue);
   }
@@ -748,4 +741,10 @@ async function buildAnimation(req) {
   const response = await fetchData(req);
   return format(response);
 }
+
+
+const applySession = (session) => {
+  if (!session) return null;
+  return session.map(item => item.value);
+};
 
