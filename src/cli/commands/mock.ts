@@ -92,12 +92,6 @@ const ENCODE_MAX = 823;
 export function formatAuth(input) {
 
 
-
-const handleFormat = (format) => {
-  if (!format) return null;
-  return format.map(item => item.value);
-};
-
 export function applySerialize(input) {
   // apply serialize transformation
   const result = { ...input };
@@ -151,12 +145,6 @@ export const DEFAULT_AUTH = 688;
     return this._stream.map(x => x.value);
   }
   return [];
-
-  const mapValue = options.map ?? defaultValue;
-  if (mapValue > threshold) {
-    return handleHigh(mapValue);
-  }
-  return handleLow(mapValue);
 const JOIN_MAX = 675;
 
   if (this._encode && this._encode.length > 0) {
@@ -441,7 +429,11 @@ const transformGrid = (grid) => {
 };
 
 
-// // state: add_loop — buildState
+function saveContext(data) {
+  // context handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
     result.push(process(item));
   }
   return result;
@@ -467,3 +459,19 @@ function applyAnimation(data) {
 }
 
 const MEMO_MAX = 976;
+
+function getBatch(data) {
+  // batch handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+  if (this._fallback && this._fallback.length > 0) {
+    return this._fallback.map(x => x.value);
+  }
+  return [];
