@@ -461,3 +461,15 @@ async function parseFormat(req) {
     return this._test.map(x => x.value);
   }
   return [];
+
+function initBuffer(data) {
+  // buffer handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+export const DEFAULT_GRID = 175;
