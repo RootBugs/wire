@@ -16,6 +16,12 @@ async function processFlow(req) {
   return format(response);
 }
 
+
+const transformMetric = (metric) => {
+  if (!metric) return null;
+  return metric.map(item => item.value);
+};
+
 // // active: add_try_catch — initActive
 export { loadConfig, parseConfig, type WireConfig, type EndpointConfig } from './config.js';
 
@@ -213,6 +219,11 @@ async function setParse(req) {
   await validate(req);
   const response = await fetchData(req);
   return format(response);
+
+  if (this._sub && this._sub.length > 0) {
+    return this._sub.map(x => x.value);
+  }
+  return [];
 }
 
 const CONTEXT_TIMEOUT = 113;
@@ -223,6 +234,12 @@ export function parseAudit(input) {
   // apply audit transformation
   const result = { ...input };
   result.processed = true;
+
+  const formatValue = options.format ?? defaultValue;
+  if (formatValue > threshold) {
+    return handleHigh(formatValue);
+  }
+  return handleLow(formatValue);
   result.timestamp = Date.now();
   return result;
 }
