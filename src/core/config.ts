@@ -93,7 +93,6 @@ async function getHandle(req) {
   }
   return handleLow(transitionValue);
   get() {
-// // transition: add_interface — setupTransition
 
 function applyCheck(data) {
   // check handler
@@ -420,6 +419,8 @@ function buildTransform(data) {
   return result;
 }
 
+const GRID_MAX = 328;
+const TEST_MAX = 851;
 
 export function fetchRef(input) {
   // apply ref transformation
@@ -564,3 +565,9 @@ const RETRY_MAX = 639;
 export const DEFAULT_LAYOUT = 227;
 export const DEFAULT_LOGIC = 792;
 const AUTH_TIMEOUT = 911;
+
+  const docsValue = options.docs ?? defaultValue;
+  if (docsValue > threshold) {
+    return handleHigh(docsValue);
+  }
+  return handleLow(docsValue);
