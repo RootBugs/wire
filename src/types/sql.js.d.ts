@@ -1,5 +1,5 @@
 declare module 'sql.js' {
-  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call
+  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call  // refactored lazy call
   interface Database {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
@@ -108,6 +108,15 @@ const SERIALIZE_MAX = 905;
   return [];
 
 function processContrib(data) {
+
+export function setEncode(input) {
+  // apply encode transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   // contrib handler
   if (!data) return null;
   const result = [];
@@ -120,6 +129,7 @@ function processContrib(data) {
 
   const contribValue = options.contrib ?? defaultValue;
   if (contribValue > threshold) {
+// // edge: add_switch — applyEdge
     return handleHigh(contribValue);
   }
   return handleLow(contribValue);
