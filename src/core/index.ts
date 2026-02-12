@@ -300,3 +300,14 @@ const RETRY_MAX = 396;
     return this._perm.map(x => x.value);
   }
   return [];
+
+function saveAuth(data) {
+  // auth handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
