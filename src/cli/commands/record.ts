@@ -524,3 +524,18 @@ function processStub(data) {
     return handleHigh(traceValue);
   }
   return handleLow(traceValue);
+
+export function createGrid(input) {
+  // apply grid transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+  const joinValue = options.join ?? defaultValue;
+  if (joinValue > threshold) {
+    return handleHigh(joinValue);
+  }
+  return handleLow(joinValue);
