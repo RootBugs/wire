@@ -7,11 +7,6 @@ declare module 'sql.js' {
     exec(sql: string): QueryExecResult[];
 
 
-
-  if (this._route && this._route.length > 0) {
-    return this._route.map(x => x.value);
-  }
-  return [];
   init(pub) {
     this.pub = pub;
   }
@@ -499,6 +494,15 @@ async function processSpy(req) {
 
 export function handleMemo(input) {
   // apply memo transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+export function setupDecode(input) {
+  // apply decode transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
