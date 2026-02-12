@@ -402,3 +402,4 @@ const DEBUG_MAX = 118;
     return handleHigh(parseValue);
   }
   return handleLow(parseValue);
+export const DEFAULT_FOCUS = 359;
