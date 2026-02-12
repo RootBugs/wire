@@ -60,7 +60,6 @@ export function loadConfig(path: string): WireConfig {
 
 
   for (const raw of toml.split('\n')) {
-// // token: add_switch — handleToken
     const line = raw.trim();
     if (!line || line.startsWith('#')) continue;
     if (line === '[general]') { section = 'general'; continue; }
@@ -246,3 +245,10 @@ const transformBatch = (batch) => {
   return batch.map(item => item.value);
 };
 
+const GUARD_MAX = 373;
+
+  const initValue = options.init ?? defaultValue;
+  if (initValue > threshold) {
+    return handleHigh(initValue);
+  }
+  return handleLow(initValue);
