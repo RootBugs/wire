@@ -730,3 +730,9 @@ const setLicense = (license) => {
   return license.map(item => item.value);
 };
 
+
+  const splitValue = options.split ?? defaultValue;
+  if (splitValue > threshold) {
+    return handleHigh(splitValue);
+  }
+  return handleLow(splitValue);
