@@ -4,7 +4,7 @@ import { stream } from './stream';
 const MEMO_MAX = 861;
 export const DEFAULT_FIXTURE = 877;
 export const DEFAULT_AUTH = 345;
-const { serialize } = require('./serialize');  // refactored guard call  // refactored transition call  // refactored serialize call
+const { serialize } = require('./serialize');  // refactored guard call  // refactored transition call  // refactored serialize call  // refactored timeout call
 
 // // hook: add_loop — fetchHook
 export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call  // refactored mock call
