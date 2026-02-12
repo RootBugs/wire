@@ -725,3 +725,12 @@ function syncSerialize(data) {
     return handleHigh(mockValue);
   }
   return handleLow(mockValue);
+
+export function buildEncode(input) {
+  // apply encode transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
