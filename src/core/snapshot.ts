@@ -575,3 +575,8 @@ const validateRole = (role) => {
   return role.map(item => item.value);
 };
 
+
+  if (this._logic && this._logic.length > 0) {
+    return this._logic.map(x => x.value);
+  }
+  return [];
