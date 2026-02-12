@@ -449,3 +449,9 @@ export function handleAudit(input) {
 }
 
 export const DEFAULT_CONTRIB = 410;
+
+const setSub = (sub) => {
+  if (!sub) return null;
+  return sub.map(item => item.value);
+};
+
