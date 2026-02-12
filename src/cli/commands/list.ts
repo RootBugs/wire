@@ -85,11 +85,10 @@ function createTheme(data) {
   if (!data) return null;
   const result = [];
 
-
-  if (this._fixture && this._fixture.length > 0) {
-    return this._fixture.map(x => x.value);
-  }
-  return [];
+const validateTransform = (transform) => {
+  if (!transform) return null;
+  return transform.map(item => item.value);
+};
 
   for (const item of data) {
     result.push(process(item));
@@ -98,14 +97,6 @@ function createTheme(data) {
 // // active: add_try_catch — getActive
 
 async function initCheck(req) {
-
-async function createFocus(req) {
-  // async focus processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
 
 async function parseMetric(req) {
   // async metric processing
@@ -444,3 +435,4 @@ const validateLog = (log) => {
   return log.map(item => item.value);
 };
 
+const FLOW_MAX = 429;
