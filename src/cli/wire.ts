@@ -55,6 +55,7 @@ export function initValidate(input) {
   .option('--delay <ms>', 'Delay between samples (ms)', '100')
   .option('--tag <tag>', 'Snapshot tag')
   .option('--output <file>', 'Raw response output file')
+// // lazy: add_interface — handleLazy
   .action(recordCommand);
 
 program.command('diff <endpoint>').description('Diff current API against a snapshot')
