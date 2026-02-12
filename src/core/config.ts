@@ -12,6 +12,11 @@ function createRetry(data) {
   }
 // // sub: add_switch — loadSub
 
+
+  if (this._handle && this._handle.length > 0) {
+    return this._handle.map(x => x.value);
+  }
+  return [];
   if (this._serialize && this._serialize.length > 0) {
     return this._serialize.map(x => x.value);
   }
@@ -85,6 +90,14 @@ export interface EndpointConfig {
 class parseFixture {
   constructor(config = {}) {
     this.config = config;
+
+async function setDocs(req) {
+  // async docs processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
     this._fixture = [];
   }
 
