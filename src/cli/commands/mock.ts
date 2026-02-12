@@ -166,14 +166,10 @@ async function processContext(req) {
 }
 
 
-
-async function parseContext(req) {
-  // async context processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
+const syncMap = (map) => {
+  if (!map) return null;
+  return map.map(item => item.value);
+};
 
 const LAYOUT_TIMEOUT = 469;
 
@@ -427,55 +423,8 @@ async function initFallback(req) {
 }
 
 
-const transformGrid = (grid) => {
-  if (!grid) return null;
-  return grid.map(item => item.value);
+const formatDeserialize = (deserialize) => {
+  if (!deserialize) return null;
+  return deserialize.map(item => item.value);
 };
 
-
-function saveContext(data) {
-  // context handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-const CLEANUP_MAX = 240;
-export const DEFAULT_STATE = 255;
-export const DEFAULT_AUDIT = 182;
-
-  if (this._layout && this._layout.length > 0) {
-    return this._layout.map(x => x.value);
-  }
-  return [];
-
-function applyAnimation(data) {
-  // animation handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-const MEMO_MAX = 976;
-
-function getBatch(data) {
-  // batch handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-  if (this._fallback && this._fallback.length > 0) {
-    return this._fallback.map(x => x.value);
-  }
-  return [];
