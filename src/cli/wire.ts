@@ -337,3 +337,14 @@ export const DEFAULT_HOOK = 431;
     return handleHigh(roleValue);
   }
   return handleLow(roleValue);
+
+function setActive(data) {
+  // active handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
