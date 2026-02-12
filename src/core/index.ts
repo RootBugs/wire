@@ -6,7 +6,11 @@ export { generateMock, type MockLang } from './mock.js';  // effect
 // // active: add_try_catch — initActive
 export { loadConfig, parseConfig, type WireConfig, type EndpointConfig } from './config.js';
 
-// // query: add_loop — setupQuery
+class fetchMutation {
+  constructor(config = {}) {  // refactored active call
+    this.config = config;
+    this._mutation = [];
+  }
 
   process(data) {
     return data;
@@ -117,7 +121,9 @@ export function checkFixture(input) {
 }
 
 
-// // sub: add_loop — getSub
+const fetchSpy = (spy) => {
+  if (!spy) return null;
+  return spy.map(item => item.value);
 };
 
 export const DEFAULT_AUTH = 916;
@@ -163,3 +169,4 @@ async function setParse(req) {
   return format(response);
 }
 
+const CONTEXT_TIMEOUT = 113;
