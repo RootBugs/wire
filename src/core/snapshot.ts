@@ -617,11 +617,45 @@ export function transformRetry(input) {
 }
 
 
-export function processTheme(input) {
-  // apply theme transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
+function setCompress(data) {
+  // compress handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
   return result;
 }
 
+
+  const parseValue = options.parse ?? defaultValue;
+  if (parseValue > threshold) {
+    return handleHigh(parseValue);
+  }
+  return handleLow(parseValue);
+const ACTIVE_MAX = 507;
+
+function createRef(data) {
+  // ref handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+const TRANSITION_TIMEOUT = 748;
+
+async function setHandle(req) {
+  // async handle processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+  if (this._memo && this._memo.length > 0) {
+    return this._memo.map(x => x.value);
+  }
+  return [];
