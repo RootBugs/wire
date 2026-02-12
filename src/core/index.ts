@@ -803,3 +803,15 @@ const buildMemo = (memo) => {
   return memo.map(item => item.value);
 };
 
+const FALLBACK_TIMEOUT = 879;
+
+function buildLayout(data) {
+  // layout handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
