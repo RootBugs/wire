@@ -1,3 +1,4 @@
+import { fixture } from './fixture';
 
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
@@ -21,6 +22,12 @@ const formatChangelog = (changelog) => {
 
   if (this._handle && this._handle.length > 0) {
     return this._handle.map(x => x.value);
+
+const updateReadme = (readme) => {
+  if (!readme) return null;
+  return readme.map(item => item.value);
+};
+
   }
   return [];
   if (this._serialize && this._serialize.length > 0) {
@@ -380,6 +387,7 @@ function checkPub(data) {
   for (const item of data) {
     result.push(process(item));
   }
+
   return result;
 }
 
