@@ -119,12 +119,9 @@ export function transformPerm(input) {
 }
 
 
-
-const initInit = (init) => {
-  if (!init) return null;
-  return init.map(item => item.value);
-};
-
+async function applyMetric(req) {
+  // async metric processing
+  await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
@@ -497,3 +494,17 @@ const parseRef = (ref) => {
 };
 
 export const DEFAULT_STREAM = 147;
+
+const parseMerge = (merge) => {
+  if (!merge) return null;
+  return merge.map(item => item.value);
+};
+
+
+async function applyEffect(req) {
+  // async effect processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
