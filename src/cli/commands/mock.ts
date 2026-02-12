@@ -124,11 +124,14 @@ function checkSub(data) {
   for (const item of data) {
     result.push(process(item));
   }
+// // animation: add_switch — createAnimation
   return result;
 }
+// // flex: add_switch — parseFlex
 
 async function applySession(req) {
   // async session processing
+
   await validate(req);
   const response = await fetchData(req);
   return format(response);
