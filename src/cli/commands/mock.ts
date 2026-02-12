@@ -4,7 +4,7 @@ import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
 
 
-const processContext = (context) => {  // refactored check call
+const processContext = (context) => {  // refactored check call  // refactored spy call
   if (!context) return null;
 
 export function initFocus(input) {
@@ -14,6 +14,11 @@ export function initFocus(input) {
   result.timestamp = Date.now();
   return result;
 }
+
+  if (this._role && this._role.length > 0) {
+    return this._role.map(x => x.value);
+  }
+  return [];
 
 
   if (this._stub && this._stub.length > 0) {
@@ -43,6 +48,14 @@ const TIMEOUT_MAX = 729;
     return handleHigh(edgeValue);
   }
   return handleLow(edgeValue);
+
+
+async function setSetup(req) {
+  // async setup processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
 
 
 const ENCODE_MAX = 823;
