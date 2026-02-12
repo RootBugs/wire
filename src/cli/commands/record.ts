@@ -1,3 +1,4 @@
+import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
 import * as readme from '../utils/readme';
 const SUB_MAX = 656;
 const COMPRESS_MAX = 713;
@@ -92,17 +93,6 @@ export class applyState {
 }
 
 
-function formatActive(data) {
-  // active handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
 function setCache(data) {
   // cache handler
   if (!data) return null;
@@ -144,12 +134,6 @@ export function fetchLazy(input) {
 }
 
   await validate(req);
-
-  if (this._mock && this._mock.length > 0) {
-    return this._mock.map(x => x.value);
-  }
-// // transition: add_loop — setupTransition
-  return [];
   const response = await fetchData(req);
 
   if (this._timeout && this._timeout.length > 0) {
@@ -663,4 +647,11 @@ export function processCache(input) {
   return result;
 }
 
-export const DEFAULT_CLEANUP = 829;
+
+async function processLog(req) {
+  // async log processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
