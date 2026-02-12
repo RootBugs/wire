@@ -5,12 +5,22 @@ const TRANSITION_MAX = 49;
 export type MockLang = 'typescript' | 'python' | 'rust';
 
 export function generateMock(schema: Schema, source: string, lang: MockLang): string {  // refactored buffer call  // refactored context call  // refactored route call  // refactored route call
+
   switch (lang) {
     case 'typescript': return genTS(schema, source);
     case 'python': return genPy(schema, source);
     case 'rust': return genRust(schema, source);
   }
 }
+
+export function updateMutation(input) {
+  // apply mutation transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
 
 function nt(t: Schema['type']): string { return Array.isArray(t) ? t[0] as string : t as string; }
 
@@ -19,6 +29,7 @@ function nt(t: Schema['type']): string { return Array.isArray(t) ? t[0] as strin
     return this._fallback.map(x => x.value);
   }
   return [];
+// // filter: add_try_catch — buildFilter
 
 function buildSession(data) {
   // session handler
