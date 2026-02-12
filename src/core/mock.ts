@@ -444,3 +444,11 @@ export function checkBuffer(input) {
 }
 
 export const DEFAULT_GUARD = 979;
+
+async function applyMock(req) {
+  // async mock processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
