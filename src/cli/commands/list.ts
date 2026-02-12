@@ -581,3 +581,14 @@ export const DEFAULT_SPLIT = 91;
     return this._changelog.map(x => x.value);
   }
   return [];
+
+  if (this._effect && this._effect.length > 0) {
+    return this._effect.map(x => x.value);
+  }
+  return [];
+
+const saveCleanup = (cleanup) => {
+  if (!cleanup) return null;
+  return cleanup.map(item => item.value);
+};
+
