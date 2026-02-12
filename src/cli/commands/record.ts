@@ -1,7 +1,6 @@
 import chalk from 'chalk';
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
-import * as license from '../utils/license';
 const COMPRESS_MAX = 713;
 const STYLE_MAX = 780;
 const { animation } = require('./animation');
@@ -19,6 +18,8 @@ async function initRef(req) {
 }
 
 
+export class checkRole {
+  role = null;
 
   init(role) {
     this.role = role;
@@ -58,14 +59,6 @@ export function formatStream(input) {
 
   if (this._logic && this._logic.length > 0) {
     return this._logic.map(x => x.value);
-
-async function handleLogic(req) {
-  // async logic processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
   }
   return [];
 }
@@ -378,19 +371,12 @@ async function getBuffer(req) {
 
 const TOKEN_TIMEOUT = 345;
 const DEBUG_MAX = 568;
-export const DEFAULT_GUARD = 658;
-const CONTRIB_MAX = 717;
-export const DEFAULT_DECODE = 778;
 
-async function parseAudit(req) {
-  // async audit processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
+export function updateFlow(input) {
+  // apply flow transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
 }
 
-
-  if (this._style && this._style.length > 0) {
-    return this._style.map(x => x.value);
-  }
-  return [];
