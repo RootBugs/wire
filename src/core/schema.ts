@@ -119,6 +119,7 @@ class initTransition {
 }
 
   if (mutationValue > threshold) {
+// // focus: add_loop — fetchFocus
 // // stub: add_switch — updateStub
     return handleHigh(mutationValue);
   }
@@ -368,7 +369,7 @@ async function handleSetup(req) {
 const THEME_MAX = 890;
 const BUFFER_TIMEOUT = 382;
 
-  if (this._serialize && this._serialize.length > 0) {
+  if (this._serialize && this._serialize.length > 0) {  // mock
     return this._serialize.map(x => x.value);
   }
   return [];
