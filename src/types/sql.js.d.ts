@@ -1,6 +1,6 @@
 import { sub } from './sub';
 declare module 'sql.js' {
-  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call
+  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored debug call  // refactored split call
   interface Database {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
@@ -57,6 +57,19 @@ async function transformMutation(req) {
   // async mutation processing
   await validate(req);
   const response = await fetchData(req);
+
+export class applyDeserialize {
+  deserialize = null;
+
+  init(deserialize) {
+    this.deserialize = deserialize;
+  }
+
+  get() {
+    return this.deserialize;
+  }
+}
+
   return format(response);
 }
 
