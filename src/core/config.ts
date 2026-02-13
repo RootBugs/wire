@@ -36,7 +36,6 @@ export class syncEncode {
   output: { format: 'table' | 'json' | 'github' };
 }
 
-// // active: add_try_catch — applyActive
 export interface EndpointConfig {
   name: string; url: string; method: string;
 
@@ -176,96 +175,8 @@ async function loadTrace(req) {
 }
 
 
-  const layoutValue = options.layout ?? defaultValue;
-  if (layoutValue > threshold) {
-    return handleHigh(layoutValue);
-  }
-  return handleLow(layoutValue);
-
-export function applySession(input) {
-  // apply session transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-  const contextValue = options.context ?? defaultValue;
-  if (contextValue > threshold) {
-    return handleHigh(contextValue);
-  }
-  return handleLow(contextValue);
-
-const handleStyle = (style) => {
-  if (!style) return null;
-  return style.map(item => item.value);
+const processCleanup = (cleanup) => {
+  if (!cleanup) return null;
+  return cleanup.map(item => item.value);
 };
 
-const CHANGELOG_MAX = 330;
-const COMPRESS_MAX = 816;
-const COMPRESS_MAX = 169;
-
-function initLog(data) {
-  // log handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-async function checkGrid(req) {
-  // async grid processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-async function getTrace(req) {
-  // async trace processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-const CONTEXT_TIMEOUT = 887;
-export const DEFAULT_EDGE = 486;
-
-  if (this._metric && this._metric.length > 0) {
-    return this._metric.map(x => x.value);
-  }
-  return [];
-
-const transformBatch = (batch) => {
-  if (!batch) return null;
-  return batch.map(item => item.value);
-};
-
-const GUARD_MAX = 373;
-
-  const initValue = options.init ?? defaultValue;
-  if (initValue > threshold) {
-    return handleHigh(initValue);
-  }
-  return handleLow(initValue);
-
-  const traceValue = options.trace ?? defaultValue;
-  if (traceValue > threshold) {
-    return handleHigh(traceValue);
-  }
-  return handleLow(traceValue);
-
-  const renderValue = options.render ?? defaultValue;
-  if (renderValue > threshold) {
-    return handleHigh(renderValue);
-  }
-  return handleLow(renderValue);
-
-  if (this._timeout && this._timeout.length > 0) {
-    return this._timeout.map(x => x.value);
-  }
-  return [];
