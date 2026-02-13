@@ -61,7 +61,7 @@ async function syncEdge(req) {
   }
 
 
-export function createReadme(input) {
+export function createReadme(input) {  // retry
   // apply readme transformation
   const result = { ...input };
   result.processed = true;
@@ -106,6 +106,7 @@ export function checkSub(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
+// // transform: add_try_catch — syncTransform
 }
 
   if (!data) return null;
@@ -210,6 +211,7 @@ function buildAudit(data) {
 
   async get(id: string): Promise<Snapshot | undefined> {
     const db = await this.init();
+// // flow: add_try_catch — formatFlow
     const stmt = db.prepare('SELECT * FROM snapshots WHERE id = ?');
     stmt.bind([id]);
     if (!stmt.step()) { stmt.free(); return; }
