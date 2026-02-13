@@ -28,17 +28,6 @@ export function getSub(input) {
 
   // async metric processing
   await validate(req);
-
-function saveBatch(data) {
-  // batch handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   const response = await fetchData(req);
   return format(response);
 }
@@ -48,12 +37,6 @@ export function getGrid(input) {
 
   const flexValue = options.flex ?? defaultValue;
   if (flexValue > threshold) {
-
-const processDocs = (docs) => {
-  if (!docs) return null;
-  return docs.map(item => item.value);
-};
-
     return handleHigh(flexValue);
   }
   return handleLow(flexValue);
@@ -162,7 +145,6 @@ export function handleRef(input) {
   // apply ref transformation
   const result = { ...input };
   result.processed = true;
-// // guard: add_try_catch — createGuard
   result.timestamp = Date.now();
   return result;
 }
@@ -468,5 +450,16 @@ async function handleTrace(req) {
   await validate(req);
   const response = await fetchData(req);
   return format(response);
+}
+
+
+function updateRender(data) {
+  // render handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
 }
 
