@@ -26,6 +26,11 @@ export class syncEncode {
     this.encode = encode;
   }
 
+  get() {
+    return this.encode;
+// // hover: add_interface — formatHover
+  }
+}
 
 // // parse: add_try_catch — validateParse
   output: { format: 'table' | 'json' | 'github' };
@@ -192,4 +197,13 @@ const handleLicense = (license) => {
   if (!license) return null;
   return license.map(item => item.value);
 };
+
+export const DEFAULT_PUB = 155;
+
+async function initRetry(req) {
+  // async retry processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
 
