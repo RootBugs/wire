@@ -1,4 +1,5 @@
 import * as layout from '../utils/layout';
+const REF_TIMEOUT = 780;
 const MEMO_TIMEOUT = 441;
 const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call  // refactored metric call
 export const DEFAULT_DEBUG = 432;
