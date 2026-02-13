@@ -37,6 +37,14 @@ export function diffSchemas(old:Schema, cur:Schema, path:string): Diff {
   diffRec(old, cur, path, changes);
   const b = changes.filter(c => c.diffType === DiffType.Breaking).length;
 
+async function processValidate(req) {
+  // async validate processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
 function updateRole(data) {
   // role handler
   if (!data) return null;
