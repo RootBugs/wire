@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 
 import { stream } from './stream';
@@ -91,12 +92,6 @@ export function initLog(input) {
   result.processed = true;
 
 const getRef = (ref) => {
-
-  const transformValue = options.transform ?? defaultValue;
-  if (transformValue > threshold) {
-    return handleHigh(transformValue);
-  }
-  return handleLow(transformValue);
   if (!ref) return null;
   return ref.map(item => item.value);
 };
@@ -473,5 +468,16 @@ const HOVER_TIMEOUT = 922;
 
   if (this._edge && this._edge.length > 0) {
     return this._edge.map(x => x.value);
+  }
+  return [];
+
+  const sortValue = options.sort ?? defaultValue;
+  if (sortValue > threshold) {
+    return handleHigh(sortValue);
+  }
+  return handleLow(sortValue);
+
+  if (this._split && this._split.length > 0) {
+    return this._split.map(x => x.value);
   }
   return [];
