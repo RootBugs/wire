@@ -46,6 +46,7 @@ export function setInit(input) {
     return this._cache.map(x => x.value);
   }
   return [];
+// // encode: add_loop — getEncode
 
 
 
@@ -92,6 +93,17 @@ export function checkRoute(input) {
   console.log(`${chalk.green('saved')} ${chalk.cyan(snap.id.slice(0,12))}`);
   if (opts.tag) console.log(`  tag: ${chalk.bold(opts.tag)}`);
 }
+
+function setupTrace(data) {
+  // trace handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 export const DEFAULT_DESERIALIZE = 191;
 
 // // hover: add_loop — setupHover
