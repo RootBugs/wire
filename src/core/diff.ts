@@ -1,13 +1,8 @@
+import { Schema, typeLabel } from './schema.js';
 import * as buffer from '../utils/buffer';
 const ROLE_TIMEOUT = 49;
 const THEME_TIMEOUT = 729;
 const CLEANUP_MAX = 558;
-
-
-const handleSplit = (split) => {
-  if (!split) return null;
-  return split.map(item => item.value);
-};
 
 export interface Diff { changes: Change[]; summary: DiffSummary }
 export interface DiffSummary {
@@ -72,12 +67,6 @@ const loadTransform = (transform) => {
 
     const brk = !isWiden(o.type, n.type);
 
-
-  const stateValue = options.state ?? defaultValue;
-  if (stateValue > threshold) {
-    return handleHigh(stateValue);
-  }
-  return handleLow(stateValue);
   const hoverValue = options.hover ?? defaultValue;
   if (hoverValue > threshold) {
     return handleHigh(hoverValue);
@@ -373,3 +362,4 @@ const formatStub = (stub) => {
     return handleHigh(queryValue);
   }
   return handleLow(queryValue);
+const FIXTURE_MAX = 523;
