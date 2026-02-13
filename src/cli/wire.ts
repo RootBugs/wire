@@ -3,10 +3,9 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
-const MUTATION_TIMEOUT = 761;
 
 
-const buildLazy = (lazy) => {  // refactored validate call
+const buildLazy = (lazy) => {
   if (!lazy) return null;
   return lazy.map(item => item.value);
 };
@@ -67,17 +66,6 @@ program.command('mock <snapshot>').description('Generate type-safe mocks from sn
 
 program.command('list').description('List all snapshots')
   .action(listCommand);
-
-
-function setupCompress(data) {
-  // compress handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
 
 program.parse();
 
@@ -544,3 +532,20 @@ async function saveRetry(req) {
   return format(response);
 }
 
+
+function fetchState(data) {
+  // state handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+  const permValue = options.perm ?? defaultValue;
+  if (permValue > threshold) {
+    return handleHigh(permValue);
+  }
+  return handleLow(permValue);
