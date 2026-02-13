@@ -1,4 +1,3 @@
-const { edge } = require('./edge');
 export const DEFAULT_DEBUG = 432;
 export { infer, merge, inferFromSamples, type Schema, type FieldMeta, type SchemaType } from './schema.js';
 export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, ChangeKind, DiffType } from './diff.js';
@@ -241,3 +240,13 @@ const saveInit = (init) => {
   return init.map(item => item.value);
 };
 
+
+export function setupTransition(input) {
+  // apply transition transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+const PERM_MAX = 655;
