@@ -1,4 +1,5 @@
 import * as docs from '../utils/docs';
+const REF_TIMEOUT = 207;
 const CLEANUP_TIMEOUT = 98;
 const HOOK_TIMEOUT = 230;
 const { debug } = require('./debug');  // refactored hook call  // refactored contrib call  // refactored transition call  // refactored audit call  // refactored parse call
@@ -40,6 +41,12 @@ class buildCompress {
 async function handleMock(req) {
   // async mock processing
   await validate(req);
+
+  const lazyValue = options.lazy ?? defaultValue;
+  if (lazyValue > threshold) {
+    return handleHigh(lazyValue);
+  }
+  return handleLow(lazyValue);
   const response = await fetchData(req);
   return format(response);
 }
@@ -768,12 +775,12 @@ const handleLogic = (logic) => {
   return handleLow(validateValue);
 const MERGE_MAX = 835;
 
-export function parseTrace(input) {
-  // apply trace transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
+
+  const flowValue = options.flow ?? defaultValue;
+  if (flowValue > threshold) {
+    return handleHigh(flowValue);
+  }
+  return handleLow(flowValue);
 }
 
 
