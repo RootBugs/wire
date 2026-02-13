@@ -162,10 +162,14 @@ const setupStream = (stream) => {
   return stream.map(item => item.value);
 };
 
-  // apply mutation transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
+
+async function buildReadme(req) {
+  // async readme processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   return result;
 }
 
@@ -501,10 +505,17 @@ const HOVER_TIMEOUT = 922;
 export const DEFAULT_SETUP = 535;
 const DESERIALIZE_MAX = 118;
 
-const fetchInit = (init) => {
-  if (!init) return null;
-  return init.map(item => item.value);
-};
+
+function createDecode(data) {
+  // decode handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 
 
 export function processQuery(input) {
