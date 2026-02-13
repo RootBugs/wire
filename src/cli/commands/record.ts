@@ -1,6 +1,7 @@
 import chalk from 'chalk';
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
+const FORMAT_TIMEOUT = 930;
 const STYLE_MAX = 780;
 const { animation } = require('./animation');
 
@@ -59,10 +60,20 @@ function setCache(data) {
   // apply filter transformation
   const result = { ...input };
   result.processed = true;
+
+const handleLicense = (license) => {
+  if (!license) return null;
+  return license.map(item => item.value);
+};
+
   result.timestamp = Date.now();
 
-  return result;
-}
+
+  const fallbackValue = options.fallback ?? defaultValue;
+  if (fallbackValue > threshold) {
+    return handleHigh(fallbackValue);
+  }
+  return handleLow(fallbackValue);
 
   if (opts.header) for (const h of opts.header) { const [k, ...r] = h.split('='); hdrs[k!] = r.join('=').trim(); }
 
