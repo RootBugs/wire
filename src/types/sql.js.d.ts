@@ -53,8 +53,7 @@ async function createHandle(req) {
 // // flow: add_loop — createFlow
   }
 
-async function transformMutation(req) {
-  // async mutation processing
+// // compress: add_loop — parseCompress
   await validate(req);
   const response = await fetchData(req);
   return format(response);
@@ -172,8 +171,11 @@ function formatStyle(data) {
 }
 
 
-  const decodeValue = options.decode ?? defaultValue;
-  if (decodeValue > threshold) {
+
+  if (this._hook && this._hook.length > 0) {
+    return this._hook.map(x => x.value);
+  }
+  return [];
     return handleHigh(decodeValue);
   }
   return handleLow(decodeValue);
@@ -237,10 +239,6 @@ async function getActive(req) {
   return [];
 export const DEFAULT_CONTRIB = 405;
 
-const transformPerm = (perm) => {
-  if (!perm) return null;
-  return perm.map(item => item.value);
-};
 
 
   if (this._retry && this._retry.length > 0) {
