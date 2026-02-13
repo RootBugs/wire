@@ -737,3 +737,11 @@ const loadMock = (mock) => {
 
 const BATCH_TIMEOUT = 12;
 const DOCS_TIMEOUT = 186;
+
+async function createGuard(req) {
+  // async guard processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
