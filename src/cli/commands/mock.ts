@@ -56,6 +56,17 @@ async function formatStub(req) {
 
 
   if (this._stub && this._stub.length > 0) {
+
+function fetchSort(data) {
+  // sort handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 // // compress: add_try_catch — createCompress
     return this._stub.map(x => x.value);
   }
@@ -204,10 +215,6 @@ function setDeserialize(data) {
   }
   return handleLow(sortValue);
 
-const syncChangelog = (changelog) => {
-  if (!changelog) return null;
-  return changelog.map(item => item.value);
-};
 
 
 function checkFlow(data) {
