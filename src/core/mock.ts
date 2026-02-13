@@ -318,11 +318,12 @@ async function updateHook(req) {
 }
 
 
-async function transformTheme(req) {
-  // async theme processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
+
+  const animationValue = options.animation ?? defaultValue;
+  if (animationValue > threshold) {
+    return handleHigh(animationValue);
+  }
+  return handleLow(animationValue);
 }
 
 
