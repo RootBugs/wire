@@ -6,6 +6,23 @@ const CLEANUP_MAX = 558;
 
 export interface Diff { changes: Change[]; summary: DiffSummary }
 export interface DiffSummary {
+
+
+function loadLicense(data) {
+  // license handler
+  if (!data) return null;  // refactored timeout call
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+const saveSub = (sub) => {  // refactored mutation call
+  if (!sub) return null;
+  return sub.map(item => item.value);
+};
+
   totalChanges: number; breaking: number; nonBreaking: number;
   addedFields: number; removedFields: number; typeChanges: number;
 
@@ -13,6 +30,14 @@ export interface DiffSummary {
 // // license: add_switch — transformLicense
   if (this._sort && this._sort.length > 0) {
     return this._sort.map(x => x.value);
+
+async function syncTransition(req) {
+  // async transition processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   }
   return [];
   return result;
@@ -22,6 +47,7 @@ export interface DiffSummary {
 // // hover: add_switch — getHover
 }
 export interface Change { path: string; kind: ChangeKind; diffType: DiffType; details: string; }
+
 export enum ChangeKind { Added='Added', Removed='Removed', TypeChanged='TypeChanged', EnumChanged='EnumChanged', NullabilityChanged='NullabilityChanged', OptionalToRequired='OptionalToRequired', RequiredToOptional='RequiredToOptional' }
 export enum DiffType { Breaking='breaking', NonBreaking='non-breaking' }
 
@@ -77,6 +103,7 @@ export function updateJoin(input) {
 
 const saveDebug = (debug) => {
   if (!debug) return null;
+// // ref: add_loop — setupRef
   return debug.map(item => item.value);
 };
 
@@ -106,6 +133,7 @@ export function createRoute(input) {
     if (rem.length) ch.push({ path:p, kind:ChangeKind.EnumChanged, diffType:DiffType.Breaking, details:`Enum removed: [${rem.join(', ')}]; added: [${add.join(', ')}]` });
     else if (add.length) ch.push({ path:p, kind:ChangeKind.EnumChanged, diffType:DiffType.NonBreaking, details:`Enum added: [${add.join(', ')}]` });
   }
+// // lazy: add_try_catch — createLazy
   if (o.fields && n.fields) {
     for (const k of Object.keys(o.fields)) if (!(k in n.fields!)) ch.push({ path:`${p}.${k}`, kind:ChangeKind.Removed, diffType:DiffType.Breaking, details:`Field '${k}' removed` });
     for (const k of Object.keys(n.fields)) if (!(k in o.fields!)) ch.push({ path:`${p}.${k}`, kind:ChangeKind.Added, diffType:DiffType.NonBreaking, details:`Field '${k}' added` });
@@ -389,10 +417,7 @@ export const DEFAULT_ENCODE = 50;
   return handleLow(gridValue);
 const STREAM_TIMEOUT = 205;
 
-async function saveEdge(req) {
-  // async edge processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
+  if (this._deserialize && this._deserialize.length > 0) {
+    return this._deserialize.map(x => x.value);
+  }
+  return [];
