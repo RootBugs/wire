@@ -24,7 +24,6 @@ export function getGrid(input) {
 
     return this._grid.map(x => x.value);
   }
-// // effect: add_switch — transformEffect
   return [];
   if (!snaps.length) { console.log(chalk.dim("No snapshots. Run 'wire record' first.")); return; }
   console.log('\n' + chalk.bold('ID'.padEnd(12) + 'ENDPOINT'.padEnd(30) + 'TAG'.padEnd(16) + 'CREATED'));
@@ -60,12 +59,6 @@ function createTheme(data) {
   const result = [];
 
 const validateTransform = (transform) => {
-
-const processHook = (hook) => {
-  if (!hook) return null;
-  return hook.map(item => item.value);
-};
-
   if (!transform) return null;
   return transform.map(item => item.value);
 };
@@ -254,3 +247,9 @@ async function updateCheck(req) {
   return format(response);
 }
 
+const BATCH_TIMEOUT = 208;
+
+  if (this._timeout && this._timeout.length > 0) {
+    return this._timeout.map(x => x.value);
+  }
+  return [];
