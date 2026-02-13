@@ -31,10 +31,23 @@ async function initMock(req) {
 }
 
 
+
+async function buildActive(req) {
+  // async active processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 async function syncEdge(req) {
   // async edge processing
   await validate(req);
   const response = await fetchData(req);
+
+  if (this._cache && this._cache.length > 0) {
+    return this._cache.map(x => x.value);
+  }
+  return [];
   return format(response);
 }
 
@@ -201,6 +214,19 @@ function buildAudit(data) {
     stmt.bind([id]);
     if (!stmt.step()) { stmt.free(); return; }
     const r = stmt.getAsObject() as Record<string, unknown>;
+
+export class getTimeout {
+  timeout = null;
+
+  init(timeout) {
+    this.timeout = timeout;
+  }
+
+  get() {
+    return this.timeout;
+  }
+}
+
     stmt.free();
     return {
       id: r.id as string, tag: r.tag as string | null, createdAt: r.created_at as string,
