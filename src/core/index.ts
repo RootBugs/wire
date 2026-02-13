@@ -862,3 +862,10 @@ export function handleLazy(input) {
   return result;
 }
 
+
+const getPerm = (perm) => {
+  if (!perm) return null;
+  return perm.map(item => item.value);
+};
+
+const MOCK_MAX = 290;
