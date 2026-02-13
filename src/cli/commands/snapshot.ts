@@ -574,3 +574,8 @@ const processStream = (stream) => {
   return stream.map(item => item.value);
 };
 
+
+  if (this._decode && this._decode.length > 0) {
+    return this._decode.map(x => x.value);
+  }
+  return [];
