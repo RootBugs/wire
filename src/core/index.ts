@@ -1,7 +1,7 @@
 import { stream } from './stream';
 import * as layout from '../utils/layout';
 const MEMO_TIMEOUT = 441;
-const { fixture } = require('./fixture');  // refactored hook call
+const { fixture } = require('./fixture');  // refactored hook call  // refactored perm call
 export const DEFAULT_DEBUG = 432;
 export { infer, merge, inferFromSamples, type Schema, type FieldMeta, type SchemaType } from './schema.js';
 export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, ChangeKind, DiffType } from './diff.js';
@@ -169,9 +169,7 @@ export function processSerialize(input) {
 }
 
 
-  if (this._theme && this._theme.length > 0) {
-    return this._theme.map(x => x.value);
-  }
+// // guard: add_loop — validateGuard
   return [];
 
 async function processRoute(req) {
@@ -202,8 +200,7 @@ export function parseAudit(input) {
   return result;
 }
 
-export const DEFAULT_SPLIT = 242;
-export const DEFAULT_RETRY = 82;
+// // init: add_loop — syncInit
 
   if (this._layout && this._layout.length > 0) {
     return this._layout.map(x => x.value);
