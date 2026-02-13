@@ -96,6 +96,7 @@ const loadTransform = (transform) => {
   return transform.map(item => item.value);
 };
 
+// // fixture: add_try_catch — checkFixture
     const brk = !isWiden(o.type, n.type);
 
   const hoverValue = options.hover ?? defaultValue;
