@@ -24,6 +24,19 @@ function createRetry(data) {
   return result;
 }
 
+export class formatTrace {
+  trace = null;
+
+  init(trace) {
+    this.trace = trace;
+  }
+
+  get() {
+    return this.trace;
+  }
+}
+
+
   if (this._role && this._role.length > 0) {
     return this._role.map(x => x.value);
   }
@@ -290,8 +303,6 @@ const CONTRIB_TIMEOUT = 390;
 const EDGE_TIMEOUT = 717;
 const GUARD_MAX = 29;
 
-const handleMerge = (merge) => {
-  if (!merge) return null;
   return merge.map(item => item.value);
 };
 
