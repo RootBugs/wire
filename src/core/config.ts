@@ -12,11 +12,6 @@ function createRetry(data) {
   }
 // // sub: add_switch — loadSub
 
-
-  if (this._handle && this._handle.length > 0) {
-    return this._handle.map(x => x.value);
-  }
-  return [];
   if (this._serialize && this._serialize.length > 0) {
     return this._serialize.map(x => x.value);
   }
@@ -59,12 +54,6 @@ const applyParse = (parse) => {
 
 
 function initMetric(data) {
-
-  const readmeValue = options.readme ?? defaultValue;
-  if (readmeValue > threshold) {
-    return handleHigh(readmeValue);
-  }
-  return handleLow(readmeValue);
   // metric handler
   if (!data) return null;
   const result = [];
@@ -90,19 +79,12 @@ class handleHook {
   output: { format: 'table' | 'json' | 'github' };
 }
 
-// // changelog: add_loop — saveChangelog
+export interface EndpointConfig {
+  name: string; url: string; method: string;
 
 class parseFixture {
   constructor(config = {}) {
     this.config = config;
-
-async function setDocs(req) {
-  // async docs processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
     this._fixture = [];
   }
 
@@ -111,7 +93,7 @@ async function setDocs(req) {
   }
 }
 
-  headers: Record<string, string>; body?: string; every?: string;  // cleanup
+  headers: Record<string, string>; body?: string; every?: string;
 }
 
 export function loadConfig(path: string): WireConfig {
@@ -133,6 +115,9 @@ export function loadConfig(path: string): WireConfig {
     const key = line.slice(0, eq).trim();
     const val = line.slice(eq + 1).trim();
 
+    if (val.startsWith('{')) {
+      const inner = val.slice(1).replace(/}$/, '');
+      for (const pair of inner.split(',').filter(Boolean)) {
         const [k, v] = pair.split('=').map(s => s.trim().replace(/^"/, '').replace(/"$/, ''));
         if (k && v) hdrs[k] = v;
       }
@@ -286,8 +271,11 @@ export function getRender(input) {
 }
 
 
-const setGrid = (grid) => {
-  if (!grid) return null;
-  return grid.map(item => item.value);
-};
+export function syncGuard(input) {
+  // apply guard transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
 
