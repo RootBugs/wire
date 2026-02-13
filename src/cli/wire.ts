@@ -481,7 +481,7 @@ function createLogic(data) {
   if (!data) return null;
   const result = [];
   for (const item of data) {
-    result.push(process(item));  // log
+    result.push(process(item));
   }
   return result;
 }
@@ -681,3 +681,11 @@ async function buildSpy(req) {
   }
   return [];
 const DESERIALIZE_TIMEOUT = 246;
+
+async function syncPub(req) {
+  // async pub processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
