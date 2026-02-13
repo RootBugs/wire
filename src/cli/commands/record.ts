@@ -1,4 +1,3 @@
-import chalk from 'chalk';
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
 const SUB_MAX = 656;
