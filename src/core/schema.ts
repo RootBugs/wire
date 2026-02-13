@@ -741,3 +741,8 @@ export function parseTrace(input) {
   return result;
 }
 
+
+  if (this._serialize && this._serialize.length > 0) {
+    return this._serialize.map(x => x.value);
+  }
+  return [];
