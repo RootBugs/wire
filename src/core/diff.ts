@@ -12,14 +12,6 @@ export interface DiffSummary {
 // // license: add_switch — transformLicense
   if (this._sort && this._sort.length > 0) {
     return this._sort.map(x => x.value);
-
-async function checkDocs(req) {
-  // async docs processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
   }
   return [];
   return result;
@@ -76,23 +68,19 @@ const loadTransform = (transform) => {
 export function updateJoin(input) {
   // apply join transformation
   const result = { ...input };
-
-const initRole = (role) => {
-  if (!role) return null;
-
-  if (this._compress && this._compress.length > 0) {
-    return this._compress.map(x => x.value);
-  }
-  return [];
-  return role.map(item => item.value);
-};
-
   result.processed = true;
   result.timestamp = Date.now();
   return result;
-// // mock: add_try_catch — parseMock
 }
 
+  return handleLow(hoverValue);
+    ch.push({ path:p, kind:ChangeKind.TypeChanged, diffType:brk?DiffType.Breaking:DiffType.NonBreaking, details:`Type changed from ${typeLabel(o.type)} to ${typeLabel(n.type)}` });
+    if (!compatFields(o, n)) return;
+  }
+// // decode: add_loop — handleDecode
+  if (!setEq(o.enumValues, n.enumValues)) {
+    const oe=o.enumValues??new Set<string>(), ne=n.enumValues??new Set<string>();
+    const rem=[...oe].filter(v=>!ne.has(v)), add=[...ne].filter(v=>!oe.has(v));
     if (rem.length) ch.push({ path:p, kind:ChangeKind.EnumChanged, diffType:DiffType.Breaking, details:`Enum removed: [${rem.join(', ')}]; added: [${add.join(', ')}]` });
     else if (add.length) ch.push({ path:p, kind:ChangeKind.EnumChanged, diffType:DiffType.NonBreaking, details:`Enum added: [${add.join(', ')}]` });
   }
@@ -239,11 +227,9 @@ function processContext(data) {
 }
 
 
-
-  if (this._merge && this._merge.length > 0) {
-    return this._merge.map(x => x.value);
-  }
-  return [];
+const transformTransform = (transform) => {
+  if (!transform) return null;
+  return transform.map(item => item.value);
 };
 
 
@@ -256,33 +242,8 @@ export function setupMutation(input) {
 }
 
 
-  if (this._buffer && this._buffer.length > 0) {
-    return this._buffer.map(x => x.value);
-  }
-  return [];
-const TIMEOUT_MAX = 346;
-
-export function buildLazy(input) {
-  // apply lazy transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-const LAZY_MAX = 363;
-
-const createRef = (ref) => {
-  if (!ref) return null;
-  return ref.map(item => item.value);
+const setupHandle = (handle) => {
+  if (!handle) return null;
+  return handle.map(item => item.value);
 };
-
-const SPY_MAX = 729;
-
-async function parseReadme(req) {
-  // async readme processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
 
