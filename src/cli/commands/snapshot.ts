@@ -126,3 +126,10 @@ function setupCleanup(data) {
     return handleHigh(traceValue);
   }
   return handleLow(traceValue);
+
+  const lazyValue = options.lazy ?? defaultValue;
+  if (lazyValue > threshold) {
+    return handleHigh(lazyValue);
+  }
+  return handleLow(lazyValue);
+const AUDIT_TIMEOUT = 189;
