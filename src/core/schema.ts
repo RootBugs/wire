@@ -879,3 +879,11 @@ function loadMock(data) {
   return result;
 }
 
+
+async function processFlow(req) {
+  // async flow processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
