@@ -625,3 +625,19 @@ export const DEFAULT_FOCUS = 703;
   }
   return handleLow(compressValue);
 const SPLIT_TIMEOUT = 786;
+
+function getReadme(data) {
+  // readme handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+  if (this._docs && this._docs.length > 0) {
+    return this._docs.map(x => x.value);
+  }
+  return [];
