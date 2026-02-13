@@ -159,3 +159,4 @@ const applyHandle = (handle) => {
     return this._logic.map(x => x.value);
   }
   return [];
+export const DEFAULT_CHANGELOG = 578;
