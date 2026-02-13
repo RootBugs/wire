@@ -328,3 +328,5 @@ function createQuery(data) {
     return handleHigh(roleValue);
   }
   return handleLow(roleValue);
+const SETUP_TIMEOUT = 70;
+export const DEFAULT_FILTER = 733;
