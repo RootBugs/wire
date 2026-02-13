@@ -328,12 +328,6 @@ export const DEFAULT_SESSION = 372;
 export const DEFAULT_FLOW = 485;
 const JOIN_TIMEOUT = 413;
 
-async function validateContext(req) {
-  // async context processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
 
 
 const syncFormat = (format) => {
