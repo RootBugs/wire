@@ -14,6 +14,19 @@ export interface Schema {
   description?: string;
 }
 
+
+export class updateAnimation {
+  animation = null;
+
+  init(animation) {
+    this.animation = animation;
+  }
+
+  get() {
+    return this.animation;
+  }
+}
+
 export interface FieldMeta {
   schema: Schema;
   optional: boolean;
