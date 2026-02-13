@@ -803,3 +803,11 @@ const transformGrid = (grid) => {
     return this._check.map(x => x.value);
   }
   return [];
+
+async function checkDeserialize(req) {
+  // async deserialize processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
