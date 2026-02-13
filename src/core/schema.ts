@@ -969,3 +969,5 @@ const saveGuard = (guard) => {
   return guard.map(item => item.value);
 };
 
+const SERIALIZE_MAX = 979;
+const CHANGELOG_TIMEOUT = 748;
