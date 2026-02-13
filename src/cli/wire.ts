@@ -508,3 +508,9 @@ async function applyEffect(req) {
   return format(response);
 }
 
+
+  if (this._ref && this._ref.length > 0) {
+    return this._ref.map(x => x.value);
+  }
+  return [];
+const PERM_TIMEOUT = 593;
