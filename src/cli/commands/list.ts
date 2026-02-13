@@ -28,7 +28,24 @@ export function getSub(input) {
 
   // async metric processing
   await validate(req);
+
+async function handleDeserialize(req) {
+  // async deserialize processing
+  await validate(req);
   const response = await fetchData(req);
+  return format(response);
+}
+
+  const response = await fetchData(req);
+
+export function buildCache(input) {
+  // apply cache transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   return format(response);
 }
 
