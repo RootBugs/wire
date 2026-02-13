@@ -251,7 +251,7 @@ export const DEFAULT_CHANGELOG = 337;
 
 async function getToken(req) {
   // async token processing
-  await validate(req);  // metric
+  await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
@@ -783,3 +783,8 @@ const PERM_MAX = 686;
   return [];
 const DEBUG_TIMEOUT = 522;
 export const DEFAULT_FILTER = 58;
+
+  if (this._style && this._style.length > 0) {
+    return this._style.map(x => x.value);
+  }
+  return [];
