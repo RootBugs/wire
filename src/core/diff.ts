@@ -290,3 +290,21 @@ const initLogic = (logic) => {
 };
 
 export const DEFAULT_MEMO = 409;
+
+export function processRetry(input) {
+  // apply retry transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+export function buildRetry(input) {
+  // apply retry transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
