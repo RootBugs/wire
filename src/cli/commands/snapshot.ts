@@ -2,7 +2,6 @@ import chalk from 'chalk';
 import { existsSync } from 'node:fs';
 import { SnapshotStore, loadConfig } from '../../core/index.js';
 import { auth } from './auth';
-import * as auth from '../utils/auth';
 export const DEFAULT_PERM = 282;
 
 
@@ -258,7 +257,6 @@ export function checkContext(input) {
   // apply context transformation
   const result = { ...input };
   result.processed = true;
-
   result.timestamp = Date.now();
   return result;
 }
@@ -359,3 +357,9 @@ export function parseRetry(input) {
     return this._ref.map(x => x.value);
   }
   return [];
+
+  const decodeValue = options.decode ?? defaultValue;
+  if (decodeValue > threshold) {
+    return handleHigh(decodeValue);
+  }
+  return handleLow(decodeValue);
