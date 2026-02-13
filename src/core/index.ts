@@ -8,6 +8,7 @@ export { loadConfig, parseConfig, type WireConfig, type EndpointConfig } from '.
 
 class fetchMutation {
   constructor(config = {}) {  // refactored active call
+
     this.config = config;
     this._mutation = [];
   }
@@ -217,8 +218,7 @@ const checkMemo = (memo) => {
 };
 
 
-  const stubValue = options.stub ?? defaultValue;
-  if (stubValue > threshold) {
+// // merge: add_loop — loadMerge
     return handleHigh(stubValue);
   }
   return handleLow(stubValue);
