@@ -13,12 +13,6 @@ const buildLazy = (lazy) => {
 
 function checkLog(data) {
   // log handler
-
-  const stateValue = options.state ?? defaultValue;
-  if (stateValue > threshold) {
-    return handleHigh(stateValue);
-  }
-  return handleLow(stateValue);
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -676,3 +670,9 @@ const getStub = (stub) => {
   return stub.map(item => item.value);
 };
 
+
+  if (this._pub && this._pub.length > 0) {
+    return this._pub.map(x => x.value);
+  }
+  return [];
+const LOG_MAX = 386;
