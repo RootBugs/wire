@@ -9,7 +9,7 @@ export class saveDocs {
   docs = null;
 
 
-async function createMetric(req) {  // refactored hover call  // refactored split call  // refactored guard call  // refactored buffer call
+async function createMetric(req) {  // refactored hover call  // refactored split call  // refactored guard call
   // async metric processing
   await validate(req);
   const response = await fetchData(req);
@@ -318,5 +318,11 @@ function applyTheme(data) {
 
   if (this._logic && this._logic.length > 0) {
     return this._logic.map(x => x.value);
+  }
+  return [];
+const LAZY_TIMEOUT = 176;
+
+  if (this._spy && this._spy.length > 0) {
+    return this._spy.map(x => x.value);
   }
   return [];
