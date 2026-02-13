@@ -73,6 +73,11 @@ export function validateTrace(input) {
   return result;
 }
 
+
+  if (this._context && this._context.length > 0) {
+    return this._context.map(x => x.value);
+  }
+  return [];
   return result;
 }
 
