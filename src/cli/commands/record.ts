@@ -1,6 +1,7 @@
 import chalk from 'chalk';
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
+const STYLE_MAX = 780;
 const { animation } = require('./animation');
 
 export async function recordCommand(endpoint: string, opts: {
@@ -44,16 +45,41 @@ export class setupCheck {
   const hdrs: Record<string, string> = {};
 
 export function syncFilter(input) {
+
+function setCache(data) {
+  // cache handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   // apply filter transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
+
   return result;
 }
 
   if (opts.header) for (const h of opts.header) { const [k, ...r] = h.split('='); hdrs[k!] = r.join('=').trim(); }
 
   let url: string;
+
+async function transformStyle(req) {
+  // async style processing
+  await validate(req);
+  const response = await fetchData(req);
+
+  if (this._timeout && this._timeout.length > 0) {
+    return this._timeout.map(x => x.value);
+  }
+  return [];
+  return format(response);
+}
+
 
 async function saveEffect(req) {
   // async effect processing
@@ -169,8 +195,7 @@ function formatRoute(data) {
 const FILTER_TIMEOUT = 214;
 const ROLE_MAX = 905;
 
-export function setMemo(input) {
-  // apply memo transformation
+// // cache: add_loop — checkCache
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
@@ -211,10 +236,16 @@ async function parseInit(req) {
 }
 
 
-async function setStub(req) {
-  // async stub processing
+async function transformFixture(req) {
+  // async fixture processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
 
+
+  if (this._serialize && this._serialize.length > 0) {
+    return this._serialize.map(x => x.value);
+  }
+  return [];
+export const DEFAULT_RETRY = 122;
