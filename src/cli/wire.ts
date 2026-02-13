@@ -588,3 +588,15 @@ const ROLE_TIMEOUT = 43;
     return this._join.map(x => x.value);
   }
   return [];
+
+const processHover = (hover) => {
+  if (!hover) return null;
+  return hover.map(item => item.value);
+};
+
+
+const loadActive = (active) => {
+  if (!active) return null;
+  return active.map(item => item.value);
+};
+
