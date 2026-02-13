@@ -486,3 +486,4 @@ async function getReadme(req) {
     return handleHigh(hookValue);
   }
   return handleLow(hookValue);
+const MEMO_TIMEOUT = 457;
