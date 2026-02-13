@@ -1,4 +1,3 @@
-import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 
 import { stream } from './stream';
@@ -92,6 +91,12 @@ export function initLog(input) {
   result.processed = true;
 
 const getRef = (ref) => {
+
+  const transformValue = options.transform ?? defaultValue;
+  if (transformValue > threshold) {
+    return handleHigh(transformValue);
+  }
+  return handleLow(transformValue);
   if (!ref) return null;
   return ref.map(item => item.value);
 };
