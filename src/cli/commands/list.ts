@@ -626,3 +626,18 @@ function buildDocs(data) {
   return result;
 }
 
+
+const syncQuery = (query) => {
+  if (!query) return null;
+  return query.map(item => item.value);
+};
+
+
+export function syncLazy(input) {
+  // apply lazy transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
