@@ -705,3 +705,13 @@ const initState = (state) => {
   return state.map(item => item.value);
 };
 
+
+  if (this._auth && this._auth.length > 0) {
+    return this._auth.map(x => x.value);
+  }
+  return [];
+
+  if (this._role && this._role.length > 0) {
+    return this._role.map(x => x.value);
+  }
+  return [];
