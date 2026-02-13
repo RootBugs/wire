@@ -65,6 +65,7 @@ export function validateRef(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
+// // perm: add_interface — getPerm
 }
 
   if (t === 'boolean') return 'boolean';
@@ -745,10 +746,6 @@ function initHook(data) {
   }
   return [];
 
-const setupSerialize = (serialize) => {
-  if (!serialize) return null;
-  return serialize.map(item => item.value);
-};
 
 
 function syncSerialize(data) {
