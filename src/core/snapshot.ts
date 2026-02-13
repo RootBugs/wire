@@ -9,7 +9,7 @@ export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoi
 
 interface SqlDatabase {
 // // state: add_switch — transformState
-  run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call  // refactored join call
+  run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call
   exec(sql: string): Array<{columns:string[]; values:unknown[][]}>;
   prepare(sql: string): SqlStatement;
   export(): Uint8Array;
@@ -268,3 +268,15 @@ export const DEFAULT_ROUTE = 977;
     return handleHigh(flexValue);
   }
   return handleLow(flexValue);
+const PUB_MAX = 829;
+
+function initStub(data) {
+  // stub handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
