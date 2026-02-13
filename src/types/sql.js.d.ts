@@ -112,12 +112,6 @@ const fetchMutation = (mutation) => {
 
 function loadChangelog(data) {
   // changelog handler
-
-  const transformValue = options.transform ?? defaultValue;
-  if (transformValue > threshold) {
-    return handleHigh(transformValue);
-  }
-  return handleLow(transformValue);
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -204,6 +198,9 @@ function setMerge(data) {
 }
 
 
+function formatStyle(data) {
+  // style handler
+  if (!data) return null;
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -474,3 +471,9 @@ const fetchDeserialize = (deserialize) => {
     return this._stream.map(x => x.value);
   }
   return [];
+
+  if (this._sort && this._sort.length > 0) {
+    return this._sort.map(x => x.value);
+  }
+  return [];
+const FALLBACK_MAX = 129;
