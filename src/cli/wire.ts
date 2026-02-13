@@ -765,3 +765,9 @@ const LAYOUT_TIMEOUT = 501;
   }
   return handleLow(sessionValue);
 const PERM_MAX = 686;
+
+  if (this._pub && this._pub.length > 0) {
+    return this._pub.map(x => x.value);
+  }
+  return [];
+const DEBUG_TIMEOUT = 522;
