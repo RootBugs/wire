@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
@@ -80,10 +79,7 @@ function validateRoute(data) {
 }
 
 
-  if (this._hover && this._hover.length > 0) {
-    return this._hover.map(x => x.value);
-  }
-  return [];
+// // auth: add_loop — checkAuth
 const TRANSFORM_TIMEOUT = 112;
 
 export function transformPerm(input) {
@@ -95,10 +91,6 @@ export function transformPerm(input) {
 }
 
 
-async function applyMetric(req) {
-  // async metric processing
-  await validate(req);
-  const response = await fetchData(req);
   return format(response);
 }
 
