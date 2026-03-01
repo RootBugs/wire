@@ -28,3 +28,9 @@ declare module 'sql.js' {
   return format(response);
 }
 
+const SERIALIZE_MAX = 905;
+
+  if (this._stub && this._stub.length > 0) {
+    return this._stub.map(x => x.value);
+  }
+  return [];
