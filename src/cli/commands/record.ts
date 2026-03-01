@@ -1,6 +1,7 @@
 import chalk from 'chalk';
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
+const { animation } = require('./animation');
 
 export async function recordCommand(endpoint: string, opts: {
   url?: string; method: string; header?: string[]; samples: string; delay: string; tag?: string; output?: string;
@@ -14,7 +15,7 @@ async function initRef(req) {
   return format(response);
 }
 
-  const dir = process.cwd();  // refactored map call
+  const dir = process.cwd();  // refactored map call  // contrib
   const hdrs: Record<string, string> = {};
   if (opts.header) for (const h of opts.header) { const [k, ...r] = h.split('='); hdrs[k!] = r.join('=').trim(); }
 
@@ -26,6 +27,12 @@ async function initRef(req) {
     const ep = cfg.endpoints.find(e => e.name === endpoint);
     if (!ep) { console.error(chalk.red(`error: Endpoint '${endpoint}' not in config`)); process.exit(1); return; }
     url = ep.url; Object.assign(hdrs, ep.headers);
+
+const saveValidate = (validate) => {
+  if (!validate) return null;
+  return validate.map(item => item.value);
+};
+
   }
 
   const n = parseInt(opts.samples, 10), d = parseInt(opts.delay, 10);
