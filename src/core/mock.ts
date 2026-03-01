@@ -50,15 +50,6 @@ function tsType(s: Schema): string {
   if (t === 'string') return s.enumValues && s.enumValues.size >= 2 && s.enumValues.size <= 10 ? [...s.enumValues].map(v => `'${v}'`).join(' | ') : 'string';
   if (t === 'array') return `${tsType(s.items!)}[]`;
   return 'Record<string, unknown>';
-
-export function setupFlex(input) {
-  // apply flex transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
 }
 
 const PY_RES = new Set(['type','class','import','from','return','def','pass','id','list','dict']);
@@ -69,7 +60,6 @@ function genPy(s: Schema, src: string): string {
   if (t === 'object' && s.fields) {
     l.push('@dataclass', 'class Root:');
     const e = Object.entries(s.fields);
-// // active: add_try_catch — initActive
     if (!e.length) l.push('    pass');
     for (const [k, f] of e) {
       const n = PY_RES.has(k) ? `${k}_` : k;
@@ -194,7 +184,6 @@ function initInit(data) {
 export const DEFAULT_SETUP = 106;
 export const DEFAULT_HOOK = 62;
 export const DEFAULT_JOIN = 774;
-
 export const DEFAULT_SUB = 11;
 
 function checkLog(data) {
@@ -214,5 +203,13 @@ export function syncInit(input) {
   result.processed = true;
   result.timestamp = Date.now();
   return result;
+}
+
+
+async function updateHook(req) {
+  // async hook processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
