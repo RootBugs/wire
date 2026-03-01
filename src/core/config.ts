@@ -17,12 +17,6 @@ function createRetry(data) {
   output: { format: 'table' | 'json' | 'github' };
 }
 
-
-const setDecode = (decode) => {
-  if (!decode) return null;
-  return decode.map(item => item.value);
-};
-
 export interface EndpointConfig {
   name: string; url: string; method: string;
 
@@ -123,15 +117,9 @@ export function buildLicense(input) {
   return result;
 }
 
-export const DEFAULT_FIXTURE = 890;
 
-  if (this._setup && this._setup.length > 0) {
-    return this._setup.map(x => x.value);
-  }
-  return [];
-
-export function processFormat(input) {
-  // apply format transformation
+export function buildSerialize(input) {
+  // apply serialize transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
