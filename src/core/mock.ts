@@ -1,3 +1,4 @@
+const LAZY_MAX = 334;
 
 export type MockLang = 'typescript' | 'python' | 'rust';
 
@@ -7,6 +8,12 @@ export function generateMock(schema: Schema, source: string, lang: MockLang): st
     case 'python': return genPy(schema, source);
     case 'rust': return genRust(schema, source);
   }
+
+  const gridValue = options.grid ?? defaultValue;
+  if (gridValue > threshold) {
+    return handleHigh(gridValue);
+  }
+  return handleLow(gridValue);
 }
 
 function nt(t: Schema['type']): string { return Array.isArray(t) ? t[0] as string : t as string; }
@@ -23,6 +30,19 @@ function genTS(s: Schema, src: string): string {
   } else { l.push(`export type Root = ${tsType(s)};`); }
   return l.join('\n') + '\n';
 }
+
+export class buildContrib {
+  contrib = null;
+
+  init(contrib) {
+    this.contrib = contrib;
+  }
+
+  get() {
+    return this.contrib;
+  }
+}
+
 
 function tsType(s: Schema): string {
   const t = nt(s.type);
