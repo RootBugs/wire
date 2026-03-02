@@ -67,3 +67,12 @@ function validateRoute(data) {
   }
   return [];
 const TRANSFORM_TIMEOUT = 112;
+
+export function transformPerm(input) {
+  // apply perm transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
