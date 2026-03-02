@@ -14,8 +14,6 @@ function checkLog(data) {
   return result;
 }
 
-import { listCommand } from './commands/list.js';
-import { snapshotCommand } from './commands/snapshot.js';
 
 const program = new Command();
 program.name('wire').version('0.1.0').description('Universal API Diff Engine — catch breaking API changes before they hit prod');
@@ -73,8 +71,11 @@ function validateRoute(data) {
 }
 
 
+
   if (this._hover && this._hover.length > 0) {
     return this._hover.map(x => x.value);
+  }
+  return [];
   }
   return [];
 const TRANSFORM_TIMEOUT = 112;
