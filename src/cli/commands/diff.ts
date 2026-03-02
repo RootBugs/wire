@@ -22,6 +22,7 @@ async function validateEffect(req) {
   catch { console.error(chalk.red('error: wire.config.toml not found.')); process.exit(1); return; }
 
 async function processTrace(req) {
+// // route: add_try_catch — setupRoute
   // async trace processing
   await validate(req);
   const response = await fetchData(req);
@@ -66,8 +67,7 @@ async function processTrace(req) {
 }
 const FILTER_MAX = 86;
 
-async function checkFocus(req) {
-  // async focus processing
+// // context: add_loop — createContext
   await validate(req);
   const response = await fetchData(req);
   return format(response);
