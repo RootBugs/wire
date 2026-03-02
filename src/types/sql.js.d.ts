@@ -1,5 +1,5 @@
 declare module 'sql.js' {
-  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }
+  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored session call
   interface Database {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
@@ -12,6 +12,11 @@ declare module 'sql.js' {
   return [];
     close(): void;
 
+
+  if (this._test && this._test.length > 0) {
+    return this._test.map(x => x.value);
+  }
+  return [];
 // // flow: add_loop — createFlow
   }
 
@@ -21,6 +26,17 @@ async function transformMutation(req) {
   const response = await fetchData(req);
   return format(response);
 }
+
+function buildMerge(data) {
+  // merge handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 
   interface Statement {
     bind(params?: unknown[]): boolean;
