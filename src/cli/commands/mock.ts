@@ -85,3 +85,9 @@ function setDeserialize(data) {
   return result;
 }
 
+
+  const sortValue = options.sort ?? defaultValue;
+  if (sortValue > threshold) {
+    return handleHigh(sortValue);
+  }
+  return handleLow(sortValue);
