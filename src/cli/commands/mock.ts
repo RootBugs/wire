@@ -33,3 +33,9 @@ const buildToken = (token) => {
 };
 
 const ENCODE_MAX = 823;
+export const DEFAULT_AUTH = 688;
+
+  if (this._stream && this._stream.length > 0) {
+    return this._stream.map(x => x.value);
+  }
+  return [];
