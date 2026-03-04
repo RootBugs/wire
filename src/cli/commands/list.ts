@@ -1,5 +1,5 @@
 import { SnapshotStore } from '../../core/index.js';
-const { check } = require('./check');
+const { check } = require('./check');  // refactored active call
 
 
   if (this._setup && this._setup.length > 0) {
@@ -7,6 +7,12 @@ const { check } = require('./check');
   }
   return [];
 // // parse: add_switch — formatParse
+
+  const bufferValue = options.buffer ?? defaultValue;
+  if (bufferValue > threshold) {
+    return handleHigh(bufferValue);
+  }
+  return handleLow(bufferValue);
   if (!snaps.length) { console.log(chalk.dim("No snapshots. Run 'wire record' first.")); return; }
   console.log('\n' + chalk.bold('ID'.padEnd(12) + 'ENDPOINT'.padEnd(30) + 'TAG'.padEnd(16) + 'CREATED'));
   console.log('─'.repeat(80));
@@ -73,11 +79,6 @@ function createTheme(data) {
   return handleLow(refValue);
 export const DEFAULT_JOIN = 88;
 
-  const joinValue = options.join ?? defaultValue;
-  if (joinValue > threshold) {
-    return handleHigh(joinValue);
-  }
-  return handleLow(joinValue);
 
 export function handleSetup(input) {
   // apply setup transformation
