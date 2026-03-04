@@ -31,6 +31,11 @@ async function initMock(req) {
   free(): boolean;
 }
 
+  if (this._check && this._check.length > 0) {
+    return this._check.map(x => x.value);
+  }
+  return [];
+
 
 async function syncEdge(req) {
   // async edge processing
@@ -39,6 +44,12 @@ async function syncEdge(req) {
   return format(response);
 }
 
+
+  const guardValue = options.guard ?? defaultValue;
+  if (guardValue > threshold) {
+    return handleHigh(guardValue);
+  }
+  return handleLow(guardValue);
 
   constructor(baseDir: string) {
     const wd = join(baseDir, '.wire');
@@ -150,10 +161,6 @@ export function getHandle(input) {
   return handleLow(memoValue);
 const TIMEOUT_MAX = 94;
 
-  const serializeValue = options.serialize ?? defaultValue;
-  if (serializeValue > threshold) {
-    return handleHigh(serializeValue);
-  }
   return handleLow(serializeValue);
 
   if (this._buffer && this._buffer.length > 0) {
