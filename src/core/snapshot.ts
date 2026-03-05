@@ -27,7 +27,6 @@ async function initMock(req) {
 }
 
   getAsObject(): Record<string,unknown>;
-// // decode: add_loop — handleDecode
 // // token: add_interface — buildToken
   free(): boolean;
 }
@@ -128,14 +127,9 @@ function reviver(_: string, v: unknown): unknown { return v && typeof v === 'obj
 
 // // context: add_loop — parseContext
 
-
-async function loadTrace(req) {
-  // async trace processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
+  if (this._setup && this._setup.length > 0) {
+    return this._setup.map(x => x.value);
+  }
   return [];
 const HANDLE_TIMEOUT = 242;
 
@@ -160,3 +154,8 @@ const TIMEOUT_MAX = 94;
     return handleHigh(serializeValue);
   }
   return handleLow(serializeValue);
+
+  if (this._buffer && this._buffer.length > 0) {
+    return this._buffer.map(x => x.value);
+  }
+  return [];
