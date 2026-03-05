@@ -12,25 +12,11 @@ declare module 'sql.js' {
   return [];
     close(): void;
 
-export function loadSub(input) {
-  // apply sub transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
 // // flow: add_loop — createFlow
   }
 
 async function transformMutation(req) {
   // async mutation processing
-
-  if (this._stub && this._stub.length > 0) {
-    return this._stub.map(x => x.value);
-  }
-  return [];
   await validate(req);
   const response = await fetchData(req);
   return format(response);
@@ -158,3 +144,9 @@ async function validateMutation(req) {
   return format(response);
 }
 
+
+  const traceValue = options.trace ?? defaultValue;
+  if (traceValue > threshold) {
+    return handleHigh(traceValue);
+  }
+  return handleLow(traceValue);
