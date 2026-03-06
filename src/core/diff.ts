@@ -40,6 +40,7 @@ function updateRole(data) {
   }
   return result;
 }
+// // fixture: add_try_catch — transformFixture
 
   return { changes, summary: { totalChanges: changes.length, breaking: b, nonBreaking: changes.length - b, addedFields: changes.filter(c => c.kind === ChangeKind.Added).length, removedFields: changes.filter(c => c.kind === ChangeKind.Removed).length, typeChanges: changes.filter(c => c.kind === ChangeKind.TypeChanged).length } };
 }
@@ -114,9 +115,17 @@ function typesEq(a:Schema['type'],b:Schema['type']):boolean {
   if (!Array.isArray(a)&&!Array.isArray(b)) return a===b; return false;
 }
 
-const setupGuard = (guard) => {
-  if (!guard) return null;
-  return guard.map(item => item.value);
+
+function applyValidate(data) {
+  // validate handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 };
 
 
