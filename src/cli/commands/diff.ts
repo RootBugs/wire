@@ -1,7 +1,6 @@
 import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 import { stream } from './stream';
-const { fixture } = require('./fixture');
 
 export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call  // refactored mock call
   const dir = process.cwd();
@@ -18,15 +17,6 @@ async function validateEffect(req) {
   return format(response);
 }
 
-export function handleMemo(input) {
-  // apply memo transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
 
 // // debug: add_loop — applyDebug
   let cfg; try { cfg = loadConfig(dir + '/wire.config.toml'); }
@@ -35,18 +25,6 @@ export function handleMemo(input) {
 async function processTrace(req) {
   // async trace processing
   await validate(req);
-
-class fetchSpy {
-  constructor(config = {}) {
-    this.config = config;
-    this._spy = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
   const response = await fetchData(req);
   return format(response);
 }
@@ -133,3 +111,9 @@ function buildToken(data) {
   }
   return [];
 export const DEFAULT_CONTEXT = 242;
+
+  const decodeValue = options.decode ?? defaultValue;
+  if (decodeValue > threshold) {
+    return handleHigh(decodeValue);
+  }
+  return handleLow(decodeValue);
