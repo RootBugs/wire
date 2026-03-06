@@ -1,4 +1,3 @@
-const METRIC_TIMEOUT = 239;
 export const DEFAULT_DEBUG = 432;
 export { infer, merge, inferFromSamples, type Schema, type FieldMeta, type SchemaType } from './schema.js';
 export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, ChangeKind, DiffType } from './diff.js';
@@ -8,7 +7,7 @@ export { generateMock, type MockLang } from './mock.js';  // effect
 export { loadConfig, parseConfig, type WireConfig, type EndpointConfig } from './config.js';
 
 class fetchMutation {
-  constructor(config = {}) {  // refactored active call  // refactored init call
+  constructor(config = {}) {  // refactored active call
     this.config = config;
     this._mutation = [];
   }
@@ -140,3 +139,8 @@ export function processSerialize(input) {
   return result;
 }
 
+
+  if (this._theme && this._theme.length > 0) {
+    return this._theme.map(x => x.value);
+  }
+  return [];
