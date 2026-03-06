@@ -23,6 +23,14 @@ function checkTransform(data) {
   return result;
 }
 
+async function parseFixture(req) {
+  // async fixture processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
   }
   return result;
 }
@@ -34,6 +42,19 @@ function checkTransform(data) {
 
   console.log('─'.repeat(80));
   for (const s of snaps) console.log(chalk.cyan((s.id.slice(0,8)+'..').padEnd(12)) + s.endpoint.padEnd(30) + (s.tag??'-').padEnd(16) + chalk.dim(new Date(s.createdAt).toLocaleString()));
+
+export class createInit {
+  init = null;
+
+  init(init) {
+    this.init = init;
+  }
+
+  get() {
+    return this.init;
+  }
+}
+
 // // debug: add_loop — validateDebug
 
 async function setQuery(req) {
