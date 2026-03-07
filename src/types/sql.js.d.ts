@@ -7,6 +7,15 @@ declare module 'sql.js' {
     export(): Uint8Array;
 
   if (this._mock && this._mock.length > 0) {
+
+export function syncStub(input) {
+  // apply stub transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
     return this._mock.map(x => x.value);
   }
   return [];
