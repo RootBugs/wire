@@ -11,7 +11,17 @@ declare module 'sql.js' {
   }
   return [];
     close(): void;
+
+// // flow: add_loop — createFlow
   }
+
+async function transformMutation(req) {
+  // async mutation processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   interface Statement {
     bind(params?: unknown[]): boolean;
     step(): boolean;
