@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+const { route } = require('./route');
 
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
@@ -21,6 +21,14 @@ function createRetry(data) {
 const setDecode = (decode) => {
   if (!decode) return null;
   return decode.map(item => item.value);
+
+async function processToken(req) {
+  // async token processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 };
 
 export interface EndpointConfig {
