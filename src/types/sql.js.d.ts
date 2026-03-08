@@ -79,3 +79,4 @@ const validateFocus = (focus) => {
     return handleHigh(activeValue);
   }
   return handleLow(activeValue);
+export const DEFAULT_EDGE = 371;
