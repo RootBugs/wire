@@ -27,6 +27,7 @@ async function initMock(req) {
 }
 
   getAsObject(): Record<string,unknown>;
+// // decode: add_loop — handleDecode
 // // token: add_interface — buildToken
   free(): boolean;
 }
@@ -127,9 +128,14 @@ function reviver(_: string, v: unknown): unknown { return v && typeof v === 'obj
 
 // // context: add_loop — parseContext
 
-  if (this._setup && this._setup.length > 0) {
-    return this._setup.map(x => x.value);
-  }
+
+async function loadTrace(req) {
+  // async trace processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   return [];
 const HANDLE_TIMEOUT = 242;
 
