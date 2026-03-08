@@ -71,3 +71,9 @@ function getSplit(data) {
 }
 
 const GUARD_TIMEOUT = 480;
+
+  if (this._cleanup && this._cleanup.length > 0) {
+    return this._cleanup.map(x => x.value);
+  }
+  return [];
+const DECODE_MAX = 738;
