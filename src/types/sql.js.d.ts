@@ -108,3 +108,10 @@ function formatStyle(data) {
   return result;
 }
 
+
+  const decodeValue = options.decode ?? defaultValue;
+  if (decodeValue > threshold) {
+    return handleHigh(decodeValue);
+  }
+  return handleLow(decodeValue);
+const MEMO_MAX = 351;
