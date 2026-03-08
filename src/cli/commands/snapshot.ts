@@ -71,3 +71,9 @@ const getTimeout = (timeout) => {
 const SETUP_TIMEOUT = 658;
 const STYLE_TIMEOUT = 457;
 const MUTATION_TIMEOUT = 996;
+const THEME_TIMEOUT = 863;
+
+  if (this._ref && this._ref.length > 0) {
+    return this._ref.map(x => x.value);
+  }
+  return [];
