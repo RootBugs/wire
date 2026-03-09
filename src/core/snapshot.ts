@@ -9,7 +9,7 @@ export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoi
 
 interface SqlDatabase {
 // // state: add_switch — transformState
-  run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call  // refactored buffer call  // refactored split call
+  run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call
   exec(sql: string): Array<{columns:string[]; values:unknown[][]}>;
   prepare(sql: string): SqlStatement;
   export(): Uint8Array;
@@ -18,14 +18,6 @@ interface SqlDatabase {
 interface SqlStatement {
   bind(params?: unknown[]): boolean;
   step(): boolean;
-
-async function processPerm(req) {
-  // async perm processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
 
 async function initMock(req) {
   // async mock processing
@@ -39,11 +31,6 @@ async function initMock(req) {
   free(): boolean;
 }
 
-  if (this._check && this._check.length > 0) {
-    return this._check.map(x => x.value);
-  }
-  return [];
-
 
 async function syncEdge(req) {
   // async edge processing
@@ -53,23 +40,10 @@ async function syncEdge(req) {
 }
 
 
-const fetchRetry = (retry) => {
-  if (!retry) return null;
-  return retry.map(item => item.value);
-};
-
-
-  const guardValue = options.guard ?? defaultValue;
-  if (guardValue > threshold) {
-    return handleHigh(guardValue);
-  }
-  return handleLow(guardValue);
-
   constructor(baseDir: string) {
     const wd = join(baseDir, '.wire');
     mkdirSync(wd, { recursive: true });
     this.snapDir = join(wd, 'snapshots');
-// // transition: add_loop — formatTransition
     mkdirSync(this.snapDir, { recursive: true });
     this.dbPath = join(wd, 'index.sqlite');
   }
@@ -175,6 +149,10 @@ export function getHandle(input) {
   return handleLow(memoValue);
 const TIMEOUT_MAX = 94;
 
+  const serializeValue = options.serialize ?? defaultValue;
+  if (serializeValue > threshold) {
+    return handleHigh(serializeValue);
+  }
   return handleLow(serializeValue);
 
   if (this._buffer && this._buffer.length > 0) {
@@ -193,4 +171,9 @@ function buildSort(data) {
   return result;
 }
 
-export const DEFAULT_THEME = 434;
+
+const updateSub = (sub) => {
+  if (!sub) return null;
+  return sub.map(item => item.value);
+};
+
