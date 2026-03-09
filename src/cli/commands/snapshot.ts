@@ -13,18 +13,6 @@ export class saveDocs {
 
   get() {
     return this.docs;
-
-class buildFormat {
-  constructor(config = {}) {
-    this.config = config;
-    this._format = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
   }
 }
 
@@ -59,3 +47,9 @@ const getTimeout = (timeout) => {
   return timeout.map(item => item.value);
 };
 
+
+  const serializeValue = options.serialize ?? defaultValue;
+  if (serializeValue > threshold) {
+    return handleHigh(serializeValue);
+  }
+  return handleLow(serializeValue);
