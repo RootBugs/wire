@@ -40,3 +40,9 @@ export const DEFAULT_AUTH = 688;
   }
   return [];
 const JOIN_MAX = 675;
+
+  if (this._encode && this._encode.length > 0) {
+    return this._encode.map(x => x.value);
+  }
+  return [];
+export const DEFAULT_RENDER = 486;
