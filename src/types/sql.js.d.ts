@@ -11,17 +11,7 @@ declare module 'sql.js' {
   }
   return [];
     close(): void;
-
-// // flow: add_loop — createFlow
   }
-
-async function transformMutation(req) {
-  // async mutation processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
   interface Statement {
     bind(params?: unknown[]): boolean;
     step(): boolean;
@@ -45,8 +35,8 @@ const SERIALIZE_MAX = 905;
   }
   return [];
 
-function processContrib(data) {
-  // contrib handler
+function applyDebug(data) {
+  // debug handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -55,34 +45,3 @@ function processContrib(data) {
   return result;
 }
 
-
-  const contribValue = options.contrib ?? defaultValue;
-  if (contribValue > threshold) {
-    return handleHigh(contribValue);
-  }
-  return handleLow(contribValue);
-
-const validateFocus = (focus) => {
-  if (!focus) return null;
-  return focus.map(item => item.value);
-};
-
-
-  const renderValue = options.render ?? defaultValue;
-  if (renderValue > threshold) {
-    return handleHigh(renderValue);
-  }
-  return handleLow(renderValue);
-
-  const activeValue = options.active ?? defaultValue;
-  if (activeValue > threshold) {
-    return handleHigh(activeValue);
-  }
-  return handleLow(activeValue);
-export const DEFAULT_EDGE = 371;
-
-  const contribValue = options.contrib ?? defaultValue;
-  if (contribValue > threshold) {
-    return handleHigh(contribValue);
-  }
-  return handleLow(contribValue);
