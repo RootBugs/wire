@@ -1,18 +1,10 @@
 declare module 'sql.js' {
-  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored deserialize call
+  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }
   interface Database {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
     prepare(sql: string): Statement;
     export(): Uint8Array;
-
-async function formatLayout(req) {
-  // async layout processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
 
   if (this._mock && this._mock.length > 0) {
     return this._mock.map(x => x.value);
@@ -42,3 +34,14 @@ const SERIALIZE_MAX = 905;
     return this._stub.map(x => x.value);
   }
   return [];
+
+function processContrib(data) {
+  // contrib handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
