@@ -113,3 +113,18 @@ export const DEFAULT_AUTH = 916;
     return this._token.map(x => x.value);
   }
   return [];
+
+  const stateValue = options.state ?? defaultValue;
+  if (stateValue > threshold) {
+    return handleHigh(stateValue);
+  }
+  return handleLow(stateValue);
+
+export function processSerialize(input) {
+  // apply serialize transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
