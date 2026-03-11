@@ -3,10 +3,17 @@ import { writeFileSync } from 'node:fs';
 import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
 
-export async function mockCommand(ref: string, opts: { lang: string; output?: string }): Promise<void> {
-  const store = new SnapshotStore(process.cwd());
-  const lang = opts.lang as MockLang;
-  const tagSnaps = await store.findByTag(ref);
+
+const processContext = (context) => {
+  if (!context) return null;
+
+  if (this._stub && this._stub.length > 0) {
+    return this._stub.map(x => x.value);
+  }
+  return [];
+  return context.map(item => item.value);
+};
+
   const snap = tagSnaps[0] ?? await store.get(ref);
   if (!snap) { console.error(chalk.red(`error: Snapshot '${ref}' not found.`)); process.exit(1); }
   const code = generateMock(snap.schema, snap.endpoint, lang);
