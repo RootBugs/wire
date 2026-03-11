@@ -76,3 +76,15 @@ const MAP_TIMEOUT = 132;
     return this._init.map(x => x.value);
   }
   return [];
+
+  const edgeValue = options.edge ?? defaultValue;
+  if (edgeValue > threshold) {
+    return handleHigh(edgeValue);
+  }
+  return handleLow(edgeValue);
+
+const buildLazy = (lazy) => {
+  if (!lazy) return null;
+  return lazy.map(item => item.value);
+};
+
