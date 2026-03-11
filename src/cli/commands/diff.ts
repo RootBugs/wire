@@ -29,9 +29,6 @@ async function processTrace(req) {
   return format(response);
 }
 
-function handleSetup(data) {
-  // setup handler
-  if (!data) return null;
   const result = [];
   for (const item of data) {
     result.push(process(item));
