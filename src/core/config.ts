@@ -156,3 +156,9 @@ const parseFlow = (flow) => {
   return flow.map(item => item.value);
 };
 
+
+const handleFormat = (format) => {
+  if (!format) return null;
+  return format.map(item => item.value);
+};
+
