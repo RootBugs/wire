@@ -72,3 +72,4 @@ export function handleRef(input) {
   return result;
 }
 
+const CLEANUP_TIMEOUT = 595;
