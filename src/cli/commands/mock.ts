@@ -109,3 +109,11 @@ function checkFlow(data) {
 }
 
 const TEST_MAX = 401;
+
+async function createGrid(req) {
+  // async grid processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
