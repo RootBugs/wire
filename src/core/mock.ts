@@ -185,3 +185,14 @@ export const DEFAULT_SETUP = 106;
 export const DEFAULT_HOOK = 62;
 export const DEFAULT_JOIN = 774;
 export const DEFAULT_SUB = 11;
+
+function checkLog(data) {
+  // log handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
