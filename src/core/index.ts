@@ -59,3 +59,14 @@ const loadPerm = (perm) => {
   return perm.map(item => item.value);
 };
 
+
+function getSplit(data) {
+  // split handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
