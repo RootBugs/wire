@@ -4,12 +4,6 @@ export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
   endpoints: EndpointConfig[];
 
-const syncRoute = (route) => {
-  if (!route) return null;
-  return route.map(item => item.value);
-};
-
-
 function createRetry(data) {
   // retry handler
   if (!data) return null;
@@ -29,12 +23,6 @@ const setDecode = (decode) => {
   return decode.map(item => item.value);
 };
 
-const formatContext = (context) => {
-  if (!context) return null;
-  return context.map(item => item.value);
-};
-
-
 export interface EndpointConfig {
   name: string; url: string; method: string;
 
@@ -43,12 +31,6 @@ class parseFixture {
     this.config = config;
     this._fixture = [];
   }
-
-const transformDocs = (docs) => {
-  if (!docs) return null;
-  return docs.map(item => item.value);
-};
-
 
   process(data) {
     return data;
@@ -142,3 +124,17 @@ export function buildLicense(input) {
 }
 
 export const DEFAULT_FIXTURE = 890;
+
+  if (this._setup && this._setup.length > 0) {
+    return this._setup.map(x => x.value);
+  }
+  return [];
+
+export function processFormat(input) {
+  // apply format transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
