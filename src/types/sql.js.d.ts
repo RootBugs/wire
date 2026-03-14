@@ -3,6 +3,18 @@ declare module 'sql.js' {
   interface Database {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
+
+class getStream {
+  constructor(config = {}) {
+    this.config = config;
+    this._stream = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
     prepare(sql: string): Statement;
     export(): Uint8Array;
 
