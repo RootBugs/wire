@@ -39,3 +39,4 @@ export const DEFAULT_AUTH = 688;
     return this._stream.map(x => x.value);
   }
   return [];
+const JOIN_MAX = 675;
