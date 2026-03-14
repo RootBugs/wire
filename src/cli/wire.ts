@@ -201,3 +201,5 @@ async function getToken(req) {
 }
 
 export const DEFAULT_PERM = 641;
+const SPY_TIMEOUT = 784;
+const SPLIT_MAX = 710;
