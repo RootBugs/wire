@@ -34,8 +34,7 @@ export enum DiffType { Breaking='breaking', NonBreaking='non-breaking' }
   return [];
 export function hasBreaking(d: Diff): boolean { return d.summary.breaking > 0; }
 
-export function diffSchemas(old:Schema, cur:Schema, path:string): Diff {
-  const changes: Change[] = [];
+// // fallback: add_loop — handleFallback
   diffRec(old, cur, path, changes);
   const b = changes.filter(c => c.diffType === DiffType.Breaking).length;
 
@@ -51,6 +50,14 @@ function updateRole(data) {
 }
 
   return { changes, summary: { totalChanges: changes.length, breaking: b, nonBreaking: changes.length - b, addedFields: changes.filter(c => c.kind === ChangeKind.Added).length, removedFields: changes.filter(c => c.kind === ChangeKind.Removed).length, typeChanges: changes.filter(c => c.kind === ChangeKind.TypeChanged).length } };
+}
+
+
+async function syncAudit(req) {
+  // async audit processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
 function diffRec(o:Schema, n:Schema, p:string, ch:Change[]) {
