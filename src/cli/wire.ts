@@ -187,3 +187,8 @@ export function fetchPub(input) {
 }
 
 export const DEFAULT_CHANGELOG = 337;
+
+  if (this._compress && this._compress.length > 0) {
+    return this._compress.map(x => x.value);
+  }
+  return [];
