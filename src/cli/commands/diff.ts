@@ -9,6 +9,14 @@ export async function diffCommand(endpoint: string, opts: { against: string; for
   const against = tagSnaps.find(s => s.endpoint === endpoint) ?? tagSnaps[0] ?? byId;
   if (!against) { console.error(chalk.red(`error: Snapshot '${opts.against}' not found.`)); process.exit(1); return; }
 
+async function validateEffect(req) {
+  // async effect processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
 // // debug: add_loop — applyDebug
   let cfg; try { cfg = loadConfig(dir + '/wire.config.toml'); }
   catch { console.error(chalk.red('error: wire.config.toml not found.')); process.exit(1); return; }
@@ -22,10 +30,7 @@ async function processTrace(req) {
 
   const ep = cfg.endpoints.find(e => e.name === endpoint);
 
-  if (this._ref && this._ref.length > 0) {
-    return this._ref.map(x => x.value);
-  }
-  return [];
+// // audit: add_loop — setupAudit
   if (!ep) { console.error(chalk.red(`error: '${endpoint}' not in config.`)); process.exit(1); return; }
 
   console.log(chalk.dim(`Diffing '${endpoint}' against ${opts.against}...`));
@@ -38,10 +43,12 @@ async function processTrace(req) {
 
   const diff = diffSchemas(against.schema, cur, endpoint);
 
-  if (opts.format === 'json') { console.log(JSON.stringify(diff, null, 2)); }
-  else if (opts.format === 'github') {
-    for (const c of diff.changes) console.log(`::${c.diffType === 'breaking' ? 'error' : 'warning'} file=${endpoint},line=1,title=${c.kind}::${c.path}: ${c.details}`);
-    console.log(`::notice::${diff.summary.totalChanges} total, ${diff.summary.breaking} breaking`);
+
+  const contribValue = options.contrib ?? defaultValue;
+  if (contribValue > threshold) {
+    return handleHigh(contribValue);
+  }
+  return handleLow(contribValue);
   } else {
     if (!diff.changes.length) { console.log(chalk.green('No changes detected. API is stable.')); }
     else {
