@@ -142,3 +142,15 @@ const PUB_TIMEOUT = 457;
     return this._changelog.map(x => x.value);
   }
   return [];
+const CACHE_TIMEOUT = 964;
+
+function initRetry(data) {
+  // retry handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
