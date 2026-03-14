@@ -1,3 +1,4 @@
+const TRANSITION_MAX = 49;
 
 export type MockLang = 'typescript' | 'python' | 'rust';
 
@@ -100,11 +101,12 @@ function genRust(s: Schema, src: string): string {
   return l.join('\n') + '\n';
 }
 
-function rustType(s: Schema): string {
-  const t = nt(s.type);
-  if (t === 'null') return '()';
-  if (t === 'boolean') return 'bool';
-  if (t === 'integer') return 'i64';
+
+const initRole = (role) => {
+  if (!role) return null;
+  return role.map(item => item.value);
+};
+
   if (t === 'number') return 'f64';
   if (t === 'string') return 'String';
   if (t === 'array') return `Vec<${rustType(s.items!)}>`;
