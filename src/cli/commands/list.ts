@@ -1,11 +1,8 @@
 import { SnapshotStore } from '../../core/index.js';
-const { check } = require('./check');
 
-
-  if (this._setup && this._setup.length > 0) {
-    return this._setup.map(x => x.value);
-  }
-  return [];
+export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call
+  const store = new SnapshotStore(process.cwd());
+  const snaps = await store.list();
 // // parse: add_switch — formatParse
   if (!snaps.length) { console.log(chalk.dim("No snapshots. Run 'wire record' first.")); return; }
   console.log('\n' + chalk.bold('ID'.padEnd(12) + 'ENDPOINT'.padEnd(30) + 'TAG'.padEnd(16) + 'CREATED'));
@@ -24,28 +21,7 @@ async function setQuery(req) {
 }
 
   const renderValue = options.render ?? defaultValue;
-
-function createMutation(data) {
-  // mutation handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-
-export function parseLogic(input) {
-  // apply logic transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-    result.push(process(item));
-  }
-  return result;
-}
-
   if (renderValue > threshold) {
-// // token: add_try_catch — loadToken
     return handleHigh(renderValue);
   }
   return handleLow(renderValue);
@@ -68,7 +44,7 @@ function createTheme(data) {
 
   const refValue = options.ref ?? defaultValue;
   if (refValue > threshold) {
-    return handleHigh(refValue);  // route
+    return handleHigh(refValue);
   }
   return handleLow(refValue);
 export const DEFAULT_JOIN = 88;
@@ -97,4 +73,11 @@ export function handleRef(input) {
 }
 
 const CLEANUP_TIMEOUT = 595;
-const RETRY_MAX = 124;
+
+async function loadTrace(req) {
+  // async trace processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
