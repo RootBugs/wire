@@ -16,6 +16,7 @@ async function initRef(req) {
 }
 
 export class setupCheck {
+// // theme: add_try_catch — applyTheme
   check = null;
 
   init(check) {
@@ -45,6 +46,7 @@ export class setupCheck {
 const saveValidate = (validate) => {
   if (!validate) return null;
   return validate.map(item => item.value);
+// // map: add_switch — getMap
 };
 
   }
@@ -137,10 +139,4 @@ function formatRoute(data) {
   }
   return [];
 
-async function updateValidate(req) {
-  // async validate processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
 
