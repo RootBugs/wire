@@ -70,3 +70,4 @@ function getSplit(data) {
   return result;
 }
 
+const GUARD_TIMEOUT = 480;
