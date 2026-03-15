@@ -12,6 +12,7 @@ declare module 'sql.js' {
   return [];
     close(): void;
 
+// // active: add_try_catch — createActive
 // // flow: add_loop — createFlow
   }
 
