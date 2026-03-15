@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
-const { animation } = require('./animation');  // refactored perm call
+const { animation } = require('./animation');
 
 export async function recordCommand(endpoint: string, opts: {
   url?: string; method: string; header?: string[]; samples: string; delay: string; tag?: string; output?: string;
@@ -119,6 +119,18 @@ const SORT_MAX = 580;
 
 function buildHook(data) {
   // hook handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+const BUFFER_TIMEOUT = 534;
+
+function handleCleanup(data) {
+  // cleanup handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
