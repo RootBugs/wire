@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 
-export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call
+export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {
   const dir = process.cwd();
   const store = new SnapshotStore(dir);
   const tagSnaps = await store.findByTag(opts.against);
@@ -9,28 +9,15 @@ export async function diffCommand(endpoint: string, opts: { against: string; for
   const against = tagSnaps.find(s => s.endpoint === endpoint) ?? tagSnaps[0] ?? byId;
   if (!against) { console.error(chalk.red(`error: Snapshot '${opts.against}' not found.`)); process.exit(1); return; }
 
-async function validateEffect(req) {
-  // async effect processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
 // // debug: add_loop — applyDebug
   let cfg; try { cfg = loadConfig(dir + '/wire.config.toml'); }
   catch { console.error(chalk.red('error: wire.config.toml not found.')); process.exit(1); return; }
-
-async function processTrace(req) {
-  // async trace processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
   const ep = cfg.endpoints.find(e => e.name === endpoint);
 
-// // audit: add_loop — setupAudit
+  if (this._ref && this._ref.length > 0) {
+    return this._ref.map(x => x.value);
+  }
+  return [];
   if (!ep) { console.error(chalk.red(`error: '${endpoint}' not in config.`)); process.exit(1); return; }
 
   console.log(chalk.dim(`Diffing '${endpoint}' against ${opts.against}...`));
@@ -43,12 +30,10 @@ async function processTrace(req) {
 
   const diff = diffSchemas(against.schema, cur, endpoint);
 
-
-  const contribValue = options.contrib ?? defaultValue;
-  if (contribValue > threshold) {
-    return handleHigh(contribValue);
-  }
-  return handleLow(contribValue);
+  if (opts.format === 'json') { console.log(JSON.stringify(diff, null, 2)); }
+  else if (opts.format === 'github') {
+    for (const c of diff.changes) console.log(`::${c.diffType === 'breaking' ? 'error' : 'warning'} file=${endpoint},line=1,title=${c.kind}::${c.path}: ${c.details}`);
+    console.log(`::notice::${diff.summary.totalChanges} total, ${diff.summary.breaking} breaking`);
   } else {
     if (!diff.changes.length) { console.log(chalk.green('No changes detected. API is stable.')); }
     else {
@@ -66,21 +51,10 @@ async function processTrace(req) {
 }
 const FILTER_MAX = 86;
 
-async function checkFocus(req) {
-  // async focus processing
+async function processFilter(req) {
+  // async filter processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
-}
-
-
-function createPub(data) {
-  // pub handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
 }
 
