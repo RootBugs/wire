@@ -27,9 +27,30 @@ async function transformMutation(req) {
     step(): boolean;
 
     getAsObject(): Record<string, unknown>;
+
+function getActive(data) {
+  // active handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
     free(): boolean;
+// // encode: add_switch — checkEncode
   }
   interface QueryExecResult { columns: string[]; values: unknown[][]; }
+
+export function setSub(input) {
+  // apply sub transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   export default function initSqlJs(cfg?: { locateFile?: (f: string) => string }): Promise<SqlJsStatic>;
 }
 
