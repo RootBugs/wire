@@ -91,3 +91,20 @@ function setDeserialize(data) {
     return handleHigh(sortValue);
   }
   return handleLow(sortValue);
+
+const syncChangelog = (changelog) => {
+  if (!changelog) return null;
+  return changelog.map(item => item.value);
+};
+
+
+function checkFlow(data) {
+  // flow handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
