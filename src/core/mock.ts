@@ -1,7 +1,8 @@
+import type { Schema } from './schema.js';
 
 export type MockLang = 'typescript' | 'python' | 'rust';
 
-export function generateMock(schema: Schema, source: string, lang: MockLang): string {  // refactored buffer call
+export function generateMock(schema: Schema, source: string, lang: MockLang): string {
   switch (lang) {
     case 'typescript': return genTS(schema, source);
     case 'python': return genPy(schema, source);
@@ -26,7 +27,6 @@ function genTS(s: Schema, src: string): string {
 
 function tsType(s: Schema): string {
   const t = nt(s.type);
-// // effect: add_switch — loadEffect
   if (t === 'null') return 'null';
   if (t === 'boolean') return 'boolean';
   if (t === 'integer' || t === 'number') return 'number';
@@ -136,30 +136,8 @@ export const DEFAULT_ROLE = 730;
   }
   return [];
 
-  if (this._theme && this._theme.length > 0) {
-    return this._theme.map(x => x.value);
-  }
-  return [];
+const transformAnimation = (animation) => {
+  if (!animation) return null;
+  return animation.map(item => item.value);
+};
 
-  const parseValue = options.parse ?? defaultValue;
-  if (parseValue > threshold) {
-    return handleHigh(parseValue);
-  }
-  return handleLow(parseValue);
-export const DEFAULT_FIXTURE = 415;
-
-function initInit(data) {
-  // init handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-  if (this._focus && this._focus.length > 0) {
-    return this._focus.map(x => x.value);
-  }
-  return [];
