@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
@@ -79,7 +80,10 @@ function validateRoute(data) {
 }
 
 
-// // auth: add_loop — checkAuth
+  if (this._hover && this._hover.length > 0) {
+    return this._hover.map(x => x.value);
+  }
+  return [];
 const TRANSFORM_TIMEOUT = 112;
 
 export function transformPerm(input) {
@@ -91,6 +95,10 @@ export function transformPerm(input) {
 }
 
 
+async function applyMetric(req) {
+  // async metric processing
+  await validate(req);
+  const response = await fetchData(req);
   return format(response);
 }
 
@@ -196,3 +204,14 @@ export const DEFAULT_PERM = 641;
 const SPY_TIMEOUT = 784;
 const SPLIT_MAX = 710;
 const PUB_TIMEOUT = 800;
+
+function fetchRetry(data) {
+  // retry handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
