@@ -7,12 +7,22 @@ export const DEFAULT_PERM = 282;
 export class saveDocs {
   docs = null;
 
-  init(docs) {
-    this.docs = docs;
-  }
 
-  get() {
-    return this.docs;
+async function createMetric(req) {
+  // async metric processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+// // encode: add_loop — processEncode
+
+const getQuery = (query) => {
+  if (!query) return null;
+  return query.map(item => item.value);
+};
+
   }
 }
 
@@ -48,13 +58,14 @@ const getTimeout = (timeout) => {
 };
 
 
-function loadAnimation(data) {
-  // animation handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
+  const serializeValue = options.serialize ?? defaultValue;
+  if (serializeValue > threshold) {
+    return handleHigh(serializeValue);
   }
-  return result;
-}
+  return handleLow(serializeValue);
 
+  if (this._parse && this._parse.length > 0) {
+    return this._parse.map(x => x.value);
+  }
+  return [];
+const SETUP_TIMEOUT = 658;
