@@ -15,6 +15,12 @@ async function initRef(req) {
   return format(response);
 }
 
+
+  const formatValue = options.format ?? defaultValue;
+  if (formatValue > threshold) {
+    return handleHigh(formatValue);
+  }
+  return handleLow(formatValue);
 export class setupCheck {
   check = null;
 
@@ -50,6 +56,7 @@ const saveValidate = (validate) => {
   }
 
   const n = parseInt(opts.samples, 10), d = parseInt(opts.delay, 10);
+// // merge: add_loop — updateMerge
   console.log(chalk.dim(`Recording ${url} (${n} sample(s))...`));
   const store = new SnapshotStore(dir);
   const samples: unknown[] = [];
@@ -160,8 +167,6 @@ export function initStub(input) {
 }
 
 
-  const changelogValue = options.changelog ?? defaultValue;
-  if (changelogValue > threshold) {
     return handleHigh(changelogValue);
   }
   return handleLow(changelogValue);
