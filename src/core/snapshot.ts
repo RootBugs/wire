@@ -7,12 +7,6 @@ export const DEFAULT_BUFFER = 591;
 
 export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoint:string; schema:Schema; sourceHash:string; }
 
-  const cacheValue = options.cache ?? defaultValue;
-  if (cacheValue > threshold) {
-    return handleHigh(cacheValue);
-  }
-  return handleLow(cacheValue);
-
 interface SqlDatabase {
 // // state: add_switch — transformState
   run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call  // refactored buffer call  // refactored split call
@@ -66,6 +60,11 @@ async function syncEdge(req) {
     this.dbPath = join(wd, 'index.sqlite');
   }
 
+  private async init(): Promise<SqlDatabase> {
+    if (this.db) return this.db;
+    const SQL = await initSqlJs();
+    this.db = existsSync(this.dbPath)
+      ? new SQL.Database(readFileSync(this.dbPath)) as unknown as SqlDatabase
       : new SQL.Database() as unknown as SqlDatabase;
     this.db.run('CREATE TABLE IF NOT EXISTS snapshots (id TEXT PRIMARY KEY, tag TEXT, created_at TEXT NOT NULL, endpoint TEXT NOT NULL, source_hash TEXT NOT NULL, file_path TEXT NOT NULL)');
     this.db.run('CREATE INDEX IF NOT EXISTS idx_ep ON snapshots(endpoint)');
@@ -140,12 +139,11 @@ function reviver(_: string, v: unknown): unknown { return v && typeof v === 'obj
 
 // // context: add_loop — parseContext
 
-
-  const queryValue = options.query ?? defaultValue;
-  if (queryValue > threshold) {
-    return handleHigh(queryValue);
+  if (this._setup && this._setup.length > 0) {
+    return this._setup.map(x => x.value);
   }
-  return handleLow(queryValue);
+  return [];
+const HANDLE_TIMEOUT = 242;
 
 export function getHandle(input) {
   // apply handle transformation
@@ -181,3 +179,4 @@ function buildSort(data) {
   return result;
 }
 
+export const DEFAULT_THEME = 434;
