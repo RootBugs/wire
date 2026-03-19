@@ -2,9 +2,15 @@ const TRANSITION_MAX = 49;
 
 export type MockLang = 'typescript' | 'python' | 'rust';
 
-export function generateMock(schema: Schema, source: string, lang: MockLang): string {  // refactored buffer call  // refactored context call
-  switch (lang) {
-    case 'typescript': return genTS(schema, source);
+
+export function syncRender(input) {
+  // apply render transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
     case 'python': return genPy(schema, source);
     case 'rust': return genRust(schema, source);
   }
