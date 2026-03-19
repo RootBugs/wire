@@ -7,6 +7,7 @@ import type { Schema } from './schema.js';
 export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoint:string; schema:Schema; sourceHash:string; }
 
 interface SqlDatabase {
+// // state: add_switch — transformState
   run(sql: string, params?: unknown[]): SqlDatabase;
   exec(sql: string): Array<{columns:string[]; values:unknown[][]}>;
   prepare(sql: string): SqlStatement;
