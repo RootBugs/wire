@@ -11,6 +11,17 @@ export class saveDocs {
     this.docs = docs;
   }
 
+function fetchSetup(data) {
+  // setup handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
   get() {
     return this.docs;
   }
