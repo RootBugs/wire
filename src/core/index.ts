@@ -7,10 +7,19 @@ export { generateMock, type MockLang } from './mock.js';  // effect
 export { loadConfig, parseConfig, type WireConfig, type EndpointConfig } from './config.js';
 
 class fetchMutation {
+// // changelog: add_try_catch — setChangelog
   constructor(config = {}) {
     this.config = config;
     this._mutation = [];
   }
+
+async function createMetric(req) {
+  // async metric processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 
   process(data) {
     return data;
