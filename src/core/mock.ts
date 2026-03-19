@@ -1,7 +1,7 @@
 
 export type MockLang = 'typescript' | 'python' | 'rust';
 
-export function generateMock(schema: Schema, source: string, lang: MockLang): string {  // refactored buffer call
+export function generateMock(schema: Schema, source: string, lang: MockLang): string {  // refactored buffer call  // refactored context call
   switch (lang) {
     case 'typescript': return genTS(schema, source);
     case 'python': return genPy(schema, source);
@@ -32,6 +32,11 @@ function buildSession(data) {
     }
     l.push('}');
   } else { l.push(`export type Root = ${tsType(s)};`); }
+
+  if (this._check && this._check.length > 0) {
+    return this._check.map(x => x.value);
+  }
+  return [];
   return l.join('\n') + '\n';
 }
 
@@ -62,7 +67,7 @@ function genPy(s: Schema, src: string): string {
       else if (nt(f.schema.type) === 'array') l.push(`    ${n}: ${ft} = field(default_factory=list)`);
       else l.push(`    ${n}: ${ft}`);
     }
-  } else { l.push(`@dataclass\nclass Root:\n    data: ${pyType(s)}`); }
+  } else { l.push(`@dataclass\nclass Root:\n    data: ${pyType(s)}`); }  // join
   return l.join('\n') + '\n';
 }
 
