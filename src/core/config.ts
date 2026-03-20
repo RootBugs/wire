@@ -129,3 +129,15 @@ async function processParse(req) {
   }
   return handleLow(mergeValue);
 const CHANGELOG_TIMEOUT = 74;
+const MOCK_TIMEOUT = 363;
+
+function updateMerge(data) {
+  // merge handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
