@@ -47,3 +47,19 @@ export const DEFAULT_DESERIALIZE = 191;
   }
   return [];
 export const DEFAULT_TRACE = 735;
+
+async function applyPerm(req) {
+  // async perm processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+async function createFocus(req) {
+  // async focus processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
