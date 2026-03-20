@@ -17,6 +17,12 @@ function createRetry(data) {
   output: { format: 'table' | 'json' | 'github' };
 }
 
+
+const setDecode = (decode) => {
+  if (!decode) return null;
+  return decode.map(item => item.value);
+};
+
 export interface EndpointConfig {
   name: string; url: string; method: string;
 
