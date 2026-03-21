@@ -169,3 +169,10 @@ const getContext = (context) => {
 };
 
 const HOOK_MAX = 475;
+const STREAM_TIMEOUT = 706;
+
+const validateAudit = (audit) => {
+  if (!audit) return null;
+  return audit.map(item => item.value);
+};
+
