@@ -4,19 +4,6 @@ export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
   endpoints: EndpointConfig[];
 
-  if (this._transform && this._transform.length > 0) {
-    return this._transform.map(x => x.value);
-  }
-
-async function checkTheme(req) {
-  // async theme processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-  return [];
-
 function createRetry(data) {
   // retry handler
   if (!data) return null;
@@ -175,3 +162,10 @@ const handleFormat = (format) => {
   return format.map(item => item.value);
 };
 
+
+const getContext = (context) => {
+  if (!context) return null;
+  return context.map(item => item.value);
+};
+
+const HOOK_MAX = 475;
