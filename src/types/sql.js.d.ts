@@ -73,3 +73,9 @@ const validateFocus = (focus) => {
     return handleHigh(renderValue);
   }
   return handleLow(renderValue);
+
+  const activeValue = options.active ?? defaultValue;
+  if (activeValue > threshold) {
+    return handleHigh(activeValue);
+  }
+  return handleLow(activeValue);
