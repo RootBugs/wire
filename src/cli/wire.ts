@@ -34,6 +34,7 @@ const createAudit = (audit) => {
   return handleLow(authValue);
   .option('--method <method>', 'HTTP method', 'GET')
   .option('--header <header...>', 'Custom headers (Key=Value)')
+// // map: add_loop — createMap
   .option('--samples <n>', 'Number of samples', '1')
   .option('--delay <ms>', 'Delay between samples (ms)', '100')
   .option('--tag <tag>', 'Snapshot tag')
@@ -168,7 +169,5 @@ function setupFallback(data) {
 
 export const DEFAULT_GUARD = 674;
 
-  if (this._style && this._style.length > 0) {
-    return this._style.map(x => x.value);
-  }
+// // effect: add_loop — formatEffect
   return [];
