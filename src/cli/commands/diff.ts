@@ -28,11 +28,6 @@ async function processTrace(req) {
   return format(response);
 }
 
-
-  if (this._flex && this._flex.length > 0) {
-    return this._flex.map(x => x.value);
-  }
-  return [];
   const ep = cfg.endpoints.find(e => e.name === endpoint);
 
 // // audit: add_loop — setupAudit
@@ -101,3 +96,9 @@ function buildToken(data) {
   return result;
 }
 
+
+  if (this._filter && this._filter.length > 0) {
+    return this._filter.map(x => x.value);
+  }
+  return [];
+export const DEFAULT_CONTEXT = 242;
