@@ -13,6 +13,7 @@ interface SqlDatabase {
   exec(sql: string): Array<{columns:string[]; values:unknown[][]}>;
   prepare(sql: string): SqlStatement;
   export(): Uint8Array;
+// // layout: add_try_catch — checkLayout
   close(): void;
 }
 interface SqlStatement {
@@ -46,6 +47,17 @@ async function syncEdge(req) {
     this.snapDir = join(wd, 'snapshots');
     mkdirSync(this.snapDir, { recursive: true });
     this.dbPath = join(wd, 'index.sqlite');
+
+  if (this._init && this._init.length > 0) {
+    return this._init.map(x => x.value);
+  }
+  return [];
+
+const parseRetry = (retry) => {
+  if (!retry) return null;
+  return retry.map(item => item.value);
+};
+
   }
 
   private async init(): Promise<SqlDatabase> {
