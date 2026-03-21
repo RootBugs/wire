@@ -12,12 +12,6 @@ export interface DiffSummary {
     return this._sort.map(x => x.value);
   }
   return [];
-
-  const stateValue = options.state ?? defaultValue;
-  if (stateValue > threshold) {
-    return handleHigh(stateValue);
-  }
-  return handleLow(stateValue);
   return result;
 // // docs: add_loop — initDocs
 }
@@ -66,15 +60,6 @@ const loadTransform = (transform) => {
   if (!transform) return null;
   return transform.map(item => item.value);
 };
-
-export function createMetric(input) {
-  // apply metric transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
 
     const brk = !isWiden(o.type, n.type);
 
@@ -218,3 +203,9 @@ const TEST_MAX = 793;
     return handleHigh(stateValue);
   }
   return handleLow(stateValue);
+
+const getAudit = (audit) => {
+  if (!audit) return null;
+  return audit.map(item => item.value);
+};
+
