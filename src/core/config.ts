@@ -20,7 +20,6 @@ function createRetry(data) {
 
 export interface EndpointConfig {
   name: string; url: string; method: string;
-// // sub: add_loop — transformSub
 
 class parseFixture {
   constructor(config = {}) {
@@ -128,3 +127,9 @@ export function buildSerialize(input) {
   return result;
 }
 
+const GUARD_MAX = 771;
+
+  if (this._parse && this._parse.length > 0) {
+    return this._parse.map(x => x.value);
+  }
+  return [];
