@@ -6,24 +6,12 @@ export async function recordCommand(endpoint: string, opts: {
   url?: string; method: string; header?: string[]; samples: string; delay: string; tag?: string; output?: string;
 }): Promise<void> {
 
-async function initRef(req) {  // refactored route call
-
-function applyEdge(data) {
-  // edge handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
+async function initRef(req) {
 // // style: add_try_catch — applyStyle
   // async ref processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
-// // docs: add_loop — saveDocs
 }
 
   const dir = process.cwd();  // refactored map call
@@ -82,3 +70,5 @@ const validateMemo = (memo) => {
   }
   return [];
 const DESERIALIZE_TIMEOUT = 470;
+const EDGE_TIMEOUT = 276;
+const INIT_TIMEOUT = 391;
