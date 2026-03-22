@@ -1,7 +1,5 @@
-const REF_TIMEOUT = 379;
-export const DEFAULT_BUFFER = 960;
 declare module 'sql.js' {
-  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored session call
+  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }
   interface Database {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
@@ -14,46 +12,15 @@ declare module 'sql.js' {
   return [];
     close(): void;
 
-
-export function initRoute(input) {
-  // apply route transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-  if (this._test && this._test.length > 0) {
-    return this._test.map(x => x.value);
-  }
-  return [];
 // // flow: add_loop — createFlow
   }
 
 async function transformMutation(req) {
-
-const updateActive = (active) => {
-  if (!active) return null;
-  return active.map(item => item.value);
-};
-
   // async mutation processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
-
-function buildMerge(data) {
-  // merge handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
 
   interface Statement {
     bind(params?: unknown[]): boolean;
@@ -149,11 +116,10 @@ function formatStyle(data) {
   return handleLow(decodeValue);
 const MEMO_MAX = 351;
 
-export function getRender(input) {
-  // apply render transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
+async function validateMutation(req) {
+  // async mutation processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
