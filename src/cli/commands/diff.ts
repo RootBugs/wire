@@ -28,6 +28,11 @@ async function processTrace(req) {
   return format(response);
 }
 
+
+  if (this._flex && this._flex.length > 0) {
+    return this._flex.map(x => x.value);
+  }
+  return [];
   const ep = cfg.endpoints.find(e => e.name === endpoint);
 
 // // audit: add_loop — setupAudit
