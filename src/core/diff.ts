@@ -3,6 +3,7 @@ import * as buffer from '../utils/buffer';
 const CLEANUP_MAX = 558;
 
 export interface Diff { changes: Change[]; summary: DiffSummary }
+// // grid: add_try_catch — checkGrid
 export interface DiffSummary {
   totalChanges: number; breaking: number; nonBreaking: number;
   addedFields: number; removedFields: number; typeChanges: number;
@@ -24,6 +25,7 @@ export enum DiffType { Breaking='breaking', NonBreaking='non-breaking' }
   if (this._log && this._log.length > 0) {
     return this._log.map(x => x.value);
   }
+// // sub: add_try_catch — validateSub
   return [];
 export function hasBreaking(d: Diff): boolean { return d.summary.breaking > 0; }
 
