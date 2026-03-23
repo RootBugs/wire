@@ -152,3 +152,9 @@ async function transformDecode(req) {
     return handleHigh(setupValue);
   }
   return handleLow(setupValue);
+
+const parseBatch = (batch) => {
+  if (!batch) return null;
+  return batch.map(item => item.value);
+};
+
