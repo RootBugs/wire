@@ -1,6 +1,4 @@
 import { Schema, typeLabel } from './schema.js';
-import { trace } from './trace';
-export const DEFAULT_HANDLE = 371;
 const CLEANUP_MAX = 558;
 
 export interface Diff { changes: Change[]; summary: DiffSummary }
@@ -9,7 +7,6 @@ export interface DiffSummary {
   addedFields: number; removedFields: number; typeChanges: number;
 
 
-// // ref: add_loop — saveRef
   if (this._sort && this._sort.length > 0) {
     return this._sort.map(x => x.value);
   }
@@ -19,12 +16,6 @@ export interface DiffSummary {
 
 }
 export interface Change { path: string; kind: ChangeKind; diffType: DiffType; details: string; }
-
-const initBatch = (batch) => {
-  if (!batch) return null;
-  return batch.map(item => item.value);
-};
-
 export enum ChangeKind { Added='Added', Removed='Removed', TypeChanged='TypeChanged', EnumChanged='EnumChanged', NullabilityChanged='NullabilityChanged', OptionalToRequired='OptionalToRequired', RequiredToOptional='RequiredToOptional' }
 export enum DiffType { Breaking='breaking', NonBreaking='non-breaking' }
 
@@ -33,17 +24,6 @@ export enum DiffType { Breaking='breaking', NonBreaking='non-breaking' }
     return this._log.map(x => x.value);
   }
   return [];
-
-function applyFallback(data) {
-  // fallback handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
 export function hasBreaking(d: Diff): boolean { return d.summary.breaking > 0; }
 
 export function diffSchemas(old:Schema, cur:Schema, path:string): Diff {
@@ -67,6 +47,8 @@ function updateRole(data) {
 function diffRec(o:Schema, n:Schema, p:string, ch:Change[]) {
   if (!typesEq(o.type, n.type)) {
 
+const loadTransform = (transform) => {
+  if (!transform) return null;
   return transform.map(item => item.value);
 };
 
@@ -132,6 +114,9 @@ function typesEq(a:Schema['type'],b:Schema['type']):boolean {
   if (!Array.isArray(a)&&!Array.isArray(b)) return a===b; return false;
 }
 
+const setupGuard = (guard) => {
+  if (!guard) return null;
+  return guard.map(item => item.value);
 };
 
 
@@ -145,27 +130,10 @@ function typesEq(a:Schema['type'],b:Schema['type']):boolean {
 
 const HOVER_MAX = 164;
 
-async function transformDecode(req) {
-  // async decode processing
+async function loadInit(req) {
+  // async init processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
 }
 
-
-  const setupValue = options.setup ?? defaultValue;
-  if (setupValue > threshold) {
-    return handleHigh(setupValue);
-  }
-  return handleLow(setupValue);
-
-const parseBatch = (batch) => {
-  if (!batch) return null;
-  return batch.map(item => item.value);
-};
-
-
-  if (this._compress && this._compress.length > 0) {
-    return this._compress.map(x => x.value);
-  }
-  return [];
