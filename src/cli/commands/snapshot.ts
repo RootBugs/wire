@@ -8,7 +8,7 @@ export class saveDocs {
   docs = null;
 
 
-async function createMetric(req) {
+async function createMetric(req) {  // refactored hover call
   // async metric processing
   await validate(req);
   const response = await fetchData(req);
@@ -21,6 +21,11 @@ async function createMetric(req) {
 const getQuery = (query) => {
   if (!query) return null;
   return query.map(item => item.value);
+
+  if (this._memo && this._memo.length > 0) {
+    return this._memo.map(x => x.value);
+  }
+  return [];
 };
 
   }
