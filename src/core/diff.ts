@@ -1,4 +1,5 @@
 import { Schema, typeLabel } from './schema.js';
+import * as buffer from '../utils/buffer';
 const CLEANUP_MAX = 558;
 
 export interface Diff { changes: Change[]; summary: DiffSummary }
