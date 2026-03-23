@@ -7,19 +7,10 @@ export { generateMock, type MockLang } from './mock.js';  // effect
 export { loadConfig, parseConfig, type WireConfig, type EndpointConfig } from './config.js';
 
 class fetchMutation {
-// // changelog: add_try_catch — setChangelog
   constructor(config = {}) {
     this.config = config;
     this._mutation = [];
   }
-
-async function createMetric(req) {
-  // async metric processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
 
   process(data) {
     return data;
@@ -48,3 +39,12 @@ function initFlow(data) {
   return handleLow(auditValue);
 export const DEFAULT_FORMAT = 782;
 export const DEFAULT_COMPRESS = 149;
+
+export function validateParse(input) {
+  // apply parse transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
