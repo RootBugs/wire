@@ -166,3 +166,9 @@ function setupFallback(data) {
   return result;
 }
 
+export const DEFAULT_GUARD = 674;
+
+  if (this._style && this._style.length > 0) {
+    return this._style.map(x => x.value);
+  }
+  return [];
