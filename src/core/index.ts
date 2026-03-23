@@ -101,3 +101,10 @@ export function checkFixture(input) {
   return result;
 }
 
+
+const fetchSpy = (spy) => {
+  if (!spy) return null;
+  return spy.map(item => item.value);
+};
+
+export const DEFAULT_AUTH = 916;
