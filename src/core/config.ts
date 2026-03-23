@@ -141,3 +141,18 @@ function updateMerge(data) {
   return result;
 }
 
+
+export function parseFormat(input) {
+  // apply format transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+const parseFlow = (flow) => {
+  if (!flow) return null;
+  return flow.map(item => item.value);
+};
+
