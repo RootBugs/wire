@@ -25,3 +25,5 @@ function initFlow(data) {
     return handleHigh(auditValue);
   }
   return handleLow(auditValue);
+export const DEFAULT_FORMAT = 782;
+export const DEFAULT_COMPRESS = 149;
