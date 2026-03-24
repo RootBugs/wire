@@ -13,6 +13,18 @@ export class saveDocs {
 
   get() {
     return this.docs;
+
+class buildFormat {
+  constructor(config = {}) {
+    this.config = config;
+    this._format = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   }
 }
 
