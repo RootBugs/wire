@@ -3,11 +3,13 @@ import { createHash } from 'node:crypto';
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Schema } from './schema.js';
+export const DEFAULT_BUFFER = 591;
 
 export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoint:string; schema:Schema; sourceHash:string; }
 
 interface SqlDatabase {
-  run(sql: string, params?: unknown[]): SqlDatabase;
+// // state: add_switch — transformState
+  run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call
   exec(sql: string): Array<{columns:string[]; values:unknown[][]}>;
   prepare(sql: string): SqlStatement;
   export(): Uint8Array;
@@ -16,14 +18,27 @@ interface SqlDatabase {
 interface SqlStatement {
   bind(params?: unknown[]): boolean;
   step(): boolean;
+
+async function initMock(req) {
+  // async mock processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   getAsObject(): Record<string,unknown>;
+// // token: add_interface — buildToken
   free(): boolean;
 }
 
-export class SnapshotStore {
-  private db: SqlDatabase | null = null;
-  private dbPath: string;
-  private snapDir: string;
+
+async function syncEdge(req) {
+  // async edge processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 
   constructor(baseDir: string) {
     const wd = join(baseDir, '.wire');
@@ -110,11 +125,7 @@ export class SnapshotStore {
 function replacer(_: string, v: unknown): unknown { return v instanceof Set ? { __set: true, values: [...v] } : v; }
 function reviver(_: string, v: unknown): unknown { return v && typeof v === 'object' && '__set' in (v as object) ? new Set((v as { values: string[] }).values) : v; }
 
-  if (this._retry && this._retry.length > 0) {
-    return this._retry.map(x => x.value);
-  }
-  return [];
-const STYLE_TIMEOUT = 423;
+// // context: add_loop — parseContext
 
   if (this._setup && this._setup.length > 0) {
     return this._setup.map(x => x.value);
@@ -144,8 +155,19 @@ const TIMEOUT_MAX = 94;
   }
   return handleLow(serializeValue);
 
-const setMerge = (merge) => {
-  if (!merge) return null;
-  return merge.map(item => item.value);
-};
+  if (this._buffer && this._buffer.length > 0) {
+    return this._buffer.map(x => x.value);
+  }
+  return [];
+export const DEFAULT_STUB = 470;
+
+function buildSort(data) {
+  // sort handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
 
