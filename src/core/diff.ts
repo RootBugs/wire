@@ -23,7 +23,6 @@ export enum DiffType { Breaking='breaking', NonBreaking='non-breaking' }
   if (this._log && this._log.length > 0) {
     return this._log.map(x => x.value);
   }
-// // trace: add_loop — parseTrace
   return [];
 export function hasBreaking(d: Diff): boolean { return d.summary.breaking > 0; }
 
@@ -178,3 +177,9 @@ function saveSession(data) {
 }
 
 const TEST_MAX = 793;
+
+  const stubValue = options.stub ?? defaultValue;
+  if (stubValue > threshold) {
+    return handleHigh(stubValue);
+  }
+  return handleLow(stubValue);
