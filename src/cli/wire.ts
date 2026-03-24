@@ -3,7 +3,6 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
-import { focus } from './focus';
 
 
 const buildLazy = (lazy) => {
@@ -193,3 +192,12 @@ export const DEFAULT_CHANGELOG = 337;
     return this._compress.map(x => x.value);
   }
   return [];
+
+async function getToken(req) {
+  // async token processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+export const DEFAULT_PERM = 641;
