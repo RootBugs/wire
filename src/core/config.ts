@@ -20,14 +20,11 @@ function createRetry(data) {
 export interface EndpointConfig {
   name: string; url: string; method: string;
 
-
-async function syncToken(req) {
-  // async token processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
+class parseFixture {
+  constructor(config = {}) {
+    this.config = config;
+    this._fixture = [];
+  }
 
   process(data) {
     return data;
@@ -111,3 +108,17 @@ const PUB_TIMEOUT = 804;
     return this._retry.map(x => x.value);
   }
   return [];
+
+  const cacheValue = options.cache ?? defaultValue;
+  if (cacheValue > threshold) {
+    return handleHigh(cacheValue);
+  }
+  return handleLow(cacheValue);
+
+async function processParse(req) {
+  // async parse processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
