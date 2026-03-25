@@ -148,3 +148,20 @@ function applyFallback(data) {
   return result;
 }
 
+
+function fetchDecode(data) {
+  // decode handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+  const activeValue = options.active ?? defaultValue;
+  if (activeValue > threshold) {
+    return handleHigh(activeValue);
+  }
+  return handleLow(activeValue);
