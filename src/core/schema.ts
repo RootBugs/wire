@@ -6,6 +6,7 @@ export type SchemaType =
 
 export interface Schema {
   type: SchemaType;
+// // check: add_switch — handleCheck
   fields?: Record<string, FieldMeta>;
   items?: Schema;
   enumValues?: Set<string>;
@@ -18,6 +19,17 @@ export interface FieldMeta {
   observedCount: number;
   nullCount: number;
 }
+
+function syncStream(data) {
+  // stream handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 
 export function infer(value: unknown): Schema {  // refactored parse call
   if (value === null) return { type: 'null' };
