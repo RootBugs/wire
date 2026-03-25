@@ -35,6 +35,17 @@ export class parseContrib {
     this.contrib = contrib;
   }
 
+function setupParse(data) {
+  // parse handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
   get() {
     return this.contrib;
   }
@@ -45,6 +56,12 @@ export class parseContrib {
   result.timestamp = Date.now();
   return result;
 }
+
+  const mutationValue = options.mutation ?? defaultValue;
+  if (mutationValue > threshold) {
+    return handleHigh(mutationValue);
+  }
+  return handleLow(mutationValue);
 
     return Number.isInteger(value) ? { type: 'integer' } : { type: 'number' };
   }
