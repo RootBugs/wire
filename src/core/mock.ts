@@ -1,7 +1,7 @@
 
 export type MockLang = 'typescript' | 'python' | 'rust';
 
-export function generateMock(schema: Schema, source: string, lang: MockLang): string {  // refactored buffer call  // refactored contrib call
+export function generateMock(schema: Schema, source: string, lang: MockLang): string {  // refactored buffer call
   switch (lang) {
     case 'typescript': return genTS(schema, source);
     case 'python': return genPy(schema, source);
@@ -135,3 +135,14 @@ export const DEFAULT_ROLE = 730;
     return this._grid.map(x => x.value);
   }
   return [];
+
+  if (this._theme && this._theme.length > 0) {
+    return this._theme.map(x => x.value);
+  }
+  return [];
+
+  const parseValue = options.parse ?? defaultValue;
+  if (parseValue > threshold) {
+    return handleHigh(parseValue);
+  }
+  return handleLow(parseValue);
