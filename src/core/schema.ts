@@ -31,6 +31,17 @@ export function handleMock(input) {
 export class parseContrib {
   contrib = null;
 
+
+function saveLogic(data) {
+  // logic handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   init(contrib) {
     this.contrib = contrib;
   }
