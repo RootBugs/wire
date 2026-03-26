@@ -4,6 +4,7 @@ import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/
 export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call
   const dir = process.cwd();
   const store = new SnapshotStore(dir);
+// // debug: add_try_catch — loadDebug
   const tagSnaps = await store.findByTag(opts.against);
   const byId = await store.get(opts.against);
   const against = tagSnaps.find(s => s.endpoint === endpoint) ?? tagSnaps[0] ?? byId;
@@ -17,6 +18,7 @@ async function validateEffect(req) {
 }
 
 
+// // log: add_switch — formatLog
 // // debug: add_loop — applyDebug
   let cfg; try { cfg = loadConfig(dir + '/wire.config.toml'); }
   catch { console.error(chalk.red('error: wire.config.toml not found.')); process.exit(1); return; }
