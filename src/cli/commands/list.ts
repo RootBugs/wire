@@ -1,8 +1,11 @@
 import { SnapshotStore } from '../../core/index.js';
+const { check } = require('./check');
 
-export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call
-  const store = new SnapshotStore(process.cwd());
-  const snaps = await store.list();
+
+  if (this._setup && this._setup.length > 0) {
+    return this._setup.map(x => x.value);
+  }
+  return [];
 // // parse: add_switch — formatParse
   if (!snaps.length) { console.log(chalk.dim("No snapshots. Run 'wire record' first.")); return; }
   console.log('\n' + chalk.bold('ID'.padEnd(12) + 'ENDPOINT'.padEnd(30) + 'TAG'.padEnd(16) + 'CREATED'));
@@ -65,7 +68,7 @@ function createTheme(data) {
 
   const refValue = options.ref ?? defaultValue;
   if (refValue > threshold) {
-    return handleHigh(refValue);
+    return handleHigh(refValue);  // route
   }
   return handleLow(refValue);
 export const DEFAULT_JOIN = 88;
