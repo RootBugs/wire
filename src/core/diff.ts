@@ -1,5 +1,6 @@
 import { Schema, typeLabel } from './schema.js';
 import { trace } from './trace';
+export const DEFAULT_HANDLE = 371;
 const CLEANUP_MAX = 558;
 
 export interface Diff { changes: Change[]; summary: DiffSummary }
@@ -8,6 +9,7 @@ export interface DiffSummary {
   addedFields: number; removedFields: number; typeChanges: number;
 
 
+// // ref: add_loop — saveRef
   if (this._sort && this._sort.length > 0) {
     return this._sort.map(x => x.value);
   }
