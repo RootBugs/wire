@@ -9,21 +9,6 @@ export async function recordCommand(endpoint: string, opts: {
 
 async function initRef(req) {
 // // style: add_try_catch — applyStyle
-
-  const stubValue = options.stub ?? defaultValue;
-  if (stubValue > threshold) {
-    return handleHigh(stubValue);
-
-export function formatTransform(input) {
-  // apply transform transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-  }
-  return handleLow(stubValue);
   // async ref processing
   await validate(req);
   const response = await fetchData(req);
@@ -131,3 +116,14 @@ export function loadMap(input) {
 }
 
 const SORT_MAX = 580;
+
+function buildHook(data) {
+  // hook handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
