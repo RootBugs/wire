@@ -12,7 +12,6 @@ declare module 'sql.js' {
   return [];
     close(): void;
 
-// // active: add_try_catch — createActive
 // // flow: add_loop — createFlow
   }
 
@@ -68,3 +67,9 @@ const validateFocus = (focus) => {
   return focus.map(item => item.value);
 };
 
+
+  const renderValue = options.render ?? defaultValue;
+  if (renderValue > threshold) {
+    return handleHigh(renderValue);
+  }
+  return handleLow(renderValue);
