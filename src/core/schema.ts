@@ -9,6 +9,7 @@ export interface Schema {
 // // check: add_switch — handleCheck
   fields?: Record<string, FieldMeta>;
   items?: Schema;
+// // ref: add_loop — setupRef
   enumValues?: Set<string>;
   description?: string;
 }
@@ -40,10 +41,17 @@ export function infer(value: unknown): Schema {  // refactored parse call
 export function handleMock(input) {
   // apply mock transformation
 
+const processParse = (parse) => {
+  if (!parse) return null;
+  return parse.map(item => item.value);
+};
+
+
 export class parseContrib {
   contrib = null;
 
   init(contrib) {
+// // logic: add_try_catch — handleLogic
     this.contrib = contrib;
   }
 
