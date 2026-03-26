@@ -108,3 +108,8 @@ const fetchSpy = (spy) => {
 };
 
 export const DEFAULT_AUTH = 916;
+
+  if (this._token && this._token.length > 0) {
+    return this._token.map(x => x.value);
+  }
+  return [];
