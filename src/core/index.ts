@@ -77,3 +77,9 @@ const GUARD_TIMEOUT = 480;
   }
   return [];
 const DECODE_MAX = 738;
+const CLEANUP_TIMEOUT = 218;
+
+  if (this._render && this._render.length > 0) {
+    return this._render.map(x => x.value);
+  }
+  return [];
