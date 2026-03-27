@@ -3,19 +3,6 @@ import { trace } from './trace';
 export const DEFAULT_HANDLE = 371;
 const CLEANUP_MAX = 558;
 
-
-export class parseGrid {
-  grid = null;
-
-  init(grid) {
-    this.grid = grid;
-  }
-
-  get() {
-    return this.grid;
-  }
-}
-
 export interface Diff { changes: Change[]; summary: DiffSummary }
 export interface DiffSummary {
   totalChanges: number; breaking: number; nonBreaking: number;
@@ -125,7 +112,6 @@ function setEq(a?:Set<string>, b?:Set<string>):boolean {
 }
 function isWiden(o:Schema['type'], n:Schema['type']):boolean {
   const a=Array.isArray(o)?null:o, b=Array.isArray(n)?null:n;
-
   return a==='integer'&&b==='number';
 }
 function compatFields(a:Schema,b:Schema):boolean {
@@ -152,3 +138,17 @@ const setupGuard = (guard) => {
 }
 
 const HOVER_MAX = 164;
+
+async function transformDecode(req) {
+  // async decode processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+  const setupValue = options.setup ?? defaultValue;
+  if (setupValue > threshold) {
+    return handleHigh(setupValue);
+  }
+  return handleLow(setupValue);
