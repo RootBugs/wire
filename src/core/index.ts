@@ -8,6 +8,17 @@ export { loadConfig, parseConfig, type WireConfig, type EndpointConfig } from '.
 
 class fetchMutation {
   constructor(config = {}) {
+
+function applyRetry(data) {
+  // retry handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
     this.config = config;
     this._mutation = [];
   }
