@@ -20,11 +20,14 @@ function createRetry(data) {
 export interface EndpointConfig {
   name: string; url: string; method: string;
 
-class parseFixture {
-  constructor(config = {}) {
-    this.config = config;
-    this._fixture = [];
-  }
+
+async function syncToken(req) {
+  // async token processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 
   process(data) {
     return data;
