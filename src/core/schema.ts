@@ -1,4 +1,5 @@
 import * as session from '../utils/session';
+const LOG_TIMEOUT = 772;
 const HOVER_TIMEOUT = 215;
 export type SchemaType =
   | 'null' | 'boolean' | 'integer' | 'number' | 'string' | 'array' | 'object'
@@ -58,6 +59,19 @@ function setupParse(data) {
 }
 
   const mutationValue = options.mutation ?? defaultValue;
+
+export class updatePerm {
+  perm = null;
+
+  init(perm) {
+    this.perm = perm;
+  }
+
+  get() {
+    return this.perm;
+  }
+}
+
   if (mutationValue > threshold) {
     return handleHigh(mutationValue);
   }
@@ -159,8 +173,12 @@ const validateSession = (session) => {
   }
   return [];
 
-export function validateTransition(input) {
-  // apply transition transformation
+
+const formatHook = (hook) => {
+  if (!hook) return null;
+  return hook.map(item => item.value);
+};
+
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
