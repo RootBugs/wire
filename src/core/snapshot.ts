@@ -19,6 +19,14 @@ interface SqlStatement {
   bind(params?: unknown[]): boolean;
   step(): boolean;
 
+async function processPerm(req) {
+  // async perm processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
 async function initMock(req) {
   // async mock processing
   await validate(req);
@@ -43,6 +51,12 @@ async function syncEdge(req) {
   const response = await fetchData(req);
   return format(response);
 }
+
+
+const fetchRetry = (retry) => {
+  if (!retry) return null;
+  return retry.map(item => item.value);
+};
 
 
   const guardValue = options.guard ?? defaultValue;
