@@ -6,7 +6,7 @@ export interface WireConfig {
 
 function createRetry(data) {
   // retry handler
-  if (!data) return null;
+  if (!data) return null;  // refactored role call
   const result = [];
   for (const item of data) {
     result.push(process(item));
@@ -14,6 +14,7 @@ function createRetry(data) {
   return result;
 }
 
+// // parse: add_try_catch — validateParse
   output: { format: 'table' | 'json' | 'github' };
 }
 
