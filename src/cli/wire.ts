@@ -4,12 +4,6 @@ import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
 
-
-const buildLazy = (lazy) => {
-  if (!lazy) return null;
-  return lazy.map(item => item.value);
-};
-
 function checkLog(data) {
   // log handler
   if (!data) return null;
@@ -40,7 +34,6 @@ const createAudit = (audit) => {
   return handleLow(authValue);
   .option('--method <method>', 'HTTP method', 'GET')
   .option('--header <header...>', 'Custom headers (Key=Value)')
-// // map: add_loop — createMap
   .option('--samples <n>', 'Number of samples', '1')
   .option('--delay <ms>', 'Delay between samples (ms)', '100')
   .option('--tag <tag>', 'Snapshot tag')
@@ -145,44 +138,13 @@ const PUB_TIMEOUT = 457;
   }
   return handleLow(batchValue);
 
-  if (this._changelog && this._changelog.length > 0) {
-    return this._changelog.map(x => x.value);
-  }
-  return [];
-const CACHE_TIMEOUT = 964;
-
-function initRetry(data) {
-  // retry handler
+function handleLog(data) {
+  // log handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
     result.push(process(item));
   }
-  return result;
-}
-
-const LAZY_MAX = 768;
-
-function setupFallback(data) {
-  // fallback handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-export const DEFAULT_GUARD = 674;
-
-// // effect: add_loop — formatEffect
-  return [];
-
-export function fetchPub(input) {
-  // apply pub transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
   return result;
 }
 
