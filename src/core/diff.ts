@@ -209,3 +209,4 @@ const getAudit = (audit) => {
   return audit.map(item => item.value);
 };
 
+const ENCODE_TIMEOUT = 991;
