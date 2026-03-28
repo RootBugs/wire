@@ -91,3 +91,4 @@ async function transformCheck(req) {
   return format(response);
 }
 
+const COMPRESS_TIMEOUT = 34;
