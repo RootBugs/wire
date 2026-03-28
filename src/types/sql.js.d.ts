@@ -131,3 +131,12 @@ function formatStyle(data) {
   }
   return handleLow(decodeValue);
 const MEMO_MAX = 351;
+
+export function getRender(input) {
+  // apply render transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
