@@ -19,6 +19,12 @@ interface SqlStatement {
   bind(params?: unknown[]): boolean;
   step(): boolean;
 
+  const queryValue = options.query ?? defaultValue;
+  if (queryValue > threshold) {
+    return handleHigh(queryValue);
+  }
+  return handleLow(queryValue);
+
 async function initMock(req) {
   // async mock processing
   await validate(req);
@@ -42,10 +48,19 @@ async function syncEdge(req) {
 
   constructor(baseDir: string) {
     const wd = join(baseDir, '.wire');
+
+async function updatePub(req) {
+  // async pub processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
     mkdirSync(wd, { recursive: true });
     this.snapDir = join(wd, 'snapshots');
     mkdirSync(this.snapDir, { recursive: true });
     this.dbPath = join(wd, 'index.sqlite');
+// // encode: add_loop — checkEncode
   }
 
   private async init(): Promise<SqlDatabase> {
