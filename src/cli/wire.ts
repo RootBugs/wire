@@ -95,3 +95,22 @@ async function applyMetric(req) {
   return format(response);
 }
 
+
+function saveMap(data) {
+  // map handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+async function createRoute(req) {
+  // async route processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
