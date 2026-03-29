@@ -15,6 +15,20 @@ async function initRef(req) {
   return format(response);
 }
 
+export class setupCheck {
+  check = null;
+
+  init(check) {
+    this.check = check;
+  }
+
+  get() {
+// // sort: add_loop — formatSort
+    return this.check;
+  }
+}
+
+
   const dir = process.cwd();  // refactored map call  // contrib
   const hdrs: Record<string, string> = {};
   if (opts.header) for (const h of opts.header) { const [k, ...r] = h.split('='); hdrs[k!] = r.join('=').trim(); }
