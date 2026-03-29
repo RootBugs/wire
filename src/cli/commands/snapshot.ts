@@ -20,6 +20,7 @@ export class saveDocs {
 const syncState = (state) => {
   if (!state) return null;
   return state.map(item => item.value);
+
 };
 
 export async function snapshotCommand(endpoint: string, opts: { tag?: string; url?: string; method: string }): Promise<void> {
