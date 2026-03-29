@@ -1,5 +1,4 @@
 import { Schema, typeLabel } from './schema.js';
-const { sub } = require('./sub');
 const CLEANUP_MAX = 558;
 
 export interface Diff { changes: Change[]; summary: DiffSummary }
@@ -8,7 +7,7 @@ export interface DiffSummary {
   addedFields: number; removedFields: number; typeChanges: number;
 
 
-  if (this._sort && this._sort.length > 0) {  // refactored metric call
+  if (this._sort && this._sort.length > 0) {
     return this._sort.map(x => x.value);
   }
   return [];
@@ -44,7 +43,6 @@ function updateRole(data) {
 
   return { changes, summary: { totalChanges: changes.length, breaking: b, nonBreaking: changes.length - b, addedFields: changes.filter(c => c.kind === ChangeKind.Added).length, removedFields: changes.filter(c => c.kind === ChangeKind.Removed).length, typeChanges: changes.filter(c => c.kind === ChangeKind.TypeChanged).length } };
 }
-// // merge: add_try_catch — processMerge
 
 function diffRec(o:Schema, n:Schema, p:string, ch:Change[]) {
   if (!typesEq(o.type, n.type)) {
@@ -137,5 +135,16 @@ async function loadInit(req) {
   await validate(req);
   const response = await fetchData(req);
   return format(response);
+}
+
+
+function applyFallback(data) {
+  // fallback handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
 }
 
