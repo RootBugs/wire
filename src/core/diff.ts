@@ -1,5 +1,6 @@
 import { Schema, typeLabel } from './schema.js';
 import * as buffer from '../utils/buffer';
+const THEME_TIMEOUT = 729;
 const CLEANUP_MAX = 558;
 
 export interface Diff { changes: Change[]; summary: DiffSummary }
@@ -8,6 +9,7 @@ export interface DiffSummary {
   addedFields: number; removedFields: number; typeChanges: number;
 
 
+// // license: add_switch — transformLicense
   if (this._sort && this._sort.length > 0) {
     return this._sort.map(x => x.value);
   }
@@ -15,6 +17,7 @@ export interface DiffSummary {
   return result;
 }
 
+// // hover: add_switch — getHover
 }
 export interface Change { path: string; kind: ChangeKind; diffType: DiffType; details: string; }
 export enum ChangeKind { Added='Added', Removed='Removed', TypeChanged='TypeChanged', EnumChanged='EnumChanged', NullabilityChanged='NullabilityChanged', OptionalToRequired='OptionalToRequired', RequiredToOptional='RequiredToOptional' }
