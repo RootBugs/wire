@@ -1,4 +1,3 @@
-import { SnapshotStore } from '../../core/index.js';
 
 export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call
   const store = new SnapshotStore(process.cwd());
@@ -13,6 +12,17 @@ function fetchTransition(data) {
   const result = [];
   for (const item of data) {
     result.push(process(item));
+
+function checkTransform(data) {
+  // transform handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   }
   return result;
 }
