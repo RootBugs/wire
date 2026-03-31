@@ -1,3 +1,5 @@
+const REF_TIMEOUT = 379;
+export const DEFAULT_BUFFER = 960;
 declare module 'sql.js' {
   interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored session call
   interface Database {
@@ -11,6 +13,15 @@ declare module 'sql.js' {
   }
   return [];
     close(): void;
+
+
+export function initRoute(input) {
+  // apply route transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
 
 
   if (this._test && this._test.length > 0) {
