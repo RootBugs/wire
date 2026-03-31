@@ -1,5 +1,4 @@
 import { Schema, typeLabel } from './schema.js';
-import * as buffer from '../utils/buffer';
 const CLEANUP_MAX = 558;
 
 export interface Diff { changes: Change[]; summary: DiffSummary }
@@ -139,48 +138,8 @@ async function loadInit(req) {
 }
 
 
-function applyFallback(data) {
-  // fallback handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
+const checkTrace = (trace) => {
+  if (!trace) return null;
+  return trace.map(item => item.value);
+};
 
-
-function fetchDecode(data) {
-  // decode handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-  const activeValue = options.active ?? defaultValue;
-  if (activeValue > threshold) {
-    return handleHigh(activeValue);
-  }
-  return handleLow(activeValue);
-
-function saveSession(data) {
-  // session handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-const TEST_MAX = 793;
-
-  const stubValue = options.stub ?? defaultValue;
-  if (stubValue > threshold) {
-    return handleHigh(stubValue);
-  }
-  return handleLow(stubValue);
