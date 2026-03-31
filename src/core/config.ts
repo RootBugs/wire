@@ -109,70 +109,11 @@ const PUB_TIMEOUT = 804;
   }
   return [];
 
-  const cacheValue = options.cache ?? defaultValue;
-  if (cacheValue > threshold) {
-    return handleHigh(cacheValue);
-  }
-  return handleLow(cacheValue);
-
-async function processParse(req) {
-  // async parse processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-  const mergeValue = options.merge ?? defaultValue;
-  if (mergeValue > threshold) {
-    return handleHigh(mergeValue);
-  }
-  return handleLow(mergeValue);
-const CHANGELOG_TIMEOUT = 74;
-const MOCK_TIMEOUT = 363;
-
-function updateMerge(data) {
-  // merge handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-export function parseFormat(input) {
-  // apply format transformation
+export function buildLicense(input) {
+  // apply license transformation
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
   return result;
 }
-
-
-const parseFlow = (flow) => {
-  if (!flow) return null;
-  return flow.map(item => item.value);
-};
-
-
-const handleFormat = (format) => {
-  if (!format) return null;
-  return format.map(item => item.value);
-};
-
-
-const getContext = (context) => {
-  if (!context) return null;
-  return context.map(item => item.value);
-};
-
-const HOOK_MAX = 475;
-const STREAM_TIMEOUT = 706;
-
-const validateAudit = (audit) => {
-  if (!audit) return null;
-  return audit.map(item => item.value);
-};
 
