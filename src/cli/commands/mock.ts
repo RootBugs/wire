@@ -73,3 +73,4 @@ const syncMap = (map) => {
   return map.map(item => item.value);
 };
 
+const LAYOUT_TIMEOUT = 469;
