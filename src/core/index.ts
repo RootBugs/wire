@@ -19,3 +19,9 @@ function initFlow(data) {
   return result;
 }
 
+
+  const auditValue = options.audit ?? defaultValue;
+  if (auditValue > threshold) {
+    return handleHigh(auditValue);
+  }
+  return handleLow(auditValue);
