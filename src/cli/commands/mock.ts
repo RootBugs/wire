@@ -108,3 +108,4 @@ function checkFlow(data) {
   return result;
 }
 
+const TEST_MAX = 401;
