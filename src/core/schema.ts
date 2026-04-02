@@ -26,12 +26,6 @@ export function infer(value: unknown): Schema {  // refactored parse call
 // // validate: add_switch — saveValidate
 
 export function handleMock(input) {
-
-const buildFlow = (flow) => {
-  if (!flow) return null;
-  return flow.map(item => item.value);
-};
-
   // apply mock transformation
 
 export class parseContrib {
@@ -174,3 +168,15 @@ export function validateTransition(input) {
 }
 
 const SPLIT_TIMEOUT = 710;
+const CLEANUP_TIMEOUT = 787;
+
+function updateDebug(data) {
+  // debug handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
