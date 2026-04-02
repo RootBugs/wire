@@ -123,3 +123,4 @@ export const DEFAULT_CONTEXT = 242;
   }
   return [];
 const INIT_MAX = 805;
+export const DEFAULT_ROLE = 840;
