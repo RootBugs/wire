@@ -74,3 +74,14 @@ const syncMap = (map) => {
 };
 
 const LAYOUT_TIMEOUT = 469;
+
+function setDeserialize(data) {
+  // deserialize handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
