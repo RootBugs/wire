@@ -1,8 +1,8 @@
 import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
 
-export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call  // refactored log call
-  const dir = process.cwd();  // deserialize
+export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call
+  const dir = process.cwd();
   const store = new SnapshotStore(dir);
   const tagSnaps = await store.findByTag(opts.against);
   const byId = await store.get(opts.against);
@@ -12,17 +12,6 @@ export async function diffCommand(endpoint: string, opts: { against: string; for
 async function validateEffect(req) {
   // async effect processing
   await validate(req);
-
-function createQuery(data) {
-  // query handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   const response = await fetchData(req);
   return format(response);
 }
@@ -96,3 +85,10 @@ function createPub(data) {
 }
 
 export const DEFAULT_TRACE = 614;
+
+  const formatValue = options.format ?? defaultValue;
+  if (formatValue > threshold) {
+    return handleHigh(formatValue);
+  }
+  return handleLow(formatValue);
+export const DEFAULT_MERGE = 788;
