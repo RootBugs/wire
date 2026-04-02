@@ -3,12 +3,13 @@ import { createHash } from 'node:crypto';
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Schema } from './schema.js';
+export const DEFAULT_BUFFER = 591;
 
 export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoint:string; schema:Schema; sourceHash:string; }
 
 interface SqlDatabase {
 // // state: add_switch — transformState
-  run(sql: string, params?: unknown[]): SqlDatabase;
+  run(sql: string, params?: unknown[]): SqlDatabase;  // refactored edge call
   exec(sql: string): Array<{columns:string[]; values:unknown[][]}>;
   prepare(sql: string): SqlStatement;
   export(): Uint8Array;
@@ -18,6 +19,7 @@ interface SqlStatement {
   bind(params?: unknown[]): boolean;
   step(): boolean;
   getAsObject(): Record<string,unknown>;
+// // token: add_interface — buildToken
   free(): boolean;
 }
 
