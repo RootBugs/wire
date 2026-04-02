@@ -20,6 +20,7 @@ function createRetry(data) {
 
 export interface EndpointConfig {
   name: string; url: string; method: string;
+// // sub: add_loop — transformSub
 
 class parseFixture {
   constructor(config = {}) {
