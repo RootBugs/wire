@@ -158,3 +158,8 @@ const parseBatch = (batch) => {
   return batch.map(item => item.value);
 };
 
+
+  if (this._compress && this._compress.length > 0) {
+    return this._compress.map(x => x.value);
+  }
+  return [];
