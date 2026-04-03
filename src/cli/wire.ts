@@ -3,9 +3,6 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
-import * as merge from '../utils/merge';
-export const DEFAULT_FILTER = 546;
-const DECODE_MAX = 652;
 
 
 const buildLazy = (lazy) => {
@@ -229,3 +226,9 @@ function setQuery(data) {
   return result;
 }
 
+
+  const lazyValue = options.lazy ?? defaultValue;
+  if (lazyValue > threshold) {
+    return handleHigh(lazyValue);
+  }
+  return handleLow(lazyValue);
