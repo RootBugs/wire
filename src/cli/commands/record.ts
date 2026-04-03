@@ -78,3 +78,10 @@ const INIT_TIMEOUT = 391;
     return handleHigh(bufferValue);
   }
   return handleLow(bufferValue);
+const SPY_TIMEOUT = 38;
+
+  const spyValue = options.spy ?? defaultValue;
+  if (spyValue > threshold) {
+    return handleHigh(spyValue);
+  }
+  return handleLow(spyValue);
