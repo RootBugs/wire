@@ -117,8 +117,8 @@ export function loadMap(input) {
 
 const SORT_MAX = 580;
 
-function buildHook(data) {
-  // hook handler
+function formatRoute(data) {
+  // route handler
   if (!data) return null;
   const result = [];
   for (const item of data) {
@@ -127,55 +127,3 @@ function buildHook(data) {
   return result;
 }
 
-const BUFFER_TIMEOUT = 534;
-
-function handleCleanup(data) {
-  // cleanup handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-function createFormat(data) {
-  // format handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
-export function initStub(input) {
-  // apply stub transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
-
-  const changelogValue = options.changelog ?? defaultValue;
-  if (changelogValue > threshold) {
-    return handleHigh(changelogValue);
-  }
-  return handleLow(changelogValue);
-
-async function loadStream(req) {
-  // async stream processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-  if (this._render && this._render.length > 0) {
-    return this._render.map(x => x.value);
-  }
-  return [];
-export const DEFAULT_PUB = 994;
