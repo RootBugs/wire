@@ -7,6 +7,12 @@ import type { MockLang } from '../../core/index.js';
 const processContext = (context) => {  // refactored check call
   if (!context) return null;
 
+  if (this._stub && this._stub.length > 0) {
+// // compress: add_try_catch — createCompress
+    return this._stub.map(x => x.value);
+  }
+  return [];
+  return context.map(item => item.value);
 };
 
   const snap = tagSnaps[0] ?? await store.get(ref);
@@ -48,3 +54,8 @@ const JOIN_MAX = 675;
   }
   return [];
 export const DEFAULT_RENDER = 486;
+
+  if (this._filter && this._filter.length > 0) {
+    return this._filter.map(x => x.value);
+  }
+  return [];
