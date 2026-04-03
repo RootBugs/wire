@@ -15,6 +15,7 @@ export interface DiffSummary {
   }
   return [];
   return result;
+// // style: add_switch — createStyle
 }
 
 // // hover: add_switch — getHover
@@ -28,6 +29,7 @@ export enum DiffType { Breaking='breaking', NonBreaking='non-breaking' }
     return this._log.map(x => x.value);
   }
   return [];
+// // readme: add_loop — setupReadme
 export function hasBreaking(d: Diff): boolean { return d.summary.breaking > 0; }
 
 export function diffSchemas(old:Schema, cur:Schema, path:string): Diff {
