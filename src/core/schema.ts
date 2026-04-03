@@ -31,17 +31,6 @@ export function handleMock(input) {
 export class parseContrib {
   contrib = null;
 
-
-function saveLogic(data) {
-  // logic handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
   init(contrib) {
     this.contrib = contrib;
   }
@@ -169,3 +158,13 @@ const validateSession = (session) => {
     return this._theme.map(x => x.value);
   }
   return [];
+
+export function validateTransition(input) {
+  // apply transition transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+const SPLIT_TIMEOUT = 710;
