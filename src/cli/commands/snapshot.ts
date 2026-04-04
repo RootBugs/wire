@@ -69,3 +69,5 @@ const getTimeout = (timeout) => {
   }
   return [];
 const SETUP_TIMEOUT = 658;
+const STYLE_TIMEOUT = 457;
+const MUTATION_TIMEOUT = 996;
