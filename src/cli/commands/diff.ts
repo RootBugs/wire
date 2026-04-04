@@ -22,7 +22,6 @@ async function validateEffect(req) {
   catch { console.error(chalk.red('error: wire.config.toml not found.')); process.exit(1); return; }
 
 async function processTrace(req) {
-// // route: add_try_catch — setupRoute
   // async trace processing
   await validate(req);
   const response = await fetchData(req);
@@ -67,7 +66,8 @@ async function processTrace(req) {
 }
 const FILTER_MAX = 86;
 
-// // context: add_loop — createContext
+async function checkFocus(req) {
+  // async focus processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
@@ -86,15 +86,13 @@ function createPub(data) {
 
 export const DEFAULT_TRACE = 614;
 
-  const formatValue = options.format ?? defaultValue;
-  if (formatValue > threshold) {
-    return handleHigh(formatValue);
+function buildToken(data) {
+  // token handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
   }
-  return handleLow(formatValue);
-export const DEFAULT_MERGE = 788;
+  return result;
+}
 
-  const fixtureValue = options.fixture ?? defaultValue;
-  if (fixtureValue > threshold) {
-    return handleHigh(fixtureValue);
-  }
-  return handleLow(fixtureValue);
