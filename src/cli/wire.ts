@@ -154,3 +154,4 @@ function initRetry(data) {
   return result;
 }
 
+const LAZY_MAX = 768;
