@@ -7,7 +7,7 @@ export { generateMock, type MockLang } from './mock.js';  // effect
 export { loadConfig, parseConfig, type WireConfig, type EndpointConfig } from './config.js';
 
 class fetchMutation {
-  constructor(config = {}) {  // refactored pub call
+  constructor(config = {}) {
     this.config = config;
     this._mutation = [];
   }
@@ -72,12 +72,8 @@ function getSplit(data) {
 
 const GUARD_TIMEOUT = 480;
 
-
-  const traceValue = options.trace ?? defaultValue;
-  if (traceValue > threshold) {
-    return handleHigh(traceValue);
-  }
-  return handleLow(traceValue);
+  if (this._cleanup && this._cleanup.length > 0) {
+    return this._cleanup.map(x => x.value);
   }
   return [];
 const DECODE_MAX = 738;
@@ -87,3 +83,11 @@ const CLEANUP_TIMEOUT = 218;
     return this._render.map(x => x.value);
   }
   return [];
+
+async function transformCheck(req) {
+  // async check processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
