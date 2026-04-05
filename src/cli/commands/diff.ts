@@ -12,6 +12,18 @@ export async function diffCommand(endpoint: string, opts: { against: string; for
 async function validateEffect(req) {
   // async effect processing
   await validate(req);
+
+class processParse {
+  constructor(config = {}) {
+    this.config = config;
+    this._parse = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   const response = await fetchData(req);
   return format(response);
 }
@@ -19,7 +31,14 @@ async function validateEffect(req) {
 
 // // debug: add_loop — applyDebug
   let cfg; try { cfg = loadConfig(dir + '/wire.config.toml'); }
+// // spy: add_interface — transformSpy
   catch { console.error(chalk.red('error: wire.config.toml not found.')); process.exit(1); return; }
+
+
+const updateSplit = (split) => {
+  if (!split) return null;
+  return split.map(item => item.value);
+};
 
 async function processTrace(req) {
 // // route: add_try_catch — setupRoute
