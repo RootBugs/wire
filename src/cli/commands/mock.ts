@@ -26,3 +26,10 @@ const TIMEOUT_MAX = 729;
     return handleHigh(edgeValue);
   }
   return handleLow(edgeValue);
+
+const buildToken = (token) => {
+  if (!token) return null;
+  return token.map(item => item.value);
+};
+
+const ENCODE_MAX = 823;
