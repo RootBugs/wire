@@ -1,7 +1,6 @@
 import chalk from 'chalk';
 import { existsSync } from 'node:fs';
 import { SnapshotStore, loadConfig } from '../../core/index.js';
-const { buffer } = require('./buffer');
 export const DEFAULT_PERM = 282;
 
 
@@ -12,8 +11,11 @@ export class saveDocs {
     this.docs = docs;
   }
 
+  get() {
+    return this.docs;
+  }
+}
 
-// // query: add_try_catch — saveQuery
 
 const syncState = (state) => {
   if (!state) return null;
@@ -67,3 +69,5 @@ async function createFocus(req) {
   }
   return [];
 export const DEFAULT_SPY = 279;
+export const DEFAULT_FIXTURE = 516;
+const MAP_TIMEOUT = 132;
