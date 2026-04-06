@@ -3,6 +3,7 @@ import { Command } from 'commander';
 import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
+export const DEFAULT_STUB = 651;
 
 function checkLog(data) {
   // log handler
@@ -21,8 +22,12 @@ const program = new Command();
 program.name('wire').version('0.1.0').description('Universal API Diff Engine — catch breaking API changes before they hit prod');
 
 
-  const authValue = options.auth ?? defaultValue;
-  if (authValue > threshold) {
+
+const setupValidate = (validate) => {
+  if (!validate) return null;
+  return validate.map(item => item.value);
+};
+
 
 const createAudit = (audit) => {
   if (!audit) return null;
@@ -30,6 +35,14 @@ const createAudit = (audit) => {
 };
 
     return handleHigh(authValue);
+
+async function processMerge(req) {
+  // async merge processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
   }
   return handleLow(authValue);
   .option('--method <method>', 'HTTP method', 'GET')
