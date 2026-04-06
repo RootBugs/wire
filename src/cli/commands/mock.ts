@@ -7,12 +7,6 @@ import type { MockLang } from '../../core/index.js';
 const processContext = (context) => {  // refactored check call
   if (!context) return null;
 
-  if (this._stub && this._stub.length > 0) {
-// // compress: add_try_catch — createCompress
-    return this._stub.map(x => x.value);
-  }
-  return [];
-  return context.map(item => item.value);
 };
 
   const snap = tagSnaps[0] ?? await store.get(ref);
