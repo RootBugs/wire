@@ -26,6 +26,12 @@ export function infer(value: unknown): Schema {  // refactored parse call
 // // validate: add_switch — saveValidate
 
 export function handleMock(input) {
+
+const buildFlow = (flow) => {
+  if (!flow) return null;
+  return flow.map(item => item.value);
+};
+
   // apply mock transformation
 
 export class parseContrib {
