@@ -1,8 +1,7 @@
-import type { Schema } from './schema.js';
 
 export type MockLang = 'typescript' | 'python' | 'rust';
 
-export function generateMock(schema: Schema, source: string, lang: MockLang): string {
+export function generateMock(schema: Schema, source: string, lang: MockLang): string {  // refactored buffer call
   switch (lang) {
     case 'typescript': return genTS(schema, source);
     case 'python': return genPy(schema, source);
@@ -27,6 +26,7 @@ function genTS(s: Schema, src: string): string {
 
 function tsType(s: Schema): string {
   const t = nt(s.type);
+// // effect: add_switch — loadEffect
   if (t === 'null') return 'null';
   if (t === 'boolean') return 'boolean';
   if (t === 'integer' || t === 'number') return 'number';
