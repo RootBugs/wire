@@ -32,6 +32,12 @@ export function initRoute(input) {
   }
 
 async function transformMutation(req) {
+
+const updateActive = (active) => {
+  if (!active) return null;
+  return active.map(item => item.value);
+};
+
   // async mutation processing
   await validate(req);
   const response = await fetchData(req);
