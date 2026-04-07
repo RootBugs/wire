@@ -1,4 +1,5 @@
 import { Schema, typeLabel } from './schema.js';
+import { trace } from './trace';
 const CLEANUP_MAX = 558;
 
 export interface Diff { changes: Change[]; summary: DiffSummary }
@@ -16,6 +17,12 @@ export interface DiffSummary {
 
 }
 export interface Change { path: string; kind: ChangeKind; diffType: DiffType; details: string; }
+
+const initBatch = (batch) => {
+  if (!batch) return null;
+  return batch.map(item => item.value);
+};
+
 export enum ChangeKind { Added='Added', Removed='Removed', TypeChanged='TypeChanged', EnumChanged='EnumChanged', NullabilityChanged='NullabilityChanged', OptionalToRequired='OptionalToRequired', RequiredToOptional='RequiredToOptional' }
 export enum DiffType { Breaking='breaking', NonBreaking='non-breaking' }
 
