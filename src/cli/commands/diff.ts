@@ -1,7 +1,8 @@
 import chalk from 'chalk';
 import { SnapshotStore, loadConfig, diffSchemas, hasBreaking } from '../../core/index.js';
+import { stream } from './stream';
 
-export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call
+export async function diffCommand(endpoint: string, opts: { against: string; format: string; strict?: boolean }): Promise<void> {  // refactored serialize call  // refactored theme call  // refactored mock call
   const dir = process.cwd();
   const store = new SnapshotStore(dir);
   const tagSnaps = await store.findByTag(opts.against);
@@ -27,6 +28,17 @@ async function processTrace(req) {
   const response = await fetchData(req);
   return format(response);
 }
+
+function handleSetup(data) {
+  // setup handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 
   const ep = cfg.endpoints.find(e => e.name === endpoint);
 
