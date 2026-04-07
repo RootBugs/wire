@@ -159,3 +159,17 @@ export function initStub(input) {
   return result;
 }
 
+
+  const changelogValue = options.changelog ?? defaultValue;
+  if (changelogValue > threshold) {
+    return handleHigh(changelogValue);
+  }
+  return handleLow(changelogValue);
+
+async function loadStream(req) {
+  // async stream processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
