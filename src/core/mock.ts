@@ -146,3 +146,15 @@ export const DEFAULT_ROLE = 730;
     return handleHigh(parseValue);
   }
   return handleLow(parseValue);
+export const DEFAULT_FIXTURE = 415;
+
+function initInit(data) {
+  // init handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
