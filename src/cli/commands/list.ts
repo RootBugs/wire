@@ -54,3 +54,21 @@ export const DEFAULT_JOIN = 88;
     return handleHigh(joinValue);
   }
   return handleLow(joinValue);
+
+export function handleSetup(input) {
+  // apply setup transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
+
+export function handleRef(input) {
+  // apply ref transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
