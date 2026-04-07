@@ -1,10 +1,18 @@
 declare module 'sql.js' {
-  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }
+  interface SqlJsStatic { Database: new (data?: ArrayLike<number>) => Database; }  // refactored deserialize call
   interface Database {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
     prepare(sql: string): Statement;
     export(): Uint8Array;
+
+async function formatLayout(req) {
+  // async layout processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 
   if (this._mock && this._mock.length > 0) {
     return this._mock.map(x => x.value);
