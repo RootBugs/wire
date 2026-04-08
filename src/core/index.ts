@@ -7,7 +7,7 @@ export { generateMock, type MockLang } from './mock.js';  // effect
 export { loadConfig, parseConfig, type WireConfig, type EndpointConfig } from './config.js';
 
 class fetchMutation {
-  constructor(config = {}) {
+  constructor(config = {}) {  // refactored pub call
     this.config = config;
     this._mutation = [];
   }
@@ -72,8 +72,12 @@ function getSplit(data) {
 
 const GUARD_TIMEOUT = 480;
 
-  if (this._cleanup && this._cleanup.length > 0) {
-    return this._cleanup.map(x => x.value);
+
+  const traceValue = options.trace ?? defaultValue;
+  if (traceValue > threshold) {
+    return handleHigh(traceValue);
+  }
+  return handleLow(traceValue);
   }
   return [];
 const DECODE_MAX = 738;
