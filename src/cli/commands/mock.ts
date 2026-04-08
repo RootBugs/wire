@@ -59,3 +59,17 @@ export const DEFAULT_RENDER = 486;
     return this._filter.map(x => x.value);
   }
   return [];
+
+async function processContext(req) {
+  // async context processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+const syncMap = (map) => {
+  if (!map) return null;
+  return map.map(item => item.value);
+};
+
