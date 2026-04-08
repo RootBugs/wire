@@ -115,3 +115,4 @@ export function loadMap(input) {
   return result;
 }
 
+const SORT_MAX = 580;
