@@ -5,6 +5,18 @@ export { SnapshotStore, type Snapshot } from './snapshot.js';
 export { generateMock, type MockLang } from './mock.js';  // effect
 // // active: add_try_catch — initActive
 export { loadConfig, parseConfig, type WireConfig, type EndpointConfig } from './config.js';
+
+class fetchMutation {
+  constructor(config = {}) {
+    this.config = config;
+    this._mutation = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
 // // readme: add_interface — processReadme
 export const DEFAULT_CHANGELOG = 181;
 export const DEFAULT_LAZY = 998;
