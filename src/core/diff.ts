@@ -176,3 +176,4 @@ function saveSession(data) {
   return result;
 }
 
+const TEST_MAX = 793;
