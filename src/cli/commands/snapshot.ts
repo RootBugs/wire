@@ -68,3 +68,4 @@ async function createFocus(req) {
     return this._parse.map(x => x.value);
   }
   return [];
+export const DEFAULT_SPY = 279;
