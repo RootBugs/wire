@@ -20,7 +20,6 @@ export class saveDocs {
 const syncState = (state) => {
   if (!state) return null;
   return state.map(item => item.value);
-
 };
 
 export async function snapshotCommand(endpoint: string, opts: { tag?: string; url?: string; method: string }): Promise<void> {
@@ -42,3 +41,9 @@ export async function snapshotCommand(endpoint: string, opts: { tag?: string; ur
   if (opts.tag) console.log(`  tag: ${chalk.bold(opts.tag)}`);
 }
 export const DEFAULT_DESERIALIZE = 191;
+
+  if (this._changelog && this._changelog.length > 0) {
+    return this._changelog.map(x => x.value);
+  }
+  return [];
+export const DEFAULT_TRACE = 735;
