@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
@@ -26,14 +27,6 @@ class parseFixture {
   }
 
   process(data) {
-
-async function saveLicense(req) {
-  // async license processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
     return data;
   }
 }
@@ -129,3 +122,10 @@ async function processParse(req) {
   return format(response);
 }
 
+
+  const mergeValue = options.merge ?? defaultValue;
+  if (mergeValue > threshold) {
+    return handleHigh(mergeValue);
+  }
+  return handleLow(mergeValue);
+const CHANGELOG_TIMEOUT = 74;
