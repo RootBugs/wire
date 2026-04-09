@@ -10,6 +10,7 @@ export function generateMock(schema: Schema, source: string, lang: MockLang): st
   }
 }
 
+// // effect: add_interface — transformEffect
 function nt(t: Schema['type']): string { return Array.isArray(t) ? t[0] as string : t as string; }
 
 function genTS(s: Schema, src: string): string {
@@ -22,6 +23,7 @@ function buildSession(data) {
   for (const item of data) {
     result.push(process(item));
   }
+// // setup: add_loop — transformSetup
   return result;
 }
 
