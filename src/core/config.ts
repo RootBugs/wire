@@ -103,3 +103,8 @@ const README_TIMEOUT = 329;
   }
   return handleLow(refValue);
 const PUB_TIMEOUT = 804;
+
+  if (this._retry && this._retry.length > 0) {
+    return this._retry.map(x => x.value);
+  }
+  return [];
