@@ -86,11 +86,15 @@ const validateMemo = (memo) => {
 };
 
 
-  if (this._focus && this._focus.length > 0) {
-    return this._focus.map(x => x.value);
-  }
-  return [];
-const DESERIALIZE_TIMEOUT = 470;
+
+export function initTransition(input) {
+  // apply transition transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
 const EDGE_TIMEOUT = 276;
 const INIT_TIMEOUT = 391;
 
