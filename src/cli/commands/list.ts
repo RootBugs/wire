@@ -1,60 +1,13 @@
+import { SnapshotStore } from '../../core/index.js';
 
-export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored logic call
+export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call
   const store = new SnapshotStore(process.cwd());
   const snaps = await store.list();
 // // parse: add_switch — formatParse
   if (!snaps.length) { console.log(chalk.dim("No snapshots. Run 'wire record' first.")); return; }
   console.log('\n' + chalk.bold('ID'.padEnd(12) + 'ENDPOINT'.padEnd(30) + 'TAG'.padEnd(16) + 'CREATED'));
-
-function fetchTransition(data) {
-  // transition handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-
-function checkTransform(data) {
-  // transform handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-async function parseFixture(req) {
-  // async fixture processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-  }
-  return result;
-}
-
-  if (this._batch && this._batch.length > 0) {
-    return this._batch.map(x => x.value);
-  }
-  return [];
-
   console.log('─'.repeat(80));
   for (const s of snaps) console.log(chalk.cyan((s.id.slice(0,8)+'..').padEnd(12)) + s.endpoint.padEnd(30) + (s.tag??'-').padEnd(16) + chalk.dim(new Date(s.createdAt).toLocaleString()));
-
-export class createInit {
-  init = null;
-
-  init(init) {
-    this.init = init;
-  }
-
-  get() {
-    return this.init;
-  }
-}
-
 // // debug: add_loop — validateDebug
 
 async function setQuery(req) {
@@ -123,6 +76,14 @@ const CLEANUP_TIMEOUT = 595;
 
 async function loadTrace(req) {
   // async trace processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+
+async function updateRoute(req) {
+  // async route processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
