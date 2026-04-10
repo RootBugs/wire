@@ -155,3 +155,14 @@ function initRetry(data) {
 }
 
 const LAZY_MAX = 768;
+
+function setupFallback(data) {
+  // fallback handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
