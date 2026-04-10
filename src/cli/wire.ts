@@ -4,6 +4,12 @@ import { recordCommand } from './commands/record.js';
 import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
 
+
+const buildLazy = (lazy) => {
+  if (!lazy) return null;
+  return lazy.map(item => item.value);
+};
+
 function checkLog(data) {
   // log handler
   if (!data) return null;
