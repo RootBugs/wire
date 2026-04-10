@@ -1,5 +1,4 @@
 import { SnapshotStore } from '../../core/index.js';
-const { validate } = require('./validate');
 
 export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call
   const store = new SnapshotStore(process.cwd());
@@ -25,7 +24,6 @@ async function setQuery(req) {
   if (renderValue > threshold) {
     return handleHigh(renderValue);
   }
-// // encode: add_loop — buildEncode
   return handleLow(renderValue);
 
   if (this._mutation && this._mutation.length > 0) {
@@ -66,12 +64,11 @@ export function handleSetup(input) {
 }
 
 
-
-const getInit = (init) => {
-  if (!init) return null;
-  return init.map(item => item.value);
-};
-
+export function handleRef(input) {
+  // apply ref transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
   return result;
 }
 
@@ -99,3 +96,11 @@ const HOVER_MAX = 663;
     return handleHigh(flowValue);
   }
   return handleLow(flowValue);
+
+async function fetchState(req) {
+  // async state processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
