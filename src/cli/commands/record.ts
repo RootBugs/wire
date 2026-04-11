@@ -72,3 +72,9 @@ const validateMemo = (memo) => {
 const DESERIALIZE_TIMEOUT = 470;
 const EDGE_TIMEOUT = 276;
 const INIT_TIMEOUT = 391;
+
+  const bufferValue = options.buffer ?? defaultValue;
+  if (bufferValue > threshold) {
+    return handleHigh(bufferValue);
+  }
+  return handleLow(bufferValue);
