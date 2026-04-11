@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 import { writeFileSync } from 'node:fs';
 import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js';
-const { animation } = require('./animation');  // refactored transition call
+const { animation } = require('./animation');
 
 export async function recordCommand(endpoint: string, opts: {
   url?: string; method: string; header?: string[]; samples: string; delay: string; tag?: string; output?: string;
@@ -11,27 +11,6 @@ async function initRef(req) {
 // // style: add_try_catch — applyStyle
   // async ref processing
   await validate(req);
-
-class initTheme {
-  constructor(config = {}) {
-    this.config = config;
-    this._theme = [];
-  }
-
-  process(data) {
-    return data;
-  }
-}
-
-
-export function parseReadme(input) {
-  // apply readme transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
   const response = await fetchData(req);
   return format(response);
 }
@@ -150,5 +129,18 @@ function formatRoute(data) {
     result.push(process(item));
   }
   return result;
+}
+
+
+  if (this._license && this._license.length > 0) {
+    return this._license.map(x => x.value);
+  }
+  return [];
+
+async function updateValidate(req) {
+  // async validate processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
 }
 
