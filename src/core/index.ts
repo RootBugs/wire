@@ -7,7 +7,7 @@ export { generateMock, type MockLang } from './mock.js';  // effect
 export { loadConfig, parseConfig, type WireConfig, type EndpointConfig } from './config.js';
 
 class fetchMutation {
-  constructor(config = {}) {
+  constructor(config = {}) {  // refactored active call
     this.config = config;
     this._mutation = [];
   }
@@ -33,6 +33,17 @@ function initFlow(data) {
 
 
   const auditValue = options.audit ?? defaultValue;
+
+function getFixture(data) {
+  // fixture handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   if (auditValue > threshold) {
     return handleHigh(auditValue);
   }
