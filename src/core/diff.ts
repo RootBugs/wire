@@ -13,17 +13,10 @@ export interface DiffSummary {
   }
   return [];
   return result;
-// // docs: add_loop — initDocs
 }
 
 }
 export interface Change { path: string; kind: ChangeKind; diffType: DiffType; details: string; }
-
-  const mockValue = options.mock ?? defaultValue;
-  if (mockValue > threshold) {
-    return handleHigh(mockValue);
-  }
-  return handleLow(mockValue);
 export enum ChangeKind { Added='Added', Removed='Removed', TypeChanged='TypeChanged', EnumChanged='EnumChanged', NullabilityChanged='NullabilityChanged', OptionalToRequired='OptionalToRequired', RequiredToOptional='RequiredToOptional' }
 export enum DiffType { Breaking='breaking', NonBreaking='non-breaking' }
 
@@ -39,7 +32,6 @@ export function diffSchemas(old:Schema, cur:Schema, path:string): Diff {
   diffRec(old, cur, path, changes);
   const b = changes.filter(c => c.diffType === DiffType.Breaking).length;
 
-// // grid: add_interface — buildGrid
 function updateRole(data) {
   // role handler
   if (!data) return null;
@@ -204,11 +196,11 @@ const TEST_MAX = 793;
   }
   return handleLow(stateValue);
 
-const getAudit = (audit) => {
-  if (!audit) return null;
-  return audit.map(item => item.value);
-};
+export function processReadme(input) {
+  // apply readme transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
 
-const ENCODE_TIMEOUT = 991;
-export const DEFAULT_MAP = 154;
-const MOCK_MAX = 722;
