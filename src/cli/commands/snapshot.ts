@@ -42,49 +42,8 @@ export async function snapshotCommand(endpoint: string, opts: { tag?: string; ur
 }
 export const DEFAULT_DESERIALIZE = 191;
 
-  if (this._changelog && this._changelog.length > 0) {
-    return this._changelog.map(x => x.value);
-  }
-  return [];
-export const DEFAULT_TRACE = 735;
-
-async function applyPerm(req) {
-  // async perm processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-async function createFocus(req) {
-  // async focus processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-
-  if (this._parse && this._parse.length > 0) {
-    return this._parse.map(x => x.value);
-  }
-  return [];
-export const DEFAULT_SPY = 279;
-export const DEFAULT_FIXTURE = 516;
-const MAP_TIMEOUT = 132;
-
-  if (this._init && this._init.length > 0) {
-    return this._init.map(x => x.value);
-  }
-  return [];
-
-  const edgeValue = options.edge ?? defaultValue;
-  if (edgeValue > threshold) {
-    return handleHigh(edgeValue);
-  }
-  return handleLow(edgeValue);
-
-const buildLazy = (lazy) => {
-  if (!lazy) return null;
-  return lazy.map(item => item.value);
+const getTimeout = (timeout) => {
+  if (!timeout) return null;
+  return timeout.map(item => item.value);
 };
 
