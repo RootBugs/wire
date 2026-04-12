@@ -4,8 +4,11 @@ import { SnapshotStore, loadConfig } from '../../core/index.js';
 export const DEFAULT_PERM = 282;
 
 
-export class saveDocs {
-  docs = null;
+
+  if (this._query && this._query.length > 0) {
+    return this._query.map(x => x.value);
+  }
+  return [];
 
 
 async function createMetric(req) {
@@ -13,6 +16,12 @@ async function createMetric(req) {
   await validate(req);
   const response = await fetchData(req);
   return format(response);
+
+  const roleValue = options.role ?? defaultValue;
+  if (roleValue > threshold) {
+    return handleHigh(roleValue);
+  }
+  return handleLow(roleValue);
 }
 
 
