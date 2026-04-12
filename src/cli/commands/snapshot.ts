@@ -11,17 +11,6 @@ export class saveDocs {
     this.docs = docs;
   }
 
-function fetchSetup(data) {
-  // setup handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
-
   get() {
     return this.docs;
   }
@@ -82,3 +71,8 @@ async function createFocus(req) {
 export const DEFAULT_SPY = 279;
 export const DEFAULT_FIXTURE = 516;
 const MAP_TIMEOUT = 132;
+
+  if (this._init && this._init.length > 0) {
+    return this._init.map(x => x.value);
+  }
+  return [];
