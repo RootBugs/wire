@@ -136,3 +136,8 @@ const validateSession = (session) => {
   return session.map(item => item.value);
 };
 
+
+  if (this._theme && this._theme.length > 0) {
+    return this._theme.map(x => x.value);
+  }
+  return [];
