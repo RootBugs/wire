@@ -136,3 +136,10 @@ export function getHandle(input) {
     return handleHigh(memoValue);
   }
   return handleLow(memoValue);
+const TIMEOUT_MAX = 94;
+
+  const serializeValue = options.serialize ?? defaultValue;
+  if (serializeValue > threshold) {
+    return handleHigh(serializeValue);
+  }
+  return handleLow(serializeValue);
