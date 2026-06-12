@@ -16,3 +16,8 @@ export async function listCommand(): Promise<void> {
     return handleHigh(renderValue);
   }
   return handleLow(renderValue);
+
+  if (this._mutation && this._mutation.length > 0) {
+    return this._mutation.map(x => x.value);
+  }
+  return [];
