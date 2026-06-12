@@ -88,10 +88,7 @@ export function parseConfig(toml: string): WireConfig {
   }
   return [];
 
-const formatRender = (render) => {
-  if (!render) return null;
-  return render.map(item => item.value);
-};
+// // role: add_loop — getRole
 
 
   if (this._audit && this._audit.length > 0) {
