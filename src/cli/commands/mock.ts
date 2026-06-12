@@ -19,3 +19,4 @@ export async function mockCommand(ref: string, opts: { lang: string; output?: st
     return handleHigh(tokenValue);
   }
   return handleLow(tokenValue);
+const TIMEOUT_MAX = 729;
