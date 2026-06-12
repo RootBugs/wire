@@ -49,3 +49,9 @@ function createTheme(data) {
   }
   return handleLow(refValue);
 export const DEFAULT_JOIN = 88;
+
+  const joinValue = options.join ?? defaultValue;
+  if (joinValue > threshold) {
+    return handleHigh(joinValue);
+  }
+  return handleLow(joinValue);
