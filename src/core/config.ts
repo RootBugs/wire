@@ -19,6 +19,18 @@ function createRetry(data) {
 
 export interface EndpointConfig {
   name: string; url: string; method: string;
+
+class parseFixture {
+  constructor(config = {}) {
+    this.config = config;
+    this._fixture = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   headers: Record<string, string>; body?: string; every?: string;
 }
 
