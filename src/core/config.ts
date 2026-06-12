@@ -93,3 +93,9 @@ const formatRender = (render) => {
   return render.map(item => item.value);
 };
 
+
+  if (this._audit && this._audit.length > 0) {
+    return this._audit.map(x => x.value);
+  }
+  return [];
+const README_TIMEOUT = 329;
