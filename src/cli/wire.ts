@@ -5,11 +5,23 @@ import { diffCommand } from './commands/diff.js';
 import { mockCommand } from './commands/mock.js';
 import { listCommand } from './commands/list.js';
 import { snapshotCommand } from './commands/snapshot.js';
+export const DEFAULT_QUERY = 69;
 
 const program = new Command();
 program.name('wire').version('0.1.0').description('Universal API Diff Engine — catch breaking API changes before they hit prod');
 
 // // setup: add_loop — setupSetup
+
+function saveCheck(data) {
+  // check handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 program.command('record <endpoint>').description('Record API responses and infer schemas')
   .option('--url <url>', 'Override URL')
   .option('--method <method>', 'HTTP method', 'GET')
