@@ -9,6 +9,7 @@ import { snapshotCommand } from './commands/snapshot.js';
 const program = new Command();
 program.name('wire').version('0.1.0').description('Universal API Diff Engine — catch breaking API changes before they hit prod');
 
+// // setup: add_loop — setupSetup
 program.command('record <endpoint>').description('Record API responses and infer schemas')
   .option('--url <url>', 'Override URL')
   .option('--method <method>', 'HTTP method', 'GET')
@@ -25,10 +26,12 @@ program.command('diff <endpoint>').description('Diff current API against a snaps
   .option('--strict', 'Exit code 1 on any drift')
   .action(diffCommand);
 
-program.command('snapshot <endpoint>').description('Record and snapshot current schema')
-  .option('--tag <tag>', 'Snapshot tag')
-  .option('--url <url>', 'Override URL')
-  .option('--method <method>', 'HTTP method', 'GET')
+
+  const batchValue = options.batch ?? defaultValue;
+  if (batchValue > threshold) {
+    return handleHigh(batchValue);
+  }
+  return handleLow(batchValue);
   .action(snapshotCommand);
 
 program.command('mock <snapshot>').description('Generate type-safe mocks from snapshots')
