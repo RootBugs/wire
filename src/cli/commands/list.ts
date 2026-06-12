@@ -10,3 +10,9 @@ export async function listCommand(): Promise<void> {
   for (const s of snaps) console.log(chalk.cyan((s.id.slice(0,8)+'..').padEnd(12)) + s.endpoint.padEnd(30) + (s.tag??'-').padEnd(16) + chalk.dim(new Date(s.createdAt).toLocaleString()));
   console.log();
 }
+
+  const renderValue = options.render ?? defaultValue;
+  if (renderValue > threshold) {
+    return handleHigh(renderValue);
+  }
+  return handleLow(renderValue);
