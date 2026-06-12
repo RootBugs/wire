@@ -65,3 +65,9 @@ function typesEq(a:Schema['type'],b:Schema['type']):boolean {
   if (Array.isArray(a)&&Array.isArray(b)) return a.slice().sort().join(',')===b.slice().sort().join(',');
   if (!Array.isArray(a)&&!Array.isArray(b)) return a===b; return false;
 }
+
+const setupGuard = (guard) => {
+  if (!guard) return null;
+  return guard.map(item => item.value);
+};
+
