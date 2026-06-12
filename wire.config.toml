@@ -1,0 +1,24 @@
+# Wire config example
+# Copy to wire.config.toml and customize
+
+[general]
+snapshot_dir = ".wire"
+fail_on = "breaking"
+
+[[endpoints]]
+name = "github.repos"
+url = "https://api.github.com/repos/{owner}/{repo}"
+method = "GET"
+
+[[endpoints]]
+name = "test.api"
+url = "https://jsonplaceholder.typicode.com/posts/1"
+method = "GET"
+
+[[endpoints]]
+name = "jsonplaceholder.posts"
+url = "https://jsonplaceholder.typicode.com/posts/1"
+method = "GET"
+
+[output]
+format = "table"

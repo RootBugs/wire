@@ -1,0 +1,111 @@
+import initSqlJs from 'sql.js';
+import { createHash } from 'node:crypto';
+import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
+import { join } from 'node:path';
+import type { Schema } from './schema.js';
+
+export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoint:string; schema:Schema; sourceHash:string; }
+
+interface SqlDatabase {
+  run(sql: string, params?: unknown[]): SqlDatabase;
+  exec(sql: string): Array<{columns:string[]; values:unknown[][]}>;
+  prepare(sql: string): SqlStatement;
+  export(): Uint8Array;
+  close(): void;
+}
+interface SqlStatement {
+  bind(params?: unknown[]): boolean;
+  step(): boolean;
+  getAsObject(): Record<string,unknown>;
+  free(): boolean;
+}
+
+export class SnapshotStore {
+  private db: SqlDatabase | null = null;
+  private dbPath: string;
+  private snapDir: string;
+
+  constructor(baseDir: string) {
+    const wd = join(baseDir, '.wire');
+    mkdirSync(wd, { recursive: true });
+    this.snapDir = join(wd, 'snapshots');
+    mkdirSync(this.snapDir, { recursive: true });
+    this.dbPath = join(wd, 'index.sqlite');
+  }
+
+  private async init(): Promise<SqlDatabase> {
+    if (this.db) return this.db;
+    const SQL = await initSqlJs();
+    this.db = existsSync(this.dbPath)
+      ? new SQL.Database(readFileSync(this.dbPath)) as unknown as SqlDatabase
+      : new SQL.Database() as unknown as SqlDatabase;
+    this.db.run('CREATE TABLE IF NOT EXISTS snapshots (id TEXT PRIMARY KEY, tag TEXT, created_at TEXT NOT NULL, endpoint TEXT NOT NULL, source_hash TEXT NOT NULL, file_path TEXT NOT NULL)');
+    this.db.run('CREATE INDEX IF NOT EXISTS idx_ep ON snapshots(endpoint)');
+    this.db.run('CREATE INDEX IF NOT EXISTS idx_tag ON snapshots(tag)');
+    this.persist();
+    return this.db;
+  }
+
+  private persist() { if (this.db) writeFileSync(this.dbPath, Buffer.from(this.db.export())); }
+
+  async save(endpoint: string, schema: Schema, tag?: string, srcHash = 'manual'): Promise<Snapshot> {
+    const db = await this.init();
+    const j = JSON.stringify(schema, replacer);
+    const id = createHash('sha256').update(j).digest('hex');
+    const s: Snapshot = { id, tag: tag ?? null, createdAt: new Date().toISOString(), endpoint, schema, sourceHash: srcHash };
+    writeFileSync(join(this.snapDir, `${id}.json`), j);
+    db.run('INSERT OR REPLACE INTO snapshots VALUES (?,?,?,?,?,?)', [id, s.tag, s.createdAt, endpoint, srcHash, join(this.snapDir, `${id}.json`)]);
+    this.persist();
+    return s;
+  }
+
+  async get(id: string): Promise<Snapshot | undefined> {
+    const db = await this.init();
+    const stmt = db.prepare('SELECT * FROM snapshots WHERE id = ?');
+    stmt.bind([id]);
+    if (!stmt.step()) { stmt.free(); return; }
+    const r = stmt.getAsObject() as Record<string, unknown>;
+    stmt.free();
+    return {
+      id: r.id as string, tag: r.tag as string | null, createdAt: r.created_at as string,
+      endpoint: r.endpoint as string, sourceHash: r.source_hash as string,
+      schema: JSON.parse(readFileSync(r.file_path as string, 'utf-8'), reviver) as Schema,
+    };
+  }
+
+  async findByTag(tag: string): Promise<Snapshot[]> {
+    const db = await this.init();
+    const stmt = db.prepare('SELECT id FROM snapshots WHERE tag = ? ORDER BY created_at DESC');
+    stmt.bind([tag]);
+    const out: Snapshot[] = [];
+    while (stmt.step()) {
+      const s = await this.get((stmt.getAsObject() as { id: string }).id);
+      if (s) out.push(s);
+    }
+    stmt.free();
+    return out;
+  }
+
+  async latestForEndpoint(ep: string): Promise<Snapshot | undefined> {
+    const db = await this.init();
+    const stmt = db.prepare('SELECT id FROM snapshots WHERE endpoint = ? ORDER BY created_at DESC LIMIT 1');
+    stmt.bind([ep]);
+    if (!stmt.step()) { stmt.free(); return; }
+    const id = (stmt.getAsObject() as { id: string }).id;
+    stmt.free();
+    return this.get(id);
+  }
+
+  async list(): Promise<Array<{ id: string; endpoint: string; createdAt: string; tag: string | null }>> {
+    const db = await this.init();
+    const r = db.exec('SELECT id,endpoint,created_at,tag FROM snapshots ORDER BY created_at DESC');
+    if (!r.length) return [];
+    return r[0]!.values.map((row: unknown[]) => ({
+      id: row[0] as string, endpoint: row[1] as string,
+      createdAt: row[2] as string, tag: row[3] as string | null,
+    }));
+  }
+}
+
+function replacer(_: string, v: unknown): unknown { return v instanceof Set ? { __set: true, values: [...v] } : v; }
+function reviver(_: string, v: unknown): unknown { return v && typeof v === 'object' && '__set' in (v as object) ? new Set((v as { values: string[] }).values) : v; }

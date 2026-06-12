@@ -1,0 +1,17 @@
+[general]
+snapshot_dir = ".wire"
+fail_on = "breaking"   # "breaking" | "all" | "none"
+
+[[endpoints]]
+name = "github.repos"
+url = "https://api.github.com/repos/{owner}/{repo}"
+method = "GET"
+headers = { Authorization = "token ${GITHUB_TOKEN}" }
+
+[[endpoints]]
+name = "jsonplaceholder"
+url = "https://jsonplaceholder.typicode.com/posts/1"
+method = "GET"
+
+[output]
+format = "table"   # "table" | "json" | "github"

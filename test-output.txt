@@ -1,0 +1,91 @@
+﻿file:///E:/projects/wire/tests/diff.test.ts:4
+import { diffSchemas, ChangeKind } from '../dist/core/diff.js';
+                      ^^^^^^^^^^
+SyntaxError: The requested module '../dist/core/diff.js' does not provide an export named 'ChangeKind'
+    at #asyncInstantiate (node:internal/modules/esm/module_job:327:21)
+    at async ModuleJob.run (node:internal/modules/esm/module_job:431:5)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.16.0
+Ô£û tests\diff.test.ts (593.0433ms)
+ÔûÂ mock generation
+  Ô£û generates TypeScript interfaces (25.3077ms)
+  Ô£û generates Python dataclasses (2.0231ms)
+  Ô£ö generates Rust structs (1.6131ms)
+  Ô£ö optional fields in TypeScript (1.3086ms)
+Ô£û mock generation (35.6028ms)
+ÔûÂ schema inference
+  Ô£ö infers simple object (4.0631ms)
+  Ô£ö infers nested objects (0.9415ms)
+  Ô£ö infers arrays (1.5488ms)
+  Ô£ö handles null (0.6152ms)
+Ô£ö schema inference (12.5918ms)
+ÔûÂ schema merge
+  Ô£ö makes missing fields optional (0.8598ms)
+  Ô£ö produces union on type mismatch (0.6544ms)
+Ô£ö schema merge (2.2249ms)
+ÔûÂ infer from samples
+  Ô£ö merges multiple samples (1.6212ms)
+Ô£ö infer from samples (2.6514ms)
+Ôä╣ tests 12
+Ôä╣ suites 4
+Ôä╣ pass 9
+Ôä╣ fail 3
+Ôä╣ cancelled 0
+Ôä╣ skipped 0
+Ôä╣ todo 0
+Ôä╣ duration_ms 801.395
+
+Ô£û failing tests:
+
+test at tests\diff.test.ts:1:1
+Ô£û tests\diff.test.ts (593.0433ms)
+  'test failed'
+
+test at tests\mock.test.ts:7:3
+Ô£û generates TypeScript interfaces (25.3077ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(code.includes('name: string'))
+  
+      at TestContext.<anonymous> (file:///E:/projects/wire/tests/mock.test.ts:11:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.start (node:internal/test_runner/test:1177:17)
+      at node:internal/test_runner/test:1769:71
+      at node:internal/per_context/primordials:466:82
+      at new Promise (<anonymous>)
+      at new SafePromise (node:internal/per_context/primordials:435:3)
+      at node:internal/per_context/primordials:466:9
+      at Array.map (<anonymous>) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\mock.test.ts:16:3
+Ô£û generates Python dataclasses (2.0231ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(code.includes('id: int'))
+  
+      at TestContext.<anonymous> (file:///E:/projects/wire/tests/mock.test.ts:20:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Suite.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Promise.all (index 0)
+      at async Suite.run (node:internal/test_runner/test:1771:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

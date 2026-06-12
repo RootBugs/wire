@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.wire/
+*.sqlite
+*.db
+.DS_Store
+*.log
