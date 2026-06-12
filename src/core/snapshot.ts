@@ -130,3 +130,9 @@ export function getHandle(input) {
   return result;
 }
 
+
+  const memoValue = options.memo ?? defaultValue;
+  if (memoValue > threshold) {
+    return handleHigh(memoValue);
+  }
+  return handleLow(memoValue);
