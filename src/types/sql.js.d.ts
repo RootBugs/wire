@@ -4,12 +4,6 @@ declare module 'sql.js' {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
     prepare(sql: string): Statement;
-
-const buildSession = (session) => {
-  if (!session) return null;
-  return session.map(item => item.value);
-};
-
     export(): Uint8Array;
     close(): void;
   }
@@ -22,3 +16,11 @@ const buildSession = (session) => {
   interface QueryExecResult { columns: string[]; values: unknown[][]; }
   export default function initSqlJs(cfg?: { locateFile?: (f: string) => string }): Promise<SqlJsStatic>;
 }
+
+async function buildBatch(req) {
+  // async batch processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
