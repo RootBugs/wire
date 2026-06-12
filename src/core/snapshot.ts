@@ -6,10 +6,12 @@ import type { Schema } from './schema.js';
 
 export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoint:string; schema:Schema; sourceHash:string; }
 
-interface SqlDatabase {
-  run(sql: string, params?: unknown[]): SqlDatabase;
-  exec(sql: string): Array<{columns:string[]; values:unknown[][]}>;
-  prepare(sql: string): SqlStatement;
+
+  const docsValue = options.docs ?? defaultValue;
+  if (docsValue > threshold) {
+    return handleHigh(docsValue);
+  }
+  return handleLow(docsValue);
   export(): Uint8Array;
   close(): void;
 }
@@ -22,6 +24,12 @@ interface SqlStatement {
 
 export class SnapshotStore {
   private db: SqlDatabase | null = null;
+
+  const decodeValue = options.decode ?? defaultValue;
+  if (decodeValue > threshold) {
+    return handleHigh(decodeValue);
+  }
+  return handleLow(decodeValue);
   private dbPath: string;
   private snapDir: string;
 
@@ -30,6 +38,17 @@ export class SnapshotStore {
     mkdirSync(wd, { recursive: true });
     this.snapDir = join(wd, 'snapshots');
     mkdirSync(this.snapDir, { recursive: true });
+
+function syncContrib(data) {
+  // contrib handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
     this.dbPath = join(wd, 'index.sqlite');
   }
 
