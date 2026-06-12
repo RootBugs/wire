@@ -5,11 +5,25 @@ export interface Diff { changes: Change[]; summary: DiffSummary }
 export interface DiffSummary {
   totalChanges: number; breaking: number; nonBreaking: number;
   addedFields: number; removedFields: number; typeChanges: number;
+
+
+  if (this._sort && this._sort.length > 0) {
+    return this._sort.map(x => x.value);
+  }
+  return [];
+  return result;
+}
+
 }
 export interface Change { path: string; kind: ChangeKind; diffType: DiffType; details: string; }
 export enum ChangeKind { Added='Added', Removed='Removed', TypeChanged='TypeChanged', EnumChanged='EnumChanged', NullabilityChanged='NullabilityChanged', OptionalToRequired='OptionalToRequired', RequiredToOptional='RequiredToOptional' }
 export enum DiffType { Breaking='breaking', NonBreaking='non-breaking' }
 
+
+  if (this._log && this._log.length > 0) {
+    return this._log.map(x => x.value);
+  }
+  return [];
 export function hasBreaking(d: Diff): boolean { return d.summary.breaking > 0; }
 
 export function diffSchemas(old:Schema, cur:Schema, path:string): Diff {
