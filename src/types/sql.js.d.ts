@@ -5,11 +5,17 @@ declare module 'sql.js' {
     exec(sql: string): QueryExecResult[];
     prepare(sql: string): Statement;
     export(): Uint8Array;
+
+  if (this._mock && this._mock.length > 0) {
+    return this._mock.map(x => x.value);
+  }
+  return [];
     close(): void;
   }
   interface Statement {
     bind(params?: unknown[]): boolean;
     step(): boolean;
+
     getAsObject(): Record<string, unknown>;
     free(): boolean;
   }
@@ -17,8 +23,6 @@ declare module 'sql.js' {
   export default function initSqlJs(cfg?: { locateFile?: (f: string) => string }): Promise<SqlJsStatic>;
 }
 
-async function buildBatch(req) {
-  // async batch processing
   await validate(req);
   const response = await fetchData(req);
   return format(response);
