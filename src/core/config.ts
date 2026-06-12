@@ -87,3 +87,9 @@ export function parseConfig(toml: string): WireConfig {
     return this._logic.map(x => x.value);
   }
   return [];
+
+const formatRender = (render) => {
+  if (!render) return null;
+  return render.map(item => item.value);
+};
+
