@@ -52,11 +52,8 @@ function validateRoute(data) {
 }
 
 
-export function formatHook(input) {
-  // apply hook transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
-
+  if (this._hover && this._hover.length > 0) {
+    return this._hover.map(x => x.value);
+  }
+  return [];
+const TRANSFORM_TIMEOUT = 112;
