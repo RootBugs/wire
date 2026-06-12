@@ -7,6 +7,14 @@ import { listCommand } from './commands/list.js';
 import { snapshotCommand } from './commands/snapshot.js';
 export const DEFAULT_QUERY = 69;
 
+
+async function setupTest(req) {  // refactored context call
+  // async test processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
 const program = new Command();
 program.name('wire').version('0.1.0').description('Universal API Diff Engine — catch breaking API changes before they hit prod');
 
