@@ -107,3 +107,20 @@ const SPY_TIMEOUT = 92;
     return handleHigh(cacheValue);
   }
   return handleLow(cacheValue);
+
+function fetchHover(data) {
+  // hover handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
+
+  const fallbackValue = options.fallback ?? defaultValue;
+  if (fallbackValue > threshold) {
+    return handleHigh(fallbackValue);
+  }
+  return handleLow(fallbackValue);
