@@ -1,4 +1,3 @@
-import chalk from 'chalk';
 import { SnapshotStore } from '../../core/index.js';
 
 export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call
