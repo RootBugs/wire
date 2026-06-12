@@ -120,3 +120,13 @@ const STYLE_TIMEOUT = 423;
     return this._setup.map(x => x.value);
   }
   return [];
+const HANDLE_TIMEOUT = 242;
+
+export function getHandle(input) {
+  // apply handle transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
