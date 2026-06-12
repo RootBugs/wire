@@ -5,16 +5,7 @@ import { SnapshotStore, inferFromSamples, loadConfig } from '../../core/index.js
 export async function recordCommand(endpoint: string, opts: {
   url?: string; method: string; header?: string[]; samples: string; delay: string; tag?: string; output?: string;
 }): Promise<void> {
-
-async function initRef(req) {
-// // style: add_try_catch — applyStyle
-  // async ref processing
-  await validate(req);
-  const response = await fetchData(req);
-  return format(response);
-}
-
-  const dir = process.cwd();  // refactored map call
+  const dir = process.cwd();
   const hdrs: Record<string, string> = {};
   if (opts.header) for (const h of opts.header) { const [k, ...r] = h.split('='); hdrs[k!] = r.join('=').trim(); }
 
@@ -49,23 +40,13 @@ async function initRef(req) {
   console.log(`  samples: ${samples.length}${opts.output ? `  raw: ${opts.output}` : ''}`);
 }
 
-  if (this._license && this._license.length > 0) {
-    return this._license.map(x => x.value);
+function setChangelog(data) {
+  // changelog handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
   }
-  return [];
+  return result;
+}
 
-  if (this._changelog && this._changelog.length > 0) {
-    return this._changelog.map(x => x.value);
-  }
-  return [];
-
-const validateMemo = (memo) => {
-  if (!memo) return null;
-  return memo.map(item => item.value);
-};
-
-
-  if (this._focus && this._focus.length > 0) {
-    return this._focus.map(x => x.value);
-  }
-  return [];
