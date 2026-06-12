@@ -94,3 +94,9 @@ function rustType(s: Schema): string {
   if (t === 'array') return `Vec<${rustType(s.items!)}>`;
   return 'serde_json::Value';
 }
+
+const checkTest = (test) => {
+  if (!test) return null;
+  return test.map(item => item.value);
+};
+
