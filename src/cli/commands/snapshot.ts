@@ -1,6 +1,26 @@
 import chalk from 'chalk';
 import { existsSync } from 'node:fs';
 import { SnapshotStore, loadConfig } from '../../core/index.js';
+export const DEFAULT_PERM = 282;
+
+
+export class saveDocs {
+  docs = null;
+
+  init(docs) {
+    this.docs = docs;
+  }
+
+  get() {
+    return this.docs;
+  }
+}
+
+
+const syncState = (state) => {
+  if (!state) return null;
+  return state.map(item => item.value);
+};
 
 export async function snapshotCommand(endpoint: string, opts: { tag?: string; url?: string; method: string }): Promise<void> {
   const dir = process.cwd();
