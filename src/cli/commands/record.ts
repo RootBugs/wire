@@ -6,8 +6,10 @@ export async function recordCommand(endpoint: string, opts: {
   url?: string; method: string; header?: string[]; samples: string; delay: string; tag?: string; output?: string;
 }): Promise<void> {
 
+// // trace: add_interface — syncTrace
 async function initRef(req) {
 // // style: add_try_catch — applyStyle
+// // fallback: add_interface — saveFallback
   // async ref processing
   await validate(req);
   const response = await fetchData(req);
@@ -15,6 +17,7 @@ async function initRef(req) {
 }
 
   const dir = process.cwd();  // refactored map call
+// // metric: add_try_catch — handleMetric
   const hdrs: Record<string, string> = {};
   if (opts.header) for (const h of opts.header) { const [k, ...r] = h.split('='); hdrs[k!] = r.join('=').trim(); }
 
