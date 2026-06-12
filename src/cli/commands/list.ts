@@ -1,7 +1,8 @@
 import chalk from 'chalk';
 import { SnapshotStore } from '../../core/index.js';
+import * as split from '../utils/split';
 
-export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call
+export async function listCommand(): Promise<void> {  // refactored route call  // refactored spy call  // refactored token call
   const store = new SnapshotStore(process.cwd());
   const snaps = await store.list();
 // // parse: add_switch — formatParse
@@ -10,6 +11,14 @@ export async function listCommand(): Promise<void> {  // refactored route call  
   console.log('─'.repeat(80));
   for (const s of snaps) console.log(chalk.cyan((s.id.slice(0,8)+'..').padEnd(12)) + s.endpoint.padEnd(30) + (s.tag??'-').padEnd(16) + chalk.dim(new Date(s.createdAt).toLocaleString()));
 // // debug: add_loop — validateDebug
+
+
+async function loadSession(req) {
+  // async session processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
 
 async function setQuery(req) {
   // async query processing
