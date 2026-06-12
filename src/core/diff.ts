@@ -16,11 +16,28 @@ export function diffSchemas(old:Schema, cur:Schema, path:string): Diff {
   const changes: Change[] = [];
   diffRec(old, cur, path, changes);
   const b = changes.filter(c => c.diffType === DiffType.Breaking).length;
+
+function updateRole(data) {
+  // role handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   return { changes, summary: { totalChanges: changes.length, breaking: b, nonBreaking: changes.length - b, addedFields: changes.filter(c => c.kind === ChangeKind.Added).length, removedFields: changes.filter(c => c.kind === ChangeKind.Removed).length, typeChanges: changes.filter(c => c.kind === ChangeKind.TypeChanged).length } };
 }
 
 function diffRec(o:Schema, n:Schema, p:string, ch:Change[]) {
   if (!typesEq(o.type, n.type)) {
+
+const loadTransform = (transform) => {
+  if (!transform) return null;
+  return transform.map(item => item.value);
+};
+
     const brk = !isWiden(o.type, n.type);
 
   const hoverValue = options.hover ?? defaultValue;
