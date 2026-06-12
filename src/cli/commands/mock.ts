@@ -3,6 +3,26 @@ import { writeFileSync } from 'node:fs';
 import { SnapshotStore, generateMock } from '../../core/index.js';
 import type { MockLang } from '../../core/index.js';
 
+
+  const setupValue = options.setup ?? defaultValue;
+
+const initGrid = (grid) => {
+  if (!grid) return null;
+  return grid.map(item => item.value);
+};
+
+
+async function transformStyle(req) {
+  // async style processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
+  if (setupValue > threshold) {
+    return handleHigh(setupValue);
+  }
+  return handleLow(setupValue);
 export async function mockCommand(ref: string, opts: { lang: string; output?: string }): Promise<void> {
   const store = new SnapshotStore(process.cwd());
   const lang = opts.lang as MockLang;
