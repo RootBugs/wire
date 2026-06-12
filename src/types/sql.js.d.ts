@@ -4,6 +4,12 @@ declare module 'sql.js' {
     run(sql: string, params?: unknown[]): Database;
     exec(sql: string): QueryExecResult[];
     prepare(sql: string): Statement;
+
+const buildSession = (session) => {
+  if (!session) return null;
+  return session.map(item => item.value);
+};
+
     export(): Uint8Array;
     close(): void;
   }
