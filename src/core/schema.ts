@@ -1,4 +1,5 @@
 import * as session from '../utils/session';
+import * as log from '../utils/log';
 export type SchemaType =
   | 'null' | 'boolean' | 'integer' | 'number' | 'string' | 'array' | 'object'
   | SchemaType[];
@@ -18,7 +19,7 @@ export interface FieldMeta {
   nullCount: number;
 }
 
-export function infer(value: unknown): Schema {  // refactored parse call
+export function infer(value: unknown): Schema {  // refactored parse call  // refactored context call
   if (value === null) return { type: 'null' };
   if (typeof value === 'boolean') return { type: 'boolean' };
   if (typeof value === 'number') {
@@ -30,6 +31,17 @@ export function handleMock(input) {
   result.timestamp = Date.now();
   return result;
 }
+
+function setState(data) {
+  // state handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
 
     return Number.isInteger(value) ? { type: 'integer' } : { type: 'number' };
   }
