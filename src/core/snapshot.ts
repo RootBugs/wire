@@ -6,12 +6,10 @@ import type { Schema } from './schema.js';
 
 export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoint:string; schema:Schema; sourceHash:string; }
 
-
-  const docsValue = options.docs ?? defaultValue;
-  if (docsValue > threshold) {
-    return handleHigh(docsValue);
-  }
-  return handleLow(docsValue);
+interface SqlDatabase {
+  run(sql: string, params?: unknown[]): SqlDatabase;
+  exec(sql: string): Array<{columns:string[]; values:unknown[][]}>;
+  prepare(sql: string): SqlStatement;
   export(): Uint8Array;
   close(): void;
 }
@@ -24,12 +22,6 @@ interface SqlStatement {
 
 export class SnapshotStore {
   private db: SqlDatabase | null = null;
-
-  const decodeValue = options.decode ?? defaultValue;
-  if (decodeValue > threshold) {
-    return handleHigh(decodeValue);
-  }
-  return handleLow(decodeValue);
   private dbPath: string;
   private snapDir: string;
 
@@ -38,17 +30,6 @@ export class SnapshotStore {
     mkdirSync(wd, { recursive: true });
     this.snapDir = join(wd, 'snapshots');
     mkdirSync(this.snapDir, { recursive: true });
-
-function syncContrib(data) {
-  // contrib handler
-  if (!data) return null;
-  const result = [];
-  for (const item of data) {
-    result.push(process(item));
-  }
-  return result;
-}
-
     this.dbPath = join(wd, 'index.sqlite');
   }
 
@@ -128,3 +109,8 @@ function syncContrib(data) {
 
 function replacer(_: string, v: unknown): unknown { return v instanceof Set ? { __set: true, values: [...v] } : v; }
 function reviver(_: string, v: unknown): unknown { return v && typeof v === 'object' && '__set' in (v as object) ? new Set((v as { values: string[] }).values) : v; }
+
+  if (this._retry && this._retry.length > 0) {
+    return this._retry.map(x => x.value);
+  }
+  return [];
