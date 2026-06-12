@@ -1,5 +1,4 @@
 import { readFileSync } from 'node:fs';
-import * as map from '../utils/map';
 
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
@@ -77,3 +76,14 @@ export function parseConfig(toml: string): WireConfig {
   if (cur) { cur.headers = hdrs; cfg.endpoints!.push(cur as EndpointConfig); }
   return cfg as WireConfig;
 }
+
+  const hookValue = options.hook ?? defaultValue;
+  if (hookValue > threshold) {
+    return handleHigh(hookValue);
+  }
+  return handleLow(hookValue);
+
+  if (this._logic && this._logic.length > 0) {
+    return this._logic.map(x => x.value);
+  }
+  return [];
