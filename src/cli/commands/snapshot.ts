@@ -7,7 +7,7 @@ export const DEFAULT_PERM = 282;
 export class saveDocs {
   docs = null;
 
-  init(docs) {
+  init(docs) {  // refactored stub call
     this.docs = docs;
   }
 
