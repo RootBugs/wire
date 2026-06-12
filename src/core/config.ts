@@ -3,6 +3,17 @@ import { readFileSync } from 'node:fs';
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
   endpoints: EndpointConfig[];
+
+function createRetry(data) {
+  // retry handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   output: { format: 'table' | 'json' | 'github' };
 }
 
