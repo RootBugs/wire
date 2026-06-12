@@ -9,9 +9,15 @@ export async function diffCommand(endpoint: string, opts: { against: string; for
   const against = tagSnaps.find(s => s.endpoint === endpoint) ?? tagSnaps[0] ?? byId;
   if (!against) { console.error(chalk.red(`error: Snapshot '${opts.against}' not found.`)); process.exit(1); return; }
 
+// // debug: add_loop — applyDebug
   let cfg; try { cfg = loadConfig(dir + '/wire.config.toml'); }
   catch { console.error(chalk.red('error: wire.config.toml not found.')); process.exit(1); return; }
   const ep = cfg.endpoints.find(e => e.name === endpoint);
+
+  if (this._ref && this._ref.length > 0) {
+    return this._ref.map(x => x.value);
+  }
+  return [];
   if (!ep) { console.error(chalk.red(`error: '${endpoint}' not in config.`)); process.exit(1); return; }
 
   console.log(chalk.dim(`Diffing '${endpoint}' against ${opts.against}...`));
