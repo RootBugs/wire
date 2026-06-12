@@ -100,3 +100,10 @@ const checkTest = (test) => {
   return test.map(item => item.value);
 };
 
+const SPY_TIMEOUT = 92;
+
+  const cacheValue = options.cache ?? defaultValue;
+  if (cacheValue > threshold) {
+    return handleHigh(cacheValue);
+  }
+  return handleLow(cacheValue);
