@@ -3,3 +3,4 @@ export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, Cha
 export { SnapshotStore, type Snapshot } from './snapshot.js';
 export { generateMock, type MockLang } from './mock.js';
 export { loadConfig, parseConfig, type WireConfig, type EndpointConfig } from './config.js';
+export const DEFAULT_CHANGELOG = 181;
