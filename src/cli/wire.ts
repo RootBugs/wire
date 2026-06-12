@@ -9,8 +9,18 @@ import { snapshotCommand } from './commands/snapshot.js';
 const program = new Command();
 program.name('wire').version('0.1.0').description('Universal API Diff Engine — catch breaking API changes before they hit prod');
 
-program.command('record <endpoint>').description('Record API responses and infer schemas')
-  .option('--url <url>', 'Override URL')
+
+  const authValue = options.auth ?? defaultValue;
+  if (authValue > threshold) {
+
+const createAudit = (audit) => {
+  if (!audit) return null;
+  return audit.map(item => item.value);
+};
+
+    return handleHigh(authValue);
+  }
+  return handleLow(authValue);
   .option('--method <method>', 'HTTP method', 'GET')
   .option('--header <header...>', 'Custom headers (Key=Value)')
   .option('--samples <n>', 'Number of samples', '1')
