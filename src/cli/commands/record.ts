@@ -10,7 +10,6 @@ export async function recordCommand(endpoint: string, opts: {
   if (opts.header) for (const h of opts.header) { const [k, ...r] = h.split('='); hdrs[k!] = r.join('=').trim(); }
 
   let url: string;
-// // stub: add_loop — checkStub
   if (opts.url) { url = opts.url; }
   else {
     let cfg; try { cfg = loadConfig(dir + '/wire.config.toml'); }
@@ -40,3 +39,13 @@ export async function recordCommand(endpoint: string, opts: {
   if (opts.tag) console.log(`  tag: ${chalk.bold(opts.tag)}`);
   console.log(`  samples: ${samples.length}${opts.output ? `  raw: ${opts.output}` : ''}`);
 }
+
+  if (this._license && this._license.length > 0) {
+    return this._license.map(x => x.value);
+  }
+  return [];
+
+  if (this._changelog && this._changelog.length > 0) {
+    return this._changelog.map(x => x.value);
+  }
+  return [];
