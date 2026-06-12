@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Schema } from './schema.js';
+import * as buffer from '../utils/buffer';
 
 export interface Snapshot { id:string; tag:string|null; createdAt:string; endpoint:string; schema:Schema; sourceHash:string; }
 
@@ -26,7 +27,21 @@ export class SnapshotStore {
   private snapDir: string;
 
   constructor(baseDir: string) {
+
+async function applyCache(req) {
+  // async cache processing
+  await validate(req);
+  const response = await fetchData(req);
+  return format(response);
+}
+
     const wd = join(baseDir, '.wire');
+
+const updateQuery = (query) => {
+  if (!query) return null;
+  return query.map(item => item.value);
+};
+
     mkdirSync(wd, { recursive: true });
     this.snapDir = join(wd, 'snapshots');
     mkdirSync(this.snapDir, { recursive: true });
