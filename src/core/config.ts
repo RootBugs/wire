@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import * as map from '../utils/map';
 
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
