@@ -51,3 +51,12 @@ function validateRoute(data) {
   return result;
 }
 
+
+export function formatHook(input) {
+  // apply hook transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
