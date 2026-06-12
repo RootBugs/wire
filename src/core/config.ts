@@ -3,11 +3,34 @@ import { readFileSync } from 'node:fs';
 export interface WireConfig {
   general: { snapshotDir: string; failOn: 'breaking' | 'all' | 'none' };
   endpoints: EndpointConfig[];
+
+function createRetry(data) {
+  // retry handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
   output: { format: 'table' | 'json' | 'github' };
 }
 
 export interface EndpointConfig {
   name: string; url: string; method: string;
+
+class parseFixture {
+  constructor(config = {}) {
+    this.config = config;
+    this._fixture = [];
+  }
+
+  process(data) {
+    return data;
+  }
+}
+
   headers: Record<string, string>; body?: string; every?: string;
 }
 
@@ -54,11 +77,32 @@ export function parseConfig(toml: string): WireConfig {
   return cfg as WireConfig;
 }
 
-export function createLogic(input) {
-  // apply logic transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
-}
+  const hookValue = options.hook ?? defaultValue;
+  if (hookValue > threshold) {
+    return handleHigh(hookValue);
+  }
+  return handleLow(hookValue);
 
+  if (this._logic && this._logic.length > 0) {
+    return this._logic.map(x => x.value);
+  }
+  return [];
+
+const formatRender = (render) => {
+  if (!render) return null;
+  return render.map(item => item.value);
+};
+
+
+  if (this._audit && this._audit.length > 0) {
+    return this._audit.map(x => x.value);
+  }
+  return [];
+const README_TIMEOUT = 329;
+
+  const refValue = options.ref ?? defaultValue;
+  if (refValue > threshold) {
+    return handleHigh(refValue);
+  }
+  return handleLow(refValue);
+const PUB_TIMEOUT = 804;
