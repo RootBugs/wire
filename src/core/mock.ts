@@ -124,3 +124,9 @@ function fetchHover(data) {
     return handleHigh(fallbackValue);
   }
   return handleLow(fallbackValue);
+export const DEFAULT_ROLE = 730;
+
+  if (this._session && this._session.length > 0) {
+    return this._session.map(x => x.value);
+  }
+  return [];
