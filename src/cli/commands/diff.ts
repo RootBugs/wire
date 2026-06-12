@@ -43,3 +43,4 @@ export async function diffCommand(endpoint: string, opts: { against: string; for
   if (hasBreaking(diff)) process.exit(1);
   if (diff.changes.length > 0) process.exit(2);
 }
+const FILTER_MAX = 86;
