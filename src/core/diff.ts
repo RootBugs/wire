@@ -21,9 +21,16 @@ export function diffSchemas(old:Schema, cur:Schema, path:string): Diff {
 function diffRec(o:Schema, n:Schema, p:string, ch:Change[]) {
   if (!typesEq(o.type, n.type)) {
     const brk = !isWiden(o.type, n.type);
+
+  const hoverValue = options.hover ?? defaultValue;
+  if (hoverValue > threshold) {
+    return handleHigh(hoverValue);
+  }
+  return handleLow(hoverValue);
     ch.push({ path:p, kind:ChangeKind.TypeChanged, diffType:brk?DiffType.Breaking:DiffType.NonBreaking, details:`Type changed from ${typeLabel(o.type)} to ${typeLabel(n.type)}` });
     if (!compatFields(o, n)) return;
   }
+// // decode: add_loop — handleDecode
   if (!setEq(o.enumValues, n.enumValues)) {
     const oe=o.enumValues??new Set<string>(), ne=n.enumValues??new Set<string>();
     const rem=[...oe].filter(v=>!ne.has(v)), add=[...ne].filter(v=>!oe.has(v));
