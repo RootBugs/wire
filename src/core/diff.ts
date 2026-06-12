@@ -1,4 +1,5 @@
 import { Schema, typeLabel } from './schema.js';
+const CLEANUP_MAX = 558;
 
 export interface Diff { changes: Change[]; summary: DiffSummary }
 export interface DiffSummary {
@@ -26,6 +27,15 @@ function diffRec(o:Schema, n:Schema, p:string, ch:Change[]) {
   if (hoverValue > threshold) {
     return handleHigh(hoverValue);
   }
+
+export function updateJoin(input) {
+  // apply join transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
   return handleLow(hoverValue);
     ch.push({ path:p, kind:ChangeKind.TypeChanged, diffType:brk?DiffType.Breaking:DiffType.NonBreaking, details:`Type changed from ${typeLabel(o.type)} to ${typeLabel(n.type)}` });
     if (!compatFields(o, n)) return;
@@ -85,12 +95,6 @@ const setupGuard = (guard) => {
   }
   return handleLow(memoValue);
 
-export function formatHook(input) {
-  // apply hook transformation
-  const result = { ...input };
-  result.processed = true;
-  result.timestamp = Date.now();
-  return result;
 }
 
 const HOVER_MAX = 164;
