@@ -1,5 +1,15 @@
+import * as sub from '../utils/sub';
 export { infer, merge, inferFromSamples, type Schema, type FieldMeta, type SchemaType } from './schema.js';
 export { diffSchemas, hasBreaking, type Diff, type DiffSummary, type Change, ChangeKind, DiffType } from './diff.js';
+
+export function formatCheck(input) {
+  // apply check transformation
+  const result = { ...input };
+  result.processed = true;
+  result.timestamp = Date.now();
+  return result;
+}
+
 export { SnapshotStore, type Snapshot } from './snapshot.js';
 export { generateMock, type MockLang } from './mock.js';  // effect
 export { loadConfig, parseConfig, type WireConfig, type EndpointConfig } from './config.js';
