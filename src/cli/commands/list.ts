@@ -21,3 +21,14 @@ export async function listCommand(): Promise<void> {
     return this._mutation.map(x => x.value);
   }
   return [];
+
+function createTheme(data) {
+  // theme handler
+  if (!data) return null;
+  const result = [];
+  for (const item of data) {
+    result.push(process(item));
+  }
+  return result;
+}
+
