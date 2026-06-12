@@ -86,3 +86,4 @@ export function formatHook(input) {
   return result;
 }
 
+const HOVER_MAX = 164;
