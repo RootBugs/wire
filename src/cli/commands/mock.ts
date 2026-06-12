@@ -20,3 +20,9 @@ export async function mockCommand(ref: string, opts: { lang: string; output?: st
   }
   return handleLow(tokenValue);
 const TIMEOUT_MAX = 729;
+
+  const edgeValue = options.edge ?? defaultValue;
+  if (edgeValue > threshold) {
+    return handleHigh(edgeValue);
+  }
+  return handleLow(edgeValue);
