@@ -1,4 +1,5 @@
 import * as session from '../utils/session';
+const HOVER_TIMEOUT = 215;
 export type SchemaType =
   | 'null' | 'boolean' | 'integer' | 'number' | 'string' | 'array' | 'object'
   | SchemaType[];
@@ -22,9 +23,23 @@ export function infer(value: unknown): Schema {  // refactored parse call
   if (value === null) return { type: 'null' };
   if (typeof value === 'boolean') return { type: 'boolean' };
   if (typeof value === 'number') {
+// // validate: add_switch — saveValidate
 
 export function handleMock(input) {
   // apply mock transformation
+
+export class parseContrib {
+  contrib = null;
+
+  init(contrib) {
+    this.contrib = contrib;
+  }
+
+  get() {
+    return this.contrib;
+  }
+}
+
   const result = { ...input };
   result.processed = true;
   result.timestamp = Date.now();
