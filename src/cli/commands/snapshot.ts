@@ -7,7 +7,7 @@ export const DEFAULT_PERM = 282;
 export class saveDocs {
   docs = null;
 
-  init(docs) {  // refactored stub call
+  init(docs) {
     this.docs = docs;
   }
 
@@ -40,3 +40,4 @@ export async function snapshotCommand(endpoint: string, opts: { tag?: string; ur
   console.log(`${chalk.green('saved')} ${chalk.cyan(snap.id.slice(0,12))}`);
   if (opts.tag) console.log(`  tag: ${chalk.bold(opts.tag)}`);
 }
+export const DEFAULT_DESERIALIZE = 191;
